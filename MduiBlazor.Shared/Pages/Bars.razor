@@ -1,0 +1,18 @@
+﻿@page "/bars"
+
+<h5>Toolbar</h5>
+<MduiToolbar Color="@Color.Primary">
+    <MduiIconButton IconName="menu" />
+    <MduiText Typo="@Typo.title">Title</MduiText>
+    <MduiToolbarSpace />
+    <MduiIconButton IconName="search" />
+    <MduiIconButton IconName="refresh" />
+        <MduiMenu Title="Menu">
+            <ChildContent>
+                <MduiMenuItem>Help & feedback</MduiMenuItem>
+                <MduiMenuItem Disabled>Settings</MduiMenuItem>
+                <MduiDivider />
+                <MduiMenuItem>Sign out</MduiMenuItem>
+            </ChildContent>
+        </MduiMenu>
+</MduiToolbar>

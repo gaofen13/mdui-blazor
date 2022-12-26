@@ -1,0 +1,33 @@
+﻿@page "/buttons"
+
+<h5>Button</h5>
+<MduiButton Color="@Color.Primary">Button</MduiButton>
+
+<h5>IconButton</h5>
+<MduiIconButton Color="@Color.Accent" IconName="add" />
+
+<h5>ButtonGroup</h5>
+<MduiButtonGroup>
+    <MduiButton>
+        <MduiIcon Name="format_align_left" />
+    </MduiButton>
+    <MduiButton>
+        <MduiIcon Name="format_align_center" />
+    </MduiButton>
+    <MduiButton>
+        <MduiIcon Name="format_align_right" />
+    </MduiButton>
+    <MduiButton>
+        <MduiIcon Name="format_align_justify" />
+    </MduiButton>
+</MduiButtonGroup>
+
+<h5>FabButton</h5>
+<MduiFabButton IconName="add" Color="@Color.Accent" />
+
+<MduiFabMenu IconName="add" OpenedIconName="edit" Color="@Color.Accent">
+    <MduiFabButton IconName="backup" Color="@Color.Primary" Mini />
+    <MduiFabButton IconName="bookmark" Color="@Color.Accent" Mini />
+    <MduiFabButton IconName="access_alarms" Color="@Color.Info" Mini />
+    <MduiFabButton IconName="touch_app" Color="@Color.Success" Mini />
+</MduiFabMenu>

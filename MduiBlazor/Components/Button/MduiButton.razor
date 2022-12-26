@@ -1,0 +1,17 @@
+﻿@namespace MduiBlazor
+@using MduiBlazor.Extensions;
+@inherits MduiButtonBase
+
+<MduiElement @bind-Ref="@Element"
+                 HtmlTag="@HtmlTag"
+                 Class="@Classname"
+                 Style="@Style"
+                 @attributes="AdditionalAttributes"
+                 @onclick="OnClickHandler"
+                 type="@ButtonType.ToDescriptionString()"
+                 href="@Href"
+                 target="@Target"
+                 rel="@(Target=="_blank"?"noopener":null)"
+                 disabled="@Disabled">
+    @ChildContent
+</MduiElement>

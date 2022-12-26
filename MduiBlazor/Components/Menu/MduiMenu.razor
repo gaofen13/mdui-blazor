@@ -1,0 +1,16 @@
+﻿@namespace MduiBlazor
+@inherits MduiComponentBase
+
+@if (ActivatorContent != null)
+{
+    <label mdui-menu="{target: '@("#"+id.ToString())'}">
+        @ActivatorContent
+    </label>
+}
+else
+{
+    <MduiButton>@Title</MduiButton>
+}
+<ul id="@id" class="@Classname" style="@Style">
+    @ChildContent
+</ul>

@@ -1,0 +1,34 @@
+﻿@inherits LayoutComponentBase
+
+<MduiAppbar Fixed>
+    <MduiToolbar Color="@Color.Primary">
+        <MduiIconButton IconName="menu" OnClick="_=>open=!open" />
+        <MduiText Typo="@Typo.title">Title</MduiText>
+        <MduiToolbarSpace />
+        <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
+        <MduiIconButton IconName="search" />
+        <MduiIconButton IconName="refresh" />
+        <MduiMenu>
+            <ActivatorContent>
+                <MduiIconButton IconName="more_vert" />
+            </ActivatorContent>
+            <ChildContent>
+                <MduiMenuItem>Help & feedback</MduiMenuItem>
+                <MduiMenuItem Disabled>Settings</MduiMenuItem>
+                <MduiDivider />
+                <MduiMenuItem>Sign out</MduiMenuItem>
+            </ChildContent>
+        </MduiMenu>
+    </MduiToolbar>
+</MduiAppbar>
+<MduiDrawer @bind-Opened="@open">
+    <NavMenu />
+</MduiDrawer>
+
+<main class="mdui-typo">
+    @Body
+</main>
+
+@code {
+    bool open;
+}

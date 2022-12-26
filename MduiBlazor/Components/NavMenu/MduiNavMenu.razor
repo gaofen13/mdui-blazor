@@ -1,0 +1,11 @@
+﻿@namespace MduiBlazor
+@inherits MduiComponentBase
+
+<MduiList Dense="@Dense" Class="@Class" Style="@Style">
+    @ChildContent
+</MduiList>
+
+@code {
+    [Parameter]
+    public bool Dense { get; set; }
+}

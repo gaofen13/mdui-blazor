@@ -1,0 +1,9 @@
+﻿@namespace MduiBlazor
+@inherits MduiComponentBase
+
+<div class="mdui-subheader@(Inset?"-inset":"")">@ChildContent</div>
+
+@code {
+    [Parameter]
+    public bool Inset { get; set; }
+}

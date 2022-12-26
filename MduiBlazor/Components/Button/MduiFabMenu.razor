@@ -1,0 +1,18 @@
+﻿@namespace MduiBlazor
+@inherits MduiComponentBase
+
+<div class="mdui-fab-wrapper" mdui-fab="{trigger: '@(Hover?"hover":"click")'}">
+    <MduiButton Class="mdui-fab" Color="@Color">
+        <!-- 默认显示的图标 -->
+        <MduiIcon Name="@IconName" />
+
+        <!-- 在拨号菜单开始打开时，平滑切换到该图标，若不需要切换图标，则可以省略该元素 -->
+        @if (!string.IsNullOrWhiteSpace(OpenedIconName))
+        {
+            <MduiIcon Class="mdui-fab-opened" Name="@OpenedIconName" />
+        }
+    </MduiButton>
+    <div class="mdui-fab-dial">
+        @ChildContent
+    </div>
+</div>

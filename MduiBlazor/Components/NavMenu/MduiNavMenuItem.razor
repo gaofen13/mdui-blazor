@@ -1,0 +1,11 @@
+﻿@namespace MduiBlazor
+@using Microsoft.AspNetCore.Components.Routing
+@inherits MduiComponentBase
+
+<NavLink href="@Href" class="@Classname" style="@Style" ActiveClass="mdui-list-item-active" Match="@Match">
+    @if (Icon != null)
+    {
+        <MduiIcon Class="mdui-list-item-icon" Name="@Icon" />
+    }
+    <div class="mdui-list-item-content">@ChildContent</div>
+</NavLink>
