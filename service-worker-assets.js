@@ -193,7 +193,7 @@
       "url": "icon-512.png"
     },
     {
-      "hash": "sha256-gUTN7PbF6md14Siqn4uwF2QzkzXe1dtRZwGmqAGM7IQ=",
+      "hash": "sha256-liQvml7bPi7JH0frMMkCdKpb7WJWnnVFIHgeZxhXm+o=",
       "url": "index.html"
     },
     {
@@ -369,5 +369,5 @@
       "url": "_content\/MduiBlazor\/js\/mdui.min.js.map"
     }
   ],
-  "version": "qEbgpfMv"
+  "version": "2lwt+TCd"
 };
