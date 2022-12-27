@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Components;
 
 namespace MduiBlazor
 {
-    public partial class MduiAppbar
+    public partial class MduiAppbar : IDisposable
     {
         private int _toolbarCount;
 
@@ -50,6 +50,12 @@ namespace MduiBlazor
         public void RemoveToolbar()
         {
             _toolbarCount--;
+        }
+
+        void IDisposable.Dispose()
+        {
+            Layout?.RemoveAppbar(this);
+            GC.SuppressFinalize(this);
         }
     }
 }

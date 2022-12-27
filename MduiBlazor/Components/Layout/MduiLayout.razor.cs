@@ -5,7 +5,7 @@ namespace MduiBlazor
 {
     public partial class MduiLayout
     {
-        private bool _appbarWithToolbar;
+        private int _countOfAppbarWithToolbar;
         private MduiDrawer? _currentLeftDrawer;
         private MduiDrawer? _currentRightDrawer;
 
@@ -13,10 +13,10 @@ namespace MduiBlazor
             new ClassBuilder("mdui-loaded")
             .AddClass($"mdui-theme-primary-{PrimaryColor}")
             .AddClass($"mdui-theme-{AccentColor}")
-            .AddClass("mdui-appbar-with-toolbar", _appbarWithToolbar)
             .AddClass("mdui-drawer-body-left", _currentLeftDrawer is not null)
             .AddClass("mdui-drawer-body-right", _currentRightDrawer is not null)
-            .AddClass(IsDarkTheme? "mdui-theme-layout-dark" : "mdui-theme-layout-light")
+            .AddClass("mdui-appbar-with-toolbar", _countOfAppbarWithToolbar > 0)
+            .AddClass(IsDarkTheme ? "mdui-theme-layout-dark" : "mdui-theme-layout-light")
             .AddClass(Class)
             .Build();
 
@@ -33,9 +33,21 @@ namespace MduiBlazor
         {
             if (bar.HasToolbar)
             {
-                if (!_appbarWithToolbar)
+                _countOfAppbarWithToolbar++;
+                if (_countOfAppbarWithToolbar == 1)
                 {
-                    _appbarWithToolbar = true;
+                    StateHasChanged();
+                }
+            }
+        }
+
+        public void RemoveAppbar(MduiAppbar bar)
+        {
+            if (bar.HasToolbar)
+            {
+                _countOfAppbarWithToolbar--;
+                if (_countOfAppbarWithToolbar == 0)
+                {
                     StateHasChanged();
                 }
             }

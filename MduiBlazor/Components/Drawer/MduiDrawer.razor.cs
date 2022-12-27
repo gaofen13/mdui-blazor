@@ -37,9 +37,7 @@ namespace MduiBlazor
                 {
                     if (value)
                     {
-                        _opened = true;
-                        OpenedChanged.InvokeAsync(true);
-                        Layout?.AddDarwer(this);
+                        OpenDrawer();
                     }
                     else
                     {
@@ -73,6 +71,13 @@ namespace MduiBlazor
             return Task.CompletedTask;
         }
 
+        public void OpenDrawer()
+        {
+            _opened = true;
+            OpenedChanged.InvokeAsync(true);
+            Layout?.AddDarwer(this);
+        }
+
         public void CloseDrawer()
         {
             _opened = false;
@@ -82,21 +87,18 @@ namespace MduiBlazor
 
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
-            if (firstRender)
+            if (firstRender && Variant == DrawerVariant.Responsive)
             {
                 _jsModule = await JSRuntime.InvokeAsync<IJSObjectReference>("import",
                  "./_content/MduiBlazor/Components/Drawer/MduiDrawer.razor.js");
                 //bool isMobile = await _jsModule!.InvokeAsync<bool>("isDevice");
                 var width = await _jsModule!.InvokeAsync<int>("getWindowWidth");
 
-                if (width >= 1024 && Variant == DrawerVariant.Responsive)
+                if (width >= 1024)
                 {
                     _variant = DrawerVariant.Persistent;
-                    _opened = true;
-                    await OpenedChanged.InvokeAsync(true);
+                    OpenDrawer();
                 }
-
-                Layout?.AddDarwer(this);
             }
             await base.OnAfterRenderAsync(firstRender);
         }
