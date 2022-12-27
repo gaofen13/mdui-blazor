@@ -3,13 +3,13 @@
 
 @if (ActivatorContent != null)
 {
-    <label mdui-menu="{target: '@("#"+id.ToString())'}">
+    <label mdui-menu="@Options">
         @ActivatorContent
     </label>
 }
 else
 {
-    <MduiButton>@Title</MduiButton>
+    <MduiButton mdui-menu="@Options">@Title</MduiButton>
 }
 <ul id="@id" class="@Classname" style="@Style">
     @ChildContent
