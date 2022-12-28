@@ -22,6 +22,9 @@ namespace MduiBlazor
         [Inject]
         private IJSRuntime JSRuntime { get; set; } = default!;
 
+        [Inject]
+        private NavigationManager Navigation { get; set; } = default!;
+
         [CascadingParameter]
         private MduiLayout? Layout { get; set; }
 
@@ -91,22 +94,44 @@ namespace MduiBlazor
             Layout?.RemoveDarwer(this);
         }
 
+        protected override void OnInitialized()
+        {
+            Navigation.LocationChanged += Navigation_LocationChanged;
+            base.OnInitialized();
+        }
+
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
-            if (firstRender && Variant == DrawerVariant.Responsive)
+            if (firstRender)
             {
-                _jsModule = await JSRuntime.InvokeAsync<IJSObjectReference>("import",
-                 "./_content/MduiBlazor/Components/Drawer/MduiDrawer.razor.js");
-                //bool isMobile = await _jsModule!.InvokeAsync<bool>("isDevice");
-                var width = await _jsModule!.InvokeAsync<int>("getWindowWidth");
+                if (Variant == DrawerVariant.Responsive)
+                {
+                    _jsModule = await JSRuntime.InvokeAsync<IJSObjectReference>("import",
+                     "./_content/MduiBlazor/Components/Drawer/MduiDrawer.razor.js");
+                    //bool isMobile = await _jsModule!.InvokeAsync<bool>("isDevice");
+                    var width = await _jsModule!.InvokeAsync<int>("getWindowWidth");
 
-                if (width >= Breakpoint)
+                    if (width >= Breakpoint)
+                    {
+                        _variant = DrawerVariant.Persistent;
+                        OpenDrawer();
+                    }
+                }
+                else if (Variant == DrawerVariant.Persistent)
                 {
                     _variant = DrawerVariant.Persistent;
                     OpenDrawer();
                 }
             }
             await base.OnAfterRenderAsync(firstRender);
+        }
+
+        private void Navigation_LocationChanged(object? sender, Microsoft.AspNetCore.Components.Routing.LocationChangedEventArgs e)
+        {
+            if (_variant == DrawerVariant.Temporary && _opened)
+            {
+                CloseDrawer();
+            }
         }
     }
 }
