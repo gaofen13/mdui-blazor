@@ -53,6 +53,12 @@ namespace MduiBlazor
         [Parameter]
         public DrawerVariant Variant { get; set; } = DrawerVariant.Responsive;
 
+        /// <summary>
+        /// When Variant == DrawerVariant.Responsive the breakpoint(px, default 1024) on Temporary and Persistent
+        /// </summary>
+        [Parameter]
+        public int Breakpoint { get; set; } = 1024;
+
         [Parameter]
         public Color? Color { get; set; }
 
@@ -94,7 +100,7 @@ namespace MduiBlazor
                 //bool isMobile = await _jsModule!.InvokeAsync<bool>("isDevice");
                 var width = await _jsModule!.InvokeAsync<int>("getWindowWidth");
 
-                if (width >= 1024)
+                if (width >= Breakpoint)
                 {
                     _variant = DrawerVariant.Persistent;
                     OpenDrawer();
