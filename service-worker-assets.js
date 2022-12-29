@@ -173,7 +173,7 @@
       "url": "404.html"
     },
     {
-      "hash": "sha256-Si7KXDyE\/FhLSzzFQ7fARSntYGvXDo4tpT6nujyC9ZY=",
+      "hash": "sha256-JEJhkzXnORIWyCIWhH+M1GdVfY0\/JpRzux7memXHwhE=",
       "url": "css\/app.css"
     },
     {
@@ -369,5 +369,5 @@
       "url": "_content\/MduiBlazor\/js\/mdui.min.js.map"
     }
   ],
-  "version": "dfNyESit"
+  "version": "wsEn53AF"
 };
