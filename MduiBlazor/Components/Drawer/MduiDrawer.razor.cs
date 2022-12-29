@@ -13,6 +13,7 @@ namespace MduiBlazor
 
         protected string Classname =>
             new ClassBuilder("mdui-drawer")
+            .AddClass("mdui-typo", UseMduiTypo)
             .AddClass(_opened ? "mdui-drawer-open" : "mdui-drawer-close")
             .AddClass("mdui-drawer-right", RightSide)
             .AddClass($"mdui-color-{Color}", !string.IsNullOrWhiteSpace(Color))

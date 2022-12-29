@@ -8,16 +8,16 @@ using System.Threading.Tasks;
 
 namespace MduiBlazor
 {
-    public partial class MduiTable
+    public partial class MduiNavMenuSubheader
     {
         protected string Classname =>
-            new ClassBuilder("mdui-table")
+            new ClassBuilder()
             .AddClass("mdui-typo", UseMduiTypo)
-            .AddClass("mdui-table-hoverable", Hoverable)
+            .AddClass($"mdui-subheader{(Inset ? "-inset" : "")}")
             .AddClass(Class)
             .Build();
 
         [Parameter]
-        public bool Hoverable { get; set; }
+        public bool Inset { get; set; }
     }
 }

@@ -8,16 +8,15 @@ using System.Threading.Tasks;
 
 namespace MduiBlazor
 {
-    public partial class MduiTable
+    public partial class MduiNavMenu
     {
         protected string Classname =>
-            new ClassBuilder("mdui-table")
+            new ClassBuilder()
             .AddClass("mdui-typo", UseMduiTypo)
-            .AddClass("mdui-table-hoverable", Hoverable)
             .AddClass(Class)
             .Build();
 
         [Parameter]
-        public bool Hoverable { get; set; }
+        public bool Dense { get; set; }
     }
 }

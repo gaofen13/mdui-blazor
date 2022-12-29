@@ -2,7 +2,7 @@
 @using Microsoft.AspNetCore.Components.Routing
 @inherits MduiComponentBase
 
-<NavLink href="@Href" class="@Classname" style="@Style" ActiveClass="mdui-list-item-active" Match="@Match">
+<NavLink href="@Href" class="@Classname" style="@Style" @attributes="@AdditionalAttributes" ActiveClass="mdui-list-item-active" Match="@Match">
     @if (Icon != null)
     {
         <MduiIcon Class="mdui-list-item-icon" Name="@Icon" />

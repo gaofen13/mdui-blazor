@@ -11,7 +11,8 @@ namespace MduiBlazor
     public partial class MduiMenu
     {
         protected string Classname =>
-            new ClassBuilder("mdui-menu")
+            new ClassBuilder()
+            .AddClass("mdui-typo", UseMduiTypo)
             .AddClass(Class)
             .Build();
 

@@ -8,6 +8,7 @@ namespace MduiBlazor
     {
         protected string Classname =>
             new ClassBuilder("mdui-btn")
+            .AddClass("mdui-typo", UseMduiTypo)
             .AddClass("mdui-ripple", Ripple)
             .AddClass("mdui-btn-raised", !Text)
             .AddClass("mdui-btn-dense", Dense)

@@ -1,8 +1,6 @@
 ﻿@namespace MduiBlazor
 @inherits MduiComponentBase
 
-<div class="mdui-table-fluid">
-    <table class="@Classname" style="@Style">
-        @ChildContent
-    </table>
-</div>
+<table class="@Classname" style="@Style" @attributes="@AdditionalAttributes">
+    @ChildContent
+</table>

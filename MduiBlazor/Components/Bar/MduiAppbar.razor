@@ -2,7 +2,7 @@
 @inherits MduiComponentBase
 @implements IDisposable
 
-<header class="@Classname" style="@Style">
+<header class="@Classname" style="@Style" @attributes="@AdditionalAttributes">
     <CascadingValue Value="@this" IsFixed>
         @ChildContent
     </CascadingValue>

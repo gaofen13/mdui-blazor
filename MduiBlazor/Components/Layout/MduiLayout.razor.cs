@@ -12,6 +12,7 @@ namespace MduiBlazor
 
         protected string Classname =>
             new ClassBuilder("mdui-loaded")
+            .AddClass("mdui-typo", UseMduiTypo)
             .AddClass($"mdui-theme-primary-{PrimaryColor.ToDescriptionString()}")
             .AddClass($"mdui-theme-accent-{AccentColor.ToDescriptionString()}")
             .AddClass("mdui-drawer-body-left", _currentLeftDrawer is not null)

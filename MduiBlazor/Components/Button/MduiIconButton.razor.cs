@@ -13,6 +13,7 @@ namespace MduiBlazor
     {
         protected string Classname =>
             new ClassBuilder("mdui-btn-icon")
+            .AddClass("mdui-typo", UseMduiTypo)
             .AddClass(Class)
             .Build();
 

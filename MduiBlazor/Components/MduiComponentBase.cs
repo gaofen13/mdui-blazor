@@ -9,6 +9,12 @@ namespace MduiBlazor
         [Parameter]
         public RenderFragment? ChildContent { get; set; }
 
+        /// <summary>
+        /// if true its child element be use mduitypo
+        /// </summary>
+        [Parameter]
+        public bool UseMduiTypo { get; set; }
+
         [Parameter]
         public string? Class { get; set; }
 

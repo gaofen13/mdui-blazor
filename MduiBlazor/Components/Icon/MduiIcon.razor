@@ -3,9 +3,9 @@
 
 @if (Custom)
 {
-    <i class="@Classname" style="@Style"></i>
+    <i class="@Classname" style="@Style" @attributes="@AdditionalAttributes"></i>
 }
 else
 {
-    <i class="@Classname" style="@Style">@Name</i>
+    <i class="@Classname" style="@Style" @attributes="@AdditionalAttributes">@Name</i>
 }

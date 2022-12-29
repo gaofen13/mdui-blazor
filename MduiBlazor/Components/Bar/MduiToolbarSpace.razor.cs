@@ -1,23 +1,18 @@
 ﻿using MduiBlazor.Utilities;
-using Microsoft.AspNetCore.Components;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
-using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace MduiBlazor
 {
-    public partial class MduiMenuItem
+    public partial class MduiToolbarSpace
     {
         protected string Classname =>
-            new ClassBuilder("mdui-menu-item")
-            .AddClass("mdui-typo", UseMduiTypo)
+            new ClassBuilder("mdui-toolbar-spacer")
             .AddClass(Class)
             .Build();
-
-        [Parameter]
-        public bool Disabled { get; set; }
     }
 }

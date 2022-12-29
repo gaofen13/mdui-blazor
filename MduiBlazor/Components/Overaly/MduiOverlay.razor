@@ -3,7 +3,7 @@
 
 @if (Visible)
 {
-    <div class="mdui-overlay mdui-overlay-show" @onclick="@OnBackgroundClick">
+    <div class="@Classname" style="@Style" @attributes="@AdditionalAttributes" @onclick="@OnBackgroundClick">
         @ChildContent
     </div>
 }

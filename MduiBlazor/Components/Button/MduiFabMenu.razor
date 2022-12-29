@@ -1,7 +1,7 @@
 ﻿@namespace MduiBlazor
 @inherits MduiComponentBase
 
-<div class="mdui-fab-wrapper" mdui-fab="{trigger: '@(Hover?"hover":"click")'}">
+<div class="@Classname" style="@Style" @attributes="@AdditionalAttributes" mdui-fab="{trigger: '@(Hover?"hover":"click")'}">
     <MduiButton Class="mdui-fab" Color="@Color">
         <!-- 默认显示的图标 -->
         <MduiIcon Name="@IconName" />

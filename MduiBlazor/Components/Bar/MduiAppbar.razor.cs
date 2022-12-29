@@ -9,6 +9,7 @@ namespace MduiBlazor
 
         protected string Classname =>
             new ClassBuilder("mdui-appbar")
+            .AddClass("mdui-typo", UseMduiTypo)
             .AddClass("mdui-appbar-fixed", Fixed)
             .AddClass("mdui-appbar-scroll-hide", ScrollHide)
             .AddClass("mdui-appbar-scroll-toolbar-hide", ScrollToolbarHide)

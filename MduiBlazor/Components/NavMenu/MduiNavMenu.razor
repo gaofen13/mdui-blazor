@@ -1,11 +1,6 @@
 ﻿@namespace MduiBlazor
 @inherits MduiComponentBase
 
-<MduiList Dense="@Dense" Class="@Class" Style="@Style">
+<MduiList Dense="@Dense" Class="@Classname" Style="@Style" @attributes="@AdditionalAttributes">
     @ChildContent
 </MduiList>
-
-@code {
-    [Parameter]
-    public bool Dense { get; set; }
-}
