@@ -20,6 +20,6 @@ namespace MduiBlazor
         public string? IconName { get; set; }
 
         [Parameter]
-        public Color? IconColor { get; set; }
+        public string? IconColor { get; set; }
     }
 }

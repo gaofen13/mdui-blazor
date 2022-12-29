@@ -1,4 +1,5 @@
-﻿using MduiBlazor.Utilities;
+﻿using MduiBlazor.Extensions;
+using MduiBlazor.Utilities;
 using Microsoft.AspNetCore.Components;
 
 namespace MduiBlazor
@@ -11,8 +12,8 @@ namespace MduiBlazor
 
         protected string Classname =>
             new ClassBuilder("mdui-loaded")
-            .AddClass($"mdui-theme-primary-{PrimaryColor}")
-            .AddClass($"mdui-theme-{AccentColor}")
+            .AddClass($"mdui-theme-primary-{PrimaryColor.ToDescriptionString()}")
+            .AddClass($"mdui-theme-accent-{AccentColor.ToDescriptionString()}")
             .AddClass("mdui-drawer-body-left", _currentLeftDrawer is not null)
             .AddClass("mdui-drawer-body-right", _currentRightDrawer is not null)
             .AddClass("mdui-appbar-with-toolbar", _countOfAppbarWithToolbar > 0)
@@ -21,10 +22,10 @@ namespace MduiBlazor
             .Build();
 
         [Parameter]
-        public string PrimaryColor { get; set; } = "deep-purple";
+        public PrimaryColor PrimaryColor { get; set; } = PrimaryColor.DeepPurple;
 
         [Parameter]
-        public string AccentColor { get; set; } = "pink";
+        public AccentColor AccentColor { get; set; } = AccentColor.Pink;
 
         [Parameter]
         public bool IsDarkTheme { get; set; }

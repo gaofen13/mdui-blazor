@@ -8,7 +8,7 @@ namespace MduiBlazor
     {
         protected string Classname =>
             new ClassBuilder("mdui-toolbar")
-            .AddClass($"mdui-color-{Color?.ToDescriptionString()}", Color != null)
+            .AddClass($"mdui-color-{Color}", !string.IsNullOrWhiteSpace(Color))
             .AddClass(Class)
             .Build();
 
@@ -16,7 +16,7 @@ namespace MduiBlazor
         public MduiAppbar? Appbar { get; set; }
 
         [Parameter]
-        public Color? Color { get; set; }
+        public string? Color { get; set; }
 
         protected override void OnInitialized()
         {

@@ -14,8 +14,8 @@ namespace MduiBlazor
             .AddClass("mdui-btn-block", Block)
             .AddClass("mdui-btn-active", Actived)
             .AddClass($"mdui-shadow-{Shadow}", Shadow >= 0 && Shadow <= 24)
-            .AddClass($"mdui-color-{Color?.ToDescriptionString()}", Color != null && !Text)
-            .AddClass($"mdui-text-color-{Color?.ToDescriptionString()}", Text && Color != null)
+            .AddClass($"mdui-color-{Color}", !string.IsNullOrWhiteSpace(Color) && !Text)
+            .AddClass($"mdui-text-color-{Color}", Text && !string.IsNullOrWhiteSpace(Color))
             .AddClass(Class)
             .Build();
 

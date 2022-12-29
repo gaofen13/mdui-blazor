@@ -14,7 +14,7 @@ namespace MduiBlazor
     {
         protected string Classname =>
             new ClassBuilder("mdui-fab mdui-ripple")
-            .AddClass($"mdui-color-{Color?.ToDescriptionString()}", Color != null)
+            .AddClass($"mdui-color-{Color}", !string.IsNullOrWhiteSpace(Color))
             .AddClass("mdui-fab-mini", Mini)
             .AddClass("mdui-fab-hide", Hide)
             .AddClass("mdui-fab-fixed", Fixed)
@@ -22,13 +22,13 @@ namespace MduiBlazor
             .Build(); 
         
         [Parameter]
-        public Color? Color { get; set; }
+        public string? Color { get; set; }
 
         [Parameter, EditorRequired]
         public string? IconName { get; set; }
 
         [Parameter]
-        public Color? IconColor { get; set; }
+        public string? IconColor { get; set; }
 
         [Parameter]
         public bool Mini { get; set; }

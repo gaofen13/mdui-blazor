@@ -10,7 +10,7 @@ namespace MduiBlazor
     public partial class MduiFabMenu
     {
         [Parameter]
-        public Color? Color { get; set; }
+        public string? Color { get; set; }
 
         [Parameter, EditorRequired]
         public string? IconName { get; set; }

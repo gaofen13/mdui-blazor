@@ -14,12 +14,12 @@ namespace MduiBlazor
         protected string Classname =>
             new ClassBuilder("mdui-icon")
             .AddClass($"mdui-typo-{Typo?.ToDescriptionString()}{(Opacity ? "-opacity" : "")}", Typo != null)
-            .AddClass($"mdui-text-color-{Color?.ToDescriptionString()}", Color != null)
+            .AddClass($"mdui-text-color-{Color}", !string.IsNullOrWhiteSpace(Color))
             .AddClass(Class)
             .Build();
 
         [Parameter]
-        public Color? Color { get; set; }
+        public string? Color { get; set; }
 
         [Parameter]
         public Typo? Typo { get; set; }

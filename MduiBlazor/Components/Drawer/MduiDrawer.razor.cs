@@ -15,7 +15,7 @@ namespace MduiBlazor
             new ClassBuilder("mdui-drawer")
             .AddClass(_opened ? "mdui-drawer-open" : "mdui-drawer-close")
             .AddClass("mdui-drawer-right", RightSide)
-            .AddClass($"mdui-color-{Color?.ToDescriptionString()}", Color != null)
+            .AddClass($"mdui-color-{Color}", !string.IsNullOrWhiteSpace(Color))
             .AddClass(Class)
             .Build();
 
@@ -63,7 +63,7 @@ namespace MduiBlazor
         public int Breakpoint { get; set; } = 1024;
 
         [Parameter]
-        public Color? Color { get; set; }
+        public string? Color { get; set; }
 
         [Parameter]
         public bool RightSide { get; set; }

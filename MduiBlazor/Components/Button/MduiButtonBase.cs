@@ -30,7 +30,7 @@ namespace MduiBlazor
         /// The color of the component. It supports the theme colors.
         /// </summary>
         [Parameter]
-        public Color? Color { get; set; }
+        public string? Color { get; set; }
 
         [Parameter]
         public bool Text { get; set; }
