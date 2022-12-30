@@ -1,6 +1,6 @@
 ﻿@inherits LayoutComponentBase
 
-<MduiLayout>
+<MduiLayout UseMduiTypo>
     <MduiAppbar Fixed>
         <MduiToolbar Color="@Colors.Theme.Primary">
             <MduiIconButton IconName="menu" OnClick="_=>open=!open" />
@@ -22,7 +22,7 @@
             </MduiMenu>
         </MduiToolbar>
     </MduiAppbar>
-    <MduiDrawer @bind-Opened="@open">
+    <MduiDrawer @bind-Opened="@open" Variant="@DrawerVariant.Responsive">
         <NavMenu />
     </MduiDrawer>
 

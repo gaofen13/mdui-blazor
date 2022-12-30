@@ -6,13 +6,15 @@ namespace MduiBlazor
 {
     public partial class MduiLayout
     {
+        private bool _firstLoaded;
         private int _countOfAppbarWithToolbar;
         private MduiDrawer? _currentLeftDrawer;
         private MduiDrawer? _currentRightDrawer;
 
         protected string Classname =>
-            new ClassBuilder("mdui-loaded")
+            new ClassBuilder()
             .AddClass("mdui-typo", UseMduiTypo)
+            .AddClass("mdui-loaded", _firstLoaded)
             .AddClass($"mdui-theme-primary-{PrimaryColor.ToDescriptionString()}")
             .AddClass($"mdui-theme-accent-{AccentColor.ToDescriptionString()}")
             .AddClass("mdui-drawer-body-left", _currentLeftDrawer is not null)
@@ -30,6 +32,15 @@ namespace MduiBlazor
 
         [Parameter]
         public bool IsDarkTheme { get; set; }
+
+        protected override void OnAfterRender(bool firstRender)
+        {
+            if (firstRender)
+            {
+                _firstLoaded = true;
+            }
+            base.OnAfterRender(firstRender);
+        }
 
         public void AddAppbar(MduiAppbar bar)
         {
@@ -75,7 +86,6 @@ namespace MduiBlazor
             }
             StateHasChanged();
         }
-
 
         public void RemoveDarwer(MduiDrawer drawer)
         {

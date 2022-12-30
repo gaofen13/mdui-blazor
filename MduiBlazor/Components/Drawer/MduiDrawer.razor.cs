@@ -14,6 +14,7 @@ namespace MduiBlazor
         protected string Classname =>
             new ClassBuilder("mdui-drawer")
             .AddClass("mdui-typo", UseMduiTypo)
+            .AddClass("mdui-drawer-persistent", _variant == DrawerVariant.Persistent)
             .AddClass(_opened ? "mdui-drawer-open" : "mdui-drawer-close")
             .AddClass("mdui-drawer-right", RightSide)
             .AddClass($"mdui-color-{Color}", !string.IsNullOrWhiteSpace(Color))
@@ -85,14 +86,16 @@ namespace MduiBlazor
         {
             _opened = true;
             OpenedChanged.InvokeAsync(true);
-            Layout?.AddDarwer(this);
+            if (_variant == DrawerVariant.Persistent)
+                Layout?.AddDarwer(this);
         }
 
         public void CloseDrawer()
         {
             _opened = false;
             OpenedChanged.InvokeAsync(false);
-            Layout?.RemoveDarwer(this);
+            if (_variant == DrawerVariant.Persistent)
+                Layout?.RemoveDarwer(this);
         }
 
         protected override void OnInitialized()
@@ -116,12 +119,14 @@ namespace MduiBlazor
                     {
                         _variant = DrawerVariant.Persistent;
                         OpenDrawer();
+                        StateHasChanged();
                     }
                 }
                 else if (Variant == DrawerVariant.Persistent)
                 {
                     _variant = DrawerVariant.Persistent;
                     OpenDrawer();
+                    StateHasChanged();
                 }
             }
             await base.OnAfterRenderAsync(firstRender);

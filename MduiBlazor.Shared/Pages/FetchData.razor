@@ -7,13 +7,13 @@
 
 <p>This component demonstrates fetching data from the server.</p>
 
-<MduiTableContainer>
-    @if (forecasts == null)
-    {
-        <p><em>Loading...</em></p>
-    }
-    else
-    {
+@if (forecasts == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <MduiTableContainer>
         <MduiTable Hoverable>
             <thead>
                 <tr>
@@ -35,8 +35,8 @@
                 }
             </tbody>
         </MduiTable>
-    }
-</MduiTableContainer>
+    </MduiTableContainer>
+}
 
 @code {
     private WeatherForecast[]? forecasts;
