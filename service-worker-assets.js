@@ -237,19 +237,19 @@
       "url": "_content\/MduiBlazor\/Components\/Drawer\/MduiDrawer.razor.js"
     },
     {
-      "hash": "sha256-NUSoxBwyuNeUcXQa\/Dl7i6kd6gOIj2kiWDrdmmSjAF0=",
+      "hash": "sha256-yfMt+XGObKMe98cdMUKiIw7we+8dv7xkcdXtNMQuTG4=",
       "url": "_content\/MduiBlazor\/css\/mdui.css"
     },
     {
-      "hash": "sha256-IlGArhZcJ2hVg5PlLkZzwWTVwU4slUW8j1m1XX4BrEU=",
+      "hash": "sha256-\/S8x30QFfdSN7ZtDBXPdoYWXoEnSXdz4D1LQDArVN0k=",
       "url": "_content\/MduiBlazor\/css\/mdui.css.map"
     },
     {
-      "hash": "sha256-PxkbaNHtEyvMlMtgAcEiq5S+u5iJHT6WjukO8LuV\/LM=",
+      "hash": "sha256-oik\/AnVu4m3zPBLFSd5QGFC0TiVlK60sOAGmHN51yIg=",
       "url": "_content\/MduiBlazor\/css\/mdui.min.css"
     },
     {
-      "hash": "sha256-11hjafmZt9q+P\/ozeLTgFC9KbvAVVrzPk0dHLxHtKkY=",
+      "hash": "sha256-i6djQRO6QkQiqa8\/TnK3TohBqRLbvi5gx9aA+Gv+dPA=",
       "url": "_content\/MduiBlazor\/css\/mdui.min.css.map"
     },
     {
@@ -393,5 +393,5 @@
       "url": "_content\/MduiBlazor\/js\/mdui.min.js.map"
     }
   ],
-  "version": "ROXzigNf"
+  "version": "5QuCE9Ib"
 };
