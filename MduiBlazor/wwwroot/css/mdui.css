@@ -11900,40 +11900,40 @@ select.mdui-select[multiple] option:last-child {
   padding-right: 240px;
 }
 /* PC 上默认有上边距 */
-.mdui-appbar-with-tab .mdui-drawer:not(.mdui-drawer-persistent) {
+.mdui-appbar-with-tab .mdui-drawer.mdui-drawer-persistent {
   top: 48px;
 }
-.mdui-appbar-with-tab-larger .mdui-drawer:not(.mdui-drawer-persistent) {
+.mdui-appbar-with-tab-larger .mdui-drawer.mdui-drawer-persistent {
   top: 72px;
 }
-.mdui-appbar-with-toolbar .mdui-drawer:not(.mdui-drawer-persistent) {
+.mdui-appbar-with-toolbar .mdui-drawer.mdui-drawer-persistent {
   top: 56px;
 }
-.mdui-appbar-with-toolbar.mdui-appbar-with-tab .mdui-drawer:not(.mdui-drawer-persistent) {
+.mdui-appbar-with-toolbar.mdui-appbar-with-tab .mdui-drawer.mdui-drawer-persistent {
   top: 104px;
 }
-.mdui-appbar-with-toolbar.mdui-appbar-with-tab-larger .mdui-drawer:not(.mdui-drawer-persistent) {
+.mdui-appbar-with-toolbar.mdui-appbar-with-tab-larger .mdui-drawer.mdui-drawer-persistent {
   top: 128px;
 }
 @media (min-width: 600px) {
-  .mdui-appbar-with-toolbar .mdui-drawer:not(.mdui-drawer-persistent) {
+  .mdui-appbar-with-toolbar .mdui-drawer.mdui-drawer-persistent {
     top: 64px;
   }
-  .mdui-appbar-with-toolbar.mdui-appbar-with-tab .mdui-drawer:not(.mdui-drawer-persistent) {
+  .mdui-appbar-with-toolbar.mdui-appbar-with-tab .mdui-drawer.mdui-drawer-persistent {
     top: 112px;
   }
-  .mdui-appbar-with-toolbar.mdui-appbar-with-tab-larger .mdui-drawer:not(.mdui-drawer-persistent) {
+  .mdui-appbar-with-toolbar.mdui-appbar-with-tab-larger .mdui-drawer.mdui-drawer-persistent {
     top: 136px;
   }
 }
 @media (orientation: landscape) and (max-width: 959.9px) {
-  .mdui-appbar-with-toolbar .mdui-drawer:not(.mdui-drawer-persistent) {
+  .mdui-appbar-with-toolbar .mdui-drawer.mdui-drawer-persistent {
     top: 48px;
   }
-  .mdui-appbar-with-toolbar.mdui-appbar-with-tab .mdui-drawer:not(.mdui-drawer-persistent) {
+  .mdui-appbar-with-toolbar.mdui-appbar-with-tab .mdui-drawer.mdui-drawer-persistent {
     top: 96px;
   }
-  .mdui-appbar-with-toolbar.mdui-appbar-with-tab-larger .mdui-drawer:not(.mdui-drawer-persistent) {
+  .mdui-appbar-with-toolbar.mdui-appbar-with-tab-larger .mdui-drawer.mdui-drawer-persistent {
     top: 120px;
   }
 }
