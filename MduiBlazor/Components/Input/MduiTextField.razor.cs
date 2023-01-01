@@ -16,7 +16,7 @@ namespace MduiBlazor
 
         private string FieldClassname =>
             new ClassBuilder()
-            .AddClass("mdui-textfield-floating-label", string.IsNullOrWhiteSpace(Placeholder) && FloatingLabel)
+            .AddClass("mdui-textfield-floating-label", string.IsNullOrEmpty(Value) && string.IsNullOrWhiteSpace(Placeholder) && FloatingLabel)
             .AddClass("mdui-typo", UseMduiTypo)
             .Build();
 
