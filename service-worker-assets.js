@@ -33,7 +33,7 @@
       "url": "_framework\/icudt.dat"
     },
     {
-      "hash": "sha256-Xa67z1pb6P50vqoL1vuGSpQMGaMnzh6V6k60ahy1AN4=",
+      "hash": "sha256-s31HF7tBWYrBoDaGZJL6wmCweGMIwRQrFOVe7QHw\/wg=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -41,7 +41,7 @@
       "url": "_framework\/MduiBlazor.Client.dll"
     },
     {
-      "hash": "sha256-RvHzgjd4ksAJcoRF9D1q6q5XM6WiI0wlEhfIqTIHww8=",
+      "hash": "sha256-UYVgJQiKeTmnBcUfwDJyu+mAewOQnVzODUVeVGqHHLU=",
       "url": "_framework\/MduiBlazor.dll"
     },
     {
@@ -237,7 +237,7 @@
       "url": "_content\/MduiBlazor\/Components\/Drawer\/MduiDrawer.razor.js"
     },
     {
-      "hash": "sha256-qAwC\/Ar3JqOpn+TrYt+2TYA1wqfeTiBIrKSUfgsnhok=",
+      "hash": "sha256-NUSoxBwyuNeUcXQa\/Dl7i6kd6gOIj2kiWDrdmmSjAF0=",
       "url": "_content\/MduiBlazor\/css\/mdui.css"
     },
     {
@@ -245,7 +245,7 @@
       "url": "_content\/MduiBlazor\/css\/mdui.css.map"
     },
     {
-      "hash": "sha256-lv5dYFB\/T4GNuZ+GeodKUSnLntN1wNSjU7jUnimSdS8=",
+      "hash": "sha256-PxkbaNHtEyvMlMtgAcEiq5S+u5iJHT6WjukO8LuV\/LM=",
       "url": "_content\/MduiBlazor\/css\/mdui.min.css"
     },
     {
@@ -393,5 +393,5 @@
       "url": "_content\/MduiBlazor\/js\/mdui.min.js.map"
     }
   ],
-  "version": "apSAVpte"
+  "version": "ROXzigNf"
 };
