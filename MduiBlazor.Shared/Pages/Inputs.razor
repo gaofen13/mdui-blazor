@@ -1,0 +1,14 @@
+﻿@page "/inputs"
+@using Microsoft.AspNetCore.Components.Forms
+
+<EditForm Model="1">
+    <MduiTextField AutoFocus Placeholder="请输入文本" @bind-Value="@value" />
+    <MduiTextField Label="文本框" @bind-Value="@value" />
+    <MduiTextField Label="文本框" FloatingLabel @bind-Value="@value" />
+    <MduiTextField Label="文本框" MaxLength="20" Placeholder="请输入文本" HelperText="请输入文本" @bind-Value="@value" />
+    <MduiTextField Label="文本框" FloatingLabel MaxLength="50" HelperText="请输入文本" @bind-Value="@value" />
+</EditForm>
+
+@code{
+    string? value;
+}
