@@ -1,17 +1,29 @@
 ﻿@namespace MduiBlazor
 @inherits MduiInputBase<string>
 
-<div class="@Classname" style="@Style">
-    @if (Icon is not null)
+<MduiField Class="@FieldClassname" Label="@Label" Icon="@Icon" HelperText="@HelperText" ErrorText="@ErrorText">
+    @if (Rows > 1)
     {
-        <MduiIcon Name="@Icon" />
+        <textarea @ref="@Element"
+              class="@Classname"
+              style="@Style"
+              rows="@Rows"
+              required="@Required"
+              pattern="@Pattern"
+              maxlength="@MaxLength"
+              placeholder="@Placeholder"
+              disabled="@Disabled"
+              readonly="@Readonly"
+              @attributes="@AdditionalAttributes"
+              value="@BindConverter.FormatValue(CurrentValueAsString)"
+              @onchange="@(EventCallback.Factory.CreateBinder<string?>(this, __value => CurrentValueAsString = __value, CurrentValueAsString))"
+              @oninput="@OnTextInput" />
     }
-    @if (Label is not null)
+    else
     {
-        <label class="mdui-textfield-label">@Label</label>
-    }
-    <input @ref="@Element"
-           class="mdui-textfield-input"
+        <input @ref="@Element"
+           class="@Classname"
+           style="@Style"
            type="@Type"
            required="@Required"
            pattern="@Pattern"
@@ -23,13 +35,6 @@
            value="@BindConverter.FormatValue(CurrentValueAsString)"
            @onchange="@(EventCallback.Factory.CreateBinder<string?>(this, __value => CurrentValueAsString = __value, CurrentValueAsString))"
            @oninput="@OnTextInput" />
-    @if (!string.IsNullOrWhiteSpace(ErrorText))
-    {
-        <div class="mdui-textfield-error">@ErrorText</div>
-    }
-    @if (!string.IsNullOrWhiteSpace(HelperText))
-    {
-        <div class="mdui-textfield-helper">@HelperText</div>
     }
     @if (MaxLength > 0 && MaxLength <= int.MaxValue)
     {
@@ -37,4 +42,4 @@
             <span class="mdui-textfield-counter-inputed">@_wordNumber</span> / @MaxLength
         </div>
     }
-</div>
+</MduiField>

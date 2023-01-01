@@ -10230,7 +10230,7 @@ input.mdui-btn[type="submit"] {
   display: inline-block;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  max-width: 100%;
+  width: 100%;
   height: 36px;
   padding-right: 24px;
   padding-left: 0;

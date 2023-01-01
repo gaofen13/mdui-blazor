@@ -3,35 +3,31 @@ using Microsoft.AspNetCore.Components;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace MduiBlazor
 {
     public partial class MduiTextField
     {
-        private bool _invalid;
         private int _wordNumber;
 
-        protected string Classname =>
-          new ClassBuilder("mdui-textfield")
+        private string FieldClassname =>
+            new ClassBuilder()
             .AddClass("mdui-textfield-floating-label", string.IsNullOrWhiteSpace(Placeholder) && FloatingLabel)
-            .AddClass("mdui-textfield-has-bottom", !string.IsNullOrWhiteSpace(HelperText))
-            .AddClass("mdui-textfield-invalid", _invalid)
+            .AddClass("mdui-typo", UseMduiTypo)
+            .Build();
+
+        protected string Classname =>
+        new ClassBuilder("mdui-textfield-input")
             .AddClass(FieldClass)
             .AddClass(Class)
             .Build();
 
         [Parameter]
         public string? Label { get; set; }
-
-        /// <summary>
-        /// only shows when placeholder is empty
-        /// </summary>
-        [Parameter]
-        public bool FloatingLabel { get; set; }
 
         [Parameter]
         public string? Icon { get; set; }
@@ -42,6 +38,12 @@ namespace MduiBlazor
         [Parameter]
         public string? HelperText { get; set; }
 
+        /// <summary>
+        /// only shows when placeholder is empty
+        /// </summary>
+        [Parameter]
+        public bool FloatingLabel { get; set; }
+
         [Parameter]
         public bool AutoFocus { get; set; }
 
@@ -50,6 +52,9 @@ namespace MduiBlazor
 
         [Parameter]
         public int? MaxLength { get; set; }
+
+        [Parameter]
+        public int Rows { get; set; } = 1;
 
         [Parameter]
         public string Type { get; set; } = "text";
@@ -62,7 +67,7 @@ namespace MduiBlazor
 
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
-            if(firstRender && AutoFocus)
+            if (firstRender && AutoFocus)
             {
                 await Element.FocusAsync();
             }

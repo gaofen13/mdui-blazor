@@ -5,10 +5,18 @@
     <MduiTextField AutoFocus Placeholder="请输入文本" @bind-Value="@value" />
     <MduiTextField Label="文本框" @bind-Value="@value" />
     <MduiTextField Label="文本框" FloatingLabel @bind-Value="@value" />
-    <MduiTextField Label="文本框" MaxLength="20" Placeholder="请输入文本" HelperText="请输入文本" @bind-Value="@value" />
-    <MduiTextField Label="文本框" FloatingLabel MaxLength="50" HelperText="请输入文本" @bind-Value="@value" />
+    <MduiTextField Label="文本框" HelperText="请输入文本" MaxLength="20" Placeholder="请输入文本" @bind-Value="@value" />
+    <MduiTextField Label="文本框" HelperText="请输入文本" Rows="5" FloatingLabel MaxLength="50" @bind-Value="@value" />
+    <MduiDivider Class="mdui-m-y-4" />
+    <MduiField Label="单项选择">
+        <MduiSelect @bind-Value="@value">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+        </MduiSelect>
+    </MduiField>
 </EditForm>
 
-@code{
+@code {
     string? value;
 }

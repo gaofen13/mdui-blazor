@@ -1,0 +1,11 @@
+﻿@namespace MduiBlazor
+@typeparam TValue
+@inherits MduiInputBase<TValue>
+
+<select class="@Classname"
+        style="@Style"
+        disabled="@Disabled"
+        required="@Required"
+        @attributes="@AdditionalAttributes">
+    @ChildContent
+</select>

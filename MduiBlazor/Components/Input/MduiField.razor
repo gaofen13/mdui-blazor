@@ -1,0 +1,24 @@
+﻿@namespace MduiBlazor
+@inherits MduiComponentBase
+
+<div class="@Classname" style="@Style" @attributes="@AdditionalAttributes">
+    @if (Icon is not null)
+    {
+        <MduiIcon Name="@Icon" />
+    }
+    @if (Label is not null)
+    {
+        <label class="mdui-textfield-label">@Label</label>
+    }
+    <CascadingValue Name="Field" Value="@this" IsFixed>
+        @ChildContent
+    </CascadingValue>
+    @if (!string.IsNullOrWhiteSpace(ErrorText))
+    {
+        <div class="mdui-textfield-error">@ErrorText</div>
+    }
+    @if (!string.IsNullOrWhiteSpace(HelperText))
+    {
+        <div class="mdui-textfield-helper">@HelperText</div>
+    }
+</div>
