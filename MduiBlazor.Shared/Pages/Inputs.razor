@@ -5,6 +5,7 @@
     <MduiTextField AutoFocus Placeholder="请输入文本" @bind-Value="@value" />
     <MduiTextField Label="文本框" @bind-Value="@value" />
     <MduiTextField Label="文本框" FloatingLabel @bind-Value="@value" />
+    <MduiTextField Label="文本框" FloatingLabel Placeholder="请输入文本" @bind-Value="@value" />
     <MduiTextField Label="文本框" HelperText="请输入文本" MaxLength="20" Placeholder="请输入文本" @bind-Value="@value" />
     <MduiTextField Label="文本框" HelperText="请输入文本" Rows="5" FloatingLabel MaxLength="50" @bind-Value="@value" />
     <MduiDivider Class="mdui-m-y-4" />
@@ -18,5 +19,5 @@
 </EditForm>
 
 @code {
-    string? value;
+    string? value = "2";
 }

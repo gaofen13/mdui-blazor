@@ -7515,6 +7515,9 @@ th.mdui-table-cell-checkbox .mdui-checkbox {
 }
 /* 含有浮动标签的文本框
    ================ */
+.mdui-textfield-floating-label .mdui-textfield-input:not(:focus)::-webkit-input-placeholder {
+  visibility: hidden;
+}
 .mdui-textfield-floating-label .mdui-textfield-label {
   color: rgba(0, 0, 0, 0.35);
   -webkit-transform: scale(1) translateY(27px);

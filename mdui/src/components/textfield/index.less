@@ -101,11 +101,11 @@
     padding: 6px;
     color: @color-black-icon;
 
-    ~ .mdui-textfield-label,
-    ~ .mdui-textfield-input,
-    ~ .mdui-textfield-error,
-    ~ .mdui-textfield-helper,
-    ~ .mdui-textfield-flex-wrap {
+    ~.mdui-textfield-label,
+    ~.mdui-textfield-input,
+    ~.mdui-textfield-error,
+    ~.mdui-textfield-helper,
+    ~.mdui-textfield-flex-wrap {
       /* stylelint-disable-next-line */
       width: calc(~"100% - 56px");
       margin-left: 56px;
@@ -139,6 +139,10 @@
    ================ */
 .mdui-textfield-floating-label {
 
+  .mdui-textfield-input:not(:focus)::-webkit-input-placeholder {
+    visibility: hidden;
+  }
+
   .mdui-textfield-label {
     color: rgba(0, 0, 0, 0.35);
     transform: scale(1) translateY(27px);
@@ -151,6 +155,7 @@
       transform: scale(0.75) translateY(0);
     }
   }
+
   &.mdui-textfield-focus {
     .mdui-textfield-label {
       .mdui-text-color(@color-accent-default-name);
@@ -244,6 +249,7 @@
 /* 禁用表单
    ====== */
 .mdui-textfield-disabled {
+
   .mdui-textfield-label,
   .mdui-textfield-input::-webkit-input-placeholder {
     color: @color-black-disabled;
@@ -278,6 +284,7 @@
  * =============================================================================
  */
 .layout-theme({
+
   // 输入框颜色
   .mdui-textfield-input {
     color: #fff;
@@ -342,6 +349,7 @@
 
   // 禁用状态
   .mdui-textfield-disabled {
+
     .mdui-textfield-label,
     .mdui-textfield-input::-webkit-input-placeholder {
       color: @color-white-disabled;
@@ -368,7 +376,7 @@
     .loop-accent-theme((@counter-color - 1));
     @colorName: extract(@globalAccentColors, @counter-color);
 
-    .mdui-theme-accent-@{colorName} when not (@colorName = null) {
+    .mdui-theme-accent-@{colorName} when not (@colorName =null) {
 
       @colorA700: 'color-@{colorName}-a700';
       @colorA200: 'color-@{colorName}-a200';
@@ -405,13 +413,13 @@
           }
         }
 
-        & when (@globalLayoutDark = true) {
+        & when (@globalLayoutDark =true) {
           &.mdui-theme-layout-dark {
             .dark-mode();
           }
         }
 
-        & when (@globalLayoutAuto = true) {
+        & when (@globalLayoutAuto =true) {
           @media (prefers-color-scheme: dark) {
             &.mdui-theme-layout-auto {
               .dark-mode();
@@ -421,5 +429,6 @@
       }
     }
   }
+
   .loop-accent-theme(length(@globalAccentColors));
 }
