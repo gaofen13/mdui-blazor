@@ -1,6 +1,6 @@
 ﻿@namespace MduiBlazor
-@inherits MduiComponentBase
+@inherits MduiButtonBase
 
-<button class="@Classname" style="@Style" @attributes="@AdditionalAttributes">
-    <MduiIcon Name="@IconName" Color="@IconColor" />
+<button class="@Classname" style="@Style" @attributes="@AdditionalAttributes" @onclick="@OnClick">
+    <MduiIcon Name="@IconName" Class="@IconClass" Color="@IconColor" />
 </button>

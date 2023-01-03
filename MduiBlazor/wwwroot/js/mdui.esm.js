@@ -1,6 +1,6 @@
 /*!
  * mdui 1.0.2 (https://mdui.org)
- * Copyright 2016-2021 zdhxiong
+ * Copyright 2016-2023 zdhxiong
  * Licensed under MIT
  */
 function isFunction(target) {
@@ -3303,143 +3303,6 @@ mdui.updateSliders = function (selector) {
     });
 };
 
-const DEFAULT_OPTIONS$2 = {
-    trigger: 'hover',
-};
-class Fab {
-    constructor(selector, options = {}) {
-        /**
-         * 配置参数
-         */
-        this.options = extend({}, DEFAULT_OPTIONS$2);
-        /**
-         * 当前 fab 的状态
-         */
-        this.state = 'closed';
-        this.$element = $(selector).first();
-        extend(this.options, options);
-        this.$btn = this.$element.find('.mdui-fab');
-        this.$dial = this.$element.find('.mdui-fab-dial');
-        this.$dialBtns = this.$dial.find('.mdui-fab');
-        if (this.options.trigger === 'hover') {
-            this.$btn.on('touchstart mouseenter', () => this.open());
-            this.$element.on('mouseleave', () => this.close());
-        }
-        if (this.options.trigger === 'click') {
-            this.$btn.on(startEvent, () => this.open());
-        }
-        // 触摸屏幕其他地方关闭快速拨号
-        $document.on(startEvent, (event) => {
-            if ($(event.target).parents('.mdui-fab-wrapper').length) {
-                return;
-            }
-            this.close();
-        });
-    }
-    /**
-     * 触发组件事件
-     * @param name
-     */
-    triggerEvent(name) {
-        componentEvent(name, 'fab', this.$element, this);
-    }
-    /**
-     * 当前是否为打开状态
-     */
-    isOpen() {
-        return this.state === 'opening' || this.state === 'opened';
-    }
-    /**
-     * 打开快速拨号菜单
-     */
-    open() {
-        if (this.isOpen()) {
-            return;
-        }
-        // 为菜单中的按钮添加不同的 transition-delay
-        this.$dialBtns.each((index, btn) => {
-            const delay = `${15 * (this.$dialBtns.length - index)}ms`;
-            btn.style.transitionDelay = delay;
-            btn.style.webkitTransitionDelay = delay;
-        });
-        this.$dial.css('height', 'auto').addClass('mdui-fab-dial-show');
-        // 如果按钮中存在 .mdui-fab-opened 的图标，则进行图标切换
-        if (this.$btn.find('.mdui-fab-opened').length) {
-            this.$btn.addClass('mdui-fab-opened');
-        }
-        this.state = 'opening';
-        this.triggerEvent('open');
-        // 打开顺序为从下到上逐个打开，最上面的打开后才表示动画完成
-        this.$dialBtns.first().transitionEnd(() => {
-            if (this.$btn.hasClass('mdui-fab-opened')) {
-                this.state = 'opened';
-                this.triggerEvent('opened');
-            }
-        });
-    }
-    /**
-     * 关闭快速拨号菜单
-     */
-    close() {
-        if (!this.isOpen()) {
-            return;
-        }
-        // 为菜单中的按钮添加不同的 transition-delay
-        this.$dialBtns.each((index, btn) => {
-            const delay = `${15 * index}ms`;
-            btn.style.transitionDelay = delay;
-            btn.style.webkitTransitionDelay = delay;
-        });
-        this.$dial.removeClass('mdui-fab-dial-show');
-        this.$btn.removeClass('mdui-fab-opened');
-        this.state = 'closing';
-        this.triggerEvent('close');
-        // 从上往下依次关闭，最后一个关闭后才表示动画完成
-        this.$dialBtns.last().transitionEnd(() => {
-            if (this.$btn.hasClass('mdui-fab-opened')) {
-                return;
-            }
-            this.state = 'closed';
-            this.triggerEvent('closed');
-            this.$dial.css('height', 0);
-        });
-    }
-    /**
-     * 切换快速拨号菜单的打开状态
-     */
-    toggle() {
-        this.isOpen() ? this.close() : this.open();
-    }
-    /**
-     * 以动画的形式显示整个浮动操作按钮
-     */
-    show() {
-        this.$element.removeClass('mdui-fab-hide');
-    }
-    /**
-     * 以动画的形式隐藏整个浮动操作按钮
-     */
-    hide() {
-        this.$element.addClass('mdui-fab-hide');
-    }
-    /**
-     * 返回当前快速拨号菜单的打开状态。共包含四种状态：`opening`、`opened`、`closing`、`closed`
-     */
-    getState() {
-        return this.state;
-    }
-}
-mdui.Fab = Fab;
-
-const customAttr$3 = 'mdui-fab';
-$(() => {
-    // mouseenter 不冒泡，无法进行事件委托，这里用 mouseover 代替。
-    // 不管是 click 、 mouseover 还是 touchstart ，都先初始化。
-    $document.on('touchstart mousedown mouseover', `[${customAttr$3}]`, function () {
-        new mdui.Fab(this, parseOptions(this, customAttr$3));
-    });
-});
-
 /**
  * 最终生成的元素结构为：
  *  <select class="mdui-select" mdui-select="{position: 'top'}" style="display: none;"> // $native
@@ -3456,7 +3319,7 @@ $(() => {
  *    </div>
  *  </div>
  */
-const DEFAULT_OPTIONS$3 = {
+const DEFAULT_OPTIONS$2 = {
     position: 'auto',
     gutter: 16,
 };
@@ -3469,7 +3332,7 @@ class Select {
         /**
          * 配置参数
          */
-        this.options = extend({}, DEFAULT_OPTIONS$3);
+        this.options = extend({}, DEFAULT_OPTIONS$2);
         /**
          * select 的 size 属性的值，根据该值设置 select 的高度
          */
@@ -3750,28 +3613,14 @@ class Select {
 }
 mdui.Select = Select;
 
-const customAttr$4 = 'mdui-select';
+const customAttr$3 = 'mdui-select';
 $(() => {
-    mdui.mutation(`[${customAttr$4}]`, function () {
-        new mdui.Select(this, parseOptions(this, customAttr$4));
+    mdui.mutation(`[${customAttr$3}]`, function () {
+        new mdui.Select(this, parseOptions(this, customAttr$3));
     });
 });
 
-$(() => {
-    // 滚动时隐藏应用栏
-    mdui.mutation('.mdui-appbar-scroll-hide', function () {
-        new mdui.Headroom(this);
-    });
-    // 滚动时只隐藏应用栏中的工具栏
-    mdui.mutation('.mdui-appbar-scroll-toolbar-hide', function () {
-        new mdui.Headroom(this, {
-            pinnedClass: 'mdui-headroom-pinned-toolbar',
-            unpinnedClass: 'mdui-headroom-unpinned-toolbar',
-        });
-    });
-});
-
-const DEFAULT_OPTIONS$4 = {
+const DEFAULT_OPTIONS$3 = {
     trigger: 'click',
     loop: false,
 };
@@ -3780,7 +3629,7 @@ class Tab {
         /**
          * 配置参数
          */
-        this.options = extend({}, DEFAULT_OPTIONS$4);
+        this.options = extend({}, DEFAULT_OPTIONS$3);
         /**
          * 当前激活的 tab 的索引号。为 -1 时表示没有激活的选项卡，或不存在选项卡
          */
@@ -4014,314 +3863,10 @@ class Tab {
 }
 mdui.Tab = Tab;
 
-const customAttr$5 = 'mdui-tab';
+const customAttr$4 = 'mdui-tab';
 $(() => {
-    mdui.mutation(`[${customAttr$5}]`, function () {
-        new mdui.Tab(this, parseOptions(this, customAttr$5));
-    });
-});
-
-/**
- * 在桌面设备上默认显示抽屉栏，不显示遮罩层
- * 在手机和平板设备上默认不显示抽屉栏，始终显示遮罩层，且覆盖导航栏
- */
-const DEFAULT_OPTIONS$5 = {
-    overlay: false,
-    swipe: false,
-};
-class Drawer {
-    constructor(selector, options = {}) {
-        /**
-         * 配置参数
-         */
-        this.options = extend({}, DEFAULT_OPTIONS$5);
-        /**
-         * 当前是否显示着遮罩层
-         */
-        this.overlay = false;
-        this.$element = $(selector).first();
-        extend(this.options, options);
-        this.position = this.$element.hasClass('mdui-drawer-right')
-            ? 'right'
-            : 'left';
-        if (this.$element.hasClass('mdui-drawer-close')) {
-            this.state = 'closed';
-        }
-        else if (this.$element.hasClass('mdui-drawer-open')) {
-            this.state = 'opened';
-        }
-        else if (this.isDesktop()) {
-            this.state = 'opened';
-        }
-        else {
-            this.state = 'closed';
-        }
-        // 浏览器窗口大小调整时
-        $window.on('resize', $.throttle(() => {
-            if (this.isDesktop()) {
-                // 由手机平板切换到桌面时
-                // 如果显示着遮罩，则隐藏遮罩
-                if (this.overlay && !this.options.overlay) {
-                    $.hideOverlay();
-                    this.overlay = false;
-                    $.unlockScreen();
-                }
-                // 没有强制关闭，则状态为打开状态
-                if (!this.$element.hasClass('mdui-drawer-close')) {
-                    this.state = 'opened';
-                }
-            }
-            else if (!this.overlay && this.state === 'opened') {
-                // 由桌面切换到手机平板时。如果抽屉栏是打开着的且没有遮罩层，则关闭抽屉栏
-                if (this.$element.hasClass('mdui-drawer-open')) {
-                    $.showOverlay();
-                    this.overlay = true;
-                    $.lockScreen();
-                    $('.mdui-overlay').one('click', () => this.close());
-                }
-                else {
-                    this.state = 'closed';
-                }
-            }
-        }, 100));
-        // 绑定关闭按钮事件
-        this.$element.find('[mdui-drawer-close]').each((_, close) => {
-            $(close).on('click', () => this.close());
-        });
-        this.swipeSupport();
-    }
-    /**
-     * 是否是桌面设备
-     */
-    isDesktop() {
-        return $window.width() >= 1024;
-    }
-    /**
-     * 滑动手势支持
-     */
-    swipeSupport() {
-        // eslint-disable-next-line @typescript-eslint/no-this-alias
-        const that = this;
-        // 抽屉栏滑动手势控制
-        let openNavEventHandler;
-        let touchStartX;
-        let touchStartY;
-        let swipeStartX;
-        let swiping = null;
-        let maybeSwiping = false;
-        const $body = $('body');
-        // 手势触发的范围
-        const swipeAreaWidth = 24;
-        function setPosition(translateX) {
-            const rtlTranslateMultiplier = that.position === 'right' ? -1 : 1;
-            const transformCSS = `translate(${-1 * rtlTranslateMultiplier * translateX}px, 0) !important;`;
-            const transitionCSS = 'initial !important;';
-            that.$element.css('cssText', `transform: ${transformCSS}; transition: ${transitionCSS};`);
-        }
-        function cleanPosition() {
-            that.$element[0].style.transform = '';
-            that.$element[0].style.webkitTransform = '';
-            that.$element[0].style.transition = '';
-            that.$element[0].style.webkitTransition = '';
-        }
-        function getMaxTranslateX() {
-            return that.$element.width() + 10;
-        }
-        function getTranslateX(currentX) {
-            return Math.min(Math.max(swiping === 'closing'
-                ? swipeStartX - currentX
-                : getMaxTranslateX() + swipeStartX - currentX, 0), getMaxTranslateX());
-        }
-        function onBodyTouchEnd(event) {
-            if (swiping) {
-                let touchX = event.changedTouches[0].pageX;
-                if (that.position === 'right') {
-                    touchX = $body.width() - touchX;
-                }
-                const translateRatio = getTranslateX(touchX) / getMaxTranslateX();
-                maybeSwiping = false;
-                const swipingState = swiping;
-                swiping = null;
-                if (swipingState === 'opening') {
-                    if (translateRatio < 0.92) {
-                        cleanPosition();
-                        that.open();
-                    }
-                    else {
-                        cleanPosition();
-                    }
-                }
-                else {
-                    if (translateRatio > 0.08) {
-                        cleanPosition();
-                        that.close();
-                    }
-                    else {
-                        cleanPosition();
-                    }
-                }
-                $.unlockScreen();
-            }
-            else {
-                maybeSwiping = false;
-            }
-            $body.off({
-                // eslint-disable-next-line @typescript-eslint/no-use-before-define
-                touchmove: onBodyTouchMove,
-                touchend: onBodyTouchEnd,
-                // eslint-disable-next-line @typescript-eslint/no-use-before-define
-                touchcancel: onBodyTouchMove,
-            });
-        }
-        function onBodyTouchMove(event) {
-            let touchX = event.touches[0].pageX;
-            if (that.position === 'right') {
-                touchX = $body.width() - touchX;
-            }
-            const touchY = event.touches[0].pageY;
-            if (swiping) {
-                setPosition(getTranslateX(touchX));
-            }
-            else if (maybeSwiping) {
-                const dXAbs = Math.abs(touchX - touchStartX);
-                const dYAbs = Math.abs(touchY - touchStartY);
-                const threshold = 8;
-                if (dXAbs > threshold && dYAbs <= threshold) {
-                    swipeStartX = touchX;
-                    swiping = that.state === 'opened' ? 'closing' : 'opening';
-                    $.lockScreen();
-                    setPosition(getTranslateX(touchX));
-                }
-                else if (dXAbs <= threshold && dYAbs > threshold) {
-                    onBodyTouchEnd();
-                }
-            }
-        }
-        function onBodyTouchStart(event) {
-            touchStartX = event.touches[0].pageX;
-            if (that.position === 'right') {
-                touchStartX = $body.width() - touchStartX;
-            }
-            touchStartY = event.touches[0].pageY;
-            if (that.state !== 'opened') {
-                if (touchStartX > swipeAreaWidth ||
-                    openNavEventHandler !== onBodyTouchStart) {
-                    return;
-                }
-            }
-            maybeSwiping = true;
-            $body.on({
-                touchmove: onBodyTouchMove,
-                touchend: onBodyTouchEnd,
-                touchcancel: onBodyTouchMove,
-            });
-        }
-        function enableSwipeHandling() {
-            if (!openNavEventHandler) {
-                $body.on('touchstart', onBodyTouchStart);
-                openNavEventHandler = onBodyTouchStart;
-            }
-        }
-        if (this.options.swipe) {
-            enableSwipeHandling();
-        }
-    }
-    /**
-     * 触发组件事件
-     * @param name
-     */
-    triggerEvent(name) {
-        componentEvent(name, 'drawer', this.$element, this);
-    }
-    /**
-     * 动画结束回调
-     */
-    transitionEnd() {
-        if (this.$element.hasClass('mdui-drawer-open')) {
-            this.state = 'opened';
-            this.triggerEvent('opened');
-        }
-        else {
-            this.state = 'closed';
-            this.triggerEvent('closed');
-        }
-    }
-    /**
-     * 是否处于打开状态
-     */
-    isOpen() {
-        return this.state === 'opening' || this.state === 'opened';
-    }
-    /**
-     * 打开抽屉栏
-     */
-    open() {
-        if (this.isOpen()) {
-            return;
-        }
-        this.state = 'opening';
-        this.triggerEvent('open');
-        if (!this.options.overlay) {
-            $('body').addClass(`mdui-drawer-body-${this.position}`);
-        }
-        this.$element
-            .removeClass('mdui-drawer-close')
-            .addClass('mdui-drawer-open')
-            .transitionEnd(() => this.transitionEnd());
-        if (!this.isDesktop() || this.options.overlay) {
-            this.overlay = true;
-            $.showOverlay().one('click', () => this.close());
-            $.lockScreen();
-        }
-    }
-    /**
-     * 关闭抽屉栏
-     */
-    close() {
-        if (!this.isOpen()) {
-            return;
-        }
-        this.state = 'closing';
-        this.triggerEvent('close');
-        if (!this.options.overlay) {
-            $('body').removeClass(`mdui-drawer-body-${this.position}`);
-        }
-        this.$element
-            .addClass('mdui-drawer-close')
-            .removeClass('mdui-drawer-open')
-            .transitionEnd(() => this.transitionEnd());
-        if (this.overlay) {
-            $.hideOverlay();
-            this.overlay = false;
-            $.unlockScreen();
-        }
-    }
-    /**
-     * 切换抽屉栏打开/关闭状态
-     */
-    toggle() {
-        this.isOpen() ? this.close() : this.open();
-    }
-    /**
-     * 返回当前抽屉栏的状态。共包含四种状态：`opening`、`opened`、`closing`、`closed`
-     */
-    getState() {
-        return this.state;
-    }
-}
-mdui.Drawer = Drawer;
-
-const customAttr$6 = 'mdui-drawer';
-$(() => {
-    mdui.mutation(`[${customAttr$6}]`, function () {
-        const $element = $(this);
-        const options = parseOptions(this, customAttr$6);
-        const selector = options.target;
-        // @ts-ignore
-        delete options.target;
-        const $drawer = $(selector).first();
-        const instance = new mdui.Drawer($drawer, options);
-        $element.on('click', () => instance.toggle());
+    mdui.mutation(`[${customAttr$4}]`, function () {
+        new mdui.Tab(this, parseOptions(this, customAttr$4));
     });
 });
 
@@ -4350,7 +3895,7 @@ function dequeue(name) {
     func();
 }
 
-const DEFAULT_OPTIONS$6 = {
+const DEFAULT_OPTIONS$4 = {
     history: true,
     overlay: true,
     modal: false,
@@ -4380,7 +3925,7 @@ class Dialog {
         /**
          * 配置参数
          */
-        this.options = extend({}, DEFAULT_OPTIONS$6);
+        this.options = extend({}, DEFAULT_OPTIONS$4);
         /**
          * 当前 dialog 的状态
          */
@@ -4649,11 +4194,11 @@ $document.on('keydown', (event) => {
 });
 mdui.Dialog = Dialog;
 
-const customAttr$7 = 'mdui-dialog';
+const customAttr$5 = 'mdui-dialog';
 const dataName$1 = '_mdui_dialog';
 $(() => {
-    $document.on('click', `[${customAttr$7}]`, function () {
-        const options = parseOptions(this, customAttr$7);
+    $document.on('click', `[${customAttr$5}]`, function () {
+        const options = parseOptions(this, customAttr$5);
         const selector = options.target;
         // @ts-ignore
         delete options.target;
@@ -4674,7 +4219,7 @@ const DEFAULT_BUTTON = {
     // eslint-disable-next-line @typescript-eslint/no-empty-function
     onClick: () => { },
 };
-const DEFAULT_OPTIONS$7 = {
+const DEFAULT_OPTIONS$5 = {
     title: '',
     content: '',
     buttons: [],
@@ -4697,7 +4242,7 @@ const DEFAULT_OPTIONS$7 = {
 mdui.dialog = function (options) {
     var _a, _b;
     // 合并配置参数
-    options = extend({}, DEFAULT_OPTIONS$7, options);
+    options = extend({}, DEFAULT_OPTIONS$5, options);
     each(options.buttons, (i, button) => {
         options.buttons[i] = extend({}, DEFAULT_BUTTON, button);
     });
@@ -4761,7 +4306,7 @@ mdui.dialog = function (options) {
     return instance;
 };
 
-const DEFAULT_OPTIONS$8 = {
+const DEFAULT_OPTIONS$6 = {
     confirmText: 'ok',
     history: true,
     modal: false,
@@ -4781,7 +4326,7 @@ mdui.alert = function (text, title, onConfirm, options) {
     if (isUndefined(options)) {
         options = {};
     }
-    options = extend({}, DEFAULT_OPTIONS$8, options);
+    options = extend({}, DEFAULT_OPTIONS$6, options);
     return mdui.dialog({
         title: title,
         content: text,
@@ -4800,7 +4345,7 @@ mdui.alert = function (text, title, onConfirm, options) {
     });
 };
 
-const DEFAULT_OPTIONS$9 = {
+const DEFAULT_OPTIONS$7 = {
     confirmText: 'ok',
     cancelText: 'cancel',
     history: true,
@@ -4827,7 +4372,7 @@ mdui.confirm = function (text, title, onConfirm, onCancel, options) {
     if (isUndefined(options)) {
         options = {};
     }
-    options = extend({}, DEFAULT_OPTIONS$9, options);
+    options = extend({}, DEFAULT_OPTIONS$7, options);
     return mdui.dialog({
         title: title,
         content: text,
@@ -4852,7 +4397,7 @@ mdui.confirm = function (text, title, onConfirm, onCancel, options) {
     });
 };
 
-const DEFAULT_OPTIONS$a = {
+const DEFAULT_OPTIONS$8 = {
     confirmText: 'ok',
     cancelText: 'cancel',
     history: true,
@@ -4883,7 +4428,7 @@ mdui.prompt = function (label, title, onConfirm, onCancel, options) {
     if (isUndefined(options)) {
         options = {};
     }
-    options = extend({}, DEFAULT_OPTIONS$a, options);
+    options = extend({}, DEFAULT_OPTIONS$8, options);
     const content = '<div class="mdui-textfield">' +
         (label ? `<label class="mdui-textfield-label">${label}</label>` : '') +
         (options.type === 'text'
@@ -4954,7 +4499,7 @@ mdui.prompt = function (label, title, onConfirm, onCancel, options) {
     });
 };
 
-const DEFAULT_OPTIONS$b = {
+const DEFAULT_OPTIONS$9 = {
     position: 'auto',
     delay: 0,
     content: '',
@@ -4964,7 +4509,7 @@ class Tooltip {
         /**
          * 配置参数
          */
-        this.options = extend({}, DEFAULT_OPTIONS$b);
+        this.options = extend({}, DEFAULT_OPTIONS$9);
         /**
          * 当前 tooltip 的状态
          */
@@ -5185,21 +4730,21 @@ class Tooltip {
 }
 mdui.Tooltip = Tooltip;
 
-const customAttr$8 = 'mdui-tooltip';
+const customAttr$6 = 'mdui-tooltip';
 const dataName$2 = '_mdui_tooltip';
 $(() => {
     // mouseenter 不能冒泡，所以这里用 mouseover 代替
-    $document.on('touchstart mouseover', `[${customAttr$8}]`, function () {
+    $document.on('touchstart mouseover', `[${customAttr$6}]`, function () {
         const $target = $(this);
         let instance = $target.data(dataName$2);
         if (!instance) {
-            instance = new mdui.Tooltip(this, parseOptions(this, customAttr$8));
+            instance = new mdui.Tooltip(this, parseOptions(this, customAttr$6));
             $target.data(dataName$2, instance);
         }
     });
 });
 
-const DEFAULT_OPTIONS$c = {
+const DEFAULT_OPTIONS$a = {
     message: '',
     timeout: 4000,
     position: 'bottom',
@@ -5233,7 +4778,7 @@ class Snackbar {
         /**
          * 配置参数
          */
-        this.options = extend({}, DEFAULT_OPTIONS$c);
+        this.options = extend({}, DEFAULT_OPTIONS$a);
         /**
          * 当前 Snackbar 的状态
          */
@@ -5466,7 +5011,7 @@ mdui.updateSpinners = function (selector) {
     });
 };
 
-const DEFAULT_OPTIONS$d = {
+const DEFAULT_OPTIONS$b = {
     position: 'auto',
     align: 'auto',
     gutter: 16,
@@ -5480,7 +5025,7 @@ class Menu {
         /**
          * 配置参数
          */
-        this.options = extend({}, DEFAULT_OPTIONS$d);
+        this.options = extend({}, DEFAULT_OPTIONS$b);
         /**
          * 当前菜单状态
          */
@@ -5954,14 +5499,14 @@ class Menu {
 }
 mdui.Menu = Menu;
 
-const customAttr$9 = 'mdui-menu';
+const customAttr$7 = 'mdui-menu';
 const dataName$3 = '_mdui_menu';
 $(() => {
-    $document.on('click', `[${customAttr$9}]`, function () {
+    $document.on('click', `[${customAttr$7}]`, function () {
         const $this = $(this);
         let instance = $this.data(dataName$3);
         if (!instance) {
-            const options = parseOptions(this, customAttr$9);
+            const options = parseOptions(this, customAttr$7);
             const menuSelector = options.target;
             // @ts-ignore
             delete options.target;

@@ -20,13 +20,13 @@ namespace MduiBlazor
             .AddClass("mdui-fab-hide", Hide)
             .AddClass("mdui-fab-fixed", Fixed)
             .AddClass(Class)
-            .Build(); 
-        
-        [Parameter]
-        public string? Color { get; set; }
+            .Build();
 
         [Parameter, EditorRequired]
         public string? IconName { get; set; }
+
+        [Parameter]
+        public string? IconClass { get; set; }
 
         [Parameter]
         public string? IconColor { get; set; }

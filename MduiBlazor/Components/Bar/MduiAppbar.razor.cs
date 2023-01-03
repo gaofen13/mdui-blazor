@@ -11,8 +11,6 @@ namespace MduiBlazor
             new ClassBuilder("mdui-appbar")
             .AddClass("mdui-typo", UseMduiTypo)
             .AddClass("mdui-appbar-fixed", Fixed)
-            .AddClass("mdui-appbar-scroll-hide", ScrollHide)
-            .AddClass("mdui-appbar-scroll-toolbar-hide", ScrollToolbarHide)
             .AddClass($"mdui-shadow-{Shadow}", Shadow >= 0 && Shadow <= 24)
             .AddClass(Class)
             .Build();
@@ -22,12 +20,6 @@ namespace MduiBlazor
 
         [Parameter]
         public bool Fixed { get; set; }
-
-        [Parameter]
-        public bool ScrollHide { get; set; }
-
-        [Parameter]
-        public bool ScrollToolbarHide { get; set; }
 
         [Parameter]
         public int? Shadow { get; set; }
