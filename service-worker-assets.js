@@ -33,19 +33,19 @@
       "url": "_framework\/icudt.dat"
     },
     {
-      "hash": "sha256-+02wSoohm+CWWGvNURgXU8I5fpyWrhaVNpAoGrLujYA=",
+      "hash": "sha256-wbAGwvs0NmtNAbFEVEx2kKnx3AZOsIj\/Wu1S0CYHyWU=",
       "url": "_framework\/blazor.boot.json"
     },
     {
-      "hash": "sha256-iXQHDtyKkQZN4GBrRIU2aZXWMiLdTAJuof4tywsLeiw=",
+      "hash": "sha256-+d8tdNx\/zb3Q44WTKvgKn1N5rqzFI8kPAzdht9CJljs=",
       "url": "_framework\/MduiBlazor.Client.dll"
     },
     {
-      "hash": "sha256-YE3gcOt9nnkzkTKZ5p3Er3T4jGuWqG\/mN6HPrkTdAQ8=",
+      "hash": "sha256-u9D9Ph3Zxa7gr0g6Or6tVj0KiHicSrhiOx\/Kjain\/wo=",
       "url": "_framework\/MduiBlazor.dll"
     },
     {
-      "hash": "sha256-c0xGbGxfaomkmm2AHAsUOe4vvOTk74Yv8T6rL5YPYaQ=",
+      "hash": "sha256-MeonzWKdFk52NbfcRC4fN9hcz3M8tV9utkRDrhcXHuw=",
       "url": "_framework\/MduiBlazor.Shared.dll"
     },
     {
@@ -369,29 +369,29 @@
       "url": "_content\/MduiBlazor\/icons\/material-icons\/MaterialIcons-Regular.woff2"
     },
     {
-      "hash": "sha256-2SirXChyPohN1ECF0jPu7dTGKqTzCTBVaXCkfXAVX3o=",
+      "hash": "sha256-Rdfz7oJoI2KpK70KBziNsTRbAmvVtOO6k8c12Au\/47g=",
       "url": "_content\/MduiBlazor\/js\/mdui.esm.js"
     },
     {
-      "hash": "sha256-q3GHgji5wkOEzA7SXN01fvuyfeuEXVyx73AJWlIKYxc=",
+      "hash": "sha256-664m9xRH+37jTS5ZwKiSi6DW9AHC1Y383Qge1Kvg9uc=",
       "url": "_content\/MduiBlazor\/js\/mdui.esm.js.map"
     },
     {
-      "hash": "sha256-O\/jAs\/\/q\/ScyJe7PA0Fc2DfNUXdAATsQ2ZrnsqxIKHw=",
+      "hash": "sha256-2HFeoB1HMM7Lpt1KM\/IvIW5Zj8RO7CsGEr+6K6Q9Xas=",
       "url": "_content\/MduiBlazor\/js\/mdui.js"
     },
     {
-      "hash": "sha256-NWqARmgl5MaEIsjd2IXoCCIJpvlmtBx0vE4aW4j4+Oc=",
+      "hash": "sha256-cRCkc5urQZvYmHVxUn\/IFpVgEOG6Cqq0WBrV+gHC2wQ=",
       "url": "_content\/MduiBlazor\/js\/mdui.js.map"
     },
     {
-      "hash": "sha256-pQMhrt4i+xYuZzfKboXTE2lnXDccZ8qI2Fh8gyGtX6Q=",
+      "hash": "sha256-3p5u6sJgmI86Lb3DnAlN1ANrc+G\/Iv\/MBKc5xokGfKc=",
       "url": "_content\/MduiBlazor\/js\/mdui.min.js"
     },
     {
-      "hash": "sha256-e8+B3jyEsLt7B8JDZWqzChN4HRs6+g5J\/Egnoh64UxU=",
+      "hash": "sha256-ZiN7Mdm\/vHMEYSv4NJBWA6ZTj5Bs4yL3C4FOag3W4Bw=",
       "url": "_content\/MduiBlazor\/js\/mdui.min.js.map"
     }
   ],
-  "version": "ZhfHpHiv"
+  "version": "17+VvX8e"
 };
