@@ -18,7 +18,7 @@ namespace MduiBlazor
             .Build();
 
         [Parameter, EditorRequired]
-        public string? IconName { get; set; }
+        public string? Icon { get; set; }
 
         [Parameter]
         public string? IconColor { get; set; }

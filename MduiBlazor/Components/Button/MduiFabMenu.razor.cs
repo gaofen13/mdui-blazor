@@ -10,11 +10,11 @@ namespace MduiBlazor
 {
     public partial class MduiFabMenu
     {
-        private string? FabIconName => Show ? (!string.IsNullOrWhiteSpace(OpenedIconName) ? OpenedIconName : IconName) : IconName;
+        private string? FabIcon => Show ? (!string.IsNullOrWhiteSpace(OpenedIcon) ? OpenedIcon : Icon) : Icon;
 
         private string FabIconClassname =>
         new ClassBuilder()
-         .AddClass("mdui-fab-opened", Show && !string.IsNullOrWhiteSpace(OpenedIconName))
+         .AddClass("mdui-fab-opened", Show && !string.IsNullOrWhiteSpace(OpenedIcon))
          .Build();
 
         private string FabBtnClassname =>
@@ -45,13 +45,13 @@ namespace MduiBlazor
         public string? Color { get; set; }
 
         [Parameter, EditorRequired]
-        public string? IconName { get; set; }
+        public string? Icon { get; set; }
 
         [Parameter]
         public string? IconColor { get; set; }
 
         [Parameter]
-        public string? OpenedIconName { get; set; }
+        public string? OpenedIcon { get; set; }
 
         private void OnClickFabBtn()
         {

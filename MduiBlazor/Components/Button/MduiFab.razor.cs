@@ -1,16 +1,9 @@
-﻿using MduiBlazor.Extensions;
-using MduiBlazor.Utilities;
+﻿using MduiBlazor.Utilities;
 using Microsoft.AspNetCore.Components;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace MduiBlazor
 {
-    public partial class MduiFabButton
+    public partial class MduiFab
     {
         protected string Classname =>
             new ClassBuilder("mdui-fab mdui-ripple")
@@ -23,7 +16,7 @@ namespace MduiBlazor
             .Build();
 
         [Parameter, EditorRequired]
-        public string? IconName { get; set; }
+        public string? Icon { get; set; }
 
         [Parameter]
         public string? IconClass { get; set; }
