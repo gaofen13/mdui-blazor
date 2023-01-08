@@ -619,9 +619,6 @@
   }
   var $ = get$();
 
-  // 避免页面加载完后直接执行css动画
-  // https://css-tricks.com/transitions-only-after-page-load/
-  setTimeout(function () { return $('body').addClass('mdui-loaded'); });
   var mdui = {
       $: $,
   };

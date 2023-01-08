@@ -241,7 +241,7 @@
       "url": "_content\/MduiBlazor\/css\/mdui.css"
     },
     {
-      "hash": "sha256-D8qr6U5iuPL0M\/BstKJgS1nq0kYwyQkI9DbGmal8C8g=",
+      "hash": "sha256-kAd46TijLHhD\/D9J7wqUf2C\/ilWLl4kvMyX4ct5YxAo=",
       "url": "_content\/MduiBlazor\/css\/mdui.css.map"
     },
     {
@@ -249,7 +249,7 @@
       "url": "_content\/MduiBlazor\/css\/mdui.min.css"
     },
     {
-      "hash": "sha256-\/wE22JkI4rI6rar5hCKMU9NqZoupO2kWCuT7UTfMae4=",
+      "hash": "sha256-vPrpX3zbC5g09fC8LFWXuCrmaVFzlq4XjS+2OobTQng=",
       "url": "_content\/MduiBlazor\/css\/mdui.min.css.map"
     },
     {
@@ -369,29 +369,29 @@
       "url": "_content\/MduiBlazor\/icons\/material-icons\/MaterialIcons-Regular.woff2"
     },
     {
-      "hash": "sha256-Rdfz7oJoI2KpK70KBziNsTRbAmvVtOO6k8c12Au\/47g=",
+      "hash": "sha256-cahqKxLLFdrZUrW4KCu75OYu40N2IzXwEObFmrReieg=",
       "url": "_content\/MduiBlazor\/js\/mdui.esm.js"
     },
     {
-      "hash": "sha256-664m9xRH+37jTS5ZwKiSi6DW9AHC1Y383Qge1Kvg9uc=",
+      "hash": "sha256-Yuq9ejVFMfgVviEif1lYctm3VrGD0nBhT80GL2x8lrs=",
       "url": "_content\/MduiBlazor\/js\/mdui.esm.js.map"
     },
     {
-      "hash": "sha256-2HFeoB1HMM7Lpt1KM\/IvIW5Zj8RO7CsGEr+6K6Q9Xas=",
+      "hash": "sha256-MblfI1iyKUN1hko+enhfdr0AVdEVxajDNUaqZXfVWvQ=",
       "url": "_content\/MduiBlazor\/js\/mdui.js"
     },
     {
-      "hash": "sha256-cRCkc5urQZvYmHVxUn\/IFpVgEOG6Cqq0WBrV+gHC2wQ=",
+      "hash": "sha256-mW566I4OAW\/gGegcuE5IivxN7HvN2e3xt1q4I\/L3R\/8=",
       "url": "_content\/MduiBlazor\/js\/mdui.js.map"
     },
     {
-      "hash": "sha256-3p5u6sJgmI86Lb3DnAlN1ANrc+G\/Iv\/MBKc5xokGfKc=",
+      "hash": "sha256-QofBxdadmM6z8UeeBrKP0i5VcTSawroSX\/Z\/mveaGz8=",
       "url": "_content\/MduiBlazor\/js\/mdui.min.js"
     },
     {
-      "hash": "sha256-ZiN7Mdm\/vHMEYSv4NJBWA6ZTj5Bs4yL3C4FOag3W4Bw=",
+      "hash": "sha256-DrOWwmCVow\/qxx9uQS0hw32su7u\/plo3eSNV1Euby3c=",
       "url": "_content\/MduiBlazor\/js\/mdui.min.js.map"
     }
   ],
-  "version": "ZQ0D7TGh"
+  "version": "QTUsMlmN"
 };
