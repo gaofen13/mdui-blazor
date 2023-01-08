@@ -22,7 +22,7 @@
   border-radius: 50%;
   .mdui-shadow(6);
 
-  &:hover{
+  &:hover {
     .mdui-shadow(8);
   }
 
@@ -87,6 +87,7 @@
       transition: all .2s @animation-curve-default;
       will-change: opacity, transform;
     }
+
     .mdui-icon.mdui-fab-opened {
       transform: rotate(225deg);
       opacity: 0;
@@ -101,6 +102,7 @@
       transform: rotate(225deg);
       opacity: 0;
     }
+
     .mdui-icon.mdui-fab-opened {
       transform: rotate(360deg);
       opacity: 1;
@@ -126,10 +128,10 @@
       transform: scale(0);
       opacity: 0;
       transition: box-shadow .2s @animation-curve-fast-out-linear-in,
-                  color .2s @animation-curve-default,
-                  // fab
-                  transform 150ms @animation-curve-default,
-                  opacity 150ms @animation-curve-default;
+        color .2s @animation-curve-default,
+        // fab
+        transform 150ms @animation-curve-default,
+        opacity 150ms @animation-curve-default;
     }
 
     &.mdui-fab-dial-show {
@@ -147,9 +149,9 @@
 .mdui-fab-wrapper {
   transform: scale(1) translateZ(0);
   transition: all .2s @animation-curve-default,
-              box-shadow .2s @animation-curve-fast-out-linear-in,
-                // fab
-              transform .2s;
+    box-shadow .2s @animation-curve-fast-out-linear-in,
+    // fab
+    transform .2s;
   will-change: transform;
 
   &.mdui-fab-hide {

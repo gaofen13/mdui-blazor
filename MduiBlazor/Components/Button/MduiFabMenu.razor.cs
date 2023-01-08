@@ -10,27 +10,25 @@ namespace MduiBlazor
 {
     public partial class MduiFabMenu
     {
-        private string? FabIcon => Show ? (!string.IsNullOrWhiteSpace(OpenedIcon) ? OpenedIcon : Icon) : Icon;
-
-        private string FabIconClassname =>
-        new ClassBuilder()
-         .AddClass("mdui-fab-opened", Show && !string.IsNullOrWhiteSpace(OpenedIcon))
-         .Build();
 
         private string FabBtnClassname =>
-        new ClassBuilder()
-        .AddClass("mdui-fab-opened", Show)
-        .Build();
+            new ClassBuilder("mdui-fab")
+            .AddClass("mdui-ripple", Ripple)
+            .AddClass($"mdui-color-{Color}", !string.IsNullOrWhiteSpace(Color))
+            .AddClass("mdui-fab-opened", Show)
+            .AddClass("mdui-fab-mini", Mini)
+            .AddClass("mdui-fab-hide", Hide)
+            .Build();
 
         private string DialClassname =>
-         new ClassBuilder("mdui-fab-dial")
-         .AddClass("mdui-fab-dial-show", Show)
-         .Build();
+            new ClassBuilder("mdui-fab-dial")
+            .AddClass("mdui-fab-dial-show", Show)
+            .Build();
 
         private string DialStyle =>
-        new StyleBuilder()
-        .AddStyle("height", Show ? "auto" : "0")
-        .Build();
+            new StyleBuilder()
+            .AddStyle("height", "auto")
+            .Build();
 
         protected string Classname =>
             new ClassBuilder("mdui-fab-wrapper")
@@ -48,10 +46,16 @@ namespace MduiBlazor
         public string? Icon { get; set; }
 
         [Parameter]
-        public string? IconColor { get; set; }
+        public string? OpenedIcon { get; set; }
 
         [Parameter]
-        public string? OpenedIcon { get; set; }
+        public bool Mini { get; set; }
+
+        [Parameter]
+        public bool Hide { get; set; }
+
+        [Parameter]
+        public bool Ripple { get; set; } = true;
 
         private void OnClickFabBtn()
         {
