@@ -3113,173 +3113,6 @@
       });
   });
 
-  var Table = function Table(selector) {
-      /**
-       * 表头 tr 元素
-       */
-      this.$thRow = $();
-      /**
-       * 表格 body 中的 tr 元素
-       */
-      this.$tdRows = $();
-      /**
-       * 表头的 checkbox 元素
-       */
-      this.$thCheckbox = $();
-      /**
-       * 表格 body 中的 checkbox 元素
-       */
-      this.$tdCheckboxs = $();
-      /**
-       * 表格行是否可选择
-       */
-      this.selectable = false;
-      /**
-       * 已选中的行数
-       */
-      this.selectedRow = 0;
-      this.$element = $(selector).first();
-      this.init();
-  };
-  /**
-   * 初始化表格
-   */
-  Table.prototype.init = function init () {
-      this.$thRow = this.$element.find('thead tr');
-      this.$tdRows = this.$element.find('tbody tr');
-      this.selectable = this.$element.hasClass('mdui-table-selectable');
-      this.updateThCheckbox();
-      this.updateTdCheckbox();
-      this.updateNumericCol();
-  };
-  /**
-   * 生成 checkbox 的 HTML 结构
-   * @param tag 标签名
-   */
-  Table.prototype.createCheckboxHTML = function createCheckboxHTML (tag) {
-      return ("<" + tag + " class=\"mdui-table-cell-checkbox\">" +
-          '<label class="mdui-checkbox">' +
-          '<input type="checkbox"/>' +
-          '<i class="mdui-checkbox-icon"></i>' +
-          '</label>' +
-          "</" + tag + ">");
-  };
-  /**
-   * 更新表头 checkbox 的状态
-   */
-  Table.prototype.updateThCheckboxStatus = function updateThCheckboxStatus () {
-      var checkbox = this.$thCheckbox[0];
-      var selectedRow = this.selectedRow;
-      var tdRowsLength = this.$tdRows.length;
-      checkbox.checked = selectedRow === tdRowsLength;
-      checkbox.indeterminate = !!selectedRow && selectedRow !== tdRowsLength;
-  };
-  /**
-   * 更新表格行的 checkbox
-   */
-  Table.prototype.updateTdCheckbox = function updateTdCheckbox () {
-          var this$1 = this;
-
-      var rowSelectedClass = 'mdui-table-row-selected';
-      this.$tdRows.each(function (_, row) {
-          var $row = $(row);
-          // 移除旧的 checkbox
-          $row.find('.mdui-table-cell-checkbox').remove();
-          if (!this$1.selectable) {
-              return;
-          }
-          // 创建 DOM
-          var $checkbox = $(this$1.createCheckboxHTML('td'))
-              .prependTo($row)
-              .find('input[type="checkbox"]');
-          // 默认选中的行
-          if ($row.hasClass(rowSelectedClass)) {
-              $checkbox[0].checked = true;
-              this$1.selectedRow++;
-          }
-          this$1.updateThCheckboxStatus();
-          // 绑定事件
-          $checkbox.on('change', function () {
-              if ($checkbox[0].checked) {
-                  $row.addClass(rowSelectedClass);
-                  this$1.selectedRow++;
-              }
-              else {
-                  $row.removeClass(rowSelectedClass);
-                  this$1.selectedRow--;
-              }
-              this$1.updateThCheckboxStatus();
-          });
-          this$1.$tdCheckboxs = this$1.$tdCheckboxs.add($checkbox);
-      });
-  };
-  /**
-   * 更新表头的 checkbox
-   */
-  Table.prototype.updateThCheckbox = function updateThCheckbox () {
-          var this$1 = this;
-
-      // 移除旧的 checkbox
-      this.$thRow.find('.mdui-table-cell-checkbox').remove();
-      if (!this.selectable) {
-          return;
-      }
-      this.$thCheckbox = $(this.createCheckboxHTML('th'))
-          .prependTo(this.$thRow)
-          .find('input[type="checkbox"]')
-          .on('change', function () {
-          var isCheckedAll = this$1.$thCheckbox[0].checked;
-          this$1.selectedRow = isCheckedAll ? this$1.$tdRows.length : 0;
-          this$1.$tdCheckboxs.each(function (_, checkbox) {
-              checkbox.checked = isCheckedAll;
-          });
-          this$1.$tdRows.each(function (_, row) {
-              isCheckedAll
-                  ? $(row).addClass('mdui-table-row-selected')
-                  : $(row).removeClass('mdui-table-row-selected');
-          });
-      });
-  };
-  /**
-   * 更新数值列
-   */
-  Table.prototype.updateNumericCol = function updateNumericCol () {
-          var this$1 = this;
-
-      var numericClass = 'mdui-table-col-numeric';
-      this.$thRow.find('th').each(function (i, th) {
-          var isNumericCol = $(th).hasClass(numericClass);
-          this$1.$tdRows.each(function (_, row) {
-              var $td = $(row).find('td').eq(i);
-              isNumericCol
-                  ? $td.addClass(numericClass)
-                  : $td.removeClass(numericClass);
-          });
-      });
-  };
-  var dataName = '_mdui_table';
-  $(function () {
-      mdui.mutation('.mdui-table', function () {
-          var $element = $(this);
-          if (!$element.data(dataName)) {
-              $element.data(dataName, new Table($element));
-          }
-      });
-  });
-  mdui.updateTables = function (selector) {
-      var $elements = isUndefined(selector) ? $('.mdui-table') : $(selector);
-      $elements.each(function (_, element) {
-          var $element = $(element);
-          var instance = $element.data(dataName);
-          if (instance) {
-              instance.init();
-          }
-          else {
-              $element.data(dataName, new Table($element));
-          }
-      });
-  };
-
   /**
    * touch 事件后的 500ms 内禁用 mousedown 事件
    *
@@ -3617,331 +3450,7 @@
       });
   };
 
-  /**
-   * 最终生成的元素结构为：
-   *  <select class="mdui-select" mdui-select="{position: 'top'}" style="display: none;"> // $native
-   *    <option value="1">State 1</option>
-   *    <option value="2">State 2</option>
-   *    <option value="3" disabled="">State 3</option>
-   *  </select>
-   *  <div class="mdui-select mdui-select-position-top" style="" id="88dec0e4-d4a2-c6d0-0e7f-1ba4501e0553"> // $element
-   *    <span class="mdui-select-selected">State 1</span> // $selected
-   *    <div class="mdui-select-menu" style="transform-origin: center 100% 0px;"> // $menu
-   *      <div class="mdui-select-menu-item mdui-ripple" selected="">State 1</div> // $items
-   *      <div class="mdui-select-menu-item mdui-ripple">State 2</div>
-   *      <div class="mdui-select-menu-item mdui-ripple" disabled="">State 3</div>
-   *    </div>
-   *  </div>
-   */
   var DEFAULT_OPTIONS$2 = {
-      position: 'auto',
-      gutter: 16,
-  };
-  var Select = function Select(selector, options) {
-      var this$1 = this;
-      if ( options === void 0 ) options = {};
-
-      /**
-       * 生成的 `<div class="mdui-select">` 元素的 JQ 对象
-       */
-      this.$element = $();
-      /**
-       * 配置参数
-       */
-      this.options = extend({}, DEFAULT_OPTIONS$2);
-      /**
-       * select 的 size 属性的值，根据该值设置 select 的高度
-       */
-      this.size = 0;
-      /**
-       * 占位元素，显示已选中菜单项的文本
-       */
-      this.$selected = $();
-      /**
-       * 菜单项的外层元素的 JQ 对象
-       */
-      this.$menu = $();
-      /**
-       * 菜单项数组的 JQ 对象
-       */
-      this.$items = $();
-      /**
-       * 当前选中的菜单项的索引号
-       */
-      this.selectedIndex = 0;
-      /**
-       * 当前选中菜单项的文本
-       */
-      this.selectedText = '';
-      /**
-       * 当前选中菜单项的值
-       */
-      this.selectedValue = '';
-      /**
-       * 当前 select 的状态
-       */
-      this.state = 'closed';
-      this.$native = $(selector).first();
-      this.$native.hide();
-      extend(this.options, options);
-      // 为当前 select 生成唯一 ID
-      this.uniqueID = $.guid();
-      // 生成 select
-      this.handleUpdate();
-      // 点击 select 外面区域关闭
-      $document.on('click touchstart', function (event) {
-          var $target = $(event.target);
-          if (this$1.isOpen() &&
-              !$target.is(this$1.$element) &&
-              !contains(this$1.$element[0], $target[0])) {
-              this$1.close();
-          }
-      });
-  };
-  /**
-   * 调整菜单位置
-   */
-  Select.prototype.readjustMenu = function readjustMenu () {
-      var windowHeight = $window.height();
-      // mdui-select 高度
-      var elementHeight = this.$element.height();
-      // 菜单项高度
-      var $itemFirst = this.$items.first();
-      var itemHeight = $itemFirst.height();
-      var itemMargin = parseInt($itemFirst.css('margin-top'));
-      // 菜单高度
-      var menuWidth = this.$element.innerWidth() + 0.01; // 必须比真实宽度多一点，不然会出现省略号
-      var menuHeight = itemHeight * this.size + itemMargin * 2;
-      // mdui-select 在窗口中的位置
-      var elementTop = this.$element[0].getBoundingClientRect().top;
-      var transformOriginY;
-      var menuMarginTop;
-      if (this.options.position === 'bottom') {
-          menuMarginTop = elementHeight;
-          transformOriginY = '0px';
-      }
-      else if (this.options.position === 'top') {
-          menuMarginTop = -menuHeight - 1;
-          transformOriginY = '100%';
-      }
-      else {
-          // 菜单高度不能超过窗口高度
-          var menuMaxHeight = windowHeight - this.options.gutter * 2;
-          if (menuHeight > menuMaxHeight) {
-              menuHeight = menuMaxHeight;
-          }
-          // 菜单的 margin-top
-          menuMarginTop = -(itemMargin +
-              this.selectedIndex * itemHeight +
-              (itemHeight - elementHeight) / 2);
-          var menuMaxMarginTop = -(itemMargin +
-              (this.size - 1) * itemHeight +
-              (itemHeight - elementHeight) / 2);
-          if (menuMarginTop < menuMaxMarginTop) {
-              menuMarginTop = menuMaxMarginTop;
-          }
-          // 菜单不能超出窗口
-          var menuTop = elementTop + menuMarginTop;
-          if (menuTop < this.options.gutter) {
-              // 不能超出窗口上方
-              menuMarginTop = -(elementTop - this.options.gutter);
-          }
-          else if (menuTop + menuHeight + this.options.gutter > windowHeight) {
-              // 不能超出窗口下方
-              menuMarginTop = -(elementTop +
-                  menuHeight +
-                  this.options.gutter -
-                  windowHeight);
-          }
-          // transform 的 Y 轴坐标
-          transformOriginY = (this.selectedIndex * itemHeight + itemHeight / 2 + itemMargin) + "px";
-      }
-      // 设置样式
-      this.$element.innerWidth(menuWidth);
-      this.$menu
-          .innerWidth(menuWidth)
-          .height(menuHeight)
-          .css({
-          'margin-top': menuMarginTop + 'px',
-          'transform-origin': 'center ' + transformOriginY + ' 0',
-      });
-  };
-  /**
-   * select 是否为打开状态
-   */
-  Select.prototype.isOpen = function isOpen () {
-      return this.state === 'opening' || this.state === 'opened';
-  };
-  /**
-   * 对原生 select 组件进行了修改后，需要调用该方法
-   */
-  Select.prototype.handleUpdate = function handleUpdate () {
-          var this$1 = this;
-
-      if (this.isOpen()) {
-          this.close();
-      }
-      this.selectedValue = this.$native.val();
-      var itemsData = [];
-      this.$items = $();
-      // 生成 HTML
-      this.$native.find('option').each(function (index, option) {
-          var text = option.textContent || '';
-          var value = option.value;
-          var disabled = option.disabled;
-          var selected = this$1.selectedValue === value;
-          itemsData.push({
-              value: value,
-              text: text,
-              disabled: disabled,
-              selected: selected,
-              index: index,
-          });
-          if (selected) {
-              this$1.selectedText = text;
-              this$1.selectedIndex = index;
-          }
-          this$1.$items = this$1.$items.add('<div class="mdui-select-menu-item mdui-ripple"' +
-              (disabled ? ' disabled' : '') +
-              (selected ? ' selected' : '') +
-              ">" + text + "</div>");
-      });
-      this.$selected = $(("<span class=\"mdui-select-selected\">" + (this.selectedText) + "</span>"));
-      this.$element = $("<div class=\"mdui-select mdui-select-position-" + (this.options.position) + "\" " +
-          "style=\"" + (this.$native.attr('style')) + "\" " +
-          "id=\"" + (this.uniqueID) + "\"></div>")
-          .show()
-          .append(this.$selected);
-      this.$menu = $('<div class="mdui-select-menu"></div>')
-          .appendTo(this.$element)
-          .append(this.$items);
-      $(("#" + (this.uniqueID))).remove();
-      this.$native.after(this.$element);
-      // 根据 select 的 size 属性设置高度
-      this.size = parseInt(this.$native.attr('size') || '0');
-      if (this.size <= 0) {
-          this.size = this.$items.length;
-          if (this.size > 8) {
-              this.size = 8;
-          }
-      }
-      // 点击选项时关闭下拉菜单
-      // eslint-disable-next-line @typescript-eslint/no-this-alias
-      var that = this;
-      this.$items.on('click', function () {
-          if (that.state === 'closing') {
-              return;
-          }
-          var $item = $(this);
-          var index = $item.index();
-          var data = itemsData[index];
-          if (data.disabled) {
-              return;
-          }
-          that.$selected.text(data.text);
-          that.$native.val(data.value);
-          that.$items.removeAttr('selected');
-          $item.attr('selected', '');
-          that.selectedIndex = data.index;
-          that.selectedValue = data.value;
-          that.selectedText = data.text;
-          that.$native.trigger('change');
-          that.close();
-      });
-      // 点击 $element 时打开下拉菜单
-      this.$element.on('click', function (event) {
-          var $target = $(event.target);
-          // 在菜单上点击时不打开
-          if ($target.is('.mdui-select-menu') ||
-              $target.is('.mdui-select-menu-item')) {
-              return;
-          }
-          this$1.toggle();
-      });
-  };
-  /**
-   * 动画结束的回调
-   */
-  Select.prototype.transitionEnd = function transitionEnd () {
-      this.$element.removeClass('mdui-select-closing');
-      if (this.state === 'opening') {
-          this.state = 'opened';
-          this.triggerEvent('opened');
-          this.$menu.css('overflow-y', 'auto');
-      }
-      if (this.state === 'closing') {
-          this.state = 'closed';
-          this.triggerEvent('closed');
-          // 恢复样式
-          this.$element.innerWidth('');
-          this.$menu.css({
-              'margin-top': '',
-              height: '',
-              width: '',
-          });
-      }
-  };
-  /**
-   * 触发组件事件
-   * @param name
-   */
-  Select.prototype.triggerEvent = function triggerEvent (name) {
-      componentEvent(name, 'select', this.$native, this);
-  };
-  /**
-   * 切换下拉菜单的打开状态
-   */
-  Select.prototype.toggle = function toggle () {
-      this.isOpen() ? this.close() : this.open();
-  };
-  /**
-   * 打开下拉菜单
-   */
-  Select.prototype.open = function open () {
-          var this$1 = this;
-
-      if (this.isOpen()) {
-          return;
-      }
-      this.state = 'opening';
-      this.triggerEvent('open');
-      this.readjustMenu();
-      this.$element.addClass('mdui-select-open');
-      this.$menu.transitionEnd(function () { return this$1.transitionEnd(); });
-  };
-  /**
-   * 关闭下拉菜单
-   */
-  Select.prototype.close = function close () {
-          var this$1 = this;
-
-      if (!this.isOpen()) {
-          return;
-      }
-      this.state = 'closing';
-      this.triggerEvent('close');
-      this.$menu.css('overflow-y', '');
-      this.$element
-          .removeClass('mdui-select-open')
-          .addClass('mdui-select-closing');
-      this.$menu.transitionEnd(function () { return this$1.transitionEnd(); });
-  };
-  /**
-   * 获取当前菜单的状态。共包含四种状态：`opening`、`opened`、`closing`、`closed`
-   */
-  Select.prototype.getState = function getState () {
-      return this.state;
-  };
-  mdui.Select = Select;
-
-  var customAttr$3 = 'mdui-select';
-  $(function () {
-      mdui.mutation(("[" + customAttr$3 + "]"), function () {
-          new mdui.Select(this, parseOptions(this, customAttr$3));
-      });
-  });
-
-  var DEFAULT_OPTIONS$3 = {
       trigger: 'click',
       loop: false,
   };
@@ -3952,7 +3461,7 @@
       /**
        * 配置参数
        */
-      this.options = extend({}, DEFAULT_OPTIONS$3);
+      this.options = extend({}, DEFAULT_OPTIONS$2);
       /**
        * 当前激活的 tab 的索引号。为 -1 时表示没有激活的选项卡，或不存在选项卡
        */
@@ -4195,777 +3704,14 @@
   };
   mdui.Tab = Tab;
 
-  var customAttr$4 = 'mdui-tab';
+  var customAttr$3 = 'mdui-tab';
   $(function () {
-      mdui.mutation(("[" + customAttr$4 + "]"), function () {
-          new mdui.Tab(this, parseOptions(this, customAttr$4));
+      mdui.mutation(("[" + customAttr$3 + "]"), function () {
+          new mdui.Tab(this, parseOptions(this, customAttr$3));
       });
   });
 
-  var container = {};
-  function queue(name, func) {
-      if (isUndefined(container[name])) {
-          container[name] = [];
-      }
-      if (isUndefined(func)) {
-          return container[name];
-      }
-      container[name].push(func);
-  }
-  /**
-   * 从队列中移除第一个函数，并执行该函数
-   * @param name 队列满
-   */
-  function dequeue(name) {
-      if (isUndefined(container[name])) {
-          return;
-      }
-      if (!container[name].length) {
-          return;
-      }
-      var func = container[name].shift();
-      func();
-  }
-
-  var DEFAULT_OPTIONS$4 = {
-      history: true,
-      overlay: true,
-      modal: false,
-      closeOnEsc: true,
-      closeOnCancel: true,
-      closeOnConfirm: true,
-      destroyOnClosed: false,
-  };
-  /**
-   * 当前显示的对话框实例
-   */
-  var currentInst = null;
-  /**
-   * 队列名
-   */
-  var queueName = '_mdui_dialog';
-  /**
-   * 窗口是否已锁定
-   */
-  var isLockScreen = false;
-  /**
-   * 遮罩层元素
-   */
-  var $overlay;
-  var Dialog = function Dialog(selector, options) {
-      var this$1 = this;
-      if ( options === void 0 ) options = {};
-
-      /**
-       * 配置参数
-       */
-      this.options = extend({}, DEFAULT_OPTIONS$4);
-      /**
-       * 当前 dialog 的状态
-       */
-      this.state = 'closed';
-      /**
-       * dialog 元素是否是动态添加的
-       */
-      this.append = false;
-      this.$element = $(selector).first();
-      // 如果对话框元素没有在当前文档中，则需要添加
-      if (!contains(document.body, this.$element[0])) {
-          this.append = true;
-          $('body').append(this.$element);
-      }
-      extend(this.options, options);
-      // 绑定取消按钮事件
-      this.$element.find('[mdui-dialog-cancel]').each(function (_, cancel) {
-          $(cancel).on('click', function () {
-              this$1.triggerEvent('cancel');
-              if (this$1.options.closeOnCancel) {
-                  this$1.close();
-              }
-          });
-      });
-      // 绑定确认按钮事件
-      this.$element.find('[mdui-dialog-confirm]').each(function (_, confirm) {
-          $(confirm).on('click', function () {
-              this$1.triggerEvent('confirm');
-              if (this$1.options.closeOnConfirm) {
-                  this$1.close();
-              }
-          });
-      });
-      // 绑定关闭按钮事件
-      this.$element.find('[mdui-dialog-close]').each(function (_, close) {
-          $(close).on('click', function () { return this$1.close(); });
-      });
-  };
-  /**
-   * 触发组件事件
-   * @param name
-   */
-  Dialog.prototype.triggerEvent = function triggerEvent (name) {
-      componentEvent(name, 'dialog', this.$element, this);
-  };
-  /**
-   * 窗口宽度变化，或对话框内容变化时，调整对话框位置和对话框内的滚动条
-   */
-  Dialog.prototype.readjust = function readjust () {
-      if (!currentInst) {
-          return;
-      }
-      var $element = currentInst.$element;
-      var $title = $element.children('.mdui-dialog-title');
-      var $content = $element.children('.mdui-dialog-content');
-      var $actions = $element.children('.mdui-dialog-actions');
-      // 调整 dialog 的 top 和 height 值
-      $element.height('');
-      $content.height('');
-      var elementHeight = $element.height();
-      $element.css({
-          top: ((($window.height() - elementHeight) / 2) + "px"),
-          height: (elementHeight + "px"),
-      });
-      // 调整 mdui-dialog-content 的高度
-      $content.innerHeight(elementHeight -
-          ($title.innerHeight() || 0) -
-          ($actions.innerHeight() || 0));
-  };
-  /**
-   * hashchange 事件触发时关闭对话框
-   */
-  Dialog.prototype.hashchangeEvent = function hashchangeEvent () {
-      if (window.location.hash.substring(1).indexOf('mdui-dialog') < 0) {
-          currentInst.close(true);
-      }
-  };
-  /**
-   * 点击遮罩层关闭对话框
-   * @param event
-   */
-  Dialog.prototype.overlayClick = function overlayClick (event) {
-      if ($(event.target).hasClass('mdui-overlay') &&
-          currentInst) {
-          currentInst.close();
-      }
-  };
-  /**
-   * 动画结束回调
-   */
-  Dialog.prototype.transitionEnd = function transitionEnd () {
-      if (this.$element.hasClass('mdui-dialog-open')) {
-          this.state = 'opened';
-          this.triggerEvent('opened');
-      }
-      else {
-          this.state = 'closed';
-          this.triggerEvent('closed');
-          this.$element.hide();
-          // 所有对话框都关闭，且当前没有打开的对话框时，解锁屏幕
-          if (!queue(queueName).length && !currentInst && isLockScreen) {
-              $.unlockScreen();
-              isLockScreen = false;
-          }
-          $window.off('resize', $.throttle(this.readjust, 100));
-          if (this.options.destroyOnClosed) {
-              this.destroy();
-          }
-      }
-  };
-  /**
-   * 打开指定对话框
-   */
-  Dialog.prototype.doOpen = function doOpen () {
-          var this$1 = this;
-
-      currentInst = this;
-      if (!isLockScreen) {
-          $.lockScreen();
-          isLockScreen = true;
-      }
-      this.$element.show();
-      this.readjust();
-      $window.on('resize', $.throttle(this.readjust, 100));
-      // 打开消息框
-      this.state = 'opening';
-      this.triggerEvent('open');
-      this.$element
-          .addClass('mdui-dialog-open')
-          .transitionEnd(function () { return this$1.transitionEnd(); });
-      // 不存在遮罩层元素时，添加遮罩层
-      if (!$overlay) {
-          $overlay = $.showOverlay(5100);
-      }
-      // 点击遮罩层时是否关闭对话框
-      if (this.options.modal) {
-          $overlay.off('click', this.overlayClick);
-      }
-      else {
-          $overlay.on('click', this.overlayClick);
-      }
-      // 是否显示遮罩层，不显示时，把遮罩层背景透明
-      $overlay.css('opacity', this.options.overlay ? '' : 0);
-      if (this.options.history) {
-          // 如果 hash 中原来就有 mdui-dialog，先删除，避免后退历史纪录后仍然有 mdui-dialog 导致无法关闭
-          // 包括 mdui-dialog 和 &mdui-dialog 和 ?mdui-dialog
-          var hash = window.location.hash.substring(1);
-          if (hash.indexOf('mdui-dialog') > -1) {
-              hash = hash.replace(/[&?]?mdui-dialog/g, '');
-          }
-          // 后退按钮关闭对话框
-          if (hash) {
-              window.location.hash = "" + hash + (hash.indexOf('?') > -1 ? '&' : '?') + "mdui-dialog";
-          }
-          else {
-              window.location.hash = 'mdui-dialog';
-          }
-          $window.on('hashchange', this.hashchangeEvent);
-      }
-  };
-  /**
-   * 当前对话框是否为打开状态
-   */
-  Dialog.prototype.isOpen = function isOpen () {
-      return this.state === 'opening' || this.state === 'opened';
-  };
-  /**
-   * 打开对话框
-   */
-  Dialog.prototype.open = function open () {
-          var this$1 = this;
-
-      if (this.isOpen()) {
-          return;
-      }
-      // 如果当前有正在打开或已经打开的对话框,或队列不为空，则先加入队列，等旧对话框开始关闭时再打开
-      if ((currentInst &&
-          (currentInst.state === 'opening' || currentInst.state === 'opened')) ||
-          queue(queueName).length) {
-          queue(queueName, function () { return this$1.doOpen(); });
-          return;
-      }
-      this.doOpen();
-  };
-  /**
-   * 关闭对话框
-   */
-  Dialog.prototype.close = function close (historyBack) {
-          var this$1 = this;
-          if ( historyBack === void 0 ) historyBack = false;
-
-      // historyBack 是否需要后退历史纪录，默认为 `false`。该参数仅内部使用
-      // 为 `false` 时是通过 js 关闭，需要后退一个历史记录
-      // 为 `true` 时是通过后退按钮关闭，不需要后退历史记录
-      // setTimeout 的作用是：
-      // 当同时关闭一个对话框，并打开另一个对话框时，使打开对话框的操作先执行，以使需要打开的对话框先加入队列
-      setTimeout(function () {
-          if (!this$1.isOpen()) {
-              return;
-          }
-          currentInst = null;
-          this$1.state = 'closing';
-          this$1.triggerEvent('close');
-          // 所有对话框都关闭，且当前没有打开的对话框时，隐藏遮罩
-          if (!queue(queueName).length && $overlay) {
-              $.hideOverlay();
-              $overlay = null;
-              // 若仍存在遮罩，恢复遮罩的 z-index
-              $('.mdui-overlay').css('z-index', 2000);
-          }
-          this$1.$element
-              .removeClass('mdui-dialog-open')
-              .transitionEnd(function () { return this$1.transitionEnd(); });
-          if (this$1.options.history && !queue(queueName).length) {
-              if (!historyBack) {
-                  window.history.back();
-              }
-              $window.off('hashchange', this$1.hashchangeEvent);
-          }
-          // 关闭旧对话框，打开新对话框。
-          // 加一点延迟，仅仅为了视觉效果更好。不加延时也不影响功能
-          setTimeout(function () {
-              dequeue(queueName);
-          }, 100);
-      });
-  };
-  /**
-   * 切换对话框打开/关闭状态
-   */
-  Dialog.prototype.toggle = function toggle () {
-      this.isOpen() ? this.close() : this.open();
-  };
-  /**
-   * 获取对话框状态。共包含四种状态：`opening`、`opened`、`closing`、`closed`
-   */
-  Dialog.prototype.getState = function getState () {
-      return this.state;
-  };
-  /**
-   * 销毁对话框
-   */
-  Dialog.prototype.destroy = function destroy () {
-      if (this.append) {
-          this.$element.remove();
-      }
-      if (!queue(queueName).length && !currentInst) {
-          if ($overlay) {
-              $.hideOverlay();
-              $overlay = null;
-          }
-          if (isLockScreen) {
-              $.unlockScreen();
-              isLockScreen = false;
-          }
-      }
-  };
-  /**
-   * 对话框内容变化时，需要调用该方法来调整对话框位置和滚动条高度
-   */
-  Dialog.prototype.handleUpdate = function handleUpdate () {
-      this.readjust();
-  };
-
-  // esc 按下时关闭对话框
-  $document.on('keydown', function (event) {
-      if (currentInst &&
-          currentInst.options.closeOnEsc &&
-          currentInst.state === 'opened' &&
-          event.keyCode === 27) {
-          currentInst.close();
-      }
-  });
-  mdui.Dialog = Dialog;
-
-  var customAttr$5 = 'mdui-dialog';
-  var dataName$1 = '_mdui_dialog';
-  $(function () {
-      $document.on('click', ("[" + customAttr$5 + "]"), function () {
-          var options = parseOptions(this, customAttr$5);
-          var selector = options.target;
-          // @ts-ignore
-          delete options.target;
-          var $dialog = $(selector).first();
-          var instance = $dialog.data(dataName$1);
-          if (!instance) {
-              instance = new mdui.Dialog($dialog, options);
-              $dialog.data(dataName$1, instance);
-          }
-          instance.open();
-      });
-  });
-
-  var DEFAULT_BUTTON = {
-      text: '',
-      bold: false,
-      close: true,
-      // eslint-disable-next-line @typescript-eslint/no-empty-function
-      onClick: function () { },
-  };
-  var DEFAULT_OPTIONS$5 = {
-      title: '',
-      content: '',
-      buttons: [],
-      stackedButtons: false,
-      cssClass: '',
-      history: true,
-      overlay: true,
-      modal: false,
-      closeOnEsc: true,
-      destroyOnClosed: true,
-      // eslint-disable-next-line @typescript-eslint/no-empty-function
-      onOpen: function () { },
-      // eslint-disable-next-line @typescript-eslint/no-empty-function
-      onOpened: function () { },
-      // eslint-disable-next-line @typescript-eslint/no-empty-function
-      onClose: function () { },
-      // eslint-disable-next-line @typescript-eslint/no-empty-function
-      onClosed: function () { },
-  };
-  mdui.dialog = function (options) {
-      var _a, _b;
-      // 合并配置参数
-      options = extend({}, DEFAULT_OPTIONS$5, options);
-      each(options.buttons, function (i, button) {
-          options.buttons[i] = extend({}, DEFAULT_BUTTON, button);
-      });
-      // 按钮的 HTML
-      var buttonsHTML = '';
-      if ((_a = options.buttons) === null || _a === void 0 ? void 0 : _a.length) {
-          buttonsHTML = "<div class=\"mdui-dialog-actions" + (options.stackedButtons ? ' mdui-dialog-actions-stacked' : '') + "\">";
-          each(options.buttons, function (_, button) {
-              buttonsHTML +=
-                  '<a href="javascript:void(0)" ' +
-                      "class=\"mdui-btn mdui-ripple mdui-text-color-primary " + (button.bold ? 'mdui-btn-bold' : '') + "\">" + (button.text) + "</a>";
-          });
-          buttonsHTML += '</div>';
-      }
-      // Dialog 的 HTML
-      var HTML = "<div class=\"mdui-dialog " + (options.cssClass) + "\">" +
-          (options.title
-              ? ("<div class=\"mdui-dialog-title\">" + (options.title) + "</div>")
-              : '') +
-          (options.content
-              ? ("<div class=\"mdui-dialog-content\">" + (options.content) + "</div>")
-              : '') +
-          buttonsHTML +
-          '</div>';
-      // 实例化 Dialog
-      var instance = new mdui.Dialog(HTML, {
-          history: options.history,
-          overlay: options.overlay,
-          modal: options.modal,
-          closeOnEsc: options.closeOnEsc,
-          destroyOnClosed: options.destroyOnClosed,
-      });
-      // 绑定按钮事件
-      if ((_b = options.buttons) === null || _b === void 0 ? void 0 : _b.length) {
-          instance.$element
-              .find('.mdui-dialog-actions .mdui-btn')
-              .each(function (index, button) {
-              $(button).on('click', function () {
-                  options.buttons[index].onClick(instance);
-                  if (options.buttons[index].close) {
-                      instance.close();
-                  }
-              });
-          });
-      }
-      // 绑定打开关闭事件
-      instance.$element
-          .on('open.mdui.dialog', function () {
-          options.onOpen(instance);
-      })
-          .on('opened.mdui.dialog', function () {
-          options.onOpened(instance);
-      })
-          .on('close.mdui.dialog', function () {
-          options.onClose(instance);
-      })
-          .on('closed.mdui.dialog', function () {
-          options.onClosed(instance);
-      });
-      instance.open();
-      return instance;
-  };
-
-  var DEFAULT_OPTIONS$6 = {
-      confirmText: 'ok',
-      history: true,
-      modal: false,
-      closeOnEsc: true,
-      closeOnConfirm: true,
-  };
-  mdui.alert = function (text, title, onConfirm, options) {
-      if (isFunction(title)) {
-          options = onConfirm;
-          onConfirm = title;
-          title = '';
-      }
-      if (isUndefined(onConfirm)) {
-          // eslint-disable-next-line @typescript-eslint/no-empty-function
-          onConfirm = function () { };
-      }
-      if (isUndefined(options)) {
-          options = {};
-      }
-      options = extend({}, DEFAULT_OPTIONS$6, options);
-      return mdui.dialog({
-          title: title,
-          content: text,
-          buttons: [
-              {
-                  text: options.confirmText,
-                  bold: false,
-                  close: options.closeOnConfirm,
-                  onClick: onConfirm,
-              } ],
-          cssClass: 'mdui-dialog-alert',
-          history: options.history,
-          modal: options.modal,
-          closeOnEsc: options.closeOnEsc,
-      });
-  };
-
-  var DEFAULT_OPTIONS$7 = {
-      confirmText: 'ok',
-      cancelText: 'cancel',
-      history: true,
-      modal: false,
-      closeOnEsc: true,
-      closeOnCancel: true,
-      closeOnConfirm: true,
-  };
-  mdui.confirm = function (text, title, onConfirm, onCancel, options) {
-      if (isFunction(title)) {
-          options = onCancel;
-          onCancel = onConfirm;
-          onConfirm = title;
-          title = '';
-      }
-      if (isUndefined(onConfirm)) {
-          // eslint-disable-next-line @typescript-eslint/no-empty-function
-          onConfirm = function () { };
-      }
-      if (isUndefined(onCancel)) {
-          // eslint-disable-next-line @typescript-eslint/no-empty-function
-          onCancel = function () { };
-      }
-      if (isUndefined(options)) {
-          options = {};
-      }
-      options = extend({}, DEFAULT_OPTIONS$7, options);
-      return mdui.dialog({
-          title: title,
-          content: text,
-          buttons: [
-              {
-                  text: options.cancelText,
-                  bold: false,
-                  close: options.closeOnCancel,
-                  onClick: onCancel,
-              },
-              {
-                  text: options.confirmText,
-                  bold: false,
-                  close: options.closeOnConfirm,
-                  onClick: onConfirm,
-              } ],
-          cssClass: 'mdui-dialog-confirm',
-          history: options.history,
-          modal: options.modal,
-          closeOnEsc: options.closeOnEsc,
-      });
-  };
-
-  var defaultData = {
-      reInit: false,
-      domLoadedEvent: false,
-  };
-  /**
-   * 输入框事件
-   * @param event
-   * @param data
-   */
-  function inputEvent(event, data) {
-      if ( data === void 0 ) data = {};
-
-      data = extend({}, defaultData, data);
-      var input = event.target;
-      var $input = $(input);
-      var eventType = event.type;
-      var value = $input.val();
-      // 文本框类型
-      var inputType = $input.attr('type') || '';
-      if (['checkbox', 'button', 'submit', 'range', 'radio', 'image'].indexOf(inputType) > -1) {
-          return;
-      }
-      var $textfield = $input.parent('.mdui-textfield');
-      // 输入框是否聚焦
-      if (eventType === 'focus') {
-          $textfield.addClass('mdui-textfield-focus');
-      }
-      if (eventType === 'blur') {
-          $textfield.removeClass('mdui-textfield-focus');
-      }
-      // 输入框是否为空
-      if (eventType === 'blur' || eventType === 'input') {
-          value
-              ? $textfield.addClass('mdui-textfield-not-empty')
-              : $textfield.removeClass('mdui-textfield-not-empty');
-      }
-      // 输入框是否禁用
-      input.disabled
-          ? $textfield.addClass('mdui-textfield-disabled')
-          : $textfield.removeClass('mdui-textfield-disabled');
-      // 表单验证
-      if ((eventType === 'input' || eventType === 'blur') &&
-          !data.domLoadedEvent &&
-          input.validity) {
-          input.validity.valid
-              ? $textfield.removeClass('mdui-textfield-invalid-html5')
-              : $textfield.addClass('mdui-textfield-invalid-html5');
-      }
-      // textarea 高度自动调整
-      if ($input.is('textarea')) {
-          // IE bug：textarea 的值仅为多个换行，不含其他内容时，textarea 的高度不准确
-          //         此时，在计算高度前，在值的开头加入一个空格，计算完后，移除空格
-          var inputValue = value;
-          var hasExtraSpace = false;
-          if (inputValue.replace(/[\r\n]/g, '') === '') {
-              $input.val(' ' + inputValue);
-              hasExtraSpace = true;
-          }
-          // 设置 textarea 高度
-          $input.outerHeight('');
-          var height = $input.outerHeight();
-          var scrollHeight = input.scrollHeight;
-          if (scrollHeight > height) {
-              $input.outerHeight(scrollHeight);
-          }
-          // 计算完，还原 textarea 的值
-          if (hasExtraSpace) {
-              $input.val(inputValue);
-          }
-      }
-      // 实时字数统计
-      if (data.reInit) {
-          $textfield.find('.mdui-textfield-counter').remove();
-      }
-      var maxLength = $input.attr('maxlength');
-      if (maxLength) {
-          if (data.reInit || data.domLoadedEvent) {
-              $('<div class="mdui-textfield-counter">' +
-                  "<span class=\"mdui-textfield-counter-inputed\"></span> / " + maxLength +
-                  '</div>').appendTo($textfield);
-          }
-          $textfield
-              .find('.mdui-textfield-counter-inputed')
-              .text(value.length.toString());
-      }
-      // 含 帮助文本、错误提示、字数统计 时，增加文本框底部内边距
-      if ($textfield.find('.mdui-textfield-helper').length ||
-          $textfield.find('.mdui-textfield-error').length ||
-          maxLength) {
-          $textfield.addClass('mdui-textfield-has-bottom');
-      }
-  }
-  $(function () {
-      // 绑定事件
-      $document.on('input focus blur', '.mdui-textfield-input', { useCapture: true }, inputEvent);
-      // 可展开文本框展开
-      $document.on('click', '.mdui-textfield-expandable .mdui-textfield-icon', function () {
-          $(this)
-              .parents('.mdui-textfield')
-              .addClass('mdui-textfield-expanded')
-              .find('.mdui-textfield-input')[0]
-              .focus();
-      });
-      // 可展开文本框关闭
-      $document.on('click', '.mdui-textfield-expanded .mdui-textfield-close', function () {
-          $(this)
-              .parents('.mdui-textfield')
-              .removeClass('mdui-textfield-expanded')
-              .find('.mdui-textfield-input')
-              .val('');
-      });
-      /**
-       * 初始化文本框
-       */
-      mdui.mutation('.mdui-textfield', function () {
-          $(this).find('.mdui-textfield-input').trigger('input', {
-              domLoadedEvent: true,
-          });
-      });
-  });
-  mdui.updateTextFields = function (selector) {
-      var $elements = isUndefined(selector) ? $('.mdui-textfield') : $(selector);
-      $elements.each(function (_, element) {
-          $(element).find('.mdui-textfield-input').trigger('input', {
-              reInit: true,
-          });
-      });
-  };
-
-  var DEFAULT_OPTIONS$8 = {
-      confirmText: 'ok',
-      cancelText: 'cancel',
-      history: true,
-      modal: false,
-      closeOnEsc: true,
-      closeOnCancel: true,
-      closeOnConfirm: true,
-      type: 'text',
-      maxlength: 0,
-      defaultValue: '',
-      confirmOnEnter: false,
-  };
-  mdui.prompt = function (label, title, onConfirm, onCancel, options) {
-      if (isFunction(title)) {
-          options = onCancel;
-          onCancel = onConfirm;
-          onConfirm = title;
-          title = '';
-      }
-      if (isUndefined(onConfirm)) {
-          // eslint-disable-next-line @typescript-eslint/no-empty-function
-          onConfirm = function () { };
-      }
-      if (isUndefined(onCancel)) {
-          // eslint-disable-next-line @typescript-eslint/no-empty-function
-          onCancel = function () { };
-      }
-      if (isUndefined(options)) {
-          options = {};
-      }
-      options = extend({}, DEFAULT_OPTIONS$8, options);
-      var content = '<div class="mdui-textfield">' +
-          (label ? ("<label class=\"mdui-textfield-label\">" + label + "</label>") : '') +
-          (options.type === 'text'
-              ? ("<input class=\"mdui-textfield-input\" type=\"text\" value=\"" + (options.defaultValue) + "\" " + (options.maxlength ? 'maxlength="' + options.maxlength + '"' : '') + "/>")
-              : '') +
-          (options.type === 'textarea'
-              ? ("<textarea class=\"mdui-textfield-input\" " + (options.maxlength ? 'maxlength="' + options.maxlength + '"' : '') + ">" + (options.defaultValue) + "</textarea>")
-              : '') +
-          '</div>';
-      var onCancelClick = function (dialog) {
-          var value = dialog.$element.find('.mdui-textfield-input').val();
-          onCancel(value, dialog);
-      };
-      var onConfirmClick = function (dialog) {
-          var value = dialog.$element.find('.mdui-textfield-input').val();
-          onConfirm(value, dialog);
-      };
-      return mdui.dialog({
-          title: title,
-          content: content,
-          buttons: [
-              {
-                  text: options.cancelText,
-                  bold: false,
-                  close: options.closeOnCancel,
-                  onClick: onCancelClick,
-              },
-              {
-                  text: options.confirmText,
-                  bold: false,
-                  close: options.closeOnConfirm,
-                  onClick: onConfirmClick,
-              } ],
-          cssClass: 'mdui-dialog-prompt',
-          history: options.history,
-          modal: options.modal,
-          closeOnEsc: options.closeOnEsc,
-          onOpen: function (dialog) {
-              // 初始化输入框
-              var $input = dialog.$element.find('.mdui-textfield-input');
-              mdui.updateTextFields($input);
-              // 聚焦到输入框
-              $input[0].focus();
-              // 捕捉文本框回车键，在单行文本框的情况下触发回调
-              if (options.type !== 'textarea' && options.confirmOnEnter === true) {
-                  $input.on('keydown', function (event) {
-                      if (event.keyCode === 13) {
-                          var value = dialog.$element.find('.mdui-textfield-input').val();
-                          onConfirm(value, dialog);
-                          if (options.closeOnConfirm) {
-                              dialog.close();
-                          }
-                          return false;
-                      }
-                      return;
-                  });
-              }
-              // 如果是多行输入框，监听输入框的 input 事件，更新对话框高度
-              if (options.type === 'textarea') {
-                  $input.on('input', function () { return dialog.handleUpdate(); });
-              }
-              // 有字符数限制时，加载完文本框后 DOM 会变化，需要更新对话框高度
-              if (options.maxlength) {
-                  dialog.handleUpdate();
-              }
-          },
-      });
-  };
-
-  var DEFAULT_OPTIONS$9 = {
+  var DEFAULT_OPTIONS$3 = {
       position: 'auto',
       delay: 0,
       content: '',
@@ -4976,7 +3722,7 @@
       /**
        * 配置参数
        */
-      this.options = extend({}, DEFAULT_OPTIONS$9);
+      this.options = extend({}, DEFAULT_OPTIONS$3);
       /**
        * 当前 tooltip 的状态
        */
@@ -5202,21 +3948,46 @@
   };
   mdui.Tooltip = Tooltip;
 
-  var customAttr$6 = 'mdui-tooltip';
-  var dataName$2 = '_mdui_tooltip';
+  var customAttr$4 = 'mdui-tooltip';
+  var dataName = '_mdui_tooltip';
   $(function () {
       // mouseenter 不能冒泡，所以这里用 mouseover 代替
-      $document.on('touchstart mouseover', ("[" + customAttr$6 + "]"), function () {
+      $document.on('touchstart mouseover', ("[" + customAttr$4 + "]"), function () {
           var $target = $(this);
-          var instance = $target.data(dataName$2);
+          var instance = $target.data(dataName);
           if (!instance) {
-              instance = new mdui.Tooltip(this, parseOptions(this, customAttr$6));
-              $target.data(dataName$2, instance);
+              instance = new mdui.Tooltip(this, parseOptions(this, customAttr$4));
+              $target.data(dataName, instance);
           }
       });
   });
 
-  var DEFAULT_OPTIONS$a = {
+  var container = {};
+  function queue(name, func) {
+      if (isUndefined(container[name])) {
+          container[name] = [];
+      }
+      if (isUndefined(func)) {
+          return container[name];
+      }
+      container[name].push(func);
+  }
+  /**
+   * 从队列中移除第一个函数，并执行该函数
+   * @param name 队列满
+   */
+  function dequeue(name) {
+      if (isUndefined(container[name])) {
+          return;
+      }
+      if (!container[name].length) {
+          return;
+      }
+      var func = container[name].shift();
+      func();
+  }
+
+  var DEFAULT_OPTIONS$4 = {
       message: '',
       timeout: 4000,
       position: 'bottom',
@@ -5240,16 +4011,16 @@
   /**
    * 当前打开着的 Snackbar
    */
-  var currentInst$1 = null;
+  var currentInst = null;
   /**
    * 队列名
    */
-  var queueName$1 = '_mdui_snackbar';
+  var queueName = '_mdui_snackbar';
   var Snackbar = function Snackbar(options) {
       /**
        * 配置参数
        */
-      this.options = extend({}, DEFAULT_OPTIONS$a);
+      this.options = extend({}, DEFAULT_OPTIONS$4);
       /**
        * 当前 Snackbar 的状态
        */
@@ -5288,7 +4059,7 @@
       var $target = $(event.target);
       if (!$target.hasClass('mdui-snackbar') &&
           !$target.parents('.mdui-snackbar').length) {
-          currentInst$1.close();
+          currentInst.close();
       }
   };
   /**
@@ -5337,11 +4108,11 @@
           return;
       }
       // 如果当前有正在显示的 Snackbar，则先加入队列，等旧 Snackbar 关闭后再打开
-      if (currentInst$1) {
-          queue(queueName$1, function () { return this$1.open(); });
+      if (currentInst) {
+          queue(queueName, function () { return this$1.open(); });
           return;
       }
-      currentInst$1 = this;
+      currentInst = this;
       // 开始打开
       this.state = 'opening';
       this.options.onOpen(this);
@@ -5399,11 +4170,11 @@
           if (this$1.state !== 'closing') {
               return;
           }
-          currentInst$1 = null;
+          currentInst = null;
           this$1.state = 'closed';
           this$1.options.onClosed(this$1);
           this$1.$element.remove();
-          dequeue(queueName$1);
+          dequeue(queueName);
       });
   };
   mdui.snackbar = function (message, options) {
@@ -5489,7 +4260,7 @@
       });
   };
 
-  var DEFAULT_OPTIONS$b = {
+  var DEFAULT_OPTIONS$5 = {
       position: 'auto',
       align: 'auto',
       gutter: 16,
@@ -5505,7 +4276,7 @@
       /**
        * 配置参数
        */
-      this.options = extend({}, DEFAULT_OPTIONS$b);
+      this.options = extend({}, DEFAULT_OPTIONS$5);
       /**
        * 当前菜单状态
        */
@@ -5982,19 +4753,19 @@
   };
   mdui.Menu = Menu;
 
-  var customAttr$7 = 'mdui-menu';
-  var dataName$3 = '_mdui_menu';
+  var customAttr$5 = 'mdui-menu';
+  var dataName$1 = '_mdui_menu';
   $(function () {
-      $document.on('click', ("[" + customAttr$7 + "]"), function () {
+      $document.on('click', ("[" + customAttr$5 + "]"), function () {
           var $this = $(this);
-          var instance = $this.data(dataName$3);
+          var instance = $this.data(dataName$1);
           if (!instance) {
-              var options = parseOptions(this, customAttr$7);
+              var options = parseOptions(this, customAttr$5);
               var menuSelector = options.target;
               // @ts-ignore
               delete options.target;
               instance = new mdui.Menu($this, menuSelector, options);
-              $this.data(dataName$3, instance);
+              $this.data(dataName$1, instance);
               instance.toggle();
           }
       });
