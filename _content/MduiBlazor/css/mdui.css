@@ -10168,12 +10168,12 @@ input.mdui-btn[type="submit"] {
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   will-change: opacity, transform;
 }
-.mdui-fab-wrapper > .mdui-fab.mdui-fab-opened .mdui-icon:not(.mdui-fab-opened) {
+.mdui-fab-wrapper > .mdui-fab:focus .mdui-icon:not(.mdui-fab-opened) {
   -webkit-transform: rotate(225deg);
           transform: rotate(225deg);
   opacity: 0;
 }
-.mdui-fab-wrapper > .mdui-fab.mdui-fab-opened .mdui-icon.mdui-fab-opened {
+.mdui-fab-wrapper > .mdui-fab:focus .mdui-icon.mdui-fab-opened {
   -webkit-transform: rotate(360deg);
           transform: rotate(360deg);
   opacity: 1;
@@ -10200,7 +10200,7 @@ input.mdui-btn[type="submit"] {
   transition: box-shadow 0.2s cubic-bezier(0.4, 0, 1, 1), color 0.2s cubic-bezier(0.4, 0, 0.2, 1), transform 150ms cubic-bezier(0.4, 0, 0.2, 1), opacity 150ms cubic-bezier(0.4, 0, 0.2, 1);
   transition: box-shadow 0.2s cubic-bezier(0.4, 0, 1, 1), color 0.2s cubic-bezier(0.4, 0, 0.2, 1), transform 150ms cubic-bezier(0.4, 0, 0.2, 1), opacity 150ms cubic-bezier(0.4, 0, 0.2, 1), -webkit-box-shadow 0.2s cubic-bezier(0.4, 0, 1, 1), -webkit-transform 150ms cubic-bezier(0.4, 0, 0.2, 1);
 }
-.mdui-fab-wrapper .mdui-fab-dial.mdui-fab-dial-show .mdui-fab {
+.mdui-fab-wrapper .mdui-fab:focus ~ .mdui-fab-dial .mdui-fab {
   -webkit-transform: scale(1);
           transform: scale(1);
   opacity: 1;
