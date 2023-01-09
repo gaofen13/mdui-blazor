@@ -15,14 +15,8 @@ namespace MduiBlazor
             new ClassBuilder("mdui-fab")
             .AddClass("mdui-ripple", Ripple)
             .AddClass($"mdui-color-{Color}", !string.IsNullOrWhiteSpace(Color))
-            .AddClass("mdui-fab-opened", Show)
             .AddClass("mdui-fab-mini", Mini)
             .AddClass("mdui-fab-hide", Hide)
-            .Build();
-
-        private string DialClassname =>
-            new ClassBuilder("mdui-fab-dial")
-            .AddClass("mdui-fab-dial-show", Show)
             .Build();
 
         private string DialStyle =>
@@ -35,9 +29,6 @@ namespace MduiBlazor
             .AddClass("mdui-typo", UseMduiTypo)
             .AddClass(Class)
             .Build();
-
-        [Parameter]
-        public bool Show { get; set; }
 
         [Parameter]
         public string? Color { get; set; }
@@ -56,10 +47,5 @@ namespace MduiBlazor
 
         [Parameter]
         public bool Ripple { get; set; } = true;
-
-        private void OnClickFabBtn()
-        {
-            Show = !Show;
-        }
     }
 }

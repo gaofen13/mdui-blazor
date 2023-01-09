@@ -11,7 +11,6 @@ import './components/panel';
 import './components/panel/customAttr';
 import './components/table';
 import './components/ripple';
-import './components/textfield';
 import './components/slider';
 import './components/select';
 import './components/select/customAttr';

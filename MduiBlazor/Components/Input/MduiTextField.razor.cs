@@ -13,10 +13,15 @@ namespace MduiBlazor
     public partial class MduiTextField
     {
         private int _wordNumber;
+        private bool _isFocus;
 
         private string FieldClassname =>
             new ClassBuilder()
-            .AddClass("mdui-textfield-floating-label", string.IsNullOrWhiteSpace(Value) && FloatingLabel)
+            .AddClass("mdui-textfield-focus", _isFocus)
+            .AddClass("mdui-textfield-disabled", Disabled)
+            .AddClass("mdui-textfield-not-empty", !string.IsNullOrEmpty(Value))
+            .AddClass("mdui-textfield-has-bottom", !string.IsNullOrWhiteSpace(ErrorText) || !string.IsNullOrWhiteSpace(HelperText) || MaxLength > 0)
+            .AddClass("mdui-textfield-floating-label", FloatingLabel)
             .AddClass("mdui-typo", UseMduiTypo)
             .Build();
 
@@ -94,6 +99,16 @@ namespace MduiBlazor
             {
                 _wordNumber = args.Value?.ToString()?.Length ?? 0;
             }
+        }
+
+        private void OnFocus()
+        {
+            _isFocus = true;
+        }
+
+        private void OnBlur()
+        {
+            _isFocus = false;
         }
     }
 }

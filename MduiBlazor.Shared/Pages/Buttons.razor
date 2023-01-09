@@ -1,4 +1,5 @@
 ﻿@page "/buttons"
+@inject NavigationManager Navigation
 
 <h2>Button</h2>
 <MduiButton Color="@Colors.Theme.Primary">Button</MduiButton>
@@ -27,7 +28,7 @@
 <MduiFab Hide="@hide" Icon="add" Color="@Colors.Theme.Accent" />
 
 <MduiFabMenu Icon="add" OpenedIcon="edit" Color="@Colors.Theme.Accent">
-    <MduiFab Icon="backup" Color="@Colors.Theme.Primary" Mini />
+    <MduiFab Icon="backup" Color="@Colors.Theme.Primary" OnClick="@NavigationBack" Mini />
     <MduiFab Icon="bookmark" Color="@Colors.Theme.Accent" Mini />
     <MduiFab Icon="access_alarms" Color="@Colors.Blue.Primary" Mini />
     <MduiFab Icon="touch_app" Color="@Colors.Green.Primary" Mini />
@@ -35,4 +36,9 @@
 
 @code {
     bool hide;
+
+    private void NavigationBack()
+    {
+        Navigation.NavigateTo("");
+    }
 }
