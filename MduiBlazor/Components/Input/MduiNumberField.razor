@@ -1,0 +1,11 @@
+﻿@namespace MduiBlazor
+@inherits MduiInputBase<TValue>
+@typeparam TValue
+
+<MduiField Class="@FieldClassname" Label="@Label" Icon="@Icon" HelperText="@HelperText" ErrorText="@ErrorText">
+       <input @ref="@Element" class="@Classname" style="@Style" type="number" inputmode="numeric" required="@Required"
+              placeholder="@Placeholder" disabled="@Disabled" readonly="@Readonly" autofocus="@AutoFocus"
+              @attributes="@AdditionalAttributes" value="@BindConverter.FormatValue(CurrentValueAsString)"
+              @onchange="@(EventCallback.Factory.CreateBinder<string?>(this, __value => CurrentValueAsString = __value, CurrentValueAsString))"
+              @onfocus="@OnFocus" @onblur="@OnBlur" @oninput="@OnInput" />
+</MduiField>

@@ -12,12 +12,10 @@ namespace MduiBlazor
     public partial class MduiField
     {
         private bool _invalid;
-        private bool _floatingLabel;
 
         protected string Classname =>
           new ClassBuilder("mdui-textfield")
             .AddClass("mdui-textfield-has-bottom", !string.IsNullOrWhiteSpace(HelperText))
-            .AddClass("mdui-textfield-floating-label", _floatingLabel)
             .AddClass("mdui-textfield-invalid", _invalid)
             .AddClass("mdui-typo", UseMduiTypo)
             .AddClass(Class)
@@ -34,13 +32,5 @@ namespace MduiBlazor
 
         [Parameter]
         public string? HelperText { get; set; }
-
-        public void SetFloatingLabel(bool value)
-        {
-            if (_floatingLabel != value)
-            {
-                _floatingLabel = value;
-            }
-        }
     }
 }

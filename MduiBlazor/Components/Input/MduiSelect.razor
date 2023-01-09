@@ -2,10 +2,8 @@
 @typeparam TValue
 @inherits MduiInputBase<TValue>
 
-<select class="@Classname"
-        style="@Style"
-        disabled="@Disabled"
-        required="@Required"
-        @attributes="@AdditionalAttributes">
+<select class="@Classname" style="@Style" disabled="@Disabled" required="@Required" @attributes="@AdditionalAttributes"
+    value="@CurrentValueAsString"
+    @onchange="@(EventCallback.Factory.CreateBinder<string?>(this,__value=>CurrentValueAsString=__value,default))">
     @ChildContent
 </select>

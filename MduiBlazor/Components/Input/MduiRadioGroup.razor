@@ -1,0 +1,9 @@
+@namespace MduiBlazor
+@inherits MduiInputBase<TValue>
+@typeparam TValue
+
+<div @ref="@Element" role="radiogroup" class="@RadioGroupClass" style="@Style" @attributes="@AdditionalAttributes">
+    <CascadingValue Name="RadioGroup" Value="@this" IsFixed>
+        @ChildContent
+    </CascadingValue>
+</div>

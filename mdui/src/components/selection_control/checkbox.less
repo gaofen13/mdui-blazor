@@ -21,6 +21,10 @@
     overflow: hidden;
     opacity: 0;
   }
+
+  .mdui-checkbox-icon {
+    margin-left: 15px;
+  }
 }
 
 /* 透明的圆形，用于生成圆形阴影 */
@@ -75,7 +79,7 @@
 .mdui-checkbox input[type="checkbox"] {
 
   // 选中状态的图标
-  &:checked + .mdui-checkbox-icon {
+  &:checked+.mdui-checkbox-icon {
     &::after {
       background-color: @color-default-a200;
       border-color: @color-default-a200;
@@ -88,7 +92,7 @@
   }
 
   // 不确定状态的图标
-  &:indeterminate + .mdui-checkbox-icon {
+  &:indeterminate+.mdui-checkbox-icon {
     &::after {
       background-color: @color-default-a200;
       border-color: @color-default-a200;
@@ -108,15 +112,15 @@
   }
 
   // 禁用状态的图标
-  &:disabled + .mdui-checkbox-icon {
+  &:disabled+.mdui-checkbox-icon {
     &::after {
       border-color: @color-black-icon-disabled;
     }
   }
 
   // 禁用且选中状态
-  &:disabled:checked + .mdui-checkbox-icon,
-  &:disabled:indeterminate + .mdui-checkbox-icon {
+  &:disabled:checked+.mdui-checkbox-icon,
+  &:disabled:indeterminate+.mdui-checkbox-icon {
     &::after {
       background-color: @color-black-icon-disabled !important;
       border-color: transparent !important;
@@ -127,15 +131,16 @@
 /* 阴影 */
 .mdui-checkbox:active input[type="checkbox"],
 .mdui-checkbox input[type="checkbox"]:focus {
+
   // 未选中、禁用时 按下的阴影
-  & + .mdui-checkbox-icon {
+  &+.mdui-checkbox-icon {
     box-shadow: 0 0 0 15px rgba(0, 0, 0, 0.1);
   }
 
   // 已选中时按下的阴影
   &:not(:disabled):checked,
   &:not(:disabled):indeterminate {
-    & + .mdui-checkbox-icon {
+    &+.mdui-checkbox-icon {
       box-shadow: 0 0 0 15px rgba(red(@color-default-a200), green(@color-default-a200), blue(@color-default-a200), 0.16);
     }
   }
@@ -155,12 +160,12 @@
 
     @color: 'color-@{colorName}-a200';
 
-    .mdui-theme-accent-@{colorName} when not (@colorName = null) {
+    .mdui-theme-accent-@{colorName} when not (@colorName =null) {
 
       // 选中状态的图标
       .mdui-checkbox input[type="checkbox"]:checked,
       .mdui-checkbox input[type="checkbox"]:indeterminate {
-        & + .mdui-checkbox-icon::after {
+        &+.mdui-checkbox-icon::after {
           background-color: @@color;
           border-color: @@color;
         }
@@ -169,13 +174,15 @@
       // 已选中时按下的阴影
       .mdui-checkbox:active input[type="checkbox"],
       .mdui-checkbox input[type="checkbox"]:focus {
-        &:not(:disabled):checked + .mdui-checkbox-icon,
-        &:not(:disabled):indeterminate + .mdui-checkbox-icon {
+
+        &:not(:disabled):checked+.mdui-checkbox-icon,
+        &:not(:disabled):indeterminate+.mdui-checkbox-icon {
           box-shadow: 0 0 0 15px rgba(red(@@color), green(@@color), blue(@@color), 0.16);
         }
       }
     }
   }
+
   .loop-accent-theme(length(@globalAccentColors));
 }
 
@@ -186,6 +193,7 @@
  * =============================================================================
  */
 .layout-theme({
+
   // 未选中的图标
   .mdui-checkbox-icon {
     &::after {
@@ -207,6 +215,7 @@
 
   // 禁用且选中状态
   .mdui-checkbox input[type="checkbox"] {
+
     &:disabled:checked + .mdui-checkbox-icon,
     &:disabled:indeterminate + .mdui-checkbox-icon {
       &::after {

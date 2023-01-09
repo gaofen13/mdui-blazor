@@ -6,6 +6,7 @@
     <MduiTextField Label="文本框" @bind-Value="@value" />
     <MduiTextField Label="文本框" FloatingLabel @bind-Value="@value" />
     <MduiTextField AutoFocus Label="文本框" FloatingLabel Placeholder="请输入文本" @bind-Value="@value" />
+    <MduiNumberField Label="数字框" Placeholder="请输入或选择数字" @bind-Value="@numValue" />
     <MduiTextField Label="文本框" HelperText="请输入文本" MaxLength="20" Placeholder="请输入文本" @bind-Value="@value" />
     <MduiTextField Label="文本框" HelperText="请输入文本" Rows="5" FloatingLabel MaxLength="50" @bind-Value="@value" />
     <MduiDivider Class="mdui-m-y-4" />
@@ -16,8 +17,35 @@
             <option>3</option>
         </MduiSelect>
     </MduiField>
+    <MduiField Label="多项选择">
+        <MduiMultiSelect @bind-Value="@values">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+        </MduiMultiSelect>
+    </MduiField>
+</EditForm>
+
+<EditForm Model="2">
+    <MduiField Label="Radio">
+        <MduiRadioGroup @bind-Value="@value">
+            <MduiRadio Label="1" Value="1" />
+            <MduiRadio Label="2" Value="2" />
+            <MduiRadio Label="3" Value="3" />
+        </MduiRadioGroup>
+    </MduiField>
+    <MduiField Label="Checkbox">
+        <MduiCheckbox Label="勾选" @bind-Value="@checkboxValue" />
+    </MduiField>
+    <MduiField Label="Switch">
+        <MduiSwitch @bind-Value="@checkboxValue" />
+    </MduiField>
 </EditForm>
 
 @code {
     string? value = "2";
+    string[] values = { "1", "2" };
+    int numValue = 2;
+
+    bool checkboxValue = true;
 }

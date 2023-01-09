@@ -1,0 +1,9 @@
+﻿@namespace MduiBlazor
+@inherits MduiInputBase<TValue>
+@typeparam TValue
+
+<select @ref="@Element" multiple="multiple" size="@Height" class="@Classname" style="@Style" required="@Required"
+    @attributes="@AdditionalAttributes" value="@BindConverter.FormatValue(CurrentValue)?.ToString()"
+    @onchange="@(EventCallback.Factory.CreateBinder<string[]?>(this,SetCurrentValueAsStringArray,default))">
+    @ChildContent
+</select>

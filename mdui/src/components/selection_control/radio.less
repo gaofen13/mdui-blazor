@@ -3,6 +3,15 @@
  * ************   Radio 单选框   ************
  * =============================================================================
  */
+.mdui-radio-group {
+  display: flex;
+  flex-wrap: wrap;
+  width: fit-content;
+
+  &.mdui-group-vertical {
+    flex-direction: column;
+  }
+}
 
 .mdui-radio {
   position: relative;
@@ -21,6 +30,10 @@
     overflow: hidden;
     opacity: 0;
   }
+
+  .mdui-radio-icon {
+    margin-left: 15px;
+  }
 }
 
 /* 图标外圈 */
@@ -36,7 +49,7 @@
   border: 2px solid @color-black-icon;
   border-radius: 18px;
   transition: all .3s @animation-curve-default,
-              box-shadow .14s @animation-curve-default;
+    box-shadow .14s @animation-curve-default;
 
   // 图标内部圆圈
   &::before {
@@ -55,7 +68,7 @@
 }
 
 /* 选中状态的图标 */
-.mdui-radio input[type="radio"]:checked + .mdui-radio-icon {
+.mdui-radio input[type="radio"]:checked+.mdui-radio-icon {
   border-color: @color-default-a200;
 
   &::before {
@@ -65,12 +78,12 @@
 }
 
 /* 禁用状态的图标 */
-.mdui-radio input[type="radio"]:disabled + .mdui-radio-icon {
+.mdui-radio input[type="radio"]:disabled+.mdui-radio-icon {
   border-color: @color-black-icon-disabled !important;
 }
 
 /* 禁用且选中状态的图标 */
-.mdui-radio input[type="radio"]:disabled:checked + .mdui-radio-icon {
+.mdui-radio input[type="radio"]:disabled:checked+.mdui-radio-icon {
   &::before {
     background-color: @color-black-icon-disabled !important;
   }
@@ -79,7 +92,7 @@
 /* 未选中、禁用时 按下的阴影 */
 .mdui-radio:active input[type="radio"],
 .mdui-radio input[type="radio"]:focus {
-  & + .mdui-radio-icon {
+  &+.mdui-radio-icon {
     box-shadow: 0 0 0 15px rgba(0, 0, 0, 0.1);
   }
 }
@@ -87,7 +100,7 @@
 /* 已选中时按下的阴影 */
 .mdui-radio:active input[type="radio"],
 .mdui-radio input[type="radio"]:focus {
-  &:checked:not(:disabled) + .mdui-radio-icon {
+  &:checked:not(:disabled)+.mdui-radio-icon {
     box-shadow: 0 0 0 15px rgba(red(@color-default-a200), green(@color-default-a200), blue(@color-default-a200), 0.16);
   }
 }
@@ -105,10 +118,10 @@
 
     @color: 'color-@{colorName}-a200';
 
-    .mdui-theme-accent-@{colorName} when not (@colorName = null) {
+    .mdui-theme-accent-@{colorName} when not (@colorName =null) {
 
       // 选中状态的图标
-      .mdui-radio input[type="radio"]:checked + .mdui-radio-icon {
+      .mdui-radio input[type="radio"]:checked+.mdui-radio-icon {
         border-color: @@color;
 
         &::before {
@@ -119,13 +132,14 @@
       // 已选中时按下的阴影
       .mdui-radio:active input[type="radio"],
       .mdui-radio input[type="radio"]:focus {
-        &:checked:not(:disabled) + .mdui-radio-icon {
+        &:checked:not(:disabled)+.mdui-radio-icon {
           box-shadow: 0 0 0 15px rgba(red(@@color), green(@@color), blue(@@color), 0.16);
         }
       }
 
     }
   }
+
   .loop-accent-theme(length(@globalAccentColors));
 }
 
@@ -136,6 +150,7 @@
  * =============================================================================
  */
 .layout-theme({
+
   // 图标外圈
   .mdui-radio-icon {
     border-color: rgba(255, 255, 255, 0.7);

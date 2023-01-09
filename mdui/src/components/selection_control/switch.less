@@ -19,6 +19,11 @@
     overflow: hidden;
     opacity: 0;
   }
+
+  .mdui-switch-icon {
+    margin-right: 15px;
+    margin-left: 15px;
+  }
 }
 
 /* 图标轨道 */
@@ -43,15 +48,15 @@
     background-color: @color-grey-50;
     border-radius: 20px;
     transition: box-shadow .14s @animation-curve-default,
-                background-color .3s @animation-curve-default,
-                left .3s @animation-curve-default;
+      background-color .3s @animation-curve-default,
+      left .3s @animation-curve-default;
     content: ' ';
     .mdui-shadow(1);
   }
 }
 
 /* 选中状态的图标 */
-.mdui-switch input[type="checkbox"]:checked + .mdui-switch-icon {
+.mdui-switch input[type="checkbox"]:checked+.mdui-switch-icon {
   background-color: rgba(red(@color-default-a200), green(@color-default-a200), blue(@color-default-a200), 0.5);
 
   &::before {
@@ -63,14 +68,14 @@
 /* 未选中时或禁用时 按下的阴影 */
 .mdui-switch:active input[type="checkbox"],
 .mdui-switch input[type="checkbox"]:focus {
-  & + .mdui-switch-icon::before {
+  &+.mdui-switch-icon::before {
     box-shadow:
       // box-shadow(1)
       0 2px 1px -1px rgba(0, 0, 0, .2),
       0 1px 1px 0 rgba(0, 0, 0, .14),
       0 1px 3px 0 rgba(0, 0, 0, .12),
 
-        // 颜色阴影
+      // 颜色阴影
       0 0 0 15px rgba(0, 0, 0, 0.1);
   }
 }
@@ -78,20 +83,20 @@
 /* 已选中时按下的阴影 */
 .mdui-switch:active input[type="checkbox"],
 .mdui-switch input[type="checkbox"]:focus {
-  &:checked:not(:disabled) + .mdui-switch-icon::before {
+  &:checked:not(:disabled)+.mdui-switch-icon::before {
     box-shadow:
       // box-shadow(1)
       0 2px 1px -1px rgba(0, 0, 0, .2),
       0 1px 1px 0 rgba(0, 0, 0, .14),
       0 1px 3px 0 rgba(0, 0, 0, .12),
 
-        // 颜色阴影
+      // 颜色阴影
       0 0 0 15px rgba(red(@color-default-a200), green(@color-default-a200), blue(@color-default-a200), 0.16);
   }
 }
 
 /* 禁用状态 */
-.mdui-switch input[type="checkbox"]:disabled + .mdui-switch-icon {
+.mdui-switch input[type="checkbox"]:disabled+.mdui-switch-icon {
   background-color: rgba(0, 0, 0, 0.12) !important;
 
   &::before {
@@ -113,10 +118,10 @@
 
     @color: 'color-@{colorName}-a200';
 
-    .mdui-theme-accent-@{colorName} when not (@colorName = null) {
+    .mdui-theme-accent-@{colorName} when not (@colorName =null) {
 
       // 选中状态的图标
-      .mdui-switch input[type="checkbox"]:checked + .mdui-switch-icon {
+      .mdui-switch input[type="checkbox"]:checked+.mdui-switch-icon {
         background-color: rgba(red(@@color), green(@@color), blue(@@color), 0.5);
 
         &::before {
@@ -127,20 +132,21 @@
       // 已选中时按下的阴影
       .mdui-switch:active input[type="checkbox"],
       .mdui-switch input[type="checkbox"]:focus {
-        &:checked:not(:disabled) + .mdui-switch-icon::before {
+        &:checked:not(:disabled)+.mdui-switch-icon::before {
           box-shadow:
             // box-shadow(1)
             0 2px 1px -1px rgba(0, 0, 0, .2),
             0 1px 1px 0 rgba(0, 0, 0, .14),
             0 1px 3px 0 rgba(0, 0, 0, .12),
 
-              // 颜色阴影
+            // 颜色阴影
             0 0 0 15px rgba(red(@@color), green(@@color), blue(@@color), 0.16);
         }
       }
 
     }
   }
+
   .loop-accent-theme(length(@globalAccentColors));
 }
 
@@ -151,6 +157,7 @@
  * =============================================================================
  */
 .layout-theme({
+
   // 默认状态
   .mdui-switch-icon {
     background-color: rgba(255, 255, 255, 0.3);
@@ -169,7 +176,7 @@
       @color: 'color-@{colorName}-a200';
       @color-a100: 'color-@{colorName}-a100';
 
-      &.mdui-theme-accent-@{colorName} when not (@colorName = null) {
+      &.mdui-theme-accent-@{colorName} when not (@colorName =null) {
 
         .mdui-switch input[type="checkbox"]:checked + .mdui-switch-icon {
           background-color: rgba(red(@@color-a100), green(@@color-a100), blue(@@color-a100), 0.5);
@@ -181,6 +188,7 @@
 
       }
     }
+
     .loop-accent-theme(length(@globalAccentColors));
   }
 
@@ -188,14 +196,13 @@
   .mdui-switch:active input[type="checkbox"],
   .mdui-switch input[type="checkbox"]:focus {
     & + .mdui-switch-icon::before {
-      box-shadow:
-        // box-shadow(1)
-        0 2px 1px -1px rgba(0, 0, 0, .2),
-        0 1px 1px 0 rgba(0, 0, 0, .14),
-        0 1px 3px 0 rgba(0, 0, 0, .12),
+      box-shadow: // box-shadow(1)
+      0 2px 1px -1px rgba(0, 0, 0, .2),
+      0 1px 1px 0 rgba(0, 0, 0, .14),
+      0 1px 3px 0 rgba(0, 0, 0, .12),
 
-          // 颜色阴影
-        0 0 0 15px rgba(255, 255, 255, 0.1);
+      // 颜色阴影
+      0 0 0 15px rgba(255, 255, 255, 0.1);
     }
   }
 

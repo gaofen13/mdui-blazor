@@ -8275,6 +8275,9 @@ th.mdui-table-cell-checkbox .mdui-checkbox {
   overflow: hidden;
   opacity: 0;
 }
+.mdui-checkbox .mdui-checkbox-icon {
+  margin-left: 15px;
+}
 /* 透明的圆形，用于生成圆形阴影 */
 .mdui-checkbox-icon {
   position: absolute;
@@ -8623,6 +8626,22 @@ th.mdui-table-cell-checkbox .mdui-checkbox {
  * ************   Radio 单选框   ************
  * =============================================================================
  */
+.mdui-radio-group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.mdui-radio-group.mdui-group-vertical {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
 .mdui-radio {
   position: relative;
   display: inline-block;
@@ -8641,6 +8660,9 @@ th.mdui-table-cell-checkbox .mdui-checkbox {
   height: 0;
   overflow: hidden;
   opacity: 0;
+}
+.mdui-radio .mdui-radio-icon {
+  margin-left: 15px;
 }
 /* 图标外圈 */
 .mdui-radio-icon {
@@ -8941,6 +8963,10 @@ th.mdui-table-cell-checkbox .mdui-checkbox {
   height: 0;
   overflow: hidden;
   opacity: 0;
+}
+.mdui-switch .mdui-switch-icon {
+  margin-right: 15px;
+  margin-left: 15px;
 }
 /* 图标轨道 */
 .mdui-switch-icon {

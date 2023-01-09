@@ -6,7 +6,8 @@
     {
         <textarea @ref="@Element" class="@Classname" style="@Style" rows="@Rows" required="@Required" pattern="@Pattern"
         maxlength="@MaxLength" placeholder="@Placeholder" disabled="@Disabled" readonly="@Readonly"
-        @attributes="@AdditionalAttributes" value="@BindConverter.FormatValue(CurrentValueAsString)"
+        autofocus="@AutoFocus" @attributes="@AdditionalAttributes"
+        value="@BindConverter.FormatValue(CurrentValueAsString)"
         @onchange="@(EventCallback.Factory.CreateBinder<string?>(this, __value => CurrentValueAsString = __value, CurrentValueAsString))"
         @onfocus="@OnFocus" @onblur="@OnBlur" @oninput="@OnTextInput" />
     }
@@ -14,7 +15,8 @@
     {
         <input @ref="@Element" class="@Classname" style="@Style" type="@Type" required="@Required" pattern="@Pattern"
         maxlength="@MaxLength" placeholder="@Placeholder" disabled="@Disabled" readonly="@Readonly"
-        @attributes="@AdditionalAttributes" value="@BindConverter.FormatValue(CurrentValueAsString)"
+        autofocus="@AutoFocus" @attributes="@AdditionalAttributes"
+        value="@BindConverter.FormatValue(CurrentValueAsString)"
         @onchange="@(EventCallback.Factory.CreateBinder<string?>(this, __value => CurrentValueAsString = __value, CurrentValueAsString))"
         @onfocus="@OnFocus" @onblur="@OnBlur" @oninput="@OnTextInput" />
     }

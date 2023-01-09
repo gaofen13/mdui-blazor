@@ -70,15 +70,6 @@ namespace MduiBlazor
         [Parameter]
         public bool Trim { get; set; }
 
-        protected override async Task OnAfterRenderAsync(bool firstRender)
-        {
-            if (firstRender && AutoFocus)
-            {
-                await Element.FocusAsync();
-            }
-            await base.OnAfterRenderAsync(firstRender);
-        }
-
         protected override bool TryParseValueFromString(string? value, out string? result, [NotNullWhen(false)] out string? validationErrorMessage)
         {
             if (Trim)
