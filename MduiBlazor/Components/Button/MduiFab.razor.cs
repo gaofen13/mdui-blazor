@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Components;
 
 namespace MduiBlazor
 {
-    public partial class MduiFab
+    public partial class MduiFab : MduiButtonBase
     {
         protected string Classname =>
             new ClassBuilder("mdui-fab mdui-ripple")

@@ -26,19 +26,23 @@
     </MduiField>
 </EditForm>
 
+<MduiField Label="Radio">
+    <MduiRadioGroup @bind-Value="@value">
+        <MduiRadio Value="@("1")">1</MduiRadio>
+        <MduiRadio Value="@("2")">2</MduiRadio>
+        <MduiRadio Value="@("3")">3</MduiRadio>
+    </MduiRadioGroup>
+</MduiField>
+
 <EditForm Model="2">
-    <MduiField Label="Radio">
-        <MduiRadioGroup @bind-Value="@value">
-            <MduiRadio Label="1" Value="1" />
-            <MduiRadio Label="2" Value="2" />
-            <MduiRadio Label="3" Value="3" />
-        </MduiRadioGroup>
-    </MduiField>
     <MduiField Label="Checkbox">
         <MduiCheckbox Label="勾选" @bind-Value="@checkboxValue" />
     </MduiField>
     <MduiField Label="Switch">
         <MduiSwitch @bind-Value="@checkboxValue" />
+    </MduiField>
+    <MduiField Label="滑块">
+        <MduiSlider @bind-Value="@numValue" Discrete Step="1" Min="0" Max="100" />
     </MduiField>
 </EditForm>
 

@@ -6,7 +6,7 @@ using System.Globalization;
 
 namespace MduiBlazor
 {
-    public partial class MduiMultiSelect<TValue>
+    public partial class MduiMultiSelect<TValue> : MduiInputBase<TValue>
     {
         protected string Classname =>
           new ClassBuilder("mdui-select")

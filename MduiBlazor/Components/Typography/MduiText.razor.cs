@@ -1,15 +1,10 @@
 ﻿using MduiBlazor.Extensions;
 using MduiBlazor.Utilities;
 using Microsoft.AspNetCore.Components;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MduiBlazor
 {
-    public partial class MduiText
+    public partial class MduiText : MduiComponentBase
     {
         protected string Classname =>
             new ClassBuilder("mdui-icon")

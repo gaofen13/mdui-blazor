@@ -1,14 +1,7 @@
 ﻿using MduiBlazor.Extensions;
 using MduiBlazor.Utilities;
 using Microsoft.AspNetCore.Components;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using System.Drawing;
-using System.Linq;
-using System.Security.Claims;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MduiBlazor
 {

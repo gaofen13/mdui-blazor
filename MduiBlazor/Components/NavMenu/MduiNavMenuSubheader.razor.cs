@@ -1,14 +1,9 @@
 ﻿using MduiBlazor.Utilities;
 using Microsoft.AspNetCore.Components;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MduiBlazor
 {
-    public partial class MduiNavMenuSubheader
+    public partial class MduiNavMenuSubheader : MduiComponentBase
     {
         protected string Classname =>
             new ClassBuilder()

@@ -2,7 +2,7 @@
 
 namespace MduiBlazor
 {
-    public partial class MduiButtonGroup
+    public partial class MduiButtonGroup : MduiComponentBase
     {
         protected string Classname =>
             new ClassBuilder("mdui-btn-group")

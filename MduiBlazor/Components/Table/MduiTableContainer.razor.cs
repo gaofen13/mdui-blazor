@@ -1,13 +1,8 @@
 ﻿using MduiBlazor.Utilities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MduiBlazor
 {
-    public partial class MduiTableContainer
+    public partial class MduiTableContainer : MduiComponentBase
     {
         protected string Classname =>
             new ClassBuilder("mdui-table-fluid")

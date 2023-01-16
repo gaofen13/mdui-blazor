@@ -1,15 +1,11 @@
-using MduiBlazor.Utilities;
 using Microsoft.AspNetCore.Components;
 
 namespace MduiBlazor
 {
-    public partial class MduiRadio<TValue>
+    public partial class MduiRadio<TValue> : MduiComponentBase
     {
         [CascadingParameter(Name = "RadioGroup")]
         private MduiRadioGroup<TValue>? RadioGroup { get; set; }
-
-        [Parameter]
-        public string? Id { get; set; }
 
         [Parameter]
         public string? Name { get; set; }

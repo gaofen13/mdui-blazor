@@ -17,6 +17,8 @@
   display: block;
   width: 100%;
   height: 36px;
+  padding-right: 15px;
+  padding-left: 15px;
 
   input[type="range"] {
     position: absolute;
@@ -101,7 +103,7 @@
 
     @color: 'color-@{colorName}-a200';
 
-    .mdui-theme-accent-@{colorName} when not (@colorName = null) {
+    .mdui-theme-accent-@{colorName} when not (@colorName =null) {
 
       .mdui-slider-fill {
 
@@ -116,6 +118,7 @@
       }
     }
   }
+
   .loop-accent-theme(length(@globalAccentColors));
 }
 
@@ -259,6 +262,7 @@
  * =============================================================================
  */
 .layout-theme({
+
   // 轨道
   .mdui-slider-track {
 

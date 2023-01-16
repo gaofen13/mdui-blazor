@@ -1,14 +1,9 @@
 ﻿using MduiBlazor.Utilities;
 using Microsoft.AspNetCore.Components;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MduiBlazor
 {
-    public partial class MduiTable
+    public partial class MduiTable : MduiComponentBase
     {
         protected string Classname =>
             new ClassBuilder("mdui-table")

@@ -1,10 +1,9 @@
-﻿using MduiBlazor.Extensions;
-using MduiBlazor.Utilities;
+﻿using MduiBlazor.Utilities;
 using Microsoft.AspNetCore.Components;
 
 namespace MduiBlazor
 {
-    public partial class MduiToolbar : IDisposable
+    public partial class MduiToolbar : MduiComponentBase, IDisposable
     {
         protected string Classname =>
             new ClassBuilder("mdui-toolbar")

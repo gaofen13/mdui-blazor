@@ -1,10 +1,9 @@
-using MduiBlazor.Utilities;
 using Microsoft.AspNetCore.Components;
 using System.Diagnostics.CodeAnalysis;
 
 namespace MduiBlazor
 {
-    public partial class MduiCheckbox
+    public partial class MduiCheckbox : MduiInputBase<bool>
     {
         [Parameter]
         public string? Label { get; set; }

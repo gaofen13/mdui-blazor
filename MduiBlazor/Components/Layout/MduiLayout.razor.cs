@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Components;
 
 namespace MduiBlazor
 {
-    public partial class MduiLayout
+    public partial class MduiLayout : MduiComponentBase
     {
         private bool _firstLoaded;
         private int _countOfAppbarWithToolbar;

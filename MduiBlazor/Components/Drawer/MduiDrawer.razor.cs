@@ -1,11 +1,10 @@
-﻿using MduiBlazor.Extensions;
-using MduiBlazor.Utilities;
+﻿using MduiBlazor.Utilities;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 
 namespace MduiBlazor
 {
-    public partial class MduiDrawer
+    public partial class MduiDrawer : MduiComponentBase
     {
         private bool _opened;
         private DrawerVariant _variant = DrawerVariant.Temporary;

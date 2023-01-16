@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Components;
 
 namespace MduiBlazor
 {
-    public partial class MduiAppbar : IDisposable
+    public partial class MduiAppbar : MduiComponentBase, IDisposable
     {
         private int _toolbarCount;
 

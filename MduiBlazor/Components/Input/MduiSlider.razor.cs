@@ -1,72 +1,67 @@
-﻿using MduiBlazor.Utilities;
+using MduiBlazor.Utilities;
 using Microsoft.AspNetCore.Components;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 
 namespace MduiBlazor
 {
-    public partial class MduiNumberField<TValue> : MduiInputBase<TValue>
+    public partial class MduiSlider<TValue> : MduiInputBase<TValue>
     {
-        private bool _isFocus;
-        private bool _notEmpty;
+        private double PercentWidth => (Convert.ToDouble(Value) - Convert.ToDouble(Min)) / (Convert.ToDouble(Max) - Convert.ToDouble(Min)) * 100;
 
         private string FieldClassname =>
-            new ClassBuilder()
-            .AddClass("mdui-textfield-focus", _isFocus)
-            .AddClass("mdui-textfield-disabled", Disabled)
-            .AddClass("mdui-textfield-not-empty", _notEmpty)
-            .AddClass("mdui-textfield-has-bottom", !string.IsNullOrWhiteSpace(ErrorText) || !string.IsNullOrWhiteSpace(HelperText))
-            .AddClass("mdui-textfield-floating-label", FloatingLabel)
-            .AddClass("mdui-typo", UseMduiTypo)
+            new ClassBuilder("mdui-slider")
+            .AddClass("mdui-slider-discrete", Discrete)
             .Build();
 
         protected string Classname =>
-        new ClassBuilder("mdui-textfield-input")
+        new ClassBuilder()
             .AddClass(FieldClass)
             .AddClass(Class)
             .Build();
 
-        [Parameter]
-        public string? Label { get; set; }
+        private string TrackStyle =>
+            new StyleBuilder()
+            .AddStyle("width", $"{100 - PercentWidth}%")
+            .Build();
+
+        private string FillStyle =>
+            new StyleBuilder()
+            .AddStyle("width", $"{PercentWidth}%")
+            .Build();
+
+        private string ThumbStyle =>
+            new StyleBuilder()
+            .AddStyle("left", $"{PercentWidth}%")
+            .Build();
 
         [Parameter]
-        public string? Icon { get; set; }
+        [EditorRequired]
+        public TValue? Step { get; set; }
 
         [Parameter]
-        public string? ErrorText { get; set; }
+        [EditorRequired]
+        public TValue? Min { get; set; }
 
         [Parameter]
-        public string? HelperText { get; set; }
+        [EditorRequired]
+        public TValue? Max { get; set; }
 
         /// <summary>
-        /// only shows when placeholder is empty
+        /// 不连续的
         /// </summary>
         [Parameter]
-        public bool FloatingLabel { get; set; }
-
-        [Parameter]
-        public bool AutoFocus { get; set; }
-
-        [Parameter]
-        public string? Placeholder { get; set; }
+        public bool Discrete { get; set; }
 
         [Parameter]
         public string ParsingErrorMessage { get; set; } = "The {0} field must be a number.";
-
-        protected override async Task OnAfterRenderAsync(bool firstRender)
-        {
-            if (firstRender && AutoFocus)
-            {
-                await Element.FocusAsync();
-            }
-            await base.OnAfterRenderAsync(firstRender);
-        }
 
         protected override bool TryParseValueFromString(string? value, [MaybeNullWhen(false)] out TValue result, [NotNullWhen(false)] out string? validationErrorMessage)
         {
             if (BindConverter.TryConvertTo<TValue>(value, CultureInfo.InvariantCulture, out result))
             {
                 validationErrorMessage = null;
+                InvokeAsync(StateHasChanged);
                 return true;
             }
             else
@@ -95,21 +90,6 @@ namespace MduiBlazor
                 decimal @decimal => BindConverter.FormatValue(@decimal, CultureInfo.InvariantCulture),
                 _ => throw new InvalidOperationException($"Unsupported type {value.GetType()}"),
             };
-        }
-
-        private void OnFocus()
-        {
-            _isFocus = true;
-        }
-
-        private void OnBlur()
-        {
-            _isFocus = false;
-        }
-
-        private void OnInput(ChangeEventArgs args)
-        {
-            _notEmpty = args.Value?.ToString()?.Length > 0;
         }
     }
 }

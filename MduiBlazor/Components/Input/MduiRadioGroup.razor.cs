@@ -5,7 +5,7 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace MduiBlazor
 {
-    public partial class MduiRadioGroup<TValue>
+    public partial class MduiRadioGroup<TValue> : MduiInputBase<TValue>
     {
         private MduiRadio<TValue>? _checkedRadio;
 
@@ -13,7 +13,7 @@ namespace MduiBlazor
 
         public string RadioName => Name ?? _defaultGroupName;
 
-        private string RadioGroupClass =>
+        private string Classname =>
           new ClassBuilder("mdui-radio-group")
             .AddClass($"mdui-group-vertical", Vertical)
             .AddClass(FieldClass)
