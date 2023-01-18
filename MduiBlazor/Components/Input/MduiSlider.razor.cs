@@ -11,7 +11,6 @@ namespace MduiBlazor
 
         private string FieldClassname =>
             new ClassBuilder("mdui-slider")
-            .AddClass("mdui-slider-discrete", Discrete)
             .Build();
 
         protected string Classname =>
@@ -46,12 +45,6 @@ namespace MduiBlazor
         [Parameter]
         [EditorRequired]
         public TValue? Max { get; set; }
-
-        /// <summary>
-        /// 不连续的
-        /// </summary>
-        [Parameter]
-        public bool Discrete { get; set; }
 
         [Parameter]
         public string ParsingErrorMessage { get; set; } = "The {0} field must be a number.";

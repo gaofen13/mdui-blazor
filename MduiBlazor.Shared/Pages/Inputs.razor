@@ -1,24 +1,24 @@
 ﻿@page "/inputs"
 @using Microsoft.AspNetCore.Components.Forms
 
-<EditForm Model="1">
-    <MduiTextField Placeholder="请输入文本" @bind-Value="@value" />
-    <MduiTextField Label="文本框" @bind-Value="@value" />
-    <MduiTextField Label="文本框" FloatingLabel @bind-Value="@value" />
-    <MduiTextField AutoFocus Label="文本框" FloatingLabel Placeholder="请输入文本" @bind-Value="@value" />
-    <MduiNumberField Label="数字框" Placeholder="请输入或选择数字" @bind-Value="@numValue" />
-    <MduiTextField Label="文本框" HelperText="请输入文本" MaxLength="20" Placeholder="请输入文本" @bind-Value="@value" />
-    <MduiTextField Label="文本框" HelperText="请输入文本" Rows="5" FloatingLabel MaxLength="50" @bind-Value="@value" />
+<EditForm Model="@info">
+    <MduiTextField Placeholder="请输入文本" @bind-Value="@info.Text" />
+    <MduiTextField Label="文本框" @bind-Value="@info.Text" />
+    <MduiTextField Label="文本框" FloatingLabel @bind-Value="@info.Text" />
+    <MduiTextField Label="文本框" FloatingLabel Placeholder="请输入文本" @bind-Value="@info.Text" />
+    <MduiNumberField Label="数字框" Placeholder="请输入或选择数字" @bind-Value="@info.Number1" />
+    <MduiTextField Label="文本框" HelperText="请输入文本" MaxLength="20" Placeholder="请输入文本" @bind-Value="@info.Text" />
+    <MduiTextField Label="文本框" HelperText="请输入文本" Rows="5" FloatingLabel MaxLength="50" @bind-Value="@info.Text" />
     <MduiDivider Class="mdui-m-y-4" />
     <MduiField Label="单项选择">
-        <MduiSelect @bind-Value="@value">
+        <MduiSelect @bind-Value="@info.Select1">
             <option>1</option>
             <option>2</option>
             <option>3</option>
         </MduiSelect>
     </MduiField>
     <MduiField Label="多项选择">
-        <MduiMultiSelect @bind-Value="@values">
+        <MduiMultiSelect @bind-Value="@info.Select2">
             <option>1</option>
             <option>2</option>
             <option>3</option>
@@ -27,29 +27,52 @@
 </EditForm>
 
 <MduiField Label="Radio">
-    <MduiRadioGroup @bind-Value="@value">
-        <MduiRadio Value="@("1")">1</MduiRadio>
-        <MduiRadio Value="@("2")">2</MduiRadio>
-        <MduiRadio Value="@("3")">3</MduiRadio>
+    <MduiRadioGroup @bind-Value="@info.Radio">
+        <MduiRadio Value="1">S1</MduiRadio>
+        <MduiRadio Value="2">S2</MduiRadio>
+        <MduiRadio Value="3">S3</MduiRadio>
     </MduiRadioGroup>
 </MduiField>
 
-<EditForm Model="2">
+<EditForm Model="@info">
     <MduiField Label="Checkbox">
-        <MduiCheckbox Label="勾选" @bind-Value="@checkboxValue" />
+        <MduiCheckbox Label="勾选" @bind-Value="@info.checkboxValue" />
     </MduiField>
     <MduiField Label="Switch">
-        <MduiSwitch @bind-Value="@checkboxValue" />
+        <MduiSwitch @bind-Value="@info.checkboxValue" />
     </MduiField>
     <MduiField Label="滑块">
-        <MduiSlider @bind-Value="@numValue" Discrete Step="1" Min="0" Max="100" />
+        <MduiSlider @bind-Value="@info.Number1" Discrete Step="1" Min="0" Max="100" />
     </MduiField>
 </EditForm>
 
 @code {
-    string? value = "2";
-    string[] values = { "1", "2" };
-    int numValue = 2;
+    private InputInfo info = new InputInfo();
+    private void ValidSubmit(EditContext content)
+    {
 
-    bool checkboxValue = true;
+    }
+    class InputInfo
+    {
+        [System.ComponentModel.DataAnnotations.Required]
+        public SubInfo? Radio { get; set; } = new SubInfo { Name = "S1",Value=1 };
+        public int Number1 { get; set; }
+        public double Number2 { get; set; }
+
+        [System.ComponentModel.DataAnnotations.Required(ErrorMessage = "Text是必须的")]
+        public string? Text { get; set; }
+
+        [System.ComponentModel.DataAnnotations.Required]
+        public string Select1 { get; set; } = "";
+        public string[]? Select2 { get; set; } = new string[] { "s1", "s2" };
+        public int? select3 = 2;
+
+        public bool checkboxValue = true;
+    }
+
+    class SubInfo
+    {
+        public int Value { get; set; }
+        public string? Name { get; set; }
+    }
 }

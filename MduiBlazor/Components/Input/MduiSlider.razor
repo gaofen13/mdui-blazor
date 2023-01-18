@@ -6,8 +6,8 @@
     <input @ref="@Element" class="@Classname" style="@Style" type="range" step="@Step" min="@Min" max="@Max"
         disabled="@Disabled" @attributes="@AdditionalAttributes"
         value="@BindConverter.FormatValue(CurrentValueAsString)"
-        @onchange="@(EventCallback.Factory.CreateBinder<string?>(this, __value => CurrentValueAsString = __value, CurrentValueAsString))" />
-    <div class="mdui-slider-track" style="@TrackStyle"></div>
+        @oninput="@(EventCallback.Factory.CreateBinder<string?>(this, __value => CurrentValueAsString = __value, CurrentValueAsString))" />
+    <div class="mdui-slider-track" style="width:100%;"></div>
     <div class="mdui-slider-fill" style="@FillStyle"></div>
     <div class="mdui-slider-thumb" style="@ThumbStyle"></div>
 </label>

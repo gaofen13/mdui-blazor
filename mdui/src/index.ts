@@ -10,7 +10,6 @@ import './components/collapse/customAttr';
 import './components/panel';
 import './components/panel/customAttr';
 import './components/ripple';
-import './components/slider';
 import './components/tab';
 import './components/tab/customAttr';
 import './components/tooltip';
