@@ -9687,8 +9687,7 @@ th.mdui-table-cell-checkbox .mdui-checkbox {
 }
 .mdui-slider-discrete .mdui-slider-thumb span {
   position: absolute;
-  top: 9px;
-  left: -1px;
+  top: 5px;
   width: 100%;
   color: #fff;
   font-size: 12px;
