@@ -42,6 +42,7 @@
         <MduiSwitch @bind-Value="@info.checkboxValue" />
     </MduiField>
     <MduiField Label="滑块">
+        <MduiSlider @bind-Value="@info.Number1" Step="1" Min="0" Max="100" />
         <MduiSlider @bind-Value="@info.Number1" Discrete Step="1" Min="0" Max="100" />
     </MduiField>
 </EditForm>
@@ -55,7 +56,7 @@
     class InputInfo
     {
         [System.ComponentModel.DataAnnotations.Required]
-        public SubInfo? Radio { get; set; } = new SubInfo { Name = "S1",Value=1 };
+        public SubInfo? Radio { get; set; } = new SubInfo { Name = "S1", Value = 1 };
         public int Number1 { get; set; }
         public double Number2 { get; set; }
 

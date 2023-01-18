@@ -7,21 +7,22 @@ namespace MduiBlazor
 {
     public partial class MduiSlider<TValue> : MduiInputBase<TValue>
     {
+        private bool _focus;
+
         private double PercentWidth => (Convert.ToDouble(Value) - Convert.ToDouble(Min)) / (Convert.ToDouble(Max) - Convert.ToDouble(Min)) * 100;
 
         private string FieldClassname =>
             new ClassBuilder("mdui-slider")
+            .AddClass("mdui-slider-focus", _focus)
+            .AddClass("mdui-slider-disabled", Disabled)
+            .AddClass("mdui-slider-discrete", Discrete)
+            .AddClass("mdui-slider-zero", Convert.ToInt32(Value) == 0)
             .Build();
 
         protected string Classname =>
         new ClassBuilder()
             .AddClass(FieldClass)
             .AddClass(Class)
-            .Build();
-
-        private string TrackStyle =>
-            new StyleBuilder()
-            .AddStyle("width", $"{100 - PercentWidth}%")
             .Build();
 
         private string FillStyle =>
@@ -45,6 +46,9 @@ namespace MduiBlazor
         [Parameter]
         [EditorRequired]
         public TValue? Max { get; set; }
+
+        [Parameter]
+        public bool Discrete { get; set; }
 
         [Parameter]
         public string ParsingErrorMessage { get; set; } = "The {0} field must be a number.";

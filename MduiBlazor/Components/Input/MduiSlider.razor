@@ -2,12 +2,17 @@
 @inherits MduiInputBase<TValue>
 @typeparam TValue
 
-<label class="@FieldClassname">
+<label class="@FieldClassname" @onmousedown="_=>_focus=true" @onmouseup="_=>_focus=false">
     <input @ref="@Element" class="@Classname" style="@Style" type="range" step="@Step" min="@Min" max="@Max"
         disabled="@Disabled" @attributes="@AdditionalAttributes"
         value="@BindConverter.FormatValue(CurrentValueAsString)"
         @oninput="@(EventCallback.Factory.CreateBinder<string?>(this, __value => CurrentValueAsString = __value, CurrentValueAsString))" />
     <div class="mdui-slider-track" style="width:100%;"></div>
     <div class="mdui-slider-fill" style="@FillStyle"></div>
-    <div class="mdui-slider-thumb" style="@ThumbStyle"></div>
+    <div class="mdui-slider-thumb" style="@ThumbStyle">
+        @if (Discrete)
+        {
+            <span>@Value</span>
+        }
+    </div>
 </label>
