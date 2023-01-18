@@ -2,7 +2,7 @@
 @inherits MduiInputBase<TValue>
 @typeparam TValue
 
-<label class="@FieldClassname" @onmousedown="_=>_focus=true" @onmouseup="_=>_focus=false">
+<label class="@FieldClassname" @onfocus="_=>_focus=true" @onblur="_=>_focus=false">
     <input @ref="@Element" class="@Classname" style="@Style" type="range" step="@Step" min="@Min" max="@Max"
         disabled="@Disabled" @attributes="@AdditionalAttributes"
         value="@BindConverter.FormatValue(CurrentValueAsString)"

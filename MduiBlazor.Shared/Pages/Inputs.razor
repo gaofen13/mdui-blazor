@@ -26,15 +26,14 @@
     </MduiField>
 </EditForm>
 
-<MduiField Label="Radio">
-    <MduiRadioGroup @bind-Value="@info.Radio">
-        <MduiRadio Value="1">S1</MduiRadio>
-        <MduiRadio Value="2">S2</MduiRadio>
-        <MduiRadio Value="3">S3</MduiRadio>
-    </MduiRadioGroup>
-</MduiField>
-
 <EditForm Model="@info">
+    <MduiField Label="Radio">
+        <MduiRadioGroup @bind-Value="@info.Select1">
+            <MduiRadio Value="1">S1</MduiRadio>
+            <MduiRadio Value="2">S2</MduiRadio>
+            <MduiRadio Value="3">S3</MduiRadio>
+        </MduiRadioGroup>
+    </MduiField>
     <MduiField Label="Checkbox">
         <MduiCheckbox Label="勾选" @bind-Value="@info.checkboxValue" />
     </MduiField>
