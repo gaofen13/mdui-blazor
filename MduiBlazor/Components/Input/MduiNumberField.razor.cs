@@ -1,33 +1,42 @@
 ﻿using MduiBlazor.Utilities;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Forms;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
+using System.Linq.Expressions;
 
 namespace MduiBlazor
 {
     public partial class MduiNumberField<TValue> : MduiInputBase<TValue>
     {
+        private MduiField? _field;
         private bool _isFocus;
         private bool _notEmpty;
 
         private string FieldClassname =>
-            new ClassBuilder()
+            new ClassBuilder("mdui-textfield")
             .AddClass("mdui-textfield-focus", _isFocus)
             .AddClass("mdui-textfield-disabled", Disabled)
             .AddClass("mdui-textfield-not-empty", _notEmpty)
-            .AddClass("mdui-textfield-has-bottom", !string.IsNullOrWhiteSpace(ErrorText) || !string.IsNullOrWhiteSpace(HelperText))
+            .AddClass("mdui-textfield-has-bottom", _field?.Invalid == true || !string.IsNullOrWhiteSpace(HelperText))
             .AddClass("mdui-textfield-floating-label", FloatingLabel)
             .AddClass("mdui-typo", UseMduiTypo)
+            .AddClass(Class)
             .Build();
 
         protected string Classname =>
         new ClassBuilder("mdui-textfield-input")
             .AddClass(FieldClass)
-            .AddClass(Class)
             .Build();
 
         [Parameter]
+        public Expression<Func<object>>? For { get; set; }
+
+        [Parameter]
         public string? Label { get; set; }
+
+        [Parameter]
+        public bool LabelRequired { get; set; }
 
         [Parameter]
         public string? Icon { get; set; }
@@ -52,6 +61,23 @@ namespace MduiBlazor
 
         [Parameter]
         public string ParsingErrorMessage { get; set; } = "The {0} field must be a number.";
+
+        public override Task SetParametersAsync(ParameterView parameters)
+        {
+            base.SetParametersAsync(parameters);
+
+            var hasAriaInvalidAttribute = AdditionalAttributes != null && AdditionalAttributes.ContainsKey("aria-invalid");
+            if (hasAriaInvalidAttribute)
+            {
+                _field?.SetInvalid();
+            }
+            else
+            {
+                _field?.RemoveInvalid();
+            }
+
+            return Task.CompletedTask;
+        }
 
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {

@@ -2,8 +2,9 @@
 @using Microsoft.AspNetCore.Components.Forms
 
 <EditForm Model="@info">
-    <MduiTextField Placeholder="请输入文本" @bind-Value="@info.Text" />
-    <MduiTextField Label="文本框" @bind-Value="@info.Text" />
+    <DataAnnotationsValidator />
+    <MduiTextField For="()=>info.Text" Placeholder="请输入文本" @bind-Value="@info.Text" />
+    <MduiTextField ErrorText="错误测试" Label="文本框" @bind-Value="@info.Text" />
     <MduiTextField Label="文本框" FloatingLabel @bind-Value="@info.Text" />
     <MduiTextField Label="文本框" FloatingLabel Placeholder="请输入文本" @bind-Value="@info.Text" />
     <MduiNumberField Label="数字框" Placeholder="请输入或选择数字" @bind-Value="@info.Number1" />

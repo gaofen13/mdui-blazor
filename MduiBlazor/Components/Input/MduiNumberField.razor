@@ -2,7 +2,8 @@
 @inherits MduiInputBase<TValue>
 @typeparam TValue
 
-<MduiField Class="@FieldClassname" Label="@Label" Icon="@Icon" HelperText="@HelperText" ErrorText="@ErrorText">
+<MduiField @ref="@_field" Class="@FieldClassname" For="@For" Label="@Label" Icon="@Icon" HelperText="@HelperText"
+       ErrorText="@ErrorText">
        <input @ref="@Element" class="@Classname" style="@Style" type="number" inputmode="numeric" required="@Required"
               placeholder="@Placeholder" disabled="@Disabled" readonly="@Readonly" autofocus="@AutoFocus"
               @attributes="@AdditionalAttributes" value="@BindConverter.FormatValue(CurrentValueAsString)"

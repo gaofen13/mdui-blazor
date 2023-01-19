@@ -16,6 +16,9 @@ namespace MduiBlazor
         [CascadingParameter]
         private EditContext? CascadedEditContext { get; set; }
 
+        [CascadingParameter(Name = "Field")]
+        private MduiField? Field { get; set; }
+
         /// <summary>
         /// When true, the control will be immutable by user interaction. <see href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/readonly">readonly</see> HTML attribute for more information.
         /// </summary>
@@ -194,7 +197,7 @@ namespace MduiBlazor
                 {
                     return Task.CompletedTask;
                     //throw new InvalidOperationException($"{GetType()} requires a value for the 'ValueExpression' " +
-                      //  $"parameter. Normally this is provided automatically when using 'bind-Value'.");
+                    //  $"parameter. Normally this is provided automatically when using 'bind-Value'.");
                 }
 
                 FieldIdentifier = FieldIdentifier.Create(ValueExpression);
@@ -263,6 +266,7 @@ namespace MduiBlazor
                 // To make the `Input` components accessible by default
                 // we will automatically render the `aria-invalid` attribute when the validation fails
                 additionalAttributes["aria-invalid"] = true;
+                Field?.SetInvalid();
             }
             else if (hasAriaInvalidAttribute)
             {
@@ -281,6 +285,7 @@ namespace MduiBlazor
                     }
 
                     additionalAttributes.Remove("aria-invalid");
+                    Field?.RemoveInvalid();
                 }
             }
         }

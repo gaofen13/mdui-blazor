@@ -1,7 +1,8 @@
 ﻿@namespace MduiBlazor
 @inherits MduiInputBase<string>
 
-<MduiField Class="@FieldClassname" Label="@Label" Icon="@Icon" HelperText="@HelperText" ErrorText="@ErrorText">
+<MduiField @ref="@_field" Class="@FieldClassname" For="@For" Label="@Label" Icon="@Icon" HelperText="@HelperText"
+    ErrorText="@ErrorText">
     @if (Rows > 1)
     {
         <textarea @ref="@Element" class="@Classname" style="@Style" rows="@Rows" required="@Required" pattern="@Pattern"

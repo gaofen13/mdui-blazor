@@ -1,32 +1,41 @@
 ﻿using MduiBlazor.Utilities;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Forms;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq.Expressions;
 
 namespace MduiBlazor
 {
     public partial class MduiTextField : MduiInputBase<string?>
     {
+        private MduiField? _field;
         private int _wordNumber;
         private bool _isFocus;
 
         private string FieldClassname =>
-            new ClassBuilder()
+            new ClassBuilder("mdui-textfield")
             .AddClass("mdui-textfield-focus", _isFocus)
             .AddClass("mdui-textfield-disabled", Disabled)
             .AddClass("mdui-textfield-not-empty", !string.IsNullOrEmpty(Value))
-            .AddClass("mdui-textfield-has-bottom", !string.IsNullOrWhiteSpace(ErrorText) || !string.IsNullOrWhiteSpace(HelperText) || MaxLength > 0)
+            .AddClass("mdui-textfield-has-bottom", _field?.Invalid == true || !string.IsNullOrWhiteSpace(HelperText) || MaxLength > 0)
             .AddClass("mdui-textfield-floating-label", FloatingLabel)
             .AddClass("mdui-typo", UseMduiTypo)
+            .AddClass(Class)
             .Build();
 
         protected string Classname =>
         new ClassBuilder("mdui-textfield-input")
             .AddClass(FieldClass)
-            .AddClass(Class)
             .Build();
 
         [Parameter]
+        public Expression<Func<object>>? For { get; set; }
+
+        [Parameter]
         public string? Label { get; set; }
+
+        [Parameter]
+        public bool LabelRequired { get; set; }
 
         [Parameter]
         public string? Icon { get; set; }
@@ -63,6 +72,23 @@ namespace MduiBlazor
 
         [Parameter]
         public bool Trim { get; set; }
+
+        public override Task SetParametersAsync(ParameterView parameters)
+        {
+            base.SetParametersAsync(parameters);
+
+            var hasAriaInvalidAttribute = AdditionalAttributes != null && AdditionalAttributes.ContainsKey("aria-invalid");
+            if (hasAriaInvalidAttribute)
+            {
+                _field?.SetInvalid();
+            }
+            else
+            {
+                _field?.RemoveInvalid();
+            }
+
+            return Task.CompletedTask;
+        }
 
         protected override bool TryParseValueFromString(string? value, out string? result, [NotNullWhen(false)] out string? validationErrorMessage)
         {
