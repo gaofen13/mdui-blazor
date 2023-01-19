@@ -8686,10 +8686,10 @@ th.mdui-table-cell-checkbox .mdui-checkbox {
   position: absolute;
   top: 0;
   left: 0;
-  width: 14px;
-  height: 14px;
+  width: 15px;
+  height: 15px;
   background-color: #FF4081;
-  border-radius: 14px;
+  border-radius: 15px;
   -webkit-transform: scale(0);
           transform: scale(0);
   opacity: 0;
@@ -9639,10 +9639,10 @@ th.mdui-table-cell-checkbox .mdui-checkbox {
  * =============================================================================
  */
 /* 鼠标按下状态 */
-.mdui-slider-focus .mdui-slider-track::before {
+.mdui-slider input[type="range"]:focus ~ .mdui-slider-track::before {
   background-color: #9e9e9e;
 }
-.mdui-slider-focus .mdui-slider-thumb {
+.mdui-slider input[type="range"]:focus ~ .mdui-slider-thumb {
   -webkit-transform: translate(-50%) scale(1.6);
           transform: translate(-50%) scale(1.6);
 }
@@ -9652,7 +9652,7 @@ th.mdui-table-cell-checkbox .mdui-checkbox {
   border-color: #bdbdbd;
 }
 /* 滑块值为 0，且鼠标按下 */
-.mdui-slider-zero.mdui-slider-focus .mdui-slider-thumb {
+.mdui-slider-zero input[type="range"]:focus ~ .mdui-slider-thumb {
   border-color: #9e9e9e;
 }
 /* 禁用状态 */
@@ -9698,18 +9698,18 @@ th.mdui-table-cell-checkbox .mdui-checkbox {
   -webkit-transition: opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   transition: opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.mdui-slider-discrete.mdui-slider-focus .mdui-slider-thumb {
+.mdui-slider-discrete.mdui-slider input[type="range"]:focus ~ .mdui-slider-thumb {
   border-radius: 15px 15px 15px 0;
   -webkit-transform: rotate(-45deg) scale(1) translate(22px, -22px);
           transform: rotate(-45deg) scale(1) translate(22px, -22px);
 }
-.mdui-slider-discrete.mdui-slider-focus .mdui-slider-thumb span {
+.mdui-slider-discrete.mdui-slider input[type="range"]:focus ~ .mdui-slider-thumb span {
   opacity: 1;
 }
 .mdui-slider-discrete.mdui-slider-zero .mdui-slider-thumb {
   background-color: #323232;
 }
-.mdui-slider-discrete.mdui-slider-zero.mdui-slider-focus .mdui-slider-thumb {
+.mdui-slider-discrete.mdui-slider-zero input[type="range"]:focus ~ .mdui-slider-thumb {
   background-color: #bdbdbd;
 }
 .mdui-slider-discrete.mdui-slider-disabled .mdui-slider-thumb {
@@ -9727,14 +9727,14 @@ th.mdui-table-cell-checkbox .mdui-checkbox {
 .mdui-theme-layout-dark .mdui-slider-track::before {
   background-color: #4c4c4c;
 }
-.mdui-theme-layout-dark .mdui-slider-focus .mdui-slider-track::before {
+.mdui-theme-layout-dark .mdui-slider input[type="range"]:focus ~ .mdui-slider-track::before {
   background-color: #4c4c4c;
 }
 .mdui-theme-layout-dark .mdui-slider-zero .mdui-slider-thumb {
   background-color: #303030;
   border-color: #4c4c4c;
 }
-.mdui-theme-layout-dark .mdui-slider-zero.mdui-slider-focus .mdui-slider-thumb {
+.mdui-theme-layout-dark .mdui-slider-zero input[type="range"]:focus ~ .mdui-slider-thumb {
   border-color: #4c4c4c;
 }
 .mdui-theme-layout-dark .mdui-slider-disabled .mdui-slider-track::before {
@@ -9749,7 +9749,7 @@ th.mdui-table-cell-checkbox .mdui-checkbox {
 .mdui-theme-layout-dark .mdui-slider-discrete.mdui-slider-zero .mdui-slider-thumb {
   background-color: #fefefe;
 }
-.mdui-theme-layout-dark .mdui-slider-discrete.mdui-slider-zero.mdui-slider-focus .mdui-slider-thumb {
+.mdui-theme-layout-dark .mdui-slider-discrete.mdui-slider-zero input[type="range"]:focus ~ .mdui-slider-thumb {
   background-color: #5c5c5c;
 }
 .mdui-theme-layout-dark .mdui-slider-discrete.mdui-slider-zero.mdui-slider-disabled .mdui-slider-thumb {
@@ -9759,14 +9759,14 @@ th.mdui-table-cell-checkbox .mdui-checkbox {
   .mdui-theme-layout-auto .mdui-slider-track::before {
     background-color: #4c4c4c;
   }
-  .mdui-theme-layout-auto .mdui-slider-focus .mdui-slider-track::before {
+  .mdui-theme-layout-auto .mdui-slider input[type="range"]:focus ~ .mdui-slider-track::before {
     background-color: #4c4c4c;
   }
   .mdui-theme-layout-auto .mdui-slider-zero .mdui-slider-thumb {
     background-color: #303030;
     border-color: #4c4c4c;
   }
-  .mdui-theme-layout-auto .mdui-slider-zero.mdui-slider-focus .mdui-slider-thumb {
+  .mdui-theme-layout-auto .mdui-slider-zero input[type="range"]:focus ~ .mdui-slider-thumb {
     border-color: #4c4c4c;
   }
   .mdui-theme-layout-auto .mdui-slider-disabled .mdui-slider-track::before {
@@ -9781,7 +9781,7 @@ th.mdui-table-cell-checkbox .mdui-checkbox {
   .mdui-theme-layout-auto .mdui-slider-discrete.mdui-slider-zero .mdui-slider-thumb {
     background-color: #fefefe;
   }
-  .mdui-theme-layout-auto .mdui-slider-discrete.mdui-slider-zero.mdui-slider-focus .mdui-slider-thumb {
+  .mdui-theme-layout-auto .mdui-slider-discrete.mdui-slider-zero input[type="range"]:focus ~ .mdui-slider-thumb {
     background-color: #5c5c5c;
   }
   .mdui-theme-layout-auto .mdui-slider-discrete.mdui-slider-zero.mdui-slider-disabled .mdui-slider-thumb {
