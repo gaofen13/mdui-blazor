@@ -6,7 +6,7 @@ namespace MduiBlazor
 {
     public partial class MduiField : MduiComponentBase
     {
-        public bool Invalid { get; private set; }
+        private bool Invalid { get; set; }
 
         protected string Classname =>
           new ClassBuilder("mdui-textfield")
@@ -37,13 +37,11 @@ namespace MduiBlazor
         public void SetInvalid()
         {
             Invalid = true;
-            StateHasChanged();
         }
 
         public void RemoveInvalid()
         {
             Invalid = false;
-            StateHasChanged();
         }
     }
 }

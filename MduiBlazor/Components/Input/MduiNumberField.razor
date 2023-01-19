@@ -3,7 +3,7 @@
 @typeparam TValue
 
 <MduiField @ref="@_field" Class="@FieldClassname" For="@For" Label="@Label" Icon="@Icon" HelperText="@HelperText"
-       ErrorText="@ErrorText">
+       ErrorText="@ErrorText" UseMduiTypo="@UseMduiTypo">
        <input @ref="@Element" class="@Classname" style="@Style" type="number" inputmode="numeric" required="@Required"
               placeholder="@Placeholder" disabled="@Disabled" readonly="@Readonly" autofocus="@AutoFocus"
               @attributes="@AdditionalAttributes" value="@BindConverter.FormatValue(CurrentValueAsString)"

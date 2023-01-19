@@ -2,7 +2,7 @@
 @inherits MduiInputBase<string>
 
 <MduiField @ref="@_field" Class="@FieldClassname" For="@For" Label="@Label" Icon="@Icon" HelperText="@HelperText"
-    ErrorText="@ErrorText">
+    ErrorText="@ErrorText" UseMduiTypo="@UseMduiTypo">
     @if (Rows > 1)
     {
         <textarea @ref="@Element" class="@Classname" style="@Style" rows="@Rows" required="@Required" pattern="@Pattern"

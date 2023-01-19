@@ -14,13 +14,11 @@ namespace MduiBlazor
         private bool _notEmpty;
 
         private string FieldClassname =>
-            new ClassBuilder("mdui-textfield")
+            new ClassBuilder()
             .AddClass("mdui-textfield-focus", _isFocus)
             .AddClass("mdui-textfield-disabled", Disabled)
             .AddClass("mdui-textfield-not-empty", _notEmpty)
-            .AddClass("mdui-textfield-has-bottom", _field?.Invalid == true || !string.IsNullOrWhiteSpace(HelperText))
             .AddClass("mdui-textfield-floating-label", FloatingLabel)
-            .AddClass("mdui-typo", UseMduiTypo)
             .AddClass(Class)
             .Build();
 
