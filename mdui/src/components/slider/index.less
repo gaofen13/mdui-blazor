@@ -129,14 +129,14 @@
  */
 
 /* 鼠标按下状态 */
-.mdui-slider-focus {
-  .mdui-slider-track {
+.mdui-slider {
+  input[type="range"]:focus~.mdui-slider-track {
     &::before {
       background-color: @slider-light-color-focus;
     }
   }
 
-  .mdui-slider-thumb {
+  input[type="range"]:focus~.mdui-slider-thumb {
     transform: translate(-50%) scale(1.6);
   }
 }
@@ -150,8 +150,8 @@
 }
 
 /* 滑块值为 0，且鼠标按下 */
-.mdui-slider-zero.mdui-slider-focus {
-  .mdui-slider-thumb {
+.mdui-slider-zero {
+  input[type="range"]:focus~.mdui-slider-thumb {
     border-color: @slider-light-color-focus;
   }
 }
@@ -213,8 +213,8 @@
   }
 
   // 鼠标按下状态
-  &.mdui-slider-focus {
-    .mdui-slider-thumb {
+  &.mdui-slider {
+    input[type="range"]:focus~.mdui-slider-thumb {
       border-radius: 15px 15px 15px 0;
       transform: rotate(-45deg) scale(1) translate(22px, -22px);
 
@@ -232,8 +232,8 @@
   }
 
   // 滑块值为 0，且鼠标按下
-  &.mdui-slider-zero.mdui-slider-focus {
-    .mdui-slider-thumb {
+  &.mdui-slider-zero {
+    input[type="range"]:focus~.mdui-slider-thumb {
       background-color: @slider-light-color;
     }
   }
@@ -269,8 +269,8 @@
   }
 
   // 鼠标按下状态
-  .mdui-slider-focus {
-    .mdui-slider-track {
+  .mdui-slider {
+    input[type="range"]:focus~.mdui-slider-track {
 
       &::before {
         background-color: @slider-dark-color-focus;
@@ -287,8 +287,8 @@
   }
 
   // 滑块值为 0，且鼠标按下
-  .mdui-slider-zero.mdui-slider-focus {
-    .mdui-slider-thumb {
+  .mdui-slider-zero {
+    input[type="range"]:focus~.mdui-slider-thumb {
       border-color: @slider-dark-color-focus;
     }
   }
@@ -325,8 +325,8 @@
     }
 
     // 滑块值为 0，且鼠标按下
-    &.mdui-slider-zero.mdui-slider-focus {
-      .mdui-slider-thumb {
+    &.mdui-slider-zero {
+      input[type="range"]:focus~.mdui-slider-thumb {
         background-color: #5c5c5c;
       }
     }

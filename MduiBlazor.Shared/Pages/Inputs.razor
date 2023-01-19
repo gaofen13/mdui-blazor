@@ -28,7 +28,7 @@
 
 <EditForm Model="@info">
     <MduiField Label="Radio">
-        <MduiRadioGroup @bind-Value="@info.Select1">
+        <MduiRadioGroup @bind-Value="@info.select3">
             <MduiRadio Value="1">S1</MduiRadio>
             <MduiRadio Value="2">S2</MduiRadio>
             <MduiRadio Value="3">S3</MduiRadio>
@@ -42,7 +42,7 @@
     </MduiField>
     <MduiField Label="滑块">
         <MduiSlider @bind-Value="@info.Number1" Step="1" Min="0" Max="100" />
-        <MduiSlider @bind-Value="@info.Number1" Discrete Step="1" Min="0" Max="100" />
+        <MduiSlider @bind-Value="@info.Number2" Discrete Step="0.1" Min="0" Max="100" />
     </MduiField>
 </EditForm>
 
@@ -65,7 +65,7 @@
         [System.ComponentModel.DataAnnotations.Required]
         public string Select1 { get; set; } = "";
         public string[]? Select2 { get; set; } = new string[] { "s1", "s2" };
-        public int? select3 = 2;
+        public int select3 = 2;
 
         public bool checkboxValue = true;
     }

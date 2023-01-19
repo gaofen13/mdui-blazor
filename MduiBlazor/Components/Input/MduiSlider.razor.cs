@@ -7,16 +7,13 @@ namespace MduiBlazor
 {
     public partial class MduiSlider<TValue> : MduiInputBase<TValue>
     {
-        private bool _focus;
-
         private double PercentWidth => (Convert.ToDouble(Value) - Convert.ToDouble(Min)) / (Convert.ToDouble(Max) - Convert.ToDouble(Min)) * 100;
 
         private string FieldClassname =>
             new ClassBuilder("mdui-slider")
-            .AddClass("mdui-slider-focus", _focus)
             .AddClass("mdui-slider-disabled", Disabled)
             .AddClass("mdui-slider-discrete", Discrete)
-            .AddClass("mdui-slider-zero", Convert.ToInt32(Value) == 0)
+            .AddClass("mdui-slider-zero", Convert.ToDouble(Value) == 0)
             .Build();
 
         protected string Classname =>
