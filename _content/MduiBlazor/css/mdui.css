@@ -11569,11 +11569,6 @@ select.mdui-select[multiple] option:last-child {
 .mdui-list-item:hover {
   background-color: rgba(0, 0, 0, 0.08);
 }
-.mdui-list-item::after {
-  height: 48px;
-  visibility: hidden;
-  content: ' ';
-}
 /* 列表项图标 */
 .mdui-list-item-icon {
   width: 24px;
