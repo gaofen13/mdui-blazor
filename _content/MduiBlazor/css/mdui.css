@@ -7269,119 +7269,120 @@ th.mdui-table-cell-checkbox .mdui-checkbox {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  /* Ripple */
 }
-/* Ripple */
-.mdui-ripple-wave {
+.mdui-ripple::after {
   position: absolute !important;
   top: 0;
   left: 0;
-  z-index: 1;
-  margin: 0;
-  padding: 0;
-  font-size: 0;
-  background-color: rgba(0, 0, 0, 0.1);
-  border-radius: 50%;
-  -webkit-transform: translate3d(0, 0, 0) scale(0);
-          transform: translate3d(0, 0, 0) scale(0);
-  -webkit-transition-duration: 1400ms;
-          transition-duration: 1400ms;
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(circle, #000 10%, transparent 10.01%);
+  background-repeat: no-repeat;
+  background-position: 50%;
+  -webkit-transform: scale(10, 10);
+          transform: scale(10, 10);
+  opacity: 0;
+  -webkit-transition: opacity 1s, -webkit-transform 0.3s;
+  transition: opacity 1s, -webkit-transform 0.3s;
+  transition: transform 0.3s, opacity 1s;
+  transition: transform 0.3s, opacity 1s, -webkit-transform 0.3s;
+  content: "";
   pointer-events: none;
 }
+.mdui-ripple:active::after {
+  -webkit-transform: scale(0, 0);
+          transform: scale(0, 0);
+  opacity: 0.35;
+  -webkit-transition: 0s;
+  transition: 0s;
+}
 /* 有背景色的默认使用白色涟漪 */
-.mdui-ripple[class*="mdui-color-"] .mdui-ripple-wave {
-  background-color: rgba(255, 255, 255, 0.3);
+.mdui-ripple[class*="mdui-color-"]::after {
+  background-image: radial-gradient(circle, #fff 10%, transparent 10.01%);
 }
 /* 白色涟漪 */
-.mdui-ripple-white .mdui-ripple-wave {
-  background-color: rgba(255, 255, 255, 0.3) !important;
+.mdui-ripple-white.mdui-ripple::after {
+  background-image: radial-gradient(circle, #fff 10%, transparent 10.01%) !important;
 }
 /* 黑色涟漪 */
-.mdui-ripple-black .mdui-ripple-wave {
-  background-color: rgba(0, 0, 0, 0.1) !important;
-}
-.mdui-ripple-wave-fill {
-  opacity: 0.35;
-  -webkit-transition-duration: 300ms;
-          transition-duration: 300ms;
-}
-.mdui-ripple-wave-out {
-  opacity: 0;
-  -webkit-transition-duration: 600ms;
-          transition-duration: 600ms;
+.mdui-ripple-black.mdui-ripple::after {
+  background-image: radial-gradient(circle, #000 10%, transparent 10.01%) !important;
 }
 /**
  * =============================================================================
  * ************   Ripple 颜色   ************
  * =============================================================================
  */
-.mdui-ripple-amber .mdui-ripple-wave {
-  background-color: rgba(255, 193, 7, 0.3) !important;
+.mdui-ripple-amber.mdui-ripple::after {
+  background-image: radial-gradient(circle, #ffc107 10%, transparent 10.01%) !important;
 }
-.mdui-ripple-blue .mdui-ripple-wave {
-  background-color: rgba(33, 150, 243, 0.3) !important;
+.mdui-ripple-blue.mdui-ripple::after {
+  background-image: radial-gradient(circle, #2196f3 10%, transparent 10.01%) !important;
 }
-.mdui-ripple-blue-grey .mdui-ripple-wave {
-  background-color: rgba(96, 125, 139, 0.3) !important;
+.mdui-ripple-blue-grey.mdui-ripple::after {
+  background-image: radial-gradient(circle, #607d8b 10%, transparent 10.01%) !important;
 }
-.mdui-ripple-brown .mdui-ripple-wave {
-  background-color: rgba(121, 85, 72, 0.3) !important;
+.mdui-ripple-brown.mdui-ripple::after {
+  background-image: radial-gradient(circle, #795548 10%, transparent 10.01%) !important;
 }
-.mdui-ripple-cyan .mdui-ripple-wave {
-  background-color: rgba(0, 188, 212, 0.3) !important;
+.mdui-ripple-cyan.mdui-ripple::after {
+  background-image: radial-gradient(circle, #00bcd4 10%, transparent 10.01%) !important;
 }
-.mdui-ripple-deep-orange .mdui-ripple-wave {
-  background-color: rgba(255, 87, 34, 0.3) !important;
+.mdui-ripple-deep-orange.mdui-ripple::after {
+  background-image: radial-gradient(circle, #ff5722 10%, transparent 10.01%) !important;
 }
-.mdui-ripple-deep-purple .mdui-ripple-wave {
-  background-color: rgba(103, 58, 183, 0.3) !important;
+.mdui-ripple-deep-purple.mdui-ripple::after {
+  background-image: radial-gradient(circle, #673ab7 10%, transparent 10.01%) !important;
 }
-.mdui-ripple-green .mdui-ripple-wave {
-  background-color: rgba(76, 175, 80, 0.3) !important;
+.mdui-ripple-green.mdui-ripple::after {
+  background-image: radial-gradient(circle, #4caf50 10%, transparent 10.01%) !important;
 }
-.mdui-ripple-grey .mdui-ripple-wave {
-  background-color: rgba(158, 158, 158, 0.3) !important;
+.mdui-ripple-grey.mdui-ripple::after {
+  background-image: radial-gradient(circle, #9e9e9e 10%, transparent 10.01%) !important;
 }
-.mdui-ripple-indigo .mdui-ripple-wave {
-  background-color: rgba(63, 81, 181, 0.3) !important;
+.mdui-ripple-indigo.mdui-ripple::after {
+  background-image: radial-gradient(circle, #3f51b5 10%, transparent 10.01%) !important;
 }
-.mdui-ripple-light-blue .mdui-ripple-wave {
-  background-color: rgba(3, 169, 244, 0.3) !important;
+.mdui-ripple-light-blue.mdui-ripple::after {
+  background-image: radial-gradient(circle, #03a9f4 10%, transparent 10.01%) !important;
 }
-.mdui-ripple-light-green .mdui-ripple-wave {
-  background-color: rgba(139, 195, 74, 0.3) !important;
+.mdui-ripple-light-green.mdui-ripple::after {
+  background-image: radial-gradient(circle, #8bc34a 10%, transparent 10.01%) !important;
 }
-.mdui-ripple-lime .mdui-ripple-wave {
-  background-color: rgba(205, 220, 57, 0.3) !important;
+.mdui-ripple-lime.mdui-ripple::after {
+  background-image: radial-gradient(circle, #cddc39 10%, transparent 10.01%) !important;
 }
-.mdui-ripple-orange .mdui-ripple-wave {
-  background-color: rgba(255, 152, 0, 0.3) !important;
+.mdui-ripple-orange.mdui-ripple::after {
+  background-image: radial-gradient(circle, #ff9800 10%, transparent 10.01%) !important;
 }
-.mdui-ripple-pink .mdui-ripple-wave {
-  background-color: rgba(233, 30, 99, 0.3) !important;
+.mdui-ripple-pink.mdui-ripple::after {
+  background-image: radial-gradient(circle, #e91e63 10%, transparent 10.01%) !important;
 }
-.mdui-ripple-purple .mdui-ripple-wave {
-  background-color: rgba(156, 39, 176, 0.3) !important;
+.mdui-ripple-purple.mdui-ripple::after {
+  background-image: radial-gradient(circle, #9c27b0 10%, transparent 10.01%) !important;
 }
-.mdui-ripple-red .mdui-ripple-wave {
-  background-color: rgba(244, 67, 54, 0.3) !important;
+.mdui-ripple-red.mdui-ripple::after {
+  background-image: radial-gradient(circle, #f44336 10%, transparent 10.01%) !important;
 }
-.mdui-ripple-teal .mdui-ripple-wave {
-  background-color: rgba(0, 150, 136, 0.3) !important;
+.mdui-ripple-teal.mdui-ripple::after {
+  background-image: radial-gradient(circle, #009688 10%, transparent 10.01%) !important;
 }
-.mdui-ripple-yellow .mdui-ripple-wave {
-  background-color: rgba(255, 235, 59, 0.3) !important;
+.mdui-ripple-yellow.mdui-ripple::after {
+  background-image: radial-gradient(circle, #ffeb3b 10%, transparent 10.01%) !important;
 }
 /**
  * =============================================================================
  * ************   Ripple dark   ************
  * =============================================================================
  */
-.mdui-theme-layout-dark .mdui-ripple-wave {
-  background-color: rgba(255, 255, 255, 0.3);
+.mdui-theme-layout-dark .mdui-ripple::after {
+  background-image: radial-gradient(circle, #fff 10%, transparent 10.01%);
 }
 @media (prefers-color-scheme: dark) {
-  .mdui-theme-layout-auto .mdui-ripple-wave {
-    background-color: rgba(255, 255, 255, 0.3);
+  .mdui-theme-layout-auto .mdui-ripple::after {
+    background-image: radial-gradient(circle, #fff 10%, transparent 10.01%);
   }
 }
 /**
