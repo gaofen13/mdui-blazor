@@ -7294,7 +7294,7 @@ th.mdui-table-cell-checkbox .mdui-checkbox {
 .mdui-ripple:active::after {
   -webkit-transform: scale(0, 0);
           transform: scale(0, 0);
-  opacity: 0.35;
+  opacity: 0.1;
   -webkit-transition: 0s;
   transition: 0s;
 }
@@ -13425,9 +13425,14 @@ select.mdui-select[multiple] option:last-child {
  * ************   Menu 菜单   ************
  * =============================================================================
  */
-/* 菜单 */
 .mdui-menu {
-  position: fixed;
+  position: relative;
+  display: inline-block;
+  overflow: visible;
+  /* 菜单 */
+}
+.mdui-menu .mdui-menu-content {
+  position: absolute;
   z-index: 99999;
   display: block;
   -webkit-box-sizing: border-box;
@@ -13458,23 +13463,68 @@ select.mdui-select[multiple] option:last-child {
   -webkit-box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
           box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
 }
-.mdui-menu .mdui-divider {
+.mdui-menu .mdui-menu-content .mdui-divider {
   margin-top: 8px;
   margin-bottom: 8px;
 }
+.mdui-menu-left .mdui-menu-content {
+  top: 0;
+  right: 100%;
+  bottom: auto;
+  -webkit-transform-origin: right top;
+          transform-origin: right top;
+}
+.mdui-menu-end.mdui-menu-left .mdui-menu-content {
+  top: auto;
+  bottom: 0;
+  -webkit-transform-origin: right bottom;
+          transform-origin: right bottom;
+}
+.mdui-menu-right .mdui-menu-content {
+  top: 0;
+  bottom: auto;
+  left: 100%;
+  -webkit-transform-origin: left top;
+          transform-origin: left top;
+}
+.mdui-menu-end.mdui-menu-right .mdui-menu-content {
+  top: auto;
+  bottom: 0;
+  -webkit-transform-origin: left bottom;
+          transform-origin: left bottom;
+}
+.mdui-menu-top .mdui-menu-content {
+  right: auto;
+  bottom: 100%;
+  left: 0;
+  -webkit-transform-origin: left bottom;
+          transform-origin: left bottom;
+}
+.mdui-menu-end.mdui-menu-top .mdui-menu-content {
+  right: 0;
+  left: auto;
+  -webkit-transform-origin: right bottom;
+          transform-origin: right bottom;
+}
+.mdui-menu-bottom .mdui-menu-content {
+  top: 100%;
+  right: auto;
+  left: 0;
+  -webkit-transform-origin: left top;
+          transform-origin: left top;
+}
+.mdui-menu-end.mdui-menu-bottom .mdui-menu-content {
+  right: 0;
+  left: auto;
+  -webkit-transform-origin: right top;
+          transform-origin: right top;
+}
 /* 打开状态的菜单 */
-.mdui-menu-open {
+.mdui-menu-open .mdui-menu-content {
   -webkit-transform: scale(1);
           transform: scale(1);
   visibility: visible;
   opacity: 1;
-}
-/* 关闭中的菜单 */
-.mdui-menu-closing {
-  -webkit-transform: scale(1);
-          transform: scale(1);
-  visibility: visible;
-  opacity: 0;
 }
 /* 菜单项 */
 .mdui-menu-item {

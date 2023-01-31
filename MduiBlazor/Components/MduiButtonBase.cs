@@ -17,7 +17,7 @@ namespace MduiBlazor
         /// The button Type (Button, Submit, Refresh)
         /// </summary>
         [Parameter]
-        public ButtonType ButtonType { get; set; }
+        public ButtonType ButtonType { get; set; } = ButtonType.Button;
 
         /// <summary>
         /// The color of the component. It supports the theme colors.

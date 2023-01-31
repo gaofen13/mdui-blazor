@@ -4,5 +4,9 @@
 <li class="@Classname" style="@Style" disabled="@Disabled" @attributes="@AdditionalAttributes">
     <a>
         @ChildContent
+        @if (!string.IsNullOrWhiteSpace(HelperText))
+        {
+            <span class="mdui-menu-item-helper">@HelperText</span>
+        }
     </a>
 </li>

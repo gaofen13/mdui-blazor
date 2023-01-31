@@ -5,7 +5,6 @@ namespace MduiBlazor
 {
     public partial class MduiFabMenu : MduiComponentBase
     {
-
         private string FabBtnClassname =>
             new ClassBuilder("mdui-fab")
             .AddClass("mdui-ripple", Ripple)

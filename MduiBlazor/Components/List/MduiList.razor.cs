@@ -7,8 +7,8 @@ namespace MduiBlazor
     {
         protected string Classname =>
             new ClassBuilder("mdui-list")
-            .AddClass("mdui-typo", UseMduiTypo)
             .AddClass("mdui-list-dense", Dense)
+            .AddClass("mdui-typo", UseMduiTypo)
             .AddClass(Class)
             .Build();
 

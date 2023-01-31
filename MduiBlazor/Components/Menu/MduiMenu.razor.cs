@@ -1,85 +1,49 @@
-﻿using MduiBlazor.Utilities;
+﻿using MduiBlazor.Extensions;
+using MduiBlazor.Utilities;
 using Microsoft.AspNetCore.Components;
-using System.Text;
 
 namespace MduiBlazor
 {
     public partial class MduiMenu : MduiComponentBase
     {
+        private bool _isFocus;
+
         protected string Classname =>
-            new ClassBuilder()
+            new ClassBuilder("mdui-menu")
+            .AddClass("mdui-menu-open", _isFocus)
+            .AddClass("mdui-menu-end", AlignEnd)
+            .AddClass($"mdui-menu-{Position.ToDescriptionString()}")
             .AddClass("mdui-typo", UseMduiTypo)
             .AddClass(Class)
+            .Build();
+
+        private string MenuListClass =>
+            new ClassBuilder("mdui-menu-content")
             .Build();
 
         [Parameter]
         public string? Title { get; set; }
 
         [Parameter]
+        public string? Icon { get; set; }
+
+        [Parameter]
         public RenderFragment? ActivatorContent { get; set; }
 
         [Parameter]
-        public PositionX Align { get; set; } = PositionX.End;
+        public bool AlignEnd { get; set; }
 
         [Parameter]
-        public PositionY Position { get; set; } = PositionY.Bottom;
+        public Position Position { get; set; } = Position.Bottom;
 
-        [Parameter]
-        public int Gutter { get; set; } = 16;
-
-        [Parameter]
-        public bool Covered { get; set; }
-
-        [Parameter]
-        public bool Fixed { get; set; }
-
-        [Parameter]
-        public bool Hover { get; set; }
-
-        private readonly string id;
-
-        public MduiMenu()
+        private void OnBlur()
         {
-            id = Guid.NewGuid().ToString("n");
+            _isFocus = false;
         }
 
-        private string Options => BuildOptions();
-
-        private string BuildOptions()
+        private void OnActivatorClicked()
         {
-            var builder = new StringBuilder();
-            builder.Append('{');
-            builder.Append($"target:'#{id}',");
-            builder.Append($"position:'{BuildPositonY(Position)}',");
-            builder.Append($"align:'{BuildPositonX(Align)}',");
-            builder.Append($"gutter:{Gutter},");
-            builder.Append($"fixed:{Fixed.ToString().ToLower()},");
-            builder.Append($"covered:{Covered.ToString().ToLower()},");
-            builder.Append($"subMenuTrigger:'{(Hover ? "hover" : "click")}'");
-            builder.Append('}');
-            return builder.ToString();
-        }
-
-        private static string BuildPositonX(PositionX position)
-        {
-            return position switch
-            {
-                PositionX.Start => "left",
-                PositionX.End => "right",
-                PositionX.Center => "center",
-                _ => "auto",
-            };
-        }
-
-        private static string BuildPositonY(PositionY position)
-        {
-            return position switch
-            {
-                PositionY.Top => "top",
-                PositionY.Bottom => "bottom",
-                PositionY.Middle => "center",
-                _ => "auto",
-            };
+            _isFocus = !_isFocus;
         }
     }
 }

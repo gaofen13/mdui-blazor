@@ -10,52 +10,113 @@
 // 级联菜单宽度基数
 @menu-cascade-x: 64px;
 
-/* 菜单 */
 .mdui-menu {
-  position: fixed;
-  z-index: 99999;
-  display: block;
-  box-sizing: border-box;
-  width: @menu-simple-x * 3;
-  margin: 0;
-  padding: 8px 0 !important;
+  position: relative;
+  display: inline-block;
+  overflow: visible;
 
-  // 简单菜单高度超出窗口高度时，使菜单边框和窗口保持一定距离，菜单内出现滚动条
-  overflow-y: auto;
-  color: @color-black-text;
-  font-size: 16px;
-  list-style: none;
-  background-color: #fff;
-  border-radius: 2px;
-  transform: scale(0);
-  visibility: hidden;
-  opacity: 0;
-  transition-timing-function: @animation-curve-linear-out-slow-in;
-  transition-duration: .3s;
-  transition-property: transform, opacity, visibility;
-  will-change: transform, opacity, visibility;
-  -webkit-overflow-scrolling: touch;
-  .mdui-shadow(8);
+  /* 菜单 */
+  .mdui-menu-content {
+    position: absolute;
+    z-index: 99999;
+    display: block;
+    box-sizing: border-box;
+    width: @menu-simple-x * 3;
+    margin: 0;
+    padding: 8px 0 !important;
 
-  // 菜单中的分隔线，默认上下有 8px 的外边距
-  .mdui-divider {
-    margin-top: 8px;
-    margin-bottom: 8px;
+    // 简单菜单高度超出窗口高度时，使菜单边框和窗口保持一定距离，菜单内出现滚动条
+    overflow-y: auto;
+    color: @color-black-text;
+    font-size: 16px;
+    list-style: none;
+    background-color: #fff;
+    border-radius: 2px;
+    transform: scale(0);
+    visibility: hidden;
+    opacity: 0;
+    transition-timing-function: @animation-curve-linear-out-slow-in;
+    transition-duration: .3s;
+    transition-property: transform, opacity, visibility;
+    will-change: transform, opacity, visibility;
+    -webkit-overflow-scrolling: touch;
+    .mdui-shadow(8);
+
+    // 菜单中的分隔线，默认上下有 8px 的外边距
+    .mdui-divider {
+      margin-top: 8px;
+      margin-bottom: 8px;
+    }
+  }
+}
+
+.mdui-menu-left {
+  .mdui-menu-content {
+    top: 0;
+    right: 100%;
+    bottom: auto;
+    transform-origin: right top;
+
+    .mdui-menu-end& {
+      top: auto;
+      bottom: 0;
+      transform-origin: right bottom;
+    }
+  }
+}
+
+.mdui-menu-right {
+  .mdui-menu-content {
+    top: 0;
+    bottom: auto;
+    left: 100%;
+    transform-origin: left top;
+
+    .mdui-menu-end& {
+      top: auto;
+      bottom: 0;
+      transform-origin: left bottom;
+    }
+  }
+}
+
+.mdui-menu-top {
+  .mdui-menu-content {
+    right: auto;
+    bottom: 100%;
+    left: 0;
+    transform-origin: left bottom;
+
+    .mdui-menu-end& {
+      right: 0;
+      left: auto;
+      transform-origin: right bottom;
+    }
+  }
+}
+
+.mdui-menu-bottom {
+  .mdui-menu-content {
+    top: 100%;
+    right: auto;
+    left: 0;
+    transform-origin: left top;
+
+    .mdui-menu-end& {
+      right: 0;
+      left: auto;
+      transform-origin: right top;
+    }
   }
 }
 
 /* 打开状态的菜单 */
 .mdui-menu-open {
-  transform: scale(1);
-  visibility: visible;
-  opacity: 1;
-}
-
-/* 关闭中的菜单 */
-.mdui-menu-closing {
-  transform: scale(1);
-  visibility: visible;
-  opacity: 0;
+  .mdui-menu-content {
+    transform: scale(1);
+    visibility: visible;
+    opacity: 1;
+  }
 }
 
 /* 菜单项 */
