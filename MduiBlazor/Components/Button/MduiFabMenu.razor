@@ -2,11 +2,11 @@
 @inherits MduiComponentBase
 
 <div class="@Classname" style="@Style" @attributes="@AdditionalAttributes">
-    <button Class="@FabBtnClassname">
+    <button Class="@FabBtnClassname" @onclick="@OnFabClicked" @onblur="@OnBlur">
         <MduiIcon Name="@Icon" />
         <MduiIcon Name="@OpenedIcon" Class="mdui-fab-opened" />
     </button>
-    <div class="mdui-fab-dial" style="@DialStyle">
+    <div class="@DialClassname" style="height:auto">
         @ChildContent
     </div>
 </div>

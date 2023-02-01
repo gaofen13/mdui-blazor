@@ -97,7 +97,7 @@
   }
 
   // 菜单打开后
-  &>.mdui-fab:focus {
+  &>.mdui-fab.mdui-fab-opened {
     .mdui-icon:not(.mdui-fab-opened) {
       transform: rotate(225deg);
       opacity: 0;
@@ -133,12 +133,12 @@
         transform 150ms @animation-curve-default,
         opacity 150ms @animation-curve-default;
     }
-  }
 
-  .mdui-fab:focus~.mdui-fab-dial {
-    .mdui-fab {
-      transform: scale(1);
-      opacity: 1;
+    &.mdui-fab-dial-show {
+      .mdui-fab {
+        transform: scale(1);
+        opacity: 1;
+      }
     }
   }
 }
