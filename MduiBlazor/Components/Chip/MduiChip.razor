@@ -1,0 +1,29 @@
+@namespace MduiBlazor
+@inherits MduiComponentBase
+
+<div class="@Classname" style="@Style">
+    @if (!string.IsNullOrWhiteSpace(Image))
+    {
+        <img class="mdui-chip-icon" src="@Image" />
+    }
+    @if (!string.IsNullOrWhiteSpace(Icon) || !string.IsNullOrWhiteSpace(IconLetter))
+    {
+        <span class="@IconClassname">
+            @if (!string.IsNullOrWhiteSpace(Icon))
+            {
+                <MduiIcon Name="@Icon" />
+            }
+            else if (!string.IsNullOrWhiteSpace(IconLetter))
+            {
+                @IconLetter
+            }
+        </span>
+    }
+    <span class="mdui-chip-title">@Title</span>
+    @if (DeleteButton)
+    {
+        <span class="mdui-chip-delete" @onclick="@OnDeleteButtonClicked">
+            <MduiIcon Name="cancel" />
+        </span>
+    }
+</div>
