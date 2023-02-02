@@ -1,0 +1,16 @@
+@namespace MduiBlazor
+@inherits MduiComponentBase
+
+<div class="@Classname" style="@Style">
+    @if (Colorful)
+    {
+        @(new MarkupString(SpinnerLayer(1)))
+        @(new MarkupString(SpinnerLayer(2)))
+        @(new MarkupString(SpinnerLayer(3)))
+        @(new MarkupString(SpinnerLayer(4)))
+    }
+    else
+    {
+        @(new MarkupString(SpinnerLayer()))
+    }
+</div>

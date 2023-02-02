@@ -13,6 +13,5 @@ import './components/tooltip';
 import './components/tooltip/customAttr';
 import './components/snackbar';
 import './components/bottom_nav';
-import './components/progress/spinner';
 
 export default mdui;

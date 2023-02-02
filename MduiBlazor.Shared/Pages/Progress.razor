@@ -1,0 +1,19 @@
+@page "/progress"
+
+<h2>线性进度指示器</h2>
+<div class="mdui-p-a-2">
+    <MduiCheckbox Label="Indeterminate" @bind-Value="@indeterminate" />
+    <MduiProgress Indeterminate="@indeterminate" Value="@value" />
+</div>
+
+<h2>圆形进度指示器</h2>
+<div class="mdui-p-a-2">
+    <MduiCheckbox Label="Colorful" @bind-Value="@colorful" />
+    <MduiSpinner Colorful="@colorful" />
+</div>
+
+@code {
+    bool indeterminate;
+    int value = 60;
+    bool colorful;
+}
