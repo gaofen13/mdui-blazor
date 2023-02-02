@@ -1,6 +1,6 @@
 ﻿@inherits LayoutComponentBase
 
-<MduiLayout UseMduiTypo Style="overflow-x: hidden;">
+<MduiLayout Style="overflow-x: hidden;">
     <MduiAppbar Fixed>
         <MduiToolbar Color="@Colors.Theme.Primary">
             <MduiIconButton Icon="menu" OnClick="_=>open=!open" />
@@ -17,7 +17,7 @@
             </MduiMenu>
         </MduiToolbar>
     </MduiAppbar>
-    <MduiDrawer @bind-Opened="@open">
+    <MduiDrawer UseMduiTypo @bind-Opened="@open">
         <NavMenu />
     </MduiDrawer>
 

@@ -3089,30 +3089,6 @@
       });
   });
 
-  var Panel = /*@__PURE__*/(function (CollapseAbstract) {
-      function Panel () {
-          CollapseAbstract.apply(this, arguments);
-      }
-
-      if ( CollapseAbstract ) Panel.__proto__ = CollapseAbstract;
-      Panel.prototype = Object.create( CollapseAbstract && CollapseAbstract.prototype );
-      Panel.prototype.constructor = Panel;
-
-      Panel.prototype.getNamespace = function getNamespace () {
-          return 'panel';
-      };
-
-      return Panel;
-  }(CollapseAbstract));
-  mdui.Panel = Panel;
-
-  var customAttr$2 = 'mdui-panel';
-  $(function () {
-      mdui.mutation(("[" + customAttr$2 + "]"), function () {
-          new mdui.Panel(this, parseOptions(this, customAttr$2));
-      });
-  });
-
   var DEFAULT_OPTIONS$2 = {
       trigger: 'click',
       loop: false,
@@ -3367,10 +3343,10 @@
   };
   mdui.Tab = Tab;
 
-  var customAttr$3 = 'mdui-tab';
+  var customAttr$2 = 'mdui-tab';
   $(function () {
-      mdui.mutation(("[" + customAttr$3 + "]"), function () {
-          new mdui.Tab(this, parseOptions(this, customAttr$3));
+      mdui.mutation(("[" + customAttr$2 + "]"), function () {
+          new mdui.Tab(this, parseOptions(this, customAttr$2));
       });
   });
 
@@ -3683,15 +3659,15 @@
   };
   mdui.Tooltip = Tooltip;
 
-  var customAttr$4 = 'mdui-tooltip';
+  var customAttr$3 = 'mdui-tooltip';
   var dataName = '_mdui_tooltip';
   $(function () {
       // mouseenter 不能冒泡，所以这里用 mouseover 代替
-      $document.on('touchstart mouseover', ("[" + customAttr$4 + "]"), function () {
+      $document.on('touchstart mouseover', ("[" + customAttr$3 + "]"), function () {
           var $target = $(this);
           var instance = $target.data(dataName);
           if (!instance) {
-              instance = new mdui.Tooltip(this, parseOptions(this, customAttr$4));
+              instance = new mdui.Tooltip(this, parseOptions(this, customAttr$3));
               $target.data(dataName, instance);
           }
       });

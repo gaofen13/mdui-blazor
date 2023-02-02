@@ -1,0 +1,63 @@
+@page "/panels"
+
+<h2>完整 HTML 结构</h2>
+<MduiCheckbox Label="Gapless" @bind-Value="@gapless" />
+<MduiCheckbox Label="Popout" @bind-Value="@popout" />
+<div class="mdui-p-a-2">
+    <MduiPanel Gapless='@gapless' Popout='@popout'>
+        <MduiPanelItem Title="Trip name" Summary="@(new string[]{"Carribean cruise"})" @bind-Open="@open1">
+            <ChildContent>
+                <p>First content</p>
+                <p>First content</p>
+                <p>First content</p>
+                <p>First content</p>
+                <p>First content</p>
+                <p>First content</p>
+            </ChildContent>
+            <ActionsContent>
+                <MduiButton Shadow="0" OnClick="_=>open1=false">cancel</MduiButton>
+                <MduiButton Shadow="0">save</MduiButton>
+            </ActionsContent>
+        </MduiPanelItem>
+
+        <MduiPanelItem Title="Location" @bind-Open="@open2">
+            <ChildContent>
+                <p>Second content</p>
+                <p>Second content</p>
+                <p>Second content</p>
+                <p>Second content</p>
+                <p>Second content</p>
+                <p>Second content</p>
+            </ChildContent>
+            <ActionsContent>
+                <MduiButton Shadow="0" OnClick="_=>open2=false">cancel</MduiButton>
+                <MduiButton Shadow="0">save</MduiButton>
+            </ActionsContent>
+        </MduiPanelItem>
+
+        <MduiPanelItem Title="Start and end dates" Summary="@summary" @bind-Open="@open3">
+            <ChildContent>
+                <p>Third content</p>
+                <p>Third content</p>
+                <p>Third content</p>
+                <p>Third content</p>
+                <p>Third content</p>
+                <p>Third content</p>
+            </ChildContent>
+            <ActionsContent>
+                <MduiButton Shadow="0" OnClick="_=>open3=false">cancel</MduiButton>
+                <MduiButton Shadow="0">save</MduiButton>
+            </ActionsContent>
+        </MduiPanelItem>
+    </MduiPanel>
+</div>
+
+@code {
+    bool gapless;
+    bool popout;
+    bool open1;
+    bool open2;
+    bool open3;
+
+    string[] summary = new string[] { "Start date: Feb 29, 2016", "End date: Not set" };
+}

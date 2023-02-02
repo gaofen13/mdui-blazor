@@ -1,0 +1,25 @@
+@namespace MduiBlazor
+@inherits MduiComponentBase
+
+<div class="@Classname" style="@Style">
+    <div class="mdui-panel-item-header" @onclick="@OnClickHeaderAsync">
+        <div class="mdui-panel-item-title">@Title</div>
+        @if (Summary?.Any() == true)
+        {
+            foreach (var item in Summary)
+            {
+                <div class="mdui-panel-item-summary">@item</div>
+            }
+        }
+        <MduiIcon Class="mdui-panel-item-arrow" Name="@ArrowIcon" />
+    </div>
+    <div class="mdui-panel-item-body">
+        @ChildContent
+        @if (ActionsContent is not null)
+        {
+            <div class="mdui-panel-item-actions">
+                @ActionsContent
+            </div>
+        }
+    </div>
+</div>

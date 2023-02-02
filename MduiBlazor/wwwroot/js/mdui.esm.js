@@ -2658,20 +2658,6 @@ $(() => {
     });
 });
 
-class Panel extends CollapseAbstract {
-    getNamespace() {
-        return 'panel';
-    }
-}
-mdui.Panel = Panel;
-
-const customAttr$2 = 'mdui-panel';
-$(() => {
-    mdui.mutation(`[${customAttr$2}]`, function () {
-        new mdui.Panel(this, parseOptions(this, customAttr$2));
-    });
-});
-
 const DEFAULT_OPTIONS$2 = {
     trigger: 'click',
     loop: false,
@@ -2915,10 +2901,10 @@ class Tab {
 }
 mdui.Tab = Tab;
 
-const customAttr$3 = 'mdui-tab';
+const customAttr$2 = 'mdui-tab';
 $(() => {
-    mdui.mutation(`[${customAttr$3}]`, function () {
-        new mdui.Tab(this, parseOptions(this, customAttr$3));
+    mdui.mutation(`[${customAttr$2}]`, function () {
+        new mdui.Tab(this, parseOptions(this, customAttr$2));
     });
 });
 
@@ -3226,15 +3212,15 @@ class Tooltip {
 }
 mdui.Tooltip = Tooltip;
 
-const customAttr$4 = 'mdui-tooltip';
+const customAttr$3 = 'mdui-tooltip';
 const dataName = '_mdui_tooltip';
 $(() => {
     // mouseenter 不能冒泡，所以这里用 mouseover 代替
-    $document.on('touchstart mouseover', `[${customAttr$4}]`, function () {
+    $document.on('touchstart mouseover', `[${customAttr$3}]`, function () {
         const $target = $(this);
         let instance = $target.data(dataName);
         if (!instance) {
-            instance = new mdui.Tooltip(this, parseOptions(this, customAttr$4));
+            instance = new mdui.Tooltip(this, parseOptions(this, customAttr$3));
             $target.data(dataName, instance);
         }
     });
