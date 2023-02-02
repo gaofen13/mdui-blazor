@@ -1,0 +1,32 @@
+@namespace MduiBlazor
+@inherits MduiComponentBase
+
+<!-- 卡片头部，包含头像、标题、副标题 -->
+<div class="@Classname" style="@Style">
+    <img src="@Image" />
+    @if (Covered && (!string.IsNullOrWhiteSpace(Title) || !string.IsNullOrWhiteSpace(SubTitle) || ActionsContent is not
+    null))
+    {
+        <div class="@CoveredClassname">
+            @if (!string.IsNullOrWhiteSpace(Title) || !string.IsNullOrWhiteSpace(SubTitle))
+            {
+                <div class="mdui-card-primary">
+                    <div class="mdui-card-primary-title">@Title</div>
+                    <div class="mdui-card-primary-subtitle">@SubTitle</div>
+                </div>
+            }
+            @if (ActionsContent is not null)
+            {
+                <div class="@ActionsClassname">
+                    @ActionsContent
+                </div>
+            }
+        </div>
+    }
+    @if (MenusContent is not null)
+    {
+        <div class="mdui-card-menu">
+            @MenusContent
+        </div>
+    }
+</div>

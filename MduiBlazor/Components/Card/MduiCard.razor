@@ -1,0 +1,37 @@
+@namespace MduiBlazor
+@inherits MduiComponentBase
+
+<div class="@Classname" style="@Style">
+    @if (HeaderContent is not null)
+    {
+        @HeaderContent
+    }
+    @if (MediaContent is not null)
+    {
+        @MediaContent
+    }
+
+    <!-- 卡片的标题和副标题 -->
+    @if (!string.IsNullOrWhiteSpace(Title) || !string.IsNullOrWhiteSpace(SubTitle))
+    {
+        <div class="mdui-card-primary">
+            <div class="mdui-card-primary-title">@Title</div>
+            <div class="mdui-card-primary-subtitle">@SubTitle</div>
+        </div>
+    }
+
+    <!-- 卡片的内容 -->
+    @if (ChildContent is not null)
+    {
+        <div class="mdui-card-content">@ChildContent</div>
+    }
+
+    @if (ActionsContent is not null)
+    {
+        <!-- 卡片的按钮 -->
+        <div class="@ActionsClassname">
+            @ActionsContent
+        </div>
+    }
+
+</div>
