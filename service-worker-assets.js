@@ -33,35 +33,35 @@
       "url": "_framework\/icudt.dat"
     },
     {
-      "hash": "sha256-Ga\/QYcKWXkMQHSVL4rOiDruCWYCTRm2Hb1tAwJ0yXQU=",
+      "hash": "sha256-OIwkKpi63CUYwfWYY6V\/KdmZdxXbw9SSctQk1WG4rQY=",
       "url": "_framework\/blazor.boot.json"
     },
     {
-      "hash": "sha256-8JpAumkHhKd81w7\/VlE5zI4NGjg3lSJzrtovkMIgiZ4=",
+      "hash": "sha256-XWQkcYaoc1qC+4WZ4QEnhjy+2lQUrSYQOVs2HypHHmo=",
       "url": "_framework\/MduiBlazor.Client.dll"
     },
     {
-      "hash": "sha256-YZyffKqOrh\/zZC4gGmvdZQMrlOyUwD9z\/vGoauOwXlI=",
+      "hash": "sha256-DgICHR9WYjkDnJTwfHsYwnlFPIprAqd6MDKwWnzmyNA=",
       "url": "_framework\/MduiBlazor.dll"
     },
     {
-      "hash": "sha256-pxPHkUm4DJYbY9bX3cB\/8RM9paqhrqfy10z1aWi+\/qo=",
+      "hash": "sha256-\/zJWncduxAiLb+QZtzISSWpbjJP5WDjV0y8LPuJXrIY=",
       "url": "_framework\/MduiBlazor.Shared.dll"
     },
     {
-      "hash": "sha256-uDWfHuxLx5KlqgbYQERmmGi7ttWOAmyLSlKqCZGDrZg=",
+      "hash": "sha256-jUjt6F5\/9KATcCSmpnsIEgTDL\/F96ypzKhM+BmDCeXY=",
       "url": "_framework\/Microsoft.AspNetCore.Components.dll"
     },
     {
-      "hash": "sha256-AQ3I77Gi\/oQfJ8gdiMLY621qx1HPHzieIA1vnvq3Knk=",
+      "hash": "sha256-TDz01VbB+WVPqu7aEKzdIQXB7Ohznz\/YhX9Jnu5Yjco=",
       "url": "_framework\/Microsoft.AspNetCore.Components.Forms.dll"
     },
     {
-      "hash": "sha256-idEeAHeP\/Ox60zJSOi45pLGk+1GGZZPk0p4g7rkcors=",
+      "hash": "sha256-OXsjD4rmweFwtG5RMbswEpEV3+7GtuUI4J8B+1deatk=",
       "url": "_framework\/Microsoft.AspNetCore.Components.Web.dll"
     },
     {
-      "hash": "sha256-Tf6ryAlusnyEd7dBMJxHvs03cnjjgpFDyzH3fEO1eW4=",
+      "hash": "sha256-7lHwvnAfcnHyDPWEU\/EhI\/M1v9qBaRhSF+5uucc\/\/4A=",
       "url": "_framework\/Microsoft.AspNetCore.Components.WebAssembly.dll"
     },
     {
@@ -101,11 +101,11 @@
       "url": "_framework\/Microsoft.Extensions.Primitives.dll"
     },
     {
-      "hash": "sha256-cnpEK1Rhszj+Y3zhDnO6vws5ylmXtRDvpK074jT5a8c=",
+      "hash": "sha256-FHVidPFfbiQqg8CQy1wC1VlhGfnseomhsPUFDseFXM0=",
       "url": "_framework\/Microsoft.JSInterop.dll"
     },
     {
-      "hash": "sha256-bn\/jJGkSeaQbmqAl6uUM0y1joLrVEzldOc3y5mscYMk=",
+      "hash": "sha256-ClhDy3j6C2coeaYSd71VzhinK6w5QGa2ViwhRhQ6L40=",
       "url": "_framework\/Microsoft.JSInterop.WebAssembly.dll"
     },
     {
@@ -397,5 +397,5 @@
       "url": "_content\/MduiBlazor\/js\/mdui.min.js.map"
     }
   ],
-  "version": "UTxQL52L"
+  "version": "QK\/8Pofo"
 };
