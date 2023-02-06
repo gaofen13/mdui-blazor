@@ -11132,11 +11132,26 @@ select.mdui-select[multiple] option:last-child {
 .mdui-tab a[disabled] label {
   cursor: default;
 }
+.mdui-tab a::before {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background-color: #3F51B5;
+  opacity: 0;
+  -webkit-transition: all 0.35s;
+  transition: all 0.35s;
+  content: '';
+}
 .mdui-tab .mdui-tab-active {
   color: #3F51B5;
   opacity: 1;
 }
 .mdui-tab .mdui-tab-active .mdui-icon {
+  opacity: 1;
+}
+.mdui-tab .mdui-tab-active::before {
   opacity: 1;
 }
 /* 选项卡居中 */
@@ -11180,16 +11195,6 @@ select.mdui-select[multiple] option:last-child {
     padding-left: 60px;
   }
 }
-/* 下划线指示器 */
-.mdui-tab-indicator {
-  position: absolute;
-  bottom: 0;
-  height: 2px;
-  background-color: #3F51B5;
-  -webkit-transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-  will-change: left, width;
-}
 /**
  * =============================================================================
  * ************   Tab 主色   ************
@@ -11198,122 +11203,65 @@ select.mdui-select[multiple] option:last-child {
 .mdui-theme-primary-amber .mdui-tab .mdui-tab-active {
   color: #FFC107;
 }
-.mdui-theme-primary-amber .mdui-tab-indicator {
-  background-color: #FFC107;
-}
 .mdui-theme-primary-blue .mdui-tab .mdui-tab-active {
   color: #2196F3;
-}
-.mdui-theme-primary-blue .mdui-tab-indicator {
-  background-color: #2196F3;
 }
 .mdui-theme-primary-blue-grey .mdui-tab .mdui-tab-active {
   color: #607D8B;
 }
-.mdui-theme-primary-blue-grey .mdui-tab-indicator {
-  background-color: #607D8B;
-}
 .mdui-theme-primary-brown .mdui-tab .mdui-tab-active {
   color: #795548;
-}
-.mdui-theme-primary-brown .mdui-tab-indicator {
-  background-color: #795548;
 }
 .mdui-theme-primary-cyan .mdui-tab .mdui-tab-active {
   color: #00BCD4;
 }
-.mdui-theme-primary-cyan .mdui-tab-indicator {
-  background-color: #00BCD4;
-}
 .mdui-theme-primary-deep-orange .mdui-tab .mdui-tab-active {
   color: #FF5722;
-}
-.mdui-theme-primary-deep-orange .mdui-tab-indicator {
-  background-color: #FF5722;
 }
 .mdui-theme-primary-deep-purple .mdui-tab .mdui-tab-active {
   color: #673AB7;
 }
-.mdui-theme-primary-deep-purple .mdui-tab-indicator {
-  background-color: #673AB7;
-}
 .mdui-theme-primary-green .mdui-tab .mdui-tab-active {
   color: #4CAF50;
-}
-.mdui-theme-primary-green .mdui-tab-indicator {
-  background-color: #4CAF50;
 }
 .mdui-theme-primary-grey .mdui-tab .mdui-tab-active {
   color: #9E9E9E;
 }
-.mdui-theme-primary-grey .mdui-tab-indicator {
-  background-color: #9E9E9E;
-}
 .mdui-theme-primary-indigo .mdui-tab .mdui-tab-active {
   color: #3F51B5;
-}
-.mdui-theme-primary-indigo .mdui-tab-indicator {
-  background-color: #3F51B5;
 }
 .mdui-theme-primary-light-blue .mdui-tab .mdui-tab-active {
   color: #03A9F4;
 }
-.mdui-theme-primary-light-blue .mdui-tab-indicator {
-  background-color: #03A9F4;
-}
 .mdui-theme-primary-light-green .mdui-tab .mdui-tab-active {
   color: #8BC34A;
-}
-.mdui-theme-primary-light-green .mdui-tab-indicator {
-  background-color: #8BC34A;
 }
 .mdui-theme-primary-lime .mdui-tab .mdui-tab-active {
   color: #CDDC39;
 }
-.mdui-theme-primary-lime .mdui-tab-indicator {
-  background-color: #CDDC39;
-}
 .mdui-theme-primary-orange .mdui-tab .mdui-tab-active {
   color: #FF9800;
-}
-.mdui-theme-primary-orange .mdui-tab-indicator {
-  background-color: #FF9800;
 }
 .mdui-theme-primary-pink .mdui-tab .mdui-tab-active {
   color: #E91E63;
 }
-.mdui-theme-primary-pink .mdui-tab-indicator {
-  background-color: #E91E63;
-}
 .mdui-theme-primary-purple .mdui-tab .mdui-tab-active {
   color: #9C27B0;
-}
-.mdui-theme-primary-purple .mdui-tab-indicator {
-  background-color: #9C27B0;
 }
 .mdui-theme-primary-red .mdui-tab .mdui-tab-active {
   color: #F44336;
 }
-.mdui-theme-primary-red .mdui-tab-indicator {
-  background-color: #F44336;
-}
 .mdui-theme-primary-teal .mdui-tab .mdui-tab-active {
   color: #009688;
 }
-.mdui-theme-primary-teal .mdui-tab-indicator {
-  background-color: #009688;
-}
 .mdui-theme-primary-yellow .mdui-tab .mdui-tab-active {
   color: #FFEB3B;
-}
-.mdui-theme-primary-yellow .mdui-tab-indicator {
-  background-color: #FFEB3B;
 }
 /* 带背景色的选项卡 */
 .mdui-tab[class*="mdui-color-"]:not(.mdui-color-white) .mdui-tab-active {
   color: inherit;
 }
-.mdui-tab[class*="mdui-color-"]:not(.mdui-color-white) .mdui-tab-indicator {
+.mdui-tab[class*="mdui-color-"]:not(.mdui-color-white) .mdui-tab-active::before {
   background-color: #FFFFFF;
 }
 .mdui-tab[class*="mdui-color-"]:not(.mdui-color-white)::-webkit-scrollbar {
