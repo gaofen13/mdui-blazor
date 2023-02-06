@@ -11203,59 +11203,116 @@ select.mdui-select[multiple] option:last-child {
 .mdui-theme-primary-amber .mdui-tab .mdui-tab-active {
   color: #FFC107;
 }
+.mdui-theme-primary-amber .mdui-tab .mdui-tab-active::before {
+  background-color: #FFC107;
+}
 .mdui-theme-primary-blue .mdui-tab .mdui-tab-active {
   color: #2196F3;
+}
+.mdui-theme-primary-blue .mdui-tab .mdui-tab-active::before {
+  background-color: #2196F3;
 }
 .mdui-theme-primary-blue-grey .mdui-tab .mdui-tab-active {
   color: #607D8B;
 }
+.mdui-theme-primary-blue-grey .mdui-tab .mdui-tab-active::before {
+  background-color: #607D8B;
+}
 .mdui-theme-primary-brown .mdui-tab .mdui-tab-active {
   color: #795548;
+}
+.mdui-theme-primary-brown .mdui-tab .mdui-tab-active::before {
+  background-color: #795548;
 }
 .mdui-theme-primary-cyan .mdui-tab .mdui-tab-active {
   color: #00BCD4;
 }
+.mdui-theme-primary-cyan .mdui-tab .mdui-tab-active::before {
+  background-color: #00BCD4;
+}
 .mdui-theme-primary-deep-orange .mdui-tab .mdui-tab-active {
   color: #FF5722;
+}
+.mdui-theme-primary-deep-orange .mdui-tab .mdui-tab-active::before {
+  background-color: #FF5722;
 }
 .mdui-theme-primary-deep-purple .mdui-tab .mdui-tab-active {
   color: #673AB7;
 }
+.mdui-theme-primary-deep-purple .mdui-tab .mdui-tab-active::before {
+  background-color: #673AB7;
+}
 .mdui-theme-primary-green .mdui-tab .mdui-tab-active {
   color: #4CAF50;
+}
+.mdui-theme-primary-green .mdui-tab .mdui-tab-active::before {
+  background-color: #4CAF50;
 }
 .mdui-theme-primary-grey .mdui-tab .mdui-tab-active {
   color: #9E9E9E;
 }
+.mdui-theme-primary-grey .mdui-tab .mdui-tab-active::before {
+  background-color: #9E9E9E;
+}
 .mdui-theme-primary-indigo .mdui-tab .mdui-tab-active {
   color: #3F51B5;
+}
+.mdui-theme-primary-indigo .mdui-tab .mdui-tab-active::before {
+  background-color: #3F51B5;
 }
 .mdui-theme-primary-light-blue .mdui-tab .mdui-tab-active {
   color: #03A9F4;
 }
+.mdui-theme-primary-light-blue .mdui-tab .mdui-tab-active::before {
+  background-color: #03A9F4;
+}
 .mdui-theme-primary-light-green .mdui-tab .mdui-tab-active {
   color: #8BC34A;
+}
+.mdui-theme-primary-light-green .mdui-tab .mdui-tab-active::before {
+  background-color: #8BC34A;
 }
 .mdui-theme-primary-lime .mdui-tab .mdui-tab-active {
   color: #CDDC39;
 }
+.mdui-theme-primary-lime .mdui-tab .mdui-tab-active::before {
+  background-color: #CDDC39;
+}
 .mdui-theme-primary-orange .mdui-tab .mdui-tab-active {
   color: #FF9800;
+}
+.mdui-theme-primary-orange .mdui-tab .mdui-tab-active::before {
+  background-color: #FF9800;
 }
 .mdui-theme-primary-pink .mdui-tab .mdui-tab-active {
   color: #E91E63;
 }
+.mdui-theme-primary-pink .mdui-tab .mdui-tab-active::before {
+  background-color: #E91E63;
+}
 .mdui-theme-primary-purple .mdui-tab .mdui-tab-active {
   color: #9C27B0;
+}
+.mdui-theme-primary-purple .mdui-tab .mdui-tab-active::before {
+  background-color: #9C27B0;
 }
 .mdui-theme-primary-red .mdui-tab .mdui-tab-active {
   color: #F44336;
 }
+.mdui-theme-primary-red .mdui-tab .mdui-tab-active::before {
+  background-color: #F44336;
+}
 .mdui-theme-primary-teal .mdui-tab .mdui-tab-active {
   color: #009688;
 }
+.mdui-theme-primary-teal .mdui-tab .mdui-tab-active::before {
+  background-color: #009688;
+}
 .mdui-theme-primary-yellow .mdui-tab .mdui-tab-active {
   color: #FFEB3B;
+}
+.mdui-theme-primary-yellow .mdui-tab .mdui-tab-active::before {
+  background-color: #FFEB3B;
 }
 /* 带背景色的选项卡 */
 .mdui-tab[class*="mdui-color-"]:not(.mdui-color-white) .mdui-tab-active {

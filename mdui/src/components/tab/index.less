@@ -177,6 +177,10 @@
     .mdui-theme-primary-@{colorName} when not (@colorName =null) {
       .mdui-tab .mdui-tab-active {
         color: @@color;
+
+        &::before {
+          background-color: @@color;
+        }
       }
     }
 
