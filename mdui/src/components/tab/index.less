@@ -79,7 +79,7 @@
       cursor: pointer;
     }
 
-    .mdui-icon + label {
+    .mdui-icon+label {
       margin-top: 8px;
     }
 
@@ -91,13 +91,30 @@
         cursor: default;
       }
     }
+
+    &::before {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      height: 2px;
+      background-color: @color-default-500;
+      opacity: 0;
+      transition: all 0.35s;
+      content: '';
+    }
   }
 
   // 激活状态的选项
   .mdui-tab-active {
     color: @color-default-500;
     opacity: 1;
+
     .mdui-icon {
+      opacity: 1;
+    }
+
+    &::before {
       opacity: 1;
     }
   }
@@ -110,10 +127,12 @@
       flex-grow: 1;
       content: ' ';
     }
+
     &::after {
       flex-grow: 1;
       content: ' ';
     }
+
     a {
       flex: none;
     }
@@ -143,16 +162,6 @@
 
 }
 
-/* 下划线指示器 */
-.mdui-tab-indicator {
-  position: absolute;
-  bottom: 0;
-  height: 2px;
-  background-color: @color-default-500;
-  transition: all .35s @animation-curve-default;
-  will-change: left, width;
-}
-
 /**
  * =============================================================================
  * ************   Tab 主色   ************
@@ -165,17 +174,14 @@
     @colorName: extract(@globalPrimaryColors, @counter-color);
     @color: 'color-@{colorName}-500';
 
-    .mdui-theme-primary-@{colorName} when not (@colorName = null) {
+    .mdui-theme-primary-@{colorName} when not (@colorName =null) {
       .mdui-tab .mdui-tab-active {
         color: @@color;
-      }
-
-      .mdui-tab-indicator {
-        background-color: @@color;
       }
     }
 
   }
+
   .loop-primary-theme(length(@globalPrimaryColors));
 }
 
@@ -183,9 +189,10 @@
 .mdui-tab[class*="mdui-color-"]:not(.mdui-color-white) {
   .mdui-tab-active {
     color: inherit;
-  }
-  .mdui-tab-indicator {
-    background-color: @color-white-500;
+
+    &::before {
+      background-color: @color-white-500;
+    }
   }
 
   // 带背景色的选项卡中使用浅色滚动条

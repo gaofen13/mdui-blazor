@@ -3089,267 +3089,6 @@
       });
   });
 
-  var DEFAULT_OPTIONS$2 = {
-      trigger: 'click',
-      loop: false,
-  };
-  var Tab = function Tab(selector, options) {
-      var this$1 = this;
-      if ( options === void 0 ) options = {};
-
-      /**
-       * 配置参数
-       */
-      this.options = extend({}, DEFAULT_OPTIONS$2);
-      /**
-       * 当前激活的 tab 的索引号。为 -1 时表示没有激活的选项卡，或不存在选项卡
-       */
-      this.activeIndex = -1;
-      this.$element = $(selector).first();
-      extend(this.options, options);
-      this.$tabs = this.$element.children('a');
-      this.$indicator = $('<div class="mdui-tab-indicator"></div>').appendTo(this.$element);
-      // 根据 url hash 获取默认激活的选项卡
-      var hash = window.location.hash;
-      if (hash) {
-          this.$tabs.each(function (index, tab) {
-              if ($(tab).attr('href') === hash) {
-                  this$1.activeIndex = index;
-                  return false;
-              }
-              return true;
-          });
-      }
-      // 含 .mdui-tab-active 的元素默认激活
-      if (this.activeIndex === -1) {
-          this.$tabs.each(function (index, tab) {
-              if ($(tab).hasClass('mdui-tab-active')) {
-                  this$1.activeIndex = index;
-                  return false;
-              }
-              return true;
-          });
-      }
-      // 存在选项卡时，默认激活第一个选项卡
-      if (this.$tabs.length && this.activeIndex === -1) {
-          this.activeIndex = 0;
-      }
-      // 设置激活状态选项卡
-      this.setActive();
-      // 监听窗口大小变化事件，调整指示器位置
-      $window.on('resize', $.throttle(function () { return this$1.setIndicatorPosition(); }, 100));
-      // 监听点击选项卡事件
-      this.$tabs.each(function (_, tab) {
-          this$1.bindTabEvent(tab);
-      });
-  };
-  /**
-   * 指定选项卡是否已禁用
-   * @param $tab
-   */
-  Tab.prototype.isDisabled = function isDisabled ($tab) {
-      return $tab.attr('disabled') !== undefined;
-  };
-  /**
-   * 绑定在 Tab 上点击或悬浮的事件
-   * @param tab
-   */
-  Tab.prototype.bindTabEvent = function bindTabEvent (tab) {
-          var this$1 = this;
-
-      var $tab = $(tab);
-      // 点击或鼠标移入触发的事件
-      var clickEvent = function () {
-          // 禁用状态的选项卡无法选中
-          if (this$1.isDisabled($tab)) {
-              return false;
-          }
-          this$1.activeIndex = this$1.$tabs.index(tab);
-          this$1.setActive();
-      };
-      // 无论 trigger 是 click 还是 hover，都会响应 click 事件
-      $tab.on('click', clickEvent);
-      // trigger 为 hover 时，额外响应 mouseenter 事件
-      if (this.options.trigger === 'hover') {
-          $tab.on('mouseenter', clickEvent);
-      }
-      // 阻止链接的默认点击动作
-      $tab.on('click', function () {
-          if (($tab.attr('href') || '').indexOf('#') === 0) {
-              return false;
-          }
-      });
-  };
-  /**
-   * 触发组件事件
-   * @param name
-   * @param $element
-   * @param parameters
-   */
-  Tab.prototype.triggerEvent = function triggerEvent (name, $element, parameters) {
-          if ( parameters === void 0 ) parameters = {};
-
-      componentEvent(name, 'tab', $element, this, parameters);
-  };
-  /**
-   * 设置激活状态的选项卡
-   */
-  Tab.prototype.setActive = function setActive () {
-          var this$1 = this;
-
-      this.$tabs.each(function (index, tab) {
-          var $tab = $(tab);
-          var targetId = $tab.attr('href') || '';
-          // 设置选项卡激活状态
-          if (index === this$1.activeIndex && !this$1.isDisabled($tab)) {
-              if (!$tab.hasClass('mdui-tab-active')) {
-                  this$1.triggerEvent('change', this$1.$element, {
-                      index: this$1.activeIndex,
-                      id: targetId.substr(1),
-                  });
-                  this$1.triggerEvent('show', $tab);
-                  $tab.addClass('mdui-tab-active');
-              }
-              $(targetId).show();
-              this$1.setIndicatorPosition();
-          }
-          else {
-              $tab.removeClass('mdui-tab-active');
-              $(targetId).hide();
-          }
-      });
-  };
-  /**
-   * 设置选项卡指示器的位置
-   */
-  Tab.prototype.setIndicatorPosition = function setIndicatorPosition () {
-      // 选项卡数量为 0 时，不显示指示器
-      if (this.activeIndex === -1) {
-          this.$indicator.css({
-              left: 0,
-              width: 0,
-          });
-          return;
-      }
-      var $activeTab = this.$tabs.eq(this.activeIndex);
-      if (this.isDisabled($activeTab)) {
-          return;
-      }
-      var activeTabOffset = $activeTab.offset();
-      this.$indicator.css({
-          left: ((activeTabOffset.left +
-              this.$element[0].scrollLeft -
-              this.$element[0].getBoundingClientRect().left) + "px"),
-          width: (($activeTab.innerWidth()) + "px"),
-      });
-  };
-  /**
-   * 切换到下一个选项卡
-   */
-  Tab.prototype.next = function next () {
-      if (this.activeIndex === -1) {
-          return;
-      }
-      if (this.$tabs.length > this.activeIndex + 1) {
-          this.activeIndex++;
-      }
-      else if (this.options.loop) {
-          this.activeIndex = 0;
-      }
-      this.setActive();
-  };
-  /**
-   * 切换到上一个选项卡
-   */
-  Tab.prototype.prev = function prev () {
-      if (this.activeIndex === -1) {
-          return;
-      }
-      if (this.activeIndex > 0) {
-          this.activeIndex--;
-      }
-      else if (this.options.loop) {
-          this.activeIndex = this.$tabs.length - 1;
-      }
-      this.setActive();
-  };
-  /**
-   * 显示指定索引号、或指定id的选项卡
-   * @param index 索引号、或id
-   */
-  Tab.prototype.show = function show (index) {
-          var this$1 = this;
-
-      if (this.activeIndex === -1) {
-          return;
-      }
-      if (isNumber(index)) {
-          this.activeIndex = index;
-      }
-      else {
-          this.$tabs.each(function (i, tab) {
-              if (tab.id === index) {
-                  this$1.activeIndex = i;
-                  return false;
-              }
-          });
-      }
-      this.setActive();
-  };
-  /**
-   * 在父元素的宽度变化时，需要调用该方法重新调整指示器位置
-   * 在添加或删除选项卡时，需要调用该方法
-   */
-  Tab.prototype.handleUpdate = function handleUpdate () {
-          var this$1 = this;
-
-      var $oldTabs = this.$tabs; // 旧的 tabs JQ对象
-      var $newTabs = this.$element.children('a'); // 新的 tabs JQ对象
-      var oldTabsElement = $oldTabs.get(); // 旧的 tabs 元素数组
-      var newTabsElement = $newTabs.get(); // 新的 tabs 元素数组
-      if (!$newTabs.length) {
-          this.activeIndex = -1;
-          this.$tabs = $newTabs;
-          this.setIndicatorPosition();
-          return;
-      }
-      // 重新遍历选项卡，找出新增的选项卡
-      $newTabs.each(function (index, tab) {
-          // 有新增的选项卡
-          if (oldTabsElement.indexOf(tab) < 0) {
-              this$1.bindTabEvent(tab);
-              if (this$1.activeIndex === -1) {
-                  this$1.activeIndex = 0;
-              }
-              else if (index <= this$1.activeIndex) {
-                  this$1.activeIndex++;
-              }
-          }
-      });
-      // 找出被移除的选项卡
-      $oldTabs.each(function (index, tab) {
-          // 有被移除的选项卡
-          if (newTabsElement.indexOf(tab) < 0) {
-              if (index < this$1.activeIndex) {
-                  this$1.activeIndex--;
-              }
-              else if (index === this$1.activeIndex) {
-                  this$1.activeIndex = 0;
-              }
-          }
-      });
-      this.$tabs = $newTabs;
-      this.setActive();
-  };
-  mdui.Tab = Tab;
-
-  var customAttr$2 = 'mdui-tab';
-  $(function () {
-      mdui.mutation(("[" + customAttr$2 + "]"), function () {
-          new mdui.Tab(this, parseOptions(this, customAttr$2));
-      });
-  });
-
   /**
    * touch 事件后的 500ms 内禁用 mousedown 事件
    *
@@ -3422,7 +3161,7 @@
       }
   }
 
-  var DEFAULT_OPTIONS$3 = {
+  var DEFAULT_OPTIONS$2 = {
       position: 'auto',
       delay: 0,
       content: '',
@@ -3433,7 +3172,7 @@
       /**
        * 配置参数
        */
-      this.options = extend({}, DEFAULT_OPTIONS$3);
+      this.options = extend({}, DEFAULT_OPTIONS$2);
       /**
        * 当前 tooltip 的状态
        */
@@ -3659,15 +3398,15 @@
   };
   mdui.Tooltip = Tooltip;
 
-  var customAttr$3 = 'mdui-tooltip';
+  var customAttr$2 = 'mdui-tooltip';
   var dataName = '_mdui_tooltip';
   $(function () {
       // mouseenter 不能冒泡，所以这里用 mouseover 代替
-      $document.on('touchstart mouseover', ("[" + customAttr$3 + "]"), function () {
+      $document.on('touchstart mouseover', ("[" + customAttr$2 + "]"), function () {
           var $target = $(this);
           var instance = $target.data(dataName);
           if (!instance) {
-              instance = new mdui.Tooltip(this, parseOptions(this, customAttr$3));
+              instance = new mdui.Tooltip(this, parseOptions(this, customAttr$2));
               $target.data(dataName, instance);
           }
       });
@@ -3698,7 +3437,7 @@
       func();
   }
 
-  var DEFAULT_OPTIONS$4 = {
+  var DEFAULT_OPTIONS$3 = {
       message: '',
       timeout: 4000,
       position: 'bottom',
@@ -3731,7 +3470,7 @@
       /**
        * 配置参数
        */
-      this.options = extend({}, DEFAULT_OPTIONS$4);
+      this.options = extend({}, DEFAULT_OPTIONS$3);
       /**
        * 当前 Snackbar 的状态
        */

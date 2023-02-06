@@ -1,0 +1,10 @@
+@namespace MduiBlazor
+@inherits MduiComponentBase
+@implements IDisposable
+
+@if (_active)
+{
+    <div class="@Classname" style="@Style">
+        @ChildContent
+    </div>
+}

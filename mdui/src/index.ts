@@ -7,8 +7,6 @@ import './components/headroom';
 import './components/headroom/customAttr';
 import './components/collapse';
 import './components/collapse/customAttr';
-import './components/tab';
-import './components/tab/customAttr';
 import './components/tooltip';
 import './components/tooltip/customAttr';
 import './components/snackbar';
