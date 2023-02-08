@@ -12293,11 +12293,14 @@ select.mdui-select[multiple] option:last-child {
     border-radius: 2px;
   }
 }
-.mdui-snackbar-bottom,
-.mdui-snackbar-top,
+.mdui-snackbar-center-top,
+.mdui-snackbar-center-middle,
+.mdui-snackbar-center-bottom,
 .mdui-snackbar-left-top,
+.mdui-snackbar-left-middle,
 .mdui-snackbar-left-bottom,
 .mdui-snackbar-right-top,
+.mdui-snackbar-right-middle,
 .mdui-snackbar-right-bottom {
   -webkit-transition: -webkit-transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   transition: -webkit-transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -12305,36 +12308,54 @@ select.mdui-select[multiple] option:last-child {
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 /* 位置 */
-.mdui-snackbar-bottom,
 .mdui-snackbar-left-bottom,
+.mdui-snackbar-center-bottom,
 .mdui-snackbar-right-bottom {
   bottom: 0;
 }
-.mdui-snackbar-top,
 .mdui-snackbar-left-top,
+.mdui-snackbar-center-top,
 .mdui-snackbar-right-top {
   top: 0;
 }
-.mdui-snackbar-top,
-.mdui-snackbar-bottom {
-  left: 50%;
+.mdui-snackbar-left-middle,
+.mdui-snackbar-center-middle,
+.mdui-snackbar-right-middle {
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
 }
 @media (min-width: 600px) {
-  .mdui-snackbar-left-top {
-    top: 24px;
-    left: 24px;
-  }
-  .mdui-snackbar-left-bottom {
-    bottom: 24px;
-    left: 24px;
-  }
+  .mdui-snackbar-left-top,
+  .mdui-snackbar-center-top,
   .mdui-snackbar-right-top {
     top: 24px;
-    right: 24px;
   }
+  .mdui-snackbar-left-bottom,
+  .mdui-snackbar-center-bottom,
+  .mdui-snackbar-right-bottom {
+    bottom: 24px;
+  }
+  .mdui-snackbar-left-top,
+  .mdui-snackbar-left-middle,
+  .mdui-snackbar-left-bottom {
+    left: 24px;
+  }
+  .mdui-snackbar-right-top,
+  .mdui-snackbar-right-middle,
   .mdui-snackbar-right-bottom {
     right: 24px;
-    bottom: 24px;
+  }
+  .mdui-snackbar-center-top,
+  .mdui-snackbar-center-bottom {
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+  }
+  .mdui-snackbar-center-middle {
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
   }
 }
 /* 文本 */
