@@ -1,0 +1,14 @@
+﻿@namespace MduiBlazor
+@inherits MduiComponentBase
+
+@if (SnackbarList.Any())
+{
+    <CascadingValue Value="@this" IsFixed>
+    @foreach (var snackbar in SnackbarList.OrderBy(x => x.TimeStamp))
+        {
+            <MduiSnackbar @key="snackbar" Options="@(snackbar.Options??GlobalOptions)" SnackbarId="@snackbar.Id">
+                @snackbar.MessageContent
+            </MduiSnackbar>
+        }
+    </CascadingValue>
+}

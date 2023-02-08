@@ -33,53 +33,74 @@
   }
 }
 
-.mdui-snackbar-bottom,
-.mdui-snackbar-top,
+.mdui-snackbar-center-top,
+.mdui-snackbar-center-middle,
+.mdui-snackbar-center-bottom,
 .mdui-snackbar-left-top,
+.mdui-snackbar-left-middle,
 .mdui-snackbar-left-bottom,
 .mdui-snackbar-right-top,
+.mdui-snackbar-right-middle,
 .mdui-snackbar-right-bottom {
   transition: transform .3s @animation-curve-default;
 }
 
 /* 位置 */
-.mdui-snackbar-bottom,
 .mdui-snackbar-left-bottom,
+.mdui-snackbar-center-bottom,
 .mdui-snackbar-right-bottom {
   bottom: 0;
 }
 
-.mdui-snackbar-top,
 .mdui-snackbar-left-top,
+.mdui-snackbar-center-top,
 .mdui-snackbar-right-top {
   top: 0;
 }
 
-.mdui-snackbar-top,
-.mdui-snackbar-bottom {
-  left: 50%;
+.mdui-snackbar-left-middle,
+.mdui-snackbar-center-middle,
+.mdui-snackbar-right-middle {
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 // 平板、桌面端位置
 @media (min-width: @screen-sm-min) {
-  .mdui-snackbar-left-top {
-    top: 24px;
-    left: 24px;
-  }
 
-  .mdui-snackbar-left-bottom {
-    bottom: 24px;
-    left: 24px;
-  }
-
+  .mdui-snackbar-left-top,
+  .mdui-snackbar-center-top,
   .mdui-snackbar-right-top {
     top: 24px;
+  }
+
+  .mdui-snackbar-left-bottom,
+  .mdui-snackbar-center-bottom,
+  .mdui-snackbar-right-bottom {
+    bottom: 24px;
+  }
+
+  .mdui-snackbar-left-top,
+  .mdui-snackbar-left-middle,
+  .mdui-snackbar-left-bottom {
+    left: 24px;
+  }
+
+  .mdui-snackbar-right-top,
+  .mdui-snackbar-right-middle,
+  .mdui-snackbar-right-bottom {
     right: 24px;
   }
 
-  .mdui-snackbar-right-bottom {
-    right: 24px;
-    bottom: 24px;
+  .mdui-snackbar-center-top,
+  .mdui-snackbar-center-bottom {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .mdui-snackbar-center-middle {
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 }
 
@@ -110,13 +131,14 @@
     .loop-accent-theme((@counter-color - 1));
     @colorName: extract(@globalAccentColors, @counter-color);
 
-    .mdui-theme-accent-@{colorName} when not (@colorName = null) {
+    .mdui-theme-accent-@{colorName} when not (@colorName =null) {
       .mdui-snackbar-action {
         .mdui-text-color(@colorName, a100);
       }
     }
 
   }
+
   .loop-accent-theme(length(@globalAccentColors));
 }
 

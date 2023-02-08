@@ -1,0 +1,45 @@
+@page "/snackbars"
+@inject SnackbarService SnackbarService
+
+<h2>普通 Snackbar</h2>
+<MduiButton Color="@Colors.Theme.Primary"
+    OnClick="@(_=>Open("Message sent",new SnackbarOptions{ShowCloseButton=false}))">open</MduiButton>
+
+<h2>带回调的 Snackbar</h2>
+<MduiButton Color="@Colors.Theme.Primary"
+    OnClick="@(_=>Open("Archived",new SnackbarOptions{OnCloseSnackbar=OnCloseBtnClicked}))">open
+</MduiButton>
+
+<h2>不同位置的 Snackbar</h2>
+<MduiField Label="PositionX">
+    <MduiRadioGroup @bind-Value="@positionX">
+        <MduiRadio Label="Left" Value="@PositionX.Left" />
+        <MduiRadio Label="Center" Value="@PositionX.Center" />
+        <MduiRadio Label="Right" Value="@PositionX.Right" />
+    </MduiRadioGroup>
+</MduiField>
+<MduiField Label="PostionY">
+    <MduiRadioGroup @bind-Value="@positionY">
+        <MduiRadio Label="Top" Value="@PositionY.Top" />
+        <MduiRadio Label="Middle" Value="@PositionY.Middle" />
+        <MduiRadio Label="Bottom" Value="@PositionY.Bottom" />
+    </MduiRadioGroup>
+</MduiField>
+<MduiButton Color="@Colors.Theme.Primary"
+    OnClick="@(_=>Open(positionX.ToString()+"-"+positionY.ToString(), new SnackbarOptions{PositionX=positionX, PositionY=positionY}))">
+    open
+</MduiButton>
+
+@code {
+    private PositionX positionX;
+    private PositionY positionY;
+    private void Open(string message, SnackbarOptions? options = null)
+    {
+        SnackbarService.ShowSnackbar(message, options);
+    }
+
+    private void OnCloseBtnClicked()
+    {
+        Open("点击了关闭按钮");
+    }
+}

@@ -1,3 +1,4 @@
+using MduiBlazor;
 using MduiBlazor.Shared;
 using MduiBlazor.Shared.Data;
 using Microsoft.AspNetCore.Components.Web;
@@ -9,5 +10,7 @@ builder.RootComponents.Add<HeadOutlet>("head::after");
 
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 builder.Services.AddSingleton<WeatherForecastService>();
+
+builder.Services.AddMduiBlazor();
 
 await builder.Build().RunAsync();

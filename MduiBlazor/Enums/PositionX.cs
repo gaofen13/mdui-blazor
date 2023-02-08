@@ -4,11 +4,11 @@ namespace MduiBlazor
 {
     public enum PositionX
     {
-        [Description("start")]
-        Start,
+        [Description("left")]
+        Left,
         [Description("center")]
         Center,
-        [Description("end")]
-        End
+        [Description("right")]
+        Right
     }
 }

@@ -1,0 +1,12 @@
+@namespace MduiBlazor
+@inherits MduiComponentBase
+@implements IDisposable
+
+<div class="@Classname" style="@Style" @attributes="@AdditionalAttributes">
+    <div class="mdui-snackbar-text">@ChildContent</div>
+    @if (Options.ShowCloseButton)
+    {
+        <MduiIconButton Class="mdui-snackbar-action" Icon="cancel" Color="@Options.CloseBtnColor"
+        OnClick="@CloseBtnClicked" />
+    }
+</div>

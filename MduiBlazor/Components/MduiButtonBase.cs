@@ -67,7 +67,8 @@ namespace MduiBlazor
         /// <summary>
         /// Button click event.
         /// </summary>
-        [Parameter] public EventCallback<MouseEventArgs> OnClick { get; set; }
+        [Parameter]
+        public EventCallback<MouseEventArgs> OnClick { get; set; }
 
         protected virtual async Task OnClickHandler(MouseEventArgs ev)
         {
