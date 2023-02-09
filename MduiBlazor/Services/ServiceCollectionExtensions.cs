@@ -6,11 +6,8 @@ namespace MduiBlazor
     {
         public static IServiceCollection AddMduiBlazor(this IServiceCollection services)
         {
-            return services//.AddMduiDialog()
-                .AddMduiSnackbar();
+            return services.AddMduiSnackbar();
         }
-
-        //public static IServiceCollection AddMduiDialog(this IServiceCollection services) => services.AddScoped<DialogService>();
 
         public static IServiceCollection AddMduiSnackbar(this IServiceCollection services) => services.AddScoped<SnackbarService>();
     }

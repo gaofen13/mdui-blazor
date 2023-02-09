@@ -3,50 +3,48 @@ using MduiBlazor.Components.Snackbar;
 using MduiBlazor.Extensions;
 using MduiBlazor.Utilities;
 using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Web;
 
 namespace MduiBlazor
 {
     public partial class MduiSnackbar : MduiComponentBase
     {
+        private SnackbarOptions _options = new SnackbarOptions();
+
         private CountdownTimer? _countdownTimer;
 
         protected string Classname =>
           new ClassBuilder("mdui-snackbar")
-            .AddClass($"mdui-snackbar-{Options.PositionX.ToDescriptionString()}-{Options.PositionY.ToDescriptionString()}")
+            .AddClass($"mdui-snackbar-{_options.PositionX.ToDescriptionString()}-{_options.PositionY.ToDescriptionString()}")
             .AddClass(Class)
             .Build();
 
         [CascadingParameter]
-        private MduiSnackbarContainer? SnackbarContainer { get; set; }
+        private MduiSnackbarProvider? SnackbarProvider { get; set; }
 
         [Parameter]
-        public string? Title { get; set; }
-
-        [Parameter]
-        public SnackbarOptions Options { get; set; } = new();
+        public SnackbarOptions? Options { get; set; }
 
         [Parameter]
         public Guid SnackbarId { get; set; }
 
         protected override async Task OnInitializedAsync()
         {
-            _countdownTimer = new CountdownTimer(Options.TimeOut)
+            if (Options is not null)
+            {
+                _options = Options;
+            }
+            else if (SnackbarProvider is not null)
+            {
+                _options = SnackbarProvider.Options;
+            }
+
+            _countdownTimer = new CountdownTimer(_options.TimeOut)
                 .OnElapsed(Close);
 
             await _countdownTimer.StartAsync();
         }
 
-        public void Close() => SnackbarContainer?.RemoveSnackbar(SnackbarId);
-
-        private void CloseBtnClicked()
-        {
-            Close();
-            if (Options.OnCloseSnackbar is not null)
-            {
-                Options.OnCloseSnackbar.Invoke();
-            }
-        }
+        public void Close() => SnackbarProvider?.CloseSnackbar(SnackbarId);
 
         void IDisposable.Dispose()
         {

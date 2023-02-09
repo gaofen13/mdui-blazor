@@ -1,0 +1,27 @@
+<MduiField Label="选择">
+    <MduiSelect @bind-Value="@value">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+    </MduiSelect>
+</MduiField>
+
+<MduiButton Text OnClick="@Cancel">Cacell</MduiButton>
+<MduiButton Text OnClick="@Confirm">Confirm</MduiButton>
+
+@code {
+    int value;
+
+    [CascadingParameter]
+    private MduiDialog? Instance { get; set; }
+
+    private void Cancel()
+    {
+        Instance?.Cancel();
+    }
+
+    private void Confirm()
+    {
+        Instance?.Close();
+    }
+}

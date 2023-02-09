@@ -1,0 +1,8 @@
+﻿@namespace MduiBlazor
+
+<CascadingValue Value="@this" IsFixed>
+    @foreach (var dialog in _dialogs)
+    {
+        @dialog.Instance
+    }
+</CascadingValue>

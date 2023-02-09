@@ -1,16 +1,20 @@
-﻿namespace MduiBlazor
+﻿using System.Collections;
+
+namespace MduiBlazor
 {
-    public class SnackbarParameters
+    public class ComponentParameters : IEnumerable<KeyValuePair<string, object>>
     {
         internal readonly Dictionary<string, object> Parameters;
 
-        public SnackbarParameters()
+        public ComponentParameters()
         {
             Parameters = new Dictionary<string, object>();
         }
-        public void Add(string parameterName, object value)
+
+        public ComponentParameters Add(string parameterName, object value)
         {
             Parameters[parameterName] = value;
+            return this;
         }
 
         public T Get<T>(string parameterName)
@@ -20,7 +24,7 @@
                 return (T)value;
             }
 
-            throw new KeyNotFoundException($"{parameterName} does not exist in snackbar parameters");
+            throw new KeyNotFoundException($"{parameterName} does not exist in the component parameters");
         }
 
         public T? TryGet<T>(string parameterName)
@@ -32,5 +36,9 @@
 
             return default;
         }
+
+        public IEnumerator<KeyValuePair<string, object>> GetEnumerator() => Parameters.GetEnumerator();
+
+        IEnumerator IEnumerable.GetEnumerator() => Parameters.GetEnumerator();
     }
 }

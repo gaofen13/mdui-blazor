@@ -5,11 +5,6 @@
 <MduiButton Color="@Colors.Theme.Primary"
     OnClick="@(_=>Open("Message sent",new SnackbarOptions{ShowCloseButton=false}))">open</MduiButton>
 
-<h2>带回调的 Snackbar</h2>
-<MduiButton Color="@Colors.Theme.Primary"
-    OnClick="@(_=>Open("Archived",new SnackbarOptions{OnCloseSnackbar=OnCloseBtnClicked}))">open
-</MduiButton>
-
 <h2>不同位置的 Snackbar</h2>
 <MduiField Label="PositionX">
     <MduiRadioGroup @bind-Value="@positionX">
@@ -36,10 +31,5 @@
     private void Open(string message, SnackbarOptions? options = null)
     {
         SnackbarService.ShowSnackbar(message, options);
-    }
-
-    private void OnCloseBtnClicked()
-    {
-        Open("点击了关闭按钮");
     }
 }

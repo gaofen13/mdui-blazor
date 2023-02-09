@@ -6777,43 +6777,6 @@ body *::-webkit-scrollbar-thumb {
 }
 /**
  * =============================================================================
- * ************   Collapse 折叠插件   ************
- * =============================================================================
- */
-.mdui-collapse-item-header .mdui-collapse-item-arrow,
-.mdui-collapse-item-header.mdui-collapse-item-arrow {
-  -webkit-transform: rotate(0);
-          transform: rotate(0);
-  -webkit-transition: -webkit-transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  transition: -webkit-transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  will-change: transform;
-}
-.mdui-collapse-item-body {
-  height: 0;
-  margin-top: 0;
-  margin-bottom: 0;
-  padding-top: 0;
-  padding-bottom: 0;
-  overflow: hidden;
-  -webkit-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  will-change: height;
-}
-.mdui-collapse-item-body .mdui-list-item {
-  padding-left: 72px;
-}
-.mdui-collapse-item-open > .mdui-collapse-item-header .mdui-collapse-item-arrow,
-.mdui-collapse-item-open > .mdui-collapse-item-header.mdui-collapse-item-arrow {
-  -webkit-transform: rotate(180deg);
-          transform: rotate(180deg);
-}
-.mdui-collapse-item-open > .mdui-collapse-item-body {
-  height: auto;
-}
-/**
- * =============================================================================
  * ************   Expansion panel 可扩展面板   ************
  * =============================================================================
  */
@@ -11998,10 +11961,11 @@ select.mdui-select[multiple] option:last-child {
  */
 .mdui-dialog {
   position: fixed;
+  top: 50%;
   right: 0;
   left: 0;
   z-index: 6000;
-  display: none;
+  display: block;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   width: 92%;
@@ -12013,8 +11977,9 @@ select.mdui-select[multiple] option:last-child {
   color: #000;
   background-color: #fff;
   border-radius: 2px;
-  -webkit-transform: scale(0.95);
-          transform: scale(0.95);
+  -webkit-transform: scale(0.95) translateY(-50%);
+          transform: scale(0.95) translateY(-50%);
+  visibility: hidden;
   opacity: 0;
   -webkit-transition-duration: 0.3s;
           transition-duration: 0.3s;
@@ -12022,7 +11987,7 @@ select.mdui-select[multiple] option:last-child {
   transition-property: opacity, visibility, -webkit-transform;
   transition-property: transform, opacity, visibility;
   transition-property: transform, opacity, visibility, -webkit-transform;
-  will-change: top, opacity, transform;
+  will-change: opacity, transform, visibility;
   -webkit-box-shadow: 0 11px 15px -7px rgba(0, 0, 0, 0.2), 0 24px 38px 3px rgba(0, 0, 0, 0.14), 0 9px 46px 8px rgba(0, 0, 0, 0.12);
           box-shadow: 0 11px 15px -7px rgba(0, 0, 0, 0.2), 0 24px 38px 3px rgba(0, 0, 0, 0.14), 0 9px 46px 8px rgba(0, 0, 0, 0.12);
 }
@@ -12040,8 +12005,9 @@ select.mdui-select[multiple] option:last-child {
 }
 /* 打开提示框 */
 .mdui-dialog-open {
-  -webkit-transform: scale(1);
-          transform: scale(1);
+  -webkit-transform: scale(1) translateY(-50%);
+          transform: scale(1) translateY(-50%);
+  visibility: visible;
   opacity: 1;
 }
 /* 提示框标题 */
@@ -12207,55 +12173,6 @@ select.mdui-select[multiple] option:last-child {
 }
 .mdui-dialog-prompt .mdui-textfield {
   padding-top: 0;
-}
-/**
- * =============================================================================
- * ************   Tooltip 工具提示   ************
- * =============================================================================
- */
-.mdui-tooltip {
-  position: absolute;
-  z-index: 9000;
-  display: inline-block;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  max-width: 180px;
-  min-height: 32px;
-  padding: 8px 16px;
-  color: #fff;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 22px;
-  text-align: left;
-  background-color: rgba(97, 97, 97, 0.9);
-  border-radius: 2px;
-  -webkit-transform: scale(0);
-          transform: scale(0);
-  opacity: 0;
-  -webkit-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-          transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  -webkit-transition-duration: 0.15s;
-          transition-duration: 0.15s;
-  -webkit-transition-property: opacity, -webkit-transform;
-  transition-property: opacity, -webkit-transform;
-  transition-property: opacity, transform;
-  transition-property: opacity, transform, -webkit-transform;
-  will-change: opacity, transform;
-}
-@media (min-width: 1024px) {
-  .mdui-tooltip {
-    max-width: 200px;
-    min-height: 24px;
-    padding: 4px 8px;
-    font-size: 12px;
-    line-height: 18px;
-  }
-}
-/* 显示工具提示 */
-.mdui-tooltip-open {
-  -webkit-transform: scale(1);
-          transform: scale(1);
-  opacity: 1;
 }
 /**
  * =============================================================================

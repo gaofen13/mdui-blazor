@@ -8,10 +8,11 @@
 
 .mdui-dialog {
   position: fixed;
+  top: 50%;
   right: 0;
   left: 0;
   z-index: @z-index-dialog;
-  display: none;
+  display: block;
   box-sizing: border-box;
   width: 92%;
   min-width: 180px;
@@ -22,16 +23,18 @@
   color: #000;
   background-color: #fff;
   border-radius: 2px;
-  transform: scale(0.95);
+  transform: scale(0.95) translateY(-50%);
+  visibility: hidden;
   opacity: 0;
   transition-duration: .3s;
   transition-property: transform, opacity, visibility;
-  will-change: top, opacity, transform;
+  will-change: opacity, transform, visibility;
 
   @media (min-width: @screen-sm-min) {
     width: 85%;
     max-height: 85%;
   }
+
   @media (min-width: @screen-md-min) {
     width: 80%;
     max-height: 80%;
@@ -42,7 +45,8 @@
 
 /* 打开提示框 */
 .mdui-dialog-open {
-  transform: scale(1);
+  transform: scale(1) translateY(-50%);
+  visibility: visible;
   opacity: 1;
 }
 
@@ -76,7 +80,7 @@
   padding-bottom: 20px;
 }
 
-.mdui-dialog-title + .mdui-dialog-content {
+.mdui-dialog-title+.mdui-dialog-content {
   padding-top: 0;
 }
 
@@ -85,10 +89,12 @@
   box-sizing: border-box;
   padding: 8px;
   text-align: right;
+
   .mdui-btn {
     min-width: 64px;
     margin-left: 8px;
     .mdui-text-color(@color-accent-default-name);
+
     &:first-child {
       margin-left: 0;
     }
@@ -104,6 +110,7 @@
 /* 使提示框底部按钮竖排 */
 .mdui-dialog-actions-stacked {
   padding: 8px 0 8px 0;
+
   .mdui-btn {
     width: 100%;
     height: 48px;
@@ -125,7 +132,7 @@
     .loop-accent-theme((@counter-color - 1));
     @colorName: extract(@globalAccentColors, @counter-color);
 
-    .mdui-theme-accent-@{colorName} when not (@colorName = null) {
+    .mdui-theme-accent-@{colorName} when not (@colorName =null) {
       .mdui-dialog-actions {
         .mdui-btn {
           .mdui-text-color(@colorName);
@@ -134,6 +141,7 @@
     }
 
   }
+
   .loop-accent-theme(length(@globalAccentColors));
 }
 
@@ -148,6 +156,7 @@
     color: #fff;
     background-color: @layout-dark-color-4;
   }
+
   .mdui-dialog-content {
     color: rgba(255, 255, 255, 0.7);
   }

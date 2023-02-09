@@ -1,0 +1,12 @@
+@page "/dialogs"
+
+<h2>标准对话框</h2>
+<MduiDialog Title="Are you sure?" @bind-IsShow="@dialog1"
+    Options="new DialogOptions{Modal=true,ShowConfirm=true,ShowCancel=true}">
+    You'll lose all photos and media!
+</MduiDialog>
+<MduiButton Color="@Colors.Theme.Accent" OnClick="@(_=>dialog1=true)">Open</MduiButton>
+
+@code {
+    bool dialog1;
+}

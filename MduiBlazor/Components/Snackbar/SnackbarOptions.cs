@@ -14,7 +14,5 @@ namespace MduiBlazor
         public bool ShowCloseButton { get; set; } = true;
 
         public string? CloseBtnColor { get; set; }
-
-        public Action? OnCloseSnackbar { get; set; }
     }
 }

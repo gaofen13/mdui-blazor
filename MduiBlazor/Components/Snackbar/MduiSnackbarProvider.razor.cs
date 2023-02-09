@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Components.Routing;
 
 namespace MduiBlazor
 {
-    public partial class MduiSnackbarContainer : MduiComponentBase
+    public partial class MduiSnackbarProvider : MduiComponentBase
     {
         private string ContainerStyle =>
             new StyleBuilder("min-width", "300px")
@@ -25,7 +25,7 @@ namespace MduiBlazor
         public int MaxItemsShown { get; set; } = 10;
 
         [Parameter]
-        public SnackbarOptions GlobalOptions { get; set; } = new();
+        public SnackbarOptions Options { get; set; } = new();
 
         private List<SnackbarInstance> SnackbarList { get; set; } = new();
 
@@ -43,7 +43,7 @@ namespace MduiBlazor
             }
         }
 
-        public void RemoveSnackbar(Guid snackbarId)
+        public void CloseSnackbar(Guid snackbarId)
         {
             InvokeAsync(() =>
             {
@@ -80,7 +80,7 @@ namespace MduiBlazor
         {
             InvokeAsync(() =>
             {
-                var snackbar = new SnackbarInstance(options ?? GlobalOptions) { MessageContent = message };
+                var snackbar = new SnackbarInstance(options ?? Options) { MessageContent = message };
 
                 if (SnackbarList.Count < MaxItemsShown)
                 {
@@ -95,7 +95,7 @@ namespace MduiBlazor
 
         }
 
-        private void ShowSnackbar(Type contentComponent, SnackbarParameters? parameters, SnackbarOptions? options)
+        private void ShowSnackbar(Type contentComponent, ComponentParameters? parameters, SnackbarOptions? options)
         {
             InvokeAsync(() =>
             {
@@ -113,7 +113,7 @@ namespace MduiBlazor
                     builder.CloseComponent();
                 });
 
-                var snackbar = new SnackbarInstance(options ?? GlobalOptions) { MessageContent = childContent };
+                var snackbar = new SnackbarInstance(options ?? Options) { MessageContent = childContent };
 
                 if (SnackbarList.Count < MaxItemsShown)
                 {
