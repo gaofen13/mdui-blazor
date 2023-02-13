@@ -11977,17 +11977,8 @@ select.mdui-select[multiple] option:last-child {
   color: #000;
   background-color: #fff;
   border-radius: 2px;
-  -webkit-transform: scale(0.95) translateY(-50%);
-          transform: scale(0.95) translateY(-50%);
-  visibility: hidden;
-  opacity: 0;
-  -webkit-transition-duration: 0.3s;
-          transition-duration: 0.3s;
-  -webkit-transition-property: opacity, visibility, -webkit-transform;
-  transition-property: opacity, visibility, -webkit-transform;
-  transition-property: transform, opacity, visibility;
-  transition-property: transform, opacity, visibility, -webkit-transform;
-  will-change: opacity, transform, visibility;
+  -webkit-animation: mdui-open-dialog 0.1s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+          animation: mdui-open-dialog 0.1s cubic-bezier(0.39, 0.575, 0.565, 1) both;
   -webkit-box-shadow: 0 11px 15px -7px rgba(0, 0, 0, 0.2), 0 24px 38px 3px rgba(0, 0, 0, 0.14), 0 9px 46px 8px rgba(0, 0, 0, 0.12);
           box-shadow: 0 11px 15px -7px rgba(0, 0, 0, 0.2), 0 24px 38px 3px rgba(0, 0, 0, 0.14), 0 9px 46px 8px rgba(0, 0, 0, 0.12);
 }
@@ -12002,13 +11993,6 @@ select.mdui-select[multiple] option:last-child {
     width: 80%;
     max-height: 80%;
   }
-}
-/* 打开提示框 */
-.mdui-dialog-open {
-  -webkit-transform: scale(1) translateY(-50%);
-          transform: scale(1) translateY(-50%);
-  visibility: visible;
-  opacity: 1;
 }
 /* 提示框标题 */
 .mdui-dialog-title {
@@ -12072,6 +12056,34 @@ select.mdui-select[multiple] option:last-child {
   line-height: 48px !important;
   text-align: right;
   border-radius: 0;
+}
+@-webkit-keyframes mdui-open-dialog {
+  0% {
+    opacity: 0;
+  }
+  1% {
+    -webkit-transform: scale(0.5) translateY(-50%);
+            transform: scale(0.5) translateY(-50%);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scale(1) translateY(-50%);
+            transform: scale(1) translateY(-50%);
+  }
+}
+@keyframes mdui-open-dialog {
+  0% {
+    opacity: 0;
+  }
+  1% {
+    -webkit-transform: scale(0.5) translateY(-50%);
+            transform: scale(0.5) translateY(-50%);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scale(1) translateY(-50%);
+            transform: scale(1) translateY(-50%);
+  }
 }
 /**
  * =============================================================================
