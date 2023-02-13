@@ -1,10 +1,8 @@
 ﻿@namespace MduiBlazor
 
-<div class="mdui-dialog-provider">
-    <CascadingValue Value="@this" IsFixed>
-        @foreach (var dialog in _dialogs)
-        {
-            @dialog.Instance
-        }
-    </CascadingValue>
-</div>
+<CascadingValue Value="@this" IsFixed>
+    @foreach (var dialog in _dialogs)
+    {
+        @dialog.Instance
+    }
+</CascadingValue>
