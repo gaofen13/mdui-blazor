@@ -8,18 +8,18 @@ namespace MduiBlazor
         internal event Action<DialogReference, DialogResult>? OnCloseRequested;
 
         public DialogReference Show<T>() where T : IComponent
-            => Show<T>(false, new ComponentParameters());
+            => Show<T>(null, new ComponentParameters());
 
-        public DialogReference Show<T>(bool modal) where T : IComponent
-            => Show<T>(modal, new ComponentParameters());
+        public DialogReference Show<T>(DialogOptions? options) where T : IComponent
+            => Show<T>(options, new ComponentParameters());
 
-        public DialogReference Show<T>(bool modal, ComponentParameters parameters) where T : IComponent
-            => Show(typeof(T), modal, parameters);
+        public DialogReference Show<T>(DialogOptions? options, ComponentParameters parameters) where T : IComponent
+            => Show(typeof(T), options, parameters);
 
-        public DialogReference Show(Type contentComponent, bool modal)
-            => Show(contentComponent, modal, new ComponentParameters());
+        public DialogReference Show(Type contentComponent, DialogOptions? options)
+            => Show(contentComponent, options, new ComponentParameters());
 
-        public DialogReference Show(Type contentComponent, bool modal, ComponentParameters parameters)
+        public DialogReference Show(Type contentComponent, DialogOptions? options, ComponentParameters parameters)
         {
             if (!typeof(IComponent).IsAssignableFrom(contentComponent))
             {
@@ -40,13 +40,46 @@ namespace MduiBlazor
             });
             var instance = new RenderFragment(builder =>
             {
-                builder.OpenComponent<MduiDialog>(0);
+                builder.OpenComponent<DialogContainer>(0);
                 builder.SetKey("DialogInstance_" + instanceId);
-                builder.AddAttribute(1, "InstanceId", instanceId);
-                builder.AddAttribute(2, "IsShow", true);
-                builder.AddAttribute(3, "Modal", modal);
-                builder.AddAttribute(4, "ChildContent", content);
-                builder.AddComponentReferenceCapture(5, compRef => reference!.InstanceRef = (MduiDialog)compRef);
+                builder.AddAttribute(1, "DialogId", instanceId);
+                builder.AddAttribute(2, "Options", options);
+                builder.AddAttribute(3, "ChildContent", content);
+                builder.AddComponentReferenceCapture(4, compRef => reference!.Container = (DialogContainer)compRef);
+                builder.CloseComponent();
+            });
+            reference = new DialogReference(instanceId, instance, this);
+
+            OnInstanceAdded?.Invoke(reference);
+
+            return reference;
+        }
+
+        public DialogReference Alert(string? message, string? title = null)
+            => Show(message, title, new DialogOptions { Modal = true, ShowConfirmButton = true, DialogType = DialogType.Alert });
+
+        public DialogReference Confirm(string? message, string? title = null)
+            => Show(message, title, new DialogOptions { ShowCancelButton = true, ShowConfirmButton = true, DialogType = DialogType.Confirm });
+
+        public DialogReference Show(string? message, string? title = null, DialogOptions? options = null)
+        {
+            DialogReference? reference = null;
+            var instanceId = Guid.NewGuid();
+            var content = new RenderFragment(builder =>
+            {
+                builder.OpenComponent<MduiDialog>(0);
+                builder.AddAttribute(1, "Title", title);
+                builder.AddAttribute(2, "Message", message);
+                builder.AddAttribute(3, "Options", options);
+                builder.CloseComponent();
+            });
+            var instance = new RenderFragment(builder =>
+            {
+                builder.OpenComponent<DialogContainer>(0);
+                builder.SetKey("DialogInstance_" + instanceId);
+                builder.AddAttribute(1, "DialogId", instanceId);
+                builder.AddAttribute(2, "ChildContent", content);
+                builder.AddComponentReferenceCapture(3, compRef => reference!.Container = (DialogContainer)compRef);
                 builder.CloseComponent();
             });
             reference = new DialogReference(instanceId, instance, this);

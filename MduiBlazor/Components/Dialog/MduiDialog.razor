@@ -1,35 +1,41 @@
 ﻿@namespace MduiBlazor
 @inherits MduiComponentBase
 
-<div class="@Classname" style="@Style" @attributes="@AdditionalAttributes" @onclick:stopPropagation="@true">
-    @if (!string.IsNullOrWhiteSpace(Title))
-    {
-        <div class="mdui-dialog-title">@Title</div>
-    }
-    <div class="mdui-dialog-content">
-        @if (ChildContent is not null)
+<MduiOverlay Visible="@ShowDialog" OnBackgroundClick="@OnClickBackground">
+    <div class="@Classname" style="@Style" @attributes="@AdditionalAttributes" @onclick:stopPropagation="@true">
+        @if (!string.IsNullOrWhiteSpace(Title))
         {
-            <CascadingValue Value="@this" IsFixed>
-            @ChildContent
-        </CascadingValue>
+            <div class="mdui-dialog-title">@Title</div>
         }
-        else
-        {
-            @Message
-        }
-    </div>
-    @if (Options?.ShowConfirm == true || Options?.ShowCancel == true)
-    {
-        <div class="mdui-dialog-actions">
-            @if (Options?.ShowCancel == true)
+        <div class="mdui-dialog-content">
+            @if (ChildContent is not null)
             {
-                <MduiButton Text OnClick="@Cancel">@(Options?.CancelText)</MduiButton>
+                @ChildContent
             }
-            @if (Options?.ShowConfirm == true)
+            else
             {
-                <MduiButton Text OnClick="@Close">@(Options?.ConfirmText)</MduiButton>
+                @Message
             }
         </div>
-    }
-</div>
-<MduiOverlay Visible="@IsShow" OnBackgroundClick="@OnClickBackgroundAsync" />
+        @if (ActionsContent is not null || _options.ShowCancelButton || _options.ShowConfirmButton)
+        {
+            <div class="mdui-dialog-actions">
+                @if (ActionsContent is not null)
+                {
+                    @ActionsContent
+                }
+                else
+                {
+                    if (_options.ShowCancelButton)
+                    {
+                        <MduiButton Text OnClick="@Cancel">@_options.CancelText</MduiButton>
+                    }
+                    if (_options.ShowConfirmButton)
+                    {
+                        <MduiButton Text OnClick="@Confirm">@_options.ConfirmText</MduiButton>
+                    }
+                }
+            </div>
+        }
+    </div>
+</MduiOverlay>

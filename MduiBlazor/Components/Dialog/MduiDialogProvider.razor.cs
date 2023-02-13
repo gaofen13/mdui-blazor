@@ -6,12 +6,12 @@ namespace MduiBlazor
 {
     public partial class MduiDialogProvider
     {
+        private readonly Collection<DialogReference> _dialogs = new();
+
         [Inject] private NavigationManager? NavigationManager { get; set; }
         [Inject] private DialogService DialogService { get; set; } = default!;
-        [Parameter] public DialogOptions Options { get; set; } = new();
 
-        private readonly Collection<DialogReference> _dialogs = new();
-        private bool _haveActiveDialogs;
+        [Parameter] public DialogOptions? Options { get; set; }
 
         protected override void OnInitialized()
         {
@@ -21,20 +21,15 @@ namespace MduiBlazor
             }
 
             DialogService.OnInstanceAdded += Update;
-            DialogService.OnCloseRequested += CloseInstance;
-            NavigationManager!.LocationChanged += CancelModals;
+            DialogService.OnCloseRequested += DismissInstance;
+            NavigationManager!.LocationChanged += CancelDialogs;
         }
 
         internal void CloseInstance(DialogReference? dialog, DialogResult result)
         {
-            if (dialog?.InstanceRef != null)
+            if (dialog?.Container != null)
             {
-                // Gracefully close the modal
-                dialog.InstanceRef.Close(result);
-                if (!_dialogs.Any())
-                {
-                    ClearBodyStyles();
-                }
+                dialog.Container.Close(result);
             }
             else
             {
@@ -54,15 +49,11 @@ namespace MduiBlazor
             {
                 dialog.Dismiss(result);
                 _dialogs.Remove(dialog);
-                if (!_dialogs.Any())
-                {
-                    ClearBodyStyles();
-                }
                 StateHasChanged();
             }
         }
 
-        private void CancelModals(object? sender, LocationChangedEventArgs e)
+        private void CancelDialogs(object? sender, LocationChangedEventArgs e)
         {
             foreach (var dialog in _dialogs.ToList())
             {
@@ -70,7 +61,6 @@ namespace MduiBlazor
             }
 
             _dialogs.Clear();
-            ClearBodyStyles();
             StateHasChanged();
         }
 
@@ -78,19 +68,9 @@ namespace MduiBlazor
         {
             _dialogs.Add(dialog);
 
-            if (!_haveActiveDialogs)
-            {
-                _haveActiveDialogs = true;
-            }
-
             StateHasChanged();
         }
 
         private DialogReference? GetDialogReference(Guid id) => _dialogs.SingleOrDefault(x => x.InstanceId == id);
-
-        private void ClearBodyStyles()
-        {
-            _haveActiveDialogs = false;
-        }
     }
 }

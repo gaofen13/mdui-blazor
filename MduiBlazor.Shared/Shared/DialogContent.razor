@@ -1,27 +1,34 @@
-<MduiField Label="选择">
-    <MduiSelect @bind-Value="@value">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-    </MduiSelect>
-</MduiField>
+<MduiDialog Title="title" Options="@(new DialogOptions{DialogType=DialogType.Prompt})">
+    <ChildContent>
+        <MduiTextField Label="请输入文本" @bind-Value="@text" />
+        <MduiField Label="选择">
+            <MduiSelect @bind-Value="@value">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+            </MduiSelect>
+        </MduiField>
+    </ChildContent>
+    <ActionsContent>
+        <MduiButton Text OnClick="@Cancel">Cacell</MduiButton>
+        <MduiButton Text OnClick="@Confirm">Confirm</MduiButton>
+    </ActionsContent>
+    </MduiDialog>
 
-<MduiButton Text OnClick="@Cancel">Cacell</MduiButton>
-<MduiButton Text OnClick="@Confirm">Confirm</MduiButton>
-
-@code {
+    @code {
+    string? text;
     int value;
 
     [CascadingParameter]
-    private MduiDialog? Instance { get; set; }
+    private DialogContainer? DialogInstance { get; set; }
 
     private void Cancel()
     {
-        Instance?.Cancel();
+        DialogInstance?.Close(DialogResult.Cancel("点击了Cancel按钮"));
     }
 
     private void Confirm()
     {
-        Instance?.Close();
+        DialogInstance?.Close(DialogResult.Ok("点击了Confirm按钮"));
     }
 }

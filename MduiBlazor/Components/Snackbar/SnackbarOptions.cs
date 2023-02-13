@@ -11,7 +11,7 @@ namespace MduiBlazor
 
         public PositionY PositionY { get; set; }
 
-        public bool ShowCloseButton { get; set; } = true;
+        public bool ShowCloseButton { get; set; }
 
         public string? CloseBtnColor { get; set; }
     }

@@ -23,12 +23,7 @@
   color: #000;
   background-color: #fff;
   border-radius: 2px;
-  transform: scale(0.95) translateY(-50%);
-  visibility: hidden;
-  opacity: 0;
-  transition-duration: .3s;
-  transition-property: transform, opacity, visibility;
-  will-change: opacity, transform, visibility;
+  animation: mdui-open-dialog 0.1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 
   @media (min-width: @screen-sm-min) {
     width: 85%;
@@ -41,13 +36,6 @@
   }
 
   .mdui-shadow(24);
-}
-
-/* 打开提示框 */
-.mdui-dialog-open {
-  transform: scale(1) translateY(-50%);
-  visibility: visible;
-  opacity: 1;
 }
 
 /* 提示框标题 */
@@ -118,6 +106,21 @@
     line-height: 48px !important;
     text-align: right;
     border-radius: 0;
+  }
+}
+
+@keyframes mdui-open-dialog {
+  0% {
+    opacity: 0;
+  }
+
+  1% {
+    transform: scale(0.5) translateY(-50%);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(1) translateY(-50%);
   }
 }
 

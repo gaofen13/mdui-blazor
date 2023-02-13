@@ -2,8 +2,11 @@
 @inject SnackbarService SnackbarService
 
 <h2>普通 Snackbar</h2>
+<MduiButton Color="@Colors.Theme.Primary" OnClick="@(_=>Open("Message sent"))">open</MduiButton>
+
+<h2>带关闭按钮的 Snackbar</h2>
 <MduiButton Color="@Colors.Theme.Primary"
-    OnClick="@(_=>Open("Message sent",new SnackbarOptions{ShowCloseButton=false}))">open</MduiButton>
+    OnClick="@(_=>Open("Message sent",new SnackbarOptions{ShowCloseButton=true}))">open</MduiButton>
 
 <h2>不同位置的 Snackbar</h2>
 <MduiField Label="PositionX">

@@ -1,12 +1,40 @@
 @page "/dialogs"
+@inject DialogService DialogService
+@inject SnackbarService SnackbarService
 
 <h2>标准对话框</h2>
-<MduiDialog Title="Are you sure?" @bind-IsShow="@dialog1"
-    Options="new DialogOptions{Modal=true,ShowConfirm=true,ShowCancel=true}">
-    You'll lose all photos and media!
+<MduiDialog Title="Are you sure?" @bind-Show="@dialog1">
+    <ChildContent>
+        You'll lose all photos and media!
+    </ChildContent>
+    <ActionsContent>
+        <MduiButton OnClick="_=>dialog1=false" Text>Cancel</MduiButton>
+        <MduiButton OnClick="_=>dialog1=false" Text>Confirm</MduiButton>
+    </ActionsContent>
 </MduiDialog>
-<MduiButton Color="@Colors.Theme.Accent" OnClick="@(_=>dialog1=true)">Open</MduiButton>
+<MduiButton Color="@Colors.Theme.Accent" OnClick="@(_=>dialog1=true)">Open1</MduiButton>
+<MduiButton Color="@Colors.Theme.Accent"
+    OnClick="@(_=>DialogService.Show("You'll lose all photos and media!","Are you sure?",new DialogOptions{Modal=true}))">
+    Open2
+</MduiButton>
+
+<h2>Prompt对话框</h2>
+<MduiButton Color="@Colors.Theme.Accent" OnClick="@ShowAsync">Open</MduiButton>
+
+<h2>预定义对话框</h2>
+<MduiButton Color="@Colors.Theme.Accent" OnClick="@(_=>DialogService.Alert("title","content"))">Alert</MduiButton>
+<MduiButton Color="@Colors.Theme.Accent" OnClick="@(_=>DialogService.Confirm("title","content"))">Confirm</MduiButton>
 
 @code {
     bool dialog1;
+
+    private async Task ShowAsync()
+    {
+        var reference = DialogService.Show<DialogContent>();
+        if (reference is not null)
+        {
+            var res = await reference.Result;
+            SnackbarService.ShowSnackbar("返回结果：" + res.Data?.ToString());
+        }
+    }
 }

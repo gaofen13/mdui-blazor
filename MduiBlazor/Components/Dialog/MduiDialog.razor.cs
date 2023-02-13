@@ -6,23 +6,25 @@ namespace MduiBlazor
 {
     public partial class MduiDialog : MduiComponentBase
     {
-        private DialogOptions _options = new DialogOptions();
+        private DialogOptions _options = new();
+
+        private bool ShowDialog => DialogContainer is not null || Show;
 
         private string Classname =>
           new ClassBuilder("mdui-dialog")
-            .AddClass("mdui-dialog-open", IsShow)
-            .AddClass($"mdui-dialog-{_options.Type.ToDescriptionString()}", _options.Type != DialogType.Dialog)
+            .AddClass($"mdui-dialog-{_options.DialogType.ToDescriptionString()}", _options.DialogType != DialogType.Dialog)
             .AddClass(Class)
             .Build();
 
         [CascadingParameter] private MduiDialogProvider? DialogProvider { get; set; }
+        [CascadingParameter] private DialogContainer? DialogContainer { get; set; }
 
         [Parameter] public string? Title { get; set; }
         [Parameter] public string? Message { get; set; }
+        [Parameter] public RenderFragment? ActionsContent { get; set; }
         [Parameter] public DialogOptions? Options { get; set; }
-        [Parameter] public bool IsShow { get; set; }
-        [Parameter] public EventCallback<bool> IsShowChanged { get; set; }
-        [Parameter] public Guid InstanceId { get; set; }
+        [Parameter] public bool Show { get; set; }
+        [Parameter] public EventCallback<bool> ShowChanged { get; set; }
 
         protected override void OnInitialized()
         {
@@ -30,50 +32,49 @@ namespace MduiBlazor
             {
                 _options = Options;
             }
-            else if (DialogProvider is not null)
+            else if (DialogContainer?.Options is not null)
+            {
+                _options = DialogContainer.Options;
+                Show = true;
+            }
+            else if (DialogProvider?.Options is not null)
             {
                 _options = DialogProvider.Options;
             }
             base.OnInitialized();
         }
 
-        public void Close()
+        private void Cancel()
         {
-            Close(DialogResult.Ok());
-            // if (OnConfirm.HasDelegate)
-            // {
-            //     OnConfirm.InvokeAsync();
-            // }
-            IsShow = false;
-            IsShowChanged.InvokeAsync(false);
+            if (DialogContainer is null)
+            {
+                Show = false;
+                ShowChanged.InvokeAsync(false);
+            }
+            else
+            {
+                DialogContainer.Cancel();
+            }
         }
 
-        public void Close(DialogResult modalResult)
+        private void Confirm()
         {
-            DialogProvider?.DismissInstance(InstanceId, modalResult);
+            if (DialogContainer is null)
+            {
+                Show = false;
+                ShowChanged.InvokeAsync(false);
+            }
+            else
+            {
+                DialogContainer.Ok();
+            }
         }
 
-        public void Cancel()
-        {
-            Close(DialogResult.Cancel());
-            // if (OnCancel.HasDelegate)
-            // {
-            //     OnCancel.InvokeAsync();
-            // }
-            IsShow = false;
-            IsShowChanged.InvokeAsync(false);
-        }
-
-        private async Task OnClickBackgroundAsync()
+        private void OnClickBackground()
         {
             if (_options.Modal)
             {
                 Cancel();
-                if (IsShow)
-                {
-                    IsShow = false;
-                    await IsShowChanged.InvokeAsync(IsShow);
-                }
             }
         }
     }
