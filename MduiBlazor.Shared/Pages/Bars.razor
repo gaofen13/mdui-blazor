@@ -1,7 +1,37 @@
 ﻿@page "/bars"
 
 <h2>Toolbar</h2>
-<div style="height:240px">
+<MduiToolbar Color="@Colors.Theme.Primary">
+    <MduiIconButton Icon="menu" />
+    <MduiText Typo="@Typo.title">Title</MduiText>
+    <MduiToolbarSpace />
+    <MduiIconButton Icon="search" />
+    <MduiIconButton Icon="refresh" />
+    <MduiMenu Icon="more_vert" AlignEnd>
+        <MduiMenuItem>Help & feedback</MduiMenuItem>
+        <MduiMenuItem Disabled>Settings</MduiMenuItem>
+        <MduiDivider />
+        <MduiMenuItem>Sign out</MduiMenuItem>
+    </MduiMenu>
+</MduiToolbar>
+
+<h2>Toolbar透明背景</h2>
+<MduiToolbar>
+    <MduiIconButton Icon="menu" />
+    <MduiText Typo="@Typo.title">Title</MduiText>
+    <MduiToolbarSpace />
+    <MduiIconButton Icon="search" />
+    <MduiIconButton Icon="refresh" />
+    <MduiMenu Icon="more_vert" AlignEnd>
+        <MduiMenuItem>Help & feedback</MduiMenuItem>
+        <MduiMenuItem Disabled>Settings</MduiMenuItem>
+        <MduiDivider />
+        <MduiMenuItem>Sign out</MduiMenuItem>
+    </MduiMenu>
+</MduiToolbar>
+
+<h2>Appbar with Toolbar</h2>
+<MduiAppbar>
     <MduiToolbar Color="@Colors.Theme.Primary">
         <MduiIconButton Icon="menu" />
         <MduiText Typo="@Typo.title">Title</MduiText>
@@ -15,4 +45,55 @@
             <MduiMenuItem>Sign out</MduiMenuItem>
         </MduiMenu>
     </MduiToolbar>
-</div>
+</MduiAppbar>
+
+<h2>Appbar with Tab</h2>
+<MduiAppbar>
+    <MduiTab Color="@Colors.Theme.Primary">
+        <MduiTabItem Title="web"></MduiTabItem>
+        <MduiTabItem Title="shopping"></MduiTabItem>
+        <MduiTabItem Title="videos"></MduiTabItem>
+    </MduiTab>
+</MduiAppbar>
+
+<h2>Appbar with Toolbar and Tab</h2>
+<MduiAppbar>
+    <MduiToolbar Color="@Colors.Theme.Primary">
+        <MduiIconButton Icon="menu" />
+        <MduiText Typo="@Typo.title">Title</MduiText>
+        <MduiToolbarSpace />
+        <MduiIconButton Icon="search" />
+        <MduiIconButton Icon="refresh" />
+        <MduiMenu Icon="more_vert" AlignEnd>
+            <MduiMenuItem>Help & feedback</MduiMenuItem>
+            <MduiMenuItem Disabled>Settings</MduiMenuItem>
+            <MduiDivider />
+            <MduiMenuItem>Sign out</MduiMenuItem>
+        </MduiMenu>
+    </MduiToolbar>
+    <MduiTab Color="@Colors.Theme.Primary">
+        <MduiTabItem Title="web"></MduiTabItem>
+        <MduiTabItem Title="shopping"></MduiTabItem>
+        <MduiTabItem Title="videos"></MduiTabItem>
+    </MduiTab>
+</MduiAppbar>
+<MduiAppbar>
+    <MduiToolbar Color="@Colors.Theme.Primary">
+        <MduiIconButton Icon="menu" />
+        <MduiText Typo="@Typo.title">Title</MduiText>
+        <MduiToolbarSpace />
+        <MduiIconButton Icon="search" />
+        <MduiIconButton Icon="refresh" />
+        <MduiMenu Icon="more_vert" AlignEnd>
+            <MduiMenuItem>Help & feedback</MduiMenuItem>
+            <MduiMenuItem Disabled>Settings</MduiMenuItem>
+            <MduiDivider />
+            <MduiMenuItem>Sign out</MduiMenuItem>
+        </MduiMenu>
+    </MduiToolbar>
+    <MduiTab Color="@Colors.Theme.Primary">
+        <MduiTabItem Icon="phone" Title="recents"></MduiTabItem>
+        <MduiTabItem Icon="favorite" Title="favorites"></MduiTabItem>
+        <MduiTabItem Icon="perm_contact_calendar" Title="nearby"></MduiTabItem>
+    </MduiTab>
+</MduiAppbar>

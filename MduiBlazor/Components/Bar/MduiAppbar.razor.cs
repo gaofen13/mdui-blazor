@@ -6,6 +6,7 @@ namespace MduiBlazor
     public partial class MduiAppbar : MduiComponentBase, IDisposable
     {
         private int _toolbarCount;
+        private int _tabCount;
 
         protected string Classname =>
             new ClassBuilder("mdui-appbar")
@@ -25,6 +26,7 @@ namespace MduiBlazor
         public int? Shadow { get; set; }
 
         public bool HasToolbar => _toolbarCount > 0;
+        public bool HasTab => _tabCount > 0;
 
         protected override void OnAfterRender(bool firstRender)
         {
@@ -43,6 +45,16 @@ namespace MduiBlazor
         public void RemoveToolbar()
         {
             _toolbarCount--;
+        }
+
+        public void AddTab()
+        {
+            _tabCount++;
+        }
+
+        public void RemoveTab()
+        {
+            _tabCount--;
         }
 
         void IDisposable.Dispose()

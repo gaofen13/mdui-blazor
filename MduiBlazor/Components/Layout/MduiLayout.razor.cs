@@ -7,7 +7,8 @@ namespace MduiBlazor
     public partial class MduiLayout : MduiComponentBase
     {
         private bool _firstLoaded;
-        private int _countOfAppbarWithToolbar;
+        private bool _appbarWithTab;
+        private bool _appbarWithToolbar;
         private MduiDrawer? _currentLeftDrawer;
         private MduiDrawer? _currentRightDrawer;
 
@@ -19,7 +20,9 @@ namespace MduiBlazor
             .AddClass($"mdui-theme-accent-{AccentColor.ToDescriptionString()}")
             .AddClass("mdui-drawer-body-left", _currentLeftDrawer is not null)
             .AddClass("mdui-drawer-body-right", _currentRightDrawer is not null)
-            .AddClass("mdui-appbar-with-toolbar", _countOfAppbarWithToolbar > 0)
+            .AddClass("mdui-appbar-with-tab", _appbarWithTab && !_appbarWithToolbar)
+            .AddClass("mdui-appbar-with-toolbar", _appbarWithToolbar && !_appbarWithTab)
+            .AddClass("mdui-appbar-with-tab-larger", _appbarWithTab && _appbarWithToolbar)
             .AddClass(IsDarkTheme ? "mdui-theme-layout-dark" : "mdui-theme-layout-light")
             .AddClass(Class)
             .Build();
@@ -44,25 +47,21 @@ namespace MduiBlazor
 
         public void AddAppbar(MduiAppbar bar)
         {
-            if (bar.HasToolbar)
+            _appbarWithTab = bar.HasTab;
+            _appbarWithToolbar = bar.HasToolbar;
+            if (bar.HasTab || bar.HasToolbar)
             {
-                _countOfAppbarWithToolbar++;
-                if (_countOfAppbarWithToolbar == 1)
-                {
-                    StateHasChanged();
-                }
+                StateHasChanged();
             }
         }
 
         public void RemoveAppbar(MduiAppbar bar)
         {
-            if (bar.HasToolbar)
+            _appbarWithTab = false;
+            _appbarWithToolbar = false;
+            if (bar.HasTab || bar.HasToolbar)
             {
-                _countOfAppbarWithToolbar--;
-                if (_countOfAppbarWithToolbar == 0)
-                {
-                    StateHasChanged();
-                }
+                StateHasChanged();
             }
         }
 

@@ -2,7 +2,6 @@
   "name": "mdui",
   "description": "a CSS Framework based on material design",
   "main": [
-    "dist/js/mdui.js",
     "dist/css/mdui.css"
   ],
   "authors": [

@@ -75,7 +75,7 @@
   will-change: transform, top;
 }
 
-.mdui-panel-item-summary + .mdui-panel-item-arrow {
+.mdui-panel-item-summary+.mdui-panel-item-arrow {
   position: relative;
   top: 0 !important;
   right: 0;
@@ -86,7 +86,6 @@
   height: 0;
   padding: 0 24px;
   overflow: hidden;
-  transition: height .3s @animation-curve-default;
   will-change: height;
   .mdui-clearfix();
 
@@ -115,7 +114,6 @@
 
 /* 打开状态的面板项 */
 .mdui-panel-item-open {
-  height: auto;
   margin-top: 16px;
   margin-bottom: 16px;
 
@@ -172,11 +170,13 @@
       border-bottom: none;
     }
   }
+
   .mdui-panel-item-header {
     &:active {
       background-color: @color-grey-800;
     }
   }
+
   .mdui-panel-item-summary {
     color: @color-white-secondary;
   }
@@ -185,6 +185,7 @@
   .mdui-panel-item-arrow {
     color: @color-white-icon;
   }
+
   .mdui-panel-item-actions {
     .mdui-divider-top-light();
   }
