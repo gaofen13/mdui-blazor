@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Components;
 
 namespace MduiBlazor
 {
-    public partial class MduiTab
+    public partial class MduiTab : MduiComponentBase, IDisposable
     {
         private readonly List<MduiTabItem> _items = new();
         private MduiTabItem? _activeTabItem;
@@ -17,6 +17,9 @@ namespace MduiBlazor
             .AddClass(Class)
             .Build();
 
+        [CascadingParameter]
+        public MduiAppbar? Appbar { get; set; }
+
         [Parameter]
         public bool Scrollable { get; set; }
 
@@ -28,6 +31,12 @@ namespace MduiBlazor
 
         [Parameter]
         public string? Color { get; set; }
+
+        protected override void OnInitialized()
+        {
+            Appbar?.AddTab();
+            base.OnInitialized();
+        }
 
         public void AddTab(MduiTabItem item)
         {
@@ -67,6 +76,12 @@ namespace MduiBlazor
                 _activeTabItem = item;
                 _activeTabItem.ActiveTab();
             }
+        }
+
+        void IDisposable.Dispose()
+        {
+            Appbar?.RemoveTab();
+            GC.SuppressFinalize(this);
         }
     }
 }
