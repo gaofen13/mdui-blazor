@@ -1,4 +1,4 @@
-<MduiDialog Title="title" Options="@(new DialogOptions{DialogType=DialogType.Prompt})">
+<MduiDialog>
     <ChildContent>
         <MduiTextField Label="请输入文本" @bind-Value="@text" />
         <MduiField Label="选择">
@@ -20,7 +20,7 @@
     int value;
 
     [CascadingParameter]
-    private DialogContainer? DialogInstance { get; set; }
+    private DialogInstance? DialogInstance { get; set; }
 
     private void Cancel()
     {

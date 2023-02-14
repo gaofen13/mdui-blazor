@@ -27,9 +27,9 @@ namespace MduiBlazor
 
         internal void CloseInstance(DialogReference? dialog, DialogResult result)
         {
-            if (dialog?.Container != null)
+            if (dialog?.InstanceRef != null)
             {
-                dialog.Container.Close(result);
+                dialog.InstanceRef.Close(result);
             }
             else
             {

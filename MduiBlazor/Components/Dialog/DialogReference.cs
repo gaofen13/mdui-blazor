@@ -10,7 +10,7 @@ namespace MduiBlazor
 
         internal Guid InstanceId { get; }
         internal RenderFragment Instance { get; }
-        internal DialogContainer? Container { get; set; }
+        internal DialogInstance? InstanceRef { get; set; }
 
         public DialogReference(Guid instanceId, RenderFragment instance, DialogService dialogService)
         {

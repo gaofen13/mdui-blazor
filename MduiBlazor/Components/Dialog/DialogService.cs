@@ -7,19 +7,19 @@ namespace MduiBlazor
         internal event Action<DialogReference>? OnInstanceAdded;
         internal event Action<DialogReference, DialogResult>? OnCloseRequested;
 
-        public DialogReference Show<T>() where T : IComponent
-            => Show<T>(null, new ComponentParameters());
+        public DialogReference Show<T>(string? title) where T : IComponent
+            => Show<T>(title, null, new ComponentParameters());
 
-        public DialogReference Show<T>(DialogOptions? options) where T : IComponent
-            => Show<T>(options, new ComponentParameters());
+        public DialogReference Show<T>(string? title, DialogOptions? options) where T : IComponent
+            => Show<T>(title, options, new ComponentParameters());
 
-        public DialogReference Show<T>(DialogOptions? options, ComponentParameters parameters) where T : IComponent
-            => Show(typeof(T), options, parameters);
+        public DialogReference Show<T>(string? title, DialogOptions? options, ComponentParameters parameters) where T : IComponent
+            => Show(typeof(T), title, options, parameters);
 
-        public DialogReference Show(Type contentComponent, DialogOptions? options)
-            => Show(contentComponent, options, new ComponentParameters());
+        public DialogReference Show(Type contentComponent, string? title, DialogOptions? options)
+            => Show(contentComponent, title, options, new ComponentParameters());
 
-        public DialogReference Show(Type contentComponent, DialogOptions? options, ComponentParameters parameters)
+        public DialogReference Show(Type contentComponent, string? title, DialogOptions? options, ComponentParameters parameters)
         {
             if (!typeof(IComponent).IsAssignableFrom(contentComponent))
             {
@@ -40,12 +40,13 @@ namespace MduiBlazor
             });
             var instance = new RenderFragment(builder =>
             {
-                builder.OpenComponent<DialogContainer>(0);
+                builder.OpenComponent<DialogInstance>(0);
                 builder.SetKey("DialogInstance_" + instanceId);
                 builder.AddAttribute(1, "DialogId", instanceId);
-                builder.AddAttribute(2, "Options", options);
-                builder.AddAttribute(3, "ChildContent", content);
-                builder.AddComponentReferenceCapture(4, compRef => reference!.Container = (DialogContainer)compRef);
+                builder.AddAttribute(2, "Title", title);
+                builder.AddAttribute(3, "Options", options);
+                builder.AddAttribute(4, "ChildContent", content);
+                builder.AddComponentReferenceCapture(5, compRef => reference!.InstanceRef = (DialogInstance)compRef);
                 builder.CloseComponent();
             });
             reference = new DialogReference(instanceId, instance, this);
@@ -65,21 +66,15 @@ namespace MduiBlazor
         {
             DialogReference? reference = null;
             var instanceId = Guid.NewGuid();
-            var content = new RenderFragment(builder =>
-            {
-                builder.OpenComponent<MduiDialog>(0);
-                builder.AddAttribute(1, "Title", title);
-                builder.AddAttribute(2, "Message", message);
-                builder.AddAttribute(3, "Options", options);
-                builder.CloseComponent();
-            });
             var instance = new RenderFragment(builder =>
             {
-                builder.OpenComponent<DialogContainer>(0);
+                builder.OpenComponent<DialogInstance>(0);
                 builder.SetKey("DialogInstance_" + instanceId);
                 builder.AddAttribute(1, "DialogId", instanceId);
-                builder.AddAttribute(2, "ChildContent", content);
-                builder.AddComponentReferenceCapture(3, compRef => reference!.Container = (DialogContainer)compRef);
+                builder.AddAttribute(2, "Title", title);
+                builder.AddAttribute(3, "Message", message);
+                builder.AddAttribute(4, "Options", options);
+                builder.AddComponentReferenceCapture(5, compRef => reference!.InstanceRef = (DialogInstance)compRef);
                 builder.CloseComponent();
             });
             reference = new DialogReference(instanceId, instance, this);

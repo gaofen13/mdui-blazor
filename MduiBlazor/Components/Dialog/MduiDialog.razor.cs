@@ -8,18 +8,9 @@ namespace MduiBlazor
     {
         private DialogOptions _options = new();
 
-        private bool ShowDialog => DialogContainer is not null || Show;
-
-        private string Classname =>
-          new ClassBuilder("mdui-dialog")
-            .AddClass($"mdui-dialog-{_options.DialogType.ToDescriptionString()}", _options.DialogType != DialogType.Dialog)
-            .AddClass(Class)
-            .Build();
-
         [CascadingParameter] private MduiDialogProvider? DialogProvider { get; set; }
-        [CascadingParameter] private DialogContainer? DialogContainer { get; set; }
+        [CascadingParameter] private DialogInstance? DialogInstance { get; set; }
 
-        [Parameter] public string? Title { get; set; }
         [Parameter] public string? Message { get; set; }
         [Parameter] public RenderFragment? ActionsContent { get; set; }
         [Parameter] public DialogOptions? Options { get; set; }
@@ -32,9 +23,9 @@ namespace MduiBlazor
             {
                 _options = Options;
             }
-            else if (DialogContainer?.Options is not null)
+            else if (DialogInstance?.Options is not null)
             {
-                _options = DialogContainer.Options;
+                _options = DialogInstance.Options;
                 Show = true;
             }
             else if (DialogProvider?.Options is not null)
@@ -42,40 +33,6 @@ namespace MduiBlazor
                 _options = DialogProvider.Options;
             }
             base.OnInitialized();
-        }
-
-        private void Cancel()
-        {
-            if (DialogContainer is null)
-            {
-                Show = false;
-                ShowChanged.InvokeAsync(false);
-            }
-            else
-            {
-                DialogContainer.Cancel();
-            }
-        }
-
-        private void Confirm()
-        {
-            if (DialogContainer is null)
-            {
-                Show = false;
-                ShowChanged.InvokeAsync(false);
-            }
-            else
-            {
-                DialogContainer.Ok();
-            }
-        }
-
-        private void OnClickBackground()
-        {
-            if (_options.Modal)
-            {
-                Cancel();
-            }
         }
     }
 }
