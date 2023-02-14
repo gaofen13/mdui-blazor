@@ -6722,61 +6722,6 @@ body *::-webkit-scrollbar-thumb {
 }
 /**
  * =============================================================================
- * ************   Headroom   ************
- * =============================================================================
- */
-.mdui-headroom {
-  -webkit-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
-}
-/* 固定在顶部时 */
-.mdui-headroom-pinned-top {
-  -webkit-transform: translate3d(0, 0, 0) !important;
-          transform: translate3d(0, 0, 0) !important;
-}
-/* 在顶部隐藏时 */
-.mdui-headroom-unpinned-top {
-  -webkit-transform: translate3d(0, -100%, 0) !important;
-          transform: translate3d(0, -100%, 0) !important;
-  -webkit-box-shadow: none !important;
-          box-shadow: none !important;
-}
-/* 固定在底部时 */
-.mdui-headroom-pinned-down {
-  -webkit-transform: translate3d(0, 0, 0) !important;
-          transform: translate3d(0, 0, 0) !important;
-}
-/* 在底部隐藏时 */
-.mdui-headroom-unpinned-down {
-  -webkit-transform: translate3d(0, 100%, 0) !important;
-          transform: translate3d(0, 100%, 0) !important;
-  -webkit-box-shadow: none !important;
-          box-shadow: none !important;
-}
-/* 固定应用栏中的工具栏 */
-.mdui-headroom-pinned-toolbar {
-  -webkit-transform: translate3d(0, 0, 0) !important;
-          transform: translate3d(0, 0, 0) !important;
-}
-/* 隐藏应用栏中的工具栏 */
-.mdui-headroom-unpinned-toolbar {
-  -webkit-transform: translate3d(0, -56px, 0) !important;
-          transform: translate3d(0, -56px, 0) !important;
-}
-@media (min-width: 600px) {
-  .mdui-headroom-unpinned-toolbar {
-    -webkit-transform: translate3d(0, -64px, 0) !important;
-            transform: translate3d(0, -64px, 0) !important;
-  }
-}
-@media (orientation: landscape) and (max-width: 959.9px) {
-  .mdui-headroom-unpinned-toolbar {
-    -webkit-transform: translate3d(0, -48px, 0) !important;
-            transform: translate3d(0, -48px, 0) !important;
-  }
-}
-/**
- * =============================================================================
  * ************   Expansion panel 可扩展面板   ************
  * =============================================================================
  */
@@ -6877,8 +6822,6 @@ body *::-webkit-scrollbar-thumb {
   height: 0;
   padding: 0 24px;
   overflow: hidden;
-  -webkit-transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   will-change: height;
 }
 .mdui-panel-item-body::before,
@@ -6917,7 +6860,6 @@ body *::-webkit-scrollbar-thumb {
 }
 /* 打开状态的面板项 */
 .mdui-panel-item-open {
-  height: auto;
   margin-top: 16px;
   margin-bottom: 16px;
 }
