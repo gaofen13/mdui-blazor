@@ -2,7 +2,7 @@
 @using MduiBlazor.Shared.Data
 @inject WeatherForecastService ForecastService
 
-<h2>»ù±¾±í¸ñ</h2>
+<h2>åŸºç¡€è¡¨æ ¼</h2>
 <MduiTableContainer>
     <MduiTable Items="@_forecasts" Hoverable>
         <HeadContent>
@@ -20,7 +20,7 @@
     </MduiTable>
 </MduiTableContainer>
 
-<h2>¿ÉÑ¡Ôñ±í¸ñ</h2>
+<h2>å¯é€‰è¡¨æ ¼</h2>
 <MduiTableContainer>
     <MduiTable Items="@_forecasts" MultiSelection Hoverable>
         <Columns>
@@ -29,10 +29,10 @@
             <MduiColumn AlignRight Title="TemperatureF">@context.TemperatureF</MduiColumn>
             <MduiColumn Title="Summary">@context.Summary</MduiColumn>
         </Columns>
-    </MduiTable>
-</MduiTableContainer>
+        </MduiTable>
+        </MduiTableContainer>
 
-@code {
+        @code {
     private IEnumerable<WeatherForecast>? _forecasts;
 
     protected override async Task OnInitializedAsync()
