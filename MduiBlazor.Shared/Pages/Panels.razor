@@ -1,10 +1,11 @@
 @page "/panels"
 
 <h2>完整 HTML 结构</h2>
+<MduiCheckbox Label="Accordion" @bind-Value="@accordion" />
 <MduiCheckbox Label="Gapless" @bind-Value="@gapless" />
 <MduiCheckbox Label="Popout" @bind-Value="@popout" />
 <div class="mdui-p-a-2">
-    <MduiPanel Gapless='@gapless' Popout='@popout'>
+    <MduiPanel Gapless='@gapless' Popout='@popout' Accordion="@accordion">
         <MduiPanelItem Title="Trip name" Summary="@(new string[]{"Carribean cruise"})" @bind-Open="@open1">
             <ChildContent>
                 <p>First content</p>
@@ -53,6 +54,7 @@
 </div>
 
 @code {
+    bool accordion;
     bool gapless;
     bool popout;
     bool open1;

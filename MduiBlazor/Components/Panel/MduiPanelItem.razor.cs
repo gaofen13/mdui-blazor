@@ -4,13 +4,16 @@ using Microsoft.AspNetCore.Components.Web;
 
 namespace MduiBlazor
 {
-    public partial class MduiPanelItem : MduiComponentBase
+    public partial class MduiPanelItem : MduiComponentBase, IDisposable
     {
         protected string Classname =>
             new ClassBuilder("mdui-panel-item")
             .AddClass("mdui-panel-item-open", Open)
             .AddClass(Class)
             .Build();
+
+        [CascadingParameter]
+        private MduiPanel? Panel { get; set; }
 
         [Parameter]
         public bool Open { get; set; }
@@ -33,6 +36,12 @@ namespace MduiBlazor
         [Parameter]
         public EventCallback<MouseEventArgs> OnHeaderClicked { get; set; }
 
+        protected override void OnInitialized()
+        {
+            Panel?.AddItem(this);
+            base.OnInitialized();
+        }
+
         private async Task OnClickHeaderAsync(MouseEventArgs args)
         {
             if (OnHeaderClicked.HasDelegate)
@@ -41,9 +50,40 @@ namespace MduiBlazor
             }
             else
             {
-                Open = !Open;
-                await OpenChanged.InvokeAsync(Open);
+                if (Open)
+                {
+                    ClosePanel();
+                }
+                else
+                {
+                    if (Panel?.Accordion == true)
+                    {
+                        Panel.OpenItem(this);
+                    }
+                    else
+                    {
+                        OpenPanel();
+                    }
+                }
             }
+        }
+
+        internal void OpenPanel()
+        {
+            Open = true;
+            OpenChanged.InvokeAsync(true);
+        }
+
+        internal void ClosePanel()
+        {
+            Open = false;
+            OpenChanged.InvokeAsync(false);
+        }
+
+        void IDisposable.Dispose()
+        {
+            Panel?.RemoveItem(this);
+            GC.SuppressFinalize(this);
         }
     }
 }

@@ -5,7 +5,7 @@ namespace MduiBlazor
 {
     public partial class MduiPanel : MduiComponentBase
     {
-        private MduiPanelItem? _currentOpenedItem;
+        private readonly List<MduiPanelItem> _items = new();
 
         protected string Classname =>
             new ClassBuilder("mdui-panel")
@@ -22,5 +22,34 @@ namespace MduiBlazor
 
         [Parameter]
         public bool Gapless { get; set; }
+
+        internal void AddItem(MduiPanelItem item)
+        {
+            if (!_items.Contains(item))
+            {
+                _items.Add(item);
+            }
+        }
+
+        internal void RemoveItem(MduiPanelItem item)
+        {
+            if (_items.Contains(item))
+            {
+                _items.Remove(item);
+            }
+        }
+
+        internal void OpenItem(MduiPanelItem item)
+        {
+            if (Accordion)
+            {
+                var openedItems = _items.Where(i => i.Open == true);
+                foreach (var openedItem in openedItems)
+                {
+                    openedItem.ClosePanel();
+                }
+                item.OpenPanel();
+            }
+        }
     }
 }
