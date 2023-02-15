@@ -1,6 +1,36 @@
 ﻿@namespace MduiBlazor
 @inherits MduiComponentBase
+@typeparam TItem
+@implements ITable<TItem>
 
 <table class="@Classname" style="@Style" @attributes="@AdditionalAttributes">
-    @ChildContent
+    <CascadingValue Value="@this" IsFixed>
+        <thead>
+            <MduiHeadTr MultiSelection="@MultiSelection" Items="@_items" SelectedItems="@SelectedItems">
+                @if (HeadContent is not null)
+                {
+                    @HeadContent
+                }
+                else if (Columns is not null)
+                {
+                    <CascadingValue Name="RenderMode" Value="@MduiColumn.RenderMode.Head" IsFixed>
+                        @Columns(DefaultValue)
+                    </CascadingValue>
+                }
+            </MduiHeadTr>
+        </thead>
+        <tbody>
+            @if (_items.Any() && Columns != null)
+            {
+                <CascadingValue Name="RenderMode" Value="@MduiColumn.RenderMode.Body" IsFixed>
+                    @foreach (var item in _items)
+                    {
+                        <MduiTr MultiSelection="@MultiSelection" Item="@item" SelectedItems="@SelectedItems">
+                            @Columns(item)
+                        </MduiTr>
+                    }
+                </CascadingValue>
+            }
+        </tbody>
+    </CascadingValue>
 </table>

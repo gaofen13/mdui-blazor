@@ -14,17 +14,17 @@
 else
 {
     <MduiTableContainer>
-        <MduiTable Hoverable>
-            <thead>
-                <tr>
-                    <th>Date</th>
-                    <th>Temp. (C)</th>
-                    <th>Temp. (F)</th>
-                    <th>Summary</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var forecast in forecasts)
+        <MduiSimpleTable Hoverable>
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Temp. (C)</th>
+                <th>Temp. (F)</th>
+                <th>Summary</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var forecast in forecasts)
                 {
                     <tr>
                         <td>@forecast.Date.ToShortDateString()</td>
@@ -34,7 +34,7 @@ else
                     </tr>
                 }
             </tbody>
-        </MduiTable>
+        </MduiSimpleTable>
     </MduiTableContainer>
 }
 

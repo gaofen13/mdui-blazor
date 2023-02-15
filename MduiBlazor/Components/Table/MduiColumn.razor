@@ -1,0 +1,23 @@
+﻿@namespace MduiBlazor
+@inherits MduiComponentBase
+
+@if (Visible)
+{
+    if (Mode == RenderMode.Body)
+    {
+        <td class="@Classname">@ChildContent</td>
+    }
+    else if (Mode == RenderMode.Head)
+    {
+        <MduiTh AlignRight="@AlignRight">
+            @if (TitleContent is not null)
+            {
+                @TitleContent
+            }
+            else
+            {
+                @Title
+            }
+        </MduiTh>
+    }
+}

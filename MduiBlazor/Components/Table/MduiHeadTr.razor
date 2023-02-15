@@ -1,0 +1,13 @@
+﻿@namespace MduiBlazor
+@inherits MduiComponentBase
+@typeparam TItem
+
+<tr class="@TrClass" style="@Style" @attributes="@AdditionalAttributes">
+    @if (MultiSelection)
+    {
+        <th class="mdui-table-cell-checkbox">
+            <MduiCheckbox Value="@Checked" ValueChanged="@OnCheckedChanged" />
+        </th>
+    }
+    @ChildContent
+</tr>
