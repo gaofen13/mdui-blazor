@@ -1,7 +1,7 @@
 ﻿@namespace MduiBlazor
 @inherits MduiComponentBase
 
-<div class="mdui-dialog-content">
+<div class="@Classname" style="@Style" @attributes="@AdditionalAttributes">
     @ChildContent
 </div>
 @if (ActionsContent is not null)

@@ -1,7 +1,7 @@
 @namespace MduiBlazor
 @inherits MduiComponentBase
 
-<div class="@Classname" style="@Style">
+<div class="@Classname" style="@Style" @attributes="@AdditionalAttributes">
     @if (!string.IsNullOrWhiteSpace(Image))
     {
         <img class="mdui-chip-icon" src="@Image" />

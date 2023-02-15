@@ -2,7 +2,7 @@
 @inherits MduiComponentBase
 
 <!-- 卡片头部，包含头像、标题、副标题 -->
-<div class="@Classname" style="@Style">
+<div class="@Classname" style="@Style" @attributes="@AdditionalAttributes">
     <img src="@Image" />
     @if (Covered && (!string.IsNullOrWhiteSpace(Title) || !string.IsNullOrWhiteSpace(SubTitle) || ActionsContent is not
     null))
