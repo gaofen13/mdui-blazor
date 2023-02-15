@@ -33,7 +33,7 @@
       "url": "_framework\/icudt.dat"
     },
     {
-      "hash": "sha256-v79pnWZpqCrMVWrFxElganMEzb9logbx9zTCH\/HGBGw=",
+      "hash": "sha256-PvEQnT16ChGbizFzFSjPMrCdheFnfyW6eLnIMJ8rIXU=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -45,7 +45,7 @@
       "url": "_framework\/MduiBlazor.dll"
     },
     {
-      "hash": "sha256-OBYsRUCNfan3s2UR2\/J5GXmZPpk+cTshET9zQLj7hgc=",
+      "hash": "sha256-dmtJ5bMH3BAKWdk5KMMUB2uDNrIwYwJldx91s1al4dg=",
       "url": "_framework\/MduiBlazor.Shared.dll"
     },
     {
@@ -377,5 +377,5 @@
       "url": "_content\/MduiBlazor\/icons\/material-icons\/MaterialIcons-Regular.woff2"
     }
   ],
-  "version": "XH+g9tqg"
+  "version": "DMoHmGVW"
 };
