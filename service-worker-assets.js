@@ -225,7 +225,7 @@
       "url": "icon-512.png"
     },
     {
-      "hash": "sha256-5m9IwY7gLd47q4YirUpvIUgHeohKcDSd3eB2JxMq2RM=",
+      "hash": "sha256-bHPqQhvdcFOumHxej741g1W2bWg+he2qcnWdo4ACdRY=",
       "url": "index.html"
     },
     {
@@ -377,5 +377,5 @@
       "url": "_content\/MduiBlazor\/icons\/material-icons\/MaterialIcons-Regular.woff2"
     }
   ],
-  "version": "k5SZIeQk"
+  "version": "XH+g9tqg"
 };
