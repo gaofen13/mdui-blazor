@@ -12512,6 +12512,9 @@ select.mdui-select[multiple] option:last-child {
   opacity: 1;
 }
 /* 只在激活时显示文本 */
+.mdui-bottom-nav-text-auto {
+  /* 固定到页面底部 */
+}
 .mdui-bottom-nav-text-auto a {
   min-width: 32px;
   padding-right: 0;
@@ -12543,11 +12546,7 @@ select.mdui-select[multiple] option:last-child {
   -webkit-transform: scale(1);
           transform: scale(1);
 }
-/* 固定到页面底部 */
-.mdui-bottom-nav-fixed {
-  padding-bottom: 56px;
-}
-.mdui-bottom-nav-fixed .mdui-bottom-nav {
+.mdui-bottom-nav-text-auto.mdui-bottom-nav-fixed {
   position: fixed;
   right: 0;
   bottom: 0;

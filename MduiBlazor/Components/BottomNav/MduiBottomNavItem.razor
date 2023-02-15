@@ -1,0 +1,11 @@
+﻿@namespace MduiBlazor
+@inherits MduiComponentBase
+
+<a class="@Classname" style="@Style" @attributes="@AdditionalAttributes"
+    @onclick="@(_=>Nav?.OnActiveItemChanged(this))">
+    @if (Icon != null)
+    {
+        <MduiIcon Name="@Icon" />
+    }
+    <label>@ChildContent</label>
+</a>

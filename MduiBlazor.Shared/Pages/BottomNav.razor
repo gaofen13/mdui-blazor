@@ -1,0 +1,46 @@
+@page "/bottomnav"
+
+<h2>基本样式</h2>
+<MduiBottomNav>
+    <MduiBottomNavItem Icon="history">Recents</MduiBottomNavItem>
+    <MduiBottomNavItem Default Icon="favorite">Favorites</MduiBottomNavItem>
+    <MduiBottomNavItem Icon="location_on">Nearby</MduiBottomNavItem>
+    </MduiBottomNav>
+
+    <h2>只显示图标</h2>
+    <MduiBottomNav>
+    <MduiBottomNavItem Icon="history"></MduiBottomNavItem>
+    <MduiBottomNavItem Default Icon="favorite"></MduiBottomNavItem>
+    <MduiBottomNavItem Icon="location_on"></MduiBottomNavItem>
+    </MduiBottomNav>
+
+    <h2>只显示文本</h2>
+    <MduiBottomNav>
+    <MduiBottomNavItem>Recents</MduiBottomNavItem>
+    <MduiBottomNavItem Default>Favorites</MduiBottomNavItem>
+    <MduiBottomNavItem>Nearby</MduiBottomNavItem>
+</MduiBottomNav>
+
+<h2>只在激活状态显示文本</h2>
+<MduiBottomNav TextAuto>
+    <MduiBottomNavItem Icon="live_tv">Movies</MduiBottomNavItem>
+    <MduiBottomNavItem Default Icon="music_note">Music</MduiBottomNavItem>
+    <MduiBottomNavItem Icon="book">Books</MduiBottomNavItem>
+    <MduiBottomNavItem Icon="library_books">Newsstand</MduiBottomNavItem>
+    </MduiBottomNav>
+
+    <h2>背景色</h2>
+    <MduiBottomNav TextAuto Color="@Colors.Brown.Primary">
+    <MduiBottomNavItem Icon="live_tv">Movies</MduiBottomNavItem>
+    <MduiBottomNavItem Default Icon="music_note">Music</MduiBottomNavItem>
+    <MduiBottomNavItem Icon="book">Books</MduiBottomNavItem>
+    <MduiBottomNavItem Icon="library_books">Newsstand</MduiBottomNavItem>
+    </MduiBottomNav>
+
+    <h2>固定到页面底部</h2>
+    <MduiBottomNav Fixed TextAuto Color="@Colors.Brown.Primary">
+    <MduiBottomNavItem Icon="live_tv">Movies</MduiBottomNavItem>
+    <MduiBottomNavItem Default Icon="music_note">Music</MduiBottomNavItem>
+    <MduiBottomNavItem Icon="book">Books</MduiBottomNavItem>
+    <MduiBottomNavItem Icon="library_books">Newsstand</MduiBottomNavItem>
+    </MduiBottomNav>
