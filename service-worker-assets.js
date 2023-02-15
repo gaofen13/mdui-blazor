@@ -33,19 +33,19 @@
       "url": "_framework\/icudt.dat"
     },
     {
-      "hash": "sha256-3rdBt29y5Sn8Nx4cPUMqhlumZmF2Q\/9YGRewyICnslQ=",
+      "hash": "sha256-LAu288bHNIdCwcqfQrV1j29QP4LLlYmBQm40TQuqukE=",
       "url": "_framework\/blazor.boot.json"
     },
     {
-      "hash": "sha256-NC09mJ3uY+6HFjlqQcE1wLVVUCxr22dtU6voPf4sd24=",
+      "hash": "sha256-wfUyXgTda5kktrj4Hz2SlG2Vi4DhQv3KWtOcTRPly3g=",
       "url": "_framework\/MduiBlazor.Client.dll"
     },
     {
-      "hash": "sha256-WLU9Wwu7u475vSLE+qus1rYxYPN0ZaN+PjTmPRx0zVs=",
+      "hash": "sha256-DjTjiobVD1qNhwzUi7sdGBSGZasKKB3VdRrNvAJudPo=",
       "url": "_framework\/MduiBlazor.dll"
     },
     {
-      "hash": "sha256-6F4ZfqvCzGPAwhYKlpfDHnzL8P2EsO0Z1vRV3eN4gZc=",
+      "hash": "sha256-QK2riblAEeqgUETjvlxbeagLMzkdu\/7HsgrZV\/8lF54=",
       "url": "_framework\/MduiBlazor.Shared.dll"
     },
     {
@@ -377,5 +377,5 @@
       "url": "_content\/MduiBlazor\/icons\/material-icons\/MaterialIcons-Regular.woff2"
     }
   ],
-  "version": "RHDSGpvR"
+  "version": "RpQ2YnAi"
 };
