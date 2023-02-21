@@ -1,0 +1,74 @@
+﻿@namespace MduiBlazor
+@inherits MduiComponentBase
+
+<MduiButtonGroup Class="@Class" Style="@Style" AdditionalAttributes="@AdditionalAttributes">
+    <MduiButton Disabled="@PrevDisabled" OnClick="@OnClickPrev">
+        &lt;
+    </MduiButton>
+    @if (Total >= 1)
+    {
+        <MduiButton OnClick="_=>OnClickPager(1)" Actived="@(PageIndex==1)">
+            1
+        </MduiButton>
+    }
+    @if (Total <= 7)
+    {
+        for (int i = 2; i < Total; i++)
+        {
+            var buttonIndex = i;
+            <MduiButton OnClick="_=>OnClickPager(buttonIndex)" Actived="@(PageIndex==buttonIndex)">
+                @buttonIndex
+            </MduiButton>
+        }
+    }
+    else
+    {
+        if (PageIndex <= 4)
+        {
+            for (int i = 2; i < 5; i++)
+            {
+                var buttonIndex = i;
+                <MduiButton OnClick="_=>OnClickPager(buttonIndex)" Actived="@(PageIndex==buttonIndex)">
+                    @buttonIndex
+                </MduiButton>
+            }
+            <MduiButton OnClick="_=>OnClickPager(5)" Actived="@(PageIndex==5)">
+                5
+            </MduiButton>
+            <MduiButton Disabled>…</MduiButton>
+        }
+        else if (PageIndex > Total - 4)
+        {
+            <MduiButton Disabled>…</MduiButton>
+            @for (int i = Total - 4; i < Total; i++)
+            {
+                var buttonIndex = i;
+                <MduiButton OnClick="_=>OnClickPager(buttonIndex)" Actived="@(PageIndex==buttonIndex)">
+                    @buttonIndex
+                </MduiButton>
+            }
+        }
+        else
+        {
+            <MduiButton Disabled>…</MduiButton>
+            @for (int i = PageIndex - 1; i < PageIndex + 2; i++)
+            {
+                var buttonIndex = i;
+                <MduiButton OnClick="_=>OnClickPager(buttonIndex)" Actived="@(PageIndex==buttonIndex)">
+                    @buttonIndex
+                </MduiButton>
+            }
+            <MduiButton Disabled>…</MduiButton>
+        }
+
+    }
+    @if (Total >= 2)
+    {
+        <MduiButton OnClick="_=>OnClickPager(Total)" Actived="@(PageIndex==Total)">
+            @Total
+        </MduiButton>
+    }
+    <MduiButton Disabled="@NexDisabled" OnClick="@OnClickNex">
+        &gt;
+    </MduiButton>
+</MduiButtonGroup>

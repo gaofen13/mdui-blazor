@@ -31,7 +31,7 @@
   outline: none;
   cursor: pointer;
   transition: all .2s @animation-curve-default,
-              box-shadow .2s @animation-curve-fast-out-linear-in;
+    box-shadow .2s @animation-curve-fast-out-linear-in;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -47,6 +47,7 @@
   &:hover {
     background-color: rgba(0, 0, 0, 0.1);
   }
+
   &:not(.mdui-ripple):active {
     background-color: rgba(0, 0, 0, 0.165);
   }
@@ -55,6 +56,7 @@
   &[class*="mdui-color-"]:hover {
     opacity: 0.87;
   }
+
   &:not(.mdui-ripple)[class*="mdui-color-"]:active {
     opacity: 0.76;
   }
@@ -62,8 +64,10 @@
 
 /* 按钮内的图标 */
 .mdui-btn {
+
   .mdui-icon-left,
   .mdui-icon-right {
+
     &,
     &::before {
       height: inherit;
@@ -71,10 +75,12 @@
       line-height: inherit;
     }
   }
+
   .mdui-icon-left {
     float: left;
     margin-right: 0.4em;
   }
+
   .mdui-icon-right {
     float: right;
     margin-left: 0.4em;
@@ -102,6 +108,7 @@ input.mdui-btn[type="submit"] {
 .mdui-btn,
 .mdui-fab {
   &[disabled] {
+
     &,
     &:hover,
     &:active,
@@ -111,6 +118,7 @@ input.mdui-btn[type="submit"] {
       cursor: default !important;
       opacity: 1 !important;
       .mdui-shadow(0) !important;
+
       .mdui-icon {
         color: rgba(0, 0, 0, .26) !important;
       }
@@ -122,6 +130,7 @@ input.mdui-btn[type="submit"] {
 .mdui-btn-raised,
 .mdui-fab {
   &[disabled] {
+
     &,
     &:hover,
     &:active,
@@ -239,13 +248,16 @@ input.mdui-btn[type="submit"] {
  * =============================================================================
  */
 .layout-theme({
+
   // 透明按钮 hover、active 时颜色变浅
   .mdui-btn,
   .mdui-fab {
+
     // 透明按钮 hover、active 时颜色变浅
     &:hover {
       background-color: rgba(255, 255, 255, 0.1);
     }
+
     &:not(.mdui-ripple):active {
       background-color: rgba(255, 255, 255, 0.165);
     }
@@ -254,6 +266,7 @@ input.mdui-btn[type="submit"] {
     &[class*="mdui-color-"]:hover {
       opacity: 0.87;
     }
+
     &:not(.mdui-ripple)[class*="mdui-color-"]:active {
       opacity: 0.76;
     }
@@ -263,12 +276,14 @@ input.mdui-btn[type="submit"] {
   .mdui-btn,
   .mdui-fab {
     &[disabled] {
+
       &,
       &:hover,
       &:active,
       &:focus {
         color: @color-white-icon-disabled !important;
         background-color: transparent !important;
+
         .mdui-icon {
           color: @color-white-icon-disabled !important;
         }
@@ -280,6 +295,7 @@ input.mdui-btn[type="submit"] {
   .mdui-btn-raised,
   .mdui-fab {
     &[disabled] {
+
       &,
       &:hover,
       &:active,
