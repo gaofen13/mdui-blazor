@@ -7203,6 +7203,9 @@ th.mdui-table-cell-checkbox .mdui-checkbox {
   -webkit-transition: 0s;
   transition: 0s;
 }
+.mdui-ripple[disabled] {
+  pointer-events: none !important;
+}
 /* 有背景色的默认使用白色涟漪 */
 .mdui-ripple[class*="mdui-color-"]::after {
   background-image: radial-gradient(circle, #fff 10%, transparent 10.01%);
