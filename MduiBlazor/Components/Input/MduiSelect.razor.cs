@@ -9,7 +9,6 @@ namespace MduiBlazor
     {
         protected string Classname =>
           new ClassBuilder("mdui-select")
-            .AddClass(FieldClass)
             .AddClass(Class)
             .Build();
 

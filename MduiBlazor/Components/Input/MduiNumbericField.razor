@@ -1,0 +1,11 @@
+﻿@namespace MduiBlazor
+@inherits MduiComponentBase
+@typeparam TValue
+
+<MduiField Class="@Classname" Style="@Style" AdditionalAttributes="@AdditionalAttributes"
+           Disabled="@Disabled" Label="@Label" Icon="@Icon" HelperText="@HelperText"
+           ErrorText="@ErrorText" UseMduiTypo="@UseMduiTypo">
+    <MduiInputNumber Value="@Value" ValueChanged="@ValueChanged" ValueExpression="@ValueExpression" AutoFocus="@AutoFocus" Disabled="@Disabled"
+                   Step="@Step" Min="@Min" Max="@Max" Placeholder="@Placeholder"
+                   Readonly="@Readonly" Required="@Required" />
+</MduiField>

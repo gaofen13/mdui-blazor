@@ -1,30 +1,10 @@
 ﻿@namespace MduiBlazor
-@inherits MduiInputBase<string>
+@inherits MduiComponentBase
 
-<MduiField @ref="@_field" Class="@FieldClassname" For="@For" Label="@Label" Icon="@Icon" HelperText="@HelperText"
-    ErrorText="@ErrorText" UseMduiTypo="@UseMduiTypo">
-    @if (Rows > 1)
-    {
-        <textarea @ref="@Element" class="@Classname" style="@Style" rows="@Rows" required="@Required" pattern="@Pattern"
-        maxlength="@MaxLength" placeholder="@Placeholder" disabled="@Disabled" readonly="@Readonly"
-        autofocus="@AutoFocus" @attributes="@AdditionalAttributes"
-        value="@BindConverter.FormatValue(CurrentValueAsString)"
-        @onchange="@(EventCallback.Factory.CreateBinder<string?>(this, __value => CurrentValueAsString = __value, CurrentValueAsString))"
-        @onfocus="@OnFocus" @onblur="@OnBlur" @oninput="@OnTextInput" />
-    }
-    else
-    {
-        <input @ref="@Element" class="@Classname" style="@Style" type="@Type" required="@Required" pattern="@Pattern"
-        maxlength="@MaxLength" placeholder="@Placeholder" disabled="@Disabled" readonly="@Readonly"
-        autofocus="@AutoFocus" @attributes="@AdditionalAttributes"
-        value="@BindConverter.FormatValue(CurrentValueAsString)"
-        @onchange="@(EventCallback.Factory.CreateBinder<string?>(this, __value => CurrentValueAsString = __value, CurrentValueAsString))"
-        @onfocus="@OnFocus" @onblur="@OnBlur" @oninput="@OnTextInput" />
-    }
-    @if (MaxLength > 0 && MaxLength <= int.MaxValue)
-    {
-        <div class="mdui-textfield-counter">
-            <span class="mdui-textfield-counter-inputed">@_wordNumber</span> / @MaxLength
-        </div>
-    }
+<MduiField @ref="@_field" Class="@Classname" Style="@Style" AdditionalAttributes="@AdditionalAttributes"
+           Disabled="@Disabled" Label="@Label" Icon="@Icon" HelperText="@HelperText"
+           ErrorText="@ErrorText" UseMduiTypo="@UseMduiTypo">
+    <MduiInputText Value="@Value" ValueChanged="@ValueChanged" ValueExpression="@ValueExpression" Type="@Type" AutoFocus="@AutoFocus" Disabled="@Disabled"
+                   MaxLength="@MaxLength" Pattern="@Pattern" Placeholder="@Placeholder"
+                   Readonly="@Readonly" Required="@Required" Rows="@Rows" Trim="@Trim" />
 </MduiField>

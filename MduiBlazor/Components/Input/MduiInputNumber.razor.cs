@@ -3,53 +3,24 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
-using System.Linq.Expressions;
 
 namespace MduiBlazor
 {
-    public partial class MduiNumberField<TValue> : MduiInputBase<TValue>
+    public partial class MduiInputNumber<TValue> : MduiInputBase<TValue>
     {
-        private MduiField? _field;
-        private bool _isFocus;
-        private bool _notEmpty;
-
-        private string FieldClassname =>
-            new ClassBuilder()
-            .AddClass("mdui-textfield-focus", _isFocus)
-            .AddClass("mdui-textfield-disabled", Disabled)
-            .AddClass("mdui-textfield-not-empty", _notEmpty)
-            .AddClass("mdui-textfield-floating-label", FloatingLabel)
+        protected string Classname =>
+        new ClassBuilder("mdui-textfield-input")
             .AddClass(Class)
             .Build();
 
-        protected string Classname =>
-        new ClassBuilder("mdui-textfield-input")
-            .AddClass(FieldClass)
-            .Build();
+        [Parameter]
+        public TValue? Min { get; set; } = default;
 
         [Parameter]
-        public Expression<Func<object>>? For { get; set; }
+        public TValue Max { get; set; } = (TValue)(object)100;
 
         [Parameter]
-        public string? Label { get; set; }
-
-        [Parameter]
-        public bool LabelRequired { get; set; }
-
-        [Parameter]
-        public string? Icon { get; set; }
-
-        [Parameter]
-        public string? ErrorText { get; set; }
-
-        [Parameter]
-        public string? HelperText { get; set; }
-
-        /// <summary>
-        /// only shows when placeholder is empty
-        /// </summary>
-        [Parameter]
-        public bool FloatingLabel { get; set; }
+        public TValue? Step { get; set; }
 
         [Parameter]
         public bool AutoFocus { get; set; }
@@ -59,23 +30,6 @@ namespace MduiBlazor
 
         [Parameter]
         public string ParsingErrorMessage { get; set; } = "The {0} field must be a number.";
-
-        public override Task SetParametersAsync(ParameterView parameters)
-        {
-            base.SetParametersAsync(parameters);
-
-            var hasAriaInvalidAttribute = AdditionalAttributes != null && AdditionalAttributes.ContainsKey("aria-invalid");
-            if (hasAriaInvalidAttribute)
-            {
-                _field?.SetInvalid();
-            }
-            else
-            {
-                _field?.RemoveInvalid();
-            }
-
-            return Task.CompletedTask;
-        }
 
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
@@ -121,19 +75,27 @@ namespace MduiBlazor
             };
         }
 
+        private void OnTextInput(ChangeEventArgs args)
+        {
+            var value = args.Value?.ToString();
+            if (value?.Length > 0)
+            {
+                Field?.SetNotEmpty();
+            }
+            else
+            {
+                Field?.RemoveNotEmpty();
+            }
+        }
+
         private void OnFocus()
         {
-            _isFocus = true;
+            Field?.SetFocus();
         }
 
         private void OnBlur()
         {
-            _isFocus = false;
-        }
-
-        private void OnInput(ChangeEventArgs args)
-        {
-            _notEmpty = args.Value?.ToString()?.Length > 0;
+            Field?.SetBlur();
         }
     }
 }

@@ -16,7 +16,6 @@ namespace MduiBlazor
         private string Classname =>
           new ClassBuilder("mdui-radio-group")
             .AddClass($"mdui-group-vertical", Vertical)
-            .AddClass(FieldClass)
             .AddClass(Class)
             .Build();
 

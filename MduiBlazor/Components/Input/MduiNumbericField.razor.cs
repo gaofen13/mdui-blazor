@@ -4,46 +4,23 @@ using System.Linq.Expressions;
 
 namespace MduiBlazor
 {
-    public partial class MduiTextField : MduiComponentBase
+    public partial class MduiNumbericField<TValue> : MduiComponentBase
     {
-        private MduiField? _field;
-        private string? _value;
-
         private string Classname =>
             new ClassBuilder()
-            .AddClass("mdui-textfield-has-bottom", MaxLength > 0)
+            .AddClass("mdui-textfield-disabled", Disabled)
             .AddClass("mdui-textfield-floating-label", FloatingLabel)
             .AddClass(Class)
             .Build();
 
         [Parameter]
-#pragma warning disable BL0007 // Component parameters should be auto properties
-        public string? Value
-#pragma warning restore BL0007 // Component parameters should be auto properties
-        {
-            get => _value;
-            set
-            {
-                if (_value != value)
-                {
-                    _value = value;
-                    if (value?.Length > 0)
-                    {
-                        _field?.SetNotEmpty();
-                    }
-                    else
-                    {
-                        _field?.RemoveNotEmpty();
-                    }
-                }
-            }
-        }
+        public TValue? Value { get; set; }
 
         [Parameter]
-        public EventCallback<string?> ValueChanged { get; set; }
+        public EventCallback<TValue?> ValueChanged { get; set; }
 
         [Parameter]
-        public Expression<Func<string?>>? ValueExpression { get; set; }
+        public Expression<Func<TValue?>>? ValueExpression { get; set; }
 
         [Parameter]
         public bool Disabled { get; set; }
@@ -82,18 +59,12 @@ namespace MduiBlazor
         public bool Readonly { get; set; }
 
         [Parameter]
-        public int? MaxLength { get; set; }
+        public TValue? Min { get; set; } = default;
 
         [Parameter]
-        public int Rows { get; set; } = 1;
+        public TValue Max { get; set; } = (TValue)(object)100;
 
         [Parameter]
-        public string Type { get; set; } = "text";
-
-        [Parameter]
-        public string? Pattern { get; set; }
-
-        [Parameter]
-        public bool Trim { get; set; }
+        public TValue? Step { get; set; }
     }
 }

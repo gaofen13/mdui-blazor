@@ -1,13 +1,14 @@
 ﻿@page "/inputs"
 @using Microsoft.AspNetCore.Components.Forms
+@using System.ComponentModel.DataAnnotations;
 
-<EditForm Model="@info">
+<EditForm Model="@info" OnSubmit="@ValidSubmit">
     <DataAnnotationsValidator />
-    <MduiTextField For="()=>info.Text" Placeholder="请输入文本" @bind-Value="@info.Text" />
+    <MduiTextField Placeholder="请输入文本" @bind-Value="@info.Text" />
     <MduiTextField ErrorText="错误测试" Label="文本框" @bind-Value="@info.Text" />
     <MduiTextField Label="文本框" FloatingLabel @bind-Value="@info.Text" />
     <MduiTextField Label="文本框" FloatingLabel Placeholder="请输入文本" @bind-Value="@info.Text" />
-    <MduiNumberField Label="数字框" Placeholder="请输入或选择数字" @bind-Value="@info.Number1" />
+    <MduiNumbericField Label="数字框" Placeholder="请输入或选择数字" @bind-Value="@info.Number1" />
     <MduiTextField Label="文本框" HelperText="请输入文本" MaxLength="20" Placeholder="请输入文本" @bind-Value="@info.Text" />
     <MduiTextField Label="文本框" HelperText="请输入文本" Rows="5" FloatingLabel MaxLength="50" @bind-Value="@info.Text" />
     <MduiDivider Class="mdui-m-y-4" />
@@ -25,9 +26,9 @@
             <option>3</option>
         </MduiMultiSelect>
     </MduiField>
-</EditForm>
+    </EditForm>
 
-<EditForm Model="@info">
+    <EditForm Model="@info">
     <MduiField Label="Radio">
         <MduiRadioGroup @bind-Value="@info.select3">
             <MduiRadio Value="1">S1</MduiRadio>
@@ -44,10 +45,10 @@
     <MduiField Label="滑块">
         <MduiSlider @bind-Value="@info.Number1" Step="1" Min="0" Max="100" />
         <MduiSlider @bind-Value="@info.Number2" Discrete Step="0.1" Min="0" Max="100" />
-    </MduiField>
-</EditForm>
+        </MduiField>
+        </EditForm>
 
-@code {
+        @code {
     private InputInfo info = new InputInfo();
     private void ValidSubmit(EditContext content)
     {
@@ -55,15 +56,16 @@
     }
     class InputInfo
     {
-        [System.ComponentModel.DataAnnotations.Required]
+        [Required]
         public SubInfo? Radio { get; set; } = new SubInfo { Name = "S1", Value = 1 };
+        [Range(1, 100)]
         public int Number1 { get; set; }
         public double Number2 { get; set; }
 
-        [System.ComponentModel.DataAnnotations.Required(ErrorMessage = "Text是必须的")]
+        [Required(ErrorMessage = "Text是必须的")]
         public string? Text { get; set; }
 
-        [System.ComponentModel.DataAnnotations.Required]
+        [Required]
         public string Select1 { get; set; } = "";
         public string[]? Select2 { get; set; } = new string[] { "s1", "s2" };
         public int select3 = 2;

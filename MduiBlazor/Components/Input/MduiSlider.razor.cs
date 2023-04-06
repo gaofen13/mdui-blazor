@@ -16,12 +16,6 @@ namespace MduiBlazor
             .AddClass("mdui-slider-zero", Convert.ToDouble(Value) == 0)
             .Build();
 
-        protected string Classname =>
-        new ClassBuilder()
-            .AddClass(FieldClass)
-            .AddClass(Class)
-            .Build();
-
         private string FillStyle =>
             new StyleBuilder()
             .AddStyle("width", $"{PercentWidth}%")

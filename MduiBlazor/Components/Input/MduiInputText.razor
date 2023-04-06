@@ -1,0 +1,25 @@
+﻿@namespace MduiBlazor
+@inherits MduiInputBase<string>
+
+@if (Rows > 1)
+{
+    <textarea @ref="@Element" class="@Classname" style="@Style" rows="@Rows" required="@Required" pattern="@Pattern"
+              maxlength="@MaxLength" placeholder="@Placeholder" disabled="@Disabled" readonly="@Readonly"
+              autofocus="@AutoFocus" @attributes="@AdditionalAttributes" value="@BindConverter.FormatValue(CurrentValueAsString)"
+          @onchange="@(EventCallback.Factory.CreateBinder<string?>(this, __value => CurrentValueAsString = __value, CurrentValueAsString))"
+          @onfocus="@OnFocus" @onblur="@OnBlur" @oninput="@OnTextInput" />
+}
+else
+{
+    <input @ref="@Element" class="@Classname" style="@Style" type="@Type" required="@Required" pattern="@Pattern"
+           maxlength="@MaxLength" placeholder="@Placeholder" disabled="@Disabled" readonly="@Readonly"
+           autofocus="@AutoFocus" @attributes="@AdditionalAttributes" value="@BindConverter.FormatValue(CurrentValueAsString)"
+       @onchange="@(EventCallback.Factory.CreateBinder<string?>(this, __value => CurrentValueAsString = __value, CurrentValueAsString))"
+       @onfocus="@OnFocus" @onblur="@OnBlur" @oninput="@OnTextInput" />
+}
+@if (MaxLength > 0 && MaxLength <= int.MaxValue)
+{
+    <div class="mdui-textfield-counter">
+        <span class="mdui-textfield-counter-inputed">@_wordNumber</span> / @MaxLength
+    </div>
+}

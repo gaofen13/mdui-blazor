@@ -3,7 +3,7 @@
 @typeparam TValue
 
 <label class="@FieldClassname">
-    <input @ref="@Element" class="@Classname" style="@Style" type="range" step="@Step" min="@Min" max="@Max"
+    <input @ref="@Element" class="@Class" style="@Style" type="range" step="@Step" min="@Min" max="@Max"
         disabled="@Disabled" @attributes="@AdditionalAttributes"
         value="@BindConverter.FormatValue(CurrentValueAsString)"
         @oninput="@(EventCallback.Factory.CreateBinder<string?>(this, __value => CurrentValueAsString = __value, CurrentValueAsString))" />

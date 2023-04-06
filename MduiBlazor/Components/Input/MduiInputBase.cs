@@ -17,7 +17,7 @@ namespace MduiBlazor
         private EditContext? CascadedEditContext { get; set; }
 
         [CascadingParameter(Name = "Field")]
-        private MduiField? Field { get; set; }
+        protected MduiField? Field { get; set; }
 
         /// <summary>
         /// When true, the control will be immutable by user interaction. <see href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/readonly">readonly</see> HTML attribute for more information.
@@ -143,6 +143,8 @@ namespace MduiBlazor
             }
         }
 
+        protected IEnumerable<string> ErrorList { get; set; } = Enumerable.Empty<string>();
+
         /// <summary>
         /// Constructs an instance of <see cref="InputBase{TValue}"/>.
         /// </summary>
@@ -168,20 +170,6 @@ namespace MduiBlazor
         /// <param name="validationErrorMessage">If the value could not be parsed, provides a validation error message.</param>
         /// <returns>True if the value could be parsed; otherwise false.</returns>
         protected abstract bool TryParseValueFromString(string? value, [MaybeNullWhen(false)] out TValue result, [NotNullWhen(false)] out string? validationErrorMessage);
-
-        /// <summary>
-        /// Gets a CSS class string that combines the <c>class</c> attribute and and a string indicating
-        /// the status of the field being edited (a combination of "modified", "valid", and "invalid").
-        /// Derived components should typically use this value for the primary HTML element class attribute.
-        /// </summary>
-        protected string FieldClass
-        {
-            get
-            {
-                var fieldClass = EditContext?.FieldCssClass(FieldIdentifier) ?? string.Empty;
-                return CombineClassNames(AdditionalAttributes, fieldClass);
-            }
-        }
 
         /// <inheritdoc />
         public override Task SetParametersAsync(ParameterView parameters)
@@ -221,8 +209,6 @@ namespace MduiBlazor
                     $"{nameof(Microsoft.AspNetCore.Components.Forms.EditContext)} dynamically.");
             }
 
-            UpdateAdditionalValidationAttributes();
-
             // For derived components, retain the usual lifecycle with OnInit/OnParametersSet/etc.
             return base.SetParametersAsync(ParameterView.Empty);
         }
@@ -250,7 +236,9 @@ namespace MduiBlazor
             }
 
             var hasAriaInvalidAttribute = AdditionalAttributes != null && AdditionalAttributes.ContainsKey("aria-invalid");
-            if (EditContext.GetValidationMessages(FieldIdentifier).Any())
+            //if (EditContext.GetValidationMessages(FieldIdentifier).Any())
+            ErrorList = EditContext.GetValidationMessages(FieldIdentifier);
+            if (ErrorList.Any())
             {
                 if (hasAriaInvalidAttribute)
                 {
@@ -266,7 +254,7 @@ namespace MduiBlazor
                 // To make the `Input` components accessible by default
                 // we will automatically render the `aria-invalid` attribute when the validation fails
                 additionalAttributes["aria-invalid"] = true;
-                Field?.SetInvalid();
+                Field?.SetInvalid(ErrorList.FirstOrDefault());
             }
             else if (hasAriaInvalidAttribute)
             {

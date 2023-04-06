@@ -13,17 +13,10 @@
     <CascadingValue Name="Field" Value="@this" IsFixed>
         @ChildContent
     </CascadingValue>
-    @if (Invalid)
+    @if (_invalid)
     {
         <div class="mdui-textfield-error">
-            @if (!string.IsNullOrWhiteSpace(ErrorText))
-            {
-                @ErrorText
-            }
-            else if (For != null)
-            {
-                <ValidationMessage For="@For" />
-            }
+            @_errorText
         </div>
     }
     @if (!string.IsNullOrWhiteSpace(HelperText))
