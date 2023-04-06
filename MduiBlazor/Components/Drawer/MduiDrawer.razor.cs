@@ -111,7 +111,6 @@ namespace MduiBlazor
                 {
                     _jsModule = await JSRuntime.InvokeAsync<IJSObjectReference>("import",
                      "./_content/MduiBlazor/Components/Drawer/MduiDrawer.razor.js");
-                    //bool isMobile = await _jsModule!.InvokeAsync<bool>("isDevice");
                     var width = await _jsModule!.InvokeAsync<int>("getWindowWidth");
 
                     if (width >= Breakpoint)

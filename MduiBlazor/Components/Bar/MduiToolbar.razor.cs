@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Components;
 
 namespace MduiBlazor
 {
-    public partial class MduiToolbar : MduiComponentBase, IDisposable
+    public partial class MduiToolbar : MduiComponentBase
     {
         protected string Classname =>
             new ClassBuilder("mdui-toolbar")
@@ -12,22 +12,7 @@ namespace MduiBlazor
             .AddClass(Class)
             .Build();
 
-        [CascadingParameter]
-        public MduiAppbar? Appbar { get; set; }
-
         [Parameter]
         public string? Color { get; set; }
-
-        protected override void OnInitialized()
-        {
-            Appbar?.AddToolbar();
-            base.OnInitialized();
-        }
-
-        void IDisposable.Dispose()
-        {
-            Appbar?.RemoveToolbar();
-            GC.SuppressFinalize(this);
-        }
     }
 }

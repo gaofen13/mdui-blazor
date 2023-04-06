@@ -7,8 +7,6 @@ namespace MduiBlazor
     public partial class MduiLayout : MduiComponentBase
     {
         private bool _firstLoaded;
-        private bool _appbarWithTab;
-        private bool _appbarWithToolbar;
         private MduiDrawer? _currentLeftDrawer;
         private MduiDrawer? _currentRightDrawer;
 
@@ -20,12 +18,18 @@ namespace MduiBlazor
             .AddClass($"mdui-theme-accent-{AccentColor.ToDescriptionString()}")
             .AddClass("mdui-drawer-body-left", _currentLeftDrawer is not null)
             .AddClass("mdui-drawer-body-right", _currentRightDrawer is not null)
-            .AddClass("mdui-appbar-with-tab", _appbarWithTab && !_appbarWithToolbar)
-            .AddClass("mdui-appbar-with-toolbar", _appbarWithToolbar && !_appbarWithTab)
-            .AddClass("mdui-appbar-with-tab-larger", _appbarWithTab && _appbarWithToolbar)
+            .AddClass("mdui-appbar-with-tab", AppbarWithTab && !AppbarWithToolbar)
+            .AddClass("mdui-appbar-with-toolbar", AppbarWithToolbar && !AppbarWithTab)
+            .AddClass("mdui-appbar-with-tab-larger", AppbarWithTab && AppbarWithToolbar)
             .AddClass(IsDarkTheme ? "mdui-theme-layout-dark" : "mdui-theme-layout-light")
             .AddClass(Class)
             .Build();
+
+        [Parameter]
+        public bool AppbarWithToolbar { get; set; }
+
+        [Parameter]
+        public bool AppbarWithTab { get; set; }
 
         [Parameter]
         public PrimaryColor PrimaryColor { get; set; } = PrimaryColor.DeepPurple;
@@ -45,42 +49,16 @@ namespace MduiBlazor
             base.OnAfterRender(firstRender);
         }
 
-        public void AddAppbar(MduiAppbar bar)
-        {
-            _appbarWithTab = bar.HasTab;
-            _appbarWithToolbar = bar.HasToolbar;
-            if (bar.HasTab || bar.HasToolbar)
-            {
-                StateHasChanged();
-            }
-        }
-
-        public void RemoveAppbar(MduiAppbar bar)
-        {
-            _appbarWithTab = false;
-            _appbarWithToolbar = false;
-            if (bar.HasTab || bar.HasToolbar)
-            {
-                StateHasChanged();
-            }
-        }
-
         public void AddDarwer(MduiDrawer drawer)
         {
             if (drawer.RightSide)
             {
-                if (_currentRightDrawer is not null)
-                {
-                    _currentRightDrawer.CloseDrawer();
-                }
+                _currentRightDrawer?.CloseDrawer();
                 _currentRightDrawer = drawer;
             }
             else
             {
-                if (_currentLeftDrawer is not null)
-                {
-                    _currentLeftDrawer.CloseDrawer();
-                }
+                _currentLeftDrawer?.CloseDrawer();
                 _currentLeftDrawer = drawer;
             }
             StateHasChanged();
