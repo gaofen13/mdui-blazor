@@ -7,12 +7,12 @@
         disabled="@Disabled" @attributes="@AdditionalAttributes"
         value="@BindConverter.FormatValue(CurrentValueAsString)"
         @oninput="@(EventCallback.Factory.CreateBinder<string?>(this, __value => CurrentValueAsString = __value, CurrentValueAsString))" />
-    <div class="mdui-slider-track" style="width:100%;"></div>
-    <div class="mdui-slider-fill" style="@FillStyle"></div>
-    <div class="mdui-slider-thumb" style="@ThumbStyle">
+    <span class="mdui-slider-track" style="width:100%;"></span>
+    <span class="mdui-slider-fill" style="@FillStyle"></span>
+    <span class="mdui-slider-thumb" style="@ThumbStyle">
         @if (Discrete)
         {
             <span>@Value</span>
         }
-    </div>
+    </span>
 </label>

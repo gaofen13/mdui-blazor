@@ -27,7 +27,6 @@ namespace MduiBlazor
             .Build();
 
         [Parameter]
-        [EditorRequired]
         public TValue? Step { get; set; }
 
         [Parameter]
