@@ -7,9 +7,9 @@
   "linkerEnabled": true,
   "resources": {
     "assembly": {
-      "MduiBlazor.Client.dll": "sha256-+ySfFBTq\/7ZDXMXEsKl889t6stn4MRGFtqX3NHWctiY=",
-      "MduiBlazor.dll": "sha256-nkfpXcLOvDVqfB0qQ6njfrjVFceB52zTAO3OCeJoPkk=",
-      "MduiBlazor.Shared.dll": "sha256-w7cQru87A+tsA48v8ybNgO2PtFnHvSpyqiciItycjHk=",
+      "MduiBlazor.Client.dll": "sha256-tVtvpLytMzvq1seHjxEnLoJKzaghSykZBQePMtPAlD4=",
+      "MduiBlazor.dll": "sha256-VQv6+cbYECJzt8MGZVRK9FUZmYf7grv49+2kB0r8TpI=",
+      "MduiBlazor.Shared.dll": "sha256-paHO8G+kBl1Tb91eTRtSH1ZFn0vhVRnUPu3rUBjFE28=",
       "Microsoft.AspNetCore.Components.dll": "sha256-\/G1KCfcoza7VTyHZK+xEAhW8u76gpzkvKm\/SrjqoQaA=",
       "Microsoft.AspNetCore.Components.Forms.dll": "sha256-88DS1zGC8V7TEKtT9MnBPR7pIWAXycl\/XxVnmWNxHtU=",
       "Microsoft.AspNetCore.Components.Web.dll": "sha256-DFsQagy8FYdYWgHaDh2WOLjDyi2\/cFgVE+0hTXVir0M=",
