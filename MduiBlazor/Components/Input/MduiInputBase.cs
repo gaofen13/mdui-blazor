@@ -273,8 +273,8 @@ namespace MduiBlazor
                     }
 
                     additionalAttributes.Remove("aria-invalid");
-                    Field?.RemoveInvalid();
                 }
+                Field?.RemoveInvalid();
             }
         }
 

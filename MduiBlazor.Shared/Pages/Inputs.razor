@@ -26,6 +26,7 @@
             <option>3</option>
         </MduiMultiSelect>
     </MduiField>
+    <MduiButton ButtonType="@ButtonType.Submit">Submit</MduiButton>
     </EditForm>
 
     <EditForm Model="@info">
@@ -43,16 +44,17 @@
         <MduiSwitch @bind-Value="@info.checkboxValue" />
     </MduiField>
     <MduiField Label="滑块">
-        <MduiSlider @bind-Value="@info.Number1" Step="1" Min="0" Max="100" />
+        <MduiSlider @bind-Value="@info.Number1" Min="0" Max="100" />
         <MduiSlider @bind-Value="@info.Number2" Discrete Step="0.1" Min="0" Max="100" />
         </MduiField>
+        <MduiButton ButtonType="@ButtonType.Submit">Submit</MduiButton>
         </EditForm>
 
         @code {
     private InputInfo info = new InputInfo();
     private void ValidSubmit(EditContext content)
     {
-
+        content.Validate();
     }
     class InputInfo
     {
