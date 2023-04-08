@@ -34,6 +34,15 @@ namespace MduiBlazor
         [Parameter]
         public bool Trim { get; set; }
 
+        public override async Task SetParametersAsync(ParameterView parameters)
+        {
+            await base.SetParametersAsync(parameters);
+            if (MaxLength > 0)
+            {
+                _wordNumber = Value?.Length ?? 0;
+            }
+        }
+
         protected override bool TryParseValueFromString(string? value, out string? result, [NotNullWhen(false)] out string? validationErrorMessage)
         {
             if (Trim)

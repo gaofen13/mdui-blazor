@@ -4,7 +4,7 @@
 <label class="mdui-checkbox">
     <input @ref="@Element" type="checkbox" class="@Class" style="@Style" required="@Required" disabled="@Disabled"
         readonly="@Readonly" @attributes="@AdditionalAttributes" checked="@BindConverter.FormatValue(CurrentValue)"
-        @onchange="@(EventCallback.Factory.CreateBinder<bool>(this,__value=>CurrentValue=__value,CurrentValue))" />
+           @onchange="@(EventCallback.Factory.CreateBinder<bool>(this,__value=>CurrentValue=__value,CurrentValue))" />
     <i class="mdui-checkbox-icon"></i>
     @if (ChildContent is not null)
     {

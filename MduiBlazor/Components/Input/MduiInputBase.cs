@@ -143,7 +143,7 @@ namespace MduiBlazor
             }
         }
 
-        protected IEnumerable<string> ErrorList { get; set; } = Enumerable.Empty<string>();
+        protected IEnumerable<string> InvalidMessageList { get; set; } = Enumerable.Empty<string>();
 
         /// <summary>
         /// Constructs an instance of <see cref="InputBase{TValue}"/>.
@@ -235,75 +235,15 @@ namespace MduiBlazor
                 return;
             }
 
-            var hasAriaInvalidAttribute = AdditionalAttributes != null && AdditionalAttributes.ContainsKey("aria-invalid");
-            //if (EditContext.GetValidationMessages(FieldIdentifier).Any())
-            ErrorList = EditContext.GetValidationMessages(FieldIdentifier);
-            if (ErrorList.Any())
+            InvalidMessageList = EditContext.GetValidationMessages(FieldIdentifier);
+            if (InvalidMessageList.Any())
             {
-                if (hasAriaInvalidAttribute)
-                {
-                    // Do not overwrite the attribute value
-                    return;
-                }
-
-                if (MduiInputBase<TValue>.ConvertToDictionary(AdditionalAttributes, out var additionalAttributes))
-                {
-                    AdditionalAttributes = additionalAttributes;
-                }
-
-                // To make the `Input` components accessible by default
-                // we will automatically render the `aria-invalid` attribute when the validation fails
-                additionalAttributes["aria-invalid"] = true;
-                Field?.SetInvalid(ErrorList.FirstOrDefault());
-            }
-            else if (hasAriaInvalidAttribute)
-            {
-                // No validation errors. Need to remove `aria-invalid` if it was rendered already
-
-                if (AdditionalAttributes!.Count == 1)
-                {
-                    // Only aria-invalid argument is present which we don't need any more
-                    AdditionalAttributes = null;
-                }
-                else
-                {
-                    if (MduiInputBase<TValue>.ConvertToDictionary(AdditionalAttributes, out var additionalAttributes))
-                    {
-                        AdditionalAttributes = additionalAttributes;
-                    }
-
-                    additionalAttributes.Remove("aria-invalid");
-                }
-                Field?.RemoveInvalid();
-            }
-        }
-
-        /// <summary>
-        /// Returns a dictionary with the same values as the specified <paramref name="source"/>.
-        /// </summary>
-        /// <returns>true, if a new dictrionary with copied values was created. false - otherwise.</returns>
-        private static bool ConvertToDictionary(IReadOnlyDictionary<string, object>? source, out Dictionary<string, object> result)
-        {
-            var newDictionaryCreated = true;
-            if (source == null)
-            {
-                result = new Dictionary<string, object>();
-            }
-            else if (source is Dictionary<string, object> currentDictionary)
-            {
-                result = currentDictionary;
-                newDictionaryCreated = false;
+                Field?.SetInvalid(InvalidMessageList.FirstOrDefault());
             }
             else
             {
-                result = new Dictionary<string, object>();
-                foreach (var item in source)
-                {
-                    result.Add(item.Key, item.Value);
-                }
+                Field?.RemoveInvalid();
             }
-
-            return newDictionaryCreated;
         }
 
         void IDisposable.Dispose()
@@ -314,28 +254,6 @@ namespace MduiBlazor
                 EditContext.OnValidationStateChanged -= _validationStateChangedHandler;
             }
             GC.SuppressFinalize(this);
-        }
-
-        public static string CombineClassNames(IReadOnlyDictionary<string, object>? additionalAttributes, string classNames)
-        {
-            if (additionalAttributes is null || !additionalAttributes.TryGetValue("class", out var @class))
-            {
-                return classNames;
-            }
-
-            var classAttributeValue = Convert.ToString(@class, CultureInfo.InvariantCulture);
-
-            if (string.IsNullOrEmpty(classAttributeValue))
-            {
-                return classNames;
-            }
-
-            if (string.IsNullOrEmpty(classNames))
-            {
-                return classAttributeValue;
-            }
-
-            return $"{classAttributeValue} {classNames}";
         }
     }
 }

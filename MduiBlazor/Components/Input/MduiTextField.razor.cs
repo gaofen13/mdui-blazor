@@ -27,6 +27,7 @@ namespace MduiBlazor
                 if (_value != value)
                 {
                     _value = value;
+                    _ = ValueChanged.InvokeAsync(_value);
                     if (value?.Length > 0)
                     {
                         _field?.SetNotEmpty();
