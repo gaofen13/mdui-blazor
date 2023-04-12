@@ -1,7 +1,7 @@
 ﻿self.assetsManifest = {
   "assets": [
     {
-      "hash": "sha256-gMMhXf930MHxSiJZcjP4DGT41x\/\/4UluuuaVRM2SZIk=",
+      "hash": "sha256-lOCs45frNf+D7me6lKLgUhRCdt4VwHCp9H6Ct+YWzfs=",
       "url": "_framework\/blazor.webassembly.js"
     },
     {
@@ -33,35 +33,35 @@
       "url": "_framework\/icudt.dat"
     },
     {
-      "hash": "sha256-GM+HNN5wqjq9GNAhmfF0esLqlp+5V3H1h+FjgNqzcuw=",
+      "hash": "sha256-eRMlqV4z3BoO\/P+X4U8bhXcigs3TNisA36CFqrqdWsw=",
       "url": "_framework\/blazor.boot.json"
     },
     {
-      "hash": "sha256-SvHB1LbBBWDSxYIcja3hzFOiDT0CtD9kX4bI18JTgaY=",
+      "hash": "sha256-20j6PFBl8OEfZ2lMeZqPm9vRhVJxIUFeEwO6+m4ksnM=",
       "url": "_framework\/MduiBlazor.Client.dll"
     },
     {
-      "hash": "sha256-zUR9vkzg4hKx1qoP9a6e8jfVfMuAD5l6yitKJUT1SJ0=",
+      "hash": "sha256-i7+Nu3q3qvqYnCm6y3xaL5z+FtKbe\/nYgJyF2i+juu4=",
       "url": "_framework\/MduiBlazor.dll"
     },
     {
-      "hash": "sha256-Q16pSOuXwWe\/5AHarE\/9T7axKeVYVh+Fs\/DrNxafbrQ=",
+      "hash": "sha256-mrJnVdLz0pdBItbJ2RnhDEMuPRJoJB3AdaRjYvszSL8=",
       "url": "_framework\/MduiBlazor.Shared.dll"
     },
     {
-      "hash": "sha256-\/G1KCfcoza7VTyHZK+xEAhW8u76gpzkvKm\/SrjqoQaA=",
+      "hash": "sha256-c9tvj65vy+lZrALZx0hrAKyfK9bGtoNW+JRi7ji+dL4=",
       "url": "_framework\/Microsoft.AspNetCore.Components.dll"
     },
     {
-      "hash": "sha256-88DS1zGC8V7TEKtT9MnBPR7pIWAXycl\/XxVnmWNxHtU=",
+      "hash": "sha256-OlQnEJnx2fcIeeZERe0\/82RIHDJmrAhTfpVFyY70MXA=",
       "url": "_framework\/Microsoft.AspNetCore.Components.Forms.dll"
     },
     {
-      "hash": "sha256-DFsQagy8FYdYWgHaDh2WOLjDyi2\/cFgVE+0hTXVir0M=",
+      "hash": "sha256-CwoQCb1AnjkfrKH648oAz9o3fnAwJzVEr5WN72Rl+IM=",
       "url": "_framework\/Microsoft.AspNetCore.Components.Web.dll"
     },
     {
-      "hash": "sha256-7lHwvnAfcnHyDPWEU\/EhI\/M1v9qBaRhSF+5uucc\/\/4A=",
+      "hash": "sha256-ymgErJa25vrQLCMLbUeBDtufTD4qSsYojHIdmF3xzHo=",
       "url": "_framework\/Microsoft.AspNetCore.Components.WebAssembly.dll"
     },
     {
@@ -93,7 +93,7 @@
       "url": "_framework\/Microsoft.Extensions.Logging.dll"
     },
     {
-      "hash": "sha256-0fhMx2H0cf76DtazR5+OlRbIi1+vI3PjUYGaW5uG30c=",
+      "hash": "sha256-WPBQk7rt2p4aMEo2pTp1sBpsiWdE8MmWuIYq+zl1ceo=",
       "url": "_framework\/Microsoft.Extensions.Options.dll"
     },
     {
@@ -101,11 +101,11 @@
       "url": "_framework\/Microsoft.Extensions.Primitives.dll"
     },
     {
-      "hash": "sha256-FHVidPFfbiQqg8CQy1wC1VlhGfnseomhsPUFDseFXM0=",
+      "hash": "sha256-U6vURnUw06+Qo9rj9mNKpafAu4JP8TeI6ZmO5nDl8Tg=",
       "url": "_framework\/Microsoft.JSInterop.dll"
     },
     {
-      "hash": "sha256-ClhDy3j6C2coeaYSd71VzhinK6w5QGa2ViwhRhQ6L40=",
+      "hash": "sha256-Awf7wv9O8IMhKfPgck20vnr8m17qkGi5wsUfHhliPCQ=",
       "url": "_framework\/Microsoft.JSInterop.WebAssembly.dll"
     },
     {
@@ -169,7 +169,7 @@
       "url": "_framework\/System.ObjectModel.dll"
     },
     {
-      "hash": "sha256-Dbf6RL+ESAhbu1D5Dv4onZmumvwX6rv4oItlWMVST\/g=",
+      "hash": "sha256-zK6sA5oKy9PmNp+MU7qniQjuGy8wrTLiHn3fTyi0xW0=",
       "url": "_framework\/System.Private.CoreLib.dll"
     },
     {
@@ -237,12 +237,12 @@
       "url": "sample-data\/weather.json"
     },
     {
-      "hash": "sha256-jUvubkfdpM4UENAd5ms1jClo2pUkrjXmKWOyLonlG\/k=",
-      "url": "_content\/MduiBlazor.Shared\/css\/site.css"
+      "hash": "sha256-wPNbwzRMjH0n0FJ1GLQzDc4dwwxhYrE54QKsduX3MTU=",
+      "url": "_content\/MduiBlazor.Shared\/Shared\/MainLayout.razor.js"
     },
     {
-      "hash": "sha256-9PCLr0R0TLlx4DyN25FZEgTPe6D6ZwRthvjg7OPACnI=",
-      "url": "_content\/MduiBlazor\/Components\/Drawer\/MduiDrawer.razor.js"
+      "hash": "sha256-jUvubkfdpM4UENAd5ms1jClo2pUkrjXmKWOyLonlG\/k=",
+      "url": "_content\/MduiBlazor.Shared\/css\/site.css"
     },
     {
       "hash": "sha256-k4PD+hqxMb82oJ0FZNbSSmuwtJmXxftfaiZdpU3Vu04=",
@@ -377,5 +377,5 @@
       "url": "_content\/MduiBlazor\/icons\/material-icons\/MaterialIcons-Regular.woff2"
     }
   ],
-  "version": "AzjiDeTS"
+  "version": "u\/2xQpn6"
 };
