@@ -4,4 +4,4 @@
 <div class="@Classname" style="@Style" @attributes="@AdditionalAttributes">
     @ChildContent
 </div>
-<MduiOverlay Visible="@(_opened&&_variant==DrawerVariant.Temporary)" OnBackgroundClick="@OnOverlayClickedAsync" />
+<MduiOverlay Visible="@(Opened&&!Persistent)" OnBackgroundClick="@OnOverlayClickedAsync" />

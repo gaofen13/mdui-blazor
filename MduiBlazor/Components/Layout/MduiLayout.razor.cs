@@ -16,8 +16,8 @@ namespace MduiBlazor
             .AddClass("mdui-loaded", _firstLoaded)
             .AddClass($"mdui-theme-primary-{PrimaryColor.ToDescriptionString()}")
             .AddClass($"mdui-theme-accent-{AccentColor.ToDescriptionString()}")
-            .AddClass("mdui-drawer-body-left", _currentLeftDrawer is not null)
-            .AddClass("mdui-drawer-body-right", _currentRightDrawer is not null)
+            .AddClass("mdui-drawer-body-left", _currentLeftDrawer?.Persistent == true && _currentLeftDrawer.Opened)
+            .AddClass("mdui-drawer-body-right", _currentRightDrawer?.Persistent == true && _currentRightDrawer.Opened)
             .AddClass("mdui-appbar-with-tab", AppbarWithTab && !AppbarWithToolbar)
             .AddClass("mdui-appbar-with-toolbar", AppbarWithToolbar && !AppbarWithTab)
             .AddClass("mdui-appbar-with-tab-larger", AppbarWithTab && AppbarWithToolbar)
@@ -53,12 +53,10 @@ namespace MduiBlazor
         {
             if (drawer.RightSide)
             {
-                _currentRightDrawer?.CloseDrawer();
                 _currentRightDrawer = drawer;
             }
             else
             {
-                _currentLeftDrawer?.CloseDrawer();
                 _currentLeftDrawer = drawer;
             }
             StateHasChanged();

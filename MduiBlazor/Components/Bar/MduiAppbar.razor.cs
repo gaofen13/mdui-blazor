@@ -9,12 +9,16 @@ namespace MduiBlazor
             new ClassBuilder("mdui-appbar")
             .AddClass("mdui-typo", UseMduiTypo)
             .AddClass("mdui-appbar-fixed", Fixed)
+            .AddClass("mdui-appbar-inset", Inset)
             .AddClass($"mdui-shadow-{Shadow}", Shadow >= 0 && Shadow <= 24)
             .AddClass(Class)
             .Build();
 
         [Parameter]
         public bool Fixed { get; set; }
+
+        [Parameter]
+        public bool Inset { get; set; }
 
         [Parameter]
         public int? Shadow { get; set; }

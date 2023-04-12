@@ -7,24 +7,17 @@ namespace MduiBlazor
     public partial class MduiDrawer : MduiComponentBase
     {
         private bool _opened;
-        private DrawerVariant _variant = DrawerVariant.Temporary;
-        private IJSObjectReference? _jsModule;
 
         protected string Classname =>
             new ClassBuilder("mdui-drawer")
             .AddClass("mdui-typo", UseMduiTypo)
-            .AddClass("mdui-drawer-persistent", _variant == DrawerVariant.Persistent)
-            .AddClass(_opened ? "mdui-drawer-open" : "mdui-drawer-close")
             .AddClass("mdui-drawer-right", RightSide)
+            .AddClass("mdui-drawer-persistent", Persistent)
+            .AddClass("mdui-drawer-full-height", FullHeight)
+            .AddClass(_opened ? "mdui-drawer-open" : "mdui-drawer-close")
             .AddClass($"mdui-color-{Color}", !string.IsNullOrWhiteSpace(Color))
             .AddClass(Class)
             .Build();
-
-        [Inject]
-        private IJSRuntime JSRuntime { get; set; } = default!;
-
-        [Inject]
-        private NavigationManager Navigation { get; set; } = default!;
 
         [CascadingParameter]
         private MduiLayout? Layout { get; set; }
@@ -39,14 +32,9 @@ namespace MduiBlazor
             {
                 if (value != _opened)
                 {
-                    if (value)
-                    {
-                        OpenDrawer();
-                    }
-                    else
-                    {
-                        CloseDrawer();
-                    }
+                    _opened = value;
+                    OpenedChanged.InvokeAsync(value);
+                    ConfigLayout(value);
                 }
             }
         }
@@ -55,13 +43,7 @@ namespace MduiBlazor
         public EventCallback<bool> OpenedChanged { get; set; }
 
         [Parameter]
-        public DrawerVariant Variant { get; set; } = DrawerVariant.Responsive;
-
-        /// <summary>
-        /// When Variant == DrawerVariant.Responsive the breakpoint(px, default 1024) on Temporary and Persistent
-        /// </summary>
-        [Parameter]
-        public int Breakpoint { get; set; } = 1024;
+        public bool Persistent { get; set; }
 
         [Parameter]
         public string? Color { get; set; }
@@ -74,67 +56,19 @@ namespace MduiBlazor
 
         private Task OnOverlayClickedAsync()
         {
-            if (_opened)
-            {
-                CloseDrawer();
-            }
+            Opened = false;
             return Task.CompletedTask;
         }
 
-        public void OpenDrawer()
+        public void ConfigLayout(bool drawerOpened)
         {
-            _opened = true;
-            OpenedChanged.InvokeAsync(true);
-            if (_variant == DrawerVariant.Persistent)
+            if (drawerOpened)
+            {
                 Layout?.AddDarwer(this);
-        }
-
-        public void CloseDrawer()
-        {
-            _opened = false;
-            OpenedChanged.InvokeAsync(false);
-            if (_variant == DrawerVariant.Persistent)
-                Layout?.RemoveDarwer(this);
-        }
-
-        protected override void OnInitialized()
-        {
-            Navigation.LocationChanged += Navigation_LocationChanged;
-            base.OnInitialized();
-        }
-
-        protected override async Task OnAfterRenderAsync(bool firstRender)
-        {
-            if (firstRender)
-            {
-                if (Variant == DrawerVariant.Responsive)
-                {
-                    _jsModule = await JSRuntime.InvokeAsync<IJSObjectReference>("import",
-                     "./_content/MduiBlazor/Components/Drawer/MduiDrawer.razor.js");
-                    var width = await _jsModule!.InvokeAsync<int>("getWindowWidth");
-
-                    if (width >= Breakpoint)
-                    {
-                        _variant = DrawerVariant.Persistent;
-                        OpenDrawer();
-                        StateHasChanged();
-                    }
-                }
-                else if (Variant == DrawerVariant.Persistent)
-                {
-                    _variant = DrawerVariant.Persistent;
-                    OpenDrawer();
-                    StateHasChanged();
-                }
             }
-            await base.OnAfterRenderAsync(firstRender);
-        }
-
-        private void Navigation_LocationChanged(object? sender, Microsoft.AspNetCore.Components.Routing.LocationChangedEventArgs e)
-        {
-            if (_variant == DrawerVariant.Temporary && _opened)
+            else
             {
-                CloseDrawer();
+                Layout?.RemoveDarwer(this);
             }
         }
     }

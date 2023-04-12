@@ -3,7 +3,7 @@
 <MduiLayout AppbarWithToolbar Style="overflow-x:hidden;">
     <MduiAppbar Fixed>
         <MduiToolbar Color="@Colors.Theme.Primary">
-            <MduiIconButton Icon="menu" OnClick="_=>open=!open" />
+            <MduiIconButton Icon="menu" OnClick="_=>_open=!_open" />
             <MduiText Typo="@Typo.title">Title</MduiText>
             <MduiToolbarSpace />
             <a href="https://github.com/gaofen13/mdui-blazor" target="_blank">About</a>
@@ -17,7 +17,7 @@
             </MduiMenu>
         </MduiToolbar>
     </MduiAppbar>
-    <MduiDrawer UseMduiTypo @bind-Opened="@open">
+    <MduiDrawer UseMduiTypo @bind-Opened="@_open" Persistent="@Persistent">
         <NavMenu />
     </MduiDrawer>
 
