@@ -33,19 +33,19 @@
       "url": "_framework\/icudt.dat"
     },
     {
-      "hash": "sha256-4AvGcp6zj9tukNBFReGkHmpSF11LJniWHgOSLqywNos=",
+      "hash": "sha256-GM+HNN5wqjq9GNAhmfF0esLqlp+5V3H1h+FjgNqzcuw=",
       "url": "_framework\/blazor.boot.json"
     },
     {
-      "hash": "sha256-mVP81sm4Y7ax2Ei2j1OuUyFmpVqU5IdS5aF2bI89VyM=",
+      "hash": "sha256-SvHB1LbBBWDSxYIcja3hzFOiDT0CtD9kX4bI18JTgaY=",
       "url": "_framework\/MduiBlazor.Client.dll"
     },
     {
-      "hash": "sha256-naqQyyHyD1bed7lBCr\/bf7fRuVFd2IczcQiBydSetQA=",
+      "hash": "sha256-zUR9vkzg4hKx1qoP9a6e8jfVfMuAD5l6yitKJUT1SJ0=",
       "url": "_framework\/MduiBlazor.dll"
     },
     {
-      "hash": "sha256-oGBdwIMIH9h0xh8GwEcRfZ71zRQ72WFtBxCoOm3J77A=",
+      "hash": "sha256-Q16pSOuXwWe\/5AHarE\/9T7axKeVYVh+Fs\/DrNxafbrQ=",
       "url": "_framework\/MduiBlazor.Shared.dll"
     },
     {
@@ -245,19 +245,19 @@
       "url": "_content\/MduiBlazor\/Components\/Drawer\/MduiDrawer.razor.js"
     },
     {
-      "hash": "sha256-2suMkUm7BDviCoq+e657F42BLc\/kmhpA3fICf0Tf2Tw=",
+      "hash": "sha256-k4PD+hqxMb82oJ0FZNbSSmuwtJmXxftfaiZdpU3Vu04=",
       "url": "_content\/MduiBlazor\/css\/mdui.css"
     },
     {
-      "hash": "sha256-3Jx01unLuiYAkkU4Zk+ky0BfhchlAvYaDQjqTHm9B5s=",
+      "hash": "sha256-I7qnIClLmf9IxjNyc\/q5See0qUlBVx5BqZHfgB2VBJw=",
       "url": "_content\/MduiBlazor\/css\/mdui.css.map"
     },
     {
-      "hash": "sha256-FtYlOwXsd4Y8gLuz9hURugK22wFYbQjpwRI5DaqVr+M=",
+      "hash": "sha256-gWwi+krY+aA8tOyqopo0wIn8+qw8\/om4qVO9mO0onsk=",
       "url": "_content\/MduiBlazor\/css\/mdui.min.css"
     },
     {
-      "hash": "sha256-dU6PNJfV9XnjUkaHInFHcelP6hNNYVwI9nu6uFQxEG0=",
+      "hash": "sha256-5m6ztcCjWrrW7MFrr8tLREEu5L7d5yeipVyzt\/b8UcI=",
       "url": "_content\/MduiBlazor\/css\/mdui.min.css.map"
     },
     {
@@ -377,5 +377,5 @@
       "url": "_content\/MduiBlazor\/icons\/material-icons\/MaterialIcons-Regular.woff2"
     }
   ],
-  "version": "Uo799VTt"
+  "version": "AzjiDeTS"
 };
