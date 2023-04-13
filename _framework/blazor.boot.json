@@ -8,7 +8,7 @@
   "resources": {
     "assembly": {
       "MduiBlazor.Client.dll": "sha256-20j6PFBl8OEfZ2lMeZqPm9vRhVJxIUFeEwO6+m4ksnM=",
-      "MduiBlazor.dll": "sha256-i7+Nu3q3qvqYnCm6y3xaL5z+FtKbe\/nYgJyF2i+juu4=",
+      "MduiBlazor.dll": "sha256-ZBC6OQm6fhd5ggl6yznZ3Ya5p\/rSx1bGYEYhh4gyu1g=",
       "MduiBlazor.Shared.dll": "sha256-mrJnVdLz0pdBItbJ2RnhDEMuPRJoJB3AdaRjYvszSL8=",
       "Microsoft.AspNetCore.Components.dll": "sha256-c9tvj65vy+lZrALZx0hrAKyfK9bGtoNW+JRi7ji+dL4=",
       "Microsoft.AspNetCore.Components.Forms.dll": "sha256-OlQnEJnx2fcIeeZERe0\/82RIHDJmrAhTfpVFyY70MXA=",
