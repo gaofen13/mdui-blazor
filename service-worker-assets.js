@@ -245,19 +245,19 @@
       "url": "_content\/MduiBlazor.Shared\/css\/site.css"
     },
     {
-      "hash": "sha256-k4PD+hqxMb82oJ0FZNbSSmuwtJmXxftfaiZdpU3Vu04=",
+      "hash": "sha256-SNcbaKcS7bqVatFaOD5jXTM3kCDkPHh7aAh+szfSEhI=",
       "url": "_content\/MduiBlazor\/css\/mdui.css"
     },
     {
-      "hash": "sha256-I7qnIClLmf9IxjNyc\/q5See0qUlBVx5BqZHfgB2VBJw=",
+      "hash": "sha256-3ictDQW1+KvdKXawS91itKabq\/MzBxyD\/m3RVbkgWwM=",
       "url": "_content\/MduiBlazor\/css\/mdui.css.map"
     },
     {
-      "hash": "sha256-gWwi+krY+aA8tOyqopo0wIn8+qw8\/om4qVO9mO0onsk=",
+      "hash": "sha256-WXC0GJJiNfVnuRcgi0oCbW5eRxsn7U9RTLklhvTD8kM=",
       "url": "_content\/MduiBlazor\/css\/mdui.min.css"
     },
     {
-      "hash": "sha256-5m6ztcCjWrrW7MFrr8tLREEu5L7d5yeipVyzt\/b8UcI=",
+      "hash": "sha256-stQKHyaDHYNcSnnm1jn03abivg9J9Vtztpu4MtE56DM=",
       "url": "_content\/MduiBlazor\/css\/mdui.min.css.map"
     },
     {
@@ -377,5 +377,5 @@
       "url": "_content\/MduiBlazor\/icons\/material-icons\/MaterialIcons-Regular.woff2"
     }
   ],
-  "version": "GCRHmYrW"
+  "version": "rTxw9rto"
 };
