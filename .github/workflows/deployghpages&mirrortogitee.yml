@@ -1,4 +1,4 @@
-name: .NET
+name: .Net_deployghpages&mirrortogitee
 
 on:
   push:
@@ -29,9 +29,19 @@ jobs:
       run: dotnet publish -c Release -o deploy MduiBlazor.Client
       
     - name: Deploy to GitHub Pages
-      uses: JamesIves/github-pages-deploy-action@3.7.1
+      uses: JamesIves/github-pages-deploy-action@v4
       with:
         GITHUB_TOKEN: ${{ secrets.GH_PUSH_TOKEN }}
         BRANCH: gh-pages
         FOLDER: deploy/wwwroot
         CLEAN: true
+    - name: Mirror to Gitee
+      uses: Yikun/hub-mirror-action@master
+      with:
+          src: 'github/gaofen13'    						
+          dst: 'gitee/gaofen13'     						
+          dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}  
+          dst_token:  ${{ secrets.GITEE_TOKEN }}    
+          force_update: true
+          static_list: "mdui-blazor"   					
+          debug: true
