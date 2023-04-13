@@ -39,16 +39,12 @@ namespace MduiBlazor
             }
         }
 
-        internal void OpenItem(MduiPanelItem item)
+        internal void CloseAllItems()
         {
-            if (Accordion)
+            var openedItems = _items.Where(i => i.Open == true);
+            foreach (var openedItem in openedItems)
             {
-                var openedItems = _items.Where(i => i.Open == true);
-                foreach (var openedItem in openedItems)
-                {
-                    openedItem.ClosePanel();
-                }
-                item.OpenPanel();
+                openedItem.ClosePanel();
             }
         }
     }

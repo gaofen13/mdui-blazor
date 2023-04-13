@@ -58,12 +58,9 @@ namespace MduiBlazor
                 {
                     if (Panel?.Accordion == true)
                     {
-                        Panel.OpenItem(this);
+                        Panel.CloseAllItems();
                     }
-                    else
-                    {
-                        OpenPanel();
-                    }
+                    OpenPanel();
                 }
             }
         }
