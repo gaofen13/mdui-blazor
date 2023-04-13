@@ -83,10 +83,11 @@
 
 /* 面板项内容 */
 .mdui-panel-item-body {
-  height: 0;
+  max-height: 0;
   padding: 0 24px;
   overflow: hidden;
-  will-change: height;
+  transition: max-height .3s cubic-bezier(.4, 0, .2, 1);
+  will-change: max-height;
   .mdui-clearfix();
 
   &::after {
@@ -128,7 +129,8 @@
   }
 
   &>.mdui-panel-item-body {
-    height: auto;
+    max-height: 100vh;
+    overflow: auto;
   }
 }
 

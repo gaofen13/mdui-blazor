@@ -6819,10 +6819,12 @@ body *::-webkit-scrollbar-thumb {
 }
 /* 面板项内容 */
 .mdui-panel-item-body {
-  height: 0;
+  max-height: 0;
   padding: 0 24px;
   overflow: hidden;
-  will-change: height;
+  -webkit-transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: max-height;
 }
 .mdui-panel-item-body::before,
 .mdui-panel-item-body::after {
@@ -6872,7 +6874,8 @@ body *::-webkit-scrollbar-thumb {
           transform: rotate(180deg);
 }
 .mdui-panel-item-open > .mdui-panel-item-body {
-  height: auto;
+  max-height: 100vh;
+  overflow: auto;
 }
 /* 使打开项上下没有边距 */
 .mdui-panel-gapless {
