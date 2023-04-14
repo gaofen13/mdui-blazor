@@ -57,4 +57,4 @@ jobs:
           gitee-username: gaofen13
           gitee-password: ${{ secrets.GITEE_PASSWORD }}
           gitee-repo: gaofen13/mdui-blazor
-          branch: gh-page
+          branch: gh-pages
