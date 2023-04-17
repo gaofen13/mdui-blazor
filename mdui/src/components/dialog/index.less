@@ -12,7 +12,7 @@
   right: 0;
   left: 0;
   z-index: @z-index-dialog;
-  display: block;
+  display: none;
   box-sizing: border-box;
   width: 92%;
   min-width: 180px;
@@ -36,6 +36,10 @@
   }
 
   .mdui-shadow(24);
+
+  &.mdui-dialog-open {
+    display: block;
+  }
 }
 
 /* 提示框标题 */
@@ -55,6 +59,7 @@
 /* 提示框内容 */
 .mdui-dialog-content {
   box-sizing: border-box;
+  max-height: 65vh;
   padding: 24px;
   overflow-y: auto;
   color: rgba(0, 0, 0, 0.7);

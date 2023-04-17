@@ -8,7 +8,7 @@ namespace MduiBlazor
 {
     public partial class MduiSnackbar : MduiComponentBase
     {
-        private SnackbarOptions _options = new SnackbarOptions();
+        private SnackbarOptions _options = new();
 
         private CountdownTimer? _countdownTimer;
 

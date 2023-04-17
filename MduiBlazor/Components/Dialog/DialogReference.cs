@@ -6,23 +6,17 @@ namespace MduiBlazor
     {
         private readonly TaskCompletionSource<DialogResult> _resultCompletion = new(TaskCreationOptions.RunContinuationsAsynchronously);
         private readonly Action<DialogResult> _closed;
-        private readonly DialogService _dialogService;
 
         internal Guid InstanceId { get; }
         internal RenderFragment Instance { get; }
         internal DialogInstance? InstanceRef { get; set; }
 
-        public DialogReference(Guid instanceId, RenderFragment instance, DialogService dialogService)
+        public DialogReference(Guid instanceId, RenderFragment instance)
         {
             InstanceId = instanceId;
             Instance = instance;
             _closed = HandleClosed;
-            _dialogService = dialogService;
         }
-
-        public void Close() => _dialogService.Close(this);
-
-        public void Close(DialogResult result) => _dialogService.Close(this, result);
 
         public Task<DialogResult> Result => _resultCompletion.Task;
 

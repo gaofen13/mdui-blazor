@@ -7,49 +7,42 @@ namespace MduiBlazor
         internal event Action<DialogReference>? OnInstanceAdded;
         internal event Action<DialogReference, DialogResult>? OnCloseRequested;
 
-        public DialogReference Show<T>(string? title) where T : IComponent
-            => Show<T>(title, null, new ComponentParameters());
+        public DialogReference Show<T>(ComponentParameters? parameters = null) where T : IComponent
+            => Show(typeof(T), parameters);
 
-        public DialogReference Show<T>(string? title, DialogOptions? options) where T : IComponent
-            => Show<T>(title, options, new ComponentParameters());
-
-        public DialogReference Show<T>(string? title, DialogOptions? options, ComponentParameters parameters) where T : IComponent
-            => Show(typeof(T), title, options, parameters);
-
-        public DialogReference Show(Type contentComponent, string? title, DialogOptions? options)
-            => Show(contentComponent, title, options, new ComponentParameters());
-
-        public DialogReference Show(Type contentComponent, string? title, DialogOptions? options, ComponentParameters parameters)
+        public DialogReference Show(Type contentComponent, ComponentParameters? parameters = null)
         {
             if (!typeof(IComponent).IsAssignableFrom(contentComponent))
             {
                 throw new ArgumentException($"{contentComponent.FullName} must be a Blazor Component");
             }
 
-            DialogReference? reference = null;
-            var instanceId = Guid.NewGuid();
             var content = new RenderFragment(builder =>
             {
                 var i = 0;
                 builder.OpenComponent(i++, contentComponent);
-                foreach (var (name, value) in parameters.Parameters)
+                if (parameters != null)
                 {
-                    builder.AddAttribute(i++, name, value);
+                    foreach (var (name, value) in parameters.Parameters)
+                    {
+                        builder.AddAttribute(i++, name, value);
+                    }
                 }
                 builder.CloseComponent();
             });
+
+            DialogReference? reference = null;
+            var instanceId = Guid.NewGuid();
             var instance = new RenderFragment(builder =>
             {
                 builder.OpenComponent<DialogInstance>(0);
                 builder.SetKey("DialogInstance_" + instanceId);
                 builder.AddAttribute(1, "DialogId", instanceId);
-                builder.AddAttribute(2, "Title", title);
-                builder.AddAttribute(3, "Options", options);
-                builder.AddAttribute(4, "ChildContent", content);
-                builder.AddComponentReferenceCapture(5, compRef => reference!.InstanceRef = (DialogInstance)compRef);
+                builder.AddAttribute(2, "ChildContent", content);
+                builder.AddComponentReferenceCapture(3, compRef => reference!.InstanceRef = (DialogInstance)compRef);
                 builder.CloseComponent();
             });
-            reference = new DialogReference(instanceId, instance, this);
+            reference = new DialogReference(instanceId, instance);
 
             OnInstanceAdded?.Invoke(reference);
 
@@ -64,24 +57,21 @@ namespace MduiBlazor
 
         public DialogReference Show(string? message, string? title = null, DialogOptions? options = null)
         {
-            DialogReference? reference = null;
-            var instanceId = Guid.NewGuid();
-            var instance = new RenderFragment(builder =>
+            var parameters = new ComponentParameters();
+            if (!string.IsNullOrWhiteSpace(message))
             {
-                builder.OpenComponent<DialogInstance>(0);
-                builder.SetKey("DialogInstance_" + instanceId);
-                builder.AddAttribute(1, "DialogId", instanceId);
-                builder.AddAttribute(2, "Title", title);
-                builder.AddAttribute(3, "Message", message);
-                builder.AddAttribute(4, "Options", options);
-                builder.AddComponentReferenceCapture(5, compRef => reference!.InstanceRef = (DialogInstance)compRef);
-                builder.CloseComponent();
-            });
-            reference = new DialogReference(instanceId, instance, this);
+                parameters.Add("Message", message);
+            }
+            if (!string.IsNullOrWhiteSpace(title))
+            {
+                parameters.Add("Title", title);
+            }
+            if (options!=null)
+            {
+                parameters.Add("Options", options);
+            }
 
-            OnInstanceAdded?.Invoke(reference);
-
-            return reference;
+            return Show(typeof(MduiDialog), parameters);
         }
 
         internal void Close(DialogReference dialog) => Close(dialog, DialogResult.Ok());

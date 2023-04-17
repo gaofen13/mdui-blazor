@@ -4,9 +4,44 @@
 
 <h2>标准对话框</h2>
 <MduiButton Color="@Colors.Theme.Accent"
-    OnClick="@(_=>DialogService.Show("You'll lose all photos and media!","Are you sure?",new DialogOptions{Modal=true}))">
+            OnClick="@(_=>DialogService.Show("You'll lose all photos and media!","Are you sure?",new DialogOptions{Modal=true, ShowCancelButton=true, ShowConfirmButton=true}))">
     Open
 </MduiButton>
+
+<h2>Inline对话框</h2>
+<MduiButton Color="@Colors.Theme.Accent" OnClick="@(_=>open1=true)">Open</MduiButton>
+<MduiDialog @bind-Open="@open1" Title="Are you sure?">
+    <ChildContent>You'll lose all photos and media!</ChildContent>
+    <ActionsContent>
+        <MduiButton Text OnClick="_=>open1=false">cancel</MduiButton>
+        <MduiButton Text>erase</MduiButton>
+    </ActionsContent>
+</MduiDialog>
+
+<h2>不含标题栏</h2>
+<MduiButton Color="@Colors.Theme.Accent"
+            OnClick="@(_=>DialogService.Show("Discard draft?",null,new DialogOptions{Modal=true, ShowCancelButton=true, ShowConfirmButton=true}))">
+    Open
+</MduiButton>
+
+<h2>竖排按钮</h2>
+<MduiButton Color="@Colors.Theme.Accent"
+            OnClick="@(_=>DialogService.Show("Let Google help apps determine location. This means sending anonymous location data to Google, even when no apps are running.","Use Google's location service?",new DialogOptions{Modal=true, ShowCancelButton=true, ShowConfirmButton=true, ActionsStack=true}))">
+    Open
+</MduiButton>
+
+<h2>固定标题和按钮</h2>
+<MduiButton Color="@Colors.Theme.Accent" OnClick="@(_=>open2=true)">Open</MduiButton>
+<MduiDialog @bind-Open="@open2" Title="Use Google's location service?">
+    <ChildContent>
+        Let Google help apps determine location. This means sending anonymous location data to Google, even when no apps are running.
+        <br />test<br />test<br />test<br />test<br />test<br />test<br />test<br />test<br />test<br />test<br />test<br />test<br />test<br />test<br />test<br />test<br />test<br />test<br />test<br />test<br />test<br />test<br />test<br />test<br />test<br />test<br />test<br />test<br />test<br />test<br />test<br />test<br />test<br />test<br />test<br />test<br />test<br />test<br />test<br />test<br />test<br />test<br />test<br />test<br />test<br />test<br />test<br />test<br />test
+    </ChildContent>
+    <ActionsContent>
+        <MduiButton Text OnClick="_=>open2=false">cancel</MduiButton>
+        <MduiButton Text>erase</MduiButton>
+    </ActionsContent>
+</MduiDialog>
 
 <h2>Prompt对话框</h2>
 <MduiButton Color="@Colors.Theme.Accent" OnClick="@ShowAsync">Open</MduiButton>
@@ -16,9 +51,12 @@
 <MduiButton Color="@Colors.Theme.Accent" OnClick="@(_=>DialogService.Confirm("content","title"))">Confirm</MduiButton>
 
 @code {
+    private bool open1;
+    private bool open2;
+
     private async Task ShowAsync()
     {
-        var reference = DialogService.Show<DialogContent>("title");
+        var reference = DialogService.Show<DialogContentExample>();
         if (reference is not null)
         {
             var res = await reference.Result;

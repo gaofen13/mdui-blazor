@@ -1,4 +1,4 @@
-<MduiDialog>
+<MduiDialog @ref="@dialog" Title="Dialog Example">
     <ChildContent>
         <MduiTextField Label="请输入文本" @bind-Value="@text" />
         <MduiField Label="选择">
@@ -16,19 +16,17 @@
     </MduiDialog>
 
     @code {
+    MduiDialog? dialog;
     string? text;
     int value;
 
-    [CascadingParameter]
-    private DialogInstance? DialogInstance { get; set; }
-
     private void Cancel()
     {
-        DialogInstance?.Close(DialogResult.Cancel("点击了Cancel按钮"));
+        dialog?.Close(DialogResult.Cancel("点击了Cancel按钮"));
     }
 
     private void Confirm()
     {
-        DialogInstance?.Close(DialogResult.Ok("点击了Confirm按钮"));
+        dialog?.Close(DialogResult.Ok("点击了Confirm按钮"));
     }
 }

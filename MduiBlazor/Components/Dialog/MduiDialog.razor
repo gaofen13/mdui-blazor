@@ -1,12 +1,42 @@
 ﻿@namespace MduiBlazor
 @inherits MduiComponentBase
 
-<div class="@Classname" style="@Style" @attributes="@AdditionalAttributes">
-    @ChildContent
-</div>
-@if (ActionsContent is not null)
-{
-    <div class="mdui-dialog-actions">
-        @ActionsContent
+<MduiOverlay Visible="@(DialogInstance != null || Open)" OnBackgroundClick="@OnClickBackground">
+    <div class="@Classname" style="@Style" @attributes="@AdditionalAttributes" @onclick:stopPropagation="@true">
+        @if (!string.IsNullOrWhiteSpace(Title))
+        {
+            <div class="mdui-dialog-title">@Title</div>
+        }
+        @if (ChildContent is not null)
+        {
+            <div class="mdui-dialog-content">
+                @ChildContent
+            </div>
+        }
+        else
+        {
+            <div class="mdui-dialog-content">
+                @Message
+            </div>
+        }
+        @if (ActionsContent is not null)
+        {
+            <div class="@ActionsClassname">
+                @ActionsContent
+            </div>
+        }
+        else if (_options.ShowCancelButton || _options.ShowConfirmButton)
+        {
+            <div class="@ActionsClassname">
+                @if (_options.ShowCancelButton)
+                {
+                    <MduiButton Text OnClick="@Cancel">@_options.CancelText</MduiButton>
+                }
+                @if (_options.ShowConfirmButton)
+                {
+                    <MduiButton Text OnClick="@Ok">@_options.ConfirmText</MduiButton>
+                }
+            </div>
+        }
     </div>
-}
+</MduiOverlay>
