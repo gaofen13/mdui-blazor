@@ -1,0 +1,12 @@
+﻿@namespace MduiBlazor
+@inherits MduiInputBase<string>
+
+<div class="@Classname" style="@Style" @attributes="@AdditionalAttributes">
+    <MduiIconButton DisableRipple Class="mdui-textfield-icon" Icon="@Icon" OnClick="@OpenAsync" />
+    <input @ref="@Element" class="mdui-textfield-input" type="@Type" pattern="@Pattern"
+           maxlength="@MaxLength" placeholder="@Placeholder"
+           value="@BindConverter.FormatValue(CurrentValueAsString)"
+           @onchange="@(EventCallback.Factory.CreateBinder<string?>(this, __value => CurrentValueAsString = __value, CurrentValueAsString))"
+           @onfocus="@OnFocus" @onblur="@OnBlur" />
+    <MduiIconButton DisableRipple Class="mdui-textfield-close" Icon="close" OnClick="@Close" />
+</div>

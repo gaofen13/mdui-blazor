@@ -10,7 +10,7 @@ namespace MduiBlazor
         private string FabBtnClassname =>
             new ClassBuilder("mdui-fab")
             .AddClass("mdui-fab-opened", _isFocus)
-            .AddClass("mdui-ripple", Ripple)
+            .AddClass("mdui-ripple", !DisableRipple)
             .AddClass($"mdui-color-{Color}", !string.IsNullOrWhiteSpace(Color))
             .AddClass("mdui-fab-mini", Mini)
             .AddClass("mdui-fab-hide", Hide)
@@ -43,7 +43,7 @@ namespace MduiBlazor
         public bool Hide { get; set; }
 
         [Parameter]
-        public bool Ripple { get; set; } = true;
+        public bool DisableRipple { get; set; }
 
         private void OnFabClicked()
         {

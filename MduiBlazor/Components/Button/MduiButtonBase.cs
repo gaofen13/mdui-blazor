@@ -29,7 +29,7 @@ namespace MduiBlazor
         public bool Text { get; set; }
 
         [Parameter]
-        public bool Ripple { get; set; } = true;
+        public bool DisableRipple { get; set; }
 
         [Parameter]
         public bool Dense { get; set; }

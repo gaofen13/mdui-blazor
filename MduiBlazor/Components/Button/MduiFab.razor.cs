@@ -8,6 +8,7 @@ namespace MduiBlazor
         protected string Classname =>
             new ClassBuilder("mdui-fab mdui-ripple")
             .AddClass("mdui-typo", UseMduiTypo)
+            .AddClass("mdui-ripple", !DisableRipple)
             .AddClass($"mdui-color-{Color}", !string.IsNullOrWhiteSpace(Color))
             .AddClass("mdui-fab-mini", Mini)
             .AddClass("mdui-fab-hide", Hide)

@@ -4,6 +4,7 @@
 
 <EditForm Model="@info" OnSubmit="@ValidSubmit">
     <DataAnnotationsValidator />
+    <MduiExpandableTextField Placeholder="请输入文本" @bind-Value="@info.Text" />
     <MduiTextField Placeholder="请输入文本" @bind-Value="@info.Text" />
     <MduiTextField ErrorText="错误测试" Label="文本框" @bind-Value="@info.Text" />
     <MduiTextField Label="文本框" FloatingLabel @bind-Value="@info.Text" />
