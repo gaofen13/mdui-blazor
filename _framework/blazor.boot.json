@@ -1,5 +1,5 @@
 {
-  "cacheBootResources": false,
+  "cacheBootResources": true,
   "config": [ ],
   "debugBuild": false,
   "entryAssembly": "MduiBlazor.Client",
