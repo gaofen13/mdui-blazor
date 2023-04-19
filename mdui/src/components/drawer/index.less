@@ -115,6 +115,10 @@
       .mdui-shadow(16);
     }
   }
+
+  +.mdui-overlay {
+    z-index: calc(@z-index-drawer - 1);
+  }
 }
 
 /* 使该类所在元素（通常为body或Layout）获得 padding-left 或 padding-right，避免被抽屉栏覆盖住页面 */
