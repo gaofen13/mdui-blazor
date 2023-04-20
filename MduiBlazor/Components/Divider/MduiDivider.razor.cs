@@ -6,8 +6,7 @@ namespace MduiBlazor
     public partial class MduiDivider : MduiComponentBase
     {
         protected string Classname =>
-            new ClassBuilder("mdui-divider")
-            .AddClass("mdui-divider-inset", Inset)
+            new ClassBuilder($"mdui-divider{(Inset ? "-inset" : "")}")
             .AddClass(Class)
             .Build();
 

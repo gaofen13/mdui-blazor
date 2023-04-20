@@ -3,25 +3,24 @@ using Microsoft.AspNetCore.Components;
 
 namespace MduiBlazor
 {
-    public partial class MduiList : MduiComponentBase
+    public partial class MduiSubheader : MduiComponentBase
     {
         protected string Classname =>
-            new ClassBuilder("mdui-list")
-            .AddClass("mdui-list-dense", Dense)
+            new ClassBuilder($"mdui-subheader{(Inset ? "-inset" : "")}")
             .AddClass(Class)
             .Build();
 
-        private string HtmlTag { get; set; } = "ul";
+        private string HtmlTag { get; set; } = "li";
+
+        [CascadingParameter]
+        private MduiList? MduiList { get; set; }
 
         [Parameter]
-        public bool NavMenu { get; set; }
-
-        [Parameter]
-        public bool Dense { get; set; }
+        public bool Inset { get; set; }
 
         protected override void OnInitialized()
         {
-            if (NavMenu)
+            if (MduiList?.NavMenu == true)
             {
                 HtmlTag = "div";
             }

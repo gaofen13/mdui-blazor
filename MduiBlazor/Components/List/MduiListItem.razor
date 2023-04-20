@@ -1,0 +1,16 @@
+﻿@namespace MduiBlazor
+@inherits MduiComponentBase
+@implements IDisposable
+
+@if (MduiList?.NavMenu == true)
+{
+    <NavLink href="@Href" class="@Classname" style="@Style" ActiveClass="mdui-list-item-active" Match="@Match" @attributes="@AdditionalAttributes">
+        @ChildContent
+    </NavLink>
+}
+else
+{
+    <li class="@Classname" style="@Style" @attributes="@AdditionalAttributes">
+        @ChildContent
+    </li>
+}

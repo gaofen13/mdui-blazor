@@ -7121,7 +7121,7 @@ th.mdui-table-cell-checkbox .mdui-checkbox {
 .mdui-divider-inset,
 .mdui-divider-inset-light,
 .mdui-divider-inset-dark {
-  margin-left: 72px;
+  margin-left: 56px;
 }
 .mdui-divider,
 .mdui-divider-inset {
@@ -11250,7 +11250,7 @@ select.mdui-select[multiple] option:last-child {
   text-overflow: ellipsis;
 }
 .mdui-subheader-inset {
-  padding-left: 72px;
+  padding-left: 56px;
 }
 /**
  * =============================================================================
@@ -11442,7 +11442,7 @@ select.mdui-select[multiple] option:last-child {
   background-color: transparent;
 }
 .mdui-list .mdui-subheader-inset::before {
-  left: 72px;
+  left: 56px;
 }
 /* 列表项 */
 .mdui-list-item {
@@ -11542,12 +11542,12 @@ select.mdui-select[multiple] option:last-child {
 }
 /* 列表项内的元素间添加间距 */
 .mdui-list-item-icon ~ .mdui-list-item-content {
-  margin-left: 32px;
+  margin-left: 16px;
 }
 .mdui-checkbox ~ .mdui-list-item-content,
 .mdui-radio ~ .mdui-list-item-content,
 .mdui-switch ~ .mdui-list-item-content {
-  margin-left: 20px;
+  margin-left: 16px;
 }
 .mdui-list-item-avatar ~ .mdui-list-item-content {
   margin-left: 16px;
@@ -13539,6 +13539,40 @@ select.mdui-select[multiple] option:last-child {
   .mdui-theme-layout-auto .mdui-menu-item-more {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M9.5 17.5l5-5-5-5z' fill='%23FFF'/%3E%3C/svg%3E");
   }
+}
+/**
+ * =============================================================================
+ * ************   Collapse 折叠插件   ************
+ * =============================================================================
+ */
+.mdui-collapse-item-header .mdui-collapse-item-arrow,
+.mdui-collapse-item-header.mdui-collapse-item-arrow {
+  -webkit-transform: rotate(0);
+          transform: rotate(0);
+  -webkit-transition: -webkit-transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: -webkit-transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+.mdui-collapse-item-body {
+  max-height: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  overflow: hidden;
+  -webkit-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: max-height;
+}
+.mdui-collapse-item-body .mdui-list-item {
+  padding-left: 72px;
+}
+.mdui-collapse-item-open > .mdui-collapse-item-header .mdui-collapse-item-arrow,
+.mdui-collapse-item-open > .mdui-collapse-item-header.mdui-collapse-item-arrow {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
 }
 
 /*# sourceMappingURL=mdui.css.map */
