@@ -1,49 +1,32 @@
-﻿<MduiList NavMenu>
-    <MduiListItem Href="" Match="NavLinkMatch.All">
-        <MduiListItemIcon Icon="home" IconColor="@Colors.Blue.Primary" />
-        <MduiListItemContent>Home</MduiListItemContent>
-    </MduiListItem>
-    <MduiListItem Href="counter">
-        <MduiListItemIcon Icon="add" IconColor="@Colors.Purple.Primary" />
-        <MduiListItemContent>Counter</MduiListItemContent>
-    </MduiListItem>
-    <MduiListItem Href="fetchdata">
-        <MduiListItemIcon Icon="dashboard" IconColor="@Colors.Brown.Primary" />
-        <MduiListItemContent>Fetch data</MduiListItemContent>
-    </MduiListItem>
-    <MduiCollapseItem Title="样式" Icon="layers" IconColor="@Colors.DeepOrange.Primary">
-        <MduiListItem Href="ripples">Ripples</MduiListItem>
-        <MduiListItem Href="typography">Typography</MduiListItem>
-    </MduiCollapseItem>
-    <MduiCollapseItem Title="组件" Icon="widgets" IconColor="@Colors.Green.Primary">
-        <MduiListItem Href="bars">
-            <MduiListItemContent>Bars</MduiListItemContent>
-        </MduiListItem>
-        <MduiListItem Href="bottomnav">
-            <MduiListItemContent>BottomNav</MduiListItemContent>
-        </MduiListItem>
-        <MduiListItem Href="buttons">
-            <MduiListItemContent>Buttons</MduiListItemContent>
-        </MduiListItem>
-        <MduiListItem Href="cards">
-            <MduiListItemContent>Cards</MduiListItemContent>
-        </MduiListItem>
-        <MduiListItem Href="chips">
-            <MduiListItemContent>Chips</MduiListItemContent>
-        </MduiListItem>
-        <MduiListItem Href="dialogs">
-            <MduiListItemContent>Dialogs</MduiListItemContent>
-        </MduiListItem>
-        <MduiListItem Href="inputs">
-            <MduiListItemContent>Form & Inputs</MduiListItemContent>
-        </MduiListItem>
-        <MduiListItem Href="list">List</MduiListItem>
-        <MduiListItem Href="menus">Menus</MduiListItem>
-        <MduiListItem Href="pagination">Pagination</MduiListItem>
-        <MduiListItem Href="panels">Panels</MduiListItem>
-        <MduiListItem Href="progress">Progress</MduiListItem>
-        <MduiListItem Href="snackbars">Snackbars</MduiListItem>
-        <MduiListItem Href="tables">Tables</MduiListItem>
-        <MduiListItem Href="tabs">Tabs</MduiListItem>
-    </MduiCollapseItem>
-</MduiList>
+﻿<MduiNavMenu Accordion>
+    <MduiNavMenuItem Href="" Match="NavLinkMatch.All" Icon="home" IconColor="@Colors.Blue.Primary">
+        Home
+    </MduiNavMenuItem>
+    <MduiNavMenuItem Href="counter" Icon="add" IconColor="@Colors.Purple.Primary">
+        Counter
+    </MduiNavMenuItem>
+    <MduiNavMenuItem Href="fetchdata" Icon="dashboard" IconColor="@Colors.Brown.Primary">
+        Fetch data
+    </MduiNavMenuItem>
+    <MduiNavMenuCollapseItem Title="样式" Icon="layers" IconColor="@Colors.DeepOrange.Primary">
+        <MduiNavMenuItem Href="ripples">Ripples</MduiNavMenuItem>
+        <MduiNavMenuItem Href="typography">Typography</MduiNavMenuItem>
+    </MduiNavMenuCollapseItem>
+    <MduiNavMenuCollapseItem Title="组件" Icon="widgets" IconColor="@Colors.Green.Primary">
+        <MduiNavMenuItem Href="bars">Bars</MduiNavMenuItem>
+        <MduiNavMenuItem Href="bottomnav">BottomNav</MduiNavMenuItem>
+        <MduiNavMenuItem Href="buttons">Buttons</MduiNavMenuItem>
+        <MduiNavMenuItem Href="cards">Cards</MduiNavMenuItem>
+        <MduiNavMenuItem Href="chips">Chips</MduiNavMenuItem>
+        <MduiNavMenuItem Href="dialogs">Dialogs</MduiNavMenuItem>
+        <MduiNavMenuItem Href="inputs">Form & Inputs</MduiNavMenuItem>
+        <MduiNavMenuItem Href="list">List</MduiNavMenuItem>
+        <MduiNavMenuItem Href="menus">Menus</MduiNavMenuItem>
+        <MduiNavMenuItem Href="pagination">Pagination</MduiNavMenuItem>
+        <MduiNavMenuItem Href="panels">Panels</MduiNavMenuItem>
+        <MduiNavMenuItem Href="progress">Progress</MduiNavMenuItem>
+        <MduiNavMenuItem Href="snackbars">Snackbars</MduiNavMenuItem>
+        <MduiNavMenuItem Href="tables">Tables</MduiNavMenuItem>
+        <MduiNavMenuItem Href="tabs">Tabs</MduiNavMenuItem>
+    </MduiNavMenuCollapseItem>
+</MduiNavMenu>

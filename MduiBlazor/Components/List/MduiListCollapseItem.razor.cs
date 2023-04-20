@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Components;
 
 namespace MduiBlazor
 {
-    public partial class MduiCollapseItem
+    public partial class MduiListCollapseItem : MduiComponentBase, IDisposable
     {
         protected string Classname =>
             new ClassBuilder("mdui-collapse-item")
@@ -15,7 +15,6 @@ namespace MduiBlazor
         private string HeaderClassname =>
             new ClassBuilder("mdui-collapse-item-header mdui-list-item")
             .AddClass("mdui-ripple", !DisableRipple)
-            .AddClass("mdui-typo", UseMduiTypo)
             .Build();
 
         private string BodyClassname =>
@@ -25,14 +24,8 @@ namespace MduiBlazor
 
         private string BodyStylelist =>
             new StyleBuilder()
-            .AddStyle("max-height", $"{ChildItemCount * (Dense ? 40 : 48)}px", Open)
+            .AddStyle("max-height", "100vh", Open)
             .Build();
-
-        private int ChildItemCount { get; set; }
-
-        private string HtmlTag { get; set; } = "li";
-
-        private string BodyHtmlTag { get; set; } = "ul";
 
         [CascadingParameter]
         private MduiList? MduiList { get; set; }
@@ -60,27 +53,28 @@ namespace MduiBlazor
 
         protected override void OnInitialized()
         {
-            if (MduiList?.NavMenu == true)
-            {
-                HtmlTag = "div";
-                BodyHtmlTag = "div";
-            }
+            MduiList?.AddSubitem(this);
             base.OnInitialized();
         }
 
         private void OnTitleClicked()
         {
+            if (!Open && MduiList?.Accordion == true)
+            {
+                MduiList.CloseAllSubitems();
+            }
             Open = !Open;
         }
 
-        public void AddItem()
+        public void Close()
         {
-            ChildItemCount++;
+            Open = false;
         }
 
-        public void RemoveItem()
+        void IDisposable.Dispose()
         {
-            ChildItemCount--;
+            MduiList?.RemoveSubitem(this);
+            GC.SuppressFinalize(this);
         }
     }
 }

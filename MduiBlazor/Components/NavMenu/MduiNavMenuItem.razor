@@ -1,0 +1,11 @@
+﻿@namespace MduiBlazor
+@inherits MduiComponentBase
+@implements IDisposable
+
+<NavLink href="@Href" class="@Classname" style="@Style" ActiveClass="mdui-list-item-active" Match="@Match" @attributes="@AdditionalAttributes">
+    @if (Icon is not null)
+    {
+        <MduiIcon Class="mdui-list-item-icon" Name="@Icon" Color="@IconColor" Custom="@CustomIcon" />
+    }
+    <div class="mdui-list-item-content">@ChildContent</div>
+</NavLink>

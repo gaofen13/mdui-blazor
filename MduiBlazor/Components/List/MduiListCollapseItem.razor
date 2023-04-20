@@ -1,0 +1,17 @@
+﻿@namespace MduiBlazor
+@inherits MduiComponentBase
+@implements IDisposable
+
+<li class="@Classname" style="@Style" @attributes="@AdditionalAttributes">
+    <div class="@HeaderClassname" @onclick="@OnTitleClicked">
+        @if(Icon is not null)
+        {
+            <MduiListItemIcon Icon="@Icon" IconColor="@IconColor" Custom="@CustomIcon" />
+        }
+        <div class="mdui-list-item-content">@Title</div>
+        <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+    </div>
+    <ul class="@BodyClassname" style="@BodyStylelist">
+        @ChildContent
+    </ul>
+</li>
