@@ -201,8 +201,8 @@ input.mdui-btn[type="submit"] {
     float: left;
     min-width: inherit;
     padding: 0 12px;
-    color: rgba(0, 0, 0, 0.54);
     border-radius: 0;
+    opacity: 0.8;
 
     &::before {
       position: absolute;
@@ -229,7 +229,6 @@ input.mdui-btn[type="submit"] {
 
     // 激活状态
     &.mdui-btn-active {
-      color: rgba(0, 0, 0, 0.87);
       background-color: rgba(0, 0, 0, 0.215);
 
       &+.mdui-btn-active {
@@ -303,5 +302,9 @@ input.mdui-btn[type="submit"] {
         background-color: rgba(255, 255, 255, .12) !important;
       }
     }
+  }
+
+  .mdui-btn-group .mdui-btn.mdui-btn-active {
+    background-color: rgba(255, 255, 255, 0.215)
   }
 });

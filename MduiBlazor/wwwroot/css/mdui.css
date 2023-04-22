@@ -9861,8 +9861,8 @@ input.mdui-btn[type="submit"] {
   float: left;
   min-width: inherit;
   padding: 0 12px;
-  color: rgba(0, 0, 0, 0.54);
   border-radius: 0;
+  opacity: 0.8;
 }
 .mdui-btn-group .mdui-btn::before {
   position: absolute;
@@ -9884,7 +9884,6 @@ input.mdui-btn[type="submit"] {
   border-bottom-right-radius: 2px;
 }
 .mdui-btn-group .mdui-btn.mdui-btn-active {
-  color: rgba(0, 0, 0, 0.87);
   background-color: rgba(0, 0, 0, 0.215);
 }
 .mdui-btn-group .mdui-btn.mdui-btn-active + .mdui-btn-active::before {
@@ -9942,6 +9941,9 @@ input.mdui-btn[type="submit"] {
 .mdui-theme-layout-dark .mdui-fab[disabled]:focus {
   background-color: rgba(255, 255, 255, 0.12) !important;
 }
+.mdui-theme-layout-dark .mdui-btn-group .mdui-btn.mdui-btn-active {
+  background-color: rgba(255, 255, 255, 0.215);
+}
 @media (prefers-color-scheme: dark) {
   .mdui-theme-layout-auto .mdui-btn:hover,
   .mdui-theme-layout-auto .mdui-fab:hover {
@@ -9989,6 +9991,9 @@ input.mdui-btn[type="submit"] {
   .mdui-theme-layout-auto .mdui-btn-raised[disabled]:focus,
   .mdui-theme-layout-auto .mdui-fab[disabled]:focus {
     background-color: rgba(255, 255, 255, 0.12) !important;
+  }
+  .mdui-theme-layout-auto .mdui-btn-group .mdui-btn.mdui-btn-active {
+    background-color: rgba(255, 255, 255, 0.215);
   }
 }
 /**

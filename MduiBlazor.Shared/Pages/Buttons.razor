@@ -2,9 +2,11 @@
 @inject NavigationManager Navigation
 
 <h2>Button</h2>
+<MduiButton>Button</MduiButton>
 <MduiButton Color="@Colors.Theme.Primary">Button</MduiButton>
 
 <h2>IconButton</h2>
+<MduiIconButton Icon="add" />
 <MduiIconButton Color="@Colors.Theme.Accent" Icon="add" />
 
 <h2>ButtonGroup</h2>
@@ -24,11 +26,11 @@
 </MduiButtonGroup>
 
 <h2>FabButton</h2>
-<MduiButton Color="@Colors.Theme.Accent" OnClick="@(_=>hide=!hide)">@(hide?"显示":"隐藏")</MduiButton>
-<MduiFab Hide="@hide" Icon="add" Color="@Colors.Theme.Accent" />
+<MduiButton Color="@Colors.Theme.Accent" OnClick="@(_=>hide=!hide)">@(hide ? "显示" : "隐藏")</MduiButton>
+    <MduiFab Hide="@hide" Icon="add" Color="@Colors.Theme.Accent" />
 
-<MduiFabMenu Icon="add" OpenedIcon="edit" Color="@Colors.Theme.Accent">
-    <MduiFab Icon="backup" Color="@Colors.Theme.Primary" OnClick="@NavigationBack" Mini />
+    <MduiFabMenu Icon="add" OpenedIcon="edit" Color="@Colors.Theme.Accent">
+        <MduiFab Icon="backup" Color="@Colors.Theme.Primary" OnClick="@NavigationBack" Mini />
     <MduiFab Icon="bookmark" Color="@Colors.Theme.Accent" Mini />
     <MduiFab Icon="access_alarms" Color="@Colors.Blue.Primary" Mini />
     <MduiFab Icon="touch_app" Color="@Colors.Green.Primary" Mini />
