@@ -25,6 +25,7 @@ namespace MduiBlazor
         private string BodyStylelist =>
             new StyleBuilder()
             .AddStyle("max-height", "100vh", Open)
+            .AddStyle("overflow-y", "auto", Open)
             .Build();
 
         [CascadingParameter]

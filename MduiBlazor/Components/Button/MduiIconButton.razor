@@ -16,5 +16,14 @@
             OnClick="@OnClick"
             Command="@Command"
             CommandParameter="@CommandParameter">
-    <MduiIcon Name="@Icon" Color="@IconColor" />
+    @if(ChildContent is not null)
+    {
+        <i  class="@IconClassname">
+            @ChildContent
+        </i>
+    }
+    else if (!string.IsNullOrWhiteSpace(Icon))
+    {
+        <MduiIcon Name="@Icon" Color="@IconColor" />
+    }
 </MduiButton>

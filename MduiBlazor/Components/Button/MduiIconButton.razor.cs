@@ -11,7 +11,12 @@ namespace MduiBlazor
             .AddClass(Class)
             .Build();
 
-        [Parameter, EditorRequired]
+        private string IconClassname =>
+            new ClassBuilder("mdui-icon")
+            .AddClass($"mdui-text-color-{IconColor}", !string.IsNullOrWhiteSpace(IconColor))
+            .Build();
+
+        [Parameter]
         public string? Icon { get; set; }
 
         [Parameter]

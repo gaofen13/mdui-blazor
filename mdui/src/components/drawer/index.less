@@ -4,12 +4,7 @@
  * =============================================================================
  */
 
-/* DOM 加载完后再添加 transition */
-.mdui-loaded {
-  transition: padding .3s @animation-curve-linear-out-slow-in;
-}
-
-.mdui-loaded .mdui-drawer {
+.mdui-drawer {
   transition: all .3s @animation-curve-linear-out-slow-in;
 }
 
@@ -122,12 +117,14 @@
 }
 
 /* 使该类所在元素（通常为body或Layout）获得 padding-left 或 padding-right，避免被抽屉栏覆盖住页面 */
-.mdui-drawer-body-left {
-  padding-left: @drawer-width-md;
-}
+.mdui-layout-content {
+  .mdui-drawer-body-left & {
+    padding-left: @drawer-width-md;
+  }
 
-.mdui-drawer-body-right {
-  padding-right: @drawer-width-md;
+  .mdui-drawer-body-right & {
+    padding-right: @drawer-width-md;
+  }
 }
 
 /* PC 上默认有上边距 */
@@ -204,7 +201,7 @@
   // 手机平板上的样式
   @media (max-width: @screen-sm-max) {
     .mdui-drawer {
-      background-color: @layout-dark-color-4;
+      background-color: @layout-dark-color-4 !important;
     }
   }
 });

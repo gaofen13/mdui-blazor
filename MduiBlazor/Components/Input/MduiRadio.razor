@@ -2,9 +2,9 @@
 @inherits MduiComponentBase
 @typeparam TValue
 
-<label class="mdui-radio">
-    <input type="radio" name="@(Name??RadioGroup?.RadioName)" class="@Class" style="@Style"
-        disabled="@Disabled" @attributes="@AdditionalAttributes" checked="@Checked" value="@Value"
+<label class="@Classname" style="@Style" @attributes="@AdditionalAttributes">
+    <input type="radio" name="@(Name??RadioGroup?.RadioName)"
+        disabled="@Disabled" checked="@Checked" value="@Value"
         @onchange="@OnRadioChanged" />
     <i class="mdui-radio-icon"></i>
     @if (ChildContent is not null)

@@ -1,0 +1,15 @@
+using MduiBlazor.Extensions;
+using MduiBlazor.Utilities;
+using Microsoft.AspNetCore.Components;
+
+namespace MduiBlazor
+{
+    public partial class MduiLayoutContent : MduiComponentBase
+    {
+        protected string Classname =>
+            new ClassBuilder("mdui-layout-content")
+            .AddClass("mdui-typo", UseMduiTypo)
+            .AddClass(Class)
+            .Build();
+    }
+}

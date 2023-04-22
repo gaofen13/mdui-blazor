@@ -1,0 +1,78 @@
+/**
+ * =============================================================================
+ * ************   Layout   ************
+ * =============================================================================
+ */
+
+.mdui-layout {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.mdui-layout-content {
+    flex: 1 1 auto;
+    margin: 0;
+    transition: padding .3s @animation-curve-linear-out-slow-in;
+
+    /* 含工具栏 */
+    .mdui-appbar-with-toolbar & {
+        padding-top: @appbar-height-xs-portrait;
+
+        // 平板和桌面
+        @media (min-width: @screen-sm-min) {
+            padding-top: @appbar-height-sm;
+        }
+
+        // 手机横屏
+        @media (orientation: landscape) and (max-width: @screen-xs-max-landscape) {
+            padding-top: @appbar-height-xs-landscape;
+        }
+    }
+
+    /* 含 Tab */
+    .mdui-appbar-with-tab & {
+        padding-top: 48px;
+    }
+
+    /* 含大 Tab  */
+    .mdui-appbar-with-tab-larger & {
+        padding-top: 72px;
+    }
+
+    /* 含工具栏和 Tab */
+    .mdui-appbar-with-toolbar.mdui-appbar-with-tab & {
+        padding-top: @appbar-height-xs-portrait + 48px;
+
+        // 平板和桌面
+        @media (min-width: @screen-sm-min) {
+            padding-top: @appbar-height-sm + 48px;
+        }
+
+        // 手机横屏
+        @media (orientation: landscape) and (max-width: @screen-xs-max-landscape) {
+            padding-top: @appbar-height-xs-landscape + 48px;
+        }
+    }
+
+    /* 含工具栏和大 Tab */
+    .mdui-appbar-with-toolbar.mdui-appbar-with-tab-larger & {
+        padding-top: @appbar-height-xs-portrait + 72px;
+
+        // 平板和桌面
+        @media (min-width: @screen-sm-min) {
+            padding-top: @appbar-height-sm + 72px;
+        }
+
+        // 手机横屏
+        @media (orientation: landscape) and (max-width: @screen-xs-max-landscape) {
+            padding-top: @appbar-height-xs-landscape + 72px;
+        }
+    }
+}
+
+
+/* 锁定屏幕 */
+.mdui-locked {
+    overflow: hidden;
+}

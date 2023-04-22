@@ -7,7 +7,11 @@ namespace MduiBlazor.Shared.Shared
 {
     public partial class MainLayout
     {
-        bool _open;
+        private bool _open;
+        private bool _showThemeDialog;
+        private PrimaryColor _primaryColor = PrimaryColor.DeepPurple;
+        private AccentColor _accentColor = AccentColor.Red;
+        private bool _isDarkTheme;
         private int _windowWidth;
         private IJSObjectReference? _jsModule;
         private DotNetObjectReference<MainLayout>? _objectReference;
@@ -77,9 +81,16 @@ namespace MduiBlazor.Shared.Shared
             }
         }
 
-        private void ReflashPage()
+        private void ToggleThemeDialog()
         {
-            Navigation.NavigateTo(Navigation.Uri, true, true);
+            _showThemeDialog = !_showThemeDialog;
+        }
+
+        private void ResetTheme()
+        {
+            _primaryColor = PrimaryColor.DeepPurple;
+            _accentColor = AccentColor.Red;
+            _isDarkTheme = false;
         }
     }
 }

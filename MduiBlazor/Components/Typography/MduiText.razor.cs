@@ -7,7 +7,7 @@ namespace MduiBlazor
     public partial class MduiText : MduiComponentBase
     {
         protected string Classname =>
-            new ClassBuilder("mdui-icon")
+            new ClassBuilder()
             .AddClass($"mdui-typo-{Typo?.ToDescriptionString()}{(Opacity ? "-opacity" : "")}", Typo != null)
             .AddClass($"mdui-text-color-{Color}", !string.IsNullOrWhiteSpace(Color))
             .AddClass(Class)
