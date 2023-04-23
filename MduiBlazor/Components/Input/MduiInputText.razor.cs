@@ -34,6 +34,9 @@ namespace MduiBlazor
         [Parameter]
         public bool Trim { get; set; }
 
+        [Parameter]
+        public EventCallback<string> OnInput { get; set; }
+
         public override async Task SetParametersAsync(ParameterView parameters)
         {
             await base.SetParametersAsync(parameters);
@@ -59,9 +62,14 @@ namespace MduiBlazor
 
         private void OnTextInput(ChangeEventArgs args)
         {
+            var value = args.Value?.ToString();
             if (MaxLength > 0)
             {
-                _wordNumber = args.Value?.ToString()?.Length ?? 0;
+                _wordNumber = value?.Length ?? 0;
+            }
+            if (OnInput.HasDelegate)
+            {
+                OnInput.InvokeAsync(value);
             }
         }
 

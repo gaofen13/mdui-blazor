@@ -96,5 +96,8 @@ namespace MduiBlazor
 
         [Parameter]
         public bool Trim { get; set; }
+
+        [Parameter]
+        public EventCallback<string> OnInput { get; set; }
     }
 }

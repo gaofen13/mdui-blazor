@@ -5,7 +5,12 @@
     <MduiAppbar Fixed>
         <MduiToolbar Color="@Colors.Theme.Primary">
             <MduiIconButton Icon="menu" OnClick="_=>_open=!_open" />
-            <MduiText Typo="@Typo.title">MduiBlazor</MduiText>
+            <MduiButton Text Href="">
+                <MduiText Typo="@Typo.title">MduiBlazor</MduiText>
+            </MduiButton>
+            <MduiButton Text Href="https://www.mdui.org/">
+                <MduiText Typo="@Typo.title">Mdui</MduiText>
+            </MduiButton>
             <MduiToolbarSpace />
             <MduiIconButton Icon="color_lens" OnClick="@ToggleThemeDialog" />
             <MduiIconButton Href="https://github.com/gaofen13/mdui-blazor">
@@ -15,10 +20,10 @@
                     </path>
                 </svg>
             </MduiIconButton>
-        </MduiToolbar>
-    </MduiAppbar>
+            </MduiToolbar>
+            </MduiAppbar>
 
-    <MduiDrawer UseMduiTypo @bind-Opened="@_open" Persistent="@Persistent">
+            <MduiDrawer UseMduiTypo @bind-Opened="@_open" Persistent="@Persistent">
         <NavMenu />
     </MduiDrawer>
 

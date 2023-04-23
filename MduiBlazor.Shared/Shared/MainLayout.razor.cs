@@ -9,7 +9,7 @@ namespace MduiBlazor.Shared.Shared
     {
         private bool _open;
         private bool _showThemeDialog;
-        private PrimaryColor _primaryColor = PrimaryColor.DeepPurple;
+        private PrimaryColor _primaryColor = PrimaryColor.Indigo;
         private AccentColor _accentColor = AccentColor.Red;
         private bool _isDarkTheme;
         private int _windowWidth;
@@ -88,7 +88,7 @@ namespace MduiBlazor.Shared.Shared
 
         private void ResetTheme()
         {
-            _primaryColor = PrimaryColor.DeepPurple;
+            _primaryColor = PrimaryColor.Indigo;
             _accentColor = AccentColor.Red;
             _isDarkTheme = false;
         }

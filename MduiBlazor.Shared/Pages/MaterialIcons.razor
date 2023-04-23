@@ -1,0 +1,20 @@
+@page "/material_icon"
+
+<div class="mdui-container">
+    <div class="mdui-row" style="margin-top: 80px">
+        <div class="mdui-col-xs-12 mdui-col-sm-1 mdui-col-md-2"></div>
+        <MduiTextField OnInput="@OnSearchChanged" Class="mdui-col-xs-12 mdui-col-sm-10 mdui-col-md-8" FloatingLabel Label="ÊäÈëÍ¼±êÃûËÑË÷" />
+        <div class="mdui-col-xs-12 mdui-col-sm-1 mdui-col-md-2"></div>
+    </div>
+
+    <div class="mdui-m-y-2 mdui-row-xs-3 mdui-row-sm-4 mdui-row-md-6 mdui-row-lg-8">
+        @foreach (var item in _showIcons)
+        {
+            <div class="mdui-col mdui-text-center mdui-m-a-3">
+                <MduiIcon Class="mdui-m-y-1" Style="font-size:48px;" Name="@item.Name" Color="@Colors.Grey.Primary6" />
+                <br />
+                <MduiText Typo="@Typo.body2">@item.Name</MduiText>
+            </div>
+        }
+    </div>
+</div>
