@@ -10,7 +10,7 @@
     <div class="mdui-m-y-2 mdui-row-xs-3 mdui-row-sm-4 mdui-row-md-6 mdui-row-lg-8">
         @foreach (var item in _showIcons)
         {
-            <div class="mdui-col mdui-text-center mdui-m-a-3">
+            <div class="mdui-col mdui-text-center mdui-m-a-3" @onclick="_=>OnClickIconItem(item.Name)">
                 <MduiIcon Class="mdui-m-y-1" Style="font-size:48px;" Name="@item.Name" Color="@Colors.Grey.Primary6" />
                 <br />
                 <MduiText Typo="@Typo.body2">@item.Name</MduiText>
@@ -18,3 +18,8 @@
         }
     </div>
 </div>
+
+<MduiDialog Open="@_show" Options="@(new DialogOptions{Modal=true})">
+    <MduiIcon Name="@_selectedIcon" />
+    <pre><code>&lt;MduiIcon Name=&quot;@_selectedIcon&quot; /&gt;</code></pre>
+</MduiDialog>
