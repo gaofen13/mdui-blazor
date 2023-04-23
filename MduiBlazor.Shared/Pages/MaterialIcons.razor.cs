@@ -20,7 +20,10 @@ namespace MduiBlazor.Shared.Pages
 
         protected override async Task OnInitializedAsync()
         {
-            HttpClient.BaseAddress = new Uri(Navigation.BaseUri);
+            if (HttpClient.BaseAddress == null)
+            {
+                HttpClient.BaseAddress = new Uri(Navigation.BaseUri);
+            }
             var icons = await HttpClient.GetFromJsonAsync<MaterialIcon[]>("_content/MduiBlazor.Shared/data/material_icon.json");
             if (icons != null)
             {
