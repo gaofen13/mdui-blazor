@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MduiBlazor.Server", "MduiBl
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MduiBlazor.Client", "MduiBlazor.Client\MduiBlazor.Client.csproj", "{EDFE55A1-263A-4264-8571-32B1E76D4EA8}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MduiBlazor.Generators", "MduiBlazor.Generators\MduiBlazor.Generators.csproj", "{A270598E-FD8C-48D4-AA24-09EFD6939110}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{EDFE55A1-263A-4264-8571-32B1E76D4EA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EDFE55A1-263A-4264-8571-32B1E76D4EA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EDFE55A1-263A-4264-8571-32B1E76D4EA8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A270598E-FD8C-48D4-AA24-09EFD6939110}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A270598E-FD8C-48D4-AA24-09EFD6939110}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A270598E-FD8C-48D4-AA24-09EFD6939110}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A270598E-FD8C-48D4-AA24-09EFD6939110}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -16,15 +16,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\MduiBlazor.Generators\MduiBlazor.Generators.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
     <ProjectReference Include="..\MduiBlazor\MduiBlazor.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Update="wwwroot\data\material_icon.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
   </ItemGroup>
 
 </Project>

@@ -1,0 +1,30 @@
+﻿using Microsoft.AspNetCore.Components;
+using Microsoft.JSInterop;
+
+namespace MduiBlazor.Shared.Components
+{
+    public partial class CodeSnippet
+    {
+        private ElementReference codeElement;
+
+        [Inject]
+        private IJSRuntime JSRuntime { get; set; } = default!;
+
+        [Parameter]
+        public RenderFragment ChildContent { get; set; } = default!;
+
+        [Parameter]
+        public string Language { get; set; } = "language-cshtml-razor";
+
+        [Parameter]
+        public string? Style { get; set; } = null;
+
+        protected override async Task OnAfterRenderAsync(bool firstRender)
+        {
+            if (firstRender)
+            {
+                await JSRuntime.InvokeVoidAsync("hljs.highlightElement", codeElement);
+            }
+        }
+    }
+}

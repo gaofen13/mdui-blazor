@@ -15,6 +15,13 @@
     <link rel="stylesheet" href="css/site.css" />
     <link rel="stylesheet" href="_content/MduiBlazor/css/mdui.css" />
     <link rel="stylesheet" href="_content/MduiBlazor.Shared/css/site.css" />
+    <link rel="stylesheet" href="_content/MduiBlazor.Shared/MduiBlazor.Shared.bundle.scp.css" />
+
+    <!-- highlight -->
+    <link rel="stylesheet" title="light" href="https://cdn.jsdelivr.net/npm/@@highlightjs/cdn-assets@@11.6.0/styles/vs.min.css">
+    <link rel="stylesheet" title="dark" disabled="disabled" href="https://cdn.jsdelivr.net/npm/@@highlightjs/cdn-assets@@11.6.0/styles/vs2015.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlightjs-copy@@1.0.3/dist/highlightjs-copy.min.css">
+
     <component type="typeof(HeadOutlet)" render-mode="ServerPrerendered" />
 </head>
 
@@ -33,6 +40,16 @@
     </div>
 
     <script src="_framework/blazor.server.js"></script>
+
+    <!-- highlight -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@@highlightjs/cdn-assets@@11.6.0/highlight.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/highlightjs-cshtml-razor@@2.1.1/dist/cshtml-razor.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/highlightjs-copy@@1.0.3/dist/highlightjs-copy.min.js"></script>
+    <script>
+        if (hljs != null) {
+            hljs.addPlugin(new CopyButtonPlugin());
+        }
+    </script>
 </body>
 
 </html>

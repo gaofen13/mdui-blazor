@@ -1,13 +1,14 @@
+using MduiBlazor.Generators;
 using MduiBlazor.Shared.Data;
 using Microsoft.AspNetCore.Components;
 using System.Net.Http.Json;
-using System.Text.Json;
 
 namespace MduiBlazor.Shared.Pages
 {
     public partial class MaterialIcons
     {
         private bool _show;
+        private string? _searchInput;
         private string? _selectedIcon;
         private IEnumerable<MaterialIcon> _showIcons = Enumerable.Empty<MaterialIcon>();
         private IEnumerable<MaterialIcon> _icons = Enumerable.Empty<MaterialIcon>();
