@@ -6865,7 +6865,7 @@ body *::-webkit-scrollbar-thumb {
           transform: rotate(180deg);
 }
 .mdui-panel-item-open > .mdui-panel-item-body {
-  max-height: 100vh;
+  max-height: 65vh;
   overflow: auto;
 }
 /* 使打开项上下没有边距 */
