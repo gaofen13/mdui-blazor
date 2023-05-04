@@ -104,7 +104,7 @@ namespace MduiBlazor
             }
 
             // Render an anchor element if Link property is set and is not disabled
-            if (!string.IsNullOrWhiteSpace(Href))
+            if (Href != null)
             {
                 HtmlTag = "a";
             }
