@@ -1,15 +1,10 @@
-﻿using Microsoft.AspNetCore.Components;
-using Microsoft.JSInterop;
+﻿using MduiBlazor.Utilities;
+using Microsoft.AspNetCore.Components;
 
 namespace MduiBlazor.Shared.Components
 {
     public partial class CodeSnippet
     {
-        private ElementReference codeElement;
-
-        [Inject]
-        private IJSRuntime JSRuntime { get; set; } = default!;
-
         [Parameter]
         public RenderFragment ChildContent { get; set; } = default!;
 
@@ -17,14 +12,14 @@ namespace MduiBlazor.Shared.Components
         public string Language { get; set; } = "language-cshtml-razor";
 
         [Parameter]
+        public string? Class { get; set; } = null;
+
+        [Parameter]
         public string? Style { get; set; } = null;
 
-        protected override async Task OnAfterRenderAsync(bool firstRender)
-        {
-            if (firstRender)
-            {
-                await JSRuntime.InvokeVoidAsync("hljs.highlightElement", codeElement);
-            }
-        }
+        private string Classname =>
+            new ClassBuilder("snippet mdui-typo")
+            .AddClass(Class)
+            .Build();
     }
 }

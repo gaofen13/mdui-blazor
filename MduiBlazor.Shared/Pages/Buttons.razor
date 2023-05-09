@@ -1,9 +1,7 @@
 ﻿@page "/buttons"
 @inject NavigationManager Navigation
 
-<h2>Button</h2>
-<MduiButton>Button</MduiButton>
-<MduiButton Color="@Colors.Theme.Primary">Button</MduiButton>
+<ExampleSection Label="扁平按钮" ExampleFile="SimpleButton" />
 
 <h2>IconButton</h2>
 <MduiIconButton Icon="add" />
@@ -31,12 +29,12 @@
 
     <MduiFabMenu Icon="add" OpenedIcon="edit" Color="@Colors.Theme.Accent">
         <MduiFab Icon="backup" Color="@Colors.Theme.Primary" OnClick="@NavigationBack" Mini />
-    <MduiFab Icon="bookmark" Color="@Colors.Theme.Accent" Mini />
-    <MduiFab Icon="access_alarms" Color="@Colors.Blue.Primary" Mini />
-    <MduiFab Icon="touch_app" Color="@Colors.Green.Primary" Mini />
-</MduiFabMenu>
+     <MduiFab Icon="bookmark" Color="@Colors.Theme.Accent" Mini />
+     <MduiFab Icon="access_alarms" Color="@Colors.Blue.Primary" Mini />
+     <MduiFab Icon="touch_app" Color="@Colors.Green.Primary" Mini />
+ </MduiFabMenu>
 
-@code {
+ @code {
     bool hide;
 
     private void NavigationBack()

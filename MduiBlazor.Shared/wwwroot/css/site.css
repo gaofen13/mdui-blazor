@@ -7,32 +7,3 @@
     .blazor-error-boundary::after {
         content: "An error has occurred."
     }
-
-
-.mdui-theme-layout-dark .hljs-comment, .mdui-theme-layout-dark .hljs-quote, .mdui-theme-layout-dark .hljs-variable {
-    color: green
-}
-
-.mdui-theme-layout-dark .hljs-built_in, .mdui-theme-layout-dark .hljs-keyword, .mdui-theme-layout-dark .hljs-name, .mdui-theme-layout-dark .hljs-selector-tag, .mdui-theme-layout-dark .hljs-tag {
-    color: #569cd6
-}
-
-.mdui-theme-layout-dark .hljs-addition, .mdui-theme-layout-dark .hljs-attribute, .mdui-theme-layout-dark .hljs-literal, .mdui-theme-layout-dark .hljs-section, .mdui-theme-layout-dark .hljs-string, .mdui-theme-layout-dark .hljs-template-tag, .mdui-theme-layout-dark .hljs-template-variable, .mdui-theme-layout-dark .hljs-title, .mdui-theme-layout-dark .hljs-type {
-    color: #d69d85
-}
-
-.mdui-theme-layout-dark .hljs-deletion, .mdui-theme-layout-dark .hljs-meta, .mdui-theme-layout-dark .hljs-selector-attr, .mdui-theme-layout-dark .hljs-selector-pseudo {
-    color: #2b91af
-}
-
-.mdui-theme-layout-dark .hljs-doctag {
-    color: grey
-}
-
-.mdui-theme-layout-dark .hljs-attr {
-    color: #9cdcfe
-}
-
-.hljs-bullet, .hljs-link, .hljs-symbol {
-    color: #00b0e8
-}

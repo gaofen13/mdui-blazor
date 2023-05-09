@@ -48,7 +48,6 @@ namespace MduiBlazor
             {
                 _firstLoaded = true;
             }
-            base.OnAfterRender(firstRender);
         }
 
         public void AddDarwer(MduiDrawer drawer)

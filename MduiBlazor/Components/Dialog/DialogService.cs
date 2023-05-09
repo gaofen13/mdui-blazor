@@ -66,7 +66,7 @@ namespace MduiBlazor
             {
                 parameters.Add("Title", title);
             }
-            if (options!=null)
+            if (options != null)
             {
                 parameters.Add("Options", options);
             }

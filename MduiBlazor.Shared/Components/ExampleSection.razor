@@ -1,0 +1,12 @@
+﻿<div class="example @(ShowCode?"example-showcode":"")">
+    <div class="example-tools">
+        <a href="javascript:;" @onclick="_=>ShowCode=!ShowCode" class="viewsource">
+            <i class="mdui-icon material-icons">code</i>
+        </a>
+    </div>
+    <div class="example-demo-label">@Label</div>
+    <div class="example-demo">
+        <DynamicComponent Type="@(Type.GetType($"MduiBlazor.Shared.Pages.Examples.{ExampleFile}"))" />
+    </div>
+    <CodeSnippet Class="example-code">@CodeContents</CodeSnippet>
+</div>

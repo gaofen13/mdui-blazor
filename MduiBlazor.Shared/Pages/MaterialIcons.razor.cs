@@ -1,6 +1,6 @@
-using MduiBlazor.Generators;
 using MduiBlazor.Shared.Data;
 using Microsoft.AspNetCore.Components;
+using Microsoft.JSInterop;
 using System.Net.Http.Json;
 
 namespace MduiBlazor.Shared.Pages
@@ -11,7 +11,9 @@ namespace MduiBlazor.Shared.Pages
         private string? _searchInput;
         private string? _selectedIcon;
         private IEnumerable<MaterialIcon> _showIcons = Enumerable.Empty<MaterialIcon>();
-        private IEnumerable<MaterialIcon> _icons = Enumerable.Empty<MaterialIcon>();
+
+        [Inject]
+        private IJSRuntime JSRuntime { get; set; } = default!;
 
         [Inject]
         private HttpClient HttpClient { get; set; } = default!;
@@ -19,37 +21,54 @@ namespace MduiBlazor.Shared.Pages
         [Inject]
         private NavigationManager Navigation { get; set; } = default!;
 
+        [Inject]
+        private MaterialIconList MaterialIconList { get; set; } = new();
+
+        private MarkupString? IconCodeContents { get; set; }
+
         protected override async Task OnInitializedAsync()
         {
-            if (HttpClient.BaseAddress == null)
+            if (MaterialIconList.IconList?.Any() != true)
             {
-                HttpClient.BaseAddress = new Uri(Navigation.BaseUri);
+                if (HttpClient.BaseAddress == null)
+                {
+                    HttpClient.BaseAddress = new Uri(Navigation.BaseUri);
+                }
+                MaterialIconList.IconList = await HttpClient.GetFromJsonAsync<MaterialIcon[]>("_content/MduiBlazor.Shared/data/material_icon.json");
             }
-            var icons = await HttpClient.GetFromJsonAsync<MaterialIcon[]>("_content/MduiBlazor.Shared/data/material_icon.json");
-            if (icons != null)
+
+            if (MaterialIconList.IconList != null)
             {
-                _icons = icons;
-                _showIcons = icons;
+                _showIcons = MaterialIconList.IconList;
             }
         }
 
         private void OnSearchChanged(string value)
         {
-            if (string.IsNullOrWhiteSpace(value))
+            if (MaterialIconList.IconList?.Any() == true)
             {
-                _showIcons = _icons;
+                if (string.IsNullOrWhiteSpace(value))
+                {
+                    _showIcons = MaterialIconList.IconList;
+                }
+                else
+                {
+                    _showIcons = MaterialIconList.IconList.Where(i => i.Name?.Contains(value.Trim()) == true);
+                }
+                StateHasChanged();
             }
-            else
-            {
-                _showIcons = _icons.Where(i => i.Name?.Contains(value.Trim()) == true);
-            }
-            StateHasChanged();
         }
 
-        private void OnClickIconItem(string? name)
+        private async Task OnClickIconItem(string? name)
         {
-            _show = true;
+            var codeString = $"<MduiIcon Name=\"{name}\" />";
+            var res = await JSRuntime.InvokeAsync<string>("HighlightCode", codeString);
+            if (!string.IsNullOrWhiteSpace(res))
+            {
+                IconCodeContents = new MarkupString(res);
+            }
             _selectedIcon = name;
+            _show = true;
         }
     }
 }

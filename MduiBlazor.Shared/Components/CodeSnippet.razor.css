@@ -4,8 +4,21 @@
     border-radius: 4px;
 }
 
-::deep .hljs {
-    background-color: var(--hljs-theme-background);
+.hljs {
+    -webkit-overflow-scrolling: touch;
+    background-color: #f5f5f5 !important;
+    color: #000;
+    border-radius: 4px !important;
+    font-family: Consolas,Courier,Courier New,monospace;
+    font-size: 14px !important;
+    line-height: 1.7 !important;
+    overflow-x: auto;
+    padding: 10px 12px !important;
+}
+
+.mdui-theme-layout-dark .hljs {
+    background-color: #383838 !important;
+    color: #cecece;
 }
 
 ::deep .hljs-copy-button {
@@ -24,3 +37,27 @@
     .hljs-copy-wrapper:hover ::deep .hljs-copy-button, ::deep .hljs-copy-button:focus {
         opacity: 1
     }
+
+.mdui-theme-layout-dark .hljs ::deep .hljs-comment, .mdui-theme-layout-dark .hljs ::deep .hljs-quote, .mdui-theme-layout-dark .hljs ::deep .hljs-variable {
+    color: green
+}
+
+.mdui-theme-layout-dark .hljs ::deep .hljs-built_in, .mdui-theme-layout-dark .hljs ::deep .hljs-keyword, .mdui-theme-layout-dark .hljs ::deep .hljs-name, .mdui-theme-layout-dark .hljs ::deep .hljs-selector-tag {
+    color: #569cd6
+}
+
+.mdui-theme-layout-dark .hljs ::deep .hljs-meta, .mdui-theme-layout-dark .hljs ::deep .hljs-meta .hljs-keyword, .mdui-theme-layout-dark .hljs ::deep .hljs-tag {
+    color: #9b9b9b;
+}
+
+.mdui-theme-layout-dark .hljs ::deep .hljs-addition, .mdui-theme-layout-dark .hljs ::deep .hljs-attribute, .mdui-theme-layout-dark .hljs ::deep .hljs-literal, .mdui-theme-layout-dark .hljs ::deep .hljs-section, .mdui-theme-layout-dark .hljs ::deep .hljs-string, .mdui-theme-layout-dark .hljs ::deep .hljs-template-tag, .mdui-theme-layout-dark .hljs ::deep .hljs-template-variable, .mdui-theme-layout-dark .hljs ::deep .hljs-title, .mdui-theme-layout-dark .hljs ::deep .hljs-type {
+    color: #d69d85
+}
+
+.mdui-theme-layout-dark .hljs ::deep .hljs-deletion, .mdui-theme-layout-dark .hljs ::deep .hljs-meta, .mdui-theme-layout-dark .hljs ::deep .hljs-selector-attr, .mdui-theme-layout-dark .hljs ::deep .hljs-selector-pseudo {
+    color: #2b91af
+}
+
+.mdui-theme-layout-dark .hljs ::deep .hljs-attr {
+    color: #9cdcfe
+}

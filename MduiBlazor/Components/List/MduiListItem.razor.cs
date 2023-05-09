@@ -1,6 +1,5 @@
 ﻿using MduiBlazor.Utilities;
 using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Routing;
 
 namespace MduiBlazor
 {

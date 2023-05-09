@@ -1,7 +1,4 @@
-﻿using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Web;
-
-namespace MduiBlazor
+﻿namespace MduiBlazor
 {
     public class SnackbarOptions
     {

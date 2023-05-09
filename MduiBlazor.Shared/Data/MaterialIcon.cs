@@ -6,4 +6,9 @@ namespace MduiBlazor.Shared.Data
 
         public string? Name { get; set; }
     }
+
+    public class MaterialIconList
+    {
+        public IEnumerable<MaterialIcon>? IconList { get; set; }
+    }
 }
