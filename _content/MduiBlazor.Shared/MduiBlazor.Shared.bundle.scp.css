@@ -5,8 +5,21 @@
     border-radius: 4px;
 }
 
-[b-pbo5gxtzqw] .hljs {
-    background-color: var(--hljs-theme-background);
+.hljs[b-pbo5gxtzqw] {
+    -webkit-overflow-scrolling: touch;
+    background-color: #f5f5f5 !important;
+    color: #000;
+    border-radius: 4px !important;
+    font-family: Consolas,Courier,Courier New,monospace;
+    font-size: 14px !important;
+    line-height: 1.7 !important;
+    overflow-x: auto;
+    padding: 10px 12px !important;
+}
+
+.mdui-theme-layout-dark .hljs[b-pbo5gxtzqw] {
+    background-color: #383838 !important;
+    color: #cecece;
 }
 
 [b-pbo5gxtzqw] .hljs-copy-button {
@@ -25,3 +38,104 @@
     .hljs-copy-wrapper:hover[b-pbo5gxtzqw]  .hljs-copy-button, [b-pbo5gxtzqw] .hljs-copy-button:focus {
         opacity: 1
     }
+
+.mdui-theme-layout-dark .hljs[b-pbo5gxtzqw]  .hljs-comment, .mdui-theme-layout-dark .hljs[b-pbo5gxtzqw]  .hljs-quote, .mdui-theme-layout-dark .hljs[b-pbo5gxtzqw]  .hljs-variable {
+    color: green
+}
+
+.mdui-theme-layout-dark .hljs[b-pbo5gxtzqw]  .hljs-built_in, .mdui-theme-layout-dark .hljs[b-pbo5gxtzqw]  .hljs-keyword, .mdui-theme-layout-dark .hljs[b-pbo5gxtzqw]  .hljs-name, .mdui-theme-layout-dark .hljs[b-pbo5gxtzqw]  .hljs-selector-tag {
+    color: #569cd6
+}
+
+.mdui-theme-layout-dark .hljs[b-pbo5gxtzqw]  .hljs-meta, .mdui-theme-layout-dark .hljs[b-pbo5gxtzqw]  .hljs-meta .hljs-keyword, .mdui-theme-layout-dark .hljs[b-pbo5gxtzqw]  .hljs-tag {
+    color: #9b9b9b;
+}
+
+.mdui-theme-layout-dark .hljs[b-pbo5gxtzqw]  .hljs-addition, .mdui-theme-layout-dark .hljs[b-pbo5gxtzqw]  .hljs-attribute, .mdui-theme-layout-dark .hljs[b-pbo5gxtzqw]  .hljs-literal, .mdui-theme-layout-dark .hljs[b-pbo5gxtzqw]  .hljs-section, .mdui-theme-layout-dark .hljs[b-pbo5gxtzqw]  .hljs-string, .mdui-theme-layout-dark .hljs[b-pbo5gxtzqw]  .hljs-template-tag, .mdui-theme-layout-dark .hljs[b-pbo5gxtzqw]  .hljs-template-variable, .mdui-theme-layout-dark .hljs[b-pbo5gxtzqw]  .hljs-title, .mdui-theme-layout-dark .hljs[b-pbo5gxtzqw]  .hljs-type {
+    color: #d69d85
+}
+
+.mdui-theme-layout-dark .hljs[b-pbo5gxtzqw]  .hljs-deletion, .mdui-theme-layout-dark .hljs[b-pbo5gxtzqw]  .hljs-meta, .mdui-theme-layout-dark .hljs[b-pbo5gxtzqw]  .hljs-selector-attr, .mdui-theme-layout-dark .hljs[b-pbo5gxtzqw]  .hljs-selector-pseudo {
+    color: #2b91af
+}
+
+.mdui-theme-layout-dark .hljs[b-pbo5gxtzqw]  .hljs-attr {
+    color: #9cdcfe
+}
+/* _content/MduiBlazor.Shared/Components/ExampleSection.razor.rz.scp.css */
+.example[b-evnn8g7ecq] {
+    margin-top: 1em;
+    margin-bottom: 2.6em;
+    position: relative;
+}
+
+.example-tools[b-evnn8g7ecq] {
+    position: absolute;
+    right: 0;
+    top: -24px;
+    transition: top .3s;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+    .example-tools a[b-evnn8g7ecq] {
+        color: rgba(0,0,0,.54);
+        display: inline-block;
+        margin: 0 8px;
+    }
+
+.example-showcode .example-tools[b-evnn8g7ecq] {
+    top: 4px;
+}
+
+.example-demo-label[b-evnn8g7ecq] {
+    border: 1px solid rgba(0,0,0,.12);
+    border-bottom: none !important;
+    border-radius: 3px 3px 0 0;
+    box-sizing: border-box;
+    color: rgba(0,0,0,.38);
+    display: none;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1;
+    padding: 9px 14px;
+    -webkit-user-select: none;
+    user-select: none;
+    width: 100%;
+}
+
+.example-showcode .example-demo-label[b-evnn8g7ecq] {
+    display: block;
+}
+
+.example-demo[b-evnn8g7ecq] {
+    padding: 0;
+    transition: padding .3s;
+}
+
+.example-showcode .example-demo[b-evnn8g7ecq] {
+    border: 1px solid rgba(0,0,0,.12);
+    border-top: none;
+    padding: 14px;
+}
+
+[b-evnn8g7ecq] .example-code {
+    border: 1px solid rgba(0,0,0,.12);
+    border-radius: 0 0 3px 3px;
+    border-top: none !important;
+    display: none;
+    margin: 0;
+}
+
+.example-showcode[b-evnn8g7ecq]  .example-code {
+    display: block;
+}
+
+.mdui-theme-layout-dark .example-demo-label[b-evnn8g7ecq], .mdui-theme-layout-dark .example-showcode .example-demo[b-evnn8g7ecq], .mdui-theme-layout-dark .example-showcode[b-evnn8g7ecq]  .example-code {
+    border: 1px solid hsla(0,0%,100%,.12);
+    color: hsla(0,0%,100%,.5);
+}
+
+.mdui-theme-layout-dark .example-tools a[b-evnn8g7ecq] {
+    color: hsla(0,0%,100%,.7);
+}
