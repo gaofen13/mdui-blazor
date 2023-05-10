@@ -5,6 +5,7 @@
 }
 
 .hljs {
+    position: relative;
     -webkit-overflow-scrolling: touch;
     background-color: #f5f5f5 !important;
     color: #000;
@@ -22,6 +23,8 @@
 }
 
 ::deep .hljs-copy-button {
+    top: 0.5rem;
+    right: 0.5rem;
     border-color: #717171;
     color: #b4482e;
     opacity: 0;
@@ -30,13 +33,17 @@
     transition: background-color 200ms ease,opacity 200ms ease-out
 }
 
-    ::deep .hljs-copy-button:hover {
-        border-color: inherit
-    }
+.mdui-theme-layout-dark .hljs-copy-wrapper ::deep .hljs-copy-button {
+    background-color: #515151;
+}
 
-    .hljs-copy-wrapper:hover ::deep .hljs-copy-button, ::deep .hljs-copy-button:focus {
-        opacity: 1
-    }
+::deep .hljs-copy-button:hover {
+    border-color: #717171;
+}
+
+.hljs-copy-wrapper:hover ::deep .hljs-copy-button, ::deep .hljs-copy-button:focus {
+    opacity: 1
+}
 
 .mdui-theme-layout-dark .hljs ::deep .hljs-comment, .mdui-theme-layout-dark .hljs ::deep .hljs-quote, .mdui-theme-layout-dark .hljs ::deep .hljs-variable {
     color: green

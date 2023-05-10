@@ -8,5 +8,8 @@
     <div class="example-demo">
         <DynamicComponent Type="@(Type.GetType($"MduiBlazor.Shared.Pages.Examples.{ExampleFile}"))" />
     </div>
-    <CodeSnippet Class="example-code">@CodeContents</CodeSnippet>
+    @if (ShowCode)
+    {
+        <CodeSnippet Class="example-code">@CodeContents</CodeSnippet>
+    }
 </div>

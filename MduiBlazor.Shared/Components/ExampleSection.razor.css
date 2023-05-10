@@ -58,15 +58,11 @@
     border: 1px solid rgba(0,0,0,.12);
     border-radius: 0 0 3px 3px;
     border-top: none !important;
-    display: none;
+    display: block;
     margin: 0;
 }
 
-.example-showcode ::deep .example-code {
-    display: block;
-}
-
-.mdui-theme-layout-dark .example-demo-label, .mdui-theme-layout-dark .example-showcode .example-demo, .mdui-theme-layout-dark .example-showcode ::deep .example-code {
+.mdui-theme-layout-dark .example-demo-label, .mdui-theme-layout-dark .example-demo, .mdui-theme-layout-dark .example-showcode ::deep .example-code {
     border: 1px solid hsla(0,0%,100%,.12);
     color: hsla(0,0%,100%,.5);
 }
