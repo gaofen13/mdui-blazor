@@ -6,6 +6,7 @@
 }
 
 .hljs[b-pbo5gxtzqw] {
+    position: relative;
     -webkit-overflow-scrolling: touch;
     background-color: #f5f5f5 !important;
     color: #000;
@@ -23,6 +24,8 @@
 }
 
 [b-pbo5gxtzqw] .hljs-copy-button {
+    top: 0.5rem;
+    right: 0.5rem;
     border-color: #717171;
     color: #b4482e;
     opacity: 0;
@@ -31,13 +34,17 @@
     transition: background-color 200ms ease,opacity 200ms ease-out
 }
 
-    [b-pbo5gxtzqw] .hljs-copy-button:hover {
-        border-color: inherit
-    }
+.mdui-theme-layout-dark .hljs-copy-wrapper[b-pbo5gxtzqw]  .hljs-copy-button {
+    background-color: #515151;
+}
 
-    .hljs-copy-wrapper:hover[b-pbo5gxtzqw]  .hljs-copy-button, [b-pbo5gxtzqw] .hljs-copy-button:focus {
-        opacity: 1
-    }
+[b-pbo5gxtzqw] .hljs-copy-button:hover {
+    border-color: #717171;
+}
+
+.hljs-copy-wrapper:hover[b-pbo5gxtzqw]  .hljs-copy-button, [b-pbo5gxtzqw] .hljs-copy-button:focus {
+    opacity: 1
+}
 
 .mdui-theme-layout-dark .hljs[b-pbo5gxtzqw]  .hljs-comment, .mdui-theme-layout-dark .hljs[b-pbo5gxtzqw]  .hljs-quote, .mdui-theme-layout-dark .hljs[b-pbo5gxtzqw]  .hljs-variable {
     color: green
@@ -123,15 +130,11 @@
     border: 1px solid rgba(0,0,0,.12);
     border-radius: 0 0 3px 3px;
     border-top: none !important;
-    display: none;
+    display: block;
     margin: 0;
 }
 
-.example-showcode[b-evnn8g7ecq]  .example-code {
-    display: block;
-}
-
-.mdui-theme-layout-dark .example-demo-label[b-evnn8g7ecq], .mdui-theme-layout-dark .example-showcode .example-demo[b-evnn8g7ecq], .mdui-theme-layout-dark .example-showcode[b-evnn8g7ecq]  .example-code {
+.mdui-theme-layout-dark .example-demo-label[b-evnn8g7ecq], .mdui-theme-layout-dark .example-demo[b-evnn8g7ecq], .mdui-theme-layout-dark .example-showcode[b-evnn8g7ecq]  .example-code {
     border: 1px solid hsla(0,0%,100%,.12);
     color: hsla(0,0%,100%,.5);
 }
