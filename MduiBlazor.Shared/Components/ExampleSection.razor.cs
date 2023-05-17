@@ -13,9 +13,6 @@ namespace MduiBlazor.Shared.Components
             .AddClass("example-showcode", _showCode || FixCode)
             .Build();
 
-        [Inject]
-        private IJSRuntime JSRuntime { get; set; } = default!;
-
         [Parameter]
         public string Label { get; set; } = "Example";
 

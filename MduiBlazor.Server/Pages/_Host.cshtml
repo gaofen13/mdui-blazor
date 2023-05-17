@@ -52,13 +52,6 @@
         if (hljs != null) {
             hljs.addPlugin(new CopyButtonPlugin());
         }
-
-        function HighlightCode(code) {
-            if (typeof hljs != "undefined" && hljs != null && code != null) {
-                res = hljs.highlightAuto(code);
-            }
-            return res.value ?? "";
-        }
     </script>
 </body>
 
