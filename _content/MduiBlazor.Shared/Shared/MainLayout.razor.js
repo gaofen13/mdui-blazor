@@ -17,3 +17,12 @@ function UpdateLayout(objReference) {
 export function GetWindowWidth() {
     return window.innerWidth;
 }
+
+export function ScrollToElementById(elementId) {
+    var element = document.getElementById(elementId);
+    if (!element)
+        return false;
+
+    element.scrollIntoView({ behavior: "smooth", block: "center" });
+    return true;
+}

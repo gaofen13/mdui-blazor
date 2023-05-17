@@ -10101,6 +10101,7 @@ input.mdui-btn[type="submit"] {
   height: 0;
   text-align: center;
   visibility: visible;
+  opacity: 0;
 }
 .mdui-fab-wrapper .mdui-fab-dial .mdui-fab {
   margin: 8px 0;
