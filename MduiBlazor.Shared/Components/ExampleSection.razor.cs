@@ -32,7 +32,7 @@ namespace MduiBlazor.Shared.Components
 
         protected override void OnInitialized()
         {
-            CodeContents = Generators.DemoSnippets.GetRazor(Component.Name);
+            SetCodeContents();
             base.OnInitialized();
         }
 
