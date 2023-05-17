@@ -30,15 +30,10 @@ namespace MduiBlazor.Shared.Components
 
         private string? CodeContents { get; set; }
 
-        protected override void OnAfterRender(bool firstRender)
+        protected override void OnInitialized()
         {
-            if (firstRender)
-            {
-                if (!string.IsNullOrEmpty(Component.Name))
-                {
-                    SetCodeContents();
-                }
-            }
+            CodeContents = Generators.DemoSnippets.GetRazor(Component.Name);
+            base.OnInitialized();
         }
 
         protected void SetCodeContents()
@@ -46,7 +41,6 @@ namespace MduiBlazor.Shared.Components
             try
             {
                 CodeContents = Generators.DemoSnippets.GetRazor(Component.Name);
-                StateHasChanged();
             }
             catch
             {
