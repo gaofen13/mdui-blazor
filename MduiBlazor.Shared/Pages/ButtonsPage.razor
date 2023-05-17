@@ -1,0 +1,84 @@
+﻿@page "/buttons"
+@inherits BasePage
+@using MduiBlazor.Shared.Pages.Examples.Buttons
+
+<PageTitle>按钮</PageTitle>
+<div class="mdui-m-y-5">
+    <MduiText Typo="@Typo.display1" Color="@Colors.Theme.Primary">按钮</MduiText>
+    <p>Material Design样式按钮</p>
+</div>
+
+<PageContent>
+    <PageContentItem Title="Examples" OnClick="@(_=>ScrollToElementById("examples"))">
+        <PageContentItem Title="普通按钮" OnClick="@(_=>ScrollToElementById("simple"))" />
+        <PageContentItem Title="扁平按钮" OnClick="@(_=>ScrollToElementById("disableRaised"))" />
+        <PageContentItem Title="文本按钮" OnClick="@(_=>ScrollToElementById("text"))" />
+        <PageContentItem Title="图标按钮" OnClick="@(_=>ScrollToElementById("icon"))" />
+        <PageContentItem Title="密集型按钮" OnClick="@(_=>ScrollToElementById("dense"))" />
+        <PageContentItem Title="禁用状态" OnClick="@(_=>ScrollToElementById("disabled"))" />
+        <PageContentItem Title="块级元素" OnClick="@(_=>ScrollToElementById("block"))" />
+        <PageContentItem Title="按钮组" OnClick="@(_=>ScrollToElementById("group"))" />
+    </PageContentItem>
+    <PageContentItem Title="属性/方法" OnClick="@(_=>ScrollToElementById("attr"))" />
+</PageContent>
+
+<MduiDivider Class="mdui-m-y-5" />
+
+<div>
+    <h2 id="examples">
+        <MduiText Typo="@Typo.headline" Color="@Colors.Theme.Primary">Examples</MduiText>
+    </h2>
+
+    <MduiText id="simple" Typo="@Typo.subheading"><b>普通按钮</b></MduiText>
+    <ExampleSection Component="@typeof(SimpleButton)" />
+
+    <MduiText id="disableRaised" Typo="@Typo.subheading"><b>扁平按钮</b></MduiText>
+    <ExampleSection Component="@typeof(DisableRaisedButton)" />
+
+    <MduiText id="text" Typo="@Typo.subheading"><b>文本按钮</b></MduiText>
+    <ExampleSection Component="@typeof(TextButton)" />
+
+    <MduiText id="icon" Typo="@Typo.subheading"><b>图标按钮</b></MduiText>
+    <ExampleSection Component="@typeof(IconButton)" />
+
+    <MduiText id="dense" Typo="@Typo.subheading"><b>密集型按钮</b></MduiText>
+    <ExampleSection Component="@typeof(DenseButton)" />
+
+    <MduiText id="disabled" Typo="@Typo.subheading"><b>禁用状态</b></MduiText>
+    <ExampleSection Component="@typeof(DisabledButton)" />
+
+    <MduiText id="block" Typo="@Typo.subheading"><b>块级元素</b></MduiText>
+    <ExampleSection Component="@typeof(BlockButton)" />
+
+    <MduiText Typo="@Typo.subheading"><a id="group">按钮组</a></MduiText>
+    <ExampleSection Component="@typeof(ButtonGroup)" />
+ </div>
+
+ <MduiDivider Class="mdui-m-y-5" />
+
+ <div>
+     <h2 id="attr">
+         <MduiText Typo="@Typo.headline" Color="@Colors.Theme.Primary">属性/方法</MduiText>
+     </h2>
+
+     <MduiTableContainer UseMduiTypo>
+        <MduiSimpleTable>
+            <thead>
+                <th>属性/方法</th>
+                <th>类型</th>
+                <th>说明</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <code>Color</code>
+                    </td>
+                    <td>
+                        <code>string</code>
+                    </td>
+                    <td>按钮背景颜色</td>
+                </tr>
+            </tbody>
+        </MduiSimpleTable>
+    </MduiTableContainer>
+</div>

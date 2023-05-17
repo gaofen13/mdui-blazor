@@ -1,0 +1,9 @@
+<li>
+    <a href="javascript:;" @onclick="@OnClick">@Title</a>
+    @if (ChildContent is not null)
+    {
+        <ul>
+            @ChildContent
+        </ul>
+    }
+</li>

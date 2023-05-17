@@ -24,7 +24,7 @@ namespace MduiBlazor.Shared.Pages
         [Inject]
         private MaterialIconList MaterialIconList { get; set; } = new();
 
-        private MarkupString? IconCodeContents { get; set; }
+        private string? IconCodeContents { get; set; }
 
         protected override async Task OnInitializedAsync()
         {
@@ -59,14 +59,9 @@ namespace MduiBlazor.Shared.Pages
             }
         }
 
-        private async Task OnClickIconItem(string? name)
+        private void OnClickIconItem(string? name)
         {
-            var codeString = $"<MduiIcon Name=\"{name}\" />";
-            var res = await JSRuntime.InvokeAsync<string>("HighlightCode", codeString);
-            if (!string.IsNullOrWhiteSpace(res))
-            {
-                IconCodeContents = new MarkupString(res);
-            }
+            IconCodeContents = $"<MduiIcon Name=\"{name}\" />";
             _selectedIcon = name;
             _show = true;
         }

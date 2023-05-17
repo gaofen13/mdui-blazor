@@ -1,0 +1,6 @@
+<MduiButton Color="@Colors.Theme.Accent" OnClick="@(_=>hide=!hide)">@(hide ? "显示" : "隐藏")</MduiButton>
+<MduiFab Hide="@hide" Icon="add" Color="@Colors.Theme.Accent" />
+
+@code {
+    bool hide;
+}

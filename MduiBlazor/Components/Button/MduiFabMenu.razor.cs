@@ -27,6 +27,12 @@ namespace MduiBlazor
             .AddClass(Class)
             .Build();
 
+        private string DialStylelist =>
+            new StyleBuilder()
+            .AddStyle("opacity", "1", _isFocus)
+            .AddStyle("height", "auto", _isFocus)
+            .Build();
+
         [Parameter]
         public string? Color { get; set; }
 

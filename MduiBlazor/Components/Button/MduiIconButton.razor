@@ -1,24 +1,13 @@
 ﻿@namespace MduiBlazor
 @inherits MduiButtonBase
 
-<MduiButton Class="@Classname"
-            Style="@Style"
-            @attributes="@AdditionalAttributes"
-            ButtonType="@ButtonType"
-            Color="@Color"
-            Dense="@Dense"
-            Disabled="@Disabled"
-            Href="@Href"
-            Target="@Target"
-            HtmlTag="@HtmlTag"
-            DisableRipple="@DisableRipple"
-            Text="@true"
-            OnClick="@OnClick"
-            Command="@Command"
-            CommandParameter="@CommandParameter">
-    @if(ChildContent is not null)
+<MduiButton Class="@Classname" Style="@Style" @attributes="@AdditionalAttributes" ButtonType="@ButtonType"
+    Color="@Color" Dense="@Dense" Disabled="@Disabled" Href="@Href" Target="@Target" HtmlTag="@HtmlTag"
+    DisableRipple="@DisableRipple" DisableRaised="@true" OnClick="@OnClick" Command="@Command"
+    CommandParameter="@CommandParameter">
+    @if (ChildContent is not null)
     {
-        <i  class="@IconClassname">
+        <i class="@IconClassname">
             @ChildContent
         </i>
     }

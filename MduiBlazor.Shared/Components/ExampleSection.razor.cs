@@ -1,49 +1,55 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using MduiBlazor.Utilities;
+using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 
 namespace MduiBlazor.Shared.Components
 {
     public partial class ExampleSection
     {
+        private bool _showCode;
+
+        private string Classname =>
+            new ClassBuilder("example")
+            .AddClass("example-showcode", _showCode || FixCode)
+            .Build();
+
         [Inject]
         private IJSRuntime JSRuntime { get; set; } = default!;
 
         [Parameter]
-        public RenderFragment ChildContent { get; set; } = default!;
-
-        [Parameter]
-        public string? Label { get; set; }
+        public string Label { get; set; } = "Example";
 
         [Parameter, EditorRequired]
-        public string? ExampleFile { get; set; }
+        public Type Component { get; set; } = default!;
 
         [Parameter]
-        public bool ShowCode { get; set; }
+        public IDictionary<string, object>? ComponentParameters { get; set; }
 
-        private MarkupString? CodeContents { get; set; }
+        [Parameter]
+        public bool FixCode { get; set; }
 
-        protected override async Task OnAfterRenderAsync(bool firstRender)
+        [Parameter]
+        public bool HideExample { get; set; }
+
+        private string? CodeContents { get; set; }
+
+        protected override void OnAfterRender(bool firstRender)
         {
             if (firstRender)
             {
-                if (!string.IsNullOrEmpty(ExampleFile))
+                if (!string.IsNullOrEmpty(Component.Name))
                 {
-                    await SetCodeContents();
+                    SetCodeContents();
                 }
             }
         }
 
-        protected async Task SetCodeContents()
+        protected void SetCodeContents()
         {
             try
             {
-                var codeString = Generators.DemoSnippets.GetRazor(ExampleFile);
-                var res = await JSRuntime.InvokeAsync<string>("HighlightCode", codeString);
-                if (!string.IsNullOrWhiteSpace(res))
-                {
-                    CodeContents = new MarkupString(res);
-                    StateHasChanged();
-                }
+                CodeContents = Generators.DemoSnippets.GetRazor(Component.Name);
+                StateHasChanged();
             }
             catch
             {

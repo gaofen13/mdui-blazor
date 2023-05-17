@@ -32,6 +32,9 @@ namespace MduiBlazor
         public bool DisableRipple { get; set; }
 
         [Parameter]
+        public bool DisableRaised { get; set; }
+
+        [Parameter]
         public bool Dense { get; set; }
 
         /// <summary>
