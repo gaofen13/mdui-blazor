@@ -30,5 +30,11 @@ namespace MduiBlazor
 
         [Parameter]
         public bool Actived { get; set; }
+
+        [Parameter]
+        public bool Text { get; set; }
+
+        [Parameter]
+        public bool DisableRaised { get; set; }
     }
 }

@@ -1,6 +1,11 @@
-<MduiFabMenu Icon="add" OpenedIcon="edit" Color="@Colors.Theme.Accent">
+<MduiFabMenu Hide="@Hide" Icon="add" OpenedIcon="edit" Color="@Colors.Theme.Accent">
     <MduiFab Icon="backup" Color="@Colors.Theme.Primary" Mini />
     <MduiFab Icon="bookmark" Color="@Colors.Theme.Accent" Mini />
     <MduiFab Icon="access_alarms" Color="@Colors.Blue.Primary" Mini />
     <MduiFab Icon="touch_app" Color="@Colors.Green.Primary" Mini />
 </MduiFabMenu>
+
+@code {
+    [Parameter]
+    public bool Hide { get; set; }
+}

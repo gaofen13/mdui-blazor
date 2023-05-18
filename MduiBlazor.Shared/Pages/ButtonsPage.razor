@@ -19,7 +19,7 @@
         <PageContentItem Title="块级元素" OnClick="@(_=>ScrollToElementById("block"))" />
         <PageContentItem Title="按钮组" OnClick="@(_=>ScrollToElementById("group"))" />
     </PageContentItem>
-    <PageContentItem Title="属性/方法" OnClick="@(_=>ScrollToElementById("attr"))" />
+    <PageContentItem Title="属性/方法/事件" OnClick="@(_=>ScrollToElementById("attr"))" />
 </PageContent>
 
 <MduiDivider Class="mdui-m-y-5" />
@@ -52,31 +52,205 @@
 
     <MduiText Typo="@Typo.subheading"><a id="group">按钮组</a></MduiText>
     <ExampleSection Component="@typeof(ButtonGroup)" />
- </div>
+</div>
 
- <MduiDivider Class="mdui-m-y-5" />
+<MduiDivider Class="mdui-m-y-5" />
 
- <div>
-     <h2 id="attr">
-         <MduiText Typo="@Typo.headline" Color="@Colors.Theme.Primary">属性/方法</MduiText>
-     </h2>
+<div>
+    <h2 id="attr">
+        <MduiText Typo="@Typo.headline" Color="@Colors.Theme.Primary">属性/方法/事件</MduiText>
+    </h2>
 
-     <MduiTableContainer UseMduiTypo>
+    <MduiTableContainer UseMduiTypo>
         <MduiSimpleTable>
             <thead>
-                <th>属性/方法</th>
-                <th>类型</th>
+                <th>组件</th>
+                <th>分类</th>
+                <th>名称</th>
+                <th>类型/返回类型</th>
                 <th>说明</th>
             </thead>
             <tbody>
+                <tr>
+                    <th rowspan="10">
+                        <code>MduiButtonBase</code>
+                    </th>
+                    <td rowspan="9">
+                        <code>Parameter</code>
+                    </td>
+                    <td>
+                        <code>HtmlTag</code>
+                    </td>
+                    <td>
+                        <code>string</code>
+                    </td>
+                    <td>渲染组件的html元素类型。默认是<code>button</code>。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>ButtonType</code>
+                    </td>
+                    <td>
+                        <code>ButtonType</code>
+                    </td>
+                    <td>按钮类型(枚举，Button、Submit、Refresh)。默认是<code>ButtonType.Button</code>。</td>
+                </tr>
                 <tr>
                     <td>
                         <code>Color</code>
                     </td>
                     <td>
-                        <code>string</code>
+                        <code>string?</code>
                     </td>
-                    <td>按钮背景颜色</td>
+                    <td>默认为组件背景颜色，当<code>Text</code>设置为<code>true</code>时为组件前景颜色。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>DisableRipple</code>
+                    </td>
+                    <td>
+                        <code>bool</code>
+                    </td>
+                    <td>是否禁用涟漪动画。默认<code>false</code>。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>Dense</code>
+                    </td>
+                    <td>
+                        <code>bool</code>
+                    </td>
+                    <td>如果设置为<code>true</code>组件及间距会变小。默认<code>false</code>。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>Disabled</code>
+                    </td>
+                    <td>
+                        <code>bool</code>
+                    </td>
+                    <td>是否禁用状态。默认<code>false</code>。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>Href</code>
+                    </td>
+                    <td>
+                        <code>string?</code>
+                    </td>
+                    <td>如果不为<code>null</code>，组件将渲染为链接。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>Target</code>
+                    </td>
+                    <td>
+                        <code>string?</code>
+                    </td>
+                    <td>链接打开的方式，值为<code>_blank|_self|_parent|_top|<i>framename</i></code>其中一种，仅当<code>Href</code>不为<code>null</code>时生效。
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>OnClick</code>
+                    </td>
+                    <td>
+                        <code>EventCallback</code>
+                    </td>
+                    <td>单击事件回调，参数<code>MouseEventArgs</code>。</td>
+                </tr>
+                <tr>
+                    <td rowspan="1">
+                        <code>Method</code>
+                    </td>
+                    <td>
+                        <code>FocusAsync</code>
+                    </td>
+                    <td>
+                        <code>ValueTask</code>
+                    </td>
+                    <td>组件元素获取焦点的方法。</td>
+                </tr>
+                <tr>
+                    <th rowspan="5">
+                        <code>MduiButton</code>
+                    </th>
+                    <td rowspan="5">
+                        <code>Parameter</code>
+                    </td>
+                    <td>
+                        <code>Text</code>
+                    </td>
+                    <td>
+                        <code>bool</code>
+                    </td>
+                    <td>是否以文本方式渲染按钮。默认<code>false</code>，如果设置为<code>true</code>则<code>Color</code>参数将不起作用。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>DisableRaised</code>
+                    </td>
+                    <td>
+                        <code>bool</code>
+                    </td>
+                    <td>如果设置为<code>true</code>将渲染为扁平按钮。默认<code>false</code>。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>Block</code>
+                    </td>
+                    <td>
+                        <code>bool</code>
+                    </td>
+                    <td>如果为<code>true</code>组件将渲染为块级元素，默认<code>false</code>。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>Shadow</code>
+                    </td>
+                    <td>
+                        <code>int?</code>
+                    </td>
+                    <td>阴影效果，值在<code>0</code>到<code>24</code>之间生效。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>Actived</code>
+                    </td>
+                    <td>
+                        <code>bool</code>
+                    </td>
+                    <td>是否为激活状态，一般在<code>ButtonGroup</code>中使用，默认<code>false</code>。</td>
+                </tr>
+                <tr>
+                    <th rowspan="2">
+                        <code>MduiIconButton</code>
+                    </th>
+                    <td rowspan="2">
+                        <code>Parameter</code>
+                    </td>
+                    <td>
+                        <code>Icon</code>
+                    </td>
+                    <td>
+                        <code>string?</code>
+                    </td>
+                    <td>图标按钮图标名称（见<code>MduiIcon</code>）。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>IconColor</code>
+                    </td>
+                    <td>
+                        <code>string?</code>
+                    </td>
+                    <td>图标按钮前景颜色。</td>
+                </tr>
+                <tr>
+                    <th>
+                        <code>MduiButtonGroup</code>
+                    </th>
+                    <td colspan="4">无（见基类<code>MduiComponentBase</code>组件参数）。</td>
                 </tr>
             </tbody>
         </MduiSimpleTable>

@@ -26,13 +26,7 @@ namespace MduiBlazor
         public string? Color { get; set; }
 
         [Parameter]
-        public bool Text { get; set; }
-
-        [Parameter]
         public bool DisableRipple { get; set; }
-
-        [Parameter]
-        public bool DisableRaised { get; set; }
 
         [Parameter]
         public bool Dense { get; set; }

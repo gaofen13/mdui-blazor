@@ -1,0 +1,210 @@
+@page "/fabbuttons"
+@inherits BasePage
+@using MduiBlazor.Shared.Pages.Examples.FabButtons
+
+<PageTitle>浮动操作按钮</PageTitle>
+<div class="mdui-m-y-5">
+    <MduiText Typo="@Typo.display1" Color="@Colors.Theme.Primary">浮动操作按钮</MduiText>
+</div>
+
+<PageContent>
+    <PageContentItem Title="Examples" OnClick="@(_=>ScrollToElementById("examples"))">
+        <PageContentItem Title="浮动操作按钮" OnClick="@(_=>ScrollToElementById("simple"))" />
+        <PageContentItem Title="Mini按钮" OnClick="@(_=>ScrollToElementById("mini"))" />
+        <PageContentItem Title="隐藏/显示动画" OnClick="@(_=>ScrollToElementById("hide"))" />
+    </PageContentItem>
+    <PageContentItem Title="弹出菜单" OnClick="@(_=>ScrollToElementById("fabmenu"))" />
+    <PageContentItem Title="属性/方法/事件" OnClick="@(_=>ScrollToElementById("attr"))" />
+</PageContent>
+
+<MduiDivider Class="mdui-m-y-5" />
+
+<div>
+    <h2 id="examples">
+        <MduiText Typo="@Typo.headline" Color="@Colors.Theme.Primary">Examples</MduiText>
+    </h2>
+
+    <MduiText id="simple" Typo="@Typo.subheading"><b>普通按钮</b></MduiText>
+    <ExampleSection Component="@typeof(SimpleFab)" />
+
+    <MduiText id="mini" Typo="@Typo.subheading"><b>Mini按钮</b></MduiText>
+    <ExampleSection Component="@typeof(MiniFab)" />
+
+    <MduiText id="hide" Typo="@Typo.subheading"><b>隐藏/显示动画</b></MduiText>
+    <ExampleSection Component="@typeof(HideFab)" />
+</div>
+
+<MduiDivider Class="mdui-m-y-5" />
+
+<div>
+    <h2 id="fabmenu">
+        <MduiText Typo="@Typo.headline" Color="@Colors.Theme.Primary">弹出菜单</MduiText>
+    </h2>
+    <MduiButton Color="@Colors.Theme.Accent" OnClick="@(_=>hide=!hide)">@(hide ? "显示" : "隐藏")弹出按钮</MduiButton>
+    <FabMenu Hide="@hide" />
+    <ExampleSection Label="Code" HideExample FixCode Component="@typeof(FabMenu)" />
+ </div>
+
+ <MduiDivider Class="mdui-m-y-5" />
+
+ <div>
+     <h2 id="attr">
+         <MduiText Typo="@Typo.headline" Color="@Colors.Theme.Primary">属性/方法/事件</MduiText>
+     </h2>
+
+     <MduiTableContainer UseMduiTypo>
+        <MduiSimpleTable>
+            <thead>
+                <th>组件</th>
+                <th>分类</th>
+                <th>名称</th>
+                <th>类型/返回类型</th>
+                <th>说明</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <th rowspan="8">
+                        <code>MduiFab</code>
+                    </th>
+                    <td rowspan="8">
+                        <code>Parameter</code>
+                    </td>
+                    <td>
+                        <code>Color</code>
+                    </td>
+                    <td>
+                        <code>string?</code>
+                    </td>
+                    <td>弹出按钮背景颜色。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>Icon</code>
+                    </td>
+                    <td>
+                        <code>string?</code>
+                    </td>
+                    <td>弹出按钮图标名称（见<code>MduiIcon</code>）。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>IconColor</code>
+                    </td>
+                    <td>
+                        <code>string?</code>
+                    </td>
+                    <td>弹出按钮前景颜色。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>IconClass</code>
+                    </td>
+                    <td>
+                        <code>string?</code>
+                    </td>
+                    <td>图标元素class值。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>Mini</code>
+                    </td>
+                    <td>
+                        <code>bool</code>
+                    </td>
+                    <td>是否小按钮，默认<code>false</code>。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>Hide</code>
+                    </td>
+                    <td>
+                        <code>bool</code>
+                    </td>
+                    <td>是否隐藏，默认<code>false</code>。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>DisableRipple</code>
+                    </td>
+                    <td>
+                        <code>bool</code>
+                    </td>
+                    <td>是否禁用涟漪动画。默认<code>false</code>。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>OnClick</code>
+                    </td>
+                    <td>
+                        <code>EventCallback</code>
+                    </td>
+                    <td>单击事件回调，参数<code>MouseEventArgs</code>。</td>
+                </tr>
+                <tr>
+                    <th rowspan="6">
+                        <code>MduiFabMenu</code>
+                    </th>
+                    <td rowspan="6">
+                        <code>Parameter</code>
+                    </td>
+                    <td>
+                        <code>Color</code>
+                    </td>
+                    <td>
+                        <code>string?</code>
+                    </td>
+                    <td>菜单按钮背景颜色。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>Icon</code>
+                    </td>
+                    <td>
+                        <code>string?</code>
+                    </td>
+                    <td>菜单按钮图标名称（见<code>MduiIcon</code>）。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>OpenedIcon</code>
+                    </td>
+                    <td>
+                        <code>string?</code>
+                    </td>
+                    <td>打开状态下菜单按钮的图标名称（见<code>MduiIcon</code>）。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>Mini</code>
+                    </td>
+                    <td>
+                        <code>bool</code>
+                    </td>
+                    <td>是否小按钮，默认<code>false</code>。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>Hide</code>
+                    </td>
+                    <td>
+                        <code>bool</code>
+                    </td>
+                    <td>是否隐藏，默认<code>false</code>。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>DisableRipple</code>
+                    </td>
+                    <td>
+                        <code>bool</code>
+                    </td>
+                    <td>是否禁用涟漪动画。默认<code>false</code>。</td>
+                </tr>
+            </tbody>
+        </MduiSimpleTable>
+    </MduiTableContainer>
+</div>
+
+@code {
+    bool hide;
+}

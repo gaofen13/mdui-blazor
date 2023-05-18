@@ -1,9 +1,10 @@
 ﻿using MduiBlazor.Utilities;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Web;
 
 namespace MduiBlazor
 {
-    public partial class MduiFab : MduiButtonBase
+    public partial class MduiFab : MduiComponentBase
     {
         protected string Classname =>
             new ClassBuilder("mdui-fab mdui-ripple")
@@ -12,9 +13,17 @@ namespace MduiBlazor
             .AddClass($"mdui-color-{Color}", !string.IsNullOrWhiteSpace(Color))
             .AddClass("mdui-fab-mini", Mini)
             .AddClass("mdui-fab-hide", Hide)
-            .AddClass("mdui-fab-fixed", Fixed)
             .AddClass(Class)
             .Build();
+
+        /// <summary>
+        /// The color of the component. It supports the theme colors.
+        /// </summary>
+        [Parameter]
+        public string? Color { get; set; }
+
+        [Parameter]
+        public bool DisableRipple { get; set; }
 
         [Parameter, EditorRequired]
         public string? Icon { get; set; }
@@ -32,6 +41,6 @@ namespace MduiBlazor
         public bool Hide { get; set; }
 
         [Parameter]
-        public bool Fixed { get; set; }
+        public EventCallback<MouseEventArgs> OnClick { get; set; }
     }
 }
