@@ -22,6 +22,16 @@
             public static string Accent7 { get; } = "theme-a700";
         }
 
+        public static class TextTheme
+        {
+            public static string Default { get; } = "theme-text";
+            public static string Secondary { get; } = "theme-theme-secondary";
+            public static string Disabled { get; } = "theme-disabled";
+            public static string Divider { get; } = "theme-divider";
+            public static string Icon { get; } = "theme-icon";
+            public static string IconDisabled { get; } = "theme-icon-disabled";
+        }
+
         public static class Red
         {
             public static string Primary { get; } = "red";

@@ -40,9 +40,7 @@
     <h2 id="fabmenu">
         <MduiText Typo="@Typo.headline" Color="@Colors.Theme.Primary">弹出菜单</MduiText>
     </h2>
-    <MduiButton Color="@Colors.Theme.Accent" OnClick="@(_=>hide=!hide)">@(hide ? "显示" : "隐藏")弹出按钮</MduiButton>
-    <FabMenu Hide="@hide" />
-    <ExampleSection Label="Code" HideExample FixCode Component="@typeof(FabMenu)" />
+    <ExampleSection Label="Code" Component="@typeof(FabMenu)" />
  </div>
 
  <MduiDivider Class="mdui-m-y-5" />
@@ -102,7 +100,7 @@
                     <td>
                         <code>string?</code>
                     </td>
-                    <td>图标元素class值。</td>
+                    <td>图标元素<code>class</code>值。</td>
                 </tr>
                 <tr>
                     <td>
@@ -204,7 +202,3 @@
         </MduiSimpleTable>
     </MduiTableContainer>
 </div>
-
-@code {
-    bool hide;
-}

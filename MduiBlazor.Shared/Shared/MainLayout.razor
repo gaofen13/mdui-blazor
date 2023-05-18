@@ -28,16 +28,14 @@
      </MduiDrawer>
 
      <MduiLayoutContent>
-         <main class="mdui-p-a-2">
-             <ErrorBoundary @ref="errorBoundary" Context="ex">
-                 <ChildContent>
-                     @Body
-                 </ChildContent>
-                 <ErrorContent>
-                     <div class="blazor-error-boundary">@ex.Message</div>
-                 </ErrorContent>
-             </ErrorBoundary>
-         </main>
+         <ErrorBoundary @ref="errorBoundary" Context="ex">
+             <ChildContent>
+                 <div class="mdui-container">@Body</div>
+             </ChildContent>
+             <ErrorContent>
+                 <div class="blazor-error-boundary">@ex.Message</div>
+             </ErrorContent>
+         </ErrorBoundary>
      </MduiLayoutContent>
 
      <MduiDialog @bind-Open="@_showThemeDialog" Title="设置文档主题" Options="@(new DialogOptions{ Modal = true})">

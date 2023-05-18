@@ -1,0 +1,17 @@
+.color-palette {
+    font-size: 14px;
+    font-weight: 500;
+    list-style: none!important;
+    margin: 0;
+    padding: 0 0 36px!important;
+    position: relative;
+}
+
+.color-palette li {
+    padding: 15px;
+}
+
+.color-palette .color-name {
+    display: block;
+    padding-bottom: 30px;
+}
