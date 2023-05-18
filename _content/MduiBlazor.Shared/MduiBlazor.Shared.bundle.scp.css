@@ -225,3 +225,21 @@
     color: inherit;
     text-decoration: none;
 }
+/* _content/MduiBlazor.Shared/Pages/Color&Theme.razor.rz.scp.css */
+.color-palette[b-iv5l14bri9] {
+    font-size: 14px;
+    font-weight: 500;
+    list-style: none!important;
+    margin: 0;
+    padding: 0 0 36px!important;
+    position: relative;
+}
+
+.color-palette li[b-iv5l14bri9] {
+    padding: 15px;
+}
+
+.color-palette .color-name[b-iv5l14bri9] {
+    display: block;
+    padding-bottom: 30px;
+}
