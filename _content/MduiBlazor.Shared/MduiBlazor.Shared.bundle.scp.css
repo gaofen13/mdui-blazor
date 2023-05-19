@@ -142,6 +142,18 @@
 .mdui-theme-layout-dark .example-tools a[b-evnn8g7ecq] {
     color: hsla(0,0%,100%,.7);
 }
+
+[b-evnn8g7ecq] .example-demo .mdui-row>.mdui-col {
+    background-color: #e8eaf6;
+    border: 1px solid #c5cae9;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+.mdui-theme-layout-dark .example-demo[b-evnn8g7ecq]  .mdui-row>.mdui-col {
+    background-color: #424242 !important;
+    border-color: #757575;
+}
 /* _content/MduiBlazor.Shared/Components/PageContent.razor.rz.scp.css */
 .toc[b-md1j7wqvk6] {
     border-left: 3px solid;
@@ -242,18 +254,4 @@
 .color-palette .color-name[b-iv5l14bri9] {
     display: block;
     padding-bottom: 30px;
-}
-/* _content/MduiBlazor.Shared/Pages/GridPage.razor.rz.scp.css */
-[b-rtsjq0krun] .example-demo .mdui-row>[class*=mdui-col-],
-[b-rtsjq0krun] .example-demo [class*=mdui-row-]>.mdui-col {
-    background-color: #e8eaf6;
-    border: 1px solid #c5cae9;
-    padding-bottom: 10px;
-    padding-top: 10px;
-}
-
-.mdui-theme-layout-dark .example-demo .mdui-row>[class*=mdui-col-][b-rtsjq0krun],
-.mdui-theme-layout-dark .example-demo [class*=mdui-row-]>.mdui-col[b-rtsjq0krun] {
-    background-color: #424242;
-    border-color: #757575;
 }
