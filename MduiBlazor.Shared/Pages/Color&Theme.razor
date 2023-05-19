@@ -1,8 +1,10 @@
 @page "/color&theme"
 
-<p>你可以点击页面右上角的<MduiIcon Name="color_lens" />图标来设置主题颜色，下面的颜色表的主色、强调色、主题色都会随之发生变化。</p>
-<div class="mdui-row-xs-1 mdui-row-md-2 mdui-row-lg-3">
-    <div class="mdui-col">
+<p>你可以点击页面右上角的
+    <MduiIcon Name="color_lens" />图标来设置主题颜色，下面的颜色表的主色、强调色、主题色都会随之发生变化。
+</p>
+<MduiRow BreakpointXs="@Breakpoint.Xs.xs1" BreakpointSm="@Breakpoint.Sm.sm2">
+    <MduiCol>
         <ul class="color-palette">
             <li class="mdui-color-theme color-name">Primary（主色）</li>
             <li class="mdui-color-theme">@nameof(Colors.Theme.Primary)</li>
@@ -17,8 +19,8 @@
             <li class="mdui-color-theme-800">@nameof(Colors.Theme.Primary8)</li>
             <li class="mdui-color-theme-900">@nameof(Colors.Theme.Primary9)</li>
         </ul>
-    </div>
-    <div class="mdui-col">
+    </MduiCol>
+    <MduiCol>
         <ul class="color-palette">
             <li class="mdui-color-theme-accent color-name">Accent（强调色）</li>
             <li class="mdui-color-theme-accent">@nameof(Colors.Theme.Accent)</li>
@@ -27,8 +29,6 @@
             <li class="mdui-color-theme-a400">@nameof(Colors.Theme.Accent4)</li>
             <li class="mdui-color-theme-a700">@nameof(Colors.Theme.Accent7)</li>
         </ul>
-    </div>
-    <div class="mdui-col">
         <ul class="color-palette">
             <li class="mdui-text-color-theme-text color-name">Text（文本颜色）</li>
             <li class="mdui-text-color-theme-text">@nameof(Colors.TextTheme.Default)</li>
@@ -38,5 +38,5 @@
             <li class="mdui-text-color-theme-icon">@nameof(Colors.TextTheme.Icon)</li>
             <li class="mdui-text-color-theme-icon-disabled">@nameof(Colors.TextTheme.IconDisabled)</li>
         </ul>
-    </div>
-</div>
+    </MduiCol>
+</MduiRow>

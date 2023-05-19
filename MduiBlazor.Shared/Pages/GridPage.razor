@@ -1,0 +1,329 @@
+@page "/grid"
+@inherits BasePage
+@using MduiBlazor.Shared.Pages.Examples.Grid
+
+<PageTitle>网格布局</PageTitle>
+<div class="mdui-m-y-5">
+    <MduiText Typo="@Typo.display1" Color="@Colors.Theme.Primary">网格布局</MduiText>
+    <p>MDUI 提供了一套响应式、移动设备优先的 12 列网格布局系统。</p>
+</div>
+
+<PageContent>
+    <PageContentItem Title="Examples" OnClick="@(_=>ScrollToElementById("examples"))">
+        <PageContentItem Title="布局容器" OnClick="@(_=>ScrollToElementById("container"))" />
+        <PageContentItem Title="基础网格" OnClick="@(_=>ScrollToElementById("response"))" />
+        <PageContentItem Title="响应式网格" OnClick="@(_=>ScrollToElementById("text"))" />
+        <PageContentItem Title="列间距" OnClick="@(_=>ScrollToElementById("colgapless"))" />
+        <PageContentItem Title="列偏移" OnClick="@(_=>ScrollToElementById("coloffset"))" />
+        <PageContentItem Title="嵌套列" OnClick="@(_=>ScrollToElementById("nest"))" />
+        <PageContentItem Title="等分列" OnClick="@(_=>ScrollToElementById("average"))" />
+    </PageContentItem>
+    <PageContentItem Title="属性/方法/事件" OnClick="@(_=>ScrollToElementById("attr"))" />
+</PageContent>
+
+<MduiDivider Class="mdui-m-y-5" />
+
+<div>
+    <h2 id="examples">
+        <MduiText Typo="@Typo.headline" Color="@Colors.Theme.Primary">Examples</MduiText>
+    </h2>
+
+    <MduiText id="container" Typo="@Typo.subheading"><b>布局容器</b></MduiText>
+    <p class="mdui-typo"><code>MduiContainer</code>组件默认占据 92% - 96% 的屏幕宽度，且最大宽度 1280px。</p>
+    <ExampleSection Label="code" HideExample FixCode Component="@typeof(Container)" />
+     <p class="mdui-typo">当<code>Fluid</code>参数设置为<code>true</code>时，组件始终占据 100% 的屏幕宽度。</p>
+     <ExampleSection Label="code" HideExample FixCode Component="@typeof(FluidContainer)" />
+
+     <MduiText id="simple" Typo="@Typo.subheading"><b>基础网格</b></MduiText>
+     <p class="mdui-typo"><code>MduiRow</code>组件必须包含在<code>MduiContainer</code>中，以便为其赋予合适的排列（aligment）和内补（padding）。
+         在 <code>MduiRow</code>组件中包含若干个 <code>MduiCol</code>组件，其中 <code>BreakpointXs</code>枚举中值的数字表示该元素占据多少列。
+         如果一行中包含的列大于 12，则多余的列将另起一行排列。</p>
+     <ExampleSection Component="@typeof(SimpleGrid)" />
+
+     <MduiText id="response" Typo="@Typo.subheading"><b>响应式网格</b></MduiText>
+     <ul class="mdui-typo">
+         <li><code>BreakpointXs</code><code>OffsetBreakpointXs</code>所有屏幕设备上都会生效，如手机、电脑等。</li>
+         <li><code>BreakpointSm</code><code>OffsetBreakpointSm</code>在小屏幕及以上的设备上生效，如平板电脑。</li>
+         <li><code>BreakpointMd</code><code>OffsetBreakpointMd</code>在中等屏幕及以上的设备上生效，如笔记本电脑。</li>
+         <li><code>BreakpointLg</code><code>OffsetBreakpointLg</code>在大屏幕及以上的设备上生效，如台式电脑。</li>
+         <li><code>BreakpointXl</code><code>OffsetBreakpointXl</code>在特大屏幕设备上生效，如电视。</li>
+     </ul>
+     <p>混用这些参数，可以达到响应式的效果。响应式断点如下：</p>
+     <MduiSimpleTable UseMduiTypo Class="mdui-m-b-5">
+         <thead>
+             <th>断点</th>
+             <th>参数值</th>
+             <th>屏幕区间</th>
+             <th>槽宽</th>
+         </thead>
+         <tbody>
+             <tr>
+                 <td>
+                     <code>xs</code>
+                 </td>
+                 <td>
+                     <code>Breakpoint.Xs.xs[1-12]</code>
+                 </td>
+                 <td>&gt; 0</td>
+                 <td rowspan="5">16px（每列左右均有 8px）</td>
+             </tr>
+             <tr>
+                 <td>
+                     <code>sm</code>
+                 </td>
+                 <td>
+                     <code>Breakpoint.Sm.sm[1-12]</code>
+                 </td>
+                 <td>&gt; 600px</td>
+             </tr>
+             <tr>
+                 <td>
+                     <code>md</code>
+                 </td>
+                 <td>
+                     <code>Breakpoint.Md.md[1-12]</code>
+                 </td>
+                 <td>&gt; 1024px</td>
+             </tr>
+             <tr>
+                 <td>
+                     <code>lg</code>
+                 </td>
+                 <td>
+                     <code>Breakpoint.Lg.lg[1-12]</code>
+                 </td>
+                 <td>&gt; 1440px</td>
+             </tr>
+             <tr>
+                 <td>
+                     <code>xl</code>
+                 </td>
+                 <td>
+                     <code>Breakpoint.Xl.xl[1-12]</code>
+                 </td>
+                 <td>&gt; 1920px</td>
+             </tr>
+         </tbody>
+     </MduiSimpleTable>
+     <ExampleSection Component="@typeof(ResponseGrid)" />
+
+     <MduiText id="colgapless" Typo="@Typo.subheading"><b>列间距</b></MduiText>
+     <p class="mdui-typo">默认在列之间会有 16px 的间距，只需在<code>MduiRow</code>组件上设置参数<code>Gapless</code>为<code>true</code>即可消除列间距。
+     </p>
+     <ExampleSection Component="@typeof(ColGapless)" />
+
+     <MduiText id="coloffset" Typo="@Typo.subheading"><b>列偏移</b></MduiText>
+     <p class="mdui-typo">
+         使用<code>OffsetBreakpointXs</code>、<code>OffsetBreakpointSm</code>、<code>OffsetBreakpointMd</code>、<code>OffsetBreakpointLg</code>和<code>OffsetBreakpointXl</code>参数可以将列向右偏移，参数值中的数字表示向右偏移多少列。
+     </p>
+     <ExampleSection Component="@typeof(ColOffset)" />
+
+     <MduiText id="nest" Typo="@Typo.subheading"><b>嵌套列</b></MduiText>
+     <p class="mdui-typo">通过在已有的列中再添加新的<code>MduiRow</code>和<code>MduiCol</code>组件实现列的嵌套。被嵌套的行所包含的列不能超过 12 个。
+     </p>
+     <ExampleSection Component="@typeof(NestGrid)" />
+
+     <MduiText id="average" Typo="@Typo.subheading"><b>等分列</b></MduiText>
+     <p class="mdui-typo">
+         在<code>MduiRow</code>组件中设置<code>Breakpoint[Xs|Sm|Md|Lg|Xl]</code>参数，并包含若干个<code>MduiCol</code>，这些组件会被等分。例如：设置<code>BreakpointXs="@@Breakpoint.Xs.xs5"</code>，<code>MduiRow</code>中的每一个
+         <code>MduiCol</code>组件均占据 20% 的宽度。
+     </p>
+     <ExampleSection Component="@typeof(AverageCol)" />
+     <p class="mdui-typo">
+         混用参数<code>BreakpointXs</code>、<code>BreakpointSm</code>、<code>BreakpointMd</code>、<code>BreakpointLg</code>和<code>BreakpointXl</code>可以实现响应式布局。
+     </p>
+     <ExampleSection Component="@typeof(ResponseAverageCol)" />
+ </div>
+
+ <MduiDivider Class="mdui-m-y-5" />
+
+ <div>
+     <h2 id="attr">
+         <MduiText Typo="@Typo.headline" Color="@Colors.Theme.Primary">属性/方法/事件</MduiText>
+     </h2>
+
+     <MduiTableContainer UseMduiTypo Class="mdui-m-y-1">
+        <MduiSimpleTable>
+            <thead>
+                <th>组件</th>
+                <th>分类</th>
+                <th>名称</th>
+                <th>类型/返回类型</th>
+                <th>说明</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>
+                        <code>MduiContainer</code>
+                    </th>
+                    <td>
+                        <code>Parameter</code>
+                    </td>
+                    <td>
+                        <code>Fluid</code>
+                    </td>
+                    <td>
+                        <code>bool</code>
+                    </td>
+                    <td>是否100% 的屏幕宽度。默认<code>false</code>。</td>
+                </tr>
+                <tr>
+                    <th rowspan="6">
+                        <code>MduiRow</code>
+                    </th>
+                    <td rowspan="6">
+                        <code>Parameter</code>
+                    </td>
+                    <td>
+                        <code>Gapless</code>
+                    </td>
+                    <td>
+                        <code>bool</code>
+                    </td>
+                    <td>是否消除列间距。默认<code>false</code>。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>BreakpointXs</code>
+                    </td>
+                    <td>
+                        <code>Breakpoint.Xs?</code>
+                    </td>
+                    <td>枚举，xs屏幕区间下等分列数。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>BreakpointSm</code>
+                    </td>
+                    <td>
+                        <code>Breakpoint.SM?</code>
+                    </td>
+                    <td>枚举，sm屏幕区间下等分列数。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>BreakpointMd</code>
+                    </td>
+                    <td>
+                        <code>Breakpoint.Md?</code>
+                    </td>
+                    <td>枚举，md屏幕区间下等分列数。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>BreakpointLg</code>
+                    </td>
+                    <td>
+                        <code>Breakpoint.Lg?</code>
+                    </td>
+                    <td>枚举，xs屏幕区间下等分列数。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>BreakpointXl</code>
+                    </td>
+                    <td>
+                        <code>Breakpoint.Xl?</code>
+                    </td>
+                    <td>枚举，xl屏幕区间下等分列数。</td>
+                </tr>
+                <tr>
+                    <th rowspan="10">
+                        <code>MduiCol</code>
+                    </th>
+                    <td rowspan="10">
+                        <code>Parameter</code>
+                    </td>
+                    <td>
+                        <code>BreakpointXs</code>
+                    </td>
+                    <td>
+                        <code>Breakpoint.Xs?</code>
+                    </td>
+                    <td>枚举，xs屏幕区间下占用列数。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>BreakpointSm</code>
+                    </td>
+                    <td>
+                        <code>Breakpoint.SM?</code>
+                    </td>
+                    <td>枚举，sm屏幕区间下占用列数。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>BreakpointMd</code>
+                    </td>
+                    <td>
+                        <code>Breakpoint.Md?</code>
+                    </td>
+                    <td>枚举，md屏幕区间下占用列数。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>BreakpointLg</code>
+                    </td>
+                    <td>
+                        <code>Breakpoint.Lg?</code>
+                    </td>
+                    <td>枚举，xs屏幕区间下占用列数。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>BreakpointXl</code>
+                    </td>
+                    <td>
+                        <code>Breakpoint.Xl?</code>
+                    </td>
+                    <td>枚举，xl屏幕区间下占用列数。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>OffsetBreakpointXs</code>
+                    </td>
+                    <td>
+                        <code>Breakpoint.Xs?</code>
+                    </td>
+                    <td>枚举，xs屏幕区间下偏移列数。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>OffsetBreakpointSm</code>
+                    </td>
+                    <td>
+                        <code>Breakpoint.SM?</code>
+                    </td>
+                    <td>枚举，sm屏幕区间下偏移列数。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>OffsetBreakpointMd</code>
+                    </td>
+                    <td>
+                        <code>Breakpoint.Md?</code>
+                    </td>
+                    <td>枚举，md屏幕区间下偏移列数。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>OffsetBreakpointLg</code>
+                    </td>
+                    <td>
+                        <code>Breakpoint.Lg?</code>
+                    </td>
+                    <td>枚举，xs屏幕区间下偏移列数。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>OffsetBreakpointXl</code>
+                    </td>
+                    <td>
+                        <code>Breakpoint.Xl?</code>
+                    </td>
+                    <td>枚举，xl屏幕区间下偏移列数。</td>
+                </tr>
+            </tbody>
+        </MduiSimpleTable>
+    </MduiTableContainer>
+</div>

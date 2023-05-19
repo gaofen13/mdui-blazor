@@ -30,7 +30,7 @@
      <MduiLayoutContent>
          <ErrorBoundary @ref="errorBoundary" Context="ex">
              <ChildContent>
-                 <div class="mdui-container">@Body</div>
+                 <MduiContainer>@Body</MduiContainer>
              </ChildContent>
              <ErrorContent>
                  <div class="blazor-error-boundary">@ex.Message</div>
@@ -40,158 +40,160 @@
 
      <MduiDialog @bind-Open="@_showThemeDialog" Title="设置文档主题" Options="@(new DialogOptions{ Modal = true})">
          <ChildContent>
-             <div class="mdui-container">
+             <MduiContainer>
                  <p>
                      <MduiText Typo="@Typo.title">主题色</MduiText>
                  </p>
                  <MduiRadioGroup @bind-Value="@_isDarkTheme">
-                     <div class="mdui-row-xs-1 mdui-row-sm-2">
-                         <div class="mdui-col mdui-m-b-1">
+                     <MduiRow BreakpointXs="@Breakpoint.Xs.xs1" BreakpointSm="@Breakpoint.Sm.sm2">
+                         <MduiCol Class="mdui-m-b-1">
                              <MduiRadio Value="@false">Light</MduiRadio>
-                         </div>
-                         <div class="mdui-col mdui-m-b-1">
+                         </MduiCol>
+                         <MduiCol Class="mdui-m-b-1">
                              <MduiRadio Value="@true">Dark</MduiRadio>
-                         </div>
-                     </div>
+                         </MduiCol>
+                     </MduiRow>
                  </MduiRadioGroup>
                  <p>
                      <MduiText Typo="@Typo.title" Color="@Colors.Theme.Primary">主色</MduiText>
                  </p>
                  <MduiRadioGroup @bind-Value="@_primaryColor">
-                     <div class="mdui-row-xs-1 mdui-row-sm-2 mdui-row-md-3">
-                         <div class="mdui-col mdui-m-b-1">
+                     <MduiRow BreakpointXs="@Breakpoint.Xs.xs1" BreakpointSm="@Breakpoint.Sm.sm2"
+                         BreakpointMd="@Breakpoint.Md.md3">
+                         <MduiCol Class="mdui-m-b-1">
                              <MduiRadio Class="mdui-text-color-amber" Value="@PrimaryColor.Amber">Amber</MduiRadio>
-                         </div>
-                         <div class="mdui-col mdui-m-b-1">
+                         </MduiCol>
+                         <MduiCol Class="mdui-m-b-1">
                              <MduiRadio Class="mdui-text-color-blue" Value="@PrimaryColor.Blue">Blue</MduiRadio>
-                         </div>
-                         <div class="mdui-col mdui-m-b-1">
+                         </MduiCol>
+                         <MduiCol Class="mdui-m-b-1">
                              <MduiRadio Class="mdui-text-color-blue-grey" Value="@PrimaryColor.BlueGrey">
                                  BlueGrey
                              </MduiRadio>
-                         </div>
-                         <div class="mdui-col mdui-m-b-1">
+                         </MduiCol>
+                         <MduiCol Class="mdui-m-b-1">
                              <MduiRadio Class="mdui-text-color-brown" Value="@PrimaryColor.Brown">Brown</MduiRadio>
-                         </div>
-                         <div class="mdui-col mdui-m-b-1">
+                         </MduiCol>
+                         <MduiCol Class="mdui-m-b-1">
                              <MduiRadio Class="mdui-text-color-cyan" Value="@PrimaryColor.Cyan">Cyan</MduiRadio>
-                         </div>
-                         <div class="mdui-col mdui-m-b-1">
+                         </MduiCol>
+                         <MduiCol Class="mdui-m-b-1">
                              <MduiRadio Class="mdui-text-color-deep-orange" Value="@PrimaryColor.DeepOrange">
                                  DeepOrange
                              </MduiRadio>
-                         </div>
-                         <div class="mdui-col mdui-m-b-1">
+                         </MduiCol>
+                         <MduiCol Class="mdui-m-b-1">
                              <MduiRadio Class="mdui-text-color-deep-purple" Value="@PrimaryColor.DeepPurple">
                                  DeepPurple
                              </MduiRadio>
-                         </div>
-                         <div class="mdui-col mdui-m-b-1">
+                         </MduiCol>
+                         <MduiCol Class="mdui-m-b-1">
                              <MduiRadio Class="mdui-text-color-green" Value="@PrimaryColor.Green">Green</MduiRadio>
-                         </div>
-                         <div class="mdui-col mdui-m-b-1">
+                         </MduiCol>
+                         <MduiCol Class="mdui-m-b-1">
                              <MduiRadio Class="mdui-text-color-grey" Value="@PrimaryColor.Grey">Grey</MduiRadio>
-                         </div>
-                         <div class="mdui-col mdui-m-b-1">
+                         </MduiCol>
+                         <MduiCol Class="mdui-m-b-1">
                              <MduiRadio Class="mdui-text-color-indigo" Value="@PrimaryColor.Indigo">Indigo</MduiRadio>
-                         </div>
-                         <div class="mdui-col mdui-m-b-1">
+                         </MduiCol>
+                         <MduiCol Class="mdui-m-b-1">
                              <MduiRadio Class="mdui-text-color-light-blue" Value="@PrimaryColor.LightBlue">
                                  LightBlue
                              </MduiRadio>
-                         </div>
-                         <div class="mdui-col mdui-m-b-1">
+                         </MduiCol>
+                         <MduiCol Class="mdui-m-b-1">
                              <MduiRadio Class="mdui-text-color-light-green" Value="@PrimaryColor.LightGreen">
                                  LightGreen
                              </MduiRadio>
-                         </div>
-                         <div class="mdui-col mdui-m-b-1">
+                         </MduiCol>
+                         <MduiCol Class="mdui-m-b-1">
                              <MduiRadio Class="mdui-text-color-lime" Value="@PrimaryColor.Lime">Lime</MduiRadio>
-                         </div>
-                         <div class="mdui-col mdui-m-b-1">
+                         </MduiCol>
+                         <MduiCol Class="mdui-m-b-1">
                              <MduiRadio Class="mdui-text-color-orange" Value="@PrimaryColor.Orange">Orange</MduiRadio>
-                         </div>
-                         <div class="mdui-col mdui-m-b-1">
+                         </MduiCol>
+                         <MduiCol Class="mdui-m-b-1">
                              <MduiRadio Class="mdui-text-color-pink" Value="@PrimaryColor.Pink">Pink</MduiRadio>
-                         </div>
-                         <div class="mdui-col mdui-m-b-1">
+                         </MduiCol>
+                         <MduiCol Class="mdui-m-b-1">
                              <MduiRadio Class="mdui-text-color-purple" Value="@PrimaryColor.Purple">Purple</MduiRadio>
-                         </div>
-                         <div class="mdui-col mdui-m-b-1">
+                         </MduiCol>
+                         <MduiCol Class="mdui-m-b-1">
                              <MduiRadio Class="mdui-text-color-red" Value="@PrimaryColor.Red">Red</MduiRadio>
-                         </div>
-                         <div class="mdui-col mdui-m-b-1">
+                         </MduiCol>
+                         <MduiCol Class="mdui-m-b-1">
                              <MduiRadio Class="mdui-text-color-teal" Value="@PrimaryColor.Teal">Teal</MduiRadio>
-                         </div>
-                         <div class="mdui-col mdui-m-b-1">
+                         </MduiCol>
+                         <MduiCol Class="mdui-m-b-1">
                              <MduiRadio Class="mdui-text-color-yellow" Value="@PrimaryColor.Yellow">Yellow</MduiRadio>
-                         </div>
-                     </div>
+                         </MduiCol>
+                     </MduiRow>
                  </MduiRadioGroup>
                  <p>
                      <MduiText Typo="@Typo.title" Color="@Colors.Theme.Accent">强调色</MduiText>
                  </p>
                  <MduiRadioGroup @bind-Value="@_accentColor">
-                     <div class="mdui-row-xs-1 mdui-row-sm-2 mdui-row-md-3">
-                         <div class="mdui-col mdui-m-b-1">
+                     <MduiRow BreakpointXs="@Breakpoint.Xs.xs1" BreakpointSm="@Breakpoint.Sm.sm2"
+                         BreakpointMd="@Breakpoint.Md.md3">
+                         <MduiCol Class="mdui-m-b-1">
                              <MduiRadio Class="mdui-text-color-amber" Value="@AccentColor.Amber">Amber</MduiRadio>
-                         </div>
-                         <div class="mdui-col mdui-m-b-1">
+                         </MduiCol>
+                         <MduiCol Class="mdui-m-b-1">
                              <MduiRadio Class="mdui-text-color-blue" Value="@AccentColor.Blue">Blue</MduiRadio>
-                         </div>
-                         <div class="mdui-col mdui-m-b-1">
+                         </MduiCol>
+                         <MduiCol Class="mdui-m-b-1">
                              <MduiRadio Class="mdui-text-color-cyan" Value="@AccentColor.Cyan">Cyan</MduiRadio>
-                         </div>
-                         <div class="mdui-col mdui-m-b-1">
+                         </MduiCol>
+                         <MduiCol Class="mdui-m-b-1">
                              <MduiRadio Class="mdui-text-color-deep-orange" Value="@AccentColor.DeepOrange">
                                  DeepOrange
                              </MduiRadio>
-                         </div>
-                         <div class="mdui-col mdui-m-b-1">
+                         </MduiCol>
+                         <MduiCol Class="mdui-m-b-1">
                              <MduiRadio Class="mdui-text-color-deep-purple" Value="@AccentColor.DeepPurple">
                                  DeepPurple
                              </MduiRadio>
-                         </div>
-                         <div class="mdui-col mdui-m-b-1">
+                         </MduiCol>
+                         <MduiCol Class="mdui-m-b-1">
                              <MduiRadio Class="mdui-text-color-green" Value="@AccentColor.Green">Green</MduiRadio>
-                         </div>
-                         <div class="mdui-col mdui-m-b-1">
+                         </MduiCol>
+                         <MduiCol Class="mdui-m-b-1">
                              <MduiRadio Class="mdui-text-color-indigo" Value="@AccentColor.Indigo">Indigo</MduiRadio>
-                         </div>
-                         <div class="mdui-col mdui-m-b-1">
+                         </MduiCol>
+                         <MduiCol Class="mdui-m-b-1">
                              <MduiRadio Class="mdui-text-color-light-blue" Value="@AccentColor.LightBlue">
                                  LightBlue
                              </MduiRadio>
-                         </div>
-                         <div class="mdui-col mdui-m-b-1">
+                         </MduiCol>
+                         <MduiCol Class="mdui-m-b-1">
                              <MduiRadio Class="mdui-text-color-light-green" Value="@AccentColor.LightGreen">
                                  LightGreen
                              </MduiRadio>
-                         </div>
-                         <div class="mdui-col mdui-m-b-1">
+                         </MduiCol>
+                         <MduiCol Class="mdui-m-b-1">
                              <MduiRadio Class="mdui-text-color-lime" Value="@AccentColor.Lime">Lime</MduiRadio>
-                         </div>
-                         <div class="mdui-col mdui-m-b-1">
+                         </MduiCol>
+                         <MduiCol Class="mdui-m-b-1">
                              <MduiRadio Class="mdui-text-color-orange" Value="@AccentColor.Orange">Orange</MduiRadio>
-                         </div>
-                         <div class="mdui-col mdui-m-b-1">
+                         </MduiCol>
+                         <MduiCol Class="mdui-m-b-1">
                              <MduiRadio Class="mdui-text-color-pink" Value="@AccentColor.Pink">Pink</MduiRadio>
-                         </div>
-                         <div class="mdui-col mdui-m-b-1">
+                         </MduiCol>
+                         <MduiCol Class="mdui-m-b-1">
                              <MduiRadio Class="mdui-text-color-purple" Value="@AccentColor.Purple">Purple</MduiRadio>
-                         </div>
-                         <div class="mdui-col mdui-m-b-1">
+                         </MduiCol>
+                         <MduiCol Class="mdui-m-b-1">
                              <MduiRadio Class="mdui-text-color-red" Value="@AccentColor.Red">Red</MduiRadio>
-                         </div>
-                         <div class="mdui-col mdui-m-b-1">
+                         </MduiCol>
+                         <MduiCol Class="mdui-m-b-1">
                              <MduiRadio Class="mdui-text-color-teal" Value="@AccentColor.Teal">Teal</MduiRadio>
-                         </div>
-                         <div class="mdui-col mdui-m-b-1">
+                         </MduiCol>
+                         <MduiCol Class="mdui-m-b-1">
                              <MduiRadio Class="mdui-text-color-yellow" Value="@AccentColor.Yellow">Yellow</MduiRadio>
-                         </div>
-                     </div>
+                         </MduiCol>
+                     </MduiRow>
                  </MduiRadioGroup>
-             </div>
+             </MduiContainer>
          </ChildContent>
          <ActionsContent>
              <MduiButton Text Class="mdui-float-left" OnClick="@ResetTheme">恢复默认主题</MduiButton>

@@ -1,0 +1,147 @@
+using System.ComponentModel;
+
+namespace MduiBlazor
+{
+    public class Breakpoint
+    {
+        public enum Xs
+        {
+            [Description("xs-1")]
+            xs1,
+            [Description("xs-2")]
+            xs2,
+            [Description("xs-3")]
+            xs3,
+            [Description("xs-4")]
+            xs4,
+            [Description("xs-5")]
+            xs5,
+            [Description("xs-6")]
+            xs6,
+            [Description("xs-7")]
+            xs7,
+            [Description("xs-8")]
+            xs8,
+            [Description("xs-9")]
+            xs9,
+            [Description("xs-10")]
+            xs10,
+            [Description("xs-11")]
+            xs11,
+            [Description("xs-12")]
+            xs12
+        }
+
+        public enum Sm
+        {
+            [Description("sm-1")]
+            sm1,
+            [Description("sm-2")]
+            sm2,
+            [Description("sm-3")]
+            sm3,
+            [Description("sm-4")]
+            sm4,
+            [Description("sm-5")]
+            sm5,
+            [Description("sm-6")]
+            sm6,
+            [Description("sm-7")]
+            sm7,
+            [Description("sm-8")]
+            sm8,
+            [Description("sm-9")]
+            sm9,
+            [Description("sm-10")]
+            sm10,
+            [Description("sm-11")]
+            sm11,
+            [Description("sm-12")]
+            sm12
+        }
+
+        public enum Md
+        {
+            [Description("md-1")]
+            md1,
+            [Description("md-2")]
+            md2,
+            [Description("md-3")]
+            md3,
+            [Description("md-4")]
+            md4,
+            [Description("md-5")]
+            md5,
+            [Description("md-6")]
+            md6,
+            [Description("md-7")]
+            md7,
+            [Description("md-8")]
+            md8,
+            [Description("md-9")]
+            md9,
+            [Description("md-10")]
+            md10,
+            [Description("md-11")]
+            md11,
+            [Description("md-12")]
+            md12
+        }
+
+        public enum Lg
+        {
+            [Description("lg-1")]
+            lg1,
+            [Description("lg-2")]
+            lg2,
+            [Description("lg-3")]
+            lg3,
+            [Description("lg-4")]
+            lg4,
+            [Description("lg-5")]
+            lg5,
+            [Description("lg-6")]
+            lg6,
+            [Description("lg-7")]
+            lg7,
+            [Description("lg-8")]
+            lg8,
+            [Description("lg-9")]
+            lg9,
+            [Description("lg-10")]
+            lg10,
+            [Description("lg-11")]
+            lg11,
+            [Description("lg-12")]
+            lg12
+        }
+
+        public enum Xl
+        {
+            [Description("xl-1")]
+            xl1,
+            [Description("xl-3")]
+            xl2,
+            [Description("xl-3")]
+            xl3,
+            [Description("xl-4")]
+            xl4,
+            [Description("xl-5")]
+            xl5,
+            [Description("xl-6")]
+            xl6,
+            [Description("xl-7")]
+            xl7,
+            [Description("xl-8")]
+            xl8,
+            [Description("xl-9")]
+            xl9,
+            [Description("xl-10")]
+            xl10,
+            [Description("xl-11")]
+            xl11,
+            [Description("xl-12")]
+            xl12
+        }
+    }
+}
