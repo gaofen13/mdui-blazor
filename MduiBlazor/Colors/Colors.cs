@@ -22,16 +22,6 @@
             public static string Accent7 { get; } = "theme-a700";
         }
 
-        public static class TextTheme
-        {
-            public static string Default { get; } = "theme-text";
-            public static string Secondary { get; } = "theme-theme-secondary";
-            public static string Disabled { get; } = "theme-disabled";
-            public static string Divider { get; } = "theme-divider";
-            public static string Icon { get; } = "theme-icon";
-            public static string IconDisabled { get; } = "theme-icon-disabled";
-        }
-
         public static class Red
         {
             public static string Primary { get; } = "red";
@@ -381,6 +371,7 @@
             public static string Primary8 { get; } = "blue-grey-800";
             public static string Primary9 { get; } = "blue-grey-900";
         }
+
         public static class Grey
         {
             public static string Primary { get; } = "grey";
@@ -401,6 +392,39 @@
             public static string Black { get; } = "black";
             public static string White { get; } = "white";
             public static string Transparent { get; } = "transparent";
+        }
+
+        public static class TextColors
+        {
+            public static class Theme
+            {
+                public static string Default { get; } = "theme-text";
+                public static string Secondary { get; } = "theme-secondary";
+                public static string Disabled { get; } = "theme-disabled";
+                public static string Divider { get; } = "theme-divider";
+                public static string Icon { get; } = "theme-icon";
+                public static string IconDisabled { get; } = "theme-icon-disabled";
+            }
+            
+            public static class Black
+            {
+                public static string Default { get; } = "black-text";
+                public static string Secondary { get; } = "black-secondary";
+                public static string Disabled { get; } = "black-disabled";
+                public static string Divider { get; } = "black-divider";
+                public static string Icon { get; } = "black-icon";
+                public static string IconDisabled { get; } = "black-icon-disabled";
+            }
+            
+            public static class White
+            {
+                public static string Default { get; } = "white-text";
+                public static string Secondary { get; } = "white-secondary";
+                public static string Disabled { get; } = "white-disabled";
+                public static string Divider { get; } = "white-divider";
+                public static string Icon { get; } = "white-icon";
+                public static string IconDisabled { get; } = "white-icon-disabled";
+            }
         }
     }
 }
