@@ -1,0 +1,77 @@
+@page "/tooltip"
+@inherits BasePage
+@using MduiBlazor.Shared.Pages.Examples.Tooltip
+
+<PageTitle>工具提示</PageTitle>
+<div class="mdui-m-y-5">
+    <MduiText Typo="@Typo.display1" Color="@Colors.Theme.Primary">工具提示</MduiText>
+    <p>Tooltip 一般用来为其他组件和元素添加说明，它的内容一般是纯文本，不含图片和格式化的文本。</p>
+</div>
+
+<PageContent>
+    <PageContentItem Title="Examples" OnClick="@(_=>ScrollToElementById("examples"))">
+        <PageContentItem Title="Tooltip" OnClick="@(_=>ScrollToElementById("simple"))" />
+        <PageContentItem Title="位置" OnClick="@(_=>ScrollToElementById("position"))" />
+    </PageContentItem>
+    <PageContentItem Title="属性/方法/事件" OnClick="@(_=>ScrollToElementById("attr"))" />
+</PageContent>
+
+<MduiDivider Class="mdui-m-y-5" />
+
+<div>
+    <h2 id="examples">
+        <MduiText Typo="@Typo.headline" Color="@Colors.Theme.Primary">Examples</MduiText>
+    </h2>
+
+    <MduiText id="simple" Typo="@Typo.subheading"><b>Tooltip</b></MduiText>
+    <ExampleSection Component="@typeof(SimpleTooltip)" />
+
+    <MduiText id="position" Typo="@Typo.subheading"><b>位置</b></MduiText>
+    <ExampleSection Component="@typeof(TooltipPosition)" />
+</div>
+
+<MduiDivider Class="mdui-m-y-5" />
+
+<div>
+    <h2 id="attr">
+        <MduiText Typo="@Typo.headline" Color="@Colors.Theme.Primary">属性/方法/事件</MduiText>
+    </h2>
+
+    <MduiTableContainer UseMduiTypo Class="mdui-m-y-1">
+        <MduiSimpleTable>
+            <thead>
+                <th>组件</th>
+                <th>分类</th>
+                <th>名称</th>
+                <th>类型/返回类型</th>
+                <th>说明</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <th rowspan="2">
+                        <code>MduiTooltip</code>
+                    </th>
+                    <td rowspan="2">
+                        <code>Parameter</code>
+                    </td>
+                    <td>
+                        <code>Message</code>
+                    </td>
+                    <td>
+                        <code>string</code>
+                    </td>
+                    <td>提示的文本内容。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>Position</code>
+                    </td>
+                    <td>
+                        <code>Position</code>
+                    </td>
+                    <td>提示文本的位置(枚举，Top、Bottom、Left、Right)。默认是<code>Position.Top</code>。</td>
+                </tr>
+            </tbody>
+        </MduiSimpleTable>
+    </MduiTableContainer>
+</div>

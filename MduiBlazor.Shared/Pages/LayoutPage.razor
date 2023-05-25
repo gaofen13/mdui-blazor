@@ -1,0 +1,55 @@
+@page "/layout"
+@inherits BasePage
+@using MduiBlazor.Shared.Pages.Examples.Layout
+
+<PageTitle>主题和布局</PageTitle>
+<div class="mdui-m-y-5">
+    <MduiText Typo="@Typo.display1" Color="@Colors.Theme.Primary">主题和布局</MduiText>
+</div>
+
+<PageContent>
+    <PageContentItem Title="布局容器" OnClick="@(_=>ScrollToElementById("container"))" />
+    <PageContentItem Title="主题" OnClick="@(_=>ScrollToElementById("theme"))" />
+</PageContent>
+
+<MduiDivider Class="mdui-m-y-5" />
+
+<div>
+    <h2 id="container">
+        <MduiText Typo="@Typo.headline" Color="@Colors.Theme.Primary">布局容器</MduiText>
+    </h2>
+
+    <MduiText Typo="@Typo.subheading"><b>布局容器</b></MduiText>
+    <p class="mdui-typo"><code>MduiLayout</code>组件应作为所有组件的父组件，以应用主题元素。</p>
+    <ExampleSection Label="code" HideExample FixCode Component="@typeof(SimpleLayout)" />
+
+    <MduiText Typo="@Typo.subheading"><b>带有Appbar的布局容器</b></MduiText>
+    <p class="mdui-typo">带有<code>Toolbar</code>的<code>MduiLayout</code>。</p>
+    <ExampleSection Label="code" HideExample FixCode Component="@typeof(LayoutWithToolbar)" />
+
+    <p class="mdui-typo">带有<code>Tab</code>的<code>MduiLayout</code>。</p>
+    <ExampleSection Label="code" HideExample FixCode Component="@typeof(LayoutWithTab)" />
+
+    <p class="mdui-typo">带有<code>Toolbar</code>和<code>Tab</code>的<code>MduiLayout</code>。</p>
+    <ExampleSection Label="code" HideExample FixCode Component="@typeof(LayoutWithToolbarAndTab)" />
+
+    <MduiText Typo="@Typo.subheading"><b>带有Drawer和Appbar的布局容器</b></MduiText>
+    <p class="mdui-typo">这是一个带有<code>MduiDrawer</code>的完整<code>MduiLayout</code>。</p>
+    <ExampleSection Label="code" HideExample FixCode Component="@typeof(FullLayout)" />
+</div>
+
+<MduiDivider Class="mdui-m-y-5" />
+
+<div>
+    <h2 id="theme">
+        <MduiText Typo="@Typo.headline" Color="@Colors.Theme.Primary">主题</MduiText>
+    </h2>
+
+    <MduiText Typo="@Typo.subheading"><b>主题色</b></MduiText>
+    <p class="mdui-typo">通过对<code>MduiLayout</code>组件参数<code>PrimaryColor</code>设置主色、<code>AccentColor</code>设置强调色，对组件下的所有子组件应用主题色。</p>
+    <ExampleSection Label="code" HideExample FixCode Component="@typeof(ThemeColorLayout)" />
+
+    <MduiText Typo="@Typo.subheading"><b>暗黑主题</b></MduiText>
+    <p class="mdui-typo">通过对<code>MduiLayout</code>组件参数<code>IsDarkTheme</code>设置为<code>true</code>，对组件下的所有子组件应用暗黑主题。</p>
+    <ExampleSection Label="code" HideExample FixCode Component="@typeof(DarkThemeLayout)" />
+</div>

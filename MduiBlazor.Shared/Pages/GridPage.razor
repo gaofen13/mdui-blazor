@@ -36,8 +36,7 @@
 
      <MduiText id="simple" Typo="@Typo.subheading"><b>基础网格</b></MduiText>
      <p class="mdui-typo"><code>MduiRow</code>组件必须包含在<code>MduiContainer</code>中，以便为其赋予合适的排列（aligment）和内补（padding）。
-         在 <code>MduiRow</code>组件中包含若干个 <code>MduiCol</code>组件，其中 <code>BreakpointXs</code>枚举中值的数字表示该元素占据多少列。
-         如果一行中包含的列大于 12，则多余的列将另起一行排列。</p>
+         在 <code>MduiRow</code>组件中包含若干个 <code>MduiCol</code>组件，其中 <code>BreakpointXs</code>枚举中值的数字表示该元素占据多少列。一般一行包含12列，如果一行中包含的列大于 12，则多余的列将另起一行排列。</p>
      <ExampleSection Component="@typeof(SimpleGrid)" />
 
      <MduiText id="response" Typo="@Typo.subheading"><b>响应式网格</b></MduiText>
@@ -191,7 +190,7 @@
                      <td>
                          <code>Breakpoint.Xs?</code>
                      </td>
-                     <td>枚举，xs屏幕区间下等分列数。</td>
+                     <td>枚举，xs屏幕区间时平均分配的列数。</td>
                  </tr>
                  <tr>
                      <td>
@@ -200,7 +199,7 @@
                      <td>
                          <code>Breakpoint.SM?</code>
                      </td>
-                     <td>枚举，sm屏幕区间下等分列数。</td>
+                     <td>枚举，sm屏幕区间时平均分配的列数。</td>
                  </tr>
                  <tr>
                      <td>
@@ -209,7 +208,7 @@
                      <td>
                          <code>Breakpoint.Md?</code>
                      </td>
-                     <td>枚举，md屏幕区间下等分列数。</td>
+                     <td>枚举，md屏幕区间时平均分配的等分列数。</td>
                  </tr>
                  <tr>
                      <td>
@@ -218,7 +217,7 @@
                      <td>
                          <code>Breakpoint.Lg?</code>
                      </td>
-                     <td>枚举，xs屏幕区间下等分列数。</td>
+                     <td>枚举，xs屏幕区间时平均分配的列数。</td>
                  </tr>
                  <tr>
                      <td>
@@ -227,7 +226,7 @@
                      <td>
                          <code>Breakpoint.Xl?</code>
                      </td>
-                     <td>枚举，xl屏幕区间下等分列数。</td>
+                     <td>枚举，xl屏幕区间时平均分配的列数。</td>
                  </tr>
                  <tr>
                      <th rowspan="10">
@@ -242,7 +241,7 @@
                      <td>
                          <code>Breakpoint.Xs?</code>
                      </td>
-                     <td>枚举，xs屏幕区间下占用列数。</td>
+                     <td>枚举，xs屏幕区间时占用的列数。</td>
                  </tr>
                  <tr>
                      <td>
@@ -251,7 +250,7 @@
                      <td>
                          <code>Breakpoint.SM?</code>
                      </td>
-                     <td>枚举，sm屏幕区间下占用列数。</td>
+                     <td>枚举，sm屏幕区间时占用的列数。</td>
                  </tr>
                  <tr>
                      <td>
@@ -260,7 +259,7 @@
                      <td>
                          <code>Breakpoint.Md?</code>
                      </td>
-                     <td>枚举，md屏幕区间下占用列数。</td>
+                     <td>枚举，md屏幕区间时占用的列数。</td>
                  </tr>
                  <tr>
                      <td>
@@ -269,7 +268,7 @@
                      <td>
                          <code>Breakpoint.Lg?</code>
                      </td>
-                     <td>枚举，xs屏幕区间下占用列数。</td>
+                     <td>枚举，xs屏幕区间时占用的列数。</td>
                  </tr>
                  <tr>
                      <td>
@@ -278,7 +277,7 @@
                      <td>
                          <code>Breakpoint.Xl?</code>
                      </td>
-                     <td>枚举，xl屏幕区间下占用列数。</td>
+                     <td>枚举，xl屏幕区间时占用的列数。</td>
                  </tr>
                  <tr>
                      <td>
@@ -287,7 +286,7 @@
                      <td>
                          <code>Breakpoint.Xs?</code>
                      </td>
-                     <td>枚举，xs屏幕区间下偏移列数。</td>
+                     <td>枚举，xs屏幕区间时偏移的列数。</td>
                  </tr>
                  <tr>
                      <td>
@@ -296,7 +295,7 @@
                      <td>
                          <code>Breakpoint.SM?</code>
                      </td>
-                     <td>枚举，sm屏幕区间下偏移列数。</td>
+                     <td>枚举，sm屏幕区间时偏移的列数。</td>
                  </tr>
                  <tr>
                      <td>
@@ -305,7 +304,7 @@
                      <td>
                          <code>Breakpoint.Md?</code>
                      </td>
-                     <td>枚举，md屏幕区间下偏移列数。</td>
+                     <td>枚举，md屏幕区间时偏移的列数。</td>
                  </tr>
                  <tr>
                      <td>
@@ -314,7 +313,7 @@
                      <td>
                          <code>Breakpoint.Lg?</code>
                      </td>
-                     <td>枚举，xs屏幕区间下偏移列数。</td>
+                     <td>枚举，xs屏幕区间时偏移的列数。</td>
                  </tr>
                  <tr>
                      <td>
@@ -323,7 +322,7 @@
                      <td>
                          <code>Breakpoint.Xl?</code>
                      </td>
-                     <td>枚举，xl屏幕区间下偏移列数。</td>
+                     <td>枚举，xl屏幕区间时偏移的列数。</td>
                  </tr>
              </tbody>
          </MduiSimpleTable>
