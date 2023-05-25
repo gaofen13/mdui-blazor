@@ -10617,6 +10617,89 @@ select.mdui-select[multiple] option:last-child {
 }
 /**
  * =============================================================================
+ * ************   Tooltip 工具提示   ************
+ * =============================================================================
+ */
+.mdui-tooltip {
+  position: relative;
+  display: inline-block;
+  /* 显示工具提示 */
+}
+.mdui-tooltip::before {
+  position: absolute;
+  z-index: 6000;
+  display: inline-block;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  max-width: 180px;
+  min-height: 32px;
+  padding: 4px;
+  color: #fff;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 22px;
+  text-align: left;
+  background-color: rgba(97, 97, 97, 0.9);
+  border-radius: 2px;
+  -webkit-transform: scale(0);
+          transform: scale(0);
+  opacity: 0;
+  -webkit-transition-delay: 0.1s;
+          transition-delay: 0.1s;
+  -webkit-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+          transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  -webkit-transition-duration: 0.35s;
+          transition-duration: 0.35s;
+  -webkit-transition-property: opacity;
+  transition-property: opacity;
+  content: attr(data-tip);
+  will-change: opacity, transform;
+}
+@media (min-width: 1024px) {
+  .mdui-tooltip::before {
+    max-width: 200px;
+    min-height: 24px;
+    padding: 8px;
+    font-size: 12px;
+    line-height: 18px;
+  }
+}
+.mdui-tooltip:hover::before {
+  opacity: 1;
+}
+.mdui-tooltip.mdui-tooltip-top:hover::before {
+  top: auto;
+  bottom: 100%;
+  left: 50%;
+  -webkit-transform: scale(1) translate(-50%);
+          transform: scale(1) translate(-50%);
+}
+.mdui-tooltip.mdui-tooltip-bottom:hover::before {
+  top: 100%;
+  bottom: auto;
+  left: 50%;
+  -webkit-transform: scale(1) translate(-50%);
+          transform: scale(1) translate(-50%);
+}
+.mdui-tooltip.mdui-tooltip-left:hover::before {
+  top: 50%;
+  right: 100%;
+  left: auto;
+  -webkit-transform: scale(1) translate(0, -50%);
+          transform: scale(1) translate(0, -50%);
+}
+.mdui-tooltip.mdui-tooltip-right:hover::before {
+  top: 50%;
+  right: auto;
+  left: 100%;
+  -webkit-transform: scale(1) translate(0, -50%);
+          transform: scale(1) translate(0, -50%);
+}
+/**
+ * =============================================================================
  * ************   Appbar 应用栏   ************
  * =============================================================================
  */
