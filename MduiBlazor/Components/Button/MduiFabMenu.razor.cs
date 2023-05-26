@@ -40,7 +40,13 @@ namespace MduiBlazor
         public string? Icon { get; set; }
 
         [Parameter]
+        public bool CustomIcon { get; set; }
+
+        [Parameter]
         public string? OpenedIcon { get; set; }
+
+        [Parameter]
+        public bool CustomOpenedIcon { get; set; }
 
         [Parameter]
         public bool Mini { get; set; }

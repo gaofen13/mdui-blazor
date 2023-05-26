@@ -1,4 +1,5 @@
-﻿using MduiBlazor.Utilities;
+﻿using MduiBlazor.Generators;
+using MduiBlazor.Utilities;
 using Microsoft.AspNetCore.Components;
 
 namespace MduiBlazor.Shared.Components
@@ -39,7 +40,7 @@ namespace MduiBlazor.Shared.Components
         {
             try
             {
-                CodeContents = Generators.DemoSnippets.GetRazor(Component.Name);
+                CodeContents = DemoSnippets.GetRazor(Component.Name);
             }
             catch
             {

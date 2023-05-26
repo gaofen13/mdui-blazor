@@ -5,7 +5,7 @@ using System.Net.Http.Json;
 
 namespace MduiBlazor.Shared.Pages
 {
-    public partial class MaterialIcons
+    public partial class MaterialICLPage
     {
         private bool _show;
         private string? _searchInput;
