@@ -9,8 +9,8 @@
 </div>
 
 <PageContent>
-    <PageContentItem Title="Examples" OnClick="@(_=>ScrollToElementById("examples"))">
-        <PageContentItem Title="容器" OnClick="@(_=>ScrollToElementById("container"))" />
+    <PageContentItem Title="容器" OnClick="@(_=>ScrollToElementById("container"))" />
+    <PageContentItem Title="网格" OnClick="@(_=>ScrollToElementById("grid"))">
         <PageContentItem Title="基础网格" OnClick="@(_=>ScrollToElementById("response"))" />
         <PageContentItem Title="响应式网格" OnClick="@(_=>ScrollToElementById("text"))" />
         <PageContentItem Title="列间距" OnClick="@(_=>ScrollToElementById("colgapless"))" />
@@ -23,20 +23,28 @@
 
 <MduiDivider Class="mdui-m-y-5" />
 
-<div id="p-g">
-    <h2 id="examples">
-        <MduiText Typo="@Typo.headline" Color="@Colors.Theme.Primary">Examples</MduiText>
+<div>
+    <h2 id="container">
+        <MduiText Typo="@Typo.headline" Color="@Colors.Theme.Primary">容器</MduiText>
     </h2>
 
-    <MduiText id="container" Typo="@Typo.subheading"><b>容器</b></MduiText>
     <p class="mdui-typo"><code>MduiContainer</code>组件默认占据 92% - 96% 的屏幕宽度，且最大宽度 1280px。</p>
     <ExampleSection Label="code" HideExample FixCode Component="@typeof(Container)" />
      <p class="mdui-typo">当<code>Fluid</code>参数设置为<code>true</code>时，组件始终占据 100% 的屏幕宽度。</p>
      <ExampleSection Label="code" HideExample FixCode Component="@typeof(FluidContainer)" />
+</div>
+
+<MduiDivider Class="mdui-m-y-5" />
+
+<div id="p-g">
+     <h2 id="grid">
+         <MduiText Typo="@Typo.headline" Color="@Colors.Theme.Primary">网格</MduiText>
+     </h2>
 
      <MduiText id="simple" Typo="@Typo.subheading"><b>基础网格</b></MduiText>
      <p class="mdui-typo"><code>MduiRow</code>组件必须包含在<code>MduiContainer</code>中，以便为其赋予合适的排列（aligment）和内补（padding）。
-         在 <code>MduiRow</code>组件中包含若干个 <code>MduiCol</code>组件，其中 <code>BreakpointXs</code>枚举中值的数字表示该元素占据多少列。一般一行包含12列，如果一行中包含的列大于 12，则多余的列将另起一行排列。</p>
+         在 <code>MduiRow</code>组件中包含若干个 <code>MduiCol</code>组件，其中
+         <code>BreakpointXs</code>枚举中值的数字表示该元素占据多少列。一般一行包含12列，如果一行中包含的列大于 12，则多余的列将另起一行排列。</p>
      <ExampleSection Component="@typeof(SimpleGrid)" />
 
      <MduiText id="response" Typo="@Typo.subheading"><b>响应式网格</b></MduiText>
