@@ -1,0 +1,16 @@
+<MduiText UseMduiTypo>
+    <pre>
+        public void Close(DialogResult modalResult)
+        {
+            if (DialogInstance != null)
+            {
+                DialogInstance.Close(modalResult);
+            }
+            else
+            {
+                Open = false;
+                _ = OpenChanged.InvokeAsync(false);
+            }
+        }
+    </pre>
+</MduiText>

@@ -2,15 +2,15 @@
 @inherits BasePage
 @using MduiBlazor.Shared.Pages.Examples.Grid
 
-<PageTitle>网格布局</PageTitle>
+<PageTitle>网格容器</PageTitle>
 <div class="mdui-m-y-5">
-    <MduiText Typo="@Typo.display1" Color="@Colors.Theme.Primary">网格布局</MduiText>
+    <MduiText Typo="@Typo.display1" Color="@Colors.Theme.Primary">网格容器</MduiText>
     <p>MDUI 提供了一套响应式、移动设备优先的 12 列网格布局系统。</p>
 </div>
 
 <PageContent>
     <PageContentItem Title="Examples" OnClick="@(_=>ScrollToElementById("examples"))">
-        <PageContentItem Title="布局容器" OnClick="@(_=>ScrollToElementById("container"))" />
+        <PageContentItem Title="容器" OnClick="@(_=>ScrollToElementById("container"))" />
         <PageContentItem Title="基础网格" OnClick="@(_=>ScrollToElementById("response"))" />
         <PageContentItem Title="响应式网格" OnClick="@(_=>ScrollToElementById("text"))" />
         <PageContentItem Title="列间距" OnClick="@(_=>ScrollToElementById("colgapless"))" />
@@ -28,7 +28,7 @@
         <MduiText Typo="@Typo.headline" Color="@Colors.Theme.Primary">Examples</MduiText>
     </h2>
 
-    <MduiText id="container" Typo="@Typo.subheading"><b>布局容器</b></MduiText>
+    <MduiText id="container" Typo="@Typo.subheading"><b>容器</b></MduiText>
     <p class="mdui-typo"><code>MduiContainer</code>组件默认占据 92% - 96% 的屏幕宽度，且最大宽度 1280px。</p>
     <ExampleSection Label="code" HideExample FixCode Component="@typeof(Container)" />
      <p class="mdui-typo">当<code>Fluid</code>参数设置为<code>true</code>时，组件始终占据 100% 的屏幕宽度。</p>
