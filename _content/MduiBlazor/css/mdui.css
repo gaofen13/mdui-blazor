@@ -5200,6 +5200,7 @@ body *::-webkit-scrollbar-thumb {
   padding-bottom: 56.25%;
   overflow: hidden;
 }
+.mdui-video-container video,
 .mdui-video-container iframe,
 .mdui-video-container object,
 .mdui-video-container embed {
