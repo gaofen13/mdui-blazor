@@ -1,0 +1,71 @@
+#p-c ::deep .example-demo .mdui-float-left,
+#p-c ::deep .example-demo .mdui-float-right,
+#p-c ::deep .example-demo .mdui-center,
+#p-c ::deep .example-demo .mdui-valign,
+#p-c ::deep .example-demo .mdui-text-left,
+#p-c ::deep .example-demo .mdui-text-center,
+#p-c ::deep .example-demo .mdui-text-right,
+#p-c ::deep .example-demo .mdui-clearfix {
+    background-color: #e8eaf6;
+    border-radius: 3px;
+    margin-bottom: 8px;
+    padding: 10px 15px;
+}
+
+.mdui-theme-layout-dark #p-c ::deep .example-demo .mdui-float-left,
+.mdui-theme-layout-dark #p-c ::deep .example-demo .mdui-float-right,
+.mdui-theme-layout-dark #p-c ::deep .example-demo .mdui-center,
+.mdui-theme-layout-dark #p-c ::deep .example-demo .mdui-valign,
+.mdui-theme-layout-dark #p-c ::deep .example-demo .mdui-text-left,
+.mdui-theme-layout-dark #p-c ::deep .example-demo .mdui-text-center,
+.mdui-theme-layout-dark #p-c ::deep .example-demo .mdui-text-right,
+.mdui-theme-layout-dark #p-c ::deep .example-demo .mdui-clearfix {
+    background-color: #424242;
+}
+
+#p-c ::deep .example-demo .mdui-clearfix .mdui-float-left,
+#p-c ::deep .example-demo .mdui-clearfix .mdui-float-right {
+    background-color: #c5cae9;
+}
+
+.mdui-theme-layout-dark #p-c ::deep .example-demo .mdui-clearfix .mdui-float-left,
+.mdui-theme-layout-dark #p-c ::deep .example-demo .mdui-clearfix .mdui-float-right {
+    background-color: #616161;
+}
+
+#p-c ::deep .mdui-row>.mdui-col {
+    background-color: #e8eaf6;
+    border: 1px solid #c5cae9;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+.mdui-theme-layout-dark #p-c ::deep .mdui-row>.mdui-col {
+    background-color: #424242;
+    border-color: #757575;
+}
+
+#p-c table .is-hidden,
+#p-c .mdui-row .is-hidden {
+    background-color: initial !important;
+    color: #ccc !important;
+    text-align: center;
+}
+
+.mdui-theme-layout-dark #p-c table .is-hidden,
+.mdui-theme-layout-dark #p-c .mdui-row .is-hidden {
+    color: #9e9e9e !important;
+}
+
+#p-c table .is-visible,
+#p-c .mdui-row .is-visible {
+    background-color: #e8eaf6 !important;
+    color: #3f51b5 !important;
+    text-align: center;
+}
+
+.mdui-theme-layout-dark #p-c table .is-visible,
+.mdui-theme-layout-dark #p-c .mdui-row .is-visible {
+    background-color: #424242 !important;
+    color: #c8e6c9 !important;
+}

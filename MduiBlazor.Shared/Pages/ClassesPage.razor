@@ -1,0 +1,437 @@
+@page "/classes"
+@inherits BasePage
+@using MduiBlazor.Shared.Pages.Examples.Cards
+@using MduiBlazor.Shared.Pages.Examples.Classes
+
+<PageTitle>辅助类</PageTitle>
+<div class="mdui-m-y-5">
+    <MduiText Typo="@Typo.display1" Color="@Colors.Theme.Primary">辅助类</MduiText>
+</div>
+
+<PageContent>
+    <PageContentItem Title="边距" OnClick="@(_=>ScrollToElementById("marginpadding"))" />
+    <PageContentItem Title="快速浮动" OnClick="@(_=>ScrollToElementById("float"))" />
+    <PageContentItem Title="水平居中" OnClick="@(_=>ScrollToElementById("center"))" />
+    <PageContentItem Title="垂直居中" OnClick="@(_=>ScrollToElementById("valign"))" />
+    <PageContentItem Title="水平对齐方式" OnClick="@(_=>ScrollToElementById("textalign"))" />
+    <PageContentItem Title="文本大小写转换" OnClick="@(_=>ScrollToElementById("loweruppercase"))" />
+    <PageContentItem Title="文本自动截断" OnClick="@(_=>ScrollToElementById("texttruncate"))" />
+    <PageContentItem Title="清除浮动" OnClick="@(_=>ScrollToElementById("clearfix"))" />
+    <PageContentItem Title="隐藏内容" OnClick="@(_=>ScrollToElementById("hidden"))" />
+    <PageContentItem Title="响应式工具" OnClick="@(_=>ScrollToElementById("response"))" />
+    <PageContentItem Title="阴影" OnClick="@(_=>ScrollToElementById("shadow"))" />
+    <PageContentItem Title="涟漪动画效果" OnClick="@(_=>ScrollToElementById("ripple"))" />
+</PageContent>
+
+<MduiDivider Class="mdui-m-y-5" />
+
+<div id="p-c">
+    <h2 id="marginpadding">
+        <MduiText Typo="@Typo.headline" Color="@Colors.Theme.Primary">边距</MduiText>
+    </h2>
+
+    <MduiText UseMduiTypo>
+        <p>这一系列工具类可以为元素添加 <code>margin</code> 和 <code>padding</code>，默认值都是 8px 的倍数。</p>
+        <p>类名格式为：<code>.mdui-{属性}-{方向}-{大小}</code></p>
+        <p>属性：</p>
+        <ul>
+            <li><code>m</code> - 设置 <code>margin</code></li>
+            <li><code>p</code> - 设置 <code>padding</code></li>
+        </ul>
+        <p>方向：</p>
+        <ul>
+            <li><code>t</code> - 设置 <code>margin-top</code> 或 <code>padding-top</code></li>
+            <li><code>b</code> - 设置 <code>margin-bottom</code> 或 <code>padding-bottom</code></li>
+            <li><code>l</code> - 设置 <code>margin-left</code> 或 <code>padding-left</code></li>
+            <li><code>r</code> - 设置 <code>margin-right</code> 或 <code>padding-right</code></li>
+            <li><code>x</code> - 设置 <code>margin-left</code><code>margin-right</code> 或
+                <code>padding-left</code><code>padding-right</code>
+            </li>
+            <li><code>y</code> - 设置 <code>margin-top</code><code>margin-bottom</code> 或
+                <code>padding-top</code><code>padding-bottom</code>
+            </li>
+            <li><code>a</code> - 设置 <code>margin</code> 或 <code>padding</code></li>
+        </ul>
+        <p>大小：</p>
+        <ul>
+            <li><code>0</code> - 0px</li>
+            <li><code>1</code> - 8px</li>
+            <li><code>2</code> - 16px</li>
+            <li><code>3</code> - 24px</li>
+            <li><code>4</code> - 32px</li>
+            <li><code>5</code> - 40px</li>
+        </ul>
+    </MduiText>
+
+    <MduiDivider Class="mdui-m-y-5" />
+
+    <h2 id="float">
+        <MduiText Typo="@Typo.headline" Color="@Colors.Theme.Primary">快速浮动</MduiText>
+    </h2>
+
+    <MduiText UseMduiTypo>
+        <ul>
+            <li><code>.mdui-float-left</code>使元素向左浮动</li>
+            <li><code>.mdui-float-right</code>使元素向右浮动</li>
+        </ul>
+    </MduiText>
+    <div class="mdui-clearfix">
+        <ExampleSection Component="@typeof(FloatClass)" />
+    </div>
+
+    <MduiDivider Class="mdui-m-y-5" />
+
+    <h2 id="center">
+        <MduiText Typo="@Typo.headline" Color="@Colors.Theme.Primary">水平居中</MduiText>
+    </h2>
+
+    <p class="mdui-typo">为任意元素添加类<code>.mdui-center</code>即可使其水平居中。</p>
+    <ExampleSection Component="@typeof(CenterClass)" />
+
+    <MduiDivider Class="mdui-m-y-5" />
+
+    <h2 id="valign">
+        <MduiText Typo="@Typo.headline" Color="@Colors.Theme.Primary">垂直居中</MduiText>
+    </h2>
+
+    <p class="mdui-typo">为任意元素添加类<code>.mdui-valign</code>即可使该元素中的子元素垂直居中。</p>
+    <ExampleSection Component="@typeof(ValignClass)" />
+
+    <MduiDivider Class="mdui-m-y-5" />
+
+    <h2 id="textalign">
+        <MduiText Typo="@Typo.headline" Color="@Colors.Theme.Primary">水平对齐方式</MduiText>
+    </h2>
+
+    <MduiText UseMduiTypo>
+        <ul>
+            <li><code>.mdui-text-lowercase</code>把文本转为小写。</li>
+            <li><code>.mdui-text-uppercase</code>把文本转为大写。</li>
+            <li><code>.mdui-text-capitalize</code>把文本转为单词的首字母大写。</li>
+        </ul>
+    </MduiText>
+    <ExampleSection Component="@typeof(TextAlignClass)" />
+
+    <MduiDivider Class="mdui-m-y-5" />
+
+    <h2 id="loweruppercase">
+        <MduiText Typo="@Typo.headline" Color="@Colors.Theme.Primary">文本大小写转换</MduiText>
+    </h2>
+
+    <MduiText UseMduiTypo>
+        <ul>
+            <li><code>.mdui-text-lowercase</code>把文本转为小写。</li>
+            <li><code>.mdui-text-uppercase</code>把文本转为大写。</li>
+            <li><code>.mdui-text-capitalize</code>把文本转为单词的首字母大写。</li>
+        </ul>
+    </MduiText>
+    <ExampleSection Component="@typeof(LowerUpperCaseClass)" />
+
+    <MduiDivider Class="mdui-m-y-5" />
+
+    <h2 id="texttruncate">
+        <MduiText Typo="@Typo.headline" Color="@Colors.Theme.Primary">文本自动截断</MduiText>
+    </h2>
+
+    <p class="mdui-typo"><code>.mdui-text-truncate</code>可以在文本长度超出限制时，自动截断，并用省略号代替。</p>
+    <ExampleSection Component="@typeof(TextTruncateClass)" />
+
+    <MduiDivider Class="mdui-m-y-5" />
+
+    <h2 id="clearfix">
+        <MduiText Typo="@Typo.headline" Color="@Colors.Theme.Primary">清除浮动</MduiText>
+    </h2>
+
+    <p class="mdui-typo">为父元素添加<code>.mdui-clearfix</code>类可以清除浮动。</p>
+    <ExampleSection Component="@typeof(ClearfixClass)" />
+
+    <MduiDivider Class="mdui-m-y-5" />
+
+    <h2 id="hidden">
+        <MduiText Typo="@Typo.headline" Color="@Colors.Theme.Primary">隐藏内容</MduiText>
+    </h2>
+
+    <MduiText UseMduiTypo>
+        <ul>
+            <li><code>.mdui-hidden</code>类用于隐藏元素，相当于添加样式<code>display: none;</code>，隐藏后的元素不占据页面空间。</li>
+            <li><code>.mdui-invisible</code>类用于使元素不可见，但依然会占据页面上的空间，相当于添加样式<code>visibility: hidden;</code>。</li>
+        </ul>
+    </MduiText>
+
+    <MduiDivider Class="mdui-m-y-5" />
+
+    <h2 id="response">
+        <MduiText Typo="@Typo.headline" Color="@Colors.Theme.Primary">响应式工具</MduiText>
+    </h2>
+
+    <p>这些工具类通过媒体查询实现针对不同设备隐藏内容。这些工具类包括：</p>
+    <MduiText UseMduiTypo>
+        <ul>
+            <li><code>.mdui-hidden-*</code>：在指定宽度的设备上隐藏。</li>
+            <li><code>.mdui-hidden-*-up</code>：在指定宽度及以上的设备上隐藏。</li>
+            <li><code>.dui-hidden-*-down</code>：在指定宽度及以下的设备上隐藏。</li>
+        </ul>
+    </MduiText>
+    <MduiTableContainer UseMduiTypo>
+        <MduiSimpleTable>
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>超小屏幕<br>&lt;600px</th>
+                    <th>小屏幕<br>&gt;=600px - &lt;1024px</th>
+                    <th>中等屏幕<br>&gt;=1024px - &lt;1440px</th>
+                    <th>大屏幕<br>&gt;=1440px - &lt;1920px</th>
+                    <th>超大屏幕<br>&gt;=1920px</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>.mdui-hidden-xs</code></td>
+                    <td class="is-hidden">隐藏</td>
+                    <td class="is-visible">可见</td>
+                    <td class="is-visible">可见</td>
+                    <td class="is-visible">可见</td>
+                    <td class="is-visible">可见</td>
+                </tr>
+                <tr>
+                    <td><code>.mdui-hidden-sm</code></td>
+                    <td class="is-visible">可见</td>
+                    <td class="is-hidden">隐藏</td>
+                    <td class="is-visible">可见</td>
+                    <td class="is-visible">可见</td>
+                    <td class="is-visible">可见</td>
+                </tr>
+                <tr>
+                    <td><code>.mdui-hidden-md</code></td>
+                    <td class="is-visible">可见</td>
+                    <td class="is-visible">可见</td>
+                    <td class="is-hidden">隐藏</td>
+                    <td class="is-visible">可见</td>
+                    <td class="is-visible">可见</td>
+                </tr>
+                <tr>
+                    <td><code>.mdui-hidden-lg</code></td>
+                    <td class="is-visible">可见</td>
+                    <td class="is-visible">可见</td>
+                    <td class="is-visible">可见</td>
+                    <td class="is-hidden">隐藏</td>
+                    <td class="is-visible">可见</td>
+                </tr>
+                <tr>
+                    <td><code>.mdui-hidden-xl</code></td>
+                    <td class="is-visible">可见</td>
+                    <td class="is-visible">可见</td>
+                    <td class="is-visible">可见</td>
+                    <td class="is-visible">可见</td>
+                    <td class="is-hidden">隐藏</td>
+                </tr>
+                <tr>
+                    <td><code>.mdui-hidden-xs-down</code></td>
+                    <td class="is-hidden">隐藏</td>
+                    <td class="is-visible">可见</td>
+                    <td class="is-visible">可见</td>
+                    <td class="is-visible">可见</td>
+                    <td class="is-visible">可见</td>
+                </tr>
+                <tr>
+                    <td><code>.mdui-hidden-sm-down</code></td>
+                    <td class="is-hidden">隐藏</td>
+                    <td class="is-hidden">隐藏</td>
+                    <td class="is-visible">可见</td>
+                    <td class="is-visible">可见</td>
+                    <td class="is-visible">可见</td>
+                </tr>
+                <tr>
+                    <td><code>.mdui-hidden-md-down</code></td>
+                    <td class="is-hidden">隐藏</td>
+                    <td class="is-hidden">隐藏</td>
+                    <td class="is-hidden">隐藏</td>
+                    <td class="is-visible">可见</td>
+                    <td class="is-visible">可见</td>
+                </tr>
+                <tr>
+                    <td><code>.mdui-hidden-lg-down</code></td>
+                    <td class="is-hidden">隐藏</td>
+                    <td class="is-hidden">隐藏</td>
+                    <td class="is-hidden">隐藏</td>
+                    <td class="is-hidden">隐藏</td>
+                    <td class="is-visible">可见</td>
+                </tr>
+                <tr>
+                    <td><code>.mdui-hidden-xl-down</code></td>
+                    <td class="is-hidden">隐藏</td>
+                    <td class="is-hidden">隐藏</td>
+                    <td class="is-hidden">隐藏</td>
+                    <td class="is-hidden">隐藏</td>
+                    <td class="is-hidden">隐藏</td>
+                </tr>
+                <tr>
+                    <td><code>.mdui-hidden-xs-up</code></td>
+                    <td class="is-hidden">隐藏</td>
+                    <td class="is-hidden">隐藏</td>
+                    <td class="is-hidden">隐藏</td>
+                    <td class="is-hidden">隐藏</td>
+                    <td class="is-hidden">隐藏</td>
+                </tr>
+                <tr>
+                    <td><code>.mdui-hidden-sm-up</code></td>
+                    <td class="is-visible">可见</td>
+                    <td class="is-hidden">隐藏</td>
+                    <td class="is-hidden">隐藏</td>
+                    <td class="is-hidden">隐藏</td>
+                    <td class="is-hidden">隐藏</td>
+                </tr>
+                <tr>
+                    <td><code>.mdui-hidden-md-up</code></td>
+                    <td class="is-visible">可见</td>
+                    <td class="is-visible">可见</td>
+                    <td class="is-hidden">隐藏</td>
+                    <td class="is-hidden">隐藏</td>
+                    <td class="is-hidden">隐藏</td>
+                </tr>
+                <tr>
+                    <td><code>.mdui-hidden-lg-up</code></td>
+                    <td class="is-visible">可见</td>
+                    <td class="is-visible">可见</td>
+                    <td class="is-visible">可见</td>
+                    <td class="is-hidden">隐藏</td>
+                    <td class="is-hidden">隐藏</td>
+                </tr>
+                <tr>
+                    <td><code>.mdui-hidden-xl-up</code></td>
+                    <td class="is-visible">可见</td>
+                    <td class="is-visible">可见</td>
+                    <td class="is-visible">可见</td>
+                    <td class="is-visible">可见</td>
+                    <td class="is-hidden">隐藏</td>
+                </tr>
+            </tbody>
+        </MduiSimpleTable>
+    </MduiTableContainer>
+    <p>调整浏览器窗口、或在不同设备上查看下面的实例。深色部分表示在当前浏览器窗口中是可见的。</p>
+    <MduiContainer UseMduiTypo Fluid>
+        <MduiRow>
+            <MduiCol BreakpointSm="@Breakpoint.Sm.sm6" BreakpointMd="@Breakpoint.Md.md4">
+                <div class="mdui-hidden-xs is-visible">✔ .mdui-hidden-xs</div>
+                <div class="mdui-hidden-sm-up is-hidden">.mdui-hidden-xs</div>
+            </MduiCol>
+            <MduiCol BreakpointSm="@Breakpoint.Sm.sm6" BreakpointMd="@Breakpoint.Md.md4">
+                <div class="mdui-hidden-sm is-visible">✔ .mdui-hidden-sm</div>
+                <div class="mdui-hidden-md-up mdui-hidden-xs-down is-hidden">.mdui-hidden-sm</div>
+            </MduiCol>
+            <MduiCol BreakpointSm="@Breakpoint.Sm.sm6" BreakpointMd="@Breakpoint.Md.md4">
+                <div class="mdui-hidden-md is-visible">✔ .mdui-hidden-md</div>
+                <div class="mdui-hidden-lg-up mdui-hidden-sm-down is-hidden">.mdui-hidden-md</div>
+            </MduiCol>
+            <MduiCol BreakpointSm="@Breakpoint.Sm.sm6" BreakpointMd="@Breakpoint.Md.md4">
+                <div class="mdui-hidden-lg is-visible">✔ .mdui-hidden-lg</div>
+                <div class="mdui-hidden-xl-up mdui-hidden-md-down is-hidden">.mdui-hidden-lg</div>
+            </MduiCol>
+            <MduiCol BreakpointSm="@Breakpoint.Sm.sm6" BreakpointMd="@Breakpoint.Md.md4">
+                <div class="mdui-hidden-xl is-visible">✔ .mdui-hidden-xl</div>
+                <div class="mdui-hidden-lg-down is-hidden">.mdui-hidden-xl</div>
+            </MduiCol>
+        </MduiRow>
+        <MduiRow>
+            <MduiCol BreakpointSm="@Breakpoint.Sm.sm6" BreakpointMd="@Breakpoint.Md.md4">
+                <div class="mdui-hidden-xs-down is-visible">✔ mdui-hidden-xs-down</div>
+                <div class="mdui-hidden-sm-up is-hidden">mdui-hidden-xs-down</div>
+            </MduiCol>
+            <MduiCol BreakpointSm="@Breakpoint.Sm.sm6" BreakpointMd="@Breakpoint.Md.md4">
+                <div class="mdui-hidden-sm-down is-visible">✔ mdui-hidden-sm-down</div>
+                <div class="mdui-hidden-md-up is-hidden">mdui-hidden-sm-down</div>
+            </MduiCol>
+            <MduiCol BreakpointSm="@Breakpoint.Sm.sm6" BreakpointMd="@Breakpoint.Md.md4">
+                <div class="mdui-hidden-md-down is-visible">✔ mdui-hidden-md-down</div>
+                <div class="mdui-hidden-lg-up is-hidden">mdui-hidden-md-down</div>
+            </MduiCol>
+            <MduiCol BreakpointSm="@Breakpoint.Sm.sm6" BreakpointMd="@Breakpoint.Md.md4">
+                <div class="mdui-hidden-lg-down is-visible">✔ mdui-hidden-lg-down</div>
+                <div class="mdui-hidden-xl-up is-hidden">mdui-hidden-lg-down</div>
+            </MduiCol>
+            <MduiCol BreakpointSm="@Breakpoint.Sm.sm6" BreakpointMd="@Breakpoint.Md.md4">
+                <div class="mdui-hidden-xl-down is-visible">✔ mdui-hidden-xl-down</div>
+                <div class="is-hidden">mdui-hidden-xl-down</div>
+            </MduiCol>
+        </MduiRow>
+        <MduiRow>
+            <MduiCol BreakpointSm="@Breakpoint.Sm.sm6" BreakpointMd="@Breakpoint.Md.md4">
+                <div class="mdui-hidden-xs-up is-visible">✔ mdui-hidden-xs-up</div>
+                <div class="is-hidden">mdui-hidden-xs-up</div>
+            </MduiCol>
+            <MduiCol BreakpointSm="@Breakpoint.Sm.sm6" BreakpointMd="@Breakpoint.Md.md4">
+                <div class="mdui-hidden-sm-up is-visible">✔ mdui-hidden-sm-up</div>
+                <div class="mdui-hidden-xs-down is-hidden">mdui-hidden-sm-up</div>
+            </MduiCol>
+            <MduiCol BreakpointSm="@Breakpoint.Sm.sm6" BreakpointMd="@Breakpoint.Md.md4">
+                <div class="mdui-hidden-md-up is-visible">✔ mdui-hidden-md-up</div>
+                <div class="mdui-hidden-sm-down is-hidden">mdui-hidden-md-up</div>
+            </MduiCol>
+            <MduiCol BreakpointSm="@Breakpoint.Sm.sm6" BreakpointMd="@Breakpoint.Md.md4">
+                <div class="mdui-hidden-lg-up is-visible">✔ mdui-hidden-lg-up</div>
+                <div class="mdui-hidden-md-down is-hidden">mdui-hidden-lg-up</div>
+            </MduiCol>
+            <MduiCol BreakpointSm="@Breakpoint.Sm.sm6" BreakpointMd="@Breakpoint.Md.md4">
+                <div class="mdui-hidden-xl-up is-visible">✔ mdui-hidden-xl-up</div>
+                <div class="mdui-hidden-lg-down is-hidden">mdui-hidden-xl-up</div>
+            </MduiCol>
+        </MduiRow>
+    </MduiContainer>
+
+    <MduiDivider Class="mdui-m-y-5" />
+
+    <h2 id="shadow">
+        <MduiText Typo="@Typo.headline" Color="@Colors.Theme.Primary">阴影</MduiText>
+    </h2>
+
+    <p class="mdui-m-b-4">MDUI提供了24种不同深度的阴影，可以满足Material Design中任意场景的需求。</p>
+
+    <MduiText Typo="@Typo.subheading"><b>添加阴影</b></MduiText>
+    <p class="mdui-typo">只需在元素上添加类<code>.mdui-shadow-[1-24]</code>，元素就会拥有对应深度的阴影。添加类<code>.mdui-shadow-0</code>则可以移除阴影。
+    </p>
+    <p>请拖动下方滑块来观察不同深度的阴影变化。</p>
+    <div class="mdui-center mdui-shadow-@shadowValue" id="example-shadow" style="width: 200px;height: 123.6px;"></div>
+    <MduiSlider Min="0" Max="24" Discrete @bind-Value="@shadowValue" />
+
+     <div class="mdui-m-t-4">
+         <MduiText Typo="@Typo.subheading"><b>鼠标悬浮时加深阴影</b></MduiText>
+     </div>
+     <p class="mdui-typo">在任何元素上添加类<code>.mdui-hoverable</code>，就能在鼠标悬浮时使阴影加深。</p>
+     <ExampleSection Component="@typeof(SimpleCard)" />
+
+     <MduiDivider Class="mdui-m-y-5" />
+
+     <h2 id="ripple">
+         <MduiText Typo="@Typo.headline" Color="@Colors.Theme.Primary">涟漪动画效果</MduiText>
+     </h2>
+     <p>添加涟漪动画效果后，会在点击元素时，产生向外扩散的水波纹效果。</p>
+
+     <div class="mdui-m-t-4">
+         <MduiText Typo="@Typo.subheading"><b>调用方式</b></MduiText>
+     </div>
+     <MduiText UseMduiTypo>
+        <ol>
+            <li><code>MduiButton</code><code>MduiIconButton</code><code>MduiListItem</code><code>MduiNavMenuItem</code><code>MduiTabItem</code>等组件默认带有涟漪动画效果，如果需要禁用，只需要设置<code>DisableRipple</code>参数为<code>true</code>。
+            </li>
+            <li>只需在元素上添加类<code>.mdui-ripple</code>，点击元素时就会有涟漪动画效果。如果要在<code>img</code><code>input</code>等无法拥有子元素的标签上使用，需要把<code>.mdui-ripple</code>添加到它的父元素上。
+            </li>
+        </ol>
+    </MduiText>
+
+    <div class="mdui-m-t-4">
+        <MduiText Typo="@Typo.subheading"><b>涟漪效果示例</b></MduiText>
+    </div>
+    <ExampleSection Component="@typeof(ComponentRipple)" />
+    <ExampleSection Component="@typeof(ImageRipple)" />
+
+    <div class="mdui-m-t-4">
+        <MduiText Typo="@Typo.subheading"><b>指定涟漪颜色</b></MduiText>
+    </div>
+    <p class="mdui-typo">默认的涟漪为深色背景，当通过<code>.mdui-color-[color]</code>指定了背景色、或在深色主题下时，涟漪默认为白色。</p>
+    <p class="mdui-typo">可通过添加类<code>.mdui-ripple-[color]</code>来指定涟漪颜色。</p>
+    <ExampleSection Component="@typeof(ColorRipple)" />
+</div>
+
+@code {
+    int shadowValue = 1;
+}
