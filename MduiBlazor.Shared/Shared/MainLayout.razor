@@ -30,7 +30,10 @@
      <MduiLayoutContent>
          <ErrorBoundary @ref="errorBoundary" Context="ex">
              <ChildContent>
-                 <MduiContainer>@Body</MduiContainer>
+                 <MduiContainer>
+                     @Body
+                     <MduiFab Class="mdui-fab-fixed" OnClick="@ScrollToTopAsync" Hide="@_hideScrollToTop" Color="@Colors.Theme.Primary" Icon="arrow_drop_up" />
+                 </MduiContainer>
              </ChildContent>
              <ErrorContent>
                  <div class="blazor-error-boundary">@ex.Message</div>

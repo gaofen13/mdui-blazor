@@ -9,6 +9,7 @@ namespace MduiBlazor.Shared.Shared
     {
         private bool _open;
         private bool _showThemeDialog;
+        private bool _hideScrollToTop = true;
         private PrimaryColor _primaryColor = PrimaryColor.Indigo;
         private AccentColor _accentColor = AccentColor.Pink;
         private bool _isDarkTheme;
@@ -38,8 +39,11 @@ namespace MduiBlazor.Shared.Shared
                 _jsModule = await JSRuntime.InvokeAsync<IJSObjectReference>("import",
                      "./_content/MduiBlazor.Shared/Shared/MainLayout.razor.js");
                 await _jsModule!.InvokeVoidAsync("AddWindowWidthListener", _objectReference);
+                await _jsModule!.InvokeVoidAsync("AddScrollListener", _objectReference, "body");
                 var width = await _jsModule!.InvokeAsync<int>("GetWindowWidth");
                 UpdateLayout(width);
+                var scrollTop = await _jsModule!.InvokeAsync<double>("GetScrollTop");
+                UpdateScrollToTop(scrollTop);
                 StateHasChanged();
             }
         }
@@ -70,6 +74,32 @@ namespace MduiBlazor.Shared.Shared
                     StateHasChanged();
                 }
             }
+        }
+
+        [JSInvokable]
+        public void UpdateScrollToTop(double scrollHeight)
+        {
+            if (scrollHeight >= 300)
+            {
+                if (_hideScrollToTop)
+                {
+                    _hideScrollToTop = false;
+                    StateHasChanged();
+                }
+            }
+            else
+            {
+                if (!_hideScrollToTop)
+                {
+                    _hideScrollToTop = true;
+                    StateHasChanged();
+                }
+            }
+        }
+
+        private async Task ScrollToTopAsync()
+        {
+            await _jsModule!.InvokeVoidAsync("ScrollToTop");
         }
 
         private void OnLoactionChanged(object? sender, LocationChangedEventArgs args)
