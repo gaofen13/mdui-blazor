@@ -44,7 +44,6 @@ namespace MduiBlazor.Shared.Shared
                 UpdateLayout(width);
                 var scrollTop = await _jsModule!.InvokeAsync<double>("GetScrollTop");
                 UpdateScrollToTop(scrollTop);
-                StateHasChanged();
             }
         }
 
@@ -79,7 +78,7 @@ namespace MduiBlazor.Shared.Shared
         [JSInvokable]
         public void UpdateScrollToTop(double scrollHeight)
         {
-            if (scrollHeight >= 300)
+            if (scrollHeight >= 500)
             {
                 if (_hideScrollToTop)
                 {
