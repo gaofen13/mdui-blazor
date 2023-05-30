@@ -1,0 +1,63 @@
+@page "/divider"
+@inherits BasePage
+@using MduiBlazor.Shared.Pages.Examples.Divider
+
+<PageTitle>分隔线</PageTitle>
+<div class="mdui-m-y-5">
+    <MduiText Typo="@Typo.display1" Color="@Colors.Theme.Primary">分隔线</MduiText>
+    <p>分割线用于管理和分隔列表和页面布局中的内容，以便让内容生成更好的视觉效果及空间感。</p>
+</div>
+
+<PageContent>
+    <PageContentItem Title="Examples" OnClick="@(_=>ScrollToElementById("examples"))">
+        <PageContentItem Title="等屏宽分隔线" OnClick="@(_=>ScrollToElementById("simple"))" />
+        <PageContentItem Title="内凹分隔线" OnClick="@(_=>ScrollToElementById("inset"))" />
+    </PageContentItem>
+    <PageContentItem Title="属性/方法/事件" OnClick="@(_=>ScrollToElementById("attr"))" />
+</PageContent>
+
+<MduiDivider Class="mdui-m-y-5" />
+
+<div>
+    <h2 id="examples">
+        <MduiText Typo="@Typo.headline" Color="@Colors.Theme.Primary">Examples</MduiText>
+    </h2>
+    <p>分割线在默认主题下为深色，在深色主题下为浅色。</p>
+
+    <MduiText id="simple" Typo="@Typo.subheading"><b>等屏宽分隔线</b></MduiText>
+    <p>默认分隔线会占据 100% 的宽度。</p>
+    <ExampleSection Component="@typeof(SimpleDivider)" />
+
+    <MduiText id="inset" Typo="@Typo.subheading"><b>内凹分隔线</b></MduiText>
+    <p class="mdui-typo">设置组件参数<code>Inset</code>为<code>true</code>，分割线距离左侧会有 72px 的距离，经常用在有头像或图标的列表中。</p>
+    <ExampleSection Component="@typeof(InsetDivider)" />
+</div>
+
+ <MduiDivider Class="mdui-m-y-5" />
+
+ <div>
+     <h2 id="attr">
+         <MduiText Typo="@Typo.headline" Color="@Colors.Theme.Primary">属性/方法/事件</MduiText>
+     </h2>
+
+     <MduiTableContainer UseMduiTypo Class="mdui-m-y-1">
+        <MduiSimpleTable>
+            <thead>
+                <th>参数名称</th>
+                <th>类型/返回类型</th>
+                <th>说明</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <code>Inset</code>
+                    </td>
+                    <td>
+                        <code>bool</code>
+                    </td>
+                    <td>是否为内凹分割线，默认<code>false</code>。</td>
+                </tr>
+            </tbody>
+        </MduiSimpleTable>
+    </MduiTableContainer>
+</div>
