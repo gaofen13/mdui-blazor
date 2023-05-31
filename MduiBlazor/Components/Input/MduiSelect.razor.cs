@@ -12,9 +12,6 @@ namespace MduiBlazor
             .AddClass(Class)
             .Build();
 
-        [Parameter]
-        public string? Placeholder { get; set; }
-
         protected override bool TryParseValueFromString(string? value, [MaybeNullWhen(false)] out TValue result, [NotNullWhen(false)] out string? validationErrorMessage)
             => this.TryParseSelectableValueFromString(value, out result, out validationErrorMessage);
 

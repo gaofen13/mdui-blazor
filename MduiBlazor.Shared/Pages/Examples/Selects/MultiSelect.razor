@@ -1,0 +1,24 @@
+<MduiMultiSelect TValue="@string[]" Height="8" @bind-Value="@value">
+    <optgroup label="Fonts">
+        <option>Roboto</option>
+        <option>Calibri</option>
+        <option>Courier New</option>
+        <option>Verdana</option>
+    </optgroup>
+    <optgroup label="Size">
+        <option>50%</option>
+        <option>75%</option>
+        <option>90%</option>
+        <option>100%</option>
+    </optgroup>
+    <optgroup label="header">
+        <option>h1</option>
+        <option>h2</option>
+        <option>h3</option>
+        <option>h4</option>
+    </optgroup>
+</MduiMultiSelect>
+
+@code {
+    string[] value = {};
+}
