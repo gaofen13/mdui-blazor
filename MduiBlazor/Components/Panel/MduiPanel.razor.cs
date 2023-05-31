@@ -45,6 +45,7 @@ namespace MduiBlazor
             foreach (var openedItem in openedItems)
             {
                 openedItem.ClosePanel();
+                openedItem.ReRender();
             }
         }
     }

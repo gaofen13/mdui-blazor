@@ -1,0 +1,54 @@
+<MduiPanel>
+    <MduiPanelItem Title="Trip name" Summary="@(new string[]{"Carribean cruise"})" @bind-Open="@open1">
+        <ChildContent>
+            <p>First content</p>
+            <p>First content</p>
+            <p>First content</p>
+            <p>First content</p>
+            <p>First content</p>
+            <p>First content</p>
+        </ChildContent>
+        <ActionsContent>
+            <MduiButton DisableRaised OnClick="_=>open1=false">Cancel</MduiButton>
+            <MduiButton DisableRaised>Save</MduiButton>
+        </ActionsContent>
+    </MduiPanelItem>
+
+    <MduiPanelItem Title="Location" @bind-Open="@open2">
+        <ChildContent>
+            <p>Second content</p>
+            <p>Second content</p>
+            <p>Second content</p>
+            <p>Second content</p>
+            <p>Second content</p>
+            <p>Second content</p>
+        </ChildContent>
+        <ActionsContent>
+            <MduiButton DisableRaised OnClick="_=>open2=false">Cancel</MduiButton>
+            <MduiButton DisableRaised>Save</MduiButton>
+        </ActionsContent>
+    </MduiPanelItem>
+
+    <MduiPanelItem Title="Start and end dates" Summary="@summary" @bind-Open="@open3">
+        <ChildContent>
+            <p>Third content</p>
+            <p>Third content</p>
+            <p>Third content</p>
+            <p>Third content</p>
+            <p>Third content</p>
+            <p>Third content</p>
+        </ChildContent>
+        <ActionsContent>
+            <MduiButton DisableRaised OnClick="_=>open3=false">Cancel</MduiButton>
+            <MduiButton DisableRaised>Save</MduiButton>
+        </ActionsContent>
+    </MduiPanelItem>
+</MduiPanel>
+
+@code {
+    bool open1;
+    bool open2;
+    bool open3;
+
+    string[] summary = new string[] { "Start date: Feb 29, 2016", "End date: Not set" };
+}

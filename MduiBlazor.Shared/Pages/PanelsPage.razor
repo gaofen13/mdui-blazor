@@ -1,0 +1,50 @@
+@page "/panels"
+@inherits BasePage
+@using MduiBlazor.Shared.Pages.Examples.Panels
+
+<PageTitle>可扩展面板</PageTitle>
+<div class="mdui-m-y-5">
+    <MduiText Typo="@Typo.display1" Color="@Colors.Theme.Primary">可扩展面板</MduiText>
+</div>
+
+<PageContent>
+    <PageContentItem Title="Examples" OnClick="@(_=>ScrollToElementById("examples"))">
+        <PageContentItem Title="简单Panel" OnClick="@(_=>ScrollToElementById("simple"))" />
+        <PageContentItem Title="默认打开的面板项" OnClick="@(_=>ScrollToElementById("defaultOpened"))" />
+        <PageContentItem Title="手风琴效果" OnClick="@(_=>ScrollToElementById("accordion"))" />
+        <PageContentItem Title="移除面板间距" OnClick="@(_=>ScrollToElementById("gapless"))" />
+        <PageContentItem Title="弹出面板" OnClick="@(_=>ScrollToElementById("popout"))" />
+        <PageContentItem Title="面板嵌套" OnClick="@(_=>ScrollToElementById("cascade"))" />
+        <PageContentItem Title="完整结构" OnClick="@(_=>ScrollToElementById("full"))" />
+    </PageContentItem>
+    <PageContentItem Title="属性/方法/事件" OnClick="@(_=>ScrollToElementById("attr"))" />
+</PageContent>
+
+<MduiDivider Class="mdui-m-y-5" />
+
+<div>
+    <h2 id="examples">
+        <MduiText Typo="@Typo.headline" Color="@Colors.Theme.Primary">Examples</MduiText>
+    </h2>
+
+    <MduiText id="simple" Typo="@Typo.subheading">简单Panel</MduiText>
+    <ExampleSection Component="@typeof(SimplePanel)" />
+
+    <MduiText id="defaultOpened" Typo="@Typo.subheading">默认打开的面板项</MduiText>
+    <ExampleSection Component="@typeof(DefaultOpenedPanel)" />
+
+    <MduiText id="accordion" Typo="@Typo.subheading">手风琴效果</MduiText>
+    <ExampleSection Component="@typeof(AccordionPanel)" />
+
+    <MduiText id="gapless" Typo="@Typo.subheading">移除面板间距</MduiText>
+    <ExampleSection Component="@typeof(GaplessPanel)" />
+
+    <MduiText id="popout" Typo="@Typo.subheading">弹出面板</MduiText>
+    <ExampleSection Component="@typeof(PopoutPanel)" />
+
+    <MduiText id="cascade" Typo="@Typo.subheading">面板嵌套</MduiText>
+    <ExampleSection Component="@typeof(CascadingPanel)" />
+
+    <MduiText id="full" Typo="@Typo.subheading">完整结构</MduiText>
+    <ExampleSection Component="@typeof(FullPanel)" />
+</div>

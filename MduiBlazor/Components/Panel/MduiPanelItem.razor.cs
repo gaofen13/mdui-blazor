@@ -77,6 +77,11 @@ namespace MduiBlazor
             OpenChanged.InvokeAsync(false);
         }
 
+        internal void ReRender()
+        {
+            StateHasChanged();
+        }
+
         void IDisposable.Dispose()
         {
             Panel?.RemoveItem(this);
