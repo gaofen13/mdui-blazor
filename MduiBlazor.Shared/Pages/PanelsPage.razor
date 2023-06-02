@@ -31,20 +31,134 @@
     <ExampleSection Component="@typeof(SimplePanel)" />
 
     <MduiText id="defaultOpened" Typo="@Typo.subheading">默认打开的面板项</MduiText>
+    <p class="mdui-typo">设置<code>MduiPanelItem</code>组件参数<code>Open</code>为<code>true</code>即可使该面板项处于默认打开状态。</p>
     <ExampleSection Component="@typeof(DefaultOpenedPanel)" />
 
     <MduiText id="accordion" Typo="@Typo.subheading">手风琴效果</MduiText>
+    <p class="mdui-typo">设置<code>MduiPane</code>组件参数<code>Accordion</code>为<code>true</code>后，只能有一个面板项处于打开状态。</p>
     <ExampleSection Component="@typeof(AccordionPanel)" />
 
     <MduiText id="gapless" Typo="@Typo.subheading">移除面板间距</MduiText>
+    <p class="mdui-typo">设置<code>MduiPane</code>组件参数<code>Gapless</code>为<code>true</code>即可移除打开的面板和其他面板之间的间距。</p>
     <ExampleSection Component="@typeof(GaplessPanel)" />
 
     <MduiText id="popout" Typo="@Typo.subheading">弹出面板</MduiText>
+    <p class="mdui-typo">设置<code>MduiPane</code>组件参数<code>Popout</code>为<code>true</code>即可使打开的面板有弹出效果。</p>
     <ExampleSection Component="@typeof(PopoutPanel)" />
 
     <MduiText id="cascade" Typo="@Typo.subheading">面板嵌套</MduiText>
+    <p>可扩展面板可以互相嵌套。</p>
     <ExampleSection Component="@typeof(CascadingPanel)" />
 
     <MduiText id="full" Typo="@Typo.subheading">完整结构</MduiText>
+    <p>这个示例包含了所有可以包含的元素组件。</p>
     <ExampleSection Component="@typeof(FullPanel)" />
 </div>
+
+ <MduiDivider Class="mdui-m-y-5" />
+
+ <div>
+     <h2 id="attr">
+         <MduiText Typo="@Typo.headline" Color="@Colors.Theme.Primary">属性/方法/事件</MduiText>
+     </h2>
+
+     <MduiTableContainer UseMduiTypo Class="mdui-m-y-1">
+         <MduiSimpleTable>
+             <thead>
+                 <th>组件</th>
+                 <th>参数名称</th>
+                 <th>类型/返回类型</th>
+                 <th>说明</th>
+             </thead>
+             <tbody>
+                 <tr>
+                     <th rowspan="3">
+                         <code>MduiPanel</code>
+                     </th>
+                     <td>
+                         <code>Accordion</code>
+                     </td>
+                     <td>
+                         <code>bool</code>
+                     </td>
+                     <td>是否使组件具有手风琴效果，即只能有一个面板项处于打开状态。默认<code>false</code>。</td>
+                 </tr>
+                 <tr>
+                     <td>
+                         <code>Popout</code>
+                     </td>
+                     <td>
+                         <code>bool</code>
+                     </td>
+                     <td>是否移除打开的面板和其他面板之间的间距。默认<code>false</code>。</td>
+                 </tr>
+                 <tr>
+                     <td>
+                         <code>Gapless</code>
+                     </td>
+                     <td>
+                         <code>bool</code>
+                     </td>
+                     <td>是否使打开的面板有弹出效果。默认<code>false</code>。</td>
+                 </tr>
+                 <tr>
+                     <th rowspan="6">
+                         <code>MduiPanelItem</code>
+                     </th>
+                     <td>
+                         <code>Title</code>
+                     </td>
+                     <td>
+                         <code>string?</code>
+                     </td>
+                     <td>面板项标题。</td>
+                 </tr>
+                 <tr>
+                     <td>
+                         <code>Summary</code>
+                     </td>
+                     <td>
+                         <code>string[]?</code>
+                     </td>
+                     <td>面板项副标题，可设置多个副标题。</td>
+                 </tr>
+                 <tr>
+                     <td>
+                         <code>ArrowIcon</code>
+                     </td>
+                     <td>
+                         <code>string</code>
+                     </td>
+                     <td>标题栏图标，默认<MduiTooltip Message="keyboard_arrow_down"><MduiIcon Name="keyboard_arrow_down" /></MduiTooltip>。</td>
+                 </tr>
+                 <tr>
+                     <td>
+                         <code>Open</code>
+                     </td>
+                     <td>
+                         <code>bool</code>
+                     </td>
+                     <td>面板项是否处于打开状态。默认<code>false</code>。</td>
+                 </tr>
+                 <tr>
+                     <td>
+                         <code>OpenChanged</code>
+                     </td>
+                     <td>
+                         <code>EventCallback&lt;bool&gt;</code>
+                     </td>
+                     <td><code>Open</code>参数修改后的回调函数，一般用于双向绑定。</td>
+                 </tr>
+                 <tr>
+                     <td>
+                         <code>OnHeaderClicked</code>
+                     </td>
+                     <td>
+                         <code>EventCallback&lt;MouseEventArgs&gt;</code>
+                     </td>
+                     <td>单击标题栏的回调函数。本参数不为<code>null</code>时将屏蔽默认操作。</td>
+                 </tr>
+             </tbody>
+         </MduiSimpleTable>
+     </MduiTableContainer>
+ </div>
