@@ -27,7 +27,6 @@ namespace MduiBlazor
                 if (_value != value)
                 {
                     _value = value;
-                    _ = ValueChanged.InvokeAsync(_value);
                     if (value?.Length > 0)
                     {
                         _field?.SetNotEmpty();
@@ -36,15 +35,19 @@ namespace MduiBlazor
                     {
                         _field?.RemoveNotEmpty();
                     }
+                    if (ValueChanged.HasDelegate)
+                    {
+                        ValueChanged.InvokeAsync(value);
+                    }
                 }
             }
         }
 
         [Parameter]
-        public EventCallback<string?> ValueChanged { get; set; }
+        public EventCallback<string> ValueChanged { get; set; }
 
         [Parameter]
-        public Expression<Func<string?>>? ValueExpression { get; set; }
+        public Expression<Func<string>>? ValueExpression { get; set; }
 
         [Parameter]
         public bool Disabled { get; set; }
@@ -99,5 +102,10 @@ namespace MduiBlazor
 
         [Parameter]
         public EventCallback<string> OnInput { get; set; }
+
+        private void OnValueChanged(string? value)
+        {
+            Value = value;
+        }
     }
 }

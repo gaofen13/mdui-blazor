@@ -9,15 +9,14 @@ namespace MduiBlazor
         private string Classname =>
             new ClassBuilder()
             .AddClass("mdui-textfield-disabled", Disabled)
-            .AddClass("mdui-textfield-floating-label", FloatingLabel)
             .AddClass(Class)
             .Build();
 
         [Parameter]
-        public TValue? Value { get; set; }
+        public TValue Value { get; set; } = default!;
 
         [Parameter]
-        public EventCallback<TValue?> ValueChanged { get; set; }
+        public EventCallback<TValue> ValueChanged { get; set; }
 
         [Parameter]
         public Expression<Func<TValue?>>? ValueExpression { get; set; }
@@ -40,12 +39,6 @@ namespace MduiBlazor
         [Parameter]
         public string? HelperText { get; set; }
 
-        /// <summary>
-        /// only shows when placeholder is empty
-        /// </summary>
-        [Parameter]
-        public bool FloatingLabel { get; set; }
-
         [Parameter]
         public bool AutoFocus { get; set; }
 
@@ -66,5 +59,17 @@ namespace MduiBlazor
 
         [Parameter]
         public TValue? Step { get; set; }
+
+        private void OnValueChanged(TValue value)
+        {
+            if (Value?.Equals(value) != true)
+            {
+                Value = value;
+                if (ValueChanged.HasDelegate)
+                {
+                    ValueChanged.InvokeAsync(value);
+                }
+            }
+        }
     }
 }

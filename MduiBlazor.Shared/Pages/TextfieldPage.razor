@@ -1,0 +1,64 @@
+@page "/textfield"
+@inherits BasePage
+@using MduiBlazor.Shared.Pages.Examples.Textfield
+
+<PageTitle>文本框</PageTitle>
+<div class="mdui-m-y-5">
+    <MduiText Typo="@Typo.display1" Color="@Colors.Theme.Primary">文本框</MduiText>
+    <p>文本框一般使用在表单中。MDUI 的文本框拥有字数统计、表单验证等功能。</p>
+    <p class="mdui-typo">可以配合<a href="grid">网格布局系统</a>进行表单布局。</p>
+</div>
+
+<PageContent>
+    <PageContentItem Title="Examples" OnClick="@(_=>ScrollToElementById("examples"))">
+        <PageContentItem Title="单行文本框" OnClick="@(_=>ScrollToElementById("simple"))" />
+        <PageContentItem Title="固定标签文本框" OnClick="@(_=>ScrollToElementById("label"))" />
+        <PageContentItem Title="文本按钮文本框" OnClick="@(_=>ScrollToElementById("floating"))" />
+        <PageContentItem Title="禁用状态" OnClick="@(_=>ScrollToElementById("disabled"))" />
+        <PageContentItem Title="多行文本框" OnClick="@(_=>ScrollToElementById("multiRows"))" />
+        <PageContentItem Title="含帮助文本" OnClick="@(_=>ScrollToElementById("helperText"))" />
+        <PageContentItem Title="字数统计" OnClick="@(_=>ScrollToElementById("count"))" />
+        <PageContentItem Title="含图标" OnClick="@(_=>ScrollToElementById("icon"))" />
+        <PageContentItem Title="可展开文本框" OnClick="@(_=>ScrollToElementById("expandable"))" />
+    </PageContentItem>
+    <PageContentItem Title="属性/方法/事件" OnClick="@(_=>ScrollToElementById("attr"))" />
+</PageContent>
+
+<MduiDivider Class="mdui-m-y-5" />
+
+<div>
+    <h2 id="examples">
+        <MduiText Typo="@Typo.headline" Color="@Colors.Theme.Primary">Examples</MduiText>
+    </h2>
+
+    <MduiText id="simple" Typo="@Typo.subheading"><b>单行文本框</b></MduiText>
+    <ExampleSection Component="@typeof(SimpleTextfield)" />
+
+    <MduiText id="label" Typo="@Typo.subheading"><b>固定标签文本框</b></MduiText>
+    <ExampleSection Component="@typeof(LabelTextfield)" />
+
+    <MduiText id="floating" Typo="@Typo.subheading"><b>浮动标签文本框</b></MduiText>
+    <ExampleSection Component="@typeof(FloatTextfield)" />
+
+    <MduiText id="disabled" Typo="@Typo.subheading"><b>禁用状态</b></MduiText>
+    <p class="mdui-typo">设置参数<code>Disabled</code>为<code>true</code>，即可禁用文本框。</p>
+    <ExampleSection Component="@typeof(DisabledTextfield)" />
+
+    <MduiText id="multiRows" Typo="@Typo.subheading"><b>多行文本框</b></MduiText>
+    <p class="mdui-typo">设置参数<code>Rows</code>大于等于<code>2</code>，即为多行文本框，该参数为文本框的高度。</p>
+    <ExampleSection Component="@typeof(MultiRowsTextfield)" />
+
+    <MduiText id="helperText" Typo="@Typo.subheading"><b>含帮助文本</b></MduiText>
+    <p class="mdui-typo">设置参数<code>HelperText</code>，可以添加帮助文本。</p>
+    <ExampleSection Component="@typeof(HelpTextfield)" />
+
+    <MduiText id="count" Typo="@Typo.subheading"><b>字数统计</b></MduiText>
+    <p class="mdui-typo">设置参数<code>MaxLength</code>大于<code>0</code>即可限制输入的字符长度，组件会自动添加实时字数统计显示到文本框右下角。</p>
+    <ExampleSection Component="@typeof(MaxlengthTextfield)" />
+
+    <MduiText id="icon" Typo="@Typo.subheading"><b>含图标</b></MduiText>
+    <ExampleSection Component="@typeof(IconTextfield)" />
+
+    <MduiText id="expandable" Typo="@Typo.subheading"><b>可展开文本框</b></MduiText>
+    <ExampleSection Component="@typeof(ExpandableTextfield)" />
+</div>
