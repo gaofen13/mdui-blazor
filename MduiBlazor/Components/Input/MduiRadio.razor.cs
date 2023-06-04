@@ -21,6 +21,9 @@ namespace MduiBlazor
 
         [Parameter]
         public TValue? Value { get; set; }
+        
+        [Parameter]
+        public bool Readonly { get; set; }
 
         [Parameter]
         public bool Disabled { get; set; }

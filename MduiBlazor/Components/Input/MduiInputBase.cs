@@ -18,6 +18,9 @@ namespace MduiBlazor
         [CascadingParameter(Name = "Field")]
         protected MduiField? Field { get; set; }
 
+        [Parameter]
+        public string? Name { get; set; }
+
         /// <summary>
         /// When true, the control will be immutable by user interaction. <see href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/readonly">readonly</see> HTML attribute for more information.
         /// </summary>

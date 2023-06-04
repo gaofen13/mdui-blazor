@@ -17,6 +17,9 @@ namespace MduiBlazor
             .Build();
 
         [Parameter]
+        public string? Name { get; set; }
+
+        [Parameter]
 #pragma warning disable BL0007 // Component parameters should be auto properties
         public string? Value
 #pragma warning restore BL0007 // Component parameters should be auto properties

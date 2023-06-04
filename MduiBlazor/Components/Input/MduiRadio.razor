@@ -3,9 +3,8 @@
 @typeparam TValue
 
 <label class="@Classname" style="@Style" @attributes="@AdditionalAttributes">
-    <input type="radio" name="@(Name??RadioGroup?.RadioName)"
-        disabled="@Disabled" checked="@Checked" value="@Value"
-        @onchange="@OnRadioChanged" />
+    <input type="radio" name="@(Name??RadioGroup?.RadioName)" readonly="@Readonly" disabled="@Disabled"
+        checked="@Checked" value="@Value" @onchange="@OnRadioChanged" />
     <i class="mdui-radio-icon"></i>
     @if (ChildContent is not null)
     {

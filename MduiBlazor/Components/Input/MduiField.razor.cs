@@ -15,6 +15,7 @@ namespace MduiBlazor
             .AddClass("mdui-textfield-has-bottom", _invalid || !string.IsNullOrWhiteSpace(HelperText))
             .AddClass("mdui-textfield-not-empty", _notEmpty)
             .AddClass("mdui-textfield-disabled", Disabled)
+            .AddClass("mdui-textfield-required", Required)
             .AddClass("mdui-textfield-invalid", _invalid)
             .AddClass("mdui-textfield-focus", _isFocus)
             .AddClass("mdui-typo", UseMduiTypo)
@@ -28,7 +29,7 @@ namespace MduiBlazor
         public string? Label { get; set; }
 
         [Parameter]
-        public bool LabelRequired { get; set; }
+        public bool Required { get; set; }
 
         [Parameter]
         public string? Icon { get; set; }

@@ -1,0 +1,125 @@
+@page "/selectcontrol"
+@inherits BasePage
+@using MduiBlazor.Shared.Pages.Examples.SelectControls
+
+<PageTitle>下拉选择</PageTitle>
+<div class="mdui-m-y-5">
+    <MduiText Typo="@Typo.display1" Color="@Colors.Theme.Primary">下拉选择</MduiText>
+    <p>下拉选择可以让用户在多个选项之间进行选择。</p>
+</div>
+
+<PageContent>
+    <PageContentItem Title="Examples" OnClick="@(_=>ScrollToElementById("examples"))">
+        <PageContentItem Title="单选框" OnClick="@(_=>ScrollToElementById("radio"))" />
+        <PageContentItem Title="复选框" OnClick="@(_=>ScrollToElementById("checkbox"))" />
+        <PageContentItem Title="开关切换" OnClick="@(_=>ScrollToElementById("switch"))" />
+    </PageContentItem>
+    <PageContentItem Title="属性/方法/事件" OnClick="@(_=>ScrollToElementById("attr"))" />
+</PageContent>
+
+<MduiDivider Class="mdui-m-y-5" />
+
+<div>
+    <h2 id="examples">
+        <MduiText Typo="@Typo.headline" Color="@Colors.Theme.Primary">Examples</MduiText>
+    </h2>
+
+    <MduiText id="radio" Typo="@Typo.subheading"><b>单选框</b></MduiText>
+    <ExampleSection Component="@typeof(Radio)" />
+
+    <MduiText id="checkbox" Typo="@Typo.subheading"><b>复选框</b></MduiText>
+    <ExampleSection Component="@typeof(Checkbox)" />
+
+    <MduiText id="switch" Typo="@Typo.subheading"><b>开关切换</b></MduiText>
+    <ExampleSection Component="@typeof(Switch)" />
+</div>
+
+<MduiDivider Class="mdui-m-y-5" />
+
+<div>
+    <h2 id="attr">
+        <MduiText Typo="@Typo.headline" Color="@Colors.Theme.Primary">属性/方法/事件</MduiText>
+    </h2>
+
+    <MduiTableContainer UseMduiTypo Class="mdui-m-y-1">
+         <MduiSimpleTable>
+             <thead>
+                 <th>组件</th>
+                 <th>参数名称</th>
+                 <th>类型/返回类型</th>
+                 <th>说明</th>
+             </thead>
+             <tbody>
+                 <tr>
+                     <td>
+                         <code>MduiRadioGroup&lt;TValue&gt;</code>
+                     </td>
+                     <td>
+                         <code>Vertical</code>
+                     </td>
+                     <td>
+                         <code>bool</code>
+                     </td>
+                     <td>单选项是否竖向排列，默认<code>false</code>。</td>
+                 </tr>
+                 <tr>
+                     <td rowspan="6">
+                         <code>MduiRadio&lt;TValue&gt;</code>
+                     </td>
+                     <td>
+                         <code>Name</code>
+                     </td>
+                     <td>
+                         <code>string?</code>
+                     </td>
+                     <td><code>radio</code>标签的<code>name</code>属性。</td>
+                 </tr>
+                 <tr>
+                     <td>
+                         <code>Label</code>
+                     </td>
+                     <td>
+                         <code>string?</code>
+                     </td>
+                     <td>标签显示的文本。</td>
+                 </tr>
+                 <tr>
+                     <td>
+                         <code>Checked</code>
+                     </td>
+                     <td>
+                         <code>bool</code>
+                     </td>
+                     <td>是否选中，默认<code>false</code>。</td>
+                 </tr>
+                 <tr>
+                     <td>
+                         <code>Value</code>
+                     </td>
+                     <td>
+                         <code>TValue?</code>
+                     </td>
+                     <td>单选项的值。</td>
+                 </tr>
+                 <tr>
+                     <td>
+                         <code>Readonly</code>
+                     </td>
+                     <td>
+                         <code>bool</code>
+                     </td>
+                     <td>是否只读，默认<code>false</code>。</td>
+                 </tr>
+                 <tr>
+                     <td>
+                         <code>Disabled</code>
+                     </td>
+                     <td>
+                         <code>bool</code>
+                     </td>
+                     <td>是否禁用，默认<code>false</code>。</td>
+                 </tr>
+             </tbody>
+         </MduiSimpleTable>
+     </MduiTableContainer>
+ </div>

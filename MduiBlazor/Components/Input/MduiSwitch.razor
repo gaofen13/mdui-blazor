@@ -1,9 +1,0 @@
-@namespace MduiBlazor
-@inherits MduiInputBase<bool>
-
-<label class="mdui-switch">
-    <input @ref="@Element" type="checkbox" class="@Class" style="@Style" required="@Required" disabled="@Disabled"
-           readonly="@Readonly" @attributes="@AdditionalAttributes" checked="@BindConverter.FormatValue(CurrentValue)"
-           @onchange="@(EventCallback.Factory.CreateBinder<bool>(this,__value=>CurrentValue=__value,CurrentValue))" />
-    <i class="mdui-switch-icon"></i>
-</label>

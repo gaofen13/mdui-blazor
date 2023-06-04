@@ -3,10 +3,10 @@
 @typeparam TValue
 
 <label class="@FieldClassname">
-    <input @ref="@Element" class="@Class" style="@Style" type="range" step="@Step" min="@Min" max="@Max"
-        disabled="@Disabled" @attributes="@AdditionalAttributes"
+    <input @ref="@Element" class="@Class" style="@Style" name="@Name" type="range" step="@Step" min="@Min" max="@Max"
+        readonly="@Readonly" disabled="@Disabled" @attributes="@AdditionalAttributes"
         value="@BindConverter.FormatValue(CurrentValueAsString)"
-        @oninput="@(EventCallback.Factory.CreateBinder<string?>(this, __value => CurrentValueAsString = __value, CurrentValueAsString))" />
+    @oninput="@(EventCallback.Factory.CreateBinder<string?>(this, __value => CurrentValueAsString = __value, CurrentValueAsString))" />
     <span class="mdui-slider-track" style="width:100%;"></span>
     <span class="mdui-slider-fill" style="@FillStyle"></span>
     <span class="mdui-slider-thumb" style="@ThumbStyle">

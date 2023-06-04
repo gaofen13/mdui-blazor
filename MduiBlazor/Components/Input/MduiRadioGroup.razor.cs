@@ -22,9 +22,6 @@ namespace MduiBlazor
         [Parameter]
         public bool Vertical { get; set; }
 
-        [Parameter]
-        public string? Name { get; set; }
-
         protected override bool TryParseValueFromString(string? value, [MaybeNullWhen(false)] out TValue result, [NotNullWhen(false)] out string? validationErrorMessage)
             => this.TryParseSelectableValueFromString(value, out result, out validationErrorMessage);
 

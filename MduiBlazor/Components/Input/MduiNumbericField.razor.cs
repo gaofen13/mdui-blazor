@@ -13,6 +13,9 @@ namespace MduiBlazor
             .Build();
 
         [Parameter]
+        public string? Name { get; set; }
+
+        [Parameter]
         public TValue Value { get; set; } = default!;
 
         [Parameter]
