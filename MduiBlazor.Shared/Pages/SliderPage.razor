@@ -1,0 +1,90 @@
+@page "/slider"
+@inherits BasePage
+@using MduiBlazor.Shared.Pages.Examples.Sliders
+
+<PageTitle>滑块</PageTitle>
+<div class="mdui-m-y-5">
+    <MduiText Typo="@Typo.display1" Color="@Colors.Theme.Primary">滑块</MduiText>
+</div>
+
+<PageContent>
+    <PageContentItem Title="Examples" OnClick="@(_=>ScrollToElementById("examples"))">
+        <PageContentItem Title="普通滑块" OnClick="@(_=>ScrollToElementById("simple"))" />
+        <PageContentItem Title="间续滑块" OnClick="@(_=>ScrollToElementById("discrete"))" />
+    </PageContentItem>
+    <PageContentItem Title="属性/方法/事件" OnClick="@(_=>ScrollToElementById("attr"))" />
+</PageContent>
+
+<MduiDivider Class="mdui-m-y-5" />
+
+<div>
+    <h2 id="examples">
+        <MduiText Typo="@Typo.headline" Color="@Colors.Theme.Primary">Examples</MduiText>
+    </h2>
+
+    <MduiText id="simple" Typo="@Typo.subheading"><b>普通滑块</b></MduiText>
+    <ExampleSection Component="@typeof(SimpleSlider)" />
+
+    <MduiText id="discrete" Typo="@Typo.subheading"><b>间续滑块</b></MduiText>
+    <ExampleSection Component="@typeof(DiscreteSlider)" />
+
+    <MduiText id="discrete" Typo="@Typo.subheading"><b>禁用状态</b></MduiText>
+    <p class="mdui-typo">设置组件参数<code>Disabled</code>为<code>true</code>就能禁用滑块。</p>
+    <ExampleSection Component="@typeof(DisabledSlider)" />
+</div>
+
+<MduiDivider Class="mdui-m-y-5" />
+
+<div>
+    <h2 id="attr">
+        <MduiText Typo="@Typo.headline" Color="@Colors.Theme.Primary">属性/方法/事件</MduiText>
+    </h2>
+
+    <MduiTableContainer UseMduiTypo Class="mdui-m-y-1">
+         <MduiSimpleTable>
+             <thead>
+                 <th>参数名称</th>
+                 <th>类型/返回类型</th>
+                 <th>说明</th>
+             </thead>
+             <tbody>
+                 <tr>
+                     <td>
+                         <code>Step</code>
+                     </td>
+                     <td>
+                         <code>TValue?</code>
+                     </td>
+                     <td>组件步进值，默认<code>1</code>。</td>
+                 </tr>
+                 <tr>
+                     <td>
+                         <code>Min</code>
+                     </td>
+                     <td>
+                         <code>TValue?</code>
+                     </td>
+                     <td>组件最小值。</td>
+                 </tr>
+                 <tr>
+                     <td>
+                         <code>Max</code>
+                     </td>
+                     <td>
+                         <code>TValue?</code>
+                     </td>
+                     <td>组件最大值。</td>
+                 </tr>
+                 <tr>
+                     <td>
+                         <code>Discrete</code>
+                     </td>
+                     <td>
+                         <code>bool</code>
+                     </td>
+                     <td>是否间续滑块，默认<code>false</code>。</td>
+                 </tr>
+             </tbody>
+         </MduiSimpleTable>
+     </MduiTableContainer>
+ </div>
