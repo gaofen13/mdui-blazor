@@ -1,0 +1,105 @@
+@page "/progress"
+@inherits BasePage
+@using MduiBlazor.Shared.Pages.Examples.Progress
+
+<PageTitle>进度指示器</PageTitle>
+<div class="mdui-m-y-5">
+    <MduiText Typo="@Typo.display1" Color="@Colors.Theme.Primary">进度指示器</MduiText>
+    <p>进度指示器包括线性进度指示器和圆形进度指示器。</p>
+</div>
+
+<PageContent>
+    <PageContentItem Title="线性进度指示器" OnClick="@(_=>ScrollToElementById("lineProgress"))">
+        <PageContentItem Title="简单线性进度指示器" OnClick="@(_=>ScrollToElementById("simpleLine"))" />
+        <PageContentItem Title="不确定进度" OnClick="@(_=>ScrollToElementById("indeterminateLine"))" />
+    </PageContentItem>
+    <PageContentItem Title="圆形进度指示器" OnClick="@(_=>ScrollToElementById("spinnerProgress"))">
+        <PageContentItem Title="单色" OnClick="@(_=>ScrollToElementById("simpleSpinner"))" />
+        <PageContentItem Title="彩色" OnClick="@(_=>ScrollToElementById("colorfulSpinner"))" />
+    </PageContentItem>
+    <PageContentItem Title="属性/方法/事件" OnClick="@(_=>ScrollToElementById("attr"))" />
+</PageContent>
+
+<MduiDivider Class="mdui-m-y-5" />
+
+<div>
+    <h2 id="lineProgress">
+        <MduiText Typo="@Typo.headline" Color="@Colors.Theme.Primary">线性进度指示器</MduiText>
+    </h2>
+
+    <MduiText id="simpleLine" Typo="@Typo.subheading"><b>简单线性进度指示器</b></MduiText>
+    <p class="mdui-typo">设置<code>Value</code>参数的值，即可更新进度。</p>
+    <ExampleSection Component="@typeof(LineProgress)" />
+
+    <MduiText id="indeterminateLine" Typo="@Typo.subheading"><b>不确定进度</b></MduiText>
+    <p class="mdui-typo">设置参数<code>Indeterminate</code>为<code>true</code>，一般用于无法得知准确进度值的情况。</p>
+    <ExampleSection Component="@typeof(IndeterminateLineProgress)" />
+</div>
+
+<MduiDivider Class="mdui-m-y-5" />
+
+<div>
+    <h2 id="spinnerProgress">
+        <MduiText Typo="@Typo.headline" Color="@Colors.Theme.Primary">圆形进度指示器</MduiText>
+    </h2>
+
+    <MduiText id="simpleSpinner" Typo="@Typo.subheading"><b>单色</b></MduiText>
+    <ExampleSection Component="@typeof(SpinnerProgress)" />
+
+    <MduiText id="colorfulSpinner" Typo="@Typo.subheading"><b>彩色</b></MduiText>
+    <ExampleSection Component="@typeof(ColorSpinnerProgress)" />
+</div>
+
+<MduiDivider Class="mdui-m-y-5" />
+
+<div>
+    <h2 id="attr">
+        <MduiText Typo="@Typo.headline" Color="@Colors.Theme.Primary">属性/方法/事件</MduiText>
+    </h2>
+
+    <MduiTableContainer UseMduiTypo Class="mdui-m-y-1">
+         <MduiSimpleTable>
+             <thead>
+                 <th>组件</th>
+                 <th>参数名称</th>
+                 <th>类型/返回类型</th>
+                 <th>说明</th>
+             </thead>
+             <tbody>
+                 <tr>
+                     <td rowspan="2">
+                         <code>MduiProgress</code>
+                     </td>
+                     <td>
+                         <code>Indeterminate</code>
+                     </td>
+                     <td>
+                         <code>bool</code>
+                     </td>
+                     <td>是否为不确定状态，默认<code>false</code>。</td>
+                 </tr>
+                 <tr>
+                     <td>
+                         <code>Value</code>
+                     </td>
+                     <td>
+                         <code>int</code>
+                     </td>
+                     <td>组件进度值，按照百分比计算，最小<code>0</code>，最大<code>100</code>。</td>
+                 </tr>
+                 <tr>
+                     <td>
+                         <code>MduiSpinner</code>
+                     </td>
+                     <td>
+                         <code>Colorful</code>
+                     </td>
+                     <td>
+                         <code>bool</code>
+                     </td>
+                     <td>是否为彩色，默认<code>false</code>。</td>
+                 </tr>
+             </tbody>
+         </MduiSimpleTable>
+     </MduiTableContainer>
+ </div>
