@@ -19,7 +19,7 @@
         <PageContentItem Title="块级元素" OnClick="@(_=>ScrollToElementById("block"))" />
         <PageContentItem Title="按钮组" OnClick="@(_=>ScrollToElementById("group"))" />
     </PageContentItem>
-    <PageContentItem Title="属性/方法/事件" OnClick="@(_=>ScrollToElementById("attr"))" />
+    <PageContentItem Title="组件参数" OnClick="@(_=>ScrollToElementById("attr"))" />
 </PageContent>
 
 <MduiDivider Class="mdui-m-y-5" />
@@ -58,15 +58,14 @@
 
 <div>
     <h2 id="attr">
-        <MduiText Typo="@Typo.headline" TextColor="@Colors.Theme.Primary">属性/方法/事件</MduiText>
+        <MduiText Typo="@Typo.headline" TextColor="@Colors.Theme.Primary">组件参数</MduiText>
     </h2>
 
     <MduiTableContainer UseMduiTypo Class="mdui-m-y-1">
         <MduiSimpleTable>
             <thead>
                 <th>组件</th>
-                <th>分类</th>
-                <th>名称</th>
+                <th>参数名称</th>
                 <th>类型/返回类型</th>
                 <th>说明</th>
             </thead>
@@ -75,9 +74,6 @@
                     <th rowspan="10">
                         <code>MduiButtonBase</code>
                     </th>
-                    <td rowspan="9">
-                        <code>Parameter</code>
-                    </td>
                     <td>
                         <code>HtmlTag</code>
                     </td>
@@ -160,9 +156,6 @@
                     <td>单击事件回调，参数<code>MouseEventArgs</code>。</td>
                 </tr>
                 <tr>
-                    <td rowspan="1">
-                        <code>Method</code>
-                    </td>
                     <td>
                         <code>FocusAsync</code>
                     </td>
@@ -175,9 +168,6 @@
                     <th rowspan="5">
                         <code>MduiButton</code>
                     </th>
-                    <td rowspan="5">
-                        <code>Parameter</code>
-                    </td>
                     <td>
                         <code>Text</code>
                     </td>
@@ -226,9 +216,6 @@
                     <th rowspan="2">
                         <code>MduiIconButton</code>
                     </th>
-                    <td rowspan="2">
-                        <code>Parameter</code>
-                    </td>
                     <td>
                         <code>Icon</code>
                     </td>

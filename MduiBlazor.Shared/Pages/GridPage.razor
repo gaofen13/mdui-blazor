@@ -18,7 +18,7 @@
         <PageContentItem Title="嵌套列" OnClick="@(_=>ScrollToElementById("nest"))" />
         <PageContentItem Title="等分列" OnClick="@(_=>ScrollToElementById("average"))" />
     </PageContentItem>
-    <PageContentItem Title="属性/方法/事件" OnClick="@(_=>ScrollToElementById("attr"))" />
+    <PageContentItem Title="组件参数" OnClick="@(_=>ScrollToElementById("attr"))" />
 </PageContent>
 
 <MduiDivider Class="mdui-m-y-5" />
@@ -148,15 +148,14 @@
 
  <div>
      <h2 id="attr">
-         <MduiText Typo="@Typo.headline" TextColor="@Colors.Theme.Primary">属性/方法/事件</MduiText>
+         <MduiText Typo="@Typo.headline" TextColor="@Colors.Theme.Primary">组件参数</MduiText>
      </h2>
 
      <MduiTableContainer UseMduiTypo Class="mdui-m-y-1">
          <MduiSimpleTable>
              <thead>
                  <th>组件</th>
-                 <th>分类</th>
-                 <th>名称</th>
+                 <th>参数名称</th>
                  <th>类型/返回类型</th>
                  <th>说明</th>
              </thead>
@@ -165,9 +164,6 @@
                      <th>
                          <code>MduiContainer</code>
                      </th>
-                     <td>
-                         <code>Parameter</code>
-                     </td>
                      <td>
                          <code>Fluid</code>
                      </td>
@@ -180,9 +176,6 @@
                      <th rowspan="6">
                          <code>MduiRow</code>
                      </th>
-                     <td rowspan="6">
-                         <code>Parameter</code>
-                     </td>
                      <td>
                          <code>Gapless</code>
                      </td>
@@ -240,9 +233,6 @@
                      <th rowspan="10">
                          <code>MduiCol</code>
                      </th>
-                     <td rowspan="10">
-                         <code>Parameter</code>
-                     </td>
                      <td>
                          <code>BreakpointXs</code>
                      </td>

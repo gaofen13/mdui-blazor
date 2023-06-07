@@ -20,7 +20,7 @@ namespace MduiBlazor
         [Parameter]
         public bool DisableRipple { get; set; }
 
-        [Parameter, EditorRequired]
+        [Parameter]
         public string? IconName { get; set; }
 
         [Parameter]

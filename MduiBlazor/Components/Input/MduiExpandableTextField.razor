@@ -2,7 +2,7 @@
 @inherits MduiInputBase<string>
 
 <div class="@Classname" style="@Style" @attributes="@AdditionalAttributes">
-    <MduiIconButton DisableRipple Class="mdui-textfield-icon" Icon="@Icon" OnClick="@OpenAsync" />
+    <MduiIconButton DisableRipple Class="mdui-textfield-icon" IconName="@Icon" OnClick="@OpenAsync" />
      <input @ref="@Element" class="mdui-textfield-input" type="@Type" pattern="@Pattern" maxlength="@MaxLength"
          placeholder="@Placeholder" disabled="@Disabled" readonly="@Readonly"
          value="@BindConverter.FormatValue(CurrentValueAsString)"
