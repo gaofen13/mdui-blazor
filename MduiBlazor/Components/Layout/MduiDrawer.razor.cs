@@ -14,7 +14,6 @@ namespace MduiBlazor
             .AddClass("mdui-drawer-persistent", Persistent)
             .AddClass("mdui-drawer-full-height", FullHeight)
             .AddClass(_opened ? "mdui-drawer-open" : "mdui-drawer-close")
-            .AddClass($"mdui-color-{Color}", !string.IsNullOrWhiteSpace(Color))
             .AddClass(Class)
             .Build();
 
@@ -43,9 +42,6 @@ namespace MduiBlazor
 
         [Parameter]
         public bool Persistent { get; set; }
-
-        [Parameter]
-        public string? Color { get; set; }
 
         [Parameter]
         public bool RightSide { get; set; }

@@ -3,11 +3,12 @@ using Microsoft.AspNetCore.Components;
 
 namespace MduiBlazor
 {
-    public partial class MduiColumn
+    public partial class MduiColumn : MduiComponentBase
     {
         protected string Classname =>
             new ClassBuilder()
             .AddClass("mdui-table-col-numeric", AlignRight)
+            .AddClass(Class)
             .Build();
 
         [CascadingParameter(Name = "RenderMode")]

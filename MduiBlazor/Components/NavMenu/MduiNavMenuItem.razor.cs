@@ -14,7 +14,10 @@ namespace MduiBlazor
             .Build();
 
         [CascadingParameter]
-        private MduiNavMenuCollapseItem? CollapseList { get; set; }
+        private MduiNavMenuCollapse? Collapse { get; set; }
+
+        [Parameter]
+        public string? Title { get; set; }
 
         [Parameter]
         public bool DisableRipple { get; set; }
@@ -29,20 +32,17 @@ namespace MduiBlazor
         public string? Icon { get; set; }
 
         [Parameter]
-        public string? IconColor { get; set; }
-
-        [Parameter]
-        public bool CustomIcon { get; set; }
+        public RenderFragment? IconContent { get; set; }
 
         protected override void OnInitialized()
         {
-            CollapseList?.AddItem();
+            Collapse?.AddItem();
             base.OnInitialized();
         }
 
         void IDisposable.Dispose()
         {
-            CollapseList?.RemoveItem();
+            Collapse?.RemoveItem();
             GC.SuppressFinalize(this);
         }
     }

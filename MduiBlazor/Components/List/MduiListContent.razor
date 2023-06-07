@@ -2,20 +2,16 @@
 @inherits MduiComponentBase
 
 <div class="@Classname" style="@Style" @attributes="@AdditionalAttributes">
-    @if (ChildContent is not null)
-    {
-        @ChildContent
-    }
-    @if (TitleContent is not null)
+    @if (!string.IsNullOrWhiteSpace(Title))
     {
         <div class="@TitleClassname">
-            @TitleContent
+            @Title
         </div>
     }
-    @if (TextContent is not null)
+    @if (ChildContent is not null)
     {
         <div class="@TextClassname">
-            @TextContent
+            @ChildContent
         </div>
     }
 </div>

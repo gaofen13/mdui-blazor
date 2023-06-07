@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Components;
 
 namespace MduiBlazor
 {
-    public partial class MduiListCollapseItem : MduiComponentBase, IDisposable
+    public partial class MduiListCollapse : MduiComponentBase, IDisposable
     {
         protected string Classname =>
             new ClassBuilder("mdui-collapse-item")
@@ -44,13 +44,10 @@ namespace MduiBlazor
         public string? Title { get; set; }
 
         [Parameter]
-        public string? Icon { get; set; }
+        public string? IconName { get; set; }
 
         [Parameter]
-        public string? IconColor { get; set; }
-
-        [Parameter]
-        public bool CustomIcon { get; set; }
+        public RenderFragment? IconContent { get; set; }
 
         protected override void OnInitialized()
         {

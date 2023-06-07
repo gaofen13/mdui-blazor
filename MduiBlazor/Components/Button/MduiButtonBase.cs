@@ -19,12 +19,6 @@ namespace MduiBlazor
         [Parameter]
         public ButtonType ButtonType { get; set; } = ButtonType.Button;
 
-        /// <summary>
-        /// The color of the component. It supports the theme colors.
-        /// </summary>
-        [Parameter]
-        public string? Color { get; set; }
-
         [Parameter]
         public bool DisableRipple { get; set; }
 
@@ -48,6 +42,12 @@ namespace MduiBlazor
         /// </summary>
         [Parameter]
         public bool Disabled { get; set; }
+
+        [Parameter]
+        public string? Color { get; set; }
+
+        [Parameter]
+        public string? TextColor { get; set; }
 
         /// <summary>
         /// Command executed when the user clicks on an element.

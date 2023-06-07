@@ -9,18 +9,18 @@ namespace MduiBlazor
         protected string Classname =>
             new ClassBuilder()
             .AddClass("mdui-typo", UseMduiTypo)
+            .AddClass($"mdui-text-color-{TextColor}", !string.IsNullOrWhiteSpace(TextColor))
             .AddClass($"mdui-typo-{Typo?.ToDescriptionString()}{(Opacity ? "-opacity" : "")}", Typo != null)
-            .AddClass($"mdui-text-color-{Color}", !string.IsNullOrWhiteSpace(Color))
             .AddClass(Class)
             .Build();
-
-        [Parameter]
-        public string? Color { get; set; }
 
         [Parameter]
         public Typo? Typo { get; set; }
 
         [Parameter]
         public bool Opacity { get; set; }
+
+        [Parameter]
+        public string? TextColor { get; set; }
     }
 }

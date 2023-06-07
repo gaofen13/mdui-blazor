@@ -10,38 +10,30 @@ namespace MduiBlazor
             new ClassBuilder("mdui-fab mdui-ripple")
             .AddClass("mdui-typo", UseMduiTypo)
             .AddClass("mdui-ripple", !DisableRipple)
-            .AddClass($"mdui-color-{Color}", !string.IsNullOrWhiteSpace(Color))
             .AddClass("mdui-fab-mini", Mini)
             .AddClass("mdui-fab-hide", Hide)
+            .AddClass($"mdui-text-color-{TextColor}", !string.IsNullOrWhiteSpace(TextColor))
+            .AddClass($"mdui-color-{Color}", !string.IsNullOrWhiteSpace(Color))
             .AddClass(Class)
             .Build();
-
-        /// <summary>
-        /// The color of the component. It supports the theme colors.
-        /// </summary>
-        [Parameter]
-        public string? Color { get; set; }
 
         [Parameter]
         public bool DisableRipple { get; set; }
 
         [Parameter, EditorRequired]
-        public string? Icon { get; set; }
-
-        [Parameter]
-        public string? IconClass { get; set; }
-
-        [Parameter]
-        public string? IconColor { get; set; }
-
-        [Parameter]
-        public bool CustomIcon { get; set; }
+        public string? IconName { get; set; }
 
         [Parameter]
         public bool Mini { get; set; }
 
         [Parameter]
         public bool Hide { get; set; }
+
+        [Parameter]
+        public string? Color { get; set; }
+
+        [Parameter]
+        public string? TextColor { get; set; }
 
         [Parameter]
         public EventCallback<MouseEventArgs> OnClick { get; set; }

@@ -10,7 +10,6 @@ namespace MduiBlazor
 
         protected string Classname =>
             new ClassBuilder("mdui-tab")
-            .AddClass($"mdui-color-{Color}", !string.IsNullOrWhiteSpace(Color))
             .AddClass("mdui-tab-scrollable", Scrollable)
             .AddClass("mdui-tab-full-width", FullWidth)
             .AddClass("mdui-tab-centered", Centered)
@@ -25,9 +24,6 @@ namespace MduiBlazor
 
         [Parameter]
         public bool FullWidth { get; set; }
-
-        [Parameter]
-        public string? Color { get; set; }
 
         public void AddTab(MduiTabItem item)
         {

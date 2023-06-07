@@ -6,12 +6,14 @@ namespace MduiBlazor
     public partial class MduiFabMenu : MduiComponentBase
     {
         private bool _isFocus;
+        private string? _openedIcon;
 
         private string FabBtnClassname =>
             new ClassBuilder("mdui-fab")
             .AddClass("mdui-fab-opened", _isFocus)
             .AddClass("mdui-ripple", !DisableRipple)
             .AddClass($"mdui-color-{Color}", !string.IsNullOrWhiteSpace(Color))
+            .AddClass($"mdui-text-color-{TextColor}", !string.IsNullOrWhiteSpace(TextColor))
             .AddClass("mdui-fab-mini", Mini)
             .AddClass("mdui-fab-hide", Hide)
             .Build();
@@ -33,20 +35,35 @@ namespace MduiBlazor
             .AddStyle("height", "auto", _isFocus)
             .Build();
 
-        [Parameter]
-        public string? Color { get; set; }
+        protected override void OnInitialized()
+        {
+            if (string.IsNullOrWhiteSpace(OpenedIcon))
+            {
+                _openedIcon = Icon;
+            }
+            else
+            {
+                _openedIcon = OpenedIcon;
+            }
+        }
 
-        [Parameter, EditorRequired]
+        [Parameter]
         public string? Icon { get; set; }
 
         [Parameter]
-        public bool CustomIcon { get; set; }
+        public RenderFragment? IconContent { get; set; }
 
         [Parameter]
         public string? OpenedIcon { get; set; }
 
         [Parameter]
-        public bool CustomOpenedIcon { get; set; }
+        public RenderFragment? OpenedIconContent { get; set; }
+
+        [Parameter]
+        public string? Color { get; set; }
+
+        [Parameter]
+        public string? TextColor { get; set; }
 
         [Parameter]
         public bool Mini { get; set; }

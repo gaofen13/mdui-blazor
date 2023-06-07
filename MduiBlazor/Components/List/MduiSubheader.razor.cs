@@ -10,9 +10,6 @@ namespace MduiBlazor
             .AddClass(Class)
             .Build();
 
-        [CascadingParameter]
-        private MduiList? MduiList { get; set; }
-
         [Parameter]
         public bool Inset { get; set; }
     }

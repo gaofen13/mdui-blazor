@@ -5,7 +5,7 @@ namespace MduiBlazor
 {
     public partial class MduiList : MduiComponentBase
     {
-        private readonly List<MduiListCollapseItem> _subItems = new();
+        private readonly List<MduiListCollapse> _subItems = new();
 
         protected string Classname =>
             new ClassBuilder("mdui-list")
@@ -20,7 +20,7 @@ namespace MduiBlazor
         [Parameter]
         public bool Accordion { get; set; }
 
-        public void AddSubitem(MduiListCollapseItem item)
+        public void AddSubitem(MduiListCollapse item)
         {
             if (!_subItems.Contains(item))
             {
@@ -28,7 +28,7 @@ namespace MduiBlazor
             }
         }
 
-        public void RemoveSubitem(MduiListCollapseItem item)
+        public void RemoveSubitem(MduiListCollapse item)
         {
             if (_subItems.Contains(item))
             {

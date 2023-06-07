@@ -10076,13 +10076,13 @@ input.mdui-btn[type="submit"] {
   padding-top: 8px;
   text-align: center;
 }
-.mdui-fab-wrapper > .mdui-fab .mdui-icon:not(.mdui-fab-opened) {
+.mdui-fab-wrapper > .mdui-fab .mdui-fab-icon:not(.mdui-fab-opened) .mdui-icon {
   opacity: 1;
   -webkit-transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   will-change: opacity, transform;
 }
-.mdui-fab-wrapper > .mdui-fab .mdui-icon.mdui-fab-opened {
+.mdui-fab-wrapper > .mdui-fab .mdui-fab-icon.mdui-fab-opened .mdui-icon {
   -webkit-transform: rotate(225deg);
           transform: rotate(225deg);
   opacity: 0;
@@ -10090,12 +10090,12 @@ input.mdui-btn[type="submit"] {
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   will-change: opacity, transform;
 }
-.mdui-fab-wrapper > .mdui-fab.mdui-fab-opened .mdui-icon:not(.mdui-fab-opened) {
+.mdui-fab-wrapper > .mdui-fab.mdui-fab-opened .mdui-fab-icon:not(.mdui-fab-opened) .mdui-icon {
   -webkit-transform: rotate(225deg);
           transform: rotate(225deg);
   opacity: 0;
 }
-.mdui-fab-wrapper > .mdui-fab.mdui-fab-opened .mdui-icon.mdui-fab-opened {
+.mdui-fab-wrapper > .mdui-fab.mdui-fab-opened .mdui-fab-icon.mdui-fab-opened .mdui-icon {
   -webkit-transform: rotate(360deg);
           transform: rotate(360deg);
   opacity: 1;
@@ -11499,12 +11499,12 @@ select.mdui-select[multiple] option:last-child {
   cursor: pointer;
   -webkit-transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  /* 列表项图标 */
 }
 .mdui-list-item:hover {
   background-color: rgba(0, 0, 0, 0.08);
 }
-/* 列表项图标 */
-.mdui-list-item-icon {
+.mdui-list-item .mdui-icon {
   width: 24px;
   min-width: 24px;
   height: 24px;
@@ -11517,7 +11517,6 @@ select.mdui-select[multiple] option:last-child {
   height: 40px;
   margin-top: 8px;
   margin-bottom: 8px;
-  color: #FFFFFF;
   line-height: 40px;
   text-align: center;
   background-color: #BDBDBD;
@@ -11527,6 +11526,9 @@ select.mdui-select[multiple] option:last-child {
   width: 100%;
   height: 100%;
   border-radius: 50%;
+}
+.mdui-list-item-avatar .mdui-icon {
+  color: #FFFFFF !important;
 }
 /* 列表项内容 */
 .mdui-list-item-content {
@@ -11540,12 +11542,10 @@ select.mdui-select[multiple] option:last-child {
   line-height: 20px;
 }
 /* 列表项内容的副内容 */
-.mdui-list-item-text {
-  font-size: 14px;
-  opacity: 0.54;
-}
 .mdui-list-item-title ~ .mdui-list-item-text {
   margin-top: 4px;
+  font-size: 14px;
+  opacity: 0.54;
 }
 /* 激活状态的列表项 */
 .mdui-list-item-active {
@@ -11555,7 +11555,7 @@ select.mdui-select[multiple] option:last-child {
 .mdui-list-item-active .mdui-list-item-content {
   font-weight: 700;
 }
-.mdui-list-item-active .mdui-list-item-text {
+.mdui-list-item-active .mdui-list-item-title ~ .mdui-list-item-text {
   font-weight: 400;
 }
 /* 限制文本高度 */
@@ -11580,22 +11580,18 @@ select.mdui-select[multiple] option:last-child {
   height: 60px;
 }
 /* 列表项内的元素间添加间距 */
-.mdui-list-item-icon ~ .mdui-list-item-content {
-  margin-left: 16px;
-}
+.mdui-list-item-avatar ~ .mdui-list-item-content,
 .mdui-checkbox ~ .mdui-list-item-content,
+.mdui-switch ~ .mdui-list-item-content,
 .mdui-radio ~ .mdui-list-item-content,
-.mdui-switch ~ .mdui-list-item-content {
+.mdui-icon ~ .mdui-list-item-content {
   margin-left: 16px;
 }
-.mdui-list-item-avatar ~ .mdui-list-item-content {
-  margin-left: 16px;
-}
-.mdui-list-item-content ~ .mdui-list-item-icon,
 .mdui-list-item-content ~ .mdui-list-item-avatar,
 .mdui-list-item-content ~ .mdui-checkbox,
+.mdui-list-item-content ~ .mdui-switch,
 .mdui-list-item-content ~ .mdui-radio,
-.mdui-list-item-content ~ .mdui-switch {
+.mdui-list-item-content ~ .mdui-icon {
   margin-left: 16px;
 }
 .mdui-list-item-content ~ .mdui-checkbox,
@@ -11633,10 +11629,10 @@ select.mdui-select[multiple] option:last-child {
 .mdui-list-dense .mdui-list-item::after {
   height: 40px;
 }
-.mdui-list-dense .mdui-list-item-icon {
-  width: 20px;
-  height: 20px;
-  font-size: 20px;
+.mdui-list-dense .mdui-icon {
+  width: 20px !important;
+  height: 20px !important;
+  font-size: 20px !important;
 }
 .mdui-list-dense .mdui-list-item-avatar {
   width: 36px;
@@ -11650,11 +11646,9 @@ select.mdui-select[multiple] option:last-child {
   font-size: 13px;
   line-height: 18px;
 }
-.mdui-list-dense .mdui-list-item-text {
-  font-size: 13px;
-}
 .mdui-list-dense .mdui-list-item-title ~ .mdui-list-item-text {
   margin-top: 2px;
+  font-size: 13px;
 }
 .mdui-list-dense .mdui-list-item-one-line {
   height: 18px;
@@ -11684,10 +11678,10 @@ select.mdui-select[multiple] option:last-child {
 .mdui-theme-layout-dark .mdui-list-item:hover {
   background-color: rgba(255, 255, 255, 0.08);
 }
-.mdui-theme-layout-dark .mdui-list-item-icon {
+.mdui-theme-layout-dark .mdui-icon {
   color: #ffffff;
 }
-.mdui-theme-layout-dark .mdui-list-item-text {
+.mdui-theme-layout-dark .mdui-list-item-title ~ .mdui-list-item-text {
   opacity: 0.7;
 }
 .mdui-theme-layout-dark .mdui-list-item-active {
@@ -11708,10 +11702,10 @@ select.mdui-select[multiple] option:last-child {
   .mdui-theme-layout-auto .mdui-list-item:hover {
     background-color: rgba(255, 255, 255, 0.08);
   }
-  .mdui-theme-layout-auto .mdui-list-item-icon {
+  .mdui-theme-layout-auto .mdui-icon {
     color: #ffffff;
   }
-  .mdui-theme-layout-auto .mdui-list-item-text {
+  .mdui-theme-layout-auto .mdui-list-item-title ~ .mdui-list-item-text {
     opacity: 0.7;
   }
   .mdui-theme-layout-auto .mdui-list-item-active {
@@ -11724,9 +11718,6 @@ select.mdui-select[multiple] option:last-child {
  * ==============================================================================
  */
 [class*="mdui-color-"] .mdui-list-item {
-  color: inherit;
-}
-[class*="mdui-color-"] .mdui-list-item-icon {
   color: inherit;
 }
 /**

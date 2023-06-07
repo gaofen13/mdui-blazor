@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using MduiBlazor.Utilities;
+using Microsoft.AspNetCore.Components;
 
 namespace MduiBlazor
 {

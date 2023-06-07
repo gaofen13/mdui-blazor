@@ -8,5 +8,5 @@
          value="@BindConverter.FormatValue(CurrentValueAsString)"
      @onchange="@(EventCallback.Factory.CreateBinder<string?>(this, __value => CurrentValueAsString = __value, CurrentValueAsString))"
      @onfocus="@OnFocus" @onblur="@OnBlur" />
-     <MduiIconButton DisableRipple Class="mdui-textfield-close" Icon="close" OnClick="@Close" />
+     <MduiIconButton DisableRipple Class="mdui-textfield-close" IconName="close" OnClick="@Close" />
  </div>

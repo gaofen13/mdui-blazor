@@ -10,14 +10,10 @@ namespace MduiBlazor
 
         protected string Classname =>
             new ClassBuilder("mdui-bottom-nav")
-            .AddClass($"mdui-color-{Color}", !string.IsNullOrWhiteSpace(Color))
             .AddClass("mdui-bottom-nav-fixed", Fixed)
             .AddClass("mdui-bottom-nav-text-auto", TextAuto)
             .AddClass(Class)
             .Build();
-
-        [Parameter]
-        public string? Color { get; set; }
 
         [Parameter]
         public bool Fixed { get; set; }

@@ -1,0 +1,322 @@
+@page "/list"
+@inherits BasePage
+@using MduiBlazor.Shared.Pages.Examples.Lists
+
+<PageTitle>列表</PageTitle>
+<div class="mdui-m-y-5">
+    <MduiText Typo="@Typo.display1" TextColor="@Colors.Theme.Primary">列表</MduiText>
+    <p>列表以垂直排列的方式显示多行条目。每行条目都可以包含图标、头像、文本等内容。</p>
+</div>
+
+<PageContent>
+    <PageContentItem Title="列表" OnClick="@(_=>ScrollToElementById("list"))">
+        <PageContentItem Title="纯文本" OnClick="@(_=>ScrollToElementById("simpleList"))" />
+        <PageContentItem Title="图标" OnClick="@(_=>ScrollToElementById("iconList"))" />
+        <PageContentItem Title="头像" OnClick="@(_=>ScrollToElementById("avatarList"))" />
+        <PageContentItem Title="多行文本" OnClick="@(_=>ScrollToElementById("multiRowList"))" />
+        <PageContentItem Title="分隔线" OnClick="@(_=>ScrollToElementById("divider"))" />
+        <PageContentItem Title="副标题" OnClick="@(_=>ScrollToElementById("subheader"))" />
+        <PageContentItem Title="密集型列表" OnClick="@(_=>ScrollToElementById("dense"))" />
+        <PageContentItem Title="激活状态" OnClick="@(_=>ScrollToElementById("active"))" />
+    </PageContentItem>
+    <PageContentItem Title="列表控制" OnClick="@(_=>ScrollToElementById("listControl"))">
+        <PageContentItem Title="复选框" OnClick="@(_=>ScrollToElementById("checkbox"))" />
+        <PageContentItem Title="开关切换" OnClick="@(_=>ScrollToElementById("switch"))" />
+        <PageContentItem Title="子列表" OnClick="@(_=>ScrollToElementById("cascade"))" />
+    </PageContentItem>
+    <PageContentItem Title="更多示例" OnClick="@(_=>ScrollToElementById("moreExamples"))">
+        <PageContentItem Title="文件列表" OnClick="@(_=>ScrollToElementById("filesList"))" />
+        <PageContentItem Title="通讯录" OnClick="@(_=>ScrollToElementById("contactor"))" />
+    </PageContentItem>
+    <PageContentItem Title="属性/方法/事件" OnClick="@(_=>ScrollToElementById("attr"))" />
+</PageContent>
+
+<MduiDivider Class="mdui-m-y-5" />
+
+<div>
+    <h2 id="list">
+        <MduiText Typo="@Typo.headline" TextColor="@Colors.Theme.Primary">列表</MduiText>
+    </h2>
+
+    <MduiText id="simpleList" Typo="@Typo.subheading"><b>纯文本</b></MduiText>
+    <p>这是一个最简单的列表。</p>
+    <ExampleSection Component="@typeof(SimpleList)" />
+
+    <MduiText id="iconList" Typo="@Typo.subheading"><b>图标</b></MduiText>
+    <p>列表可以包含图标。</p>
+    <ExampleSection Component="@typeof(IconList)" />
+    <p>图标可以在列表右侧。</p>
+    <ExampleSection Component="@typeof(RightIconList)" />
+    <p>用空图标进行占位。</p>
+    <ExampleSection Component="@typeof(EmptyIconList)" />
+
+    <MduiText id="avatarList" Typo="@Typo.subheading"><b>头像</b></MduiText>
+    <p>列表可以包含头像。</p>
+    <ExampleSection Component="@typeof(AvatarList)" />
+    <p>头像可以在列表右侧。</p>
+    <ExampleSection Component="@typeof(RightAvatarList)" />
+    <p>同时包含头像和图标。</p>
+    <ExampleSection Component="@typeof(AvatarWithIconList)" />
+    <p>用图标代替头像。</p>
+    <ExampleSection Component="@typeof(IconAvatarList)" />
+
+    <MduiText id="multiRowList" Typo="@Typo.subheading"><b>多行文本</b></MduiText>
+    <p class="mdui-typo">每一个列表条目最多可包含 3 行文本，如果有超过 3 行的文本，就应该使用<a href="cards">卡片</a>代替。</p>
+    <ExampleSection Component="@typeof(MultiRowList)" />
+
+    <MduiText id="divider" Typo="@Typo.subheading"><b>分隔线</b></MduiText>
+    <p>默认列表中的分隔线上下会有 8px 的间距。</p>
+    <ExampleSection Component="@typeof(DividerList)" />
+    <p>内凹分割线，并去除分隔线的上下边距。</p>
+    <ExampleSection Component="@typeof(DenseDividerList)" />
+
+    <MduiText id="subheader" Typo="@Typo.subheading"><b>副标题</b></MduiText>
+    <p>在列表中使用副标题时，会自动在副标题上方添加分割线。</p>
+    <ExampleSection Component="@typeof(SubheaderList)" />
+    <p>内凹型副标题。</p>
+    <ExampleSection Component="@typeof(InsetSubheaderList)" />
+
+    <MduiText id="dense" Typo="@Typo.subheading"><b>密集型列表</b></MduiText>
+    <p>密集型列表的各个元素会更紧凑。</p>
+    <ExampleSection Component="@typeof(DenseList)" />
+    <p>另一个密集型列表的示例。</p>
+    <ExampleSection Component="@typeof(AnotherDenseList)" />
+
+    <MduiText id="active" Typo="@Typo.subheading"><b>激活状态</b></MduiText>
+    <p>激活状态的条目会添加背景色，并加粗文本。</p>
+    <ExampleSection Component="@typeof(ActiveList)" />
+    <ExampleSection Component="@typeof(AnotherActiveList)" />
+</div>
+
+<MduiDivider Class="mdui-m-y-5" />
+
+<div>
+    <h2 id="listControl">
+        <MduiText Typo="@Typo.headline" TextColor="@Colors.Theme.Primary">列表控制</MduiText>
+    </h2>
+
+    <MduiText id="checkbox" Typo="@Typo.subheading"><b>复选框</b></MduiText>
+    <ExampleSection Component="@typeof(CheckboxList)" />
+    <ExampleSection Component="@typeof(CheckboxList2)" />
+
+    <MduiText id="switch" Typo="@Typo.subheading"><b>开关切换</b></MduiText>
+    <ExampleSection Component="@typeof(SwitchList)" />
+
+    <MduiText id="cascade" Typo="@Typo.subheading"><b>子列表</b></MduiText>
+    <ExampleSection Component="@typeof(CascadeList)" />
+</div>
+
+<MduiDivider Class="mdui-m-y-5" />
+
+<div>
+    <h2 id="moreExamples">
+        <MduiText Typo="@Typo.headline" TextColor="@Colors.Theme.Primary">更多示例</MduiText>
+    </h2>
+
+    <MduiText id="filesList" Typo="@Typo.subheading"><b>文件列表</b></MduiText>
+    <ExampleSection Component="@typeof(FilesList)" />
+
+    <MduiText id="contactor" Typo="@Typo.subheading"><b>通讯录</b></MduiText>
+    <ExampleSection Component="@typeof(ContactorList)" />
+</div>
+
+<MduiDivider Class="mdui-m-y-5" />
+
+<div>
+    <h2 id="attr">
+        <MduiText Typo="@Typo.headline" TextColor="@Colors.Theme.Primary">属性/方法/事件</MduiText>
+    </h2>
+
+    <MduiTableContainer UseMduiTypo Class="mdui-m-y-1">
+         <MduiSimpleTable>
+             <thead>
+                 <th>组件</th>
+                 <th>参数名称</th>
+                 <th>类型/返回类型</th>
+                 <th>说明</th>
+             </thead>
+             <tbody>
+                 <tr>
+                     <td rowspan="2">
+                         <code>MduiList</code>
+                     </td>
+                     <td>
+                         <code>Dense</code>
+                     </td>
+                     <td>
+                         <code>bool</code>
+                     </td>
+                     <td>是否为密集型列表，默认<code>false</code>。</td>
+                 </tr>
+                 <tr>
+                     <td>
+                         <code>Accordion</code>
+                     </td>
+                     <td>
+                         <code>bool</code>
+                     </td>
+                     <td>是否手风琴效果，默认<code>false</code>。</td>
+                 </tr>
+                 <tr>
+                     <td rowspan="5">
+                         <code>MduiListItem</code>
+                     </td>
+                     <td>
+                         <code>DisableRipple</code>
+                     </td>
+                     <td>
+                         <code>bool</code>
+                     </td>
+                     <td>是否禁用涟漪动画，默认<code>false</code>。</td>
+                 </tr>
+                 <tr>
+                     <td>
+                         <code>Active</code>
+                     </td>
+                     <td>
+                         <code>bool</code>
+                     </td>
+                     <td>是否激活状态，默认<code>false</code>。</td>
+                 </tr>
+                 <tr>
+                     <td>
+                         <code>Title</code>
+                     </td>
+                     <td>
+                         <code>string?</code>
+                     </td>
+                     <td>列表项标题。</td>
+                 </tr>
+                 <tr>
+                     <td>
+                         <code>IconName</code>
+                     </td>
+                     <td>
+                         <code>string?</code>
+                     </td>
+                     <td>Material Icon图标类名。</td>
+                 </tr>
+                 <tr>
+                     <td>
+                         <code>IconContent</code>
+                     </td>
+                     <td>
+                         <code>RenderFragment?</code>
+                     </td>
+                     <td>图标渲染片段，一般用于自定义图标。</td>
+                 </tr>
+                 <tr>
+                     <td>
+                         <code>MduiSubheader</code>
+                     </td>
+                     <td>
+                         <code>Inset</code>
+                     </td>
+                     <td>
+                         <code>bool</code>
+                     </td>
+                     <td>是否为内凹型副标题，默认<code>false</code>。</td>
+                 </tr>
+                 <tr>
+                     <td rowspan="6">
+                         <code>MduiListCollapse</code>
+                     </td>
+                     <td>
+                         <code>Open</code>
+                     </td>
+                     <td>
+                         <code>bool</code>
+                     </td>
+                     <td>是否打开状态，默认<code>false</code>。</td>
+                 </tr>
+                 <tr>
+                     <td>
+                         <code>Dense</code>
+                     </td>
+                     <td>
+                         <code>bool</code>
+                     </td>
+                     <td>是否为密集型状态，默认<code>false</code>。</td>
+                 </tr>
+                 <tr>
+                     <td>
+                         <code>DisableRipple</code>
+                     </td>
+                     <td>
+                         <code>bool</code>
+                     </td>
+                     <td>是否禁用涟漪动画，默认<code>false</code>。</td>
+                 </tr>
+                 <tr>
+                     <td>
+                         <code>Title</code>
+                     </td>
+                     <td>
+                         <code>string?</code>
+                     </td>
+                     <td>列表项标题。</td>
+                 </tr>
+                 <tr>
+                     <td>
+                         <code>IconName</code>
+                     </td>
+                     <td>
+                         <code>string?</code>
+                     </td>
+                     <td>Material Icon图标类名。</td>
+                 </tr>
+                 <tr>
+                     <td>
+                         <code>IconContent</code>
+                     </td>
+                     <td>
+                         <code>RenderFragment?</code>
+                     </td>
+                     <td>图标渲染片段，一般用于自定义图标。</td>
+                 </tr>
+                 <tr>
+                     <td>
+                         <code>MduiListAvatar</code>
+                     </td>
+                     <td>
+                         <code>ImgSrc</code>
+                     </td>
+                     <td>
+                         <code>string?</code>
+                     </td>
+                     <td>头像图片源地址。</td>
+                 </tr>
+                 <tr>
+                     <td rowspan="3">
+                         <code>MduiListContent</code>
+                     </td>
+                     <td>
+                         <code>Title</code>
+                     </td>
+                     <td>
+                         <code>string?</code>
+                     </td>
+                     <td>列表项文本标题。</td>
+                 </tr>
+                 <tr>
+                     <td>
+                         <code>TitleLineSpan</code>
+                     </td>
+                     <td>
+                         <code>ListItemLineSpan?</code>
+                     </td>
+                     <td>文本标题所占行数(枚举，Button、Submit、Refresh)。</td>
+                 </tr>
+                 <tr>
+                     <td>
+                         <code>TextLineSpan</code>
+                     </td>
+                     <td>
+                         <code>ListItemLineSpan?</code>
+                     </td>
+                     <td>文本副标题所占行数(枚举，Button、Submit、Refresh)。</td>
+                 </tr>
+             </tbody>
+         </MduiSimpleTable>
+     </MduiTableContainer>
+ </div>

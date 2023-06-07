@@ -82,13 +82,13 @@
 
   // 菜单打开前
   &>.mdui-fab {
-    .mdui-icon:not(.mdui-fab-opened) {
+    .mdui-fab-icon:not(.mdui-fab-opened) .mdui-icon {
       opacity: 1;
       transition: all .2s @animation-curve-default;
       will-change: opacity, transform;
     }
 
-    .mdui-icon.mdui-fab-opened {
+    .mdui-fab-icon.mdui-fab-opened .mdui-icon {
       transform: rotate(225deg);
       opacity: 0;
       transition: all .2s @animation-curve-default;
@@ -98,12 +98,12 @@
 
   // 菜单打开后
   &>.mdui-fab.mdui-fab-opened {
-    .mdui-icon:not(.mdui-fab-opened) {
+    .mdui-fab-icon:not(.mdui-fab-opened) .mdui-icon {
       transform: rotate(225deg);
       opacity: 0;
     }
 
-    .mdui-icon.mdui-fab-opened {
+    .mdui-fab-icon.mdui-fab-opened .mdui-icon {
       transform: rotate(360deg);
       opacity: 1;
     }

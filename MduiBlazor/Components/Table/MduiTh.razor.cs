@@ -8,6 +8,7 @@ namespace MduiBlazor
         protected string Classname =>
             new ClassBuilder()
             .AddClass("mdui-table-col-numeric", AlignRight)
+            .AddClass(Class)
             .Build();
 
         [Parameter]

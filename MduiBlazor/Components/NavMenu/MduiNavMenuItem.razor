@@ -2,10 +2,24 @@
 @inherits MduiComponentBase
 @implements IDisposable
 
-<NavLink href="@Href" class="@Classname" style="@Style" ActiveClass="mdui-list-item-active" Match="@Match" @attributes="@AdditionalAttributes">
-    @if (Icon is not null)
+<NavLink href="@Href" class="@Classname" style="@Style" ActiveClass="mdui-list-item-active" Match="@Match"
+@attributes="@AdditionalAttributes">
+    @if (IconContent is not null)
     {
-        <MduiIcon Class="mdui-list-item-icon" Name="@Icon" Color="@IconColor" Custom="@CustomIcon" />
+        @IconContent
     }
-    <div class="mdui-list-item-content">@ChildContent</div>
+    else if (Icon is not null)
+    {
+        <MduiIcon Name="@Icon" />
+    }
+    <div class="mdui-list-item-content">
+        @if (ChildContent is not null)
+        {
+            @ChildContent
+        }
+        else
+        {
+            @Title
+        }
+    </div>
 </NavLink>

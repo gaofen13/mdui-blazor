@@ -13,13 +13,19 @@ namespace MduiBlazor
             .AddClass(Class)
             .Build();
 
-        [CascadingParameter]
-        private MduiListCollapseItem? CollapseList { get; set; }
-
         [Parameter]
         public bool DisableRipple { get; set; }
 
         [Parameter]
         public bool Active { get; set; }
+
+        [Parameter]
+        public string? Title { get; set; }
+
+        [Parameter]
+        public string? IconName { get; set; }
+
+        [Parameter]
+        public RenderFragment? IconContent { get; set; }
     }
 }

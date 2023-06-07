@@ -3,8 +3,26 @@
 
 <div class="@Classname" style="@Style" @attributes="@AdditionalAttributes">
     <button Class="@FabBtnClassname" @onclick="@OnFabClicked" @onblur="@OnBlur">
-        <MduiIcon Name="@Icon" Custom="@CustomIcon" />
-        <MduiIcon Name="@OpenedIcon" Custom="@CustomOpenedIcon" Class="mdui-fab-opened" />
+        <div class="mdui-fab-icon">
+            @if (IconContent is not null)
+            {
+                @IconContent
+            }
+            else
+            {
+                <MduiIcon Name="@Icon" />
+            }
+        </div>
+        <div class="mdui-fab-icon mdui-fab-opened">
+            @if (OpenedIconContent is not null)
+            {
+                @OpenedIconContent
+            }
+            else
+            {
+                <MduiIcon Name="@_openedIcon" />
+            }
+        </div>
     </button>
     <div class="@DialClassname" style="@DialStylelist">
         @ChildContent
