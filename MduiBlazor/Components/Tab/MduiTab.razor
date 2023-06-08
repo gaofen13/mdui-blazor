@@ -5,7 +5,11 @@
     @foreach (var item in _items)
     {
         <a class="@item.TitleClass" disabled="@item.Disabled" @onclick="@(_=>OnActiveTabChanged(item))">
-            @if (!string.IsNullOrWhiteSpace(item.Icon))
+            @if (item.IconContent is not null)
+            {
+                @item.IconContent
+            }
+            else if (!string.IsNullOrWhiteSpace(item.Icon))
             {
                 <MduiIcon Name="@item.Icon" />
             }

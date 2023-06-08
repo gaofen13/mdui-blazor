@@ -1,0 +1,181 @@
+@page "/tabs"
+@inherits BasePage
+@using MduiBlazor.Shared.Pages.Examples.Tabs
+
+<PageTitle>Tab 选项卡</PageTitle>
+<h1 class="mdui-m-y-5">
+    <MduiText Typo="@Typo.display1" TextColor="@Colors.Theme.Primary">Tab 选项卡</MduiText>
+</h1>
+
+<PageContent>
+    <PageContentItem Title="Examples" OnClick="@(_=>ScrollToElementById("examples"))">
+        <PageContentItem Title="基础样式" OnClick="@(_=>ScrollToElementById("simple"))" />
+        <PageContentItem Title="可滚动" OnClick="@(_=>ScrollToElementById("scrollable"))" />
+        <PageContentItem Title="居中对齐" OnClick="@(_=>ScrollToElementById("centered"))" />
+        <PageContentItem Title="100% 宽度" OnClick="@(_=>ScrollToElementById("fullwidth"))" />
+        <PageContentItem Title="含图标" OnClick="@(_=>ScrollToElementById("icon"))" />
+        <PageContentItem Title="含图标和文本" OnClick="@(_=>ScrollToElementById("icon&text"))" />
+        <PageContentItem Title="含背景色" OnClick="@(_=>ScrollToElementById("color"))" />
+        <PageContentItem Title="默认激活的选项" OnClick="@(_=>ScrollToElementById("actived"))" />
+        <PageContentItem Title="禁用状态的选项" OnClick="@(_=>ScrollToElementById("disabled"))" />
+    </PageContentItem>
+    <PageContentItem Title="组件参数" OnClick="@(_=>ScrollToElementById("attr"))" />
+</PageContent>
+
+<MduiDivider Class="mdui-m-y-5" />
+
+<div>
+    <h2 id="examples">
+        <MduiText Typo="@Typo.headline" TextColor="@Colors.Theme.Primary">Examples</MduiText>
+    </h2>
+
+    <MduiText id="simple" Typo="@Typo.subheading"><b>基础样式</b></MduiText>
+    <ExampleSection Component="@typeof(SimpleTab)" />
+
+    <MduiText id="scrollable" Typo="@Typo.subheading"><b>可滚动</b></MduiText>
+    <ExampleSection Component="@typeof(ScrollableTab)" />
+
+    <MduiText id="centered" Typo="@Typo.subheading"><b>居中对齐</b></MduiText>
+    <ExampleSection Component="@typeof(CenteredTab)" />
+
+    <MduiText id="fullwidth" Typo="@Typo.subheading"><b>100% 宽度</b></MduiText>
+    <ExampleSection Component="@typeof(FullWidthTab)" />
+
+    <MduiText id="icon&text" Typo="@Typo.subheading"><b>含图标和文本</b></MduiText>
+    <ExampleSection Component="@typeof(IconWithTextTab)" />
+
+    <MduiText id="color" Typo="@Typo.subheading"><b>含背景色</b></MduiText>
+    <ExampleSection Component="@typeof(ColorTab)" />
+
+    <MduiText id="actived" Typo="@Typo.subheading"><b>默认激活的选项</b></MduiText>
+    <ExampleSection Component="@typeof(DefaultActivedTab)" />
+
+    <MduiText id="disabled" Typo="@Typo.subheading"><b>禁用状态的选项</b></MduiText>
+    <ExampleSection Component="@typeof(DisabledTab)" />
+</div>
+
+<MduiDivider Class="mdui-m-y-5" />
+
+<div>
+    <h2 id="attr">
+        <MduiText Typo="@Typo.headline" TextColor="@Colors.Theme.Primary">组件参数</MduiText>
+    </h2>
+
+    <MduiTableContainer UseMduiTypo Class="mdui-m-y-1">
+         <MduiSimpleTable>
+             <thead>
+                 <th>组件</th>
+                 <th>参数名称</th>
+                 <th>类型/返回类型</th>
+                 <th>说明</th>
+             </thead>
+             <tbody>
+                 <tr>
+                     <td rowspan="4">
+                         <code>MduiTab</code>
+                     </td>
+                     <td>
+                         <code>Scrollable</code>
+                     </td>
+                     <td>
+                         <code>bool</code>
+                     </td>
+                     <td>是否可滚动，默认<code>false</code>。</td>
+                 </tr>
+                 <tr>
+                     <td>
+                         <code>Centered</code>
+                     </td>
+                     <td>
+                         <code>bool</code>
+                     </td>
+                     <td>是否可滚动水平居中，默认<code>false</code>。</td>
+                 </tr>
+                 <tr>
+                     <td>
+                         <code>FullWidth</code>
+                     </td>
+                     <td>
+                         <code>bool</code>
+                     </td>
+                     <td>是否100%宽度，默认<code>false</code>。</td>
+                 </tr>
+                 <tr>
+                     <td>
+                         <code>Color</code>
+                     </td>
+                     <td>
+                         <code>string?</code>
+                     </td>
+                     <td>Tab选项卡背景颜色。</td>
+                 </tr>
+                 <tr>
+                     <td rowspan="7">
+                         <code>MduiTabItem</code>
+                     </td>
+                     <td>
+                         <code>Title</code>
+                     </td>
+                     <td>
+                         <code>string?</code>
+                     </td>
+                     <td>选项的标题。</td>
+                 </tr>
+                 <tr>
+                     <td>
+                         <code>Icon</code>
+                     </td>
+                     <td>
+                         <code>string</code>
+                     </td>
+                     <td>选项的图标类名。</td>
+                 </tr>
+                 <tr>
+                     <td>
+                         <code>IconContent</code>
+                     </td>
+                     <td>
+                         <code>RenderFragment</code>
+                     </td>
+                     <td>选项的图标渲染片段，一般用于自定义图标。</td>
+                 </tr>
+                 <tr>
+                     <td>
+                         <code>Default</code>
+                     </td>
+                     <td>
+                         <code>bool</code>
+                     </td>
+                     <td>是否默认激活该选项，默认<code>false</code>。</td>
+                 </tr>
+                 <tr>
+                     <td>
+                         <code>Disabled</code>
+                     </td>
+                     <td>
+                         <code>bool</code>
+                     </td>
+                     <td>是否禁用选项，默认<code>false</code>。</td>
+                 </tr>
+                 <tr>
+                     <td>
+                         <code>DisableRipple</code>
+                     </td>
+                     <td>
+                         <code>bool</code>
+                     </td>
+                     <td>是否禁用选项涟漪动画，默认<code>false</code>。</td>
+                 </tr>
+                 <tr>
+                     <td>
+                         <code>OnActived</code>
+                     </td>
+                     <td>
+                         <code>EventCallback</code>
+                     </td>
+                     <td>选项激活后的回调函数。</td>
+                 </tr>
+             </tbody>
+         </MduiSimpleTable>
+     </MduiTableContainer>
+ </div>

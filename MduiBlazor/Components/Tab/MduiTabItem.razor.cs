@@ -31,6 +31,9 @@ namespace MduiBlazor
         public string? Icon { get; set; }
 
         [Parameter]
+        public RenderFragment? IconContent { get; set; }
+
+        [Parameter]
         public bool Default { get; set; }
 
         [Parameter]
