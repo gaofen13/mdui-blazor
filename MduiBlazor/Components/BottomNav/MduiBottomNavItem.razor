@@ -5,7 +5,7 @@
     @onclick="@(_=>Nav?.OnActiveItemChanged(this))">
     @if (Icon != null)
     {
-        <MduiIcon Name="@Icon" />
+        <MduiIcon Icon="@Icon" />
     }
     <label>@ChildContent</label>
 </a>

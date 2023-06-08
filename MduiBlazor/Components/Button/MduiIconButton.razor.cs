@@ -11,6 +11,6 @@ namespace MduiBlazor
             .Build();
 
         [Parameter]
-        public string? IconName { get; set; }
+        public string? Icon { get; set; }
     }
 }

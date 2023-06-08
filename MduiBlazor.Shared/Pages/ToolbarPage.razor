@@ -1,0 +1,81 @@
+@page "/toolbar"
+@inherits BasePage
+@using MduiBlazor.Shared.Pages.Examples.Toolbars
+
+<PageTitle>工具栏</PageTitle>
+<h1 class="mdui-m-y-5">
+    <MduiText Typo="@Typo.display1" TextColor="@Colors.Theme.Primary">工具栏</MduiText>
+</h1>
+
+<PageContent>
+    <PageContentItem Title="Examples" OnClick="@(_=>ScrollToElementById("examples"))">
+        <PageContentItem Title="基本样式" OnClick="@(_=>ScrollToElementById("simple"))" />
+        <PageContentItem Title="背景颜色" OnClick="@(_=>ScrollToElementById("color"))" />
+    <PageContentItem Title="组件参数" OnClick="@(_=>ScrollToElementById("attr"))" />
+    </PageContentItem>
+</PageContent>
+
+<MduiDivider Class="mdui-m-y-5" />
+
+<div>
+    <h2 id="examples">
+        <MduiText Typo="@Typo.headline" TextColor="@Colors.Theme.Primary">Examples</MduiText>
+    </h2>
+
+    <MduiText id="simple" Typo="@Typo.subheading"><b>基本样式</b></MduiText>
+    <ExampleSection Component="@typeof(SimpleToolbar)" />
+
+    <MduiText id="color" Typo="@Typo.subheading"><b>背景颜色</b></MduiText>
+    <ExampleSection Component="@typeof(ColorToolbar)" />
+
+</div>
+
+<MduiDivider Class="mdui-m-y-5" />
+
+<div>
+    <h2 id="attr">
+        <MduiText Typo="@Typo.headline" TextColor="@Colors.Theme.Primary">组件参数</MduiText>
+    </h2>
+
+    <MduiTableContainer UseMduiTypo Class="mdui-m-y-1">
+         <MduiSimpleTable>
+             <thead>
+                 <th>组件</th>
+                 <th>参数名称</th>
+                 <th>类型/返回类型</th>
+                 <th>说明</th>
+             </thead>
+             <tbody>
+                 <tr>
+                     <td rowspan="2">
+                         <code>MduiToolbar</code>
+                     </td>
+                     <td>
+                         <code>Color</code>
+                     </td>
+                     <td>
+                         <code>string?</code>
+                     </td>
+                     <td>工具栏背景颜色。</td>
+                 </tr>
+                 <tr>
+                     <td>
+                         <code>TextColor</code>
+                     </td>
+                     <td>
+                         <code>string?</code>
+                     </td>
+                     <td>工具栏前景颜色。</td>
+                 </tr>
+                 <tr>
+                     <td>
+                         <code>MduiToolbarSpace</code>
+                     </td>
+                     <td></td>
+                     <td></td>
+                     <td>该组件会将自己两边的内容推向两侧。</td>
+                 </tr>
+             </tbody>
+         </MduiSimpleTable>
+     </MduiTableContainer>
+ </div>

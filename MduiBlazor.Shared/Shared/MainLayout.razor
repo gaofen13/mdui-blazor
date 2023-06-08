@@ -4,7 +4,7 @@
      IsDarkTheme="@_isDarkTheme">
      <MduiAppbar Fixed>
         <MduiToolbar Color="@Colors.Theme.Primary">
-            <MduiIconButton IconName="menu" OnClick="_=>_open=!_open" />
+            <MduiIconButton Icon="menu" OnClick="_=>_open=!_open" />
             <MduiButton Text Href="">
                  <MduiText Typo="@Typo.title">MduiBlazor</MduiText>
              </MduiButton>
@@ -12,7 +12,7 @@
                  <MduiText Typo="@Typo.title">Mdui</MduiText>
              </MduiButton>
              <MduiToolbarSpace />
-             <MduiIconButton IconName="color_lens" OnClick="@ToggleThemeDialog" />
+             <MduiIconButton Icon="color_lens" OnClick="@ToggleThemeDialog" />
              <MduiIconButton Href="https://github.com/gaofen13/mdui-blazor">
                  <svg class="mdui-icon" viewBox="0 0 36 36">
                      <path fill-rule="evenodd" clip-rule="evenodd" fill="#ffffff"
@@ -33,7 +33,7 @@
                  <MduiContainer>
                      @Body
                      <MduiFab Class="mdui-fab-fixed" OnClick="@ScrollToTopAsync" Hide="@_hideScrollToTop"
-                         Color="@Colors.Theme.Primary" IconName="arrow_drop_up" />
+                         Color="@Colors.Theme.Primary" Icon="arrow_drop_up" />
                  </MduiContainer>
              </ChildContent>
              <ErrorContent>

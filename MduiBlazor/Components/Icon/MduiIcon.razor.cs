@@ -9,12 +9,12 @@ namespace MduiBlazor
             new ClassBuilder("mdui-icon")
             .AddClass($"mdui-text-color-{Color}", !string.IsNullOrWhiteSpace(Color))
             .AddClass("material-icons", !Custom)
-            .AddClass(Name, Custom)
+            .AddClass(Icon, Custom)
             .AddClass(Class)
             .Build();
 
         [Parameter]
-        public string? Name { get; set; }
+        public string? Icon { get; set; }
 
         [Parameter]
         public bool Custom { get; set; }

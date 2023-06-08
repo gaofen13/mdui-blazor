@@ -21,7 +21,7 @@ namespace MduiBlazor
         public bool DisableRipple { get; set; }
 
         [Parameter]
-        public string? IconName { get; set; }
+        public string? Icon { get; set; }
 
         [Parameter]
         public bool Mini { get; set; }
