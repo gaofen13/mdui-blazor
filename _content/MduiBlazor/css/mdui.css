@@ -11111,9 +11111,6 @@ select.mdui-select[multiple] option:last-child {
   max-width: none;
 }
 /* 可横向滚动的选项卡 */
-.mdui-tab-scrollable {
-  padding-left: 56px;
-}
 .mdui-tab-scrollable a {
   -webkit-box-flex: 0;
       -ms-flex: none;
