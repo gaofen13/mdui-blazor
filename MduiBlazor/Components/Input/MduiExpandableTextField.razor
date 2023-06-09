@@ -2,11 +2,20 @@
 @inherits MduiInputBase<string>
 
 <div class="@Classname" style="@Style" @attributes="@AdditionalAttributes">
-    <MduiIconButton DisableRipple Class="mdui-textfield-icon" Icon="@Icon" OnClick="@OpenAsync" />
-     <input @ref="@Element" class="mdui-textfield-input" type="@Type" pattern="@Pattern" maxlength="@MaxLength"
-         placeholder="@Placeholder" disabled="@Disabled" readonly="@Readonly"
-         value="@BindConverter.FormatValue(CurrentValueAsString)"
-     @onchange="@(EventCallback.Factory.CreateBinder<string?>(this, __value => CurrentValueAsString = __value, CurrentValueAsString))"
-     @onfocus="@OnFocus" @onblur="@OnBlur" />
-     <MduiIconButton DisableRipple Class="mdui-textfield-close" Icon="close" OnClick="@Close" />
+    <MduiIconButton Class="mdui-textfield-icon" DisableRipple OnClick="@ToggleAsync">
+        @if (IconContent is not null)
+        {
+            @IconContent
+        }
+        else
+        {
+            <MduiIcon Icon="@Icon" />
+        }
+    </MduiIconButton>
+    <input @ref="@Element" class="mdui-textfield-input" type="@Type" pattern="@Pattern" maxlength="@MaxLength"
+        placeholder="@Placeholder" disabled="@Disabled" readonly="@Readonly"
+        value="@BindConverter.FormatValue(CurrentValueAsString)"
+    @onchange="@(EventCallback.Factory.CreateBinder<string?>(this, __value => CurrentValueAsString = __value, CurrentValueAsString))"
+    @onfocus="@OnFocus" @onblur="@OnBlur" />
+    <MduiIconButton DisableRipple Class="mdui-textfield-close" Icon="close" OnClick="@ToggleAsync" />
  </div>

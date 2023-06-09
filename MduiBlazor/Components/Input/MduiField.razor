@@ -2,7 +2,11 @@
 @inherits MduiComponentBase
 
 <div class="@Classname" style="@Style" @attributes="@AdditionalAttributes">
-    @if (Icon is not null)
+    @if (IconContent is not null)
+    {
+        @IconContent
+    }
+    else if (Icon is not null)
     {
         <MduiIcon Icon="@Icon" />
     }

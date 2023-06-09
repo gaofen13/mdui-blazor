@@ -18,7 +18,10 @@ namespace MduiBlazor
             .Build();
 
         [Parameter]
-        public string Icon { get; set; } = "search";
+        public string? Icon { get; set; }
+
+        [Parameter]
+        public RenderFragment? IconContent { get; set; }
 
         [Parameter]
         public string? Placeholder { get; set; }
@@ -59,18 +62,18 @@ namespace MduiBlazor
             _isFocus = false;
         }
 
-        private async Task OpenAsync()
+        private async Task ToggleAsync()
         {
-            _expanded = true;
-            await Element!.FocusAsync();
-            StateHasChanged();
-        }
-
-        private void Close()
-        {
-            _expanded = false;
-            _isFocus = false;
-            StateHasChanged();
+            if (_expanded)
+            {
+                _expanded = false;
+            }
+            else
+            {
+                _expanded = true;
+                await Element!.FocusAsync();
+            }
+            await InvokeAsync(StateHasChanged);
         }
     }
 }

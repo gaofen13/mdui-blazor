@@ -60,9 +60,18 @@
             </thead>
             <tbody>
                 <tr>
-                    <th rowspan="8">
+                    <th rowspan="7">
                         <code>MduiFab</code>
                     </th>
+                    <td>
+                        <code>Icon</code>
+                    </td>
+                    <td>
+                        <code>string?</code>
+                    </td>
+                    <td>弹出按钮Material Icon图标类名（见<code>MduiIcon</code>）。</td>
+                </tr>
+                <tr>
                     <td>
                         <code>Color</code>
                     </td>
@@ -73,30 +82,12 @@
                 </tr>
                 <tr>
                     <td>
-                        <code>Icon</code>
-                    </td>
-                    <td>
-                        <code>string?</code>
-                    </td>
-                    <td>弹出按钮图标名称（见<code>MduiIcon</code>）。</td>
-                </tr>
-                <tr>
-                    <td>
-                        <code>IconColor</code>
+                        <code>TextColor</code>
                     </td>
                     <td>
                         <code>string?</code>
                     </td>
                     <td>弹出按钮前景颜色。</td>
-                </tr>
-                <tr>
-                    <td>
-                        <code>IconClass</code>
-                    </td>
-                    <td>
-                        <code>string?</code>
-                    </td>
-                    <td>图标元素<code>class</code>值。</td>
                 </tr>
                 <tr>
                     <td>
@@ -135,7 +126,7 @@
                     <td>单击事件回调，参数<code>MouseEventArgs</code>。</td>
                 </tr>
                 <tr>
-                    <th rowspan="6">
+                    <th rowspan="9">
                         <code>MduiFabMenu</code>
                     </th>
                     <td>
@@ -148,12 +139,30 @@
                 </tr>
                 <tr>
                     <td>
+                        <code>TextColor</code>
+                    </td>
+                    <td>
+                        <code>string?</code>
+                    </td>
+                    <td>菜单按钮前景颜色。</td>
+                </tr>
+                <tr>
+                    <td>
                         <code>Icon</code>
                     </td>
                     <td>
                         <code>string?</code>
                     </td>
-                    <td>菜单按钮图标名称（见<code>MduiIcon</code>）。</td>
+                    <td>菜单按钮Material图标类名（见<code>MduiIcon</code>）。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>IconContent</code>
+                    </td>
+                    <td>
+                        <code>RenderFragment?</code>
+                    </td>
+                    <td>菜单按钮图标渲染片段，一般用于自定义图标。</td>
                 </tr>
                 <tr>
                     <td>
@@ -162,7 +171,16 @@
                     <td>
                         <code>string?</code>
                     </td>
-                    <td>打开状态下菜单按钮的图标名称（见<code>MduiIcon</code>）。</td>
+                    <td>打开状态下菜单按钮的Material图标类名（见<code>MduiIcon</code>）。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>OpenedIconContent</code>
+                    </td>
+                    <td>
+                        <code>RenderFragment?</code>
+                    </td>
+                    <td>打开状态下菜单按钮的图标渲染片段，一般用于自定义图标。</td>
                 </tr>
                 <tr>
                     <td>

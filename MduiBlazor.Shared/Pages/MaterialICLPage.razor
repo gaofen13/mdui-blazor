@@ -15,7 +15,7 @@
         {
             <div class="mdui-col mdui-text-center mdui-p-y-3" style="height:120px;cursor:pointer;"
             @onclick="_=>OnClickIconItem(item.Name)">
-                <MduiIcon Class="mdui-m-y-1" Style="font-size:48px;" Name="@item.Name" Color="@Colors.Grey.Primary6" />
+                <MduiIcon Class="mdui-m-y-1" Style="font-size:48px;" Icon="@item.Name" Color="@Colors.Grey.Primary6" />
                 <br />
                 <MduiText Typo="@Typo.caption" Color="@Colors.Grey.Primary6" Style="overflow-wrap:break-word">@item.Name
                 </MduiText>
@@ -25,6 +25,6 @@
 </div>
 
 <MduiDialog @bind-Open="@_show" Options="@(new DialogOptions{Modal=true})">
-    <MduiIcon Name="@_selectedIcon" />
+    <MduiIcon Icon="@_selectedIcon" />
     <CodeSnippet>@IconCodeContents</CodeSnippet>
 </MduiDialog>

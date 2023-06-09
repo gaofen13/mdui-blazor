@@ -10,7 +10,6 @@ namespace MduiBlazor.Shared.Pages
     public class BasePage : ComponentBase
     {
         private IJSObjectReference? _jsModule;
-        private DotNetObjectReference<BasePage>? _objectReference;
 
         [Inject]
         private IJSRuntime JSRuntime { get; set; } = default!;
@@ -19,7 +18,6 @@ namespace MduiBlazor.Shared.Pages
         {
             if (firstRender)
             {
-                _objectReference = DotNetObjectReference.Create(this);
                 _jsModule = await JSRuntime.InvokeAsync<IJSObjectReference>("import",
                      "./_content/MduiBlazor.Shared/Shared/MainLayout.razor.js");
             }

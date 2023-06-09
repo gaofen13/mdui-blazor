@@ -61,7 +61,7 @@ namespace MduiBlazor.Shared.Pages
 
         private void OnClickIconItem(string? name)
         {
-            IconCodeContents = $"<MduiIcon Name=\"{name}\" />";
+            IconCodeContents = $"<MduiIcon Icon=\"{name}\" />";
             _selectedIcon = name;
             _show = true;
         }
