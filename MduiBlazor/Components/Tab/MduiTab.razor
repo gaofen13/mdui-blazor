@@ -2,24 +2,7 @@
 @inherits MduiComponentBase
 
 <div class="@Classname" style="@Style" @attributes="@AdditionalAttributes">
-    @foreach (var item in _items)
-    {
-        <a class="@item.TitleClass" disabled="@item.Disabled" @onclick="@(_=>OnActiveTabChanged(item))">
-            @if (item.IconContent is not null)
-            {
-                @item.IconContent
-            }
-            else if (!string.IsNullOrWhiteSpace(item.Icon))
-            {
-                <MduiIcon Icon="@item.Icon" />
-            }
-            @if (!string.IsNullOrWhiteSpace(item.Title))
-            {
-                <label>@item.Title</label>
-            }
-        </a>
-    }
+    <CascadingValue Name="Tab" Value="@this" IsFixed>
+        @ChildContent
+    </CascadingValue>
 </div>
-<CascadingValue Value="@this" IsFixed>
-    @ChildContent
-</CascadingValue>

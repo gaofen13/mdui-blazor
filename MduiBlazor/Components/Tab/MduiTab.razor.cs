@@ -6,7 +6,7 @@ namespace MduiBlazor
     public partial class MduiTab : MduiComponentBase
     {
         private readonly List<MduiTabItem> _items = new();
-        private MduiTabItem? _activeTabItem;
+        private MduiTabItem? _activedItem;
 
         protected string Classname =>
             new ClassBuilder("mdui-tab")
@@ -29,43 +29,43 @@ namespace MduiBlazor
         [Parameter]
         public string? Color { get; set; }
 
-        public void AddTab(MduiTabItem item)
+        public void AddItem(MduiTabItem item)
         {
             if (!_items.Contains(item))
             {
                 _items.Add(item);
                 if (item.Default)
                 {
-                    OnActiveTabChanged(item);
+                    OnActivedItemChanged(item);
                 }
                 StateHasChanged();
             }
         }
 
-        public void RemoveTab(MduiTabItem item)
+        public void RemoveItem(MduiTabItem item)
         {
             if (_items.Contains(item))
             {
                 _items.Remove(item);
-                if (_activeTabItem == item)
+                if (_activedItem == item)
                 {
-                    var activeTab = _items.FirstOrDefault();
-                    if (activeTab != null)
+                    var activedTab = _items.FirstOrDefault();
+                    if (activedTab != null)
                     {
-                        OnActiveTabChanged(activeTab);
+                        OnActivedItemChanged(activedTab);
                     }
                 }
                 StateHasChanged();
             }
         }
 
-        private void OnActiveTabChanged(MduiTabItem item)
+        public void OnActivedItemChanged(MduiTabItem item)
         {
-            if (!item.Disabled && _activeTabItem != item)
+            if (!item.Disabled && _activedItem?.Equals(item) != true)
             {
-                _activeTabItem?.DisactiveTab();
-                _activeTabItem = item;
-                _activeTabItem.ActiveTab();
+                _activedItem?.DisactiveItem();
+                _activedItem = item;
+                _activedItem.ActiveItem();
             }
         }
     }

@@ -2,9 +2,24 @@
 @inherits MduiComponentBase
 @implements IDisposable
 
-@if (_active)
-{
-    <div class="@Classname" style="@Style" @attributes="@AdditionalAttributes">
+<a class="@Classname" style="@Style" disabled="@Disabled" @onclick="@(_=>Tab?.OnActivedItemChanged(this))">
+    @if (ChildContent is not null)
+    {
         @ChildContent
-    </div>
-}
+    }
+    else
+    {
+        @if (IconContent is not null)
+        {
+            @IconContent
+        }
+        else if (Icon is not null)
+        {
+            <MduiIcon Icon="@Icon" />
+        }
+        @if (!string.IsNullOrWhiteSpace(Title))
+        {
+            <label>@Title</label>
+        }
+    }
+</a>

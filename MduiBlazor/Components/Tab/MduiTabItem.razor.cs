@@ -3,23 +3,19 @@ using Microsoft.AspNetCore.Components;
 
 namespace MduiBlazor
 {
-    public partial class MduiTabItem : IDisposable
+    public partial class MduiTabItem : MduiComponentBase, IDisposable
     {
         private bool _active;
 
         private string Classname =>
-            new ClassBuilder()
-            .AddClass(Class)
-            .Build();
-
-        public string TitleClass =>
             new ClassBuilder("mdui-tab-content")
             .AddClass("mdui-tab-active", _active)
             .AddClass("mdui-ripple", !DisableRipple)
+            .AddClass(Class)
             .Build();
 
-        [CascadingParameter]
-        private MduiTab MduiTab { get; set; } = default!;
+        [CascadingParameter(Name = "Tab")]
+        private MduiTab? Tab { get; set; }
 
         [Parameter]
         public bool DisableRipple { get; set; }
@@ -46,26 +42,30 @@ namespace MduiBlazor
         {
             if (Default && !Disabled)
             {
-                ActiveTab();
+                ActiveItem();
             }
-            MduiTab.AddTab(this);
-            base.OnInitialized();
+            Tab?.AddItem(this);
         }
 
-        public void ActiveTab()
+        public void ActiveItem()
         {
             _active = true;
-            OnActived.InvokeAsync();
+            StateHasChanged();
+            if (OnActived.HasDelegate)
+            {
+                OnActived.InvokeAsync();
+            }
         }
 
-        public void DisactiveTab()
+        public void DisactiveItem()
         {
             _active = false;
+            StateHasChanged();
         }
 
         void IDisposable.Dispose()
         {
-            MduiTab.RemoveTab(this);
+            Tab?.RemoveItem(this);
             GC.SuppressFinalize(this);
         }
     }
