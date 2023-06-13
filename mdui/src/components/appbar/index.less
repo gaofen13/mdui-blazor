@@ -26,16 +26,12 @@
 
 /* 左侧留出抽屉栏的距离 */
 .mdui-appbar-inset {
-  .mdui-drawer-body-left & {
-    @media (min-width: @screen-md-min) {
-      left: @drawer-width-md;
-    }
+  .mdui-drawer-body-left>& {
+    left: @drawer-width-md;
   }
 
-  .mdui-drawer-body-right & {
-    @media (min-width: @screen-md-min) {
-      right: @drawer-width-md;
-    }
+  .mdui-drawer-body-right>& {
+    right: @drawer-width-md;
   }
 }
 
