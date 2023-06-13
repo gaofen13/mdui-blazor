@@ -79,78 +79,78 @@
       }
     }
   }
-}
 
-/* 只在激活时显示文本 */
-&.mdui-bottom-nav-text-auto {
-  a {
-    min-width: 32px;
-    padding-right: 0;
-    padding-left: 0;
+  /* 只在激活时显示文本 */
+  &.mdui-bottom-nav-text-auto {
+    a {
+      min-width: 32px;
+      padding-right: 0;
+      padding-left: 0;
 
-    @media (min-width: @screen-sm-min) {
-      max-width: 156px;
-    }
-
-    .mdui-icon {
-      padding-top: 16px;
-      transition: padding-top .2s @animation-curve-default;
-      will-change: padding-top;
-    }
-
-    label {
-      transform: scale(0);
-    }
-
-    &.mdui-bottom-nav-active {
-      padding-right: 18px;
-      padding-left: 18px;
+      @media (min-width: @screen-sm-min) {
+        max-width: 156px;
+      }
 
       .mdui-icon {
-        padding-top: 0;
+        padding-top: 16px;
+        transition: padding-top .2s @animation-curve-default;
+        will-change: padding-top;
       }
 
       label {
-        transform: scale(1);
+        transform: scale(0);
+      }
+
+      &.mdui-bottom-nav-active {
+        padding-right: 18px;
+        padding-left: 18px;
+
+        .mdui-icon {
+          padding-top: 0;
+        }
+
+        label {
+          transform: scale(1);
+        }
       }
     }
-  }
 
-  /* 固定到页面底部 */
-  &.mdui-bottom-nav-fixed {
-    position: fixed;
-    right: 0;
-    bottom: 0;
-    left: 0;
+    /* 固定到页面底部 */
+    &.mdui-bottom-nav-fixed {
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
   }
 }
 
-/**
+  /**
  * =============================================================================
  * ************   Bottom Nav 主色   ************
  * =============================================================================
  */
 
-& {
-  .loop-primary-theme(@counter-color) when (@counter-color > 0) {
-    .loop-primary-theme((@counter-color - 1));
-    @colorName: extract(@globalPrimaryColors, @counter-color);
-    @color: 'color-@{colorName}-500';
+  & {
+    .loop-primary-theme(@counter-color) when (@counter-color > 0) {
+      .loop-primary-theme((@counter-color - 1));
+      @colorName: extract(@globalPrimaryColors, @counter-color);
+      @color: 'color-@{colorName}-500';
 
-    .mdui-theme-primary-@{colorName} when not (@colorName =null) {
-      .mdui-bottom-nav a.mdui-bottom-nav-active {
-        color: @@color;
+      .mdui-theme-primary-@{colorName} when not (@colorName =null) {
+        .mdui-bottom-nav a.mdui-bottom-nav-active {
+          color: @@color;
+        }
       }
+
     }
 
+    .loop-primary-theme(length(@globalPrimaryColors));
   }
 
-  .loop-primary-theme(length(@globalPrimaryColors));
-}
-
-/* 带背景色的底部导航栏 */
-.mdui-bottom-nav[class*="mdui-color-"] {
-  .mdui-bottom-nav-active {
-    color: inherit !important;
+  /* 带背景色的底部导航栏 */
+  .mdui-bottom-nav[class*="mdui-color-"] {
+    .mdui-bottom-nav-active {
+      color: inherit !important;
+    }
   }
-}

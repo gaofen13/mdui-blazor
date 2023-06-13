@@ -9,7 +9,7 @@ namespace MduiBlazor
         protected string Classname =>
             new ClassBuilder()
             .AddClass("mdui-bottom-nav-active", _active)
-            .AddClass("mdui-ripple", Ripple)
+            .AddClass("mdui-ripple", !DisableRipple)
             .AddClass("mdui-typo", UseMduiTypo)
             .AddClass(Class)
             .Build();
@@ -18,16 +18,19 @@ namespace MduiBlazor
         private MduiBottomNav? Nav { get; set; }
 
         [Parameter]
-        public bool Actived { get; set; }
+        public bool Default { get; set; }
 
         [Parameter]
-        public bool Default { get; set; }
+        public string? Title { get; set; }
 
         [Parameter]
         public string? Icon { get; set; }
 
         [Parameter]
-        public bool Ripple { get; set; } = true;
+        public RenderFragment? IconContent { get; set; }
+
+        [Parameter]
+        public bool DisableRipple { get; set; }
 
         [Parameter]
         public EventCallback OnActived { get; set; }
@@ -35,10 +38,6 @@ namespace MduiBlazor
         protected override void OnInitialized()
         {
             Nav?.AddItem(this);
-            if (Default)
-            {
-                Nav?.OnActiveItemChanged(this);
-            }
             base.OnInitialized();
         }
 

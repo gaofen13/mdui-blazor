@@ -1,0 +1,160 @@
+@page "/bottomnav"
+@inherits BasePage
+@using MduiBlazor.Shared.Pages.Examples.BottomNavs
+
+<PageTitle>按钮</PageTitle>
+<div class="mdui-m-y-5">
+    <MduiText Typo="@Typo.display1" TextColor="@Colors.Theme.Primary">按钮</MduiText>
+    <p>底部导航栏固定在页面底部，可以拥有 3 - 5 个选项。它通常只在手机上使用。每个页面只能拥有一个底部导航栏。</p>
+</div>
+
+<PageContent>
+    <PageContentItem Title="Examples" OnClick="@(_=>ScrollToElementById("examples"))">
+        <PageContentItem Title="基本样式" OnClick="@(_=>ScrollToElementById("simple"))" />
+        <PageContentItem Title="只显示图标" OnClick="@(_=>ScrollToElementById("icon"))" />
+        <PageContentItem Title="只显示文本" OnClick="@(_=>ScrollToElementById("title"))" />
+        <PageContentItem Title="只在激活状态显示文本" OnClick="@(_=>ScrollToElementById("titleAuto"))" />
+        <PageContentItem Title="背景色" OnClick="@(_=>ScrollToElementById("color"))" />
+        <PageContentItem Title="固定到页面底部" OnClick="@(_=>ScrollToElementById("fixed"))" />
+    </PageContentItem>
+    <PageContentItem Title="组件参数" OnClick="@(_=>ScrollToElementById("attr"))" />
+</PageContent>
+
+<MduiDivider Class="mdui-m-y-5" />
+
+<div>
+    <h2 id="examples">
+        <MduiText Typo="@Typo.headline" TextColor="@Colors.Theme.Primary">Examples</MduiText>
+    </h2>
+
+    <MduiText id="simple" Typo="@Typo.subheading"><b>基本样式</b></MduiText>
+    <p>下面的例子同时显示图标和文本，通常在只有 3 个导航项时使用。</p>
+    <p class="mdui-typo">参数<code>Default="true"</code>的<code>MduiBottomNavItem</code>导航项组件将处于默认激活状态。</p>
+    <ExampleSection Component="@typeof(SimpleBottomNav)" />
+
+    <MduiText id="icon" Typo="@Typo.subheading"><b>只显示图标</b></MduiText>
+    <ExampleSection Component="@typeof(IconBottomNav)" />
+
+    <MduiText id="title" Typo="@Typo.subheading"><b>只显示文本</b></MduiText>
+    <ExampleSection Component="@typeof(TitleBottomNav)" />
+
+    <MduiText id="titleAuto" Typo="@Typo.subheading"><b>只在激活状态显示文本</b></MduiText>
+    <p class="mdui-typo">设置组件<code>MduiBottomNav</code>参数<code>TitleAuto="true"</code>即可实现该效果。</p>
+    <p>一般在拥有 4 - 5 个导航项时，使用这种方式。默认只显示图标，在激活导航项后显示文本。</p>
+    <ExampleSection Component="@typeof(TitleBottomNavOnActive)" />
+
+    <MduiText id="color" Typo="@Typo.subheading"><b>背景色</b></MduiText>
+    <p class="mdui-typo">设置组件<code>MduiBottomNav</code>参数<code>Color</code>即可为底部导航栏赋予背景色。</p>
+    <ExampleSection Component="@typeof(ColorBottomNav)" />
+
+    <MduiText id="fixed" Typo="@Typo.subheading"><b>固定到页面底部</b></MduiText>
+    <p class="mdui-typo">设置组件<code>MduiBottomNav</code>参数<code>Fixed="true"</code>即可将底部导航栏固定在页面底部，不随滚动条滚动。</p>
+</div>
+
+<MduiDivider Class="mdui-m-y-5" />
+
+<div>
+    <h2 id="attr">
+        <MduiText Typo="@Typo.headline" TextColor="@Colors.Theme.Primary">组件参数</MduiText>
+    </h2>
+
+    <MduiTableContainer UseMduiTypo Class="mdui-m-y-1">
+         <MduiSimpleTable>
+             <thead>
+                 <th>组件</th>
+                 <th>参数名称</th>
+                 <th>类型/返回类型</th>
+                 <th>说明</th>
+             </thead>
+             <tbody>
+                 <tr>
+                     <td rowspan="3">
+                         <code>MduiBottomNav</code>
+                     </td>
+                     <td>
+                         <code>Fixed</code>
+                     </td>
+                     <td>
+                         <code>bool</code>
+                     </td>
+                     <td>是否固定到浏览器底部，默认<code>false</code>。</td>
+                 </tr>
+                 <tr>
+                     <td>
+                         <code>TitleAuto</code>
+                     </td>
+                     <td>
+                         <code>bool</code>
+                     </td>
+                     <td>是否只在激活状态显示文本，默认<code>false</code>。</td>
+                 </tr>
+                 <tr>
+                     <td>
+                         <code>Color</code>
+                     </td>
+                     <td>
+                         <code>string?</code>
+                     </td>
+                     <td>底部导航栏背景颜色。</td>
+                 </tr>
+                 <tr>
+                     <td rowspan="6">
+                         <code>MduiBottomNavItem</code>
+                     </td>
+                     <td>
+                         <code>Title</code>
+                     </td>
+                     <td>
+                         <code>string?</code>
+                     </td>
+                     <td>导航项的标题。</td>
+                 </tr>
+                 <tr>
+                     <td>
+                         <code>Icon</code>
+                     </td>
+                     <td>
+                         <code>string</code>
+                     </td>
+                     <td>导航项的Material图标类名。</td>
+                 </tr>
+                 <tr>
+                     <td>
+                         <code>IconContent</code>
+                     </td>
+                     <td>
+                         <code>RenderFragment?</code>
+                     </td>
+                     <td>导航项的图标渲染片段，一般用于自定义图标。</td>
+                 </tr>
+                 <tr>
+                     <td>
+                         <code>Default</code>
+                     </td>
+                     <td>
+                         <code>bool</code>
+                     </td>
+                     <td>是否默认激活该导航项，默认<code>false</code>。</td>
+                 </tr>
+                 <tr>
+                     <td>
+                         <code>DisableRipple</code>
+                     </td>
+                     <td>
+                         <code>bool</code>
+                     </td>
+                     <td>是否禁用导航项涟漪动画，默认<code>false</code>。</td>
+                 </tr>
+                 <tr>
+                     <td>
+                         <code>OnActived</code>
+                     </td>
+                     <td>
+                         <code>EventCallback</code>
+                     </td>
+                     <td>导航项激活后的回调函数。</td>
+                 </tr>
+             </tbody>
+         </MduiSimpleTable>
+     </MduiTableContainer>
+ </div>

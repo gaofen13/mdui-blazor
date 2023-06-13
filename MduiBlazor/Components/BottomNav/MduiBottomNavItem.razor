@@ -3,9 +3,23 @@
 
 <a class="@Classname" style="@Style" @attributes="@AdditionalAttributes"
     @onclick="@(_=>Nav?.OnActiveItemChanged(this))">
-    @if (Icon != null)
+    @if (ChildContent is not null)
     {
-        <MduiIcon Icon="@Icon" />
+        @ChildContent
     }
-    <label>@ChildContent</label>
+    else
+    {
+        @if (IconContent is not null)
+        {
+            @IconContent
+        }
+        else if (Icon is not null)
+        {
+            <MduiIcon Icon="@Icon" />
+        }
+        @if (!string.IsNullOrWhiteSpace(Title))
+        {
+            <label>@Title</label>
+        }
+    }
 </a>
