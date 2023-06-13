@@ -12378,6 +12378,7 @@ select.mdui-select[multiple] option:last-child {
   padding: 0;
   overflow: hidden;
   white-space: nowrap;
+  /* 只在激活时显示文本 */
 }
 @media (min-width: 600px) {
   .mdui-bottom-nav::before {
@@ -12458,42 +12459,41 @@ select.mdui-select[multiple] option:last-child {
 .mdui-bottom-nav a.mdui-bottom-nav-active .mdui-icon {
   opacity: 1;
 }
-/* 只在激活时显示文本 */
-.mdui-bottom-nav-text-auto {
+.mdui-bottom-nav.mdui-bottom-nav-text-auto {
   /* 固定到页面底部 */
 }
-.mdui-bottom-nav-text-auto a {
+.mdui-bottom-nav.mdui-bottom-nav-text-auto a {
   min-width: 32px;
   padding-right: 0;
   padding-left: 0;
 }
 @media (min-width: 600px) {
-  .mdui-bottom-nav-text-auto a {
+  .mdui-bottom-nav.mdui-bottom-nav-text-auto a {
     max-width: 156px;
   }
 }
-.mdui-bottom-nav-text-auto a .mdui-icon {
+.mdui-bottom-nav.mdui-bottom-nav-text-auto a .mdui-icon {
   padding-top: 16px;
   -webkit-transition: padding-top 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   transition: padding-top 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   will-change: padding-top;
 }
-.mdui-bottom-nav-text-auto a label {
+.mdui-bottom-nav.mdui-bottom-nav-text-auto a label {
   -webkit-transform: scale(0);
           transform: scale(0);
 }
-.mdui-bottom-nav-text-auto a.mdui-bottom-nav-active {
+.mdui-bottom-nav.mdui-bottom-nav-text-auto a.mdui-bottom-nav-active {
   padding-right: 18px;
   padding-left: 18px;
 }
-.mdui-bottom-nav-text-auto a.mdui-bottom-nav-active .mdui-icon {
+.mdui-bottom-nav.mdui-bottom-nav-text-auto a.mdui-bottom-nav-active .mdui-icon {
   padding-top: 0;
 }
-.mdui-bottom-nav-text-auto a.mdui-bottom-nav-active label {
+.mdui-bottom-nav.mdui-bottom-nav-text-auto a.mdui-bottom-nav-active label {
   -webkit-transform: scale(1);
           transform: scale(1);
 }
-.mdui-bottom-nav-text-auto.mdui-bottom-nav-fixed {
+.mdui-bottom-nav.mdui-bottom-nav-text-auto.mdui-bottom-nav-fixed {
   position: fixed;
   right: 0;
   bottom: 0;
