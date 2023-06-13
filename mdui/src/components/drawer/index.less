@@ -10,7 +10,7 @@
 
 /* 抽屉栏外层，默认出现在左侧且隐藏 */
 .mdui-drawer {
-  position: fixed;
+  position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
@@ -25,10 +25,15 @@
   overflow-x: hidden;
   overflow-y: auto;
   white-space: nowrap;
-  will-change: transform;
+  will-change: width;
   -webkit-overflow-scrolling: touch;
 
+  &.mdui-drawer-fixed {
+    position: fixed;
+  }
+
   &.mdui-drawer-close {
+    width: 0 !important;
     box-shadow: none !important;
   }
 
@@ -39,17 +44,9 @@
   }
 
   &.mdui-drawer-persistent {
-    // persistent时宽度
+    z-index: inherit;
     width: @drawer-width-md;
     max-width: none;
-
-    &.mdui-drawer-close {
-      transform: translateX(-@drawer-width-md - 10);
-
-      &.mdui-drawer-right {
-        transform: translateX(@drawer-width-md + 10);
-      }
-    }
   }
 
   // 平板端宽度为 100% - 64px，最大为 320px
@@ -57,58 +54,16 @@
     /* stylelint-disable-next-line */
     width: calc(~"100% - 64px");
     max-width: @drawer-width-sm;
-
-    &.mdui-drawer-close {
-      transform: translateX(-@drawer-width-sm - 10);
-
-      &.mdui-drawer-right {
-        transform: translateX(@drawer-width-sm + 10);
-      }
-    }
   }
 
   @media (min-width: @screen-lg-min) {
     width: @drawer-width-md;
     max-width: none;
-
-    &.mdui-drawer-close {
-      transform: translateX(-@drawer-width-md - 10);
-
-      &.mdui-drawer-right {
-        transform: translateX(@drawer-width-md + 10);
-      }
-    }
   }
 
-  /* 强制隐藏抽屉栏 */
-  ._drawer_close(@drawer-width) {
-    &.mdui-drawer-close {
-      transform: translateX(-@drawer-width - 10);
-
-      &.mdui-drawer-right {
-        transform: translateX(@drawer-width + 10);
-      }
-    }
-  }
-
-  ._drawer_close(@drawer-width-xs);
-
-  @media (min-width: @screen-sm-min) {
-    ._drawer_close(@drawer-width-sm);
-  }
-
-  @media (min-width: @screen-md-min) {
-    ._drawer_close(@drawer-width-md);
-  }
-
-  /* 强制显示抽屉栏 */
-  &.mdui-drawer-open {
-    transform: translateX(0) !important;
-
-    &:not(.mdui-drawer-persistent) {
-      background-color: #fff;
-      .mdui-shadow(16);
-    }
+  &:not(.mdui-drawer-persistent) {
+    background-color: #fff;
+    .mdui-shadow(16);
   }
 
   +.mdui-overlay {
@@ -116,65 +71,54 @@
   }
 }
 
-/* 使该类所在元素（通常为body或Layout）获得 padding-left 或 padding-right，避免被抽屉栏覆盖住页面 */
-.mdui-layout-content {
-  .mdui-drawer-body-left & {
-    padding-left: @drawer-width-md;
-  }
-
-  .mdui-drawer-body-right & {
-    padding-right: @drawer-width-md;
-  }
-}
-
 /* PC 上默认有上边距 */
-.mdui-drawer.mdui-drawer-persistent {
-  .mdui-appbar-with-tab & {
+.mdui-drawer.mdui-drawer-inset {
+  .mdui-appbar-with-tab>& {
     top: 48px;
   }
 
-  .mdui-appbar-with-tab-larger & {
+  .mdui-appbar-with-tab-larger>& {
     top: 72px;
   }
 
-  .mdui-appbar-with-toolbar & {
+  .mdui-appbar-with-toolbar>& {
     top: @appbar-height-xs-portrait;
   }
 
-  .mdui-appbar-with-toolbar.mdui-appbar-with-tab & {
+  .mdui-appbar-with-toolbar.mdui-appbar-with-tab>& {
     top: @appbar-height-xs-portrait + 48px;
   }
 
-  .mdui-appbar-with-toolbar.mdui-appbar-with-tab-larger & {
+  .mdui-appbar-with-toolbar.mdui-appbar-with-tab-larger>& {
     top: @appbar-height-xs-portrait + 72px;
   }
 
   // 平板和桌面
   @media (min-width: @screen-sm-min) {
-    .mdui-appbar-with-toolbar & {
+    .mdui-appbar-with-toolbar>& {
       top: @appbar-height-sm;
     }
 
-    .mdui-appbar-with-toolbar.mdui-appbar-with-tab & {
+    .mdui-appbar-with-toolbar.mdui-appbar-with-tab>& {
       top: @appbar-height-sm + 48px;
     }
 
-    .mdui-appbar-with-toolbar.mdui-appbar-with-tab-larger & {
+    .mdui-appbar-with-toolbar.mdui-appbar-with-tab-larger>& {
       top: @appbar-height-sm + 72px;
     }
   }
 
   // 手机横屏
   @media (orientation: landscape) and (max-width: @screen-xs-max-landscape) {
-    .mdui-appbar-with-toolbar & {
+    .mdui-appbar-with-toolbar>& {
       top: @appbar-height-xs-landscape;
     }
 
-    .mdui-appbar-with-toolbar.mdui-appbar-with-tab & {
+    .mdui-appbar-with-toolbar.mdui-appbar-with-tab>& {
       top: @appbar-height-xs-landscape + 48px;
     }
 
-    .mdui-appbar-with-toolbar.mdui-appbar-with-tab-larger & {
+    .mdui-appbar-with-toolbar.mdui-appbar-with-tab-larger>& {
       top: @appbar-height-xs-landscape + 72px;
     }
   }
@@ -183,11 +127,6 @@
 /* 抽屉栏不是透明时添加阴影 */
 .mdui-drawer[class*="mdui-color-"]:not(.mdui-color-transparent) {
   .mdui-shadow(16);
-}
-
-/* 抽屉栏 100% 高度，覆盖在导航栏上面 */
-.mdui-drawer-full-height {
-  top: 0 !important;
 }
 
 

@@ -10,10 +10,12 @@ namespace MduiBlazor
         protected string Classname =>
             new ClassBuilder("mdui-drawer")
             .AddClass("mdui-typo", UseMduiTypo)
+            .AddClass("mdui-drawer-fixed", Fixed)
             .AddClass("mdui-drawer-right", RightSide)
             .AddClass("mdui-drawer-persistent", Persistent)
-            .AddClass("mdui-drawer-full-height", FullHeight)
-            .AddClass(_opened ? "mdui-drawer-open" : "mdui-drawer-close")
+            .AddClass("mdui-drawer-inset", Inset)
+            .AddClass("mdui-drawer-close", !_opened)
+            .AddClass($"mdui-shadow-{Shadow}", Shadow >= 0 && Shadow <= 24)
             .AddClass(Class)
             .Build();
 
@@ -41,13 +43,27 @@ namespace MduiBlazor
         public EventCallback<bool> OpenedChanged { get; set; }
 
         [Parameter]
+        public bool Fixed { get; set; }
+
+        [Parameter]
         public bool Persistent { get; set; }
 
         [Parameter]
         public bool RightSide { get; set; }
 
         [Parameter]
-        public bool FullHeight { get; set; }
+        public bool Inset { get; set; }
+
+        [Parameter]
+        public int? Shadow { get; set; }
+
+        protected override void OnInitialized()
+        {
+            if (_opened)
+            {
+                ConfigLayout(true);
+            }
+        }
 
         private Task OnOverlayClickedAsync()
         {

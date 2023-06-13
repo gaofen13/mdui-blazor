@@ -7,7 +7,7 @@
 .mdui-layout {
     position: relative;
     width: 100%;
-    min-height: 100vh;
+    height: 100%;
 }
 
 .mdui-layout-content {
@@ -16,7 +16,7 @@
     transition: padding .3s @animation-curve-linear-out-slow-in;
 
     /* 含工具栏 */
-    .mdui-appbar-with-toolbar & {
+    .mdui-appbar-with-toolbar>& {
         padding-top: @appbar-height-xs-portrait;
 
         // 平板和桌面
@@ -31,17 +31,17 @@
     }
 
     /* 含 Tab */
-    .mdui-appbar-with-tab & {
+    .mdui-appbar-with-tab>& {
         padding-top: 48px;
     }
 
     /* 含大 Tab  */
-    .mdui-appbar-with-tab-larger & {
+    .mdui-appbar-with-tab-larger>& {
         padding-top: 72px;
     }
 
     /* 含工具栏和 Tab */
-    .mdui-appbar-with-toolbar.mdui-appbar-with-tab & {
+    .mdui-appbar-with-toolbar.mdui-appbar-with-tab>& {
         padding-top: @appbar-height-xs-portrait + 48px;
 
         // 平板和桌面
@@ -56,7 +56,7 @@
     }
 
     /* 含工具栏和大 Tab */
-    .mdui-appbar-with-toolbar.mdui-appbar-with-tab-larger & {
+    .mdui-appbar-with-toolbar.mdui-appbar-with-tab-larger>& {
         padding-top: @appbar-height-xs-portrait + 72px;
 
         // 平板和桌面
@@ -68,6 +68,15 @@
         @media (orientation: landscape) and (max-width: @screen-xs-max-landscape) {
             padding-top: @appbar-height-xs-landscape + 72px;
         }
+    }
+
+    /* 使该类所在元素（通常为body或Layout）获得 padding-left 或 padding-right，避免被抽屉栏覆盖住页面 */
+    .mdui-drawer-body-left>& {
+        padding-left: @drawer-width-md;
+    }
+
+    .mdui-drawer-body-right>& {
+        padding-right: @drawer-width-md;
     }
 }
 

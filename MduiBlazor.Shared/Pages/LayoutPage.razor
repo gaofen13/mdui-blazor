@@ -8,7 +8,11 @@
 </div>
 
 <PageContent>
-    <PageContentItem Title="布局组件" OnClick="@(_=>ScrollToElementById("container"))" />
+    <PageContentItem Title="布局组件" OnClick="@(_=>ScrollToElementById("container"))">
+        <PageContentItem Title="应用栏" OnClick="@(_=>ScrollToElementById("appbar"))" />
+        <PageContentItem Title="抽屉式导航" OnClick="@(_=>ScrollToElementById("drawer"))" />
+        <PageContentItem Title="完整布局示例" OnClick="@(_=>ScrollToElementById("fullLayout"))" />
+    </PageContentItem>
     <PageContentItem Title="主题" OnClick="@(_=>ScrollToElementById("theme"))" />
     <PageContentItem Title="组件参数" OnClick="@(_=>ScrollToElementById("attr"))" />
 </PageContent>
@@ -24,36 +28,72 @@
     <p class="mdui-typo"><code>MduiLayout</code>组件应作为所有组件的父组件，以应用主题元素。</p>
     <ExampleSection Label="code" HideExample FixCode Component="@typeof(SimpleLayout)" />
 
-    <MduiText UseMduiTypo Typo="@Typo.subheading"><b>带有<code>Appbar</code>的布局组件</b></MduiText>
-    <p class="mdui-typo">带有<code>Toolbar</code>的<code>Appbar</code>。</p>
-    <ExampleSection Label="code" HideExample FixCode Component="@typeof(LayoutWithToolbar)" />
+     <MduiText id="appbar" UseMduiTypo Typo="@Typo.subheading"><b>应用栏</b></MduiText>
+     <p>带有工具栏的应用栏。</p>
+     <p class="mdui-typo">需要设置组件<code>MduiLayout</code>参数<code>AppbarWithToolbar="true"</code>，以留出相应的应用栏高度。</p>
+     <ExampleSection Label="code" Component="@typeof(LayoutWithToolbar)" />
 
-    <p class="mdui-typo">带有<code>Tab</code>的<code>Appbar</code>。</p>
-    <ExampleSection Label="code" HideExample FixCode Component="@typeof(LayoutWithTab)" />
+     <p>带有 Tab 选项卡的应用栏。</p>
+     <p class="mdui-typo">需要设置组件<code>MduiLayout</code>参数<code>AppbarWithTab="true"</code>，以留出相应的应用栏高度。</p>
+     <ExampleSection Label="code" Component="@typeof(LayoutWithTab)" />
+     <p>Tab 选项卡同时含有标题和图标的应用栏。</p>
+     <p class="mdui-typo">需要设置组件<code>MduiLayout</code>参数<code>AppbarWithTabLarger="true"</code>，以留出相应的应用栏高度。</p>
+     <ExampleSection Label="code" Component="@typeof(LayoutWithTabLarger)" />
 
-    <p class="mdui-typo">带有<code>Toolbar</code>和<code>Tab</code>的<code>Appbar</code>。</p>
-    <ExampleSection Label="code" HideExample FixCode Component="@typeof(LayoutWithToolbarAndTab)" />
+     <p>同时有工具栏和 Tab 选项卡的应用栏。</p>
+     <p class="mdui-typo">需要同时设置组件<code>MduiLayout</code>参数<code>AppbarWithToolbar="true"</code>和<code>AppbarWithTab="true"</code>，以留出相应的应用栏高度。</p>
+     <ExampleSection Label="code" Component="@typeof(LayoutWithToolbarAndTab)" />
 
-    <MduiText UseMduiTypo Typo="@Typo.subheading"><b>带有<code>Drawer</code>和<code>Appbar</code>的布局组件</b></MduiText>
-    <p class="mdui-typo">这是一个带有<code>MduiDrawer</code>和<code>MduiAppbar</code>的完整<code>MduiLayout</code>。</p>
-    <ExampleSection Label="code" HideExample FixCode Component="@typeof(FullLayout)" />
-</div>
+     <p>透明背景应用栏。</p>
+     <p class="mdui-typo">设置参数<code>Shadow="0"</code>取消应用栏的阴影。</p>
+     <ExampleSection Component="@typeof(LayoutWithTransparentAppbar)" />
 
-<MduiDivider Class="mdui-m-y-5" />
+     <MduiText id="drawer" UseMduiTypo Typo="@Typo.subheading"><b>抽屉式导航</b></MduiText>
+     <p>左侧抽屉式导航。</p>
+     <ExampleSection Label="code" Component="@typeof(LayoutWithDrawer)" />
 
-<div>
-    <h2 id="theme">
-        <MduiText Typo="@Typo.headline" TextColor="@Colors.Theme.Primary">主题</MduiText>
-    </h2>
+     <p>右侧抽屉式导航。</p>
+     <p class="mdui-typo">设置组件<code>MduiDrawer</code>参数<code>RightSide="true"</code>。</p>
+     <ExampleSection Label="code" Component="@typeof(LayoutWithRightDrawer)" />
 
-    <MduiText Typo="@Typo.subheading"><b>主题色</b></MduiText>
-    <p class="mdui-typo">通过对<code>MduiLayout</code>组件参数<code>PrimaryColor</code>设置主色、<code>AccentColor</code>设置强调色，对组件下的所有子组件应用主题色。</p>
-    <ExampleSection Label="code" HideExample FixCode Component="@typeof(ThemeColorLayout)" />
+     <p>Persistent抽屉式导航。</p>
+     <p class="mdui-typo">设置组件<code>MduiDrawer</code>参数<code>Persistent="true"</code>。</p>
+     <ExampleSection Label="code" Component="@typeof(LayoutWithPersistentDrawer)" />
 
-    <MduiText Typo="@Typo.subheading"><b>暗黑主题</b></MduiText>
-    <p class="mdui-typo">通过对<code>MduiLayout</code>组件参数<code>IsDarkTheme</code>设置为<code>true</code>，对组件下的所有子组件应用暗黑主题。</p>
-    <ExampleSection Label="code" HideExample FixCode Component="@typeof(DarkThemeLayout)" />
-</div>
+     <MduiText id="fullLayout" UseMduiTypo Typo="@Typo.subheading"><b>完整布局示例</b></MduiText>
+     <p>这是一个完整的布局示例。</p>
+     <ExampleSection Label="code" Component="@typeof(FullLayout)" />
+
+     <p>另一个完整的布局示例。</p>
+     <p class="mdui-typo">需要设置组件<code>MduiDrawer</code>参数<code>Inset="true"</code>，以留出应用栏高度。</p>
+     <ExampleSection Label="code" Component="@typeof(FullLayout2)" />
+
+     <p>左右结构的布局示例。</p>
+     <p class="mdui-typo">需要在导航栏展开时，设置组件<code>MduiAppbar</code>参数<code>Inset="true"</code>，以留出抽屉导航栏宽度。</p>
+     <ExampleSection Label="code" Component="@typeof(FullLayout3)" />
+
+     <p class="mdui-typo">
+         另外可以通过设置<code>MduiAppbar</code>和<code>MduiDrawer</code>组件参数<code>Fixed="true"</code>使应用栏和抽屉式导航栏分别固定在浏览器的顶部和侧边。
+     </p>
+ </div>
+
+ <MduiDivider Class="mdui-m-y-5" />
+
+ <div>
+     <h2 id="theme">
+         <MduiText Typo="@Typo.headline" TextColor="@Colors.Theme.Primary">主题</MduiText>
+     </h2>
+
+     <MduiText Typo="@Typo.subheading"><b>主题色</b></MduiText>
+     <p class="mdui-typo">
+         通过对<code>MduiLayout</code>组件参数<code>PrimaryColor</code>设置主色、<code>AccentColor</code>设置强调色，对组件下的所有子组件应用主题色。</p>
+     <ExampleSection Label="code" HideExample FixCode Component="@typeof(ThemeColorLayout)" />
+
+     <MduiText Typo="@Typo.subheading"><b>暗黑主题</b></MduiText>
+     <p class="mdui-typo">通过对<code>MduiLayout</code>组件参数<code>IsDarkTheme</code>设置为<code>true</code>，对组件下的所有子组件应用暗黑主题。
+     </p>
+     <ExampleSection Label="code" HideExample FixCode Component="@typeof(DarkThemeLayout)" />
+ </div>
 
  <MduiDivider Class="mdui-m-y-5" />
 
@@ -63,59 +103,179 @@
      </h2>
 
      <MduiTableContainer UseMduiTypo Class="mdui-m-y-1">
-        <MduiSimpleTable>
-            <thead>
-                <th>参数名称</th>
-                <th>类型/返回类型</th>
-                <th>说明</th>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>
-                        <code>AppbarFixedWithToolbar</code>
-                    </td>
-                    <td>
-                        <code>bool</code>
-                    </td>
-                    <td>如果组件包含<code>MduiAppbar</code>，其<code>Fixed</code>参数为<code>true</code>，且该组件内包含有<code>MduiToolbar</code>，则需要设置本参数为<code>true</code>，使应用栏不覆盖页面内容。</td>
-                </tr>
-                <tr>
-                    <td>
-                        <code>AppbarFixedWithTab</code>
-                    </td>
-                    <td>
-                        <code>bool</code>
-                    </td>
-                    <td>如果组件包含<code>MduiAppbar</code>，其<code>Fixed</code>参数为<code>true</code>，且该组件内包含有<code>MduiTab</code>，则需要设置本参数为<code>true</code>，使应用栏不覆盖页面内容。</td>
-                </tr>
-                <tr>
-                    <td>
-                        <code>PrimaryColor</code>
-                    </td>
-                    <td>
-                        <code>PrimaryColor</code>
-                    </td>
-                    <td>全局主题色，枚举类型，用于设置主色颜色。默认<code>PrimaryColor.DeepPurple</code>。</td>
-                </tr>
-                <tr>
-                    <td>
-                        <code>AccentColor</code>
-                    </td>
-                    <td>
-                        <code>AccentColor</code>
-                    </td>
-                    <td>全局主题色，枚举类型，用于设置强调色颜色。默认<code>AccentColor.Pink</code>。</td>
-                </tr>
-                <tr>
-                    <td>
-                        <code>IsDarkTheme</code>
-                    </td>
-                    <td>
-                        <code>bool</code>
-                    </td>
-                    <td>是否为暗黑主题，默认<code>false</code>。</td>
-                </tr>
-            </tbody>
-        </MduiSimpleTable>
-    </MduiTableContainer>
-</div>
+         <MduiSimpleTable>
+             <thead>
+                 <th>组件</th>
+                 <th>参数名称</th>
+                 <th>类型/返回类型</th>
+                 <th>说明</th>
+             </thead>
+             <tbody>
+                 <tr>
+                     <td rowspan="6">
+                         <code>MduiLayout</code>
+                     </td>
+                     <td>
+                         <code>AppbarWithToolbar</code>
+                     </td>
+                     <td>
+                         <code>bool</code>
+                     </td>
+                     <td>如果组件包含<code>MduiAppbar</code>，且该应用栏内包含有<code>MduiToolbar</code>，则需要设置本参数为<code>true</code>，使应用栏不覆盖页面内容。
+                     </td>
+                 </tr>
+                 <tr>
+                     <td>
+                         <code>AppbarWithTab</code>
+                     </td>
+                     <td>
+                         <code>bool</code>
+                     </td>
+                     <td>如果组件包含<code>MduiAppbar</code>，且该应用栏内包含有仅含标题或图标的<code>MduiTab</code>，则需要设置本参数为<code>true</code>，使应用栏不覆盖页面内容。
+                     </td>
+                 </tr>
+                 <tr>
+                     <td>
+                         <code>AppbarWithTabLarger</code>
+                     </td>
+                     <td>
+                         <code>bool</code>
+                     </td>
+                     <td>如果组件包含<code>MduiAppbar</code>，且该应用栏内包含有同时含标题和图标的<code>MduiTab</code>，则需要设置本参数为<code>true</code>，使应用栏不覆盖页面内容。
+                     </td>
+                 </tr>
+                 <tr>
+                     <td>
+                         <code>PrimaryColor</code>
+                     </td>
+                     <td>
+                         <code>PrimaryColor</code>
+                     </td>
+                     <td>全局主题色，枚举类型，用于设置主色颜色。默认<code>PrimaryColor.DeepPurple</code>。</td>
+                 </tr>
+                 <tr>
+                     <td>
+                         <code>AccentColor</code>
+                     </td>
+                     <td>
+                         <code>AccentColor</code>
+                     </td>
+                     <td>全局主题色，枚举类型，用于设置强调色颜色。默认<code>AccentColor.Pink</code>。</td>
+                 </tr>
+                 <tr>
+                     <td>
+                         <code>IsDarkTheme</code>
+                     </td>
+                     <td>
+                         <code>bool</code>
+                     </td>
+                     <td>是否为暗黑主题，默认<code>false</code>。</td>
+                 </tr>
+                 <tr>
+                     <td rowspan="3">
+                         <code>MduiAppbar</code>
+                     </td>
+                     <td>
+                         <code>Fixed</code>
+                     </td>
+                     <td>
+                         <code>bool</code>
+                     </td>
+                     <td>是否固定到页面顶部，默认<code>false</code>。</td>
+                 </tr>
+                 <tr>
+                     <td>
+                         <code>Shadow</code>
+                     </td>
+                     <td>
+                         <code>int?</code>
+                     </td>
+                     <td>应用栏阴影效果值（0~24）。</td>
+                 </tr>
+                 <tr>
+                     <td>
+                         <code>Inset</code>
+                     </td>
+                     <td>
+                         <code>bool</code>
+                     </td>
+                     <td>是否缩进以留出抽屉导航栏宽度，默认<code>false</code>。</td>
+                 </tr>
+                 <tr>
+                     <td rowspan="7">
+                         <code>MduiDrawer</code>
+                     </td>
+                     <td>
+                         <code>Fixed</code>
+                     </td>
+                     <td>
+                         <code>bool</code>
+                     </td>
+                     <td>是否固定到页面侧边，默认<code>false</code>。</td>
+                 </tr>
+                 <tr>
+                     <td>
+                         <code>Opened</code>
+                     </td>
+                     <td>
+                         <code>bool</code>
+                     </td>
+                     <td>是否展开导航栏，默认<code>false</code>。</td>
+                 </tr>
+                 <tr>
+                     <td>
+                         <code>OpenedChanged</code>
+                     </td>
+                     <td>
+                         <code>EventCallback&lt;bool&gt;</code>
+                     </td>
+                     <td>展开导航栏时的回调函数，一般用于双向绑定。</td>
+                 </tr>
+                 <tr>
+                     <td>
+                         <code>Persistent</code>
+                     </td>
+                     <td>
+                         <code>bool</code>
+                     </td>
+                     <td>导航栏是否永久存在，该参数为<code>true</code>时不会有背景遮幕，一般用于PC端等大屏页面，默认<code>false</code>。</td>
+                 </tr>
+                 <tr>
+                     <td>
+                         <code>RightSide</code>
+                     </td>
+                     <td>
+                         <code>bool</code>
+                     </td>
+                     <td>导航栏位置是否在右侧，默认<code>false</code>。</td>
+                 </tr>
+                 <tr>
+                     <td>
+                         <code>Shadow</code>
+                     </td>
+                     <td>
+                         <code>int?</code>
+                     </td>
+                     <td>抽屉式导航栏阴影效果值（0~24）。</td>
+                 </tr>
+                 <tr>
+                     <td>
+                         <code>Inset</code>
+                     </td>
+                     <td>
+                         <code>bool</code>
+                     </td>
+                     <td>是否缩进以留出应用栏高度，默认<code>false</code>。</td>
+                 </tr>
+                 <tr>
+                     <td>
+                         <code>MduiLayoutContent</code>
+                     </td>
+                     <td></td>
+                     <td></td>
+                     <td>该组件一般用于布局组件内展示页面内容。</td>
+                 </tr>
+             </tbody>
+         </MduiSimpleTable>
+     </MduiTableContainer>
+ </div>

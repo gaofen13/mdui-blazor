@@ -10709,16 +10709,11 @@ select.mdui-select[multiple] option:last-child {
  * =============================================================================
  */
 .mdui-appbar {
-  z-index: 1000;
-  -webkit-box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12);
-          box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12);
-}
-/* appbar 固定在顶部 */
-.mdui-appbar-fixed {
-  position: fixed;
+  position: absolute;
   top: 0;
   right: 0;
   left: 0;
+  z-index: 1000;
   -webkit-transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
           transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
   -webkit-transition-duration: 0.3s;
@@ -10726,15 +10721,21 @@ select.mdui-select[multiple] option:last-child {
   -webkit-transition-property: left, right;
   transition-property: left, right;
   will-change: left, right;
+  -webkit-box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12);
+          box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12);
+  /* appbar 固定在顶部 */
+}
+.mdui-appbar.mdui-appbar-fixed {
+  position: fixed;
 }
 /* 左侧留出抽屉栏的距离 */
 @media (min-width: 1024px) {
-  .mdui-drawer-body-left .mdui-appbar-inset.mdui-appbar-fixed {
+  .mdui-drawer-body-left .mdui-appbar-inset {
     left: 240px;
   }
 }
 @media (min-width: 1024px) {
-  .mdui-drawer-body-right .mdui-appbar-inset.mdui-appbar-fixed {
+  .mdui-drawer-body-right .mdui-appbar-inset {
     right: 240px;
   }
 }
@@ -11728,7 +11729,7 @@ select.mdui-select[multiple] option:last-child {
 }
 /* 抽屉栏外层，默认出现在左侧且隐藏 */
 .mdui-drawer {
-  position: fixed;
+  position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
@@ -11742,13 +11743,15 @@ select.mdui-select[multiple] option:last-child {
   overflow-x: hidden;
   overflow-y: auto;
   white-space: nowrap;
-  will-change: transform;
+  will-change: width;
   -webkit-overflow-scrolling: touch;
   /* 出现在右侧的抽屉栏 */
-  /* 强制隐藏抽屉栏 */
-  /* 强制显示抽屉栏 */
+}
+.mdui-drawer.mdui-drawer-fixed {
+  position: fixed;
 }
 .mdui-drawer.mdui-drawer-close {
+  width: 0 !important;
   -webkit-box-shadow: none !important;
           box-shadow: none !important;
 }
@@ -11757,16 +11760,9 @@ select.mdui-select[multiple] option:last-child {
   left: auto;
 }
 .mdui-drawer.mdui-drawer-persistent {
+  z-index: inherit;
   width: 240px;
   max-width: none;
-}
-.mdui-drawer.mdui-drawer-persistent.mdui-drawer-close {
-  -webkit-transform: translateX(-250px);
-          transform: translateX(-250px);
-}
-.mdui-drawer.mdui-drawer-persistent.mdui-drawer-close.mdui-drawer-right {
-  -webkit-transform: translateX(250px);
-          transform: translateX(250px);
 }
 @media (min-width: 600px) {
   .mdui-drawer {
@@ -11774,62 +11770,14 @@ select.mdui-select[multiple] option:last-child {
     width: calc(100% - 64px);
     max-width: 320px;
   }
-  .mdui-drawer.mdui-drawer-close {
-    -webkit-transform: translateX(-330px);
-            transform: translateX(-330px);
-  }
-  .mdui-drawer.mdui-drawer-close.mdui-drawer-right {
-    -webkit-transform: translateX(330px);
-            transform: translateX(330px);
-  }
 }
 @media (min-width: 1440px) {
   .mdui-drawer {
     width: 240px;
     max-width: none;
   }
-  .mdui-drawer.mdui-drawer-close {
-    -webkit-transform: translateX(-250px);
-            transform: translateX(-250px);
-  }
-  .mdui-drawer.mdui-drawer-close.mdui-drawer-right {
-    -webkit-transform: translateX(250px);
-            transform: translateX(250px);
-  }
 }
-.mdui-drawer.mdui-drawer-close {
-  -webkit-transform: translateX(-290px);
-          transform: translateX(-290px);
-}
-.mdui-drawer.mdui-drawer-close.mdui-drawer-right {
-  -webkit-transform: translateX(290px);
-          transform: translateX(290px);
-}
-@media (min-width: 600px) {
-  .mdui-drawer.mdui-drawer-close {
-    -webkit-transform: translateX(-330px);
-            transform: translateX(-330px);
-  }
-  .mdui-drawer.mdui-drawer-close.mdui-drawer-right {
-    -webkit-transform: translateX(330px);
-            transform: translateX(330px);
-  }
-}
-@media (min-width: 1024px) {
-  .mdui-drawer.mdui-drawer-close {
-    -webkit-transform: translateX(-250px);
-            transform: translateX(-250px);
-  }
-  .mdui-drawer.mdui-drawer-close.mdui-drawer-right {
-    -webkit-transform: translateX(250px);
-            transform: translateX(250px);
-  }
-}
-.mdui-drawer.mdui-drawer-open {
-  -webkit-transform: translateX(0) !important;
-          transform: translateX(0) !important;
-}
-.mdui-drawer.mdui-drawer-open:not(.mdui-drawer-persistent) {
+.mdui-drawer:not(.mdui-drawer-persistent) {
   background-color: #fff;
   -webkit-box-shadow: 0 8px 10px -5px rgba(0, 0, 0, 0.2), 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12);
           box-shadow: 0 8px 10px -5px rgba(0, 0, 0, 0.2), 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12);
@@ -11837,48 +11785,41 @@ select.mdui-select[multiple] option:last-child {
 .mdui-drawer + .mdui-overlay {
   z-index: calc(5000 - 1);
 }
-/* 使该类所在元素（通常为body或Layout）获得 padding-left 或 padding-right，避免被抽屉栏覆盖住页面 */
-.mdui-drawer-body-left .mdui-layout-content {
-  padding-left: 240px;
-}
-.mdui-drawer-body-right .mdui-layout-content {
-  padding-right: 240px;
-}
 /* PC 上默认有上边距 */
-.mdui-appbar-with-tab .mdui-drawer.mdui-drawer-persistent {
+.mdui-appbar-with-tab > .mdui-drawer.mdui-drawer-inset {
   top: 48px;
 }
-.mdui-appbar-with-tab-larger .mdui-drawer.mdui-drawer-persistent {
+.mdui-appbar-with-tab-larger > .mdui-drawer.mdui-drawer-inset {
   top: 72px;
 }
-.mdui-appbar-with-toolbar .mdui-drawer.mdui-drawer-persistent {
+.mdui-appbar-with-toolbar > .mdui-drawer.mdui-drawer-inset {
   top: 56px;
 }
-.mdui-appbar-with-toolbar.mdui-appbar-with-tab .mdui-drawer.mdui-drawer-persistent {
+.mdui-appbar-with-toolbar.mdui-appbar-with-tab > .mdui-drawer.mdui-drawer-inset {
   top: 104px;
 }
-.mdui-appbar-with-toolbar.mdui-appbar-with-tab-larger .mdui-drawer.mdui-drawer-persistent {
+.mdui-appbar-with-toolbar.mdui-appbar-with-tab-larger > .mdui-drawer.mdui-drawer-inset {
   top: 128px;
 }
 @media (min-width: 600px) {
-  .mdui-appbar-with-toolbar .mdui-drawer.mdui-drawer-persistent {
+  .mdui-appbar-with-toolbar > .mdui-drawer.mdui-drawer-inset {
     top: 64px;
   }
-  .mdui-appbar-with-toolbar.mdui-appbar-with-tab .mdui-drawer.mdui-drawer-persistent {
+  .mdui-appbar-with-toolbar.mdui-appbar-with-tab > .mdui-drawer.mdui-drawer-inset {
     top: 112px;
   }
-  .mdui-appbar-with-toolbar.mdui-appbar-with-tab-larger .mdui-drawer.mdui-drawer-persistent {
+  .mdui-appbar-with-toolbar.mdui-appbar-with-tab-larger > .mdui-drawer.mdui-drawer-inset {
     top: 136px;
   }
 }
 @media (orientation: landscape) and (max-width: 959.9px) {
-  .mdui-appbar-with-toolbar .mdui-drawer.mdui-drawer-persistent {
+  .mdui-appbar-with-toolbar > .mdui-drawer.mdui-drawer-inset {
     top: 48px;
   }
-  .mdui-appbar-with-toolbar.mdui-appbar-with-tab .mdui-drawer.mdui-drawer-persistent {
+  .mdui-appbar-with-toolbar.mdui-appbar-with-tab > .mdui-drawer.mdui-drawer-inset {
     top: 96px;
   }
-  .mdui-appbar-with-toolbar.mdui-appbar-with-tab-larger .mdui-drawer.mdui-drawer-persistent {
+  .mdui-appbar-with-toolbar.mdui-appbar-with-tab-larger > .mdui-drawer.mdui-drawer-inset {
     top: 120px;
   }
 }
@@ -11886,10 +11827,6 @@ select.mdui-select[multiple] option:last-child {
 .mdui-drawer[class*="mdui-color-"]:not(.mdui-color-transparent) {
   -webkit-box-shadow: 0 8px 10px -5px rgba(0, 0, 0, 0.2), 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12);
           box-shadow: 0 8px 10px -5px rgba(0, 0, 0, 0.2), 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12);
-}
-/* 抽屉栏 100% 高度，覆盖在导航栏上面 */
-.mdui-drawer-full-height {
-  top: 0 !important;
 }
 /**
  * =============================================================================
@@ -13605,7 +13542,7 @@ select.mdui-select[multiple] option:last-child {
 .mdui-layout {
   position: relative;
   width: 100%;
-  min-height: 100vh;
+  height: 100%;
 }
 .mdui-layout-content {
   -webkit-box-flex: 1;
@@ -13619,51 +13556,58 @@ select.mdui-select[multiple] option:last-child {
   /* 含大 Tab  */
   /* 含工具栏和 Tab */
   /* 含工具栏和大 Tab */
+  /* 使该类所在元素（通常为body或Layout）获得 padding-left 或 padding-right，避免被抽屉栏覆盖住页面 */
 }
-.mdui-appbar-with-toolbar .mdui-layout-content {
+.mdui-appbar-with-toolbar > .mdui-layout-content {
   padding-top: 56px;
 }
 @media (min-width: 600px) {
-  .mdui-appbar-with-toolbar .mdui-layout-content {
+  .mdui-appbar-with-toolbar > .mdui-layout-content {
     padding-top: 64px;
   }
 }
 @media (orientation: landscape) and (max-width: 959.9px) {
-  .mdui-appbar-with-toolbar .mdui-layout-content {
+  .mdui-appbar-with-toolbar > .mdui-layout-content {
     padding-top: 48px;
   }
 }
-.mdui-appbar-with-tab .mdui-layout-content {
+.mdui-appbar-with-tab > .mdui-layout-content {
   padding-top: 48px;
 }
-.mdui-appbar-with-tab-larger .mdui-layout-content {
+.mdui-appbar-with-tab-larger > .mdui-layout-content {
   padding-top: 72px;
 }
-.mdui-appbar-with-toolbar.mdui-appbar-with-tab .mdui-layout-content {
+.mdui-appbar-with-toolbar.mdui-appbar-with-tab > .mdui-layout-content {
   padding-top: 104px;
 }
 @media (min-width: 600px) {
-  .mdui-appbar-with-toolbar.mdui-appbar-with-tab .mdui-layout-content {
+  .mdui-appbar-with-toolbar.mdui-appbar-with-tab > .mdui-layout-content {
     padding-top: 112px;
   }
 }
 @media (orientation: landscape) and (max-width: 959.9px) {
-  .mdui-appbar-with-toolbar.mdui-appbar-with-tab .mdui-layout-content {
+  .mdui-appbar-with-toolbar.mdui-appbar-with-tab > .mdui-layout-content {
     padding-top: 96px;
   }
 }
-.mdui-appbar-with-toolbar.mdui-appbar-with-tab-larger .mdui-layout-content {
+.mdui-appbar-with-toolbar.mdui-appbar-with-tab-larger > .mdui-layout-content {
   padding-top: 128px;
 }
 @media (min-width: 600px) {
-  .mdui-appbar-with-toolbar.mdui-appbar-with-tab-larger .mdui-layout-content {
+  .mdui-appbar-with-toolbar.mdui-appbar-with-tab-larger > .mdui-layout-content {
     padding-top: 136px;
   }
 }
 @media (orientation: landscape) and (max-width: 959.9px) {
-  .mdui-appbar-with-toolbar.mdui-appbar-with-tab-larger .mdui-layout-content {
+  .mdui-appbar-with-toolbar.mdui-appbar-with-tab-larger > .mdui-layout-content {
     padding-top: 120px;
   }
+}
+.mdui-drawer-body-left > .mdui-layout-content {
+  padding-left: 240px;
+}
+.mdui-drawer-body-right > .mdui-layout-content {
+  padding-right: 240px;
 }
 /* 锁定屏幕 */
 .mdui-locked {

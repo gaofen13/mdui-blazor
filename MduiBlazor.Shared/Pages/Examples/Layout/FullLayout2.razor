@@ -1,7 +1,8 @@
 <div class="mdui-shadow-5" style="height: 360px;">
-    <MduiLayout AppbarWithToolbar>
+    <MduiLayout AppbarWithToolbar AppbarWithTab>
         <MduiAppbar>
             <MduiToolbar Color="@Colors.Theme.Primary">
+                <MduiIconButton OnClick="@ToggleDrawer" Icon="menu" />
                 <MduiText Typo="@Typo.title">Title</MduiText>
                 <MduiToolbarSpace />
                 <MduiIconButton Icon="search" />
@@ -13,9 +14,24 @@
                     <MduiMenuItem>Sign out</MduiMenuItem>
                 </MduiMenu>
             </MduiToolbar>
+            <MduiTab Color="@Colors.Theme.Primary">
+                <MduiTabItem Title="web" Default />
+                <MduiTabItem Title="shopping" />
+                <MduiTabItem Title="images" />
+             </MduiTab>
         </MduiAppbar>
+        <MduiDrawer Inset Persistent Shadow="5" @bind-Opened="@open">侧边导航栏</MduiDrawer>
         <MduiLayoutContent>
             这里是页面内容
         </MduiLayoutContent>
     </MduiLayout>
 </div>
+
+@code {
+    bool open = true;
+
+    void ToggleDrawer()
+    {
+        open = !open;
+    }
+}

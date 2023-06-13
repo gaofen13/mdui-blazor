@@ -1,7 +1,8 @@
 <div class="mdui-shadow-5" style="height: 360px;">
-    <MduiLayout AppbarWithToolbar>
-        <MduiAppbar>
-            <MduiToolbar Color="@Colors.Theme.Primary">
+    <MduiLayout AppbarWithTab AppbarWithToolbar>
+        <MduiAppbar Shadow="0">
+            <MduiToolbar>
+                <MduiIconButton Icon="menu" />
                 <MduiText Typo="@Typo.title">Title</MduiText>
                 <MduiToolbarSpace />
                 <MduiIconButton Icon="search" />
@@ -13,6 +14,11 @@
                     <MduiMenuItem>Sign out</MduiMenuItem>
                 </MduiMenu>
             </MduiToolbar>
+            <MduiTab>
+                <MduiTabItem Title="web" Default />
+                <MduiTabItem Title="shopping" />
+                <MduiTabItem Title="images" />
+             </MduiTab>
         </MduiAppbar>
         <MduiLayoutContent>
             这里是页面内容

@@ -1,0 +1,17 @@
+<div class="mdui-shadow-5" style="height: 360px;">
+    <MduiLayout>
+        <MduiDrawer RightSide @bind-Opened="@open">Drawer</MduiDrawer>
+        <MduiLayoutContent>
+            <MduiButton Color="@Colors.Theme.Primary" OnClick="@ToggleDrawer">Toggle Drawer</MduiButton>
+        </MduiLayoutContent>
+    </MduiLayout>
+</div>
+
+@code {
+    bool open;
+
+    void ToggleDrawer()
+    {
+        open = !open;
+    }
+}

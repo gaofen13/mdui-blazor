@@ -1,9 +1,26 @@
-<MduiLayout AppbarFixedWithToolbar AppbarFixedWithTab>
-    <MduiAppbar>
-        <MduiToolbar>...</MduiToolbar>
-        <MduiTab>...</MduiTab>
-    </MduiAppbar>
-    <MduiLayoutContent>
-        ...
-    </MduiLayoutContent>
-</MduiLayout>
+<div class="mdui-shadow-5" style="height: 360px;">
+    <MduiLayout AppbarWithTab AppbarWithToolbar>
+        <MduiAppbar>
+            <MduiToolbar Color="@Colors.Theme.Primary">
+                <MduiText Typo="@Typo.title">Title</MduiText>
+                <MduiToolbarSpace />
+                <MduiIconButton Icon="search" />
+                <MduiIconButton Icon="refresh" />
+                <MduiMenu Icon="more_vert" AlignEnd>
+                    <MduiMenuItem>Help & feedback</MduiMenuItem>
+                    <MduiMenuItem Disabled>Settings</MduiMenuItem>
+                    <MduiDivider />
+                    <MduiMenuItem>Sign out</MduiMenuItem>
+                </MduiMenu>
+            </MduiToolbar>
+            <MduiTab Color="@Colors.Theme.Primary">
+                <MduiTabItem Title="web" Default />
+                <MduiTabItem Title="shopping" />
+                <MduiTabItem Title="images" />
+            </MduiTab>
+        </MduiAppbar>
+        <MduiLayoutContent>
+            这里是页面内容
+        </MduiLayoutContent>
+    </MduiLayout>
+</div>

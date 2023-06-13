@@ -20,18 +20,21 @@ namespace MduiBlazor
             .AddClass($"mdui-theme-accent-{AccentColor.ToDescriptionString()}")
             .AddClass("mdui-drawer-body-left", _currentLeftDrawer?.Persistent == true && _currentLeftDrawer.Opened)
             .AddClass("mdui-drawer-body-right", _currentRightDrawer?.Persistent == true && _currentRightDrawer.Opened)
-            .AddClass("mdui-appbar-with-tab", AppbarFixedWithTab && !AppbarFixedWithToolbar)
-            .AddClass("mdui-appbar-with-toolbar", AppbarFixedWithToolbar && !AppbarFixedWithTab)
-            .AddClass("mdui-appbar-with-tab-larger", AppbarFixedWithTab && AppbarFixedWithToolbar)
+            .AddClass("mdui-appbar-with-tab", AppbarWithTab)
+            .AddClass("mdui-appbar-with-toolbar", AppbarWithToolbar)
+            .AddClass("mdui-appbar-with-tab-larger", AppbarWithTabLarger)
             .AddClass(IsDarkTheme ? "mdui-theme-layout-dark" : "mdui-theme-layout-light")
             .AddClass(Class)
             .Build();
 
         [Parameter]
-        public bool AppbarFixedWithToolbar { get; set; }
+        public bool AppbarWithToolbar { get; set; }
 
         [Parameter]
-        public bool AppbarFixedWithTab { get; set; }
+        public bool AppbarWithTab { get; set; }
+
+        [Parameter]
+        public bool AppbarWithTabLarger { get; set; }
 
         [Parameter]
         public PrimaryColor PrimaryColor { get; set; } = PrimaryColor.DeepPurple;

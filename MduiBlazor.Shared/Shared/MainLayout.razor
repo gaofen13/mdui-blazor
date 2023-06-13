@@ -1,6 +1,6 @@
 ﻿@inherits LayoutComponentBase
 
-<MduiLayout AppbarFixedWithToolbar PrimaryColor="@_primaryColor" AccentColor="@_accentColor"
+<MduiLayout Style="min-height:100vh;" AppbarWithToolbar PrimaryColor="@_primaryColor" AccentColor="@_accentColor"
      IsDarkTheme="@_isDarkTheme">
      <MduiAppbar Fixed>
         <MduiToolbar Color="@Colors.Theme.Primary">
@@ -23,7 +23,7 @@
          </MduiToolbar>
      </MduiAppbar>
 
-     <MduiDrawer UseMduiTypo @bind-Opened="@_open" Persistent="@Persistent">
+     <MduiDrawer UseMduiTypo @bind-Opened="@_open" Fixed Inset="@Persistent" Persistent="@Persistent">
          <NavMenu />
      </MduiDrawer>
 
