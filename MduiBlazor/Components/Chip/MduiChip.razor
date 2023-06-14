@@ -2,16 +2,20 @@
 @inherits MduiComponentBase
 
 <div class="@Classname" style="@Style" @attributes="@AdditionalAttributes">
-    @if (!string.IsNullOrWhiteSpace(Image))
+    @if (!string.IsNullOrWhiteSpace(ImgSrc))
     {
-        <img class="mdui-chip-icon" src="@Image" />
+        <img class="mdui-chip-icon" src="@ImgSrc" />
     }
-    @if (!string.IsNullOrWhiteSpace(Icon) || !string.IsNullOrWhiteSpace(IconLetter))
+    @if (IconContent is not null || !string.IsNullOrWhiteSpace(Icon) || !string.IsNullOrWhiteSpace(IconLetter))
     {
         <span class="@IconClassname">
-            @if (!string.IsNullOrWhiteSpace(Icon))
+            @if (IconContent is not null)
             {
-                <MduiIcon Name="@Icon" />
+                @IconContent
+            }
+            else if (!string.IsNullOrWhiteSpace(Icon))
+            {
+                <MduiIcon Icon="@Icon" />
             }
             else if (!string.IsNullOrWhiteSpace(IconLetter))
             {
@@ -23,7 +27,7 @@
     @if (DeleteButton)
     {
         <span class="mdui-chip-delete" @onclick="@OnDeleteButtonClicked">
-            <MduiIcon Name="cancel" />
+            <MduiIcon Icon="cancel" />
         </span>
     }
 </div>

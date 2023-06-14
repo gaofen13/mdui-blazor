@@ -13,19 +13,26 @@ namespace MduiBlazor
 
         private string IconClassname =>
             new ClassBuilder("mdui-chip-icon")
+            .AddClass($"mdui-color-{IconColor}", !string.IsNullOrWhiteSpace(IconColor))
             .Build();
 
         [Parameter, EditorRequired]
         public string? Title { get; set; }
 
         [Parameter]
-        public string? Image { get; set; }
+        public string? ImgSrc { get; set; }
 
         [Parameter]
         public string? Icon { get; set; }
 
         [Parameter]
+        public RenderFragment? IconContent { get; set; }
+
+        [Parameter]
         public string? IconLetter { get; set; }
+
+        [Parameter]
+        public string? IconColor { get; set; }
 
         [Parameter]
         public bool DeleteButton { get; set; }

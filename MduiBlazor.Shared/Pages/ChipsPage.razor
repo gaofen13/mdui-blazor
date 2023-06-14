@@ -1,0 +1,139 @@
+@page "/chips"
+@inherits BasePage
+@using MduiBlazor.Shared.Pages.Examples.Chips
+
+<PageTitle>纸片</PageTitle>
+<div class="mdui-m-y-5">
+    <MduiText Typo="@Typo.display1" TextColor="@Colors.Theme.Primary">卡片</MduiText>
+    <p>纸片可以包含一张图片、一个短字符串等简洁的信息。</p>
+</div>
+
+<PageContent>
+    <PageContentItem Title="Examples" OnClick="@(_=>ScrollToElementById("examples"))">
+        <PageContentItem Title="纯文本" OnClick="@(_=>ScrollToElementById("simple"))" />
+        <PageContentItem Title="含头像" OnClick="@(_=>ScrollToElementById("img"))" />
+        <PageContentItem Title="含图标" OnClick="@(_=>ScrollToElementById("icon"))" />
+        <PageContentItem Title="含文字图标" OnClick="@(_=>ScrollToElementById("iconLetter"))" />
+        <PageContentItem Title="含关闭按钮" OnClick="@(_=>ScrollToElementById("deleteButton"))" />
+        <PageContentItem Title="图标颜色" OnClick="@(_=>ScrollToElementById("iconColor"))" />
+    </PageContentItem>
+    <PageContentItem Title="组件参数" OnClick="@(_=>ScrollToElementById("attr"))" />
+</PageContent>
+
+<MduiDivider Class="mdui-m-y-5" />
+
+<div>
+    <h2 id="examples">
+        <MduiText Typo="@Typo.headline" TextColor="@Colors.Theme.Primary">Examples</MduiText>
+    </h2>
+
+    <MduiText id="simple" Typo="@Typo.subheading"><b>纯文本</b></MduiText>
+    <ExampleSection Component="@typeof(SimpleChip)" />
+
+    <MduiText id="img" Typo="@Typo.subheading"><b>含头像</b></MduiText>
+    <ExampleSection Component="@typeof(ImgChip)" />
+
+    <MduiText id="icon" Typo="@Typo.subheading"><b>含图标</b></MduiText>
+    <ExampleSection Component="@typeof(IconChip)" />
+
+    <MduiText id="iconLetter" Typo="@Typo.subheading"><b>含文字图标</b></MduiText>
+    <ExampleSection Component="@typeof(IconLetterChip)" />
+
+    <MduiText id="deleteButton" Typo="@Typo.subheading"><b>含关闭按钮</b></MduiText>
+    <ExampleSection Component="@typeof(DeleteChip)" />
+
+    <MduiText id="iconColor" Typo="@Typo.subheading"><b>图标颜色</b></MduiText>
+    <ExampleSection Component="@typeof(IconColorChip)" />
+</div>
+
+ <MduiDivider Class="mdui-m-y-5" />
+
+ <div>
+     <h2 id="attr">
+         <MduiText Typo="@Typo.headline" TextColor="@Colors.Theme.Primary">组件参数</MduiText>
+     </h2>
+
+     <MduiTableContainer UseMduiTypo Class="mdui-m-y-1">
+        <MduiSimpleTable>
+            <thead>
+                <th>参数名称</th>
+                <th>类型/返回类型</th>
+                <th>说明</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <code>Title</code>
+                    </td>
+                    <td>
+                        <code>string</code>
+                    </td>
+                    <td>纸片标题。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>ImgSrc</code>
+                    </td>
+                    <td>
+                        <code>string?</code>
+                    </td>
+                    <td>纸片头像图片源。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>Icon</code>
+                    </td>
+                    <td>
+                        <code>string?</code>
+                    </td>
+                    <td>纸片Material图标类名。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>IconContent</code>
+                    </td>
+                    <td>
+                        <code>RenderFragment?</code>
+                    </td>
+                    <td>纸片图标渲染片段，一般用于自定义图标。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>IconLetter</code>
+                    </td>
+                    <td>
+                        <code>string?</code>
+                    </td>
+                    <td>纸片单词图标内容。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>IconColor</code>
+                    </td>
+                    <td>
+                        <code>string?</code>
+                    </td>
+                    <td>纸片图标背景颜色。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>DeleteButton</code>
+                    </td>
+                    <td>
+                        <code>bool</code>
+                    </td>
+                    <td>纸片是否包含关闭按钮，默认<code>false</code>。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>OnDeleteButtonClicked</code>
+                    </td>
+                    <td>
+                        <code>EventCallback&lt;MouseEventArgs&gt;</code>
+                    </td>
+                    <td>点击纸片关闭按钮的回调函数。</td>
+                </tr>
+            </tbody>
+        </MduiSimpleTable>
+    </MduiTableContainer>
+</div>
