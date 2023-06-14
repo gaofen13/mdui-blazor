@@ -3,7 +3,7 @@
 
 <!-- 卡片头部，包含头像、标题、副标题 -->
 <div class="@Classname" style="@Style" @attributes="@AdditionalAttributes">
-    <img src="@Image" />
+    <img src="@ImgSrc" />
     @if (Covered && (!string.IsNullOrWhiteSpace(Title) || !string.IsNullOrWhiteSpace(SubTitle) || ActionsContent is not
     null))
     {

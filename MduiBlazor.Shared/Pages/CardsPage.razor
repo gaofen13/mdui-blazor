@@ -1,0 +1,251 @@
+@page "/cards"
+@inherits BasePage
+@using MduiBlazor.Shared.Pages.Examples.Cards
+
+<PageTitle>卡片</PageTitle>
+<div class="mdui-m-y-5">
+    <MduiText Typo="@Typo.display1" TextColor="@Colors.Theme.Primary">卡片</MduiText>
+    <p>卡片是包含一组特定数据集的纸片。可以包含各种相关信息，例如：照片、文本、链接等。</p>
+</div>
+
+<PageContent>
+    <PageContentItem Title="Examples" OnClick="@(_=>ScrollToElementById("examples"))">
+        <PageContentItem Title="完整结构" OnClick="@(_=>ScrollToElementById("full"))" />
+        <PageContentItem Title="覆盖在媒体元素上" OnClick="@(_=>ScrollToElementById("mediaCovered"))" />
+        <PageContentItem Title="按钮竖直排列" OnClick="@(_=>ScrollToElementById("actionsStacked"))" />
+    </PageContentItem>
+    <PageContentItem Title="组件参数" OnClick="@(_=>ScrollToElementById("attr"))" />
+</PageContent>
+
+<MduiDivider Class="mdui-m-y-5" />
+
+<div>
+    <h2 id="examples">
+        <MduiText Typo="@Typo.headline" TextColor="@Colors.Theme.Primary">Examples</MduiText>
+    </h2>
+
+    <MduiText id="full" Typo="@Typo.subheading"><b>完整结构</b></MduiText>
+    <p>下面是一个卡片的完整 HTML 结构，包含了所有卡片中预定义样式的元素。</p>
+    <ExampleSection Component="@typeof(FullCard)" />
+
+    <MduiText id="mediaCovered" Typo="@Typo.subheading"><b>覆盖在媒体元素上</b></MduiText>
+    <p class="mdui-typo">设置组件<code>MduiCardMedia</code>参数<code>Covered="true"</code>使组件上的内容覆盖在该组件之上。</p>
+    <ExampleSection Component="@typeof(MediaCoveredCard)" />
+    <ExampleSection Component="@typeof(MediaCoveredCard2)" />
+    
+    <p class="mdui-typo">设置组件<code>MduiCardMedia</code>参数<code>Covered="true"</code>，并设置参数<code>CoveredTop="true"</code>使覆盖层位于媒体元素顶部。</p>
+    <ExampleSection Component="@typeof(MediaCoveredTopCard)" />
+    
+    <p class="mdui-typo">设置组件<code>MduiCardMedia</code>参数<code>Covered="true"</code>，并设置参数<code>CoveredTransparent="true"</code>使覆盖层拥有透明背景。</p>
+    <ExampleSection Component="@typeof(MediaCoveredTransparentCard)" />
+    
+    <p class="mdui-typo">设置组件<code>MduiCardMedia</code>参数<code>Covered="true"</code>，并设置参数<code>CoveredGradient="true"</code>使覆盖层拥有渐变背景。</p>
+    <ExampleSection Component="@typeof(MediaCoveredGradientCard)" />
+
+    <MduiText id="actionsStacked" Typo="@Typo.subheading"><b>按钮竖直排列</b></MduiText>
+    <p class="mdui-typo">设置组件<code>MduiCard</code>参数<code>ActionsStacked="true"</code>使按钮设置为竖直排列。</p>
+    <ExampleSection Component="@typeof(ActionsStackedCard)" />
+    <p class="mdui-typo">设置组件<code>MduiCardMedia</code>参数<code>ActionsStacked="true"</code>使覆盖层按钮设置为竖直排列。</p>
+    <ExampleSection Component="@typeof(MediaCoveredActionsStackedCard)" />
+</div>
+
+<MduiDivider Class="mdui-m-y-5" />
+
+<div>
+    <h2 id="attr">
+        <MduiText Typo="@Typo.headline" TextColor="@Colors.Theme.Primary">组件参数</MduiText>
+    </h2>
+
+    <MduiTableContainer UseMduiTypo Class="mdui-m-y-1">
+         <MduiSimpleTable>
+             <thead>
+                 <th>组件</th>
+                 <th>参数名称</th>
+                 <th>类型/返回类型</th>
+                 <th>说明</th>
+             </thead>
+             <tbody>
+                 <tr>
+                     <td rowspan="6">
+                         <code>MduiCard</code>
+                     </td>
+                     <td>
+                         <code>Title</code>
+                     </td>
+                     <td>
+                         <code>string?</code>
+                     </td>
+                     <td>卡片标题。</td>
+                 </tr>
+                 <tr>
+                     <td>
+                         <code>SubTitle</code>
+                     </td>
+                     <td>
+                         <code>string?</code>
+                     </td>
+                     <td>卡片副标题。</td>
+                 </tr>
+                 <tr>
+                     <td>
+                         <code>HeaderContent</code>
+                     </td>
+                     <td>
+                         <code>RenderFragment?</code>
+                     </td>
+                     <td>卡片头部渲染片段。</td>
+                 </tr>
+                 <tr>
+                     <td>
+                         <code>MediaContent</code>
+                     </td>
+                     <td>
+                         <code>RenderFragment?</code>
+                     </td>
+                     <td>卡片媒体渲染片段。</td>
+                 </tr>
+                 <tr>
+                     <td>
+                         <code>ActionsContent</code>
+                     </td>
+                     <td>
+                         <code>RenderFragment?</code>
+                     </td>
+                     <td>卡片按钮渲染片段。</td>
+                 </tr>
+                 <tr>
+                     <td>
+                         <code>ActionsStacked</code>
+                     </td>
+                     <td>
+                         <code>bool</code>
+                     </td>
+                     <td>是否竖向堆叠按钮，默认<code>false</code>。</td>
+                 </tr>
+                 <tr>
+                     <td rowspan="3">
+                         <code>MduiCardHeader</code>
+                     </td>
+                     <td>
+                         <code>Avatar</code>
+                     </td>
+                     <td>
+                         <code>string?</code>
+                     </td>
+                     <td>卡片头部的头像源。</td>
+                 </tr>
+                 <tr>
+                     <td>
+                         <code>Title</code>
+                     </td>
+                     <td>
+                         <code>string?</code>
+                     </td>
+                     <td>卡片头部标题。</td>
+                 </tr>
+                 <tr>
+                     <td>
+                         <code>SubTitle</code>
+                     </td>
+                     <td>
+                         <code>string?</code>
+                     </td>
+                     <td>卡片头部副标题。</td>
+                 </tr>
+                 <tr>
+                     <td rowspan="10">
+                         <code>MduiCardMedia</code>
+                     </td>
+                     <td>
+                         <code>ImgSrc</code>
+                     </td>
+                     <td>
+                         <code>string?</code>
+                     </td>
+                     <td>卡片媒体的图片源</td>
+                 </tr>
+                 <tr>
+                     <td>
+                         <code>MenusContent</code>
+                     </td>
+                     <td>
+                         <code>RenderFragment?</code>
+                     </td>
+                     <td>卡片媒体的菜单按钮渲染片段。</td>
+                 </tr>
+                 <tr>
+                     <td>
+                         <code>Covered</code>
+                     </td>
+                     <td>
+                         <code>bool</code>
+                     </td>
+                     <td>是否使组件上元素覆盖到该组件之上，默认<code>false</code>。</td>
+                 </tr>
+                 <tr>
+                     <td>
+                         <code>CoveredTop</code>
+                     </td>
+                     <td>
+                         <code>bool</code>
+                     </td>
+                     <td>是否使组件上元素覆盖到该组件的顶部，需要同时设置<code>Covered="true"</code>，默认<code>false</code>。</td>
+                 </tr>
+                 <tr>
+                     <td>
+                         <code>CoveredTransparent</code>
+                     </td>
+                     <td>
+                         <code>bool</code>
+                     </td>
+                     <td>是否使卡片媒体覆盖层背景透明，需要同时设置<code>Covered="true"</code>，默认<code>false</code>。</td>
+                 </tr>
+                 <tr>
+                     <td>
+                         <code>CoveredGradient</code>
+                     </td>
+                     <td>
+                         <code>bool</code>
+                     </td>
+                     <td>是否使卡片媒体覆盖层背景渐变，需要同时设置<code>Covered="true"</code>，默认<code>false</code>。</td>
+                 </tr>
+                 <tr>
+                     <td>
+                         <code>Title</code>
+                     </td>
+                     <td>
+                         <code>string?</code>
+                     </td>
+                     <td>卡片媒体覆盖层标题，需要同时设置<code>Covered="true"</code>。</td>
+                 </tr>
+                 <tr>
+                     <td>
+                         <code>SubTitle</code>
+                     </td>
+                     <td>
+                         <code>string?</code>
+                     </td>
+                     <td>卡片媒体覆盖层副标题，需要同时设置<code>Covered="true"</code>。</td>
+                 </tr>
+                 <tr>
+                     <td>
+                         <code>ActionsContent</code>
+                     </td>
+                     <td>
+                         <code>RenderFragment?</code>
+                     </td>
+                     <td>卡片媒体覆盖层操作按钮渲染片段，需要同时设置<code>Covered="true"</code>。</td>
+                 </tr>
+                 <tr>
+                     <td>
+                         <code>ActionsStacked</code>
+                     </td>
+                     <td>
+                         <code>bool</code>
+                     </td>
+                     <td>卡片媒体覆盖层操作按钮是否竖向堆叠，需要同时设置<code>Covered="true"</code>，默认<code>false</code>。</td>
+                 </tr>
+             </tbody>
+         </MduiSimpleTable>
+     </MduiTableContainer>
+ </div>

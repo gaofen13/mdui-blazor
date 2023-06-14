@@ -23,7 +23,7 @@ namespace MduiBlazor
             .Build();
 
         [Parameter]
-        public string? Image { get; set; }
+        public string? ImgSrc { get; set; }
 
         [Parameter]
         public bool Covered { get; set; }
