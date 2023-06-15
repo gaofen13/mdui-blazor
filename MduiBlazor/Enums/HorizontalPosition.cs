@@ -2,7 +2,7 @@
 
 namespace MduiBlazor
 {
-    public enum PositionX
+    public enum HorizontalPosition
     {
         [Description("left")]
         Left,

@@ -2,7 +2,7 @@
 
 namespace MduiBlazor
 {
-    public enum PositionY
+    public enum VerticalPosition
     {
         [Description("top")]
         Top,

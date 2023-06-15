@@ -1,5 +1,4 @@
 ﻿using MduiBlazor.Components.Snackbar;
-using MduiBlazor.Utilities;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Routing;
 
@@ -7,11 +6,6 @@ namespace MduiBlazor
 {
     public partial class MduiSnackbarProvider : MduiComponentBase
     {
-        private string ContainerStyle =>
-            new StyleBuilder("min-width", "300px")
-            .AddStyle(Style)
-            .Build();
-
         [Inject]
         private SnackbarService SnackbarService { get; set; } = default!;
 
@@ -19,7 +13,7 @@ namespace MduiBlazor
         private NavigationManager NavigationManager { get; set; } = default!;
 
         [Parameter]
-        public bool RemoveSnackbarOnNavigation { get; set; }
+        public bool RemoveSnackbarOnNavigate { get; set; }
 
         [Parameter]
         public int MaxItemsShown { get; set; } = 10;
@@ -37,7 +31,7 @@ namespace MduiBlazor
             SnackbarService.OnShowComponent += ShowSnackbar;
             SnackbarService.OnClearAll += ClearAll;
 
-            if (RemoveSnackbarOnNavigation)
+            if (RemoveSnackbarOnNavigate)
             {
                 NavigationManager.LocationChanged += ClearSnackbars;
             }

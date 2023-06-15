@@ -1,0 +1,17 @@
+<div class="mdui-text-color-theme-accent">
+    @Message
+    <MduiButton Color="@Colors.Theme.Accent" OnClick="@Close">关闭</MduiButton>
+</div>
+
+@code {
+    [CascadingParameter]
+    public MduiSnackbar? Snackbar { get; set; }
+
+    [Parameter]
+    public string? Message { get; set; }
+
+    void Close()
+    {
+        Snackbar?.Close();
+    }
+}

@@ -1,0 +1,3 @@
+﻿@inject SnackbarService SnackbarService
+
+<MduiButton Color="@Colors.Theme.Primary" OnClick="@(_=>SnackbarService.ShowSnackbar("Message sent",new SnackbarOptions{ShowCloseButton=true}))">Open</MduiButton>

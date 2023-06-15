@@ -1,0 +1,14 @@
+@inject SnackbarService SnackbarService
+
+<MduiButton Color="@Colors.Theme.Primary" OnClick="@(_=>SnackbarService.ShowSnackbar<SnackbarContent>(parameters))">
+    OpenCustomSnackbar
+</MduiButton>
+
+@code {
+    ComponentParameters parameters = new ComponentParameters();
+
+    protected override void OnInitialized()
+    {
+        parameters.Add("Message", "这是一个自定义的 Snackbar。");
+    }
+}

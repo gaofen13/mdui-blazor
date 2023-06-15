@@ -2,11 +2,11 @@
 {
     public class SnackbarOptions
     {
-        public int TimeOut { get; set; } = 4000;
+        public int Timeout { get; set; } = 4000;
 
-        public PositionX PositionX { get; set; }
+        public HorizontalPosition HorizontalPosition { get; set; }
 
-        public PositionY PositionY { get; set; }
+        public VerticalPosition VerticalPosition { get; set; }
 
         public bool ShowCloseButton { get; set; }
 

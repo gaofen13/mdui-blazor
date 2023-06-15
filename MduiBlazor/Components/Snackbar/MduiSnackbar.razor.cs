@@ -1,4 +1,3 @@
-
 using MduiBlazor.Components.Snackbar;
 using MduiBlazor.Extensions;
 using MduiBlazor.Utilities;
@@ -6,7 +5,7 @@ using Microsoft.AspNetCore.Components;
 
 namespace MduiBlazor
 {
-    public partial class MduiSnackbar : MduiComponentBase
+    public partial class MduiSnackbar : MduiComponentBase, IDisposable
     {
         private SnackbarOptions _options = new();
 
@@ -14,7 +13,7 @@ namespace MduiBlazor
 
         protected string Classname =>
           new ClassBuilder("mdui-snackbar")
-            .AddClass($"mdui-snackbar-{_options.PositionX.ToDescriptionString()}-{_options.PositionY.ToDescriptionString()}")
+            .AddClass($"mdui-snackbar-{_options.HorizontalPosition.ToDescriptionString()}-{_options.VerticalPosition.ToDescriptionString()}")
             .AddClass(Class)
             .Build();
 
@@ -38,7 +37,7 @@ namespace MduiBlazor
                 _options = SnackbarProvider.Options;
             }
 
-            _countdownTimer = new CountdownTimer(_options.TimeOut)
+            _countdownTimer = new CountdownTimer(_options.Timeout)
                 .OnElapsed(Close);
 
             await _countdownTimer.StartAsync();

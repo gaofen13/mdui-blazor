@@ -1,0 +1,29 @@
+﻿@inject SnackbarService SnackbarService
+
+<MduiField Label="HorizontalPosition">
+    <MduiRadioGroup @bind-Value="@horizontalPosition">
+        <MduiRadio Label="Left" Value="@HorizontalPosition.Left" />
+        <MduiRadio Label="Center" Value="@HorizontalPosition.Center" />
+        <MduiRadio Label="Right" Value="@HorizontalPosition.Right" />
+    </MduiRadioGroup>
+</MduiField>
+<MduiField Label="VerticalPosition">
+    <MduiRadioGroup @bind-Value="@verticalPosition">
+        <MduiRadio Label="Top" Value="@VerticalPosition.Top" />
+        <MduiRadio Label="Middle" Value="@VerticalPosition.Middle" />
+        <MduiRadio Label="Bottom" Value="@VerticalPosition.Bottom" />
+    </MduiRadioGroup>
+</MduiField>
+<MduiButton Color="@Colors.Theme.Primary"
+            OnClick="@(_=>Open(horizontalPosition.ToString()+"-"+verticalPosition.ToString(), new SnackbarOptions{HorizontalPosition=horizontalPosition, VerticalPosition=verticalPosition}))">
+    Open
+</MduiButton>
+
+@code {
+    private HorizontalPosition horizontalPosition;
+    private VerticalPosition verticalPosition;
+    private void Open(string message, SnackbarOptions? options = null)
+    {
+        SnackbarService.ShowSnackbar(message, options);
+    }
+}
