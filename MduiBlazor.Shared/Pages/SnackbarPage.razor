@@ -28,9 +28,9 @@
     </h2>
     <p class="mdui-typo">Snackbar 依赖于<code>MduiSnackbarProvider</code>和<code>SnackbarService</code>。</p>
 
-    <MduiText Typo="@Typo.subheading"><b>1. 框架依赖</b></MduiText>
+    <MduiText Typo="@Typo.subheading"><b>1. 全局依赖</b></MduiText>
     <p class="mdui-typo">
-        在<code>MainLayout</code>中加入<code>MduiSnackbarProvider</code>组件，为应用主题，建议将组件放置于<code>MduiLayout</code>中。</p>
+        在<code>MainLayout</code>布局中加入<code>MduiSnackbarProvider</code>组件。为应用主题，建议将组件放置于<code>MduiLayout</code>中。</p>
     <ExampleSection FixCode HideExample Label="Code" Component="@typeof(LayoutDependant)" />
 
     <MduiText Typo="@Typo.subheading"><b>2. 注入服务</b></MduiText>
@@ -42,35 +42,35 @@
     <CodeSnippet Language="CSharp">SnackbarService.ShowSnackbar&lt;TComponent&gt;(parameters, options);</CodeSnippet>
 </div>
 
-    <MduiDivider Class="mdui-m-y-5" />
+<MduiDivider Class="mdui-m-y-5" />
 
-    <div>
-        <h2 id="examples">
-            <MduiText Typo="@Typo.headline" TextColor="@Colors.Theme.Primary">示例</MduiText>
-        </h2>
+<div>
+    <h2 id="examples">
+        <MduiText Typo="@Typo.headline" TextColor="@Colors.Theme.Primary">示例</MduiText>
+    </h2>
 
-        <MduiText id="simple" Typo="@Typo.subheading"><b>普通 Snackbar</b></MduiText>
-        <ExampleSection Component="@typeof(SimpleSnackbar)" />
+    <MduiText id="simple" Typo="@Typo.subheading"><b>普通 Snackbar</b></MduiText>
+    <ExampleSection Component="@typeof(SimpleSnackbar)" />
 
-        <MduiText id="closable" Typo="@Typo.subheading"><b>带关闭按钮的 Snackbar</b></MduiText>
-        <ExampleSection Component="@typeof(ClosableSnackbar)" />
+    <MduiText id="closable" Typo="@Typo.subheading"><b>带关闭按钮的 Snackbar</b></MduiText>
+    <ExampleSection Component="@typeof(ClosableSnackbar)" />
 
-        <MduiText id="position" Typo="@Typo.subheading"><b>不同位置的 Snackbar</b></MduiText>
-        <ExampleSection Component="@typeof(PositionsSnackbar)" />
+    <MduiText id="position" Typo="@Typo.subheading"><b>不同位置的 Snackbar</b></MduiText>
+    <ExampleSection Component="@typeof(PositionsSnackbar)" />
 
-        <MduiText id="custom" Typo="@Typo.subheading"><b>自定义 Snackbar 内容</b></MduiText>
-        <ExampleSection Component="@typeof(CustomSnackbar)" />
-        <ExampleSection FixCode HideExample Label="SnackbarContent" Component="@typeof(SnackbarContent)" />
-    </div>
+    <MduiText id="custom" Typo="@Typo.subheading"><b>自定义 Snackbar 内容</b></MduiText>
+    <ExampleSection FixCode Component="@typeof(CustomSnackbar)" />
+    <ExampleSection FixCode HideExample Label="SnackbarContent" Component="@typeof(SnackbarContent)" />
+</div>
 
-    <MduiDivider Class="mdui-m-y-5" />
+<MduiDivider Class="mdui-m-y-5" />
 
-    <div>
-        <h2 id="attr">
-            <MduiText Typo="@Typo.headline" TextColor="@Colors.Theme.Primary">组件参数</MduiText>
-        </h2>
+<div>
+    <h2 id="attr">
+        <MduiText Typo="@Typo.headline" TextColor="@Colors.Theme.Primary">组件参数</MduiText>
+    </h2>
 
-        <MduiTableContainer UseMduiTypo Class="mdui-m-y-1">
+    <MduiTableContainer UseMduiTypo Class="mdui-m-y-1">
          <MduiSimpleTable>
              <thead>
                  <th>组件</th>
