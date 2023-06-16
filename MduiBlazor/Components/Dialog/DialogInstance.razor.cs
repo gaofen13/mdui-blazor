@@ -4,7 +4,6 @@ namespace MduiBlazor
 {
     public partial class DialogInstance
     {
-
         [CascadingParameter]
         private MduiDialogProvider? DialogProvider { get; set; }
 

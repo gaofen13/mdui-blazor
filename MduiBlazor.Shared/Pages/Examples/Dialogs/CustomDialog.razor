@@ -1,0 +1,10 @@
+@inject DialogService DialogService
+
+<MduiButton Color="@Colors.Theme.Accent" OnClick="@Show">Open</MduiButton>
+
+@code {
+    void Show()
+    {
+        DialogService.Show<CustomDialogContent>();
+    }
+}

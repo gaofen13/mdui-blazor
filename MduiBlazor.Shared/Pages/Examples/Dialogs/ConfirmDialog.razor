@@ -1,0 +1,10 @@
+﻿@inject DialogService DialogService
+
+<MduiButton Color="@Colors.Theme.Accent" OnClick="@Confirm">Confirm</MduiButton>
+
+@code {
+    void Confirm()
+    {
+        DialogService.Confirm("这是警告内容，请点击确定进行下一步，或者取消操作", "请确认");
+    }
+}

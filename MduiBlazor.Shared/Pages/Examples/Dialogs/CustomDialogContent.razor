@@ -1,0 +1,30 @@
+<MduiDialog @ref="@dialog" Title="Custom对话框" Options="new DialogOptions{Modal=true}">
+    <ChildContent>
+        <MduiTab FullWidth>
+            <MduiTabItem Default>web</MduiTabItem>
+            <MduiTabItem>shopping</MduiTabItem>
+            <MduiTabItem>videos</MduiTabItem>
+        </MduiTab>
+        <div style="height: 200px;">
+            <p style="text-align: center;">自定义内容</p>
+        </div>
+    </ChildContent>
+    <ActionsContent>
+        <MduiButton Text Color="@Colors.Theme.Accent" OnClick="@Cancel">取消</MduiButton>
+         <MduiButton Text Color="@Colors.Theme.Primary" OnClick="@Ok">确认</MduiButton>
+     </ActionsContent>
+ </MduiDialog>
+
+ @code {
+    private MduiDialog? dialog;
+
+    void Ok()
+    {
+        dialog?.Ok();
+    }
+
+    void Cancel()
+    {
+        dialog?.Cancel();
+    }
+}

@@ -1,0 +1,17 @@
+@inject DialogService DialogService
+
+<MduiButton Color="@Colors.Theme.Accent" OnClick="@Show">Open</MduiButton>
+
+
+@code {
+    void Show()
+    {
+        var content = "Let Google help apps determine location. This means sending anonymous location data to Google, even when no apps are running.Let Google help apps determine location. This means sending anonymous location data to Google, even when no apps are running.Let Google help apps determine location. This means sending anonymous location data to Google, even when no apps are running.Let Google help apps determine location. This means sending anonymous location data to Google, even when no apps are running.Let Google help apps determine location. This means sending anonymous location data to Google, even when no apps are running.Let Google help apps determine location. This means sending anonymous location data to Google, even when no apps are running.Let Google help apps determine location. This means sending anonymous location data to Google, even when no apps are running.Let Google help apps determine location. This means sending anonymous location data to Google, even when no apps are running.Let Google help apps determine location. This means sending anonymous location data to Google, even when no apps are running.Let Google help apps determine location. This means sending anonymous location data to Google, even when no apps are running.Let Google help apps determine location. This means sending anonymous location data to Google, even when no apps are running.Let Google help apps determine location. This means sending anonymous location data to Google, even when no apps are running.Let Google help apps determine location. This means sending anonymous location data to Google, even when no apps are running.Let Google help apps determine location. This means sending anonymous location data to Google, even when no apps are running.Let Google help apps determine location. This means sending anonymous location data to Google, even when no apps are running.";
+        DialogService.Show(content, "Use Google's location service?", new DialogOptions
+        {
+            Modal = true,
+            ShowCancelButton = true,
+            ShowConfirmButton = true
+        });
+    }
+}

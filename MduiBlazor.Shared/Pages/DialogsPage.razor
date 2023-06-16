@@ -1,0 +1,177 @@
+@page "/dialogs"
+@inherits BasePage
+@using MduiBlazor.Shared.Pages.Examples.Dialogs
+
+<PageTitle>对话框</PageTitle>
+<div class="mdui-m-y-5">
+    <MduiText Typo="@Typo.display1" TextColor="@Colors.Theme.Primary">对话框</MduiText>
+    <p>MDUI 中的对话框是一个用途非常广的组件，经常被用来向用户询问信息，通知或警告用户。</p>
+</div>
+
+<PageContent>
+    <PageContentItem Title="使用方法" OnClick="@(_=>ScrollToElementById("usage"))" />
+    <PageContentItem Title="示例" OnClick="@(_=>ScrollToElementById("examples"))">
+        <PageContentItem Title="标准对话框" OnClick="@(_=>ScrollToElementById("simple"))" />
+        <PageContentItem Title="不含标题栏" OnClick="@(_=>ScrollToElementById("notitle"))" />
+        <PageContentItem Title="竖排按钮" OnClick="@(_=>ScrollToElementById("actionsStack"))" />
+        <PageContentItem Title="自定义对话框" OnClick="@(_=>ScrollToElementById("custom"))" />
+        <PageContentItem Title="Inline对话框" OnClick="@(_=>ScrollToElementById("inline"))" />
+    </PageContentItem>
+    <PageContentItem Title="预定义对话框" OnClick="@(_=>ScrollToElementById("predefine"))">
+        <PageContentItem Title="Alert" OnClick="@(_=>ScrollToElementById("alert"))" />
+        <PageContentItem Title="Confirm" OnClick="@(_=>ScrollToElementById("confirm"))" />
+    </PageContentItem>
+    <PageContentItem Title="组件参数" OnClick="@(_=>ScrollToElementById("attr"))" />
+</PageContent>
+
+<MduiDivider Class="mdui-m-y-5" />
+
+<div>
+    <h2 id="usage">
+        <MduiText Typo="@Typo.headline" TextColor="@Colors.Theme.Primary">使用方法</MduiText>
+    </h2>
+    <p class="mdui-typo">对话框组件依赖于<code>MduiDialogProvider</code>和<code>DialogService</code>。</p>
+
+    <MduiText Typo="@Typo.subheading"><b>1. 全局依赖</b></MduiText>
+    <p class="mdui-typo">
+        在<code>MainLayout</code>布局中加入<code>MduiDialogProvider</code>组件。为应用主题，建议将组件放置于<code>MduiLayout</code>中。
+    </p>
+    <ExampleSection FixCode HideExample Label="Code" Component="@typeof(DialogLayoutDependant)" />
+
+    <MduiText Typo="@Typo.subheading"><b>2. 注入服务</b></MduiText>
+    <CodeSnippet>@@inject DialogService DialogService</CodeSnippet>
+    <CodeSnippet Language="CSharp">@("[Inject]\rprivate DialogService DialogService { get; set; }")</CodeSnippet>
+
+        <MduiText Typo="@Typo.subheading"><b>3. 调用实例</b></MduiText>
+        <CodeSnippet Language="CSharp">DialogService.Show(message, title, options);</CodeSnippet>
+        <CodeSnippet Language="CSharp">DialogService.Alert(message, title);</CodeSnippet>
+        <CodeSnippet Language="CSharp">DialogService.Confirm(message, title);</CodeSnippet>
+        <CodeSnippet Language="CSharp">DialogService.Show&lt;TComponent&gt;(parameters);</CodeSnippet>
+    </div>
+
+    <MduiDivider Class="mdui-m-y-5" />
+
+    <div>
+        <h2 id="examples">
+            <MduiText Typo="@Typo.headline" TextColor="@Colors.Theme.Primary">示例</MduiText>
+        </h2>
+
+        <MduiText id="simple" Typo="@Typo.subheading"><b>标准对话框</b></MduiText>
+        <p>这是一个标准的对话框。</p>
+        <ExampleSection Component="@typeof(SimpleDialog)" />
+
+        <MduiText id="notitle" Typo="@Typo.subheading"><b>不含标题栏</b></MduiText>
+        <p>这个对话框不含标题栏。</p>
+        <ExampleSection Component="@typeof(NoneTitleDialog)" />
+
+        <MduiText id="actionsStack" Typo="@Typo.subheading"><b>竖排按钮</b></MduiText>
+        <p class="mdui-typo">对话框底部的按钮默认水平排列。只需设置参数<code>DialogOptions</code>属性<code>ActionsStack = true</code> 即可将按钮设置为竖直排列。</p>
+        <ExampleSection Component="@typeof(ActionsStackDialog)" />
+
+        <MduiText id="actionsStack" Typo="@Typo.subheading"><b>固定标题和按钮</b></MduiText>
+        <p>当内容超过一定高度会自动出现滚动条。</p>
+        <ExampleSection Component="@typeof(FixedTitleAndActionsDialog)" />
+
+        <MduiText id="custom" Typo="@Typo.subheading"><b>自定义对话框</b></MduiText>
+        <p>可以自定义对话框内容、标题和操作按钮等。</p>
+        <ExampleSection Component="@typeof(CustomDialog)" />
+        <ExampleSection FixCode HideExample Label="CustomDialogContent" Component="@typeof(CustomDialogContent)" />
+
+    <MduiText id="inline" Typo="@Typo.subheading"><b>Inline对话框</b></MduiText>
+    <p class="mdui-typo">Inline对话框不需要使用<code>DialogService</code>激活。</p>
+    <ExampleSection Component="@typeof(InlineDialog)" />
+</div>
+
+<MduiDivider Class="mdui-m-y-5" />
+
+<div>
+    <h2 id="predefine">
+        <MduiText Typo="@Typo.headline" TextColor="@Colors.Theme.Primary">预定义对话框</MduiText>
+    </h2>
+
+    <MduiText id="alert" Typo="@Typo.subheading"><b>Alert</b></MduiText>
+    <p>警告框，包含标题、内容和一个确认按钮。</p>
+    <ExampleSection Component="@typeof(AlertDialog)" />
+
+    <MduiText id="confirm" Typo="@Typo.subheading"><b>Confirm</b></MduiText>
+    <p>确认框，包含标题、内容、一个确认按钮和一个取消按钮。</p>
+    <ExampleSection Component="@typeof(ConfirmDialog)" />
+</div>
+
+<MduiDivider Class="mdui-m-y-5" />
+
+<div>
+    <h2 id="attr">
+        <MduiText Typo="@Typo.headline" TextColor="@Colors.Theme.Primary">组件参数</MduiText>
+    </h2>
+
+    <MduiTableContainer UseMduiTypo Class="mdui-m-y-1">
+        <MduiSimpleTable>
+            <thead>
+            <th>组件</th>
+            <th>参数名称</th>
+            <th>类型/返回类型</th>
+            <th>说明</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>
+                        <code>MduiDialogProvider</code>
+                    </th>
+                    <td>
+                        <code>Options</code>
+                    </td>
+                    <td>
+                        <code>DialogOptions</code>
+                    </td>
+                    <td>全局对话框设置项。</td>
+                </tr>
+                <tr>
+                    <th rowspan="6">
+                        <code>MduiDialog</code>
+                    </th>
+                    <td>
+                        <code>Open</code>
+                    </td>
+                    <td>bool</td>
+                    <td>是否打开该对话框，默认<code>false</code>。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>OpenChanged</code>
+                    </td>
+                    <td>EventCallback&lt;bool&gt;</td>
+                    <td>对话框打开或关闭时的回调函数，一般用于双向绑定。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>Title</code>
+                    </td>
+                    <td>string?</td>
+                    <td>对话框标题。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>Message</code>
+                    </td>
+                    <td>string?</td>
+                    <td>对话框内容。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>ActionsContent</code>
+                    </td>
+                    <td>RenderFragment?</td>
+                    <td>对话框操作按钮渲染片段。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>Options</code>
+                    </td>
+                    <td>DialogOptions</td>
+                    <td>该对话框设置项。</td>
+                </tr>
+            </tbody>
+        </MduiSimpleTable>
+    </MduiTableContainer>
+</div>

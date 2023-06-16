@@ -1,0 +1,17 @@
+@inject DialogService DialogService
+
+<MduiButton Color="@Colors.Theme.Accent" OnClick="@Show">
+    Open
+</MduiButton>
+
+@code {
+    void Show()
+    {
+        DialogService.Show("You'll lose all photos and media!", "Are you sure?", new DialogOptions
+            {
+                Modal = true,
+                ShowCancelButton = true,
+                ShowConfirmButton = true
+            });
+    }
+}

@@ -1,0 +1,13 @@
+<MduiButton Color="@Colors.Theme.Accent" OnClick="@(_=>open=true)">Open</MduiButton>
+
+<MduiDialog @bind-Open="@open" Title="Are you sure?">
+    <ChildContent>You'll lose all photos and media!</ChildContent>
+    <ActionsContent>
+        <MduiButton Text OnClick="_=>open=false">Cancel</MduiButton>
+        <MduiButton Text>Erase</MduiButton>
+    </ActionsContent>
+</MduiDialog>
+
+@code{
+    bool open;
+}

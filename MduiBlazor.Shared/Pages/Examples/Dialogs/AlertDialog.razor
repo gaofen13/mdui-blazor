@@ -1,0 +1,10 @@
+﻿@inject DialogService DialogService
+
+<MduiButton Color="@Colors.Theme.Accent" OnClick="@Alert">Alert</MduiButton>
+
+@code {
+    void Alert()
+    {
+        DialogService.Alert("这是警告内容", "警告");
+    }
+}

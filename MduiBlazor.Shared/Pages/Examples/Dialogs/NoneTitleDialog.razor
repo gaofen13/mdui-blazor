@@ -1,0 +1,12 @@
+@inject DialogService DialogService
+
+<MduiButton Color="@Colors.Theme.Accent" OnClick="@Show">
+    Open
+</MduiButton>
+
+@code {
+    void Show()
+    {
+        DialogService.Show("Discard draft?", null, new DialogOptions { Modal = true, ShowCancelButton = true, ShowConfirmButton = true });
+    }
+}

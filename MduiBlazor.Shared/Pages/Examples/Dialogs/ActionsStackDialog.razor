@@ -1,0 +1,12 @@
+@inject DialogService DialogService
+
+<MduiButton Color="@Colors.Theme.Accent" OnClick="@Show">
+    Open
+</MduiButton>
+
+@code {
+    void Show()
+    {
+        DialogService.Show("Let Google help apps determine location. This means sending anonymous location data to Google, even when no apps are running.","Use Google's location service?", new DialogOptions{Modal=true, ShowCancelButton=true, ShowConfirmButton=true, ActionsStack=true});
+    }
+}
