@@ -413,6 +413,10 @@ body *::-webkit-scrollbar-thumb {
   transition-property: opacity, visibility;
   will-change: opacity;
 }
+.mdui-overlay.mdui-overlay-transparent {
+  z-index: inherit;
+  background: rgba(0, 0, 0, 0);
+}
 /* 显示遮罩层 */
 .mdui-overlay-show {
   visibility: visible;
@@ -13310,6 +13314,9 @@ select.mdui-select[multiple] option:last-child {
 .mdui-menu .mdui-menu-content .mdui-divider {
   margin-top: 8px;
   margin-bottom: 8px;
+}
+.mdui-menu * {
+  cursor: pointer;
 }
 .mdui-menu-left .mdui-menu-content {
   top: 0;
