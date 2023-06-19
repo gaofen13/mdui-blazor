@@ -30,11 +30,11 @@
             <div class="@ActionsClassname">
                 @if (_options.ShowCancelButton)
                 {
-                    <MduiButton Text OnClick="@Cancel">@_options.CancelText</MduiButton>
+                    <MduiButton DisableRaised OnClick="@Cancel">@_options.CancelText</MduiButton>
                 }
                 @if (_options.ShowConfirmButton)
                 {
-                    <MduiButton Text OnClick="@Ok">@_options.ConfirmText</MduiButton>
+                    <MduiButton DisableRaised OnClick="@Ok">@_options.ConfirmText</MduiButton>
                 }
             </div>
         }

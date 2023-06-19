@@ -9,7 +9,7 @@ namespace MduiBlazor
             new ClassBuilder("mdui-btn")
             .AddClass("mdui-typo", UseMduiTypo)
             .AddClass("mdui-ripple", !DisableRipple)
-            .AddClass("mdui-btn-raised", !DisableRaised && !Text)
+            .AddClass("mdui-btn-raised", !DisableRaised)
             .AddClass("mdui-btn-dense", Dense)
             .AddClass("mdui-btn-block", Block)
             .AddClass("mdui-btn-active", Actived)
@@ -30,9 +30,6 @@ namespace MduiBlazor
 
         [Parameter]
         public bool Actived { get; set; }
-
-        [Parameter]
-        public bool Text { get; set; }
 
         [Parameter]
         public bool DisableRaised { get; set; }

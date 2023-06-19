@@ -1,6 +1,7 @@
 ﻿using MduiBlazor.Extensions;
 using MduiBlazor.Utilities;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Web;
 
 namespace MduiBlazor
 {
@@ -28,6 +29,9 @@ namespace MduiBlazor
         public string? Icon { get; set; }
 
         [Parameter]
+        public string? Color { get; set; }
+
+        [Parameter]
         public RenderFragment? ActivatorContent { get; set; }
 
         [Parameter]
@@ -36,14 +40,15 @@ namespace MduiBlazor
         [Parameter]
         public Position Position { get; set; } = Position.Bottom;
 
-        private void OnBlur()
-        {
-            _isFocus = false;
-        }
-
         private void OnActivatorClicked()
         {
             _isFocus = !_isFocus;
+        }
+
+        public void Activate(MouseEventArgs args)
+        {
+            _isFocus = !_isFocus;
+            StateHasChanged();
         }
     }
 }

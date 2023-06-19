@@ -1,0 +1,148 @@
+@page "/menus"
+@inherits BasePage
+@using MduiBlazor.Shared.Pages.Examples.Menus
+
+<PageTitle>菜单</PageTitle>
+<div class="mdui-m-y-5">
+    <MduiText Typo="@Typo.display1" TextColor="@Colors.Theme.Primary">菜单</MduiText>
+    <p>菜单分为简单菜单和级联菜单。简单菜单适用在手机和平板上，级联菜单适用在桌面设备。</p>
+</div>
+
+<PageContent>
+    <PageContentItem Title="示例" OnClick="@(_=>ScrollToElementById("examples"))">
+        <PageContentItem Title="简单菜单" OnClick="@(_=>ScrollToElementById("simple"))" />
+        <PageContentItem Title="自定义激活器" OnClick="@(_=>ScrollToElementById("customActivator"))" />
+        <PageContentItem Title="菜单展开位置" OnClick="@(_=>ScrollToElementById("position"))" />
+    </PageContentItem>
+    <PageContentItem Title="组件参数" OnClick="@(_=>ScrollToElementById("attr"))" />
+</PageContent>
+
+<MduiDivider Class="mdui-m-y-5" />
+
+<div>
+    <h2 id="examples">
+        <MduiText Typo="@Typo.headline" TextColor="@Colors.Theme.Primary">示例</MduiText>
+    </h2>
+
+    <MduiText id="simple" Typo="@Typo.subheading"><b>简单菜单</b></MduiText>
+    <p class="mdui-typo">菜单通常带有标题或图标，可以设置参数<code>Title</code>、<code>Icon</code>来修改，也可以设置<code>Color</code>背景颜色。</p>
+    <p class="mdui-typo">
+        菜单项可以含有文字或图标，也可以设置属性<code>Disabled="true"</code>修改为禁用状态。菜单项之间可以使用<code>MduiDivider</code>组件添加分割线。
+    </p>
+    <ExampleSection Component="@typeof(SimpleMenu)" />
+
+    <MduiText id="customActivator" Typo="@Typo.subheading"><b>自定义激活器</b></MduiText>
+    <ExampleSection Component="@typeof(CustomActivatorMenu)" />
+
+    <MduiText id="position" Typo="@Typo.subheading"><b>菜单展开位置</b></MduiText>
+    <p class="mdui-typo">可以通过设置参数<code>Position</code>、<code>AlignEnd</code>来修改菜单项的展开位置和方向。</p>
+    <ExampleSection Component="@typeof(MenuPosition)" />
+</div>
+
+<MduiDivider Class="mdui-m-y-5" />
+
+<div>
+    <h2 id="attr">
+        <MduiText Typo="@Typo.headline" TextColor="@Colors.Theme.Primary">组件参数</MduiText>
+    </h2>
+
+    <MduiTableContainer UseMduiTypo Class="mdui-m-y-1">
+        <MduiSimpleTable>
+            <thead>
+                <th>组件</th>
+                <th>参数名称</th>
+                <th>类型/返回类型</th>
+                <th>说明</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td rowspan="6">
+                        <code>MduiMenu</code>
+                    </td>
+                    <td>
+                        <code>Title</code>
+                    </td>
+                    <td>
+                        <code>string?</code>
+                    </td>
+                    <td>菜单按钮标题。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>Icon</code>
+                    </td>
+                    <td>
+                        <code>string?</code>
+                    </td>
+                    <td>菜单按钮 Material 图标类名。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>Color</code>
+                    </td>
+                    <td>
+                        <code>string?</code>
+                    </td>
+                    <td>菜单按钮背景颜色。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>ActivatorContent</code>
+                    </td>
+                    <td>
+                        <code>RenderFragment?</code>
+                    </td>
+                    <td>菜单按钮激活器的渲染片段，一般用于自定义激活器。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>Position</code>
+                    </td>
+                    <td>
+                        <code>Position</code>
+                    </td>
+                    <td>菜单展开方向(枚举，Top、Bottom、Left、Right)。默认<code>Position.Bottom</code>。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>AlignEnd</code>
+                    </td>
+                    <td>
+                        <code>bool</code>
+                    </td>
+                    <td>菜单展开方向是否末尾对齐。默认<code>false</code>。</td>
+                </tr>
+                <tr>
+                    <td rowspan="3">
+                        <code>MduiMenuItem</code>
+                    </td>
+                    <td>
+                        <code>Actived</code>
+                    </td>
+                    <td>
+                        <code>bool</code>
+                    </td>
+                    <td>是否为激活状态，默认<code>false</code>。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>Disabled</code>
+                    </td>
+                    <td>
+                        <code>bool</code>
+                    </td>
+                    <td>是否为禁用状态，默认<code>false</code>。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>HelperText</code>
+                    </td>
+                    <td>
+                        <code>string?</code>
+                    </td>
+                    <td>菜单项的说明文本。</td>
+                </tr>
+            </tbody>
+        </MduiSimpleTable>
+    </MduiTableContainer>
+</div>

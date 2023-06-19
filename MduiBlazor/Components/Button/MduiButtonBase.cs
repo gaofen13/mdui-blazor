@@ -6,6 +6,9 @@ namespace MduiBlazor
 {
     public class MduiButtonBase : MduiComponentBase
     {
+        [CascadingParameter]
+        public MduiMenu? Menu { get; set; }
+
         /// <summary>
         /// The HTML element that will be rendered in the root by the component
         /// By default, is a button
@@ -76,6 +79,7 @@ namespace MduiBlazor
             {
                 Command.Execute(CommandParameter);
             }
+            Menu?.Activate(ev);
         }
 
         protected override void OnInitialized()

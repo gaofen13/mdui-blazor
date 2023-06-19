@@ -12,7 +12,6 @@
     <PageContentItem Title="示例" OnClick="@(_=>ScrollToElementById("examples"))">
         <PageContentItem Title="普通按钮" OnClick="@(_=>ScrollToElementById("simple"))" />
         <PageContentItem Title="扁平按钮" OnClick="@(_=>ScrollToElementById("disableRaised"))" />
-        <PageContentItem Title="文本按钮" OnClick="@(_=>ScrollToElementById("text"))" />
         <PageContentItem Title="图标按钮" OnClick="@(_=>ScrollToElementById("icon"))" />
         <PageContentItem Title="密集型按钮" OnClick="@(_=>ScrollToElementById("dense"))" />
         <PageContentItem Title="禁用状态" OnClick="@(_=>ScrollToElementById("disabled"))" />
@@ -34,9 +33,6 @@
 
     <MduiText id="disableRaised" Typo="@Typo.subheading"><b>扁平按钮</b></MduiText>
     <ExampleSection Component="@typeof(DisableRaisedButton)" />
-
-    <MduiText id="text" Typo="@Typo.subheading"><b>文本按钮</b></MduiText>
-    <ExampleSection Component="@typeof(TextButton)" />
 
     <MduiText id="icon" Typo="@Typo.subheading"><b>图标按钮</b></MduiText>
     <ExampleSection Component="@typeof(IconButton)" />

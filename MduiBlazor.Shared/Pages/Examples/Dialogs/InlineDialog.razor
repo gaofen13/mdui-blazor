@@ -3,8 +3,8 @@
 <MduiDialog @bind-Open="@open" Title="Are you sure?">
     <ChildContent>You'll lose all photos and media!</ChildContent>
     <ActionsContent>
-        <MduiButton Text OnClick="_=>open=false">Cancel</MduiButton>
-        <MduiButton Text>Erase</MduiButton>
+        <MduiButton DisableRaised OnClick="_=>open=false">Cancel</MduiButton>
+        <MduiButton DisableRaised>Erase</MduiButton>
     </ActionsContent>
 </MduiDialog>
 

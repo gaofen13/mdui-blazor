@@ -1,0 +1,26 @@
+﻿<MduiField Label="Position">
+    <MduiSelect @bind-Value="@position">
+        <option value="@Position.Top">@Position.Top</option>
+        <option value="@Position.Bottom">@Position.Bottom</option>
+        <option value="@Position.Left">@Position.Left</option>
+        <option value="@Position.Right">@Position.Right</option>
+    </MduiSelect>
+</MduiField>
+<MduiField Label="AlignEnd">
+    <MduiCheckbox Switch @bind-Value="@alignEnd" />
+</MduiField>
+
+<div style="width: 100%;display:flex;justify-content:center;">
+    <MduiMenu Title="Menu" Icon="more_vert" Color="@Colors.Theme.Accent" Position="@position" AlignEnd="@alignEnd">
+        <MduiMenuItem>Help & feedback</MduiMenuItem>
+        <MduiMenuItem Disabled>Settings</MduiMenuItem>
+        <MduiDivider />
+        <MduiMenuItem>Sign out</MduiMenuItem>
+    </MduiMenu>
+</div>
+
+@code {
+    bool alignEnd;
+
+    Position position;
+}

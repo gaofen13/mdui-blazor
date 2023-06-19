@@ -4,28 +4,24 @@
 <div class="@Classname" style="@Style" @attributes="@AdditionalAttributes">
     @if (ActivatorContent != null)
     {
-        <label @onclick="@OnActivatorClicked" @onblur="@OnBlur">
-            @ActivatorContent
-        </label>
+        <label @onclick="@OnActivatorClicked">
+            <CascadingValue Value="@this" IsFixed>
+             @ActivatorContent
+         </CascadingValue>
+     </label>
     }
     else
     {
-        @if (!string.IsNullOrWhiteSpace(Title))
-        {
-            <MduiButton @onclick="@OnActivatorClicked" @onblur="@OnBlur">
-                @Title
-                @if (!string.IsNullOrWhiteSpace(Icon))
-                {
-                    <MduiIcon Name="@Icon" />
-                }
-            </MduiButton>
-        }
-        else if (!string.IsNullOrWhiteSpace(Icon))
-        {
-            <MduiIconButton Icon="@Icon" @onclick="@OnActivatorClicked" @onblur="@OnBlur" />
-        }
+        <MduiButton DisableRaised="@string.IsNullOrEmpty(Title)" Color="@Color" OnClick="@OnActivatorClicked">
+            @Title
+            @if (!string.IsNullOrWhiteSpace(Icon))
+            {
+                <MduiIcon Icon="@Icon" />
+            }
+        </MduiButton>
     }
     <ul class="@MenuListClass">
         @ChildContent
     </ul>
 </div>
+<MduiOverlay Visible="@_isFocus" OnBackgroundClick="@(_=>_isFocus=false)" Transparent />

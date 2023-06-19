@@ -5,10 +5,10 @@
      <MduiAppbar Fixed>
         <MduiToolbar Color="@Colors.Theme.Primary">
             <MduiIconButton Icon="menu" OnClick="_=>_open=!_open" />
-            <MduiButton Text Href="">
+            <MduiButton DisableRaised Href="">
                  <MduiText Typo="@Typo.title">MduiBlazor</MduiText>
              </MduiButton>
-             <MduiButton Text Href="https://www.mdui.org/" target="_blank">
+             <MduiButton DisableRaised Href="https://www.mdui.org/" target="_blank">
                  <MduiText Typo="@Typo.title">Mdui</MduiText>
              </MduiButton>
              <MduiToolbarSpace />
@@ -200,8 +200,8 @@
              </MduiContainer>
          </ChildContent>
          <ActionsContent>
-             <MduiButton Text Class="mdui-float-left" OnClick="@ResetTheme">恢复默认主题</MduiButton>
-             <MduiButton Text OnClick="@ToggleThemeDialog">OK</MduiButton>
+             <MduiButton DisableRaised Class="mdui-float-left" OnClick="@ResetTheme">恢复默认主题</MduiButton>
+             <MduiButton DisableRaised OnClick="@ToggleThemeDialog">OK</MduiButton>
          </ActionsContent>
      </MduiDialog>
 
