@@ -1,0 +1,157 @@
+@page "/tables"
+@using MduiBlazor.Shared.Pages.Examples.Tables
+@inherits BasePage
+
+<PageTitle>表格</PageTitle>
+<div class="mdui-m-y-5">
+    <MduiText Typo="@Typo.display1" TextColor="@Colors.Theme.Primary">表格</MduiText>
+</div>
+
+<PageContent>
+    <PageContentItem Title="示例" OnClick="@(_=>ScrollToElementById("examples"))">
+        <PageContentItem Title="简单表格" OnClick="@(_=>ScrollToElementById("simple"))" />
+        <PageContentItem Title="动态表格" OnClick="@(_=>ScrollToElementById("dynamic"))" />
+        <PageContentItem Title="可选表格" OnClick="@(_=>ScrollToElementById("selectable"))" />
+        <PageContentItem Title="鼠标悬浮" OnClick="@(_=>ScrollToElementById("hoverable"))" />
+        <PageContentItem Title="列对齐方式" OnClick="@(_=>ScrollToElementById("alignRight"))" />
+        <PageContentItem Title="响应式容器" OnClick="@(_=>ScrollToElementById("container"))" />
+    </PageContentItem>
+    <PageContentItem Title="组件参数" OnClick="@(_=>ScrollToElementById("attr"))" />
+</PageContent>
+
+<MduiDivider Class="mdui-m-y-5" />
+
+<div>
+    <h2 id="examples">
+        <MduiText Typo="@Typo.headline" TextColor="@Colors.Theme.Primary">示例</MduiText>
+    </h2>
+
+    <MduiText id="simple" Typo="@Typo.subheading"><b>简单表格</b></MduiText>
+    <ExampleSection Component="@typeof(SimpleTable)" />
+
+    <MduiText id="dynamic" Typo="@Typo.subheading"><b>动态表格</b></MduiText>
+    <ExampleSection Component="@typeof(DynamicTable)" />
+
+    <MduiText id="selectable" Typo="@Typo.subheading"><b>可选表格</b></MduiText>
+    <p class="mdui-typo">设置<code>MduiTable</code>组件参数<code>MultiSelection="true"</code>，即可在每一行的前面添加一个复选框，选择项可以与参数<code>SelectedItems</code>双向绑定。</p>
+    <ExampleSection Component="@typeof(SelectableTable)" />
+
+    <MduiText id="hoverable" Typo="@Typo.subheading"><b>鼠标悬浮</b></MduiText>
+    <p class="mdui-typo">设置<code>MduiSimpleTable</code>或<code>MduiTable</code>组件参数<code>Hoverable="true"</code>可以让表格中的每一行对鼠标悬浮状态作出响应。</p>
+    <ExampleSection Component="@typeof(HoverableTable)" />
+
+    <MduiText id="alignRight" Typo="@Typo.subheading"><b>列对齐方式</b></MduiText>
+    <p class="mdui-typo">设置<code>MduiTh</code>或<code>MduiColumn</code>组件参数<code>AlignRight="true"</code>可以把表格中的列右对齐。</p>
+    <ExampleSection Component="@typeof(AlignRightTable)" />
+
+    <MduiText id="container" Typo="@Typo.subheading"><b>响应式容器</b></MduiText>
+    <p class="mdui-typo">如果表格宽度过大，可能会导致页面出现横向滚动条。将<code>MduiSimpleTable</code>或<code>MduiTable</code>组件包裹在<code>MduiTableContainer</code>组件内，即可在表格宽度超出页面宽度时，使表格支持水平滚动。</p>
+    <ExampleSection Component="@typeof(TableContainer)" />
+</div>
+
+<MduiDivider Class="mdui-m-y-5" />
+
+<div>
+    <h2 id="attr">
+        <MduiText Typo="@Typo.headline" TextColor="@Colors.Theme.Primary">组件参数</MduiText>
+    </h2>
+
+    <MduiTableContainer UseMduiTypo Class="mdui-m-y-1">
+        <MduiSimpleTable>
+            <thead>
+            <th>组件</th>
+            <th>参数名称</th>
+            <th>类型/返回类型</th>
+            <th>说明</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <code>MduiSimpleTable</code>
+                    </td>
+                    <td>
+                        <code>Hoverable</code>
+                    </td>
+                    <td>
+                        <code>bool</code>
+                    </td>
+                    <td>是否让表格中的每一行对鼠标悬浮状态作出响应，默认<code>false</code>。</td>
+                </tr>
+                <tr>
+                    <td rowspan="7">
+                        <code>MduiTable&lt;TItem&gt;</code>
+                    </td>
+                    <td>
+                        <code>Hoverable</code>
+                    </td>
+                    <td>
+                        <code>bool</code>
+                    </td>
+                    <td>是否让表格中的每一行对鼠标悬浮状态作出响应，默认<code>false</code>。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>Items</code>
+                    </td>
+                    <td>
+                        <code>IEnumerable&lt;TItem&gt;?</code>
+                    </td>
+                    <td>表格的数据集合。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>SelectedItems</code>
+                    </td>
+                    <td>
+                        <code>IEnumerable&lt;TItem&gt;</code>
+                    </td>
+                    <td>已选择的行的数据集合。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>SelectedItemsChanged</code>
+                    </td>
+                    <td>
+                        <code>EventCallback&lt;IEnumerable&lt;TItem&gt;&gt;</code>
+                    </td>
+                    <td>已选择的行修改后的回调函数，一般用于双向绑定。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>MultiSelection</code>
+                    </td>
+                    <td>
+                        <code>bool</code>
+                    </td>
+                    <td>是否可选择，设置为<code>true</code>即可在每一行的前面添加一个复选框，选择项可以与参数<code>SelectedItems</code>双向绑定。默认<code>false</code>。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>Columns</code>
+                    </td>
+                    <td>
+                        <code>RenderFragment&lt;TItem&gt;?</code>
+                    </td>
+                    <td>表格列的渲染片段。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>HeadContent</code>
+                    </td>
+                    <td>
+                        <code>RenderFragment?</code>
+                    </td>
+                    <td>表格表头的渲染片段，一般用于自定义列标题。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>MduiTableContainer</code>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td>影响是表格容器，在表格宽度超出页面宽度时，使表格支持水平滚动。</td>
+                </tr>
+            </tbody>
+        </MduiSimpleTable>
+    </MduiTableContainer>
+</div>

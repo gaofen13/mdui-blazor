@@ -1,0 +1,27 @@
+﻿@using MduiBlazor.Shared.Data
+@inject WeatherForecastService ForecastService
+
+<MduiTable MultiSelection Items="@forecasts" @bind-SelectedItems="@selectedForecasts">
+    <HeadContent>
+        <MduiTh>Date</MduiTh>
+        <MduiTh>TemperatureC</MduiTh>
+        <MduiTh>TemperatureF</MduiTh>
+        <MduiTh>Summary</MduiTh>
+    </HeadContent>
+    <Columns>
+        <MduiColumn>@context.Date.ToString("yyyy-MM-dd")</MduiColumn>
+        <MduiColumn>@context.TemperatureC</MduiColumn>
+        <MduiColumn>@context.TemperatureF</MduiColumn>
+        <MduiColumn>@context.Summary</MduiColumn>
+    </Columns>
+</MduiTable>
+
+@code {
+    private IEnumerable<WeatherForecast>? forecasts;
+    private IEnumerable<WeatherForecast>? selectedForecasts;
+
+    protected override async Task OnInitializedAsync()
+    {
+        forecasts = await ForecastService.GetForecastAsync(DateOnly.FromDateTime(DateTime.Now));
+    }
+}

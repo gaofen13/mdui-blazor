@@ -23,9 +23,8 @@ namespace MduiBlazor
         [Parameter]
         public IEnumerable<TItem>? SelectedItems { get; set; }
 
-        [Parameter]
-        [NotNull]
-        public TItem? Item { get; set; }
+        [Parameter, EditorRequired]
+        public TItem Item { get; set; } = default!;
 
         private void OnCheckedChanged(bool @checked)
         {

@@ -9,6 +9,5 @@ namespace MduiBlazor
             .AddClass("mdui-typo", UseMduiTypo)
             .AddClass(Class)
             .Build();
-
     }
 }
