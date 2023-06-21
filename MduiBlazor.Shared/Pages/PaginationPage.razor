@@ -2,37 +2,37 @@
 @inherits BasePage
 @using MduiBlazor.Shared.Pages.Examples.Pagers
 
-<PageTitle>ทึาณ</PageTitle>
+<PageTitle>ๅ้กต</PageTitle>
 <div class="mdui-m-y-5">
-    <MduiText Typo="@Typo.display1" TextColor="@Colors.Theme.Primary">ทึาณื้ผþ</MduiText>
-    <p class="mdui-typo">ทึาณื้ผþำษ<code>MduiButtonGroup</code>ื้ผþื้ณษกฃ</p>
+    <MduiText Typo="@Typo.display1" TextColor="@Colors.Theme.Primary">ๅ้กต็ปไปถ</MduiText>
+    <p class="mdui-typo">ๅ้กต็ปไปถ็”ฑ<code>MduiButtonGroup</code>็ปไปถ็ปๆใ€</p>
 </div>
 
 <PageContent>
-    <PageContentItem Title="สพภý" OnClick="@(_=>ScrollToElementById("examples"))">
-        <PageContentItem Title="ผ๒ตฅทึาณ" OnClick="@(_=>ScrollToElementById("simple"))" />
-        <PageContentItem Title="ถเาณย๋ทึาณ" OnClick="@(_=>ScrollToElementById("largePagination"))" />
-        <PageContentItem Title="ฑํธ๑บอทึาณ" OnClick="@(_=>ScrollToElementById("tablePagination"))" />
+    <PageContentItem Title="็คบไพ" OnClick="@(_=>ScrollToElementById("examples"))">
+        <PageContentItem Title="็ฎ€ๅ•ๅ้กต" OnClick="@(_=>ScrollToElementById("simple"))" />
+        <PageContentItem Title="ๅค้กต็ ๅ้กต" OnClick="@(_=>ScrollToElementById("largePagination"))" />
+        <PageContentItem Title="่กจๆ ผๅ’ๅ้กต" OnClick="@(_=>ScrollToElementById("tablePagination"))" />
     </PageContentItem>
-    <PageContentItem Title="ื้ผþฒฮสý" OnClick="@(_=>ScrollToElementById("attr"))" />
+    <PageContentItem Title="็ปไปถๅๆ•ฐ" OnClick="@(_=>ScrollToElementById("attr"))" />
 </PageContent>
 
 <MduiDivider Class="mdui-m-y-5" />
 
 <div>
     <h2 id="examples">
-        <MduiText Typo="@Typo.headline" TextColor="@Colors.Theme.Primary">สพภý</MduiText>
+        <MduiText Typo="@Typo.headline" TextColor="@Colors.Theme.Primary">็คบไพ</MduiText>
     </h2>
 
-    <MduiText id="simple" Typo="@Typo.subheading"><b>ผ๒ตฅทึาณ</b></MduiText>
+    <MduiText id="simple" Typo="@Typo.subheading"><b>็ฎ€ๅ•ๅ้กต</b></MduiText>
     <ExampleSection Component="@typeof(SimplePagination)" />
 
-    <MduiText id="largePagination" Typo="@Typo.subheading"><b>ถเาณย๋ทึาณ</b></MduiText>
-    <p class="mdui-typo">ตฑื้ผþ<code>Total</code>ฒฮสýฝฯด๓สฑฃฌทึาณื้ผþฝซึปฯิสพฒฟทึาณย๋กฃ</p>
+    <MduiText id="largePagination" Typo="@Typo.subheading"><b>ๅค้กต็ ๅ้กต</b></MduiText>
+    <p class="mdui-typo">ๅฝ“็ปไปถ<code>Total</code>ๅๆ•ฐ่พๅคงๆ—ถ๏ผๅ้กต็ปไปถๅฐๅชๆพ็คบ้จๅ้กต็ ใ€</p>
     <ExampleSection Component="@typeof(LargePagination)" />
 
-    <MduiText id="tablePagination" Typo="@Typo.subheading"><b>ฑํธ๑บอทึาณ</b></MduiText>
-    <p>ทึาณื้ผþบอฑํธ๑ื้ผþฟษาิาปฦ๐สนำรฃฌสตฯึถฏฬฌทึาณฑํธ๑นฆฤÜกฃ</p>
+    <MduiText id="tablePagination" Typo="@Typo.subheading"><b>่กจๆ ผๅ’ๅ้กต</b></MduiText>
+    <p>ๅ้กต็ปไปถๅ’่กจๆ ผ็ปไปถๅฏไปฅไธ€่ตทไฝฟ็”จ๏ผๅฎ็ฐๅจๆ€ๅ้กต่กจๆ ผๅ่ฝใ€</p>
     <ExampleSection Component="@typeof(TableWithPagination)" />
 </div>
 
@@ -40,15 +40,15 @@
 
 <div>
     <h2 id="attr">
-        <MduiText Typo="@Typo.headline" TextColor="@Colors.Theme.Primary">ื้ผþฒฮสý</MduiText>
+        <MduiText Typo="@Typo.headline" TextColor="@Colors.Theme.Primary">็ปไปถๅๆ•ฐ</MduiText>
     </h2>
 
     <MduiTableContainer UseMduiTypo Class="mdui-m-y-1">
         <MduiSimpleTable>
             <thead>
-                <th>ฒฮสýร๛ณฦ</th>
-                <th>ภเะอ/ทตปุภเะอ</th>
-                <th>หตร๗</th>
+                <th>ๅๆ•ฐๅ็งฐ</th>
+                <th>็ฑปๅ/่ฟ”ๅ็ฑปๅ</th>
+                <th>่ฏดๆ</th>
             </thead>
             <tbody>
                 <tr>
@@ -58,7 +58,7 @@
                     <td>
                         <code>int</code>
                     </td>
-                    <td>ทึาณื้ผþืÜาณย๋ฃฌฤฌศฯ<code>0</code>กฃ</td>
+                    <td>ๅ้กต็ปไปถๆ€ป้กต็ ๏ผ้ป่ฎค<code>0</code>ใ€</td>
                 </tr>
                 <tr>
                     <td>
@@ -67,7 +67,7 @@
                     <td>
                         <code>int</code>
                     </td>
-                    <td>ทึาณื้ผþตฑวฐาณย๋ฃฌฤฌศฯ<code>1</code>กฃ</td>
+                    <td>ๅ้กต็ปไปถๅฝ“ๅ้กต็ ๏ผ้ป่ฎค<code>1</code>ใ€</td>
                 </tr>
                 <tr>
                     <td>
@@ -76,7 +76,7 @@
                     <td>
                         <code>EventCallback&lt;int&gt;</code>
                     </td>
-                    <td>ทึาณื้ผþาณย๋ธฤฑไบ๓ตฤปุต๗บฏสýฃฌฟษำรำฺหซฯ๒ฐ๓ถจกฃ</td>
+                    <td>ๅ้กต็ปไปถ้กต็ ๆ”นๅๅ็ๅ่ฐๅฝๆ•ฐ๏ผๅฏ็”จไบๅๅ‘็ป‘ๅฎใ€</td>
                 </tr>
             </tbody>
         </MduiSimpleTable>
