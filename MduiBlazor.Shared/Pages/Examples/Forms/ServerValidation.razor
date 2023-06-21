@@ -1,0 +1,68 @@
+﻿@using Microsoft.AspNetCore.Components.Forms
+@using System.ComponentModel.DataAnnotations
+
+<EditForm Model="@model">
+    <DataAnnotationsValidator />
+    <MduiTextField Label="文本框" FloatingLabel Placeholder="请输入文本" @bind-Value="@model.Text" />
+    <MduiNumbericField Label="数字框" HelperText="1~100" Placeholder="请输入或选择数字" @bind-Value="@model.Number" />
+    <MduiField Label="滑块" ErrorText="请注意滑动的范围" HelperText="1~100">
+        <MduiSlider @bind-Value="@model.Number" Min="0" Max="100" />
+    </MduiField>
+    <MduiField Label="Radio">
+        <MduiRadioGroup @bind-Value="@model.Select">
+            <MduiRadio Value="@("1")">1</MduiRadio>
+            <MduiRadio Value="@("2")">2</MduiRadio>
+            <MduiRadio Value="@("3")">3</MduiRadio>
+        </MduiRadioGroup>
+    </MduiField>
+    <MduiField Label="单项选择" ErrorText="请选择一项有效值">
+        <MduiSelect @bind-Value="@model.Select">
+            <option value="">请选择</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+        </MduiSelect>
+    </MduiField>
+    <MduiField Label="多项选择">
+        <MduiMultiSelect @bind-Value="@model.Select2">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+        </MduiMultiSelect>
+    </MduiField>
+    <MduiField Label="Checkbox">
+        <MduiCheckbox Label="勾选" @bind-Value="@model.CheckboxValue" />
+    </MduiField>
+    <MduiField Label="Switch" ErrorText="必须打开">
+        <MduiCheckbox Label="切换" Switch @bind-Value="@model.CheckboxValue" />
+    </MduiField>
+    <MduiButton Color="@Colors.Theme.Primary" ButtonType="@ButtonType.Submit">提交</MduiButton>
+    <MduiButton Color="@Colors.Theme.Accent" ButtonType="@ButtonType.Reset" OnClick="@OnReset">重置</MduiButton>
+</EditForm>
+
+@code {
+    private ModelInfo model = new ModelInfo();
+
+    private void OnReset()
+    {
+        model = new ModelInfo();
+    }
+
+    class ModelInfo
+    {
+        [Required(ErrorMessage = "必须输入有效值")]
+        [MaxLength(20, ErrorMessage = "长度不能大于20")]
+        public string? Text { get; set; }
+
+        [Range(1, 100, ErrorMessage = "范围应该在1~100之间")]
+        public int Number { get; set; }
+
+        [Required(ErrorMessage = "请选择一项有效值")]
+        public string Select { get; set; } = "";
+
+        public string[]? Select2 { get; set; } = new string[] { "s1", "s2" };
+
+        [Range(1, 1, ErrorMessage = "必须勾选")]
+        public bool CheckboxValue { get; set; }
+    }
+}

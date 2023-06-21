@@ -1,0 +1,119 @@
+﻿@page "/forms"
+@inherits BasePage
+@using MduiBlazor.Shared.Pages.Examples.Forms
+
+<PageTitle>窗体验证</PageTitle>
+<div class="mdui-m-y-5">
+    <MduiText Typo="@Typo.display1" TextColor="@Colors.Theme.Primary">窗体验证</MduiText>
+    <p class="mdui-typo">MduiBlazor 可以使用<code>EditForm</code>和<code>MduiField</code>组件实现窗体验证。</p>
+</div>
+
+<PageContent>
+    <PageContentItem Title="示例" OnClick="@(_=>ScrollToElementById("examples"))">
+        <PageContentItem Title="客户端验证" OnClick="@(_=>ScrollToElementById("clientValidation"))" />
+        <PageContentItem Title="服务端验证" OnClick="@(_=>ScrollToElementById("serverValidation"))" />
+    </PageContentItem>
+    <PageContentItem Title="组件参数" OnClick="@(_=>ScrollToElementById("attr"))" />
+</PageContent>
+
+<MduiDivider Class="mdui-m-y-5" />
+
+<div>
+    <h2 id="examples">
+        <MduiText Typo="@Typo.headline" TextColor="@Colors.Theme.Primary">示例</MduiText>
+    </h2>
+    <p class="mdui-typo">使用<code>EditForm</code>验证，需要添加<code>DataAnnotationsValidator</code>组件。<code>MduiForm</code>内只可以添加<code>MduiField</code>、<code>MduiTextField</code>和<code>MduiNumbericField</code>组件，其他 input 组件应该在<code>MduiField</code>组件中。</p>
+
+    <MduiText id="clientValidation" Typo="@Typo.subheading"><b>客户端验证</b></MduiText>
+    <ExampleSection Component="@typeof(ClientValidation)" />
+
+    <MduiText id="serverValidation" Typo="@Typo.subheading"><b>服务端验证</b></MduiText>
+    <ExampleSection Component="@typeof(ServerValidation)" />
+</div>
+
+<MduiDivider Class="mdui-m-y-5" />
+
+<div>
+    <h2 id="attr">
+        <MduiText Typo="@Typo.headline" TextColor="@Colors.Theme.Primary">组件参数</MduiText>
+    </h2>
+
+    <MduiTableContainer UseMduiTypo Class="mdui-m-y-1">
+        <MduiSimpleTable>
+            <thead>
+                <th>组件</th>
+                <th>参数名称</th>
+                <th>类型/返回类型</th>
+                <th>说明</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td rowspan="7">
+                        <code>MduiField</code>
+                    </td>
+                    <td>
+                        <code>Label</code>
+                    </td>
+                    <td>
+                        <code>string?</code>
+                    </td>
+                    <td>窗体项文本。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>Disabled</code>
+                    </td>
+                    <td>
+                        <code>bool</code>
+                    </td>
+                    <td>是否禁用状态，默认<code>false</code>。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>Required</code>
+                    </td>
+                    <td>
+                        <code>bool</code>
+                    </td>
+                    <td>是否为必填项，默认<code>false</code>。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>Icon</code>
+                    </td>
+                    <td>
+                        <code>string?</code>
+                    </td>
+                    <td>窗体项material 图标的类名。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>IconContent</code>
+                    </td>
+                    <td>
+                        <code>RenderFragment?</code>
+                    </td>
+                    <td>窗体项图标的渲染片段，一般用于自定义图标。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>HelperText</code>
+                    </td>
+                    <td>
+                        <code>string?</code>
+                    </td>
+                    <td>窗体项说明文本。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>ErrorText</code>
+                    </td>
+                    <td>
+                        <code>string?</code>
+                    </td>
+                    <td>窗体项校验错误时的说明文本。</td>
+                </tr>
+            </tbody>
+        </MduiSimpleTable>
+    </MduiTableContainer>
+</div>
