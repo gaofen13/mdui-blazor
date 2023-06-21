@@ -1,0 +1,57 @@
+﻿@using MduiBlazor.Shared.Data
+@inject WeatherForecastService ForecastService
+
+<MduiTableContainer>
+    <MduiTable Items="@forecasts">
+        <Columns>
+            <MduiColumn Title="Date">@context.Date.ToString("yyyy-MM-dd")</MduiColumn>
+            <MduiColumn Title="TemperatureC">@context.TemperatureC</MduiColumn>
+            <MduiColumn Title="TemperatureF">@context.TemperatureF</MduiColumn>
+            <MduiColumn Title="Summary">@context.Summary</MduiColumn>
+        </Columns>
+    </MduiTable>
+</MduiTableContainer>
+<MduiContainer Fluid>
+    <MduiRow Class="mdui-p-y-1 mdui-float-right">
+        <MduiCol>
+            <MduiRow>
+                <MduiCol>
+                    <MduiSelect TValue="@int" Value="@pageSize" ValueChanged="@OnPageSizeChanged">
+                        <option value="5">5</option>
+                        <option value="20">20</option>
+                        <option value="50">50</option>
+                    </MduiSelect>
+                </MduiCol>
+                <MduiCol Class="mdui-valign">
+                    <label>/页</label>
+                </MduiCol>
+            </MduiRow>
+        </MduiCol>
+        <MduiCol>
+            <MduiPagination Total="10" PageIndex="@pageIndex" PageIndexChanged="@OnPageIndexChanged" />
+        </MduiCol>
+    </MduiRow>
+</MduiContainer>
+
+@code {
+    private IEnumerable<WeatherForecast>? forecasts;
+    private int pageSize = 5;
+    private int pageIndex = 1;
+
+    protected override async Task OnInitializedAsync()
+    {
+        forecasts = await ForecastService.GetForecastAsync(DateOnly.FromDateTime(DateTime.Now), pageIndex, pageSize);
+    }
+
+    private async Task OnPageSizeChanged(int pageSize)
+    {
+        this.pageSize = pageSize;
+        forecasts = await ForecastService.GetForecastAsync(DateOnly.FromDateTime(DateTime.Now), pageIndex, pageSize);
+    }
+
+    private async Task OnPageIndexChanged(int pageIndex)
+    {
+        this.pageIndex = pageIndex;
+        forecasts = await ForecastService.GetForecastAsync(DateOnly.FromDateTime(DateTime.Now), pageIndex, pageSize);
+    }
+}

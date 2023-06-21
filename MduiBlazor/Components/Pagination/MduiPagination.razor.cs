@@ -6,12 +6,6 @@ namespace MduiBlazor
     public partial class MduiPagination : MduiComponentBase
     {
         private int _index = 1;
-        private int _size = 10;
-
-        protected string Classname =>
-            new ClassBuilder("pager-container")
-            .AddClass(Class)
-            .Build();
 
         private bool PrevDisabled => PageIndex <= 1 || Total <= 0;
 
@@ -19,25 +13,6 @@ namespace MduiBlazor
 
         [Parameter]
         public int Total { get; set; }
-
-        [Parameter]
-#pragma warning disable BL0007 // Component parameters should be auto properties
-        public int PageSize
-#pragma warning restore BL0007 // Component parameters should be auto properties
-        {
-            get => _size;
-            set
-            {
-                if (_size != value && value > 0)
-                {
-                    _size = value;
-                    PageSizeChanged.InvokeAsync(value);
-                }
-            }
-        }
-
-        [Parameter]
-        public EventCallback<int> PageSizeChanged { get; set; }
 
         [Parameter]
 #pragma warning disable BL0007 // Component parameters should be auto properties

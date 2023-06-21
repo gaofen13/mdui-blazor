@@ -1,0 +1,84 @@
+@page "/pagination"
+@inherits BasePage
+@using MduiBlazor.Shared.Pages.Examples.Pagers
+
+<PageTitle>分页</PageTitle>
+<div class="mdui-m-y-5">
+    <MduiText Typo="@Typo.display1" TextColor="@Colors.Theme.Primary">分页组件</MduiText>
+    <p class="mdui-typo">分页组件由<code>MduiButtonGroup</code>组件组成。</p>
+</div>
+
+<PageContent>
+    <PageContentItem Title="示例" OnClick="@(_=>ScrollToElementById("examples"))">
+        <PageContentItem Title="简单分页" OnClick="@(_=>ScrollToElementById("simple"))" />
+        <PageContentItem Title="多页码分页" OnClick="@(_=>ScrollToElementById("largePagination"))" />
+        <PageContentItem Title="表格和分页" OnClick="@(_=>ScrollToElementById("tablePagination"))" />
+    </PageContentItem>
+    <PageContentItem Title="组件参数" OnClick="@(_=>ScrollToElementById("attr"))" />
+</PageContent>
+
+<MduiDivider Class="mdui-m-y-5" />
+
+<div>
+    <h2 id="examples">
+        <MduiText Typo="@Typo.headline" TextColor="@Colors.Theme.Primary">示例</MduiText>
+    </h2>
+
+    <MduiText id="simple" Typo="@Typo.subheading"><b>简单分页</b></MduiText>
+    <ExampleSection Component="@typeof(SimplePagination)" />
+
+    <MduiText id="largePagination" Typo="@Typo.subheading"><b>多页码分页</b></MduiText>
+    <p class="mdui-typo">当组件<code>Total</code>参数较大时，分页组件将只显示部分页码。</p>
+    <ExampleSection Component="@typeof(LargePagination)" />
+
+    <MduiText id="tablePagination" Typo="@Typo.subheading"><b>表格和分页</b></MduiText>
+    <p>分页组件和表格组件可以一起使用，实现动态分页表格功能。</p>
+    <ExampleSection Component="@typeof(TableWithPagination)" />
+</div>
+
+<MduiDivider Class="mdui-m-y-5" />
+
+<div>
+    <h2 id="attr">
+        <MduiText Typo="@Typo.headline" TextColor="@Colors.Theme.Primary">组件参数</MduiText>
+    </h2>
+
+    <MduiTableContainer UseMduiTypo Class="mdui-m-y-1">
+        <MduiSimpleTable>
+            <thead>
+                <th>参数名称</th>
+                <th>类型/返回类型</th>
+                <th>说明</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <code>Total</code>
+                    </td>
+                    <td>
+                        <code>int</code>
+                    </td>
+                    <td>分页组件总页码，默认<code>0</code>。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>PageIndex</code>
+                    </td>
+                    <td>
+                        <code>int</code>
+                    </td>
+                    <td>分页组件当前页码，默认<code>1</code>。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>PageIndexChanged</code>
+                    </td>
+                    <td>
+                        <code>EventCallback&lt;int&gt;</code>
+                    </td>
+                    <td>分页组件页码改变后的回调函数，可用于双向绑定。</td>
+                </tr>
+            </tbody>
+        </MduiSimpleTable>
+    </MduiTableContainer>
+</div>
