@@ -3,18 +3,18 @@
 
 <EditForm Model="@model">
     <DataAnnotationsValidator />
-    <MduiTextField Label="Œƒ±æøÚ" Required @bind-Value="@model.Text" />
-    <MduiNumbericField Label=" ˝◊÷øÚ" Required @bind-Value="@model.Number" />
-    <MduiField Label="µ•œÓ—°‘Ò">
+    <MduiTextField Label="ÊñáÊú¨Ê°Ü" Required @bind-Value="@model.Text" />
+    <MduiNumbericField Label="Êï∞Â≠óÊ°Ü" Required @bind-Value="@model.Number" />
+    <MduiField Label="ÂçïÈ°πÈÄâÊã©">
         <MduiSelect Required @bind-Value="@model.Select">
-            <option value="">«Î—°‘Ò</option>
+            <option value="">ËØ∑ÈÄâÊã©</option>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
         </MduiSelect>
     </MduiField>
-    <MduiButton Color="@Colors.Theme.Primary" ButtonType="@ButtonType.Submit">Ã·Ωª</MduiButton>
-    <MduiButton Color="@Colors.Theme.Accent" ButtonType="@ButtonType.Reset">÷ÿ÷√</MduiButton>
+    <MduiButton Color="@Colors.Theme.Primary" ButtonType="@ButtonType.Submit">Êèê‰∫§</MduiButton>
+    <MduiButton Color="@Colors.Theme.Accent" ButtonType="@ButtonType.Reset">ÈáçÁΩÆ</MduiButton>
 </EditForm>
 
 @code {
