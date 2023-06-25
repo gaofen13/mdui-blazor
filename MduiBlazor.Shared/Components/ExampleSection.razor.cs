@@ -11,6 +11,7 @@ namespace MduiBlazor.Shared.Components
         private string Classname =>
             new ClassBuilder("example")
             .AddClass("example-showcode", _showCode || FixCode)
+            .AddClass("example-show", !HideExample)
             .Build();
 
         [Parameter]

@@ -1,12 +1,12 @@
 ﻿<div class="@Classname">
-    <div class="example-tools">
-        <a href="javascript:;" @onclick="_=>_showCode=!_showCode" class="viewsource">
-            <i class="mdui-icon material-icons">code</i>
-        </a>
-    </div>
-    <div class="example-demo-label">@Label</div>
     @if (!HideExample)
     {
+        <div class="example-tools">
+            <a href="javascript:;" @onclick="_=>_showCode=!_showCode" class="viewsource">
+                <i class="mdui-icon material-icons">code</i>
+            </a>
+        </div>
+        <div class="example-demo-label">@Label</div>
         <div class="example-demo">
             <DynamicComponent Type="@Component" Parameters="@ComponentParameters" />
         </div>
