@@ -129,9 +129,12 @@
 [b-evnn8g7ecq] .example-code {
     border: 1px solid rgba(0,0,0,.12);
     border-radius: 0 0 3px 3px;
-    border-top: none !important;
     display: block;
     margin: 0;
+}
+
+.example-show[b-evnn8g7ecq]  .example-code{
+    border-top: none;
 }
 
 .mdui-theme-layout-dark .example-showcode .example-demo-label[b-evnn8g7ecq] {
