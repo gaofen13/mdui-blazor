@@ -1,9 +1,78 @@
 ﻿@page "/"
+@using MduiBlazor.Shared.Pages.Examples.StartUp
 
 <PageTitle>简介 - 安装 - 使用</PageTitle>
 
-<h1>Hello, world!</h1>
+<div class="mdui-m-y-5 mdui-typo">
+    <MduiText Typo="@Typo.display1" TextColor="@Colors.Theme.Primary">项目介绍（仅供学习）</MduiText>
+    <p>Blazor 是一个使用 .NET 生成交互式客户端 Web UI 的框架：</p>
+    <p>
+        <ul>
+            <li>使用 C# 代替 JavaScript 来创建丰富的交互式 UI。</li>
+            <li>共享使用 .NET 编写的服务器端和客户端应用逻辑。</li>
+            <li>将 UI 呈现为 HTML 和 CSS，以支持众多浏览器，其中包括移动浏览器。</li>
+        </ul>
+    </p>
 
-Welcome to your new app.
+    <p>使用 .NET 进行客户端 Web 开发可提供以下优势：</p>
+    <ul>
+        <li>使用 C# 代替 JavaScript 来编写代码。</li>
+        <li>利用现有的 .NET 生态系统。</li>
+        <li>在服务器和客户端之间共享应用逻辑。</li>
+        <li>受益于 .NET 的性能、可靠性和安全性。</li>
+        <li>始终高效支持 Windows、Linux 和 macOS 上的 Visual Studio。</li>
+        <li>支持 Net6 及以上版本。</li>
+        <li> 以一组稳定、功能丰富且易用的通用语言、框架和工具为基础来进行生成。</li>
+    </ul>
+    <p>本项目是基于 Mdui 样式进行二次开发和封装的 UI 组件库。</p>
+</div>
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+<MduiDivider Class="mdui-m-y-5" />
+
+<div>
+    <h2>
+        <MduiText Typo="@Typo.headline" TextColor="@Colors.Theme.Primary">安装</MduiText>
+    </h2>
+
+    <p>
+        <ul>
+            <li>
+                <MduiText Typo="@Typo.subheading">通过 nuget 引入 MduiBlazor 包</MduiText>
+            </li>
+            <ExampleSection Label="code" Language="CSharp" FixCode HideExample Component="@typeof(InstallPackage)" />
+        </ul>
+    </p>
+</div>
+
+<MduiDivider Class="mdui-m-y-5" />
+
+<div>
+    <h2>
+        <MduiText Typo="@Typo.headline" TextColor="@Colors.Theme.Primary">用法</MduiText>
+    </h2>
+
+    <p>
+        <ol>
+            <li>
+                <MduiText Typo="@Typo.subheading">在 Program 中添加服务</MduiText>
+            </li>
+            <ExampleSection Label="code" Language="CSharp" FixCode HideExample Component="@typeof(ServiceInProgram)" />
+            <li>
+                <MduiText Typo="@Typo.subheading">_Host.cshtml 或者 index.html 中引入样式和脚本</MduiText>
+            </li>
+            <ExampleSection Label="code" FixCode HideExample Component="@typeof(CssInHtml)" />
+            <li>
+                <MduiText Typo="@Typo.subheading">在 _Imports.razor 中导入名称空间</MduiText>
+            </li>
+            <ExampleSection Label="code" FixCode HideExample Component="@typeof(ImportNamespace)" />
+            <li class="mdui-typo">
+                <MduiText Typo="@Typo.subheading">把<code>MduiDialogProvider</code>和<code>MduiSnackbarProvider</code>组件加入到<code>MainLayout.razor</code>中</MduiText>
+            </li>
+            <ExampleSection Label="code" FixCode HideExample Component="@typeof(ProviderInMainLayout)" />
+            <li>
+                <MduiText Typo="@Typo.subheading">页面中使用组件</MduiText>
+            </li>
+            <ExampleSection Label="code" FixCode HideExample Component="@typeof(Usage)" />
+        </ol>
+    </p>
+</div>

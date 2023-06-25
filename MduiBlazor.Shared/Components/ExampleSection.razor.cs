@@ -28,6 +28,9 @@ namespace MduiBlazor.Shared.Components
         [Parameter]
         public bool HideExample { get; set; }
 
+        [Parameter]
+        public string Language { get; set; } = "language-cshtml-razor";
+
         private string? CodeContents { get; set; }
 
         protected override void OnInitialized()
