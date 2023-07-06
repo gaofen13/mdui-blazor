@@ -9877,6 +9877,9 @@ input.mdui-btn[type="submit"] {
   border-radius: 0;
   opacity: 0.8;
 }
+.mdui-btn-group .mdui-btn:disabled {
+  background-color: rgba(0, 0, 0, 0) !important;
+}
 .mdui-btn-group .mdui-btn::before {
   position: absolute;
   top: 0;
