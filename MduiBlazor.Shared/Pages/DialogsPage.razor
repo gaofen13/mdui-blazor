@@ -36,7 +36,7 @@
     <p class="mdui-typo">
         在<code>MainLayout</code>布局中加入<code>MduiDialogProvider</code>组件。为应用主题，建议将组件放置于<code>MduiLayout</code>中。
     </p>
-    <ExampleSection FixCode HideExample Label="Code" Component="@typeof(DialogLayoutDependant)" />
+    <ExampleSection HideExample Component="@typeof(DialogLayoutDependant)" />
 
     <MduiText Typo="@Typo.subheading"><b>2. 注入服务</b></MduiText>
     <CodeSnippet>@@inject DialogService DialogService</CodeSnippet>
@@ -75,7 +75,7 @@
         <MduiText id="custom" Typo="@Typo.subheading"><b>自定义对话框</b></MduiText>
         <p>可以自定义对话框内容、标题和操作按钮等。</p>
         <ExampleSection Component="@typeof(CustomDialog)" />
-        <ExampleSection FixCode HideExample Label="CustomDialogContent" Component="@typeof(CustomDialogContent)" />
+        <ExampleSection HideExample Component="@typeof(CustomDialogContent)" />
 
     <MduiText id="inline" Typo="@Typo.subheading"><b>Inline对话框</b></MduiText>
     <p class="mdui-typo">Inline对话框不需要使用<code>DialogService</code>激活。</p>

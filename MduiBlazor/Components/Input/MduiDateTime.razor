@@ -1,0 +1,9 @@
+@namespace MduiBlazor
+@inherits MduiInputBase<TValue>
+@typeparam TValue
+@using MduiBlazor.Extensions
+
+<input @ref="@Element" class="@Classname" style="@Style" name="@Name" type="@Type.ToDescriptionString()"
+    required="@Required" pattern="@Pattern" disabled="@Disabled" readonly="@Readonly"
+@attributes="@AdditionalAttributes" value="@FormatDateValueAsString()"
+@onchange="@(EventCallback.Factory.CreateBinder<string?>(this, __value => CurrentValueAsString = __value, CurrentValueAsString))" />

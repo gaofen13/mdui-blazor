@@ -1,0 +1,80 @@
+@page "/datetime"
+@inherits BasePage
+@using MduiBlazor.Shared.Pages.Examples.DateInput
+
+<PageTitle>日期时间</PageTitle>
+<div class="mdui-m-y-5">
+    <MduiText Typo="@Typo.display1" TextColor="@Colors.Theme.Primary">日期时间</MduiText>
+</div>
+
+<PageContent>
+    <PageContentItem Title="示例" OnClick="@(_=>ScrollToElementById("examples"))">
+        <PageContentItem Title="仅显示日期" OnClick="@(_=>ScrollToElementById("dateEditor"))" />
+        <PageContentItem Title="仅显示时间" OnClick="@(_=>ScrollToElementById("timeEditor"))" />
+        <PageContentItem Title="显示日期和时间" OnClick="@(_=>ScrollToElementById("datetimeEditor"))" />
+        <PageContentItem Title="月视图" OnClick="@(_=>ScrollToElementById("monthEditor"))" />
+        <PageContentItem Title="限制范围" OnClick="@(_=>ScrollToElementById("range"))" />
+    </PageContentItem>
+    <PageContentItem Title="组件参数" OnClick="@(_=>ScrollToElementById("attr"))" />
+</PageContent>
+
+<MduiDivider Class="mdui-m-y-5" />
+
+<div>
+    <h2 id="examples">
+        <MduiText Typo="@Typo.headline" TextColor="@Colors.Theme.Primary">示例</MduiText>
+    </h2>
+
+    <MduiText id="dateEditor" Typo="@Typo.subheading"><b>仅显示日期</b></MduiText>
+    <ExampleSection Component="@typeof(SimpleDateEditor)" />
+
+    <MduiText id="timeEditor" Typo="@Typo.subheading"><b>仅显示时间</b></MduiText>
+    <ExampleSection Component="@typeof(TimeEditor)" />
+
+    <MduiText id="datetimeEditor" Typo="@Typo.subheading"><b>显示日期和时间</b></MduiText>
+    <ExampleSection Component="@typeof(DateTimeEditor)" />
+
+    <MduiText id="monthEditor" Typo="@Typo.subheading"><b>月视图</b></MduiText>
+    <ExampleSection Component="@typeof(MonthEditor)" />
+
+    <MduiText id="range" Typo="@Typo.subheading"><b>限制范围</b></MduiText>
+    <ExampleSection Component="@typeof(EditorWithRange)" />
+</div>
+
+<MduiDivider Class="mdui-m-y-5" />
+
+<div>
+    <h2 id="attr">
+        <MduiText Typo="@Typo.headline" TextColor="@Colors.Theme.Primary">组件参数</MduiText>
+    </h2>
+
+    <MduiTableContainer UseMduiTypo Class="mdui-m-y-1">
+         <MduiSimpleTable>
+             <thead>
+                 <th>参数名称</th>
+                 <th>类型/返回类型</th>
+                 <th>说明</th>
+             </thead>
+             <tbody>
+                 <tr>
+                     <td>
+                         <code>Type</code>
+                     </td>
+                     <td>
+                         <code>DateInputType</code>
+                     </td>
+                     <td>枚举类型（Date、Time、DateTime、Month），默认Date。</td>
+                 </tr>
+                 <tr>
+                     <td>
+                         <code>Pattern</code>
+                     </td>
+                     <td>
+                         <code>string?</code>
+                     </td>
+                     <td><code>input</code>标签的输入校验。</td>
+                 </tr>
+             </tbody>
+         </MduiSimpleTable>
+     </MduiTableContainer>
+ </div>

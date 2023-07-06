@@ -11,7 +11,7 @@
             <DynamicComponent Type="@Component" Parameters="@ComponentParameters" />
         </div>
     }
-    @if (_showCode || FixCode)
+    @if (_showCode || FixCode || HideExample)
     {
         <CodeSnippet Language="@Language" Class="example-code">@CodeContents</CodeSnippet>
     }
