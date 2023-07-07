@@ -11120,11 +11120,6 @@ select.mdui-select[multiple] option:last-child {
       -ms-flex: none;
           flex: none;
 }
-@media (max-width: 599.9px) {
-  .mdui-tab-scrollable {
-    padding-left: 60px;
-  }
-}
 /**
  * =============================================================================
  * ************   Tab 主色   ************
