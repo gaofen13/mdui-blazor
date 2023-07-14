@@ -6,6 +6,8 @@ namespace MduiBlazor
 {
     public partial class MduiNumbericField<TValue> : MduiComponentBase
     {
+        private MduiInputNumber<TValue> _input = default!;
+
         private string Classname =>
             new ClassBuilder()
             .AddClass("mdui-textfield-disabled", Disabled)
@@ -73,6 +75,11 @@ namespace MduiBlazor
                     ValueChanged.InvokeAsync(value);
                 }
             }
+        }
+
+        public ValueTask FocusAsync()
+        {
+            return _input.FocusAsync();
         }
     }
 }

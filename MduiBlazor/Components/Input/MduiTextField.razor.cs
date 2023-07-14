@@ -6,6 +6,7 @@ namespace MduiBlazor
 {
     public partial class MduiTextField : MduiComponentBase
     {
+        private MduiInputText _input = default!;
         private MduiField? _field;
         private string? _value;
 
@@ -112,6 +113,11 @@ namespace MduiBlazor
         private void OnValueChanged(string? value)
         {
             Value = value;
+        }
+
+        public ValueTask FocusAsync()
+        {
+            return _input.FocusAsync();
         }
     }
 }

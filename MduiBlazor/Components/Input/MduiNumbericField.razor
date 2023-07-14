@@ -4,7 +4,7 @@
 
 <MduiField Class="@Classname" Style="@Style" AdditionalAttributes="@AdditionalAttributes" Disabled="@Disabled"
     Label="@Label" Icon="@Icon" HelperText="@HelperText" ErrorText="@ErrorText" UseMduiTypo="@UseMduiTypo">
-    <MduiInputNumber TValue="@TValue" Value="@Value" ValueChanged="@OnValueChanged" ValueExpression="@ValueExpression"
-        Name="@Name" AutoFocus="@AutoFocus" Disabled="@Disabled" Step="@Step" Min="@Min" Max="@Max"
-        Placeholder="@Placeholder" Readonly="@Readonly" Required="@Required" />
+    <MduiInputNumber @ref="@_input" TValue="@TValue" Value="@Value" ValueChanged="@OnValueChanged"
+        ValueExpression="@ValueExpression" Name="@Name" AutoFocus="@AutoFocus" Disabled="@Disabled" Step="@Step"
+        Min="@Min" Max="@Max" Placeholder="@Placeholder" Readonly="@Readonly" Required="@Required" />
 </MduiField>
