@@ -26,7 +26,7 @@ namespace MduiBlazor
         [Parameter]
         public Guid SnackbarId { get; set; }
 
-        protected override async Task OnInitializedAsync()
+        protected override void OnInitialized()
         {
             if (Options is not null)
             {
@@ -37,10 +37,10 @@ namespace MduiBlazor
                 _options = SnackbarProvider.Options;
             }
 
-            _countdownTimer = new CountdownTimer(_options.Timeout)
+            _countdownTimer = new CountdownTimer()
                 .OnElapsed(Close);
 
-            await _countdownTimer.StartAsync();
+            _countdownTimer.Start(_options.Timeout);
         }
 
         public void Close() => SnackbarProvider?.CloseSnackbar(SnackbarId);

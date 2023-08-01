@@ -2,14 +2,12 @@
 {
     internal class CountdownTimer : IDisposable
     {
-        private readonly PeriodicTimer _timer;
-        private readonly CancellationToken _cancellationToken;
+        private readonly Timer _timer;
         private Action? _elapsedDelegate;
 
-        internal CountdownTimer(int timeout, CancellationToken cancellationToken = default)
+        internal CountdownTimer()
         {
-            _timer = new PeriodicTimer(TimeSpan.FromMilliseconds(timeout));
-            _cancellationToken = cancellationToken;
+            _timer = new Timer(DoWork);
         }
 
         internal CountdownTimer OnElapsed(Action elapsedDelegate)
@@ -18,19 +16,25 @@
             return this;
         }
 
-        internal async Task StartAsync()
+        internal void Start(int countdownTime)
         {
-            await DoWorkAsync();
+            _timer.Change(countdownTime, Timeout.Infinite);
         }
 
-        private async Task DoWorkAsync()
+        internal void Stop()
         {
-            while (await _timer.WaitForNextTickAsync(_cancellationToken) && !_cancellationToken.IsCancellationRequested)
-            {
-                _elapsedDelegate?.Invoke();
-            }
+            _timer.Change(Timeout.Infinite, Timeout.Infinite);
         }
 
-        public void Dispose() => _timer.Dispose();
+        private void DoWork(object? state)
+        {
+            _elapsedDelegate?.Invoke();
+        }
+
+        public void Dispose()
+        {
+            Stop();
+            _timer.Dispose();
+        }
     }
 }
