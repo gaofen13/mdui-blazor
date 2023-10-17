@@ -126,20 +126,29 @@
 }
 
 /* 阴影 */
-.mdui-checkbox:active input[type="checkbox"],
-.mdui-checkbox input[type="checkbox"]:focus {
 
-  // 未选中、禁用时 按下的阴影
+/* 未被禁用时鼠标悬浮阴影 */
+.mdui-checkbox input[type="checkbox"]:not(:disabled):hover {
+
+  // 未选中时阴影
   &+.mdui-checkbox-icon {
     box-shadow: 0 0 0 15px rgba(0, 0, 0, 0.1);
   }
 
-  // 已选中时按下的阴影
-  &:not(:disabled):checked,
-  &:not(:disabled):indeterminate {
+  // 已选中时阴影
+  &:checked,
+  &:indeterminate {
     &+.mdui-checkbox-icon {
       box-shadow: 0 0 0 15px rgba(red(@color-default-a200), green(@color-default-a200), blue(@color-default-a200), 0.16);
     }
+  }
+}
+
+/* 禁用时按下的阴影 */
+.mdui-checkbox:active input[type="checkbox"]:disabled {
+
+  &+.mdui-checkbox-icon {
+    box-shadow: 0 0 0 15px rgba(0, 0, 0, 0.1);
   }
 }
 
@@ -168,12 +177,11 @@
         }
       }
 
-      // 已选中时按下的阴影
-      .mdui-checkbox:active input[type="checkbox"],
-      .mdui-checkbox input[type="checkbox"]:focus {
+      // 已选中未禁用鼠标悬浮的阴影
+      .mdui-checkbox input[type="checkbox"]:not(:disabled):hover {
 
-        &:not(:disabled):checked+.mdui-checkbox-icon,
-        &:not(:disabled):indeterminate+.mdui-checkbox-icon {
+        &:checked+.mdui-checkbox-icon,
+        &:indeterminate+.mdui-checkbox-icon {
           box-shadow: 0 0 0 15px rgba(red(@@color), green(@@color), blue(@@color), 0.16);
         }
       }
@@ -222,9 +230,10 @@
     }
   }
 
-  // 未选中或禁用时 按下的阴影
-  .mdui-checkbox:active input[type="checkbox"],
-  .mdui-checkbox input[type="checkbox"]:focus {
+  // 未选中或禁用时鼠标悬浮的阴影
+  // 禁用时按下的阴影
+  .mdui-checkbox input[type="checkbox"]:not(:disabled):hover,
+  .mdui-checkbox:active input[type="checkbox"]:disabled {
     & + .mdui-checkbox-icon {
       box-shadow: 0 0 0 15px rgba(255, 255, 255, 0.1);
     }

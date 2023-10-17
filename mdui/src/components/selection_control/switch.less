@@ -65,9 +65,11 @@
   }
 }
 
-/* 未选中时或禁用时 按下的阴影 */
-.mdui-switch:active input[type="checkbox"],
-.mdui-switch input[type="checkbox"]:focus {
+/* 未选中未禁用时鼠标悬浮的阴影 */
+
+/* 禁用时 按下的阴影 */
+.mdui-switch input[type="checkbox"]:not(:disabled):hover,
+.mdui-switch:active input[type="checkbox"]:disabled {
   &+.mdui-switch-icon::before {
     box-shadow:
       // box-shadow(1)
@@ -80,10 +82,9 @@
   }
 }
 
-/* 已选中时按下的阴影 */
-.mdui-switch:active input[type="checkbox"],
-.mdui-switch input[type="checkbox"]:focus {
-  &:checked:not(:disabled)+.mdui-switch-icon::before {
+/* 已选中未禁用时鼠标悬浮的阴影 */
+.mdui-switch input[type="checkbox"]:not(:disabled):hover {
+  &:checked+.mdui-switch-icon::before {
     box-shadow:
       // box-shadow(1)
       0 2px 1px -1px rgba(0, 0, 0, .2),
@@ -129,10 +130,9 @@
         }
       }
 
-      // 已选中时按下的阴影
-      .mdui-switch:active input[type="checkbox"],
-      .mdui-switch input[type="checkbox"]:focus {
-        &:checked:not(:disabled)+.mdui-switch-icon::before {
+      // 已选中时鼠标悬浮的阴影
+      .mdui-switch input[type="checkbox"]:hover {
+        &:not(:disabled):checked+.mdui-switch-icon::before {
           box-shadow:
             // box-shadow(1)
             0 2px 1px -1px rgba(0, 0, 0, .2),
@@ -192,9 +192,10 @@
     .loop-accent-theme(length(@globalAccentColors));
   }
 
-  // 未选中或禁用时 按下的阴影
-  .mdui-switch:active input[type="checkbox"],
-  .mdui-switch input[type="checkbox"]:focus {
+  // 未选中未禁用时鼠标悬浮的阴影
+  // 禁用时 按下的阴影
+  .mdui-switch input[type="checkbox"]:not(:disabled):hover,
+  .mdui-switch:active input[type="checkbox"]:disabled {
     & + .mdui-switch-icon::before {
       box-shadow: // box-shadow(1)
       0 2px 1px -1px rgba(0, 0, 0, .2),

@@ -86,18 +86,19 @@
   }
 }
 
-/* 未选中、禁用时 按下的阴影 */
-.mdui-radio:active input[type="radio"],
-.mdui-radio input[type="radio"]:focus {
+/* 未选中未禁用时鼠标悬浮的阴影 */
+
+/* 禁用时 按下的阴影 */
+.mdui-radio input[type="radio"]:not(:disabled):hover,
+.mdui-radio:active input[type="radio"]:disabled {
   &+.mdui-radio-icon {
     box-shadow: 0 0 0 15px rgba(0, 0, 0, 0.1);
   }
 }
 
-/* 已选中时按下的阴影 */
-.mdui-radio:active input[type="radio"],
-.mdui-radio input[type="radio"]:focus {
-  &:checked:not(:disabled)+.mdui-radio-icon {
+/* 已选中时鼠标悬浮的阴影 */
+.mdui-radio input[type="radio"]:hover {
+  &:not(:disabled):checked+.mdui-radio-icon {
     box-shadow: 0 0 0 15px rgba(red(@color-default-a200), green(@color-default-a200), blue(@color-default-a200), 0.16);
   }
 }
@@ -126,10 +127,9 @@
         }
       }
 
-      // 已选中时按下的阴影
-      .mdui-radio:active input[type="radio"],
-      .mdui-radio input[type="radio"]:focus {
-        &:checked:not(:disabled)+.mdui-radio-icon {
+      // 已选中时鼠标悬浮的阴影
+      .mdui-radio input[type="radio"]:hover {
+        &:not(:disabled):checked+.mdui-radio-icon {
           box-shadow: 0 0 0 15px rgba(red(@@color), green(@@color), blue(@@color), 0.16);
         }
       }
@@ -165,9 +165,10 @@
     }
   }
 
-  // 未选中或禁用时 按下的阴影
-  .mdui-radio:active input[type="radio"],
-  .mdui-radio input[type="radio"]:focus {
+  // 禁用时 按下的阴影
+  // 未选中未禁用时鼠标悬浮的阴影
+  .mdui-radio:active input[type="radio"]:disabled,
+  .mdui-radio input[type="radio"]:not(:disabled):hover {
     & + .mdui-radio-icon {
       box-shadow: 0 0 0 15px rgba(255, 255, 255, 0.1);
     }
