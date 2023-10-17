@@ -10635,6 +10635,7 @@ select.mdui-select[multiple] option:last-child {
 .mdui-tooltip {
   position: relative;
   display: inline-block;
+  overflow: visible;
   /* 显示工具提示 */
 }
 .mdui-tooltip::before {
