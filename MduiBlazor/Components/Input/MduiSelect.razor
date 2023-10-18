@@ -3,7 +3,8 @@
 @inherits MduiInputBase<TValue>
 
 <select class="@Classname" style="@Style" name="@Name" disabled="@Disabled" required="@Required"
-@attributes="@AdditionalAttributes" value="@CurrentValueAsString"
-@onchange="@(EventCallback.Factory.CreateBinder<string?>(this,__value=>CurrentValueAsString=__value,default))">
+    @attributes="@AdditionalAttributes" value="@CurrentValueAsString"
+    @onchange="@(EventCallback.Factory.CreateBinder<string?>(this,__value=>CurrentValueAsString=__value,default))"
+    @onfocus="@OnFocus" @onblur="@OnBlur">
     @ChildContent
 </select>

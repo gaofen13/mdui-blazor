@@ -25,5 +25,15 @@ namespace MduiBlazor
                 ? result
                 : default;
         }
+
+        private void OnFocus()
+        {
+            Field?.SetFocus();
+        }
+
+        private void OnBlur()
+        {
+            Field?.SetBlur();
+        }
     }
 }

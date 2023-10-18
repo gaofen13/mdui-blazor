@@ -10,6 +10,9 @@ namespace MduiBlazor
             .AddClass(Class)
             .Build();
 
+        [CascadingParameter(Name = "Field")]
+        protected MduiField? Field { get; set; }
+
         [CascadingParameter(Name = "RadioGroup")]
         private MduiRadioGroup<TValue>? RadioGroup { get; set; }
 
@@ -43,6 +46,16 @@ namespace MduiBlazor
         private void OnRadioChanged(ChangeEventArgs args)
         {
             RadioGroup?.OnCheckedRadioChanged(this);
+        }
+
+        private void OnFocus()
+        {
+            Field?.SetFocus();
+        }
+
+        private void OnBlur()
+        {
+            Field?.SetBlur();
         }
     }
 }

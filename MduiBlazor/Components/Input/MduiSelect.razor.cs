@@ -29,5 +29,15 @@ namespace MduiBlazor
 
             return base.FormatValueAsString(value);
         }
+
+        private void OnFocus()
+        {
+            Field?.SetFocus();
+        }
+
+        private void OnBlur()
+        {
+            Field?.SetBlur();
+        }
     }
 }

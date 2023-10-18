@@ -78,5 +78,15 @@ namespace MduiBlazor
                 _ => throw new InvalidOperationException($"Unsupported type {value.GetType()}"),
             };
         }
+
+        private void OnFocus()
+        {
+            Field?.SetFocus();
+        }
+
+        private void OnBlur()
+        {
+            Field?.SetBlur();
+        }
     }
 }

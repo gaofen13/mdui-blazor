@@ -23,7 +23,7 @@
   background-repeat: no-repeat;
   background-position: right center;
   border: none;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.42);
   outline: none;
   cursor: pointer;
   transition-timing-function: @animation-curve-default;
@@ -32,6 +32,12 @@
   appearance: none;
   user-select: none;
   will-change: background-color, box-shadow, background-position-x;
+
+  &:not([disabled]):hover {
+    border-bottom: 1px solid rgba(0, 0, 0, .87);
+    box-shadow: 0 1px 0 0 rgba(0, 0, 0, .87);
+    cursor: pointer;
+  }
 
   &.mdui-select-open {
     border-bottom: none;
@@ -45,6 +51,7 @@
 
 /* 底部和顶部菜单的样式 */
 .mdui-select-open {
+
   &.mdui-select-position-top,
   &.mdui-select-position-bottom {
     z-index: 99999;
@@ -55,23 +62,23 @@
   }
 
   &.mdui-select-position-top {
-    border-top: 1px solid rgba(0, 0, 0, 0.12);
+    border-top: 1px solid rgba(0, 0, 0, 0.42);
     border-bottom: 2px solid transparent;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
-    box-shadow: 0 10px 10px -3px rgba(0,0,0,.2), 0 0 14px 1px rgba(0,0,0,.14), 0 -7px 24px 2px rgba(0,0,0,.12);
+    box-shadow: 0 10px 10px -3px rgba(0, 0, 0, .2), 0 0 14px 1px rgba(0, 0, 0, .14), 0 -7px 24px 2px rgba(0, 0, 0, .12);
 
     .mdui-select-menu {
       border-bottom-right-radius: 0;
       border-bottom-left-radius: 0;
 
       // 隐藏下方的阴影
-      box-shadow: 0 -4px 4px -2px rgba(0,0,0,.06), 8px 0 8px -4px rgba(0,0,0,.12), -8px 0 8px -4px rgba(0,0,0,.12)
+      box-shadow: 0 -4px 4px -2px rgba(0, 0, 0, .06), 8px 0 8px -4px rgba(0, 0, 0, .12), -8px 0 8px -4px rgba(0, 0, 0, .12)
     }
   }
 
   &.mdui-select-position-bottom {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.42);
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
     .mdui-shadow(8);
@@ -81,7 +88,7 @@
       border-top-right-radius: 0;
 
       // 隐藏上方阴影
-      box-shadow: 0 5px 5px -3px rgba(0,0,0,.2), 0 9px 9px 1px rgba(0,0,0,.14), 0 8px 8px 2px rgba(0,0,0,.06);
+      box-shadow: 0 5px 5px -3px rgba(0, 0, 0, .2), 0 9px 9px 1px rgba(0, 0, 0, .14), 0 8px 8px 2px rgba(0, 0, 0, .06);
     }
   }
 }
@@ -207,8 +214,13 @@ select.mdui-select[multiple] {
   font-size: 15px;
   background-color: #FFF;
   background-image: none;
-  border: 1px solid rgba(0, 0, 0, 0.38);
+  border: 1px solid rgba(0, 0, 0, 0.42);
   cursor: default;
+
+  &:not([disabled]):hover {
+    border-color: rgba(0, 0, 0, .87);
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, .87);
+  }
 
   optgroup {
     margin: 8px 0 0 0;
@@ -221,7 +233,7 @@ select.mdui-select[multiple] {
 
     &:not(:first-child) {
       padding-top: 8px;
-      border-top: 1px solid rgba(0, 0, 0, 0.12);
+      border-top: 1px solid rgba(0, 0, 0, 0.42);
     }
   }
 
@@ -254,9 +266,23 @@ select.mdui-select[multiple] {
     .loop-accent-theme((@counter-color - 1));
     @colorName: extract(@globalAccentColors, @counter-color);
 
-    .mdui-theme-accent-@{colorName} when not (@colorName = null) {
+    .mdui-theme-accent-@{colorName} when not (@colorName =null) {
+
+      @colorA700: 'color-@{colorName}-a700';
+
+      //原生select
+      select.mdui-select:focus {
+        border-bottom-color: @@colorA700;
+        box-shadow: 0 1px 0 0 @@colorA700;
+      }
+
+      select.mdui-select[multiple]:focus {
+        border-color: @@colorA700;
+        box-shadow: 0 0 0 1px @@colorA700;
+      }
 
       .mdui-select-menu-item {
+
         // 菜单中已选中项
         &[selected] {
           .mdui-text-color(@colorName);
@@ -265,6 +291,7 @@ select.mdui-select[multiple] {
 
     }
   }
+
   .loop-accent-theme(length(@globalAccentColors));
 }
 
@@ -278,7 +305,12 @@ select.mdui-select[multiple] {
   .mdui-select {
     //background-image: data-uri('image/svg+xml', './components/select/svg/arrow_down_light.svg');
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpath d='M-.003 2.5l5 5 5-5h-10z' fill='%23FFF'/%3E%3C/svg%3E");
-    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.7);
+
+    &:not([disabled]):hover {
+      border-bottom-color: rgba(255, 255, 255, 1);
+      box-shadow: 0 1px 0 0 rgba(255, 255, 255, 1);
+    }
   }
 
   .mdui-select-position-top {
@@ -287,17 +319,18 @@ select.mdui-select[multiple] {
   }
 
   .mdui-select-open {
+
     &.mdui-select-position-top,
     &.mdui-select-position-bottom {
       background-color: @layout-dark-color-4;
     }
 
     &.mdui-select-position-top {
-      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      border-top: 1px solid rgba(255, 255, 255, 0.7);
     }
 
     &.mdui-select-position-bottom {
-      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.7);
     }
   }
 
@@ -329,13 +362,18 @@ select.mdui-select[multiple] {
 
   // 原生多选 select 组件
   select.mdui-select[multiple] {
-    border: 1px solid rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+
+    &:not([disabled]):hover {
+      border-color: rgba(255, 255, 255, 1);
+      box-shadow: 0 0 0 1px rgba(255, 255, 255, 1);
+    }
 
     optgroup {
       color: rgba(255, 255, 255, 0.5);
 
       &:not(:first-child) {
-        border-top: 1px solid rgba(255, 255, 255, 0.12);
+        border-top: 1px solid rgba(255, 255, 255, 0.7);
       }
     }
   }
