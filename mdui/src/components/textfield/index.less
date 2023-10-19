@@ -120,13 +120,12 @@
 
 /* 聚焦状态的文本框
    ============= */
-.mdui-textfield-focus {
+.mdui-textfield-input:focus {
+  border-bottom-color: @color-default-a700;
+  box-shadow: 0 1px 0 0 @color-default-a700;
+}
 
-  .mdui-textfield-input,
-  .mdui-textfield-input:hover {
-    border-bottom-color: @color-default-a700;
-    box-shadow: 0 1px 0 0 @color-default-a700;
-  }
+.mdui-textfield-focus {
 
   .mdui-textfield-label,
   .mdui-icon {
@@ -333,13 +332,12 @@
   }
 
   // 聚焦状态
-  .mdui-textfield-focus {
+  .mdui-textfield-input:focus {
+    border-bottom-color: @color-default-a200;
+    box-shadow: 0 1px 0 0 @color-default-a200;
+  }
 
-    .mdui-textfield-input,
-    .mdui-textfield-input:hover {
-      border-bottom-color: @color-default-a200;
-      box-shadow: 0 1px 0 0 @color-default-a200;
-    }
+  .mdui-textfield-focus {
 
     .mdui-textfield-label {
       color: @color-default-a200;
@@ -380,12 +378,12 @@
       @colorA700: 'color-@{colorName}-a700';
       @colorA200: 'color-@{colorName}-a200';
 
-      .mdui-textfield-focus {
+      .mdui-textfield-input:focus {
+        border-bottom-color: @@colorA700;
+        box-shadow: 0 1px 0 0 @@colorA700;
+      }
 
-        .mdui-textfield-input {
-          border-bottom-color: @@colorA700;
-          box-shadow: 0 1px 0 0 @@colorA700;
-        }
+      .mdui-textfield-focus {
 
         .mdui-textfield-label,
         .mdui-textfield-floating-label.mdui-textfield-focus .mdui-textfield-label,
@@ -397,12 +395,13 @@
       // 暗色主题
       & {
         .dark-mode() {
-          .mdui-textfield-focus {
 
-            .mdui-textfield-input {
-              border-bottom-color: @@colorA200;
-              box-shadow: 0 1px 0 0 @@colorA200;
-            }
+          .mdui-textfield-input:focus {
+            border-bottom-color: @@colorA200;
+            box-shadow: 0 1px 0 0 @@colorA200;
+          }
+
+          .mdui-textfield-focus {
 
             .mdui-textfield-label,
             .mdui-textfield-floating-label.mdui-textfield-focus .mdui-textfield-label,
