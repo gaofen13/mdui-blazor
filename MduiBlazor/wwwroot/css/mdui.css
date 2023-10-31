@@ -8155,7 +8155,7 @@ th.mdui-table-cell-checkbox .mdui-checkbox {
   position: relative;
   display: inline-block;
   height: 36px;
-  margin: 0 18px;
+  margin: 0 16px;
   padding-left: 24px;
   line-height: 36px;
   cursor: pointer;
@@ -8510,7 +8510,7 @@ th.mdui-table-cell-checkbox .mdui-checkbox {
   position: relative;
   display: inline-block;
   height: 36px;
-  margin: 0 18px;
+  margin: 0 16px;
   padding-left: 24px;
   line-height: 36px;
   cursor: pointer;
@@ -9278,8 +9278,8 @@ th.mdui-table-cell-checkbox .mdui-checkbox {
   position: relative;
   display: block;
   height: 36px;
-  margin-right: 12px;
-  margin-left: 12px;
+  margin-right: 10px;
+  margin-left: 10px;
 }
 .mdui-slider input[type="range"] {
   position: absolute;

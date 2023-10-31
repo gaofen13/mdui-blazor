@@ -10,7 +10,7 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/MduiBlazor.Server/bin/Debug/net7.0/MduiBlazor.Server.dll",
+            "program": "${workspaceFolder}/MduiBlazor.Server/bin/Debug/net8.0/MduiBlazor.Server.dll",
             "args": [],
             "cwd": "${workspaceFolder}/MduiBlazor.Server",
             "stopAtEntry": false,
