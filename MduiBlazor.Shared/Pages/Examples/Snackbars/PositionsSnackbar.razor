@@ -22,7 +22,7 @@
 @code {
     private HorizontalPosition horizontalPosition;
     private VerticalPosition verticalPosition;
-    private void Open(string message, SnackbarOptions? options = null)
+    private void Open(string message, SnackbarOptions options)
     {
         SnackbarService.ShowSnackbar(message, options);
     }

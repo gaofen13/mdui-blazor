@@ -1,0 +1,6 @@
+@inject SnackbarService SnackbarService
+
+<MduiButton Color="@Colors.Indigo.Primary" OnClick="@(_=>SnackbarService.ShowSnackbar("Message sent", Colors.Indigo.Primary))">Open</MduiButton>
+<MduiButton Color="@Colors.Pink.Primary" OnClick="@(_=>SnackbarService.ShowSnackbar("Message sent", Colors.Pink.Primary))">Open</MduiButton>
+<MduiButton Color="@Colors.Green.Primary" OnClick="@(_=>SnackbarService.ShowSnackbar("Message sent", Colors.Green.Primary))">Open</MduiButton>
+<MduiButton Color="@Colors.Yellow.Primary" OnClick="@(_=>SnackbarService.ShowSnackbar("Message sent", Colors.Yellow.Primary))">Open</MduiButton>

@@ -70,11 +70,11 @@ namespace MduiBlazor
             });
         }
 
-        private void ShowSnackbar(RenderFragment message, SnackbarOptions? options)
+        private void ShowSnackbar(RenderFragment message, string? color, SnackbarOptions? options)
         {
             InvokeAsync(() =>
             {
-                var snackbar = new SnackbarInstance(options ?? Options) { MessageContent = message };
+                var snackbar = new SnackbarInstance(options ?? Options, color) { MessageContent = message };
 
                 if (SnackbarList.Count < MaxItemsShown)
                 {

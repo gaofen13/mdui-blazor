@@ -4,10 +4,10 @@
 @if (SnackbarList.Any())
 {
     <CascadingValue Value="@this" IsFixed>
-        @foreach (var snackbar in SnackbarList.OrderBy(x => x.TimeStamp))
+        @foreach (var instance in SnackbarList.OrderBy(x => x.TimeStamp))
         {
-            <MduiSnackbar @key="snackbar" Options="@(snackbar.Options??Options)" SnackbarId="@snackbar.Id">
-                @snackbar.MessageContent
+            <MduiSnackbar @key="instance" Options="@(instance.Options??Options)" Color="@instance.Color" SnackbarId="@instance.Id">
+                @instance.MessageContent
             </MduiSnackbar>
         }
     </CascadingValue>

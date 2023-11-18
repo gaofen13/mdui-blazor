@@ -17,11 +17,19 @@ namespace MduiBlazor
             .AddClass(Class)
             .Build();
 
+        private string ContentClassname =>
+            new ClassBuilder("mdui-snackbar-content")
+            .AddClass($"mdui-color-{Color}", !string.IsNullOrWhiteSpace(Color))
+            .Build();
+
         [CascadingParameter]
         private MduiSnackbarProvider? SnackbarProvider { get; set; }
 
         [Parameter]
         public SnackbarOptions? Options { get; set; }
+
+        [Parameter]
+        public string? Color { get; set; }
 
         [Parameter]
         public Guid SnackbarId { get; set; }

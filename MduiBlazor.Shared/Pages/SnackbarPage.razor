@@ -15,6 +15,7 @@
         <PageContentItem Title="普通 Snackbar" OnClick="@(_=>ScrollToElementById("simple"))" />
         <PageContentItem Title="带关闭按钮的 Snackbar" OnClick="@(_=>ScrollToElementById("closable"))" />
         <PageContentItem Title="不同位置的 Snackbar" OnClick="@(_=>ScrollToElementById("position"))" />
+        <PageContentItem Title="不同颜色的 Snackbar" OnClick="@(_=>ScrollToElementById("color"))" />
         <PageContentItem Title="自定义 Snackbar 内容" OnClick="@(_=>ScrollToElementById("custom"))" />
     </PageContentItem>
     <PageContentItem Title="组件参数" OnClick="@(_=>ScrollToElementById("attr"))" />
@@ -57,6 +58,9 @@
 
     <MduiText id="position" Typo="@Typo.subheading"><b>不同位置的 Snackbar</b></MduiText>
     <ExampleSection Component="@typeof(PositionsSnackbar)" />
+
+    <MduiText id="color" Typo="@Typo.subheading"><b>不同颜色的 Snackbar</b></MduiText>
+    <ExampleSection Component="@typeof(ColorSnackbar)" />
 
     <MduiText id="custom" Typo="@Typo.subheading"><b>自定义 Snackbar 内容</b></MduiText>
     <ExampleSection Component="@typeof(CustomSnackbar)" />

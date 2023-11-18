@@ -3,13 +3,15 @@
 @implements IDisposable
 
 <div class="@Classname" style="@Style" @attributes="@AdditionalAttributes">
-    <div class="mdui-snackbar-text">
-        <CascadingValue Value="@this" IsFixed>
-            @ChildContent
-        </CascadingValue>
+    <div class="@ContentClassname">
+        <div class="mdui-snackbar-text">
+            <CascadingValue Value="@this" IsFixed>
+                @ChildContent
+            </CascadingValue>
+        </div>
+        @if (_options.ShowCloseButton)
+        {
+            <MduiIconButton Class="mdui-snackbar-action" Icon="cancel" Color="@_options.CloseBtnColor" OnClick="@Close" />
+        }
     </div>
-    @if (_options.ShowCloseButton)
-    {
-        <MduiIconButton Class="mdui-snackbar-action" Icon="cancel" Color="@_options.CloseBtnColor" OnClick="@Close" />
-    }
 </div>

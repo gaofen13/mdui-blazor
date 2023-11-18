@@ -12221,6 +12221,17 @@ select.mdui-select[multiple] option:last-child {
 .mdui-snackbar {
   position: fixed;
   z-index: 7000;
+  width: 100%;
+}
+@media (min-width: 600px) {
+  .mdui-snackbar {
+    width: auto;
+    min-width: 288px;
+    max-width: 568px;
+    border-radius: 2px;
+  }
+}
+.mdui-snackbar .mdui-snackbar-content {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -12240,14 +12251,6 @@ select.mdui-select[multiple] option:last-child {
   line-height: 20px;
   background-color: #323232;
   will-change: transform;
-}
-@media (min-width: 600px) {
-  .mdui-snackbar {
-    width: auto;
-    min-width: 288px;
-    max-width: 568px;
-    border-radius: 2px;
-  }
 }
 .mdui-snackbar-center-top,
 .mdui-snackbar-center-middle,
@@ -12326,71 +12329,22 @@ select.mdui-select[multiple] option:last-child {
 .mdui-snackbar-action {
   margin-right: -16px;
   white-space: nowrap;
-  color: #FF80AB;
 }
 /**
  * =============================================================================
  * ************   Snackbar 强调色   ************
  * =============================================================================
  */
-.mdui-theme-accent-amber .mdui-snackbar-action {
-  color: #FFE57F;
-}
-.mdui-theme-accent-blue .mdui-snackbar-action {
-  color: #82B1FF;
-}
-.mdui-theme-accent-cyan .mdui-snackbar-action {
-  color: #84FFFF;
-}
-.mdui-theme-accent-deep-orange .mdui-snackbar-action {
-  color: #FF9E80;
-}
-.mdui-theme-accent-deep-purple .mdui-snackbar-action {
-  color: #B388FF;
-}
-.mdui-theme-accent-green .mdui-snackbar-action {
-  color: #B9F6CA;
-}
-.mdui-theme-accent-indigo .mdui-snackbar-action {
-  color: #8C9EFF;
-}
-.mdui-theme-accent-light-blue .mdui-snackbar-action {
-  color: #80D8FF;
-}
-.mdui-theme-accent-light-green .mdui-snackbar-action {
-  color: #CCFF90;
-}
-.mdui-theme-accent-lime .mdui-snackbar-action {
-  color: #F4FF81;
-}
-.mdui-theme-accent-orange .mdui-snackbar-action {
-  color: #FFD180;
-}
-.mdui-theme-accent-pink .mdui-snackbar-action {
-  color: #FF80AB;
-}
-.mdui-theme-accent-purple .mdui-snackbar-action {
-  color: #EA80FC;
-}
-.mdui-theme-accent-red .mdui-snackbar-action {
-  color: #FF8A80;
-}
-.mdui-theme-accent-teal .mdui-snackbar-action {
-  color: #A7FFEB;
-}
-.mdui-theme-accent-yellow .mdui-snackbar-action {
-  color: #FFFF8D;
-}
 /**
  * =============================================================================
  * ************   Snackbar dark   ************
  * =============================================================================
  */
-.mdui-theme-layout-dark .mdui-snackbar {
+.mdui-theme-layout-dark .mdui-snackbar-content {
   background-color: #5d5d5d;
 }
 @media (prefers-color-scheme: dark) {
-  .mdui-theme-layout-auto .mdui-snackbar {
+  .mdui-theme-layout-auto .mdui-snackbar-content {
     background-color: #5d5d5d;
   }
 }
