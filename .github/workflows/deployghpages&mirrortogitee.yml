@@ -39,7 +39,7 @@ jobs:
         CLEAN: true
 
     - name: Sync to Gitee
-      uses: Yikun/hub-mirror-action@master
+      uses: Yikun/hub-mirror-action@v1.3
       with:
           src: 'github/gaofen13'    						
           dst: 'gitee/gaofen13'     						
@@ -50,7 +50,7 @@ jobs:
           debug: true
 
     - name: Build Gitee Pages
-      uses: yanglbme/gitee-pages-action@main
+      uses: yanglbme/gitee-pages-action@v1.4.1
       with:
           gitee-username: gaofen13
           gitee-password: ${{ secrets.GITEE_PASSWORD }}
