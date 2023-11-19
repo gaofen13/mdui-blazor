@@ -10681,8 +10681,7 @@ select.mdui-select[multiple] option:last-child {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   width: 100%;
-  overflow-x: auto;
-  overflow-y: hidden;
+  overflow: hidden;
 }
 .mdui-toolbar > * {
   margin: 0 16px;
