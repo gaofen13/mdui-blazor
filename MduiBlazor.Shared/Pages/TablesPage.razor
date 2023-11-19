@@ -9,12 +9,12 @@
 
 <PageContent>
     <PageContentItem Title="示例" OnClick="@(_=>ScrollToElementById("examples"))">
+        <PageContentItem Title="响应式容器" OnClick="@(_=>ScrollToElementById("container"))" />
         <PageContentItem Title="简单表格" OnClick="@(_=>ScrollToElementById("simple"))" />
         <PageContentItem Title="动态表格" OnClick="@(_=>ScrollToElementById("dynamic"))" />
         <PageContentItem Title="可选表格" OnClick="@(_=>ScrollToElementById("selectable"))" />
         <PageContentItem Title="鼠标悬浮" OnClick="@(_=>ScrollToElementById("hoverable"))" />
         <PageContentItem Title="列对齐方式" OnClick="@(_=>ScrollToElementById("alignRight"))" />
-        <PageContentItem Title="响应式容器" OnClick="@(_=>ScrollToElementById("container"))" />
     </PageContentItem>
     <PageContentItem Title="组件参数" OnClick="@(_=>ScrollToElementById("attr"))" />
 </PageContent>
@@ -25,6 +25,10 @@
     <h2 id="examples">
         <MduiText Typo="@Typo.headline" TextColor="@Colors.Theme.Primary">示例</MduiText>
     </h2>
+
+    <MduiText id="container" Typo="@Typo.subheading"><b>响应式容器</b></MduiText>
+    <p class="mdui-typo">如果表格宽度过大，可能会导致页面出现横向滚动条。将<code>MduiSimpleTable</code>或<code>MduiTable</code>组件包裹在<code>MduiTableContainer</code>组件内，即可在表格宽度超出页面宽度时，使表格支持水平滚动。</p>
+    <ExampleSection Component="@typeof(TableContainer)" />
 
     <MduiText id="simple" Typo="@Typo.subheading"><b>简单表格</b></MduiText>
     <ExampleSection Component="@typeof(SimpleTable)" />
@@ -43,10 +47,6 @@
     <MduiText id="alignRight" Typo="@Typo.subheading"><b>列对齐方式</b></MduiText>
     <p class="mdui-typo">设置<code>MduiTh</code>或<code>MduiColumn</code>组件参数<code>AlignRight="true"</code>可以把表格中的列右对齐。</p>
     <ExampleSection Component="@typeof(AlignRightTable)" />
-
-    <MduiText id="container" Typo="@Typo.subheading"><b>响应式容器</b></MduiText>
-    <p class="mdui-typo">如果表格宽度过大，可能会导致页面出现横向滚动条。将<code>MduiSimpleTable</code>或<code>MduiTable</code>组件包裹在<code>MduiTableContainer</code>组件内，即可在表格宽度超出页面宽度时，使表格支持水平滚动。</p>
-    <ExampleSection Component="@typeof(TableContainer)" />
 </div>
 
 <MduiDivider Class="mdui-m-y-5" />

@@ -1,20 +1,22 @@
 ﻿@using MduiBlazor.Shared.Data
 @inject WeatherForecastService ForecastService
 
-<MduiTable MultiSelection Items="@forecasts" @bind-SelectedItems="@selectedForecasts">
-    <HeadContent>
-        <MduiTh>Date</MduiTh>
-        <MduiTh>TemperatureC</MduiTh>
-        <MduiTh>TemperatureF</MduiTh>
-        <MduiTh>Summary</MduiTh>
-    </HeadContent>
-    <Columns>
-        <MduiColumn>@context.Date.ToString("yyyy-MM-dd")</MduiColumn>
-        <MduiColumn>@context.TemperatureC</MduiColumn>
-        <MduiColumn>@context.TemperatureF</MduiColumn>
-        <MduiColumn>@context.Summary</MduiColumn>
-    </Columns>
-</MduiTable>
+<MduiTableContainer>
+    <MduiTable MultiSelection Items="@forecasts" @bind-SelectedItems="@selectedForecasts">
+        <HeadContent>
+            <MduiTh>Date</MduiTh>
+            <MduiTh>TemperatureC</MduiTh>
+            <MduiTh>TemperatureF</MduiTh>
+            <MduiTh>Summary</MduiTh>
+        </HeadContent>
+        <Columns>
+            <MduiColumn>@context.Date.ToString("yyyy-MM-dd")</MduiColumn>
+            <MduiColumn>@context.TemperatureC</MduiColumn>
+            <MduiColumn>@context.TemperatureF</MduiColumn>
+            <MduiColumn>@context.Summary</MduiColumn>
+        </Columns>
+    </MduiTable>
+</MduiTableContainer>
 
 @code {
     private IEnumerable<WeatherForecast>? forecasts;
