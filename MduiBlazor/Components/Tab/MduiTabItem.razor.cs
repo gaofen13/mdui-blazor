@@ -14,7 +14,7 @@ namespace MduiBlazor
             .AddClass(Class)
             .Build();
 
-        public Guid Id { get; set; } = Guid.NewGuid();
+        public Guid Id { get; } = Guid.NewGuid();
 
         [CascadingParameter(Name = "Tab")]
         private MduiTab? Tab { get; set; }

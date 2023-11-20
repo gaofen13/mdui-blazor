@@ -1,8 +1,8 @@
 @namespace MduiBlazor
 @inherits MduiComponentBase
 
-<div class="@Classname" style="@Style" @attributes="@AdditionalAttributes">
+<MduiSwipeArea OnSwipe="@OnSwipe" Class="@Classname" Style="@Style" AdditionalAttributes="@AdditionalAttributes">
     <CascadingValue Value="@this" IsFixed>
         @ChildContent
     </CascadingValue>
-</div>
+</MduiSwipeArea>

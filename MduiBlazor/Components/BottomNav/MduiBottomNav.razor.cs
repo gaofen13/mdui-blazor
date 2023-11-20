@@ -5,8 +5,8 @@ namespace MduiBlazor
 {
     public partial class MduiBottomNav : MduiComponentBase
     {
-        private readonly List<MduiBottomNavItem> _items = new();
-        private MduiBottomNavItem? _activeItem;
+        private readonly List<MduiBottomNavItem> _items = [];
+        private MduiBottomNavItem? _activedItem;
 
         protected string Classname =>
             new ClassBuilder("mdui-bottom-nav")
@@ -28,12 +28,12 @@ namespace MduiBlazor
         internal void AddItem(MduiBottomNavItem item)
         {
 
-            if (!_items.Contains(item))
+            if (!_items.Any(i=>i.Id == item.Id))
             {
                 _items.Add(item);
                 if (item.Default)
                 {
-                    OnActiveItemChanged(item);
+                    OnActivedItemChanged(item);
                 }
                 StateHasChanged();
             }
@@ -41,28 +41,57 @@ namespace MduiBlazor
 
         internal void RemoveItem(MduiBottomNavItem item)
         {
-            if (_items.Contains(item))
+            if (_items.Any(i=>i.Id == item.Id))
             {
                 _items.Remove(item);
-                if (_activeItem == item)
+                if (_activedItem == item)
                 {
                     var activeTab = _items.FirstOrDefault();
                     if (activeTab != null)
                     {
-                        OnActiveItemChanged(activeTab);
+                        OnActivedItemChanged(activeTab);
                     }
                 }
                 StateHasChanged();
             }
         }
 
-        internal void OnActiveItemChanged(MduiBottomNavItem item)
+        internal void OnActivedItemChanged(MduiBottomNavItem item)
         {
-            if (_activeItem != item)
+            if (_activedItem?.Id != item.Id)
             {
-                _activeItem?.Disactive();
-                _activeItem = item;
-                _activeItem.Active();
+                _activedItem?.Disactive();
+                _activedItem = item;
+                _activedItem.Active();
+            }
+        }
+
+        private void OnSwipe(SwipeDirection direction)
+        {
+            if (_items.Count > 0)
+            {
+                if (_activedItem == null)
+                {
+                    OnActivedItemChanged(_items.First());
+                }
+                else
+                {
+                    var index = _items.FindIndex(i => i.Id == _activedItem?.Id);
+                    if (direction == SwipeDirection.LeftToRight)
+                    {
+                        if (index > 0)
+                        {
+                            OnActivedItemChanged(_items[index - 1]);
+                        }
+                    }
+                    else if (direction == SwipeDirection.RightToLeft)
+                    {
+                        if (index + 1 != _items.Count)
+                        {
+                            OnActivedItemChanged(_items[index + 1]);
+                        }
+                    }
+                }
             }
         }
     }

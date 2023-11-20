@@ -31,7 +31,7 @@ namespace MduiBlazor
 
         public void AddItem(MduiTabItem item)
         {
-            if (!_items.Contains(item))
+            if (!_items.Any(i => i.Id == item.Id))
             {
                 _items.Add(item);
                 if (item.Default)
@@ -44,7 +44,7 @@ namespace MduiBlazor
 
         public void RemoveItem(MduiTabItem item)
         {
-            if (_items.Contains(item))
+            if (_items.Any(i => i.Id == item.Id))
             {
                 _items.Remove(item);
                 if (_activedItem == item)
@@ -75,24 +75,33 @@ namespace MduiBlazor
             {
                 if (_activedItem == null)
                 {
-                    OnActivedItemChanged(_items.First());
+                    var item = _items.FirstOrDefault(i => i.Disabled == false);
+                    if (item != null)
+                    {
+                        OnActivedItemChanged(item);
+                    }
                 }
                 else
                 {
                     var index = _items.FindIndex(i => i.Id == _activedItem?.Id);
+                    var nextIndex = -1;
                     if (direction == SwipeDirection.LeftToRight)
                     {
                         if (index > 0)
                         {
-                            OnActivedItemChanged(_items[index - 1]);
+                            nextIndex = _items.FindIndex(0, index, i => i.Disabled == false);
                         }
                     }
                     else if (direction == SwipeDirection.RightToLeft)
                     {
                         if (index + 1 != _items.Count)
                         {
-                            OnActivedItemChanged(_items[index + 1]);
+                            nextIndex = _items.FindIndex(index + 1, i => i.Disabled == false);
                         }
+                    }
+                    if (nextIndex >= 0)
+                    {
+                        OnActivedItemChanged(_items[nextIndex]);
                     }
                 }
             }

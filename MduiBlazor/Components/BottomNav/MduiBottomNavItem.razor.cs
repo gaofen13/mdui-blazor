@@ -14,6 +14,8 @@ namespace MduiBlazor
             .AddClass(Class)
             .Build();
 
+        public Guid Id { get;} = Guid.NewGuid();
+
         [CascadingParameter]
         private MduiBottomNav? Nav { get; set; }
 

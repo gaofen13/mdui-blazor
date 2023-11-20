@@ -8,6 +8,12 @@ namespace MduiBlazor
         private double? _xDown;
         private double? _yDown;
 
+        /// <summary>
+        /// 识别精度，单位像素点，默认30px
+        /// </summary>
+        [Parameter]
+        public int Accuracy { get; set; } = 30;
+
         [Parameter]
         public EventCallback<SwipeDirection> OnSwipe { get; set; }
 
@@ -27,7 +33,7 @@ namespace MduiBlazor
                 }
                 var xDiff = _xDown.Value - args.ChangedTouches[0].ClientX;
                 var yDiff = _yDown.Value - args.ChangedTouches[0].ClientY;
-                if (Math.Abs(xDiff) < 100 && Math.Abs(yDiff) < 100)
+                if (Math.Abs(xDiff) < Accuracy && Math.Abs(yDiff) < Accuracy)
                 {
                     _xDown = null;
                     _yDown = null;
