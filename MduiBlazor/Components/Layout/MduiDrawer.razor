@@ -1,9 +1,9 @@
 ﻿@namespace MduiBlazor
 @inherits MduiComponentBase
 
-<aside class="@Classname" style="@Style" @attributes="@AdditionalAttributes">
+<MduiSwipeArea OnSwipe="@OnSwipe" class="@Classname" style="@Style" @attributes="@AdditionalAttributes">
     @ChildContent
-</aside>
+</MduiSwipeArea>
 @if (!Persistent)
 {
     <MduiOverlay Visible="@Opened" OnBackgroundClick="@OnOverlayClickedAsync" />

@@ -82,5 +82,13 @@ namespace MduiBlazor
                 Layout?.RemoveDarwer(this);
             }
         }
+
+        private void OnSwipe(SwipeDirection direction)
+        {
+            if (direction == SwipeDirection.RightToLeft && _opened)
+            {
+                Opened = false;
+            }
+        }
     }
 }

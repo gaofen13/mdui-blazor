@@ -1,4 +1,5 @@
 ﻿using MduiBlazor.Utilities;
+using Microsoft.AspNetCore.Components;
 
 namespace MduiBlazor
 {
@@ -9,5 +10,8 @@ namespace MduiBlazor
             .AddClass("mdui-typo", UseMduiTypo)
             .AddClass(Class)
             .Build();
+
+        [Parameter]
+        public EventCallback<SwipeDirection> OnSwipe { get; set; }
     }
 }
