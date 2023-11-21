@@ -89,7 +89,7 @@ namespace MduiBlazor
                     {
                         if (index > 0)
                         {
-                            nextIndex = _items.FindIndex(0, index, i => i.Disabled == false);
+                            nextIndex = _items.FindLastIndex(index-1, index, i => i.Disabled == false);
                         }
                     }
                     else if (direction == SwipeDirection.RightToLeft)
