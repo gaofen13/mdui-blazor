@@ -9535,21 +9535,17 @@ th.mdui-table-cell-checkbox .mdui-checkbox {
   background-color: #9e9e9e;
 }
 .mdui-slider-discrete.mdui-slider input[type="range"]:not(:disabled):hover ~ .mdui-slider-thumb {
-  -webkit-transform: scale(0.64);
-          transform: scale(0.64);
-}
-.mdui-slider-discrete.mdui-slider input[type="range"]:active ~ .mdui-slider-thumb {
   border-radius: 15px 15px 15px 0;
   -webkit-transform: rotate(-45deg) scale(1) translate(22px, -22px) !important;
           transform: rotate(-45deg) scale(1) translate(22px, -22px) !important;
 }
-.mdui-slider-discrete.mdui-slider input[type="range"]:active ~ .mdui-slider-thumb span {
+.mdui-slider-discrete.mdui-slider input[type="range"]:not(:disabled):hover ~ .mdui-slider-thumb span {
   opacity: 1;
 }
 .mdui-slider-discrete.mdui-slider-zero .mdui-slider-thumb {
   background-color: #323232;
 }
-.mdui-slider-discrete.mdui-slider-zero input[type="range"]:active ~ .mdui-slider-thumb {
+.mdui-slider-discrete.mdui-slider-zero input[type="range"]:hover ~ .mdui-slider-thumb {
   background-color: #bdbdbd;
 }
 .mdui-slider-discrete.mdui-slider-disabled .mdui-slider-thumb {
@@ -9589,7 +9585,7 @@ th.mdui-table-cell-checkbox .mdui-checkbox {
 .mdui-theme-layout-dark .mdui-slider-discrete.mdui-slider-zero .mdui-slider-thumb {
   background-color: #fefefe;
 }
-.mdui-theme-layout-dark .mdui-slider-discrete.mdui-slider-zero input[type="range"]:active ~ .mdui-slider-thumb {
+.mdui-theme-layout-dark .mdui-slider-discrete.mdui-slider-zero input[type="range"]:hover ~ .mdui-slider-thumb {
   background-color: #5c5c5c;
 }
 .mdui-theme-layout-dark .mdui-slider-discrete.mdui-slider-zero.mdui-slider-disabled .mdui-slider-thumb {
@@ -9621,7 +9617,7 @@ th.mdui-table-cell-checkbox .mdui-checkbox {
   .mdui-theme-layout-auto .mdui-slider-discrete.mdui-slider-zero .mdui-slider-thumb {
     background-color: #fefefe;
   }
-  .mdui-theme-layout-auto .mdui-slider-discrete.mdui-slider-zero input[type="range"]:active ~ .mdui-slider-thumb {
+  .mdui-theme-layout-auto .mdui-slider-discrete.mdui-slider-zero input[type="range"]:hover ~ .mdui-slider-thumb {
     background-color: #5c5c5c;
   }
   .mdui-theme-layout-auto .mdui-slider-discrete.mdui-slider-zero.mdui-slider-disabled .mdui-slider-thumb {
