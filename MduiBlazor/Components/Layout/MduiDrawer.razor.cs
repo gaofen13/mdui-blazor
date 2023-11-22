@@ -85,9 +85,22 @@ namespace MduiBlazor
 
         private void OnSwipe(SwipeDirection direction)
         {
-            if (direction == SwipeDirection.RightToLeft && _opened)
+            if (_opened)
             {
-                Opened = false;
+                if (RightSide)
+                {
+                    if (direction == SwipeDirection.LeftToRight)
+                    {
+                        Opened = false;
+                    }
+                }
+                else
+                {
+                    if (direction == SwipeDirection.RightToLeft)
+                    {
+                        Opened = false;
+                    }
+                }
             }
         }
     }

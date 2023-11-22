@@ -227,16 +227,12 @@
       }
 
       ~.mdui-slider-thumb {
-        transform: scale(0.64);
-      }
-    }
-
-    input[type="range"]:active~.mdui-slider-thumb {
-      border-radius: 15px 15px 15px 0;
-      transform: rotate(-45deg) scale(1) translate(22px, -22px) !important;
-
-      span {
-        opacity: 1;
+        border-radius: 15px 15px 15px 0;
+        transform: rotate(-45deg) scale(1) translate(22px, -22px) !important;
+  
+        span {
+          opacity: 1;
+        }
       }
     }
   }
@@ -250,7 +246,7 @@
 
   // 滑块值为 0，且鼠标按下
   &.mdui-slider-zero {
-    input[type="range"]:active~.mdui-slider-thumb {
+    input[type="range"]:hover~.mdui-slider-thumb {
       background-color: @slider-light-color;
     }
   }
@@ -343,7 +339,7 @@
 
     // 滑块值为 0，且鼠标按下
     &.mdui-slider-zero {
-      input[type="range"]:active~.mdui-slider-thumb {
+      input[type="range"]:hover~.mdui-slider-thumb {
         background-color: #5c5c5c;
       }
     }
