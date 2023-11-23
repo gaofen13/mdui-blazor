@@ -2,22 +2,20 @@
   "name": "mdui",
   "version": "1.0.2",
   "description": "a CSS Framework based on material design",
-  "style": "dist/css/mdui.css",
+  "style": "../MduiBlazor/wwwroot/css/mdui.css",
   "less": "src/index.less",
   "scripts": {
     "stylelint": "stylelint --fix src/**/*.less",
     "build": "npm run stylelint && gulp"
   },
   "files": [
-    "dist",
     "src",
     "LICENSE",
-    "package.json",
-    "README.md"
+    "package.json"
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/zdhxiong/mdui.git"
+    "url": "git+https://github.com/gaofen13/mdui-blazor.git"
   },
   "keywords": [
     "material design",
@@ -27,13 +25,13 @@
     "mobile-first",
     "web"
   ],
-  "author": "zdhxiong",
+  "author": "gaofen13",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/zdhxiong/mdui/issues",
-    "email": "zdhxiong@gmail.com"
+    "url": "https://github.com/gaofen13/mdui-blazor/issues",
+    "email": "gaofen13@163.com"
   },
-  "homepage": "https://mdui.org",
+  "homepage": "https://gaofen13.github.io/mdui-blazor",
   "dependencies": {
     "normalize.css": "^8.0.1"
   },

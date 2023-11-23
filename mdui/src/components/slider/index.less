@@ -219,7 +219,8 @@
   // 鼠标按下状态
   &.mdui-slider {
 
-    input[type="range"]:not(:disabled):hover {
+    input[type="range"]:not(:disabled):hover,
+    input[type="range"]:disabled:active {
       ~.mdui-slider-track {
         &::before {
           background-color: @slider-light-color-focus;

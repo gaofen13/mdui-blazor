@@ -9531,15 +9531,18 @@ th.mdui-table-cell-checkbox .mdui-checkbox {
   -webkit-transition: opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   transition: opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.mdui-slider-discrete.mdui-slider input[type="range"]:not(:disabled):hover ~ .mdui-slider-track::before {
+.mdui-slider-discrete.mdui-slider input[type="range"]:not(:disabled):hover ~ .mdui-slider-track::before,
+.mdui-slider-discrete.mdui-slider input[type="range"]:disabled:active ~ .mdui-slider-track::before {
   background-color: #9e9e9e;
 }
-.mdui-slider-discrete.mdui-slider input[type="range"]:not(:disabled):hover ~ .mdui-slider-thumb {
+.mdui-slider-discrete.mdui-slider input[type="range"]:not(:disabled):hover ~ .mdui-slider-thumb,
+.mdui-slider-discrete.mdui-slider input[type="range"]:disabled:active ~ .mdui-slider-thumb {
   border-radius: 15px 15px 15px 0;
   -webkit-transform: rotate(-45deg) scale(1) translate(22px, -22px) !important;
           transform: rotate(-45deg) scale(1) translate(22px, -22px) !important;
 }
-.mdui-slider-discrete.mdui-slider input[type="range"]:not(:disabled):hover ~ .mdui-slider-thumb span {
+.mdui-slider-discrete.mdui-slider input[type="range"]:not(:disabled):hover ~ .mdui-slider-thumb span,
+.mdui-slider-discrete.mdui-slider input[type="range"]:disabled:active ~ .mdui-slider-thumb span {
   opacity: 1;
 }
 .mdui-slider-discrete.mdui-slider-zero .mdui-slider-thumb {

@@ -10,7 +10,7 @@ const pkg = require('./package.json');
 const banner = `
 /*!
  * mdui ${pkg.version} (${pkg.homepage})
- * Copyright 2016-${new Date().getFullYear()} ${pkg.author}
+ * Copyright 2022-${new Date().getFullYear()} ${pkg.author}
  * Licensed under ${pkg.license}
  */
 `.trim();
@@ -23,7 +23,7 @@ function css() {
   .pipe(autoprefixer())
   .pipe(rename('mdui.css'))
   .pipe(sourcemaps.write('./'))
-  .pipe(dest('./dist/css'));
+  .pipe(dest('../MduiBlazor/wwwroot/css'));
 }
 
 function cssMin() {
@@ -35,7 +35,7 @@ function cssMin() {
   .pipe(cleanCSS({ compatibility: 'ie11' }))
   .pipe(rename('mdui.min.css'))
   .pipe(sourcemaps.write('./'))
-  .pipe(dest('./dist/css'));
+  .pipe(dest('../MduiBlazor/wwwroot/css'));
 }
 
 exports.default = parallel(css, cssMin);

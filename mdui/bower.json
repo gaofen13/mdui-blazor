@@ -2,10 +2,10 @@
   "name": "mdui",
   "description": "a CSS Framework based on material design",
   "main": [
-    "dist/css/mdui.css"
+    "../MduiBlazor/wwwroot/css/mdui.css"
   ],
   "authors": [
-    "zdhxiong"
+    "gaofen13"
   ],
   "license": "MIT",
   "keywords": [
@@ -17,7 +17,7 @@
     "mobile-first",
     "web"
   ],
-  "homepage": "http://mdui.org",
+  "homepage": "https://gaofen13.github.io/mdui-blazor",
   "ignore": [
     ".github",
     "node_modules",
