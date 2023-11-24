@@ -1,5 +1,6 @@
 ﻿using MduiBlazor.Utilities;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Web;
 
 namespace MduiBlazor
 {
@@ -20,5 +21,11 @@ namespace MduiBlazor
 
         [Parameter]
         public bool Disabled { get; set; }
+
+        [Parameter]
+        public string? Href { get; set; }
+
+        [Parameter]
+        public EventCallback<MouseEventArgs> OnClick { get; set; }
     }
 }

@@ -1,8 +1,8 @@
 ﻿@namespace MduiBlazor
 @inherits MduiComponentBase
 
-<li class="@Classname" style="@Style" disabled="@Disabled" @attributes="@AdditionalAttributes">
-    <a>
+<li class="@Classname" style="@Style" disabled="@Disabled" @onclick="@OnClick" @attributes="@AdditionalAttributes">
+    <a href="@Href">
         @ChildContent
         @if (!string.IsNullOrWhiteSpace(HelperText))
         {
