@@ -24,6 +24,9 @@ namespace MduiBlazor
 
         [Parameter]
         public string? Href { get; set; }
+        
+        [Parameter]
+        public string? Target { get; set; }
 
         [Parameter]
         public EventCallback<MouseEventArgs> OnClick { get; set; }

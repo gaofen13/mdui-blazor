@@ -2,7 +2,7 @@
 @inherits MduiComponentBase
 
 <li class="@Classname" style="@Style" disabled="@Disabled" @onclick="@OnClick" @attributes="@AdditionalAttributes">
-    <a href="@Href">
+    <a href="@Href" target="@Target">
         @ChildContent
         @if (!string.IsNullOrWhiteSpace(HelperText))
         {
