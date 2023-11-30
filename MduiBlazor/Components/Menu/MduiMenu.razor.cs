@@ -45,9 +45,15 @@ namespace MduiBlazor
             _isFocus = !_isFocus;
         }
 
-        public void Activate(MouseEventArgs args)
+        public void Active(MouseEventArgs args)
         {
             _isFocus = !_isFocus;
+            StateHasChanged();
+        }
+
+        public void DisActive()
+        {
+            _isFocus = false;
             StateHasChanged();
         }
     }

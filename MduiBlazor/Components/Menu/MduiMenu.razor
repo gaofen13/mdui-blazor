@@ -6,13 +6,13 @@
     {
         <label @onclick="@OnActivatorClicked">
             <CascadingValue Value="@this" IsFixed>
-             @ActivatorContent
-         </CascadingValue>
-     </label>
+                @ActivatorContent
+            </CascadingValue>
+        </label>
     }
-    else
+    else if (!string.IsNullOrEmpty(Title))
     {
-        <MduiButton DisableRaised="@string.IsNullOrEmpty(Title)" Color="@Color" OnClick="@OnActivatorClicked">
+        <MduiButton Color="@Color" OnClick="@OnActivatorClicked">
             @Title
             @if (!string.IsNullOrWhiteSpace(Icon))
             {
@@ -20,8 +20,15 @@
             }
         </MduiButton>
     }
+    else if (!string.IsNullOrWhiteSpace(Icon))
+    {
+        <MduiIconButton Icon="@Icon" Color="@Color" OnClick="@OnActivatorClicked" />
+    }
     <ul class="@MenuListClass">
-        @ChildContent
+        <CascadingValue Value="@this" IsFixed>
+            @ChildContent
+        </CascadingValue>
     </ul>
 </div>
+
 <MduiOverlay Visible="@_isFocus" OnBackgroundClick="@(_=>_isFocus=false)" Transparent />

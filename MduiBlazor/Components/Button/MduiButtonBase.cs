@@ -79,7 +79,7 @@ namespace MduiBlazor
             {
                 Command.Execute(CommandParameter);
             }
-            Menu?.Activate(ev);
+            Menu?.Active(ev);
         }
 
         protected override void OnInitialized()
