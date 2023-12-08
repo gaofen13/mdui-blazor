@@ -13,22 +13,22 @@
     user-select: none;
 }
 
-    .example-tools a {
-        color: rgba(0,0,0,.54);
-        display: inline-block;
-        margin: 0 8px;
-    }
+.example-tools a {
+    color: rgba(0, 0, 0, .54);
+    display: inline-block;
+    margin: 0 8px;
+}
 
 .example-showcode .example-tools {
     top: 4px;
 }
 
 .example-demo-label {
-    border: 1px solid rgba(0,0,0,.12);
+    border: 1px solid rgba(0, 0, 0, .12);
     border-bottom: none !important;
     border-radius: 3px 3px 0 0;
     box-sizing: border-box;
-    color: rgba(0,0,0,.38);
+    color: rgba(0, 0, 0, .38);
     display: none;
     font-size: 12px;
     font-weight: 700;
@@ -49,33 +49,55 @@
 }
 
 .example-showcode .example-demo {
-    border: 1px solid rgba(0,0,0,.12);
+    border: 1px solid rgba(0, 0, 0, .12);
     border-top: none;
     padding: 14px;
 }
 
 ::deep .example-code {
-    border: 1px solid rgba(0,0,0,.12);
+    border: 1px solid rgba(0, 0, 0, .12);
     border-radius: 0 0 3px 3px;
     display: block;
     margin: 0;
 }
 
-.example-show ::deep .example-code{
+.example-show ::deep .example-code {
     border-top: none;
 }
 
 .mdui-theme-layout-dark .example-showcode .example-demo-label {
-    border: 1px solid hsla(0,0%,100%,.12);
-    color: hsla(0,0%,100%,.5);
+    border: 1px solid hsla(0, 0%, 100%, .12);
+    color: hsla(0, 0%, 100%, .5);
 }
 
-.mdui-theme-layout-dark .example-showcode .example-demo, .mdui-theme-layout-dark .example-showcode ::deep .example-code {
-    border: 1px solid hsla(0,0%,100%,.12);
+@media(prefers-color-scheme: dark) {
+    .mdui-theme-layout-auto .example-showcode .example-demo-label {
+        border: 1px solid hsla(0, 0%, 100%, .12);
+        color: hsla(0, 0%, 100%, .5);
+    }
+}
+
+.mdui-theme-layout-dark .example-showcode .example-demo,
+.mdui-theme-layout-dark .example-showcode ::deep .example-code {
+    border: 1px solid hsla(0, 0%, 100%, .12);
+}
+
+@media(prefers-color-scheme: dark) {
+
+    .mdui-theme-layout-auto .example-showcode .example-demo,
+    .mdui-theme-layout-auto .example-showcode ::deep .example-code {
+        border: 1px solid hsla(0, 0%, 100%, .12);
+    }
 }
 
 .mdui-theme-layout-dark .example-tools a {
-    color: hsla(0,0%,100%,.7);
+    color: hsla(0, 0%, 100%, .7);
+}
+
+@media(prefers-color-scheme: dark) {
+    .mdui-theme-layout-auto .example-tools a {
+        color: hsla(0, 0%, 100%, .7);
+    }
 }
 
 #p-g .example-demo ::deep .mdui-row>.mdui-col {
@@ -88,4 +110,11 @@
 .mdui-theme-layout-dark #p-g .example-demo ::deep .mdui-row>.mdui-col {
     background-color: #424242;
     border-color: #757575;
+}
+
+@media(prefers-color-scheme: dark) {
+    .mdui-theme-layout-auto #p-g .example-demo ::deep .mdui-row>.mdui-col {
+        background-color: #424242;
+        border-color: #757575;
+    }
 }
