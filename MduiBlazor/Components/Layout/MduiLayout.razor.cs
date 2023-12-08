@@ -23,7 +23,7 @@ namespace MduiBlazor
             .AddClass("mdui-appbar-with-tab", AppbarWithTab)
             .AddClass("mdui-appbar-with-toolbar", AppbarWithToolbar)
             .AddClass("mdui-appbar-with-tab-larger", AppbarWithTabLarger)
-            .AddClass(IsDarkTheme ? "mdui-theme-layout-dark" : "mdui-theme-layout-light")
+            .AddClass($"mdui-theme-layout-{DarkThemeMode.ToDescriptionString()}")
             .AddClass(Class)
             .Build();
 
@@ -43,7 +43,7 @@ namespace MduiBlazor
         public AccentColor AccentColor { get; set; } = AccentColor.Pink;
 
         [Parameter]
-        public bool IsDarkTheme { get; set; }
+        public DarkThemeMode DarkThemeMode { get; set; }
 
         protected override void OnAfterRender(bool firstRender)
         {

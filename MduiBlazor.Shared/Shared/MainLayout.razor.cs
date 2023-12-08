@@ -12,7 +12,7 @@ namespace MduiBlazor.Shared.Shared
         private bool _hideScrollToTop = true;
         private PrimaryColor _primaryColor = PrimaryColor.Indigo;
         private AccentColor _accentColor = AccentColor.Pink;
-        private bool _isDarkTheme;
+        private DarkThemeMode _themeMode = DarkThemeMode.Auto;
         private int _windowWidth;
         private IJSObjectReference? _jsModule;
         private DotNetObjectReference<MainLayout>? _objectReference;
@@ -119,7 +119,7 @@ namespace MduiBlazor.Shared.Shared
         {
             _primaryColor = PrimaryColor.Indigo;
             _accentColor = AccentColor.Pink;
-            _isDarkTheme = false;
+            _themeMode = DarkThemeMode.Auto;
         }
     }
 }

@@ -1,14 +1,11 @@
 .layout-theme(@rules) {
-  & when (@globalLayoutDark = true) {
-    .mdui-theme-layout-dark {
-      @rules();
-    }
+  .mdui-theme-layout-dark {
+    @rules();
   }
-  & when (@globalLayoutAuto = true) {
-    @media (prefers-color-scheme: dark) {
-      .mdui-theme-layout-auto {
-        @rules();
-      }
+
+  @media (prefers-color-scheme: dark) {
+    .mdui-theme-layout-auto {
+      @rules();
     }
   }
 }

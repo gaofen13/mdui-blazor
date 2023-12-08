@@ -411,17 +411,13 @@
           }
         }
 
-        & when (@globalLayoutDark =true) {
-          &.mdui-theme-layout-dark {
-            .dark-mode();
-          }
+        &.mdui-theme-layout-dark {
+          .dark-mode();
         }
 
-        & when (@globalLayoutAuto =true) {
-          @media (prefers-color-scheme: dark) {
-            &.mdui-theme-layout-auto {
-              .dark-mode();
-            }
+        @media (prefers-color-scheme: dark) {
+          &.mdui-theme-layout-auto {
+            .dark-mode();
           }
         }
       }
