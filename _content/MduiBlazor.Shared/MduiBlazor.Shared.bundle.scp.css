@@ -483,6 +483,16 @@
         color: #c8e6c9 !important;
     }
 }
+
+[b-cpz6zv8ei8].example-float .example-demo::before,
+[b-cpz6zv8ei8].example-float .example-demo::after {
+    display: table;
+    content: " ";
+}
+
+[b-cpz6zv8ei8].example-float .example-demo::after {
+    clear: both;
+}
 /* _content/MduiBlazor.Shared/Pages/ColorsPage.razor.rz.scp.css */
 .color-palette[b-vo7wiqiejs] {
     font-size: 14px;
