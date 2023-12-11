@@ -71,15 +71,15 @@ namespace MduiBlazor
 
         public void SetInvalid(string? error)
         {
+            if (string.IsNullOrWhiteSpace(ErrorText))
+            {
+                _errorText = error;
+            }
             if (!_invalid)
             {
                 _invalid = true;
-                if (string.IsNullOrWhiteSpace(ErrorText))
-                {
-                    _errorText = error;
-                }
-                StateHasChanged();
             }
+            StateHasChanged();
         }
 
         public void RemoveInvalid()

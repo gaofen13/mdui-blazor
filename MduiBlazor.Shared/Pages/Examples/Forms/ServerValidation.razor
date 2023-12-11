@@ -63,10 +63,10 @@
         [Required(ErrorMessage = "请选择一项有效值")]
         public string Select { get; set; } = "";
 
-        public string[]? Select2 { get; set; } = new string[] { "s1", "s2" };
+        public string[]? Select2 { get; set; } = [ "s1", "s2" ];
 
         [Required(ErrorMessage = "请选择/输入日期")]
-        [Range(typeof(DateTime), "2023-07-01", "2023-07-31")]
+        [Range(typeof(DateTime), "2023-07-01", "2023-07-31", ErrorMessage = "范围应该在2023-07-01和2023-07-31之间")]
         public DateTime? Date { get; set; }
 
         [Range(1, 1, ErrorMessage = "必须勾选")]
