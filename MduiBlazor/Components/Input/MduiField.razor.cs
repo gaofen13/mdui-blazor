@@ -56,7 +56,6 @@ namespace MduiBlazor
             if (!_notEmpty)
             {
                 _notEmpty = true;
-                StateHasChanged();
             }
         }
 
@@ -65,7 +64,6 @@ namespace MduiBlazor
             if (_notEmpty)
             {
                 _notEmpty = false;
-                StateHasChanged();
             }
         }
 
@@ -79,7 +77,6 @@ namespace MduiBlazor
             {
                 _invalid = true;
             }
-            StateHasChanged();
         }
 
         public void RemoveInvalid()
@@ -89,9 +86,8 @@ namespace MduiBlazor
                 _invalid = false;
                 if (string.IsNullOrWhiteSpace(ErrorText))
                 {
-                    _errorText = string.Empty;
+                    _errorText = null;
                 }
-                StateHasChanged();
             }
         }
 
