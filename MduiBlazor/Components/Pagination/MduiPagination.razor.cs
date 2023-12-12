@@ -53,17 +53,5 @@ namespace MduiBlazor
         {
             PageIndex = pager;
         }
-
-        private void OnSwipe(SwipeDirection direction)
-        {
-            if (direction == SwipeDirection.LeftToRight)
-            {
-                OnClickPrev();
-            }
-            else if (direction == SwipeDirection.RightToLeft)
-            {
-                OnClickNex();
-            }
-        }
     }
 }

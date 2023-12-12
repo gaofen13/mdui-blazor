@@ -65,34 +65,5 @@ namespace MduiBlazor
                 _activedItem.Active();
             }
         }
-
-        private void OnSwipe(SwipeDirection direction)
-        {
-            if (_items.Count > 0)
-            {
-                if (_activedItem == null)
-                {
-                    OnActivedItemChanged(_items.First());
-                }
-                else
-                {
-                    var index = _items.FindIndex(i => i.Id == _activedItem?.Id);
-                    if (direction == SwipeDirection.LeftToRight)
-                    {
-                        if (index > 0)
-                        {
-                            OnActivedItemChanged(_items[index - 1]);
-                        }
-                    }
-                    else if (direction == SwipeDirection.RightToLeft)
-                    {
-                        if (index + 1 != _items.Count)
-                        {
-                            OnActivedItemChanged(_items[index + 1]);
-                        }
-                    }
-                }
-            }
-        }
     }
 }
