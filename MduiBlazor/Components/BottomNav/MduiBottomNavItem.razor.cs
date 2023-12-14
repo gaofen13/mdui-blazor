@@ -35,7 +35,7 @@ namespace MduiBlazor
         public bool DisableRipple { get; set; }
 
         [Parameter]
-        public EventCallback OnActived { get; set; }
+        public EventCallback<MduiBottomNavItem> OnActived { get; set; }
 
         protected override void OnInitialized()
         {
@@ -43,14 +43,14 @@ namespace MduiBlazor
             base.OnInitialized();
         }
 
-        public void Active()
+        internal void Active()
         {
             _active = true;
-            OnActived.InvokeAsync();
+            OnActived.InvokeAsync(this);
             StateHasChanged();
         }
 
-        public void Disactive()
+        internal void Disactive()
         {
             _active = false;
             StateHasChanged();

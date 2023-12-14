@@ -1,22 +1,24 @@
 <MduiDialog @ref="@dialog" Title="Custom对话框" Options="new DialogOptions{Modal=true}">
     <ChildContent>
-        <MduiTab FullWidth>
-            <MduiTabItem Default>web</MduiTabItem>
-            <MduiTabItem>shopping</MduiTabItem>
-            <MduiTabItem>videos</MduiTabItem>
+        <MduiTab @ref="tab" FullWidth>
+            <MduiTabItem OnActived="@OnActived" Default>web</MduiTabItem>
+            <MduiTabItem OnActived="@OnActived">shopping</MduiTabItem>
+            <MduiTabItem OnActived="@OnActived">videos</MduiTabItem>
         </MduiTab>
-        <div style="height: 200px;">
+        <MduiSwipeArea OnSwipe="@OnSwipe" Style="height: 200px;">
             <p style="text-align: center;">自定义内容</p>
-        </div>
+        </MduiSwipeArea>
     </ChildContent>
     <ActionsContent>
         <MduiButton DisableRaised Color="@Colors.Theme.Accent" OnClick="@Cancel">取消</MduiButton>
-         <MduiButton DisableRaised Color="@Colors.Theme.Primary" OnClick="@Ok">确认</MduiButton>
-     </ActionsContent>
- </MduiDialog>
+        <MduiButton DisableRaised Color="@Colors.Theme.Primary" OnClick="@Ok">确认</MduiButton>
+    </ActionsContent>
+</MduiDialog>
 
- @code {
+@code {
     private MduiDialog? dialog;
+    private MduiTab? tab;
+    private MduiTabItem? activedItem;
 
     void Ok()
     {
@@ -26,5 +28,33 @@
     void Cancel()
     {
         dialog?.Cancel();
+    }
+
+    void OnActived(MduiTabItem item)
+    {
+        activedItem = item;
+    }
+
+    void OnSwipe(SwipeDirection direction)
+    {
+        if (tab != null)
+        {
+            if (direction == SwipeDirection.LeftToRight)
+            {
+                var activedIndex = tab.Items.FindIndex(i => i.Id == activedItem?.Id);
+                if (activedIndex > 0)
+                {
+                    tab.ActiveItemByIndex(activedIndex - 1);
+                }
+            }
+            else if (direction == SwipeDirection.RightToLeft)
+            {
+                var activedIndex = tab.Items.FindIndex(i => i.Id == activedItem?.Id);
+                if (activedIndex < tab.Items.Count - 1)
+                {
+                    tab.ActiveItemByIndex(activedIndex + 1);
+                }
+            }
+        }
     }
 }

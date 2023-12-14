@@ -5,9 +5,10 @@ namespace MduiBlazor
 {
     public partial class MduiTab : MduiComponentBase
     {
-        private readonly List<MduiTabItem> _items = [];
         private MduiTabItem? _activedItem;
 
+        public List<MduiTabItem> Items {get;} = [];
+        
         protected string Classname =>
             new ClassBuilder("mdui-tab")
             .AddClass($"mdui-color-{Color}", !string.IsNullOrWhiteSpace(Color))
@@ -29,11 +30,11 @@ namespace MduiBlazor
         [Parameter]
         public string? Color { get; set; }
 
-        public void AddItem(MduiTabItem item)
+        internal void AddItem(MduiTabItem item)
         {
-            if (!_items.Any(i => i.Id == item.Id))
+            if (!Items.Any(i => i.Id == item.Id))
             {
-                _items.Add(item);
+                Items.Add(item);
                 if (item.Default)
                 {
                     OnActivedItemChanged(item);
@@ -42,14 +43,14 @@ namespace MduiBlazor
             }
         }
 
-        public void RemoveItem(MduiTabItem item)
+        internal void RemoveItem(MduiTabItem item)
         {
-            if (_items.Any(i => i.Id == item.Id))
+            if (Items.Any(i => i.Id == item.Id))
             {
-                _items.Remove(item);
+                Items.Remove(item);
                 if (_activedItem == item)
                 {
-                    var activedTab = _items.FirstOrDefault();
+                    var activedTab = Items.FirstOrDefault();
                     if (activedTab != null)
                     {
                         OnActivedItemChanged(activedTab);
@@ -59,13 +60,21 @@ namespace MduiBlazor
             }
         }
 
-        public void OnActivedItemChanged(MduiTabItem item)
+        internal void OnActivedItemChanged(MduiTabItem item)
         {
             if (!item.Disabled && _activedItem?.Id != item.Id)
             {
                 _activedItem?.DisactiveItem();
                 _activedItem = item;
                 _activedItem.ActiveItem();
+            }
+        }
+
+        public void ActiveItemByIndex(int index)
+        {
+            if (index >= 0 && index < Items.Count)
+            {
+                OnActivedItemChanged(Items[index]);
             }
         }
     }

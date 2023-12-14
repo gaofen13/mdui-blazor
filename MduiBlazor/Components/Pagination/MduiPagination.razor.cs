@@ -53,5 +53,13 @@ namespace MduiBlazor
         {
             PageIndex = pager;
         }
+
+        public void GotoPager(int pager)
+        {
+            if (pager >= 0 && pager <= Total)
+            {
+                PageIndex = pager;
+            }
+        }
     }
 }

@@ -5,8 +5,9 @@ namespace MduiBlazor
 {
     public partial class MduiBottomNav : MduiComponentBase
     {
-        private readonly List<MduiBottomNavItem> _items = [];
         private MduiBottomNavItem? _activedItem;
+
+        public List<MduiBottomNavItem> Items {get;} = [];
 
         protected string Classname =>
             new ClassBuilder("mdui-bottom-nav")
@@ -28,9 +29,9 @@ namespace MduiBlazor
         internal void AddItem(MduiBottomNavItem item)
         {
 
-            if (!_items.Any(i=>i.Id == item.Id))
+            if (!Items.Any(i => i.Id == item.Id))
             {
-                _items.Add(item);
+                Items.Add(item);
                 if (item.Default)
                 {
                     OnActivedItemChanged(item);
@@ -41,12 +42,12 @@ namespace MduiBlazor
 
         internal void RemoveItem(MduiBottomNavItem item)
         {
-            if (_items.Any(i=>i.Id == item.Id))
+            if (Items.Any(i => i.Id == item.Id))
             {
-                _items.Remove(item);
+                Items.Remove(item);
                 if (_activedItem == item)
                 {
-                    var activeTab = _items.FirstOrDefault();
+                    var activeTab = Items.FirstOrDefault();
                     if (activeTab != null)
                     {
                         OnActivedItemChanged(activeTab);
@@ -63,6 +64,14 @@ namespace MduiBlazor
                 _activedItem?.Disactive();
                 _activedItem = item;
                 _activedItem.Active();
+            }
+        }
+
+        public void ActiveItemByIndex(int index)
+        {
+            if (index >= 0 && index < Items.Count)
+            {
+                OnActivedItemChanged(Items[index]);
             }
         }
     }

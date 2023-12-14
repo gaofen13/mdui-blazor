@@ -38,7 +38,7 @@ namespace MduiBlazor
         public bool Disabled { get; set; }
 
         [Parameter]
-        public EventCallback OnActived { get; set; }
+        public EventCallback<MduiTabItem> OnActived { get; set; }
 
         protected override void OnInitialized()
         {
@@ -49,17 +49,17 @@ namespace MduiBlazor
             Tab?.AddItem(this);
         }
 
-        public void ActiveItem()
+        internal void ActiveItem()
         {
             _active = true;
             StateHasChanged();
             if (OnActived.HasDelegate)
             {
-                OnActived.InvokeAsync();
+                OnActived.InvokeAsync(this);
             }
         }
 
-        public void DisactiveItem()
+        internal void DisactiveItem()
         {
             _active = false;
             StateHasChanged();
