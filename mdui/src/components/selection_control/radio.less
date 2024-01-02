@@ -86,20 +86,26 @@
   }
 }
 
-/* 未选中未禁用时鼠标悬浮的阴影 */
+/* 未禁用时的阴影 */
+.mdui-radio input[type="radio"]:not(:disabled) {
 
-/* 禁用时 按下的阴影 */
-.mdui-radio input[type="radio"]:not(:disabled):hover,
-.mdui-radio:active input[type="radio"]:disabled {
-  &+.mdui-radio-icon {
-    box-shadow: 0 0 0 15px rgba(0, 0, 0, 0.1);
+  &:hover,
+  &:focus {
+    &+.mdui-radio-icon {
+      box-shadow: 0 0 0 15px rgba(0, 0, 0, 0.1);
+    }
+
+    /* 已选中时鼠标悬浮的阴影 */
+    &:checked+.mdui-radio-icon {
+      box-shadow: 0 0 0 15px rgba(red(@color-default-a200), green(@color-default-a200), blue(@color-default-a200), 0.16);
+    }
   }
 }
 
-/* 已选中时鼠标悬浮的阴影 */
-.mdui-radio input[type="radio"]:hover {
-  &:not(:disabled):checked+.mdui-radio-icon {
-    box-shadow: 0 0 0 15px rgba(red(@color-default-a200), green(@color-default-a200), blue(@color-default-a200), 0.16);
+/* 禁用时 按下的阴影 */
+.mdui-radio:active input[type="radio"]:disabled {
+  &+.mdui-radio-icon {
+    box-shadow: 0 0 0 15px rgba(0, 0, 0, 0.1);
   }
 }
 
@@ -128,12 +134,15 @@
       }
 
       // 已选中时鼠标悬浮的阴影
-      .mdui-radio input[type="radio"]:hover {
-        &:not(:disabled):checked+.mdui-radio-icon {
-          box-shadow: 0 0 0 15px rgba(red(@@color), green(@@color), blue(@@color), 0.16);
+      .mdui-radio input[type="radio"]:not(:disabled):checked {
+
+        &:hover,
+        &:focus {
+          &+.mdui-radio-icon {
+            box-shadow: 0 0 0 15px rgba(red(@@color), green(@@color), blue(@@color), 0.16);
+          }
         }
       }
-
     }
   }
 
@@ -165,10 +174,19 @@
     }
   }
 
+  // 未禁用时的阴影
+  .mdui-radio input[type="radio"]:not(:disabled) {
+
+    &:hover,
+    &:focus {
+      &+.mdui-radio-icon {
+        box-shadow: 0 0 0 15px rgba(255, 255, 255, 0.1);
+      }
+    }
+  }
+
   // 禁用时 按下的阴影
-  // 未选中未禁用时鼠标悬浮的阴影
-  .mdui-radio:active input[type="radio"]:disabled,
-  .mdui-radio input[type="radio"]:not(:disabled):hover {
+  .mdui-radio:active input[type="radio"]:disabled {
     & + .mdui-radio-icon {
       box-shadow: 0 0 0 15px rgba(255, 255, 255, 0.1);
     }

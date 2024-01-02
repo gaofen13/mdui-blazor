@@ -65,10 +65,47 @@
   }
 }
 
-/* 未选中未禁用时鼠标悬浮的阴影 */
+/* 禁用状态 */
+.mdui-switch input[type="checkbox"]:disabled+.mdui-switch-icon {
+  background-color: rgba(0, 0, 0, 0.12) !important;
+
+  &::before {
+    background-color: @color-grey-400 !important;
+  }
+}
+
+/* 未禁用时的阴影 */
+.mdui-switch input[type="checkbox"]:not(:disabled) {
+
+  &:hover,
+  &:focus {
+    /* 未选中未禁用时阴影 */
+    &+.mdui-switch-icon::before {
+      box-shadow:
+        // box-shadow(1)
+        0 2px 1px -1px rgba(0, 0, 0, .2),
+        0 1px 1px 0 rgba(0, 0, 0, .14),
+        0 1px 3px 0 rgba(0, 0, 0, .12),
+
+        // 颜色阴影
+        0 0 0 15px rgba(0, 0, 0, 0.1);
+    }
+
+    /* 已选中未禁用时阴影 */
+    &:checked+.mdui-switch-icon::before {
+      box-shadow:
+        // box-shadow(1)
+        0 2px 1px -1px rgba(0, 0, 0, .2),
+        0 1px 1px 0 rgba(0, 0, 0, .14),
+        0 1px 3px 0 rgba(0, 0, 0, .12),
+
+        // 颜色阴影
+        0 0 0 15px rgba(red(@color-default-a200), green(@color-default-a200), blue(@color-default-a200), 0.16);
+    }
+  }
+}
 
 /* 禁用时 按下的阴影 */
-.mdui-switch input[type="checkbox"]:not(:disabled):hover,
 .mdui-switch:active input[type="checkbox"]:disabled {
   &+.mdui-switch-icon::before {
     box-shadow:
@@ -81,30 +118,6 @@
       0 0 0 15px rgba(0, 0, 0, 0.1);
   }
 }
-
-/* 已选中未禁用时鼠标悬浮的阴影 */
-.mdui-switch input[type="checkbox"]:not(:disabled):hover {
-  &:checked+.mdui-switch-icon::before {
-    box-shadow:
-      // box-shadow(1)
-      0 2px 1px -1px rgba(0, 0, 0, .2),
-      0 1px 1px 0 rgba(0, 0, 0, .14),
-      0 1px 3px 0 rgba(0, 0, 0, .12),
-
-      // 颜色阴影
-      0 0 0 15px rgba(red(@color-default-a200), green(@color-default-a200), blue(@color-default-a200), 0.16);
-  }
-}
-
-/* 禁用状态 */
-.mdui-switch input[type="checkbox"]:disabled+.mdui-switch-icon {
-  background-color: rgba(0, 0, 0, 0.12) !important;
-
-  &::before {
-    background-color: @color-grey-400 !important;
-  }
-}
-
 
 /**
  * =============================================================================
@@ -131,19 +144,22 @@
       }
 
       // 已选中时鼠标悬浮的阴影
-      .mdui-switch input[type="checkbox"]:hover {
-        &:not(:disabled):checked+.mdui-switch-icon::before {
-          box-shadow:
-            // box-shadow(1)
-            0 2px 1px -1px rgba(0, 0, 0, .2),
-            0 1px 1px 0 rgba(0, 0, 0, .14),
-            0 1px 3px 0 rgba(0, 0, 0, .12),
+      .mdui-switch input[type="checkbox"] {
 
-            // 颜色阴影
-            0 0 0 15px rgba(red(@@color), green(@@color), blue(@@color), 0.16);
+        &:hover,
+        &:focus {
+          &:not(:disabled):checked+.mdui-switch-icon::before {
+            box-shadow:
+              // box-shadow(1)
+              0 2px 1px -1px rgba(0, 0, 0, .2),
+              0 1px 1px 0 rgba(0, 0, 0, .14),
+              0 1px 3px 0 rgba(0, 0, 0, .12),
+
+              // 颜色阴影
+              0 0 0 15px rgba(red(@@color), green(@@color), blue(@@color), 0.16);
+          }
         }
       }
-
     }
   }
 
@@ -192,9 +208,10 @@
     .loop-accent-theme(length(@globalAccentColors));
   }
 
-  // 未选中未禁用时鼠标悬浮的阴影
+  // 未禁用时的阴影
   // 禁用时 按下的阴影
   .mdui-switch input[type="checkbox"]:not(:disabled):hover,
+  .mdui-switch input[type="checkbox"]:not(:disabled):focus,
   .mdui-switch:active input[type="checkbox"]:disabled {
     & + .mdui-switch-icon::before {
       box-shadow: // box-shadow(1)

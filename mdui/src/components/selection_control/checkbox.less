@@ -127,19 +127,23 @@
 
 /* 阴影 */
 
-/* 未被禁用时鼠标悬浮阴影 */
-.mdui-checkbox input[type="checkbox"]:not(:disabled):hover {
+/* 未被禁用时阴影 */
+.mdui-checkbox input[type="checkbox"]:not(:disabled) {
 
-  // 未选中时阴影
-  &+.mdui-checkbox-icon {
-    box-shadow: 0 0 0 15px rgba(0, 0, 0, 0.1);
-  }
+  &:hover,
+  &:focus {
 
-  // 已选中时阴影
-  &:checked,
-  &:indeterminate {
+    // 未选中时阴影
     &+.mdui-checkbox-icon {
-      box-shadow: 0 0 0 15px rgba(red(@color-default-a200), green(@color-default-a200), blue(@color-default-a200), 0.16);
+      box-shadow: 0 0 0 15px rgba(0, 0, 0, 0.1);
+    }
+
+    // 已选中时阴影
+    &:checked,
+    &:indeterminate {
+      &+.mdui-checkbox-icon {
+        box-shadow: 0 0 0 15px rgba(red(@color-default-a200), green(@color-default-a200), blue(@color-default-a200), 0.16);
+      }
     }
   }
 }
@@ -230,9 +234,18 @@
     }
   }
 
-  // 未选中或禁用时鼠标悬浮的阴影
+  // 未禁用时的阴影
+  .mdui-checkbox input[type="checkbox"]:not(:disabled) {
+
+    &:hover,
+    &:focus {
+      & + .mdui-checkbox-icon {
+        box-shadow: 0 0 0 15px rgba(255, 255, 255, 0.1);
+      }
+    }
+  }
+
   // 禁用时按下的阴影
-  .mdui-checkbox input[type="checkbox"]:not(:disabled):hover,
   .mdui-checkbox:active input[type="checkbox"]:disabled {
     & + .mdui-checkbox-icon {
       box-shadow: 0 0 0 15px rgba(255, 255, 255, 0.1);
