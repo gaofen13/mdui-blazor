@@ -9648,31 +9648,31 @@ th.mdui-table-cell-checkbox .mdui-checkbox {
  * ============   Slider 的不同状态   ============
  * =============================================================================
  */
+/* 滑块值为 0 */
+.mdui-slider-zero .mdui-slider-thumb::after {
+  background-color: #fff;
+  border-color: #bdbdbd;
+}
 input[type="range"]:not(:disabled):hover ~ .mdui-slider-thumb::before {
   -webkit-transform: scale(0.7);
           transform: scale(0.7);
 }
 /* 鼠标按下状态 */
-input[type="range"]:active:not(:disabled) ~ .mdui-slider-track::before {
+.mdui-slider-actived {
+  /* 滑块值为 0 */
+}
+.mdui-slider-actived .mdui-slider-track::before {
   background-color: #9e9e9e;
 }
-input[type="range"]:active:not(:disabled) ~ .mdui-slider-thumb::after {
+.mdui-slider-actived .mdui-slider-thumb::after {
   -webkit-transform: scale(0.8);
           transform: scale(0.8);
 }
-input[type="range"]:active ~ .mdui-slider-thumb .mdui-slider-label {
+.mdui-slider-actived .mdui-slider-thumb .mdui-slider-label {
   -webkit-transform: translate(-50%) rotate(-45deg) scale(1);
           transform: translate(-50%) rotate(-45deg) scale(1);
 }
-/* 滑块值为 0 */
-.mdui-slider-zero {
-  /* 滑块值为 0，且鼠标按下 */
-}
-.mdui-slider-zero .mdui-slider-thumb::after {
-  background-color: #fff;
-  border-color: #bdbdbd;
-}
-.mdui-slider-zero input[type="range"]:not(:disabled):active ~ .mdui-slider-thumb::after {
+.mdui-slider-actived .mdui-slider-thumb::after {
   border-color: #9e9e9e;
 }
 .mdui-slider-zero .mdui-slider-label {
@@ -9714,14 +9714,14 @@ input[type="range"]:active ~ .mdui-slider-thumb .mdui-slider-label {
 .mdui-theme-layout-dark .mdui-slider-thumb::before {
   background-color: #9e9e9e;
 }
-.mdui-theme-layout-dark input[type="range"]:not(:disabled):active ~ .mdui-slider-track::before {
+.mdui-theme-layout-dark .mdui-slider-actived .mdui-slider-track::before {
   background-color: #4c4c4c;
 }
 .mdui-theme-layout-dark .mdui-slider-zero .mdui-slider-thumb::after {
   background-color: #303030;
   border-color: #4c4c4c;
 }
-.mdui-theme-layout-dark .mdui-slider-zero input[type="range"]:not(:disabled):active ~ .mdui-slider-thumb::after {
+.mdui-theme-layout-dark .mdui-slider-zero.mdui-slider-actived .mdui-slider-thumb::after {
   border-color: #4c4c4c;
 }
 .mdui-theme-layout-dark .mdui-slider-zero .mdui-slider-label {
@@ -9749,14 +9749,14 @@ input[type="range"]:active ~ .mdui-slider-thumb .mdui-slider-label {
   .mdui-theme-layout-auto .mdui-slider-thumb::before {
     background-color: #9e9e9e;
   }
-  .mdui-theme-layout-auto input[type="range"]:not(:disabled):active ~ .mdui-slider-track::before {
+  .mdui-theme-layout-auto .mdui-slider-actived .mdui-slider-track::before {
     background-color: #4c4c4c;
   }
   .mdui-theme-layout-auto .mdui-slider-zero .mdui-slider-thumb::after {
     background-color: #303030;
     border-color: #4c4c4c;
   }
-  .mdui-theme-layout-auto .mdui-slider-zero input[type="range"]:not(:disabled):active ~ .mdui-slider-thumb::after {
+  .mdui-theme-layout-auto .mdui-slider-zero.mdui-slider-actived .mdui-slider-thumb::after {
     border-color: #4c4c4c;
   }
   .mdui-theme-layout-auto .mdui-slider-zero .mdui-slider-label {
