@@ -258,6 +258,12 @@ input[type="range"]:not(:disabled):hover {
   .mdui-slider-label {
     background-color: @slider-light-color-disabled;
   }
+
+  input[type="range"]:active~.mdui-slider-thumb {
+    .mdui-slider-label {
+      transform: translate(-50%) rotate(-45deg) scale(1);
+    }
+  }
 }
 
 /**

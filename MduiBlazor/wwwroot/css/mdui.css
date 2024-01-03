@@ -9700,6 +9700,10 @@ input[type="range"]:not(:disabled):hover ~ .mdui-slider-thumb::before {
 .mdui-slider-disabled .mdui-slider-label {
   background-color: #bdbdbd;
 }
+.mdui-slider-disabled input[type="range"]:active ~ .mdui-slider-thumb .mdui-slider-label {
+  -webkit-transform: translate(-50%) rotate(-45deg) scale(1);
+          transform: translate(-50%) rotate(-45deg) scale(1);
+}
 /**
  * =============================================================================
  * ************   Slider dark   ************
