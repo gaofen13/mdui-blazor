@@ -187,6 +187,10 @@
     background-color: #fff;
     border-color: @slider-light-color;
   }
+
+  .mdui-slider-label {
+    background-color: @slider-light-color;
+  }
 }
 
 input[type="range"]:not(:disabled):hover {
@@ -214,17 +218,10 @@ input[type="range"]:not(:disabled):hover {
   }
 
   /* 滑块值为 0 */
-  .mdui-slider-thumb::after {
-    border-color: @slider-light-color-focus;
-  }
-}
-
-// 滑块值为 0
-.mdui-slider-zero {
-
-  // 滑块值为 0
-  .mdui-slider-label {
-    background-color: @slider-light-color;
+  &.mdui-slider-zero {
+    .mdui-slider-thumb::after {
+      border-color: @slider-light-color-focus;
+    }
   }
 }
 

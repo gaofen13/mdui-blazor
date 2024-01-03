@@ -9653,6 +9653,9 @@ th.mdui-table-cell-checkbox .mdui-checkbox {
   background-color: #fff;
   border-color: #bdbdbd;
 }
+.mdui-slider-zero .mdui-slider-label {
+  background-color: #bdbdbd;
+}
 input[type="range"]:not(:disabled):hover ~ .mdui-slider-thumb::before {
   -webkit-transform: scale(0.7);
           transform: scale(0.7);
@@ -9672,11 +9675,8 @@ input[type="range"]:not(:disabled):hover ~ .mdui-slider-thumb::before {
   -webkit-transform: translate(-50%) rotate(-45deg) scale(1);
           transform: translate(-50%) rotate(-45deg) scale(1);
 }
-.mdui-slider-actived .mdui-slider-thumb::after {
+.mdui-slider-actived.mdui-slider-zero .mdui-slider-thumb::after {
   border-color: #9e9e9e;
-}
-.mdui-slider-zero .mdui-slider-label {
-  background-color: #bdbdbd;
 }
 /* 禁用状态 */
 .mdui-slider-disabled input[type="range"] {
