@@ -11,9 +11,11 @@
     <span class="mdui-slider-track" style="width:100%;"></span>
     <span class="mdui-slider-fill" style="@FillStyle"></span>
     <span class="mdui-slider-thumb" style="@ThumbStyle">
-        @if (Discrete)
+        @if (!NoLabel)
         {
-            <span>@Value</span>
+            <span class="mdui-slider-label">
+                <span>@Value</span>
+            </span>
         }
     </span>
 </label>

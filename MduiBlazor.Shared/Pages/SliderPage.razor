@@ -10,7 +10,7 @@
 <PageContent>
     <PageContentItem Title="示例" OnClick="@(_=>ScrollToElementById("examples"))">
         <PageContentItem Title="普通滑块" OnClick="@(_=>ScrollToElementById("simple"))" />
-        <PageContentItem Title="间续滑块" OnClick="@(_=>ScrollToElementById("discrete"))" />
+        <PageContentItem Title="隐藏值" OnClick="@(_=>ScrollToElementById("nolabel"))" />
     </PageContentItem>
     <PageContentItem Title="组件参数" OnClick="@(_=>ScrollToElementById("attr"))" />
 </PageContent>
@@ -25,8 +25,8 @@
     <MduiText id="simple" Typo="@Typo.subheading"><b>普通滑块</b></MduiText>
     <ExampleSection Component="@typeof(SimpleSlider)" />
 
-    <MduiText id="discrete" Typo="@Typo.subheading"><b>间续滑块</b></MduiText>
-    <ExampleSection Component="@typeof(DiscreteSlider)" />
+    <MduiText id="nolabel" Typo="@Typo.subheading"><b>隐藏值</b></MduiText>
+    <ExampleSection Component="@typeof(NoLabelSlider)" />
 
     <MduiText id="discrete" Typo="@Typo.subheading"><b>禁用状态</b></MduiText>
     <p class="mdui-typo">设置组件参数<code>Disabled</code>为<code>true</code>就能禁用滑块。</p>

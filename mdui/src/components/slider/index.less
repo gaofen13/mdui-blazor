@@ -72,22 +72,69 @@
 .mdui-slider-thumb {
   position: absolute;
   top: 50%;
-  box-sizing: border-box;
-  width: 12px;
-  height: 12px;
-  margin-top: -6px;
-  background-color: @color-default-a200;
-  border: 2px solid @color-default-a200;
-  border-radius: 50%;
-  transform: translate(-50%);
-  transition:
-    background .45s @animation-curve-default,
-    border-color .45s @animation-curve-default,
-    transform .2s @animation-curve-default,
-    border-radius .2s @animation-curve-default;
-  will-change: background, border-color, transform, border-radius;
+  width: 24px;
+  height: 24px;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+
+  &::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #4c4c4c;
+    border-radius: 50%;
+    transform: scale(0);
+    opacity: 0.3;
+    transition: transform .25s @animation-curve-default;
+    content: "";
+  }
+
+  &::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    background-color: @color-default-a200;
+    border: 2px solid @color-default-a200;
+    border-radius: 50%;
+    transform: scale(.6);
+    transition:
+      background .45s @animation-curve-default,
+      border-color .45s @animation-curve-default,
+      transform .2s @animation-curve-default;
+    content: "";
+    will-change: background, border-color, transform;
+  }
 }
 
+/* 滑块值显示 */
+.mdui-slider-label {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  color: #fff;
+  font-size: 12px;
+  background-color: @color-default-a200;
+  border: none;
+  border-radius: 15px 15px 15px 0;
+  transform: translate(-50%) rotate(-45deg) scale(0);
+  transition: transform .25s @animation-curve-default;
+
+  span {
+    position: absolute;
+    white-space: nowrap;
+    transform: rotate(45deg);
+  }
+}
 
 /**
  * =============================================================================
@@ -112,8 +159,15 @@
       }
 
       .mdui-slider-thumb {
+
+        &::after {
+          background-color: @@color;
+          border: 2px solid @@color;
+        }
+      }
+
+      .mdui-slider-lable {
         background-color: @@color;
-        border: 2px solid @@color;
       }
     }
   }
@@ -121,18 +175,21 @@
   .loop-accent-theme(length(@globalAccentColors));
 }
 
-
 /**
  * =============================================================================
  * ============   Slider 的不同状态   ============
  * =============================================================================
  */
 
-/* 鼠标按下状态 */
-.mdui-slider {
+input[type="range"]:not(:disabled):hover {
+  ~.mdui-slider-thumb::before {
+    transform: scale(0.7);
+  }
+}
 
-  input[type="range"]:not(:disabled):hover,
-  input[type="range"]:disabled:active {
+/* 鼠标按下状态 */
+input[type="range"]:active {
+  &:not(:disabled) {
     ~.mdui-slider-track {
       &::before {
         background-color: @slider-light-color-focus;
@@ -140,23 +197,36 @@
     }
 
     ~.mdui-slider-thumb {
-      transform: translate(-50%) scale(1.6);
+      &::after {
+        transform: scale(0.8);
+      }
     }
+  }
+
+  ~.mdui-slider-thumb .mdui-slider-label {
+    transform: translate(-50%) rotate(-45deg) scale(1);
   }
 }
 
 /* 滑块值为 0 */
 .mdui-slider-zero {
-  .mdui-slider-thumb {
+  .mdui-slider-thumb::after {
     background-color: #fff;
     border-color: @slider-light-color;
   }
+
+  /* 滑块值为 0，且鼠标按下 */
+  input[type="range"]:not(:disabled):active~.mdui-slider-thumb::after {
+    border-color: @slider-light-color-focus;
+  }
 }
 
-/* 滑块值为 0，且鼠标按下 */
+// 滑块值为 0
 .mdui-slider-zero {
-  input[type="range"]:not(:disabled):hover~.mdui-slider-thumb {
-    border-color: @slider-light-color-focus;
+
+  // 滑块值为 0
+  .mdui-slider-label {
+    background-color: @slider-light-color;
   }
 }
 
@@ -181,89 +251,17 @@
   }
 
   .mdui-slider-thumb {
+    cursor: default;
+
+    &::after {
+      background-color: @slider-light-color-disabled;
+      border-color: transparent;
+      transform: scale(.42);
+    }
+  }
+
+  .mdui-slider-label {
     background-color: @slider-light-color-disabled;
-    border-color: transparent !important;
-    transform: translate(-50%) scale(.72);
-  }
-}
-
-/**
- * =============================================================================
- * ============   间续型滑块   ============
- * =============================================================================
- */
-.mdui-slider-discrete {
-
-  .mdui-slider-thumb {
-    width: 30px;
-    height: 30px;
-    margin-top: -15px;
-    margin-left: -15px;
-    border: none;
-    transform: rotate(-45deg) scale(.4);
-
-    // 间续型滑块的值显示
-    span {
-      position: absolute;
-      top: 9px;
-      width: 100%;
-      color: #fff;
-      font-size: 12px;
-      text-align: center;
-      transform: rotate(45deg);
-      opacity: 0;
-      transition: opacity .25s @animation-curve-default;
-    }
-  }
-
-  // 鼠标按下状态
-  &.mdui-slider {
-
-    input[type="range"]:not(:disabled):hover,
-    input[type="range"]:disabled:active {
-      ~.mdui-slider-track {
-        &::before {
-          background-color: @slider-light-color-focus;
-        }
-      }
-
-      ~.mdui-slider-thumb {
-        border-radius: 15px 15px 15px 0;
-        transform: rotate(-45deg) scale(1) translate(22px, -22px) !important;
-  
-        span {
-          opacity: 1;
-        }
-      }
-    }
-  }
-
-  // 滑块值为 0
-  &.mdui-slider-zero {
-    .mdui-slider-thumb {
-      background-color: #323232;
-    }
-  }
-
-  // 滑块值为 0，且鼠标按下
-  &.mdui-slider-zero {
-    input[type="range"]:hover~.mdui-slider-thumb {
-      background-color: @slider-light-color;
-    }
-  }
-
-  // 禁用状态
-  &.mdui-slider-disabled {
-    .mdui-slider-thumb {
-      transform: rotate(-45deg) scale(.288);
-    }
-  }
-
-  // 滑块值为 0，且禁用
-  &.mdui-slider-zero.mdui-slider-disabled {
-    .mdui-slider-thumb {
-      background-color: @slider-light-color;
-    }
   }
 }
 
@@ -282,28 +280,38 @@
     }
   }
 
-  // 鼠标按下状态
-  .mdui-slider {
-    input[type="range"]:hover~.mdui-slider-track {
+  .mdui-slider-lable {
+    background-color: @slider-dark-color-focus;
+  }
 
-      &::before {
-        background-color: @slider-dark-color-focus;
-      }
+  .mdui-slider-thumb::before {
+    background-color: #9e9e9e;
+  }
+
+  // 鼠标按下状态
+  input[type="range"]:not(:disabled):active~.mdui-slider-track {
+
+    &::before {
+      background-color: @slider-dark-color-focus;
     }
   }
 
   // 滑块值为 0
   .mdui-slider-zero {
-    .mdui-slider-thumb {
+    .mdui-slider-thumb::after {
       background-color: @layout-dark-color-3;
       border-color: @slider-dark-color;
     }
-  }
 
-  // 滑块值为 0，且鼠标按下
-  .mdui-slider-zero {
-    input[type="range"]:hover~.mdui-slider-thumb {
-      border-color: @slider-dark-color-focus;
+    // 滑块值为 0，且鼠标按下
+    input[type="range"]:not(:disabled):active~.mdui-slider-thumb {
+      &::after {
+        border-color: @slider-dark-color-focus;
+      }
+    }
+
+    .mdui-slider-label {
+      background-color: @slider-dark-color-focus;
     }
   }
 
@@ -323,33 +331,12 @@
       }
     }
 
-    .mdui-slider-thumb {
+    .mdui-slider-thumb::after {
       background-color: @slider-dark-color-disabled;
     }
-  }
 
-  // 间续型滑块
-  .mdui-slider-discrete {
-
-    // 滑块值为 0
-    &.mdui-slider-zero {
-      .mdui-slider-thumb {
-        background-color: #fefefe;
-      }
-    }
-
-    // 滑块值为 0，且鼠标按下
-    &.mdui-slider-zero {
-      input[type="range"]:hover~.mdui-slider-thumb {
-        background-color: #5c5c5c;
-      }
-    }
-
-    // 滑块值为 0，且禁用
-    &.mdui-slider-zero.mdui-slider-disabled {
-      .mdui-slider-thumb {
-        background-color: @slider-dark-color-disabled;
-      }
+    .mdui-slider-label {
+      background-color: @slider-dark-color-disabled;
     }
   }
 });
