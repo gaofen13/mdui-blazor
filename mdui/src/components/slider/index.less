@@ -181,6 +181,14 @@
  * =============================================================================
  */
 
+/* 滑块值为 0 */
+.mdui-slider-zero {
+  .mdui-slider-thumb::after {
+    background-color: #fff;
+    border-color: @slider-light-color;
+  }
+}
+
 input[type="range"]:not(:disabled):hover {
   ~.mdui-slider-thumb::before {
     transform: scale(0.7);
@@ -188,35 +196,25 @@ input[type="range"]:not(:disabled):hover {
 }
 
 /* 鼠标按下状态 */
-input[type="range"]:active {
-  &:not(:disabled) {
-    ~.mdui-slider-track {
-      &::before {
-        background-color: @slider-light-color-focus;
-      }
-    }
-
-    ~.mdui-slider-thumb {
-      &::after {
-        transform: scale(0.8);
-      }
+.mdui-slider-actived {
+  .mdui-slider-track {
+    &::before {
+      background-color: @slider-light-color-focus;
     }
   }
 
-  ~.mdui-slider-thumb .mdui-slider-label {
-    transform: translate(-50%) rotate(-45deg) scale(1);
-  }
-}
+  .mdui-slider-thumb {
+    &::after {
+      transform: scale(0.8);
+    }
 
-/* 滑块值为 0 */
-.mdui-slider-zero {
+    .mdui-slider-label {
+      transform: translate(-50%) rotate(-45deg) scale(1);
+    }
+  }
+
+  /* 滑块值为 0 */
   .mdui-slider-thumb::after {
-    background-color: #fff;
-    border-color: @slider-light-color;
-  }
-
-  /* 滑块值为 0，且鼠标按下 */
-  input[type="range"]:not(:disabled):active~.mdui-slider-thumb::after {
     border-color: @slider-light-color-focus;
   }
 }
@@ -289,10 +287,12 @@ input[type="range"]:active {
   }
 
   // 鼠标按下状态
-  input[type="range"]:not(:disabled):active~.mdui-slider-track {
+  .mdui-slider-actived {
+    .mdui-slider-track {
 
-    &::before {
-      background-color: @slider-dark-color-focus;
+      &::before {
+        background-color: @slider-dark-color-focus;
+      }
     }
   }
 
@@ -304,9 +304,11 @@ input[type="range"]:active {
     }
 
     // 滑块值为 0，且鼠标按下
-    input[type="range"]:not(:disabled):active~.mdui-slider-thumb {
-      &::after {
-        border-color: @slider-dark-color-focus;
+    &.mdui-slider-actived {
+      .mdui-slider-thumb {
+        &::after {
+          border-color: @slider-dark-color-focus;
+        }
       }
     }
 

@@ -7,7 +7,8 @@
         readonly="@Readonly" disabled="@Disabled" @attributes="@AdditionalAttributes"
         value="@BindConverter.FormatValue(CurrentValueAsString)"
         @oninput="@(EventCallback.Factory.CreateBinder<string?>(this, __value => CurrentValueAsString = __value, CurrentValueAsString))"
-        @onfocus="@OnFocus" @onblur="@OnBlur" />
+        @onblur="@OnBlur" @ontouchstart="@Active" @ontouchend="@Disactive" @onmousedown="@Active"
+        @onmouseup="@Disactive" />
     <span class="mdui-slider-track" style="width:100%;"></span>
     <span class="mdui-slider-fill" style="@FillStyle"></span>
     <span class="mdui-slider-thumb" style="@ThumbStyle">
