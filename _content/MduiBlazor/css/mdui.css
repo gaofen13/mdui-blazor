@@ -12009,8 +12009,8 @@ select.mdui-select[multiple] option:last-child {
  * =============================================================================
  */
 .mdui-drawer {
-  -webkit-transition: all 0.3s cubic-bezier(0.4, 0, 1, 1);
-  transition: all 0.3s cubic-bezier(0.4, 0, 1, 1);
+  -webkit-transition: all 0.3s cubic-bezier(0, 0, 0.2, 1);
+  transition: all 0.3s cubic-bezier(0, 0, 0.2, 1);
 }
 /* 抽屉栏外层，默认出现在左侧且隐藏 */
 .mdui-drawer {
