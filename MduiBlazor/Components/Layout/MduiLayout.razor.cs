@@ -8,8 +8,8 @@ namespace MduiBlazor
     {
         private bool _locked;
         private bool _firstLoaded;
-        private MduiDrawer? _currentLeftDrawer;
-        private MduiDrawer? _currentRightDrawer;
+        private bool _persistentLeftDrawerOpened;
+        private bool _persistentRightDrawerOpened;
 
         protected string Classname =>
             new ClassBuilder("mdui-layout")
@@ -18,8 +18,8 @@ namespace MduiBlazor
             .AddClass("mdui-loaded", _firstLoaded)
             .AddClass($"mdui-theme-primary-{PrimaryColor.ToDescriptionString()}")
             .AddClass($"mdui-theme-accent-{AccentColor.ToDescriptionString()}")
-            .AddClass("mdui-drawer-body-left", _currentLeftDrawer?.Persistent == true && _currentLeftDrawer.Opened)
-            .AddClass("mdui-drawer-body-right", _currentRightDrawer?.Persistent == true && _currentRightDrawer.Opened)
+            .AddClass("mdui-drawer-body-left", _persistentLeftDrawerOpened)
+            .AddClass("mdui-drawer-body-right", _persistentRightDrawerOpened)
             .AddClass("mdui-appbar-with-tab", AppbarWithTab)
             .AddClass("mdui-appbar-with-toolbar", AppbarWithToolbar)
             .AddClass("mdui-appbar-with-tab-larger", AppbarWithTabLarger)
@@ -53,35 +53,15 @@ namespace MduiBlazor
             }
         }
 
-        public void AddDarwer(MduiDrawer drawer)
+        public void ConfigLeftDarwer(bool persistentLeftDarwerOpened)
         {
-            if (drawer.RightSide)
-            {
-                _currentRightDrawer = drawer;
-            }
-            else
-            {
-                _currentLeftDrawer = drawer;
-            }
+            _persistentLeftDrawerOpened = persistentLeftDarwerOpened;
             StateHasChanged();
         }
 
-        public void RemoveDarwer(MduiDrawer drawer)
+        public void ConfigRightDarwer(bool persistentRightDarwerOpened)
         {
-            if (drawer.RightSide)
-            {
-                if (_currentRightDrawer is not null)
-                {
-                    _currentRightDrawer = null;
-                }
-            }
-            else
-            {
-                if (_currentLeftDrawer is not null)
-                {
-                    _currentLeftDrawer = null;
-                }
-            }
+            _persistentRightDrawerOpened = persistentRightDarwerOpened;
             StateHasChanged();
         }
 

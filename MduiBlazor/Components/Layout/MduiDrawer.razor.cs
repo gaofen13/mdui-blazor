@@ -73,13 +73,13 @@ namespace MduiBlazor
 
         public void ConfigLayout(bool drawerOpened)
         {
-            if (drawerOpened)
+            if (RightSide)
             {
-                Layout?.AddDarwer(this);
+                Layout?.ConfigRightDarwer(Persistent && drawerOpened);
             }
             else
             {
-                Layout?.RemoveDarwer(this);
+                Layout?.ConfigLeftDarwer(Persistent && drawerOpened);
             }
         }
 

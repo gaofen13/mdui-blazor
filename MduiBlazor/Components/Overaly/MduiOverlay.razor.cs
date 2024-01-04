@@ -7,8 +7,9 @@ namespace MduiBlazor
     public partial class MduiOverlay : MduiComponentBase
     {
         protected string Classname =>
-            new ClassBuilder("mdui-overlay mdui-overlay-show")
+            new ClassBuilder("mdui-overlay")
             .AddClass("mdui-overlay-transparent", Transparent)
+            .AddClass("mdui-overlay-show", Visible)
             .AddClass("mdui-typo", UseMduiTypo)
             .Build();
 
