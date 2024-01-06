@@ -50,10 +50,10 @@ namespace MduiBlazor
         }
 
         public DialogReference Alert(string? message, string? title = null)
-            => Show(message, title, new DialogOptions { Modal = true, ShowConfirmButton = true, DialogType = DialogType.Alert });
+            => Show(message, title, new DialogOptions { Modal = true, ShowConfirmButton = true, MaxWidth = "448px" });
 
         public DialogReference Confirm(string? message, string? title = null)
-            => Show(message, title, new DialogOptions { ShowCancelButton = true, ShowConfirmButton = true, DialogType = DialogType.Confirm });
+            => Show(message, title, new DialogOptions { ShowCancelButton = true, ShowConfirmButton = true, MaxWidth = "448px" });
 
         public DialogReference Show(string? message, string? title = null, DialogOptions? options = null)
         {

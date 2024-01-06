@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Components;
 
 namespace MduiBlazor
 {
-    public partial class DialogInstance
+    public partial class DialogInstance : MduiComponentBase
     {
         [CascadingParameter]
         private MduiDialogProvider? DialogProvider { get; set; }

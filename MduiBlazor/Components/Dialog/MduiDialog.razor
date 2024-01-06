@@ -2,7 +2,7 @@
 @inherits MduiComponentBase
 
 <MduiOverlay Visible="@(DialogInstance != null || Open)" OnBackgroundClick="@OnClickBackground">
-    <div class="@Classname" style="@Style" @attributes="@AdditionalAttributes" @onclick:stopPropagation="@true">
+    <div class="@Classname" style="@Stylelist" @attributes="@AdditionalAttributes" @onclick:stopPropagation="@true">
         @if (!string.IsNullOrWhiteSpace(Title))
         {
             <div class="mdui-dialog-title">@Title</div>

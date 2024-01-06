@@ -11,13 +11,18 @@ namespace MduiBlazor
         protected string Classname =>
           new ClassBuilder("mdui-dialog")
             .AddClass("mdui-dialog-open", DialogInstance != null || Open)
-            .AddClass($"mdui-dialog-{_options.DialogType.ToDescriptionString()}", _options.DialogType != DialogType.Dialog)
             .AddClass(Class)
             .Build();
 
         private string ActionsClassname =>
             new ClassBuilder("mdui-dialog-actions")
             .AddClass("mdui-dialog-actions-stacked", _options.ActionsStack)
+            .Build();
+
+        protected string Stylelist =>
+            new StyleBuilder()
+            .AddStyle("max-width", _options.MaxWidth!, !string.IsNullOrWhiteSpace(_options.MaxWidth))
+            .AddStyle(Style)
             .Build();
 
         [CascadingParameter]
