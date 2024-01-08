@@ -11787,26 +11787,6 @@ select.mdui-select[multiple] option:last-child {
   height: 24px;
   color: rgba(0, 0, 0, 0.54);
 }
-/* 列表项头像 */
-.mdui-list-item-avatar {
-  min-width: 40px;
-  max-width: 40px;
-  height: 40px;
-  margin-top: 8px;
-  margin-bottom: 8px;
-  line-height: 40px;
-  text-align: center;
-  background-color: #BDBDBD;
-  border-radius: 50%;
-}
-.mdui-list-item-avatar img {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-}
-.mdui-list-item-avatar .mdui-icon {
-  color: #FFFFFF !important;
-}
 /* 列表项内容 */
 .mdui-list-item-content {
   -webkit-box-flex: 1;
@@ -11857,7 +11837,7 @@ select.mdui-select[multiple] option:last-child {
   height: 60px;
 }
 /* 列表项内的元素间添加间距 */
-.mdui-list-item-avatar ~ .mdui-list-item-content,
+.mdui-avatar ~ .mdui-list-item-content,
 .mdui-checkbox ~ .mdui-list-item-content,
 .mdui-switch ~ .mdui-list-item-content,
 .mdui-radio ~ .mdui-list-item-content,
@@ -11911,7 +11891,7 @@ select.mdui-select[multiple] option:last-child {
   height: 20px !important;
   font-size: 20px !important;
 }
-.mdui-list-dense .mdui-list-item-avatar {
+.mdui-list-dense .mdui-avatar {
   width: 36px;
   min-width: 36px;
   height: 36px;
@@ -13816,6 +13796,31 @@ select.mdui-select[multiple] option:last-child {
 /* 锁定屏幕 */
 .mdui-locked {
   overflow: hidden;
+}
+/**
+ * =============================================================================
+ * ************   Avatar 头像   ************
+ * =============================================================================
+ */
+/* 头像 */
+.mdui-avatar {
+  min-width: 40px;
+  max-width: 40px;
+  height: 40px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  line-height: 40px;
+  text-align: center;
+  background-color: #BDBDBD;
+  border-radius: 50%;
+}
+.mdui-avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+.mdui-avatar .mdui-icon {
+  color: #FFFFFF;
 }
 
 /*# sourceMappingURL=mdui.css.map */

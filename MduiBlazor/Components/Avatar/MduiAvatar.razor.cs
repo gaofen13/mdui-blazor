@@ -1,12 +1,12 @@
-﻿using MduiBlazor.Utilities;
+using MduiBlazor.Utilities;
 using Microsoft.AspNetCore.Components;
 
 namespace MduiBlazor
 {
-    public partial class MduiListAvatar : MduiComponentBase
+    public partial class MduiAvatar : MduiComponentBase
     {
         protected string Classname =>
-            new ClassBuilder("mdui-list-item-avatar")
+            new ClassBuilder("mdui-avatar")
             .AddClass(Class)
             .Build();
 

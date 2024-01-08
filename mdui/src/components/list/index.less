@@ -3,6 +3,7 @@
  * ************   List 列表   ************
  * =============================================================================
  */
+@import '../avatar/index';
 
 /* 列表 */
 .mdui-list {
@@ -88,29 +89,6 @@
   }
 }
 
-/* 列表项头像 */
-.mdui-list-item-avatar {
-  min-width: 40px;
-  max-width: 40px;
-  height: 40px;
-  margin-top: 8px;
-  margin-bottom: 8px;
-  line-height: 40px;
-  text-align: center;
-  background-color: @color-grey-400;
-  border-radius: 50%;
-
-  img {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-  }
-
-  .mdui-icon {
-    color: @color-white !important;
-  }
-}
-
 /* 列表项内容 */
 .mdui-list-item-content {
   flex-grow: 1;
@@ -172,7 +150,7 @@
 }
 
 /* 列表项内的元素间添加间距 */
-.mdui-list-item-avatar,
+.mdui-avatar,
 .mdui-checkbox,
 .mdui-switch,
 .mdui-radio,
@@ -243,7 +221,7 @@
   }
 
   // 头像
-  .mdui-list-item-avatar {
+  .mdui-avatar {
     width: 36px;
     min-width: 36px;
     height: 36px;
