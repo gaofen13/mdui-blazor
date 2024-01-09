@@ -13822,5 +13822,107 @@ select.mdui-select[multiple] option:last-child {
 .mdui-avatar .mdui-icon {
   color: #FFFFFF;
 }
+.mdui-badge {
+  position: relative;
+  display: inline-block;
+}
+.mdui-badge .mdui-badge-content {
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  min-width: 20px;
+  height: 20px;
+  padding: 4px 6px;
+  font-size: 12px;
+  line-height: 1;
+  white-space: nowrap;
+  text-align: center;
+  background-color: #e8e8e8;
+  border-radius: 10px;
+  --inset-size: -10px;
+}
+.mdui-badge .mdui-badge-content .mdui-icon {
+  color: inherit;
+  font-size: 12px;
+}
+.mdui-badge .mdui-badge-content.mdui-badge-dot {
+  width: 9px;
+  min-width: 0;
+  max-height: 9px;
+  padding: 0;
+  border-radius: 50%;
+  --inset-size: -4px;
+}
+.mdui-badge .mdui-badge-content.mdui-badge-top {
+  top: var(--inset-size);
+}
+.mdui-badge .mdui-badge-content.mdui-badge-top.mdui-badge-left {
+  left: var(--inset-size);
+}
+.mdui-badge .mdui-badge-content.mdui-badge-top.mdui-badge-center {
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+.mdui-badge .mdui-badge-content.mdui-badge-top.mdui-badge-right {
+  right: var(--inset-size);
+}
+.mdui-badge .mdui-badge-content.mdui-badge-middle {
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+.mdui-badge .mdui-badge-content.mdui-badge-middle.mdui-badge-left {
+  left: var(--inset-size);
+}
+.mdui-badge .mdui-badge-content.mdui-badge-middle.mdui-badge-center {
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+.mdui-badge .mdui-badge-content.mdui-badge-middle.mdui-badge-right {
+  right: var(--inset-size);
+}
+.mdui-badge .mdui-badge-content.mdui-badge-bottom {
+  bottom: var(--inset-size);
+}
+.mdui-badge .mdui-badge-content.mdui-badge-bottom.mdui-badge-left {
+  left: var(--inset-size);
+}
+.mdui-badge .mdui-badge-content.mdui-badge-bottom.mdui-badge-center {
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+.mdui-badge .mdui-badge-content.mdui-badge-bottom.mdui-badge-right {
+  right: var(--inset-size);
+}
+.mdui-badge .mdui-badge-content:has(.mdui-icon) {
+  width: 20px;
+}
+/**
+ * =============================================================================
+ * ************  Badge dark   ************
+ * =============================================================================
+ */
+.mdui-theme-layout-dark .mdui-badge .mdui-badge-content {
+  background-color: #4c4c4c;
+}
+@media (prefers-color-scheme: dark) {
+  .mdui-theme-layout-auto .mdui-badge .mdui-badge-content {
+    background-color: #4c4c4c;
+  }
+}
 
 /*# sourceMappingURL=mdui.css.map */
