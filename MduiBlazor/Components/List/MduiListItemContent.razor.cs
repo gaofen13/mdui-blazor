@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Components;
 
 namespace MduiBlazor
 {
-    public partial class MduiListContent : MduiComponentBase
+    public partial class MduiListItemContent : MduiComponentBase
     {
         protected string Classname =>
             new ClassBuilder("mdui-list-item-content")
