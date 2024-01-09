@@ -9,8 +9,5 @@ namespace MduiBlazor
             new ClassBuilder("mdui-avatar")
             .AddClass(Class)
             .Build();
-
-        [Parameter]
-        public string? ImgSrc { get; set; }
     }
 }
