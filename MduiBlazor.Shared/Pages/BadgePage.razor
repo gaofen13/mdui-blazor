@@ -1,0 +1,131 @@
+@page "/badge"
+@inherits BasePage
+@using MduiBlazor.Shared.Pages.Examples.Badges
+
+<PageTitle>徽章</PageTitle>
+
+<div class="mdui-m-y-5">
+    <MduiText Typo="@Typo.display1" TextColor="@Colors.Theme.Primary">徽章</MduiText>
+</div>
+
+<PageContent>
+    <PageContentItem Title="示例" OnClick="@(_=>ScrollToElementById("examples"))">
+        <PageContentItem Title="简单徽章" OnClick="@(_=>ScrollToElementById("simple"))" />
+        <PageContentItem Title="颜色" OnClick="@(_=>ScrollToElementById("color"))" />
+        <PageContentItem Title="位置" OnClick="@(_=>ScrollToElementById("position"))" />
+    </PageContentItem>
+    <PageContentItem Title="组件参数" OnClick="@(_=>ScrollToElementById("attr"))" />
+</PageContent>
+
+<MduiDivider Class="mdui-m-y-5" />
+
+<div>
+    <h2 id="examples">
+        <MduiText Typo="@Typo.headline" TextColor="@Colors.Theme.Primary">示例</MduiText>
+    </h2>
+
+    <MduiText id="simple" Typo="@Typo.subheading"><b>简单徽章</b></MduiText>
+    <ExampleSection Component="@typeof(SimpleBadge)" />
+
+    <MduiText id="customActivator" Typo="@Typo.subheading"><b>颜色</b></MduiText>
+    <ExampleSection Component="@typeof(ColorBadge)" />
+
+    <MduiText id="position" Typo="@Typo.subheading"><b>位置</b></MduiText>
+    <ExampleSection Component="@typeof(BadgePosition)" />
+</div>
+
+<MduiDivider Class="mdui-m-y-5" />
+
+<div>
+    <h2 id="attr">
+        <MduiText Typo="@Typo.headline" TextColor="@Colors.Theme.Primary">组件参数</MduiText>
+    </h2>
+
+    <MduiTableContainer UseMduiTypo Class="mdui-m-y-1">
+        <MduiSimpleTable>
+            <thead>
+                <th>组件</th>
+                <th>参数名称</th>
+                <th>类型/返回类型</th>
+                <th>说明</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td rowspan="8">
+                        <code>MduiBadge</code>
+                    </td>
+                    <td>
+                        <code>Content</code>
+                    </td>
+                    <td>
+                        <code>string?</code>
+                    </td>
+                    <td>徽标内容。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>Icon</code>
+                    </td>
+                    <td>
+                        <code>string?</code>
+                    </td>
+                    <td>徽标 Material 图标类名。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>Color</code>
+                    </td>
+                    <td>
+                        <code>string?</code>
+                    </td>
+                    <td>徽标背景颜色。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>TextColor</code>
+                    </td>
+                    <td>
+                        <code>string?</code>
+                    </td>
+                    <td>徽标文本颜色。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>HorizontalPosition</code>
+                    </td>
+                    <td>
+                        <code>HorizontalPosition</code>
+                    </td>
+                    <td>徽标在横向上的位置(枚举，Left、Center、Right)。默认<code>HorizontalPosition.Left</code>。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>VerticalPosition</code>
+                    </td>
+                    <td>
+                        <code>VerticalPosition</code>
+                    </td>
+                    <td>徽标在竖向上的位置(枚举，Top、Middle、Bottom)。默认<code>VerticalPosition.Top</code>。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>Dot</code>
+                    </td>
+                    <td>
+                        <code>bool</code>
+                    </td>
+                    <td>是否显示为圆点，默认<code>false</code>。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>Visible</code>
+                    </td>
+                    <td>
+                        <code>bool</code>
+                    </td>
+                    <td>是否启用徽标显示，默认<code>true</code>。</td>
+                </tr>
+            </tbody>
+        </MduiSimpleTable>
+    </MduiTableContainer>
+</div>

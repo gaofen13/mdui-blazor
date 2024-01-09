@@ -1,0 +1,26 @@
+<MduiField Label="HorizontalPosition">
+    <MduiSelect @bind-Value="@horizontal">
+        <option value="@HorizontalPosition.Left">@HorizontalPosition.Left</option>
+        <option value="@HorizontalPosition.Center">@HorizontalPosition.Center</option>
+        <option value="@HorizontalPosition.Right">@HorizontalPosition.Right</option>
+    </MduiSelect>
+</MduiField>
+
+<MduiField Label="VerticalPosition">
+    <MduiSelect @bind-Value="@vertical">
+        <option value="@VerticalPosition.Top">@VerticalPosition.Top</option>
+        <option value="@VerticalPosition.Middle">@VerticalPosition.Middle</option>
+        <option value="@VerticalPosition.Bottom">@VerticalPosition.Bottom</option>
+    </MduiSelect>
+</MduiField>
+
+<div style="width: 100%;display:flex;justify-content:center;">
+    <MduiBadge Class="mdui-m-a-3" Dot Color="@Colors.Theme.Primary" HorizontalPosition="horizontal" VerticalPosition="@vertical">
+        <MduiButton Color="@Colors.Theme.Accent">Badge</MduiButton>
+    </MduiBadge>
+</div>
+
+@code {
+    HorizontalPosition horizontal;
+    VerticalPosition vertical;
+}

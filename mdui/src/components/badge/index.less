@@ -1,0 +1,110 @@
+.mdui-badge {
+    position: relative;
+    display: inline-block;
+
+    .mdui-badge-content {
+        position: absolute;
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: center;
+        box-sizing: border-box;
+        min-width: 20px;
+        height: 20px;
+        padding: 4px 6px;
+        font-size: 12px;
+        line-height: 1;
+        white-space: nowrap;
+        text-align: center;
+        background-color: #e8e8e8;
+        border-radius: 10px;
+
+        --inset-size: -10px;
+
+        .mdui-icon {
+            color: inherit;
+            font-size: 12px;
+        }
+
+        &.mdui-badge-dot {
+            width: 9px;
+            min-width: 0;
+            max-height: 9px;
+            padding: 0;
+            border-radius: 50%;
+
+            --inset-size: -4px;
+        }
+
+        &.mdui-badge-top {
+            top: var(--inset-size);
+
+            &.mdui-badge-left {
+                left: var(--inset-size);
+            }
+
+            &.mdui-badge-center {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            &.mdui-badge-right {
+                right: var(--inset-size);
+            }
+        }
+
+        &.mdui-badge-middle {
+            top: 50%;
+            transform: translateY(-50%);
+
+            &.mdui-badge-left {
+                left: var(--inset-size);
+            }
+
+            &.mdui-badge-center {
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+
+            &.mdui-badge-right {
+                right: var(--inset-size);
+            }
+        }
+
+        &.mdui-badge-bottom {
+            bottom: var(--inset-size);
+
+            &.mdui-badge-left {
+                left: var(--inset-size);
+            }
+
+            &.mdui-badge-center {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            &.mdui-badge-right {
+                right: var(--inset-size);
+            }
+        }
+    }
+
+    .mdui-badge-content:has(.mdui-icon) {
+        width: 20px;
+    }
+}
+
+
+/**
+ * =============================================================================
+ * ************  Badge dark   ************
+ * =============================================================================
+ */
+.layout-theme({
+
+    .mdui-badge {
+        .mdui-badge-content {
+            background-color: #4c4c4c;
+        }
+    }
+});
