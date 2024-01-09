@@ -13804,6 +13804,7 @@ select.mdui-select[multiple] option:last-child {
  */
 /* 头像 */
 .mdui-avatar {
+  display: inline-block;
   min-width: 40px;
   max-width: 40px;
   height: 40px;
