@@ -1,0 +1,9 @@
+<MduiDialog Options="@(new DialogOptions{Modal=true})">
+    <MduiIcon Icon="@IconName" />
+    <CodeSnippet>@($"<MduiIcon Icon=\"{IconName}\"") /></CodeSnippet>
+</MduiDialog>
+
+@code {
+    [Parameter]
+    public string? IconName { get; set; }
+}

@@ -1,19 +1,13 @@
 using MduiBlazor.Shared.Data;
 using Microsoft.AspNetCore.Components;
-using Microsoft.JSInterop;
 using System.Net.Http.Json;
 
 namespace MduiBlazor.Shared.Pages
 {
     public partial class MaterialICLPage
     {
-        private bool _show;
         private string? _searchInput;
-        private string? _selectedIcon;
-        private IEnumerable<MaterialIcon> _showIcons = Enumerable.Empty<MaterialIcon>();
-
-        [Inject]
-        private IJSRuntime JSRuntime { get; set; } = default!;
+        private IEnumerable<MaterialIcon> _showIcons = [];
 
         [Inject]
         private HttpClient HttpClient { get; set; } = default!;
@@ -24,7 +18,8 @@ namespace MduiBlazor.Shared.Pages
         [Inject]
         private MaterialIconList MaterialIconList { get; set; } = new();
 
-        private string? IconCodeContents { get; set; }
+        [Inject]
+        private DialogService? DialogService { get; set; }
 
         protected override async Task OnInitializedAsync()
         {
@@ -61,9 +56,11 @@ namespace MduiBlazor.Shared.Pages
 
         private void OnClickIconItem(string? name)
         {
-            IconCodeContents = $"<MduiIcon Icon=\"{name}\" />";
-            _selectedIcon = name;
-            _show = true;
+            var parameters = new ComponentParameters
+            {
+                { "IconName", name??string.Empty }
+            };
+            DialogService?.Show<IconDemoDialog>(parameters);
         }
     }
 }
