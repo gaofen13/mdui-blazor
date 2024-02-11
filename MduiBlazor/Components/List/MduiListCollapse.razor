@@ -3,7 +3,7 @@
 @implements IDisposable
 
 <li class="@Classname" style="@Style" @attributes="@AdditionalAttributes">
-    <div class="@HeaderClassname" @onclick="@OnTitleClicked">
+    <div class="@HeaderClassname" @onclick="@OnTitleClicked" @onclick:stopPropagation="@true">
         @if (IconContent is not null)
         {
             @IconContent

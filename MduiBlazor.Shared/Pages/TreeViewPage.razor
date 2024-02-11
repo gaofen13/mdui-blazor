@@ -1,0 +1,165 @@
+@page "/treeview"
+@inherits BasePage
+@using MduiBlazor.Shared.Pages.Examples.TreeView
+
+<PageTitle>树形组件</PageTitle>
+<div class="mdui-m-y-5">
+    <MduiText Typo="@Typo.display1" TextColor="@Colors.Theme.Primary">树形组件</MduiText>
+</div>
+
+<PageContent>
+    <PageContentItem Title="示例" OnClick="@(_=>ScrollToElementById("examples"))">
+        <PageContentItem Title="单选树形组件" OnClick="@(_=>ScrollToElementById("singleTree"))" />
+        <PageContentItem Title="多选树形组件" OnClick="@(_=>ScrollToElementById("multiTree"))" />
+        <PageContentItem Title="紧凑型&禁用涟漪动画" OnClick="@(_=>ScrollToElementById("dense&ripple"))" />
+    </PageContentItem>
+    <PageContentItem Title="组件参数" OnClick="@(_=>ScrollToElementById("attr"))" />
+</PageContent>
+
+<MduiDivider Class="mdui-m-y-5" />
+
+<div>
+    <h2 id="examples">
+        <MduiText Typo="@Typo.headline" TextColor="@Colors.Theme.Primary">示例</MduiText>
+    </h2>
+
+    <MduiText id="singleTree" Typo="@Typo.subheading"><b>单选树形组件</b></MduiText>
+    <ExampleSection Component="@typeof(SimpleTreeView)" />
+
+    <MduiText id="multiTree" Typo="@Typo.subheading"><b>多选树形组件</b></MduiText>
+    <ExampleSection Component="@typeof(MultiSelectionTreeView)" />
+
+    <MduiText id="dense&ripple" Typo="@Typo.subheading"><b>紧凑型&禁用涟漪动画</b></MduiText>
+    <ExampleSection Component="@typeof(DenseRippleTreeView)" />
+</div>
+
+<MduiDivider Class="mdui-m-y-5" />
+
+<div>
+    <h2 id="attr">
+        <MduiText Typo="@Typo.headline" TextColor="@Colors.Theme.Primary">组件参数</MduiText>
+    </h2>
+
+    <MduiTableContainer UseMduiTypo Class="mdui-m-y-1">
+        <MduiSimpleTable>
+            <thead>
+                <th>组件</th>
+                <th>参数名称</th>
+                <th>类型/返回类型</th>
+                <th>说明</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td rowspan="8"><code>MduiTreeView</code></td>
+                    <td>
+                        <code>MultiSelection</code>
+                    </td>
+                    <td>
+                        <code>bool</code>
+                    </td>
+                    <td>是否为多选树形组件，默认<code>false</code>。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>Dense</code>
+                    </td>
+                    <td>
+                        <code>bool</code>
+                    </td>
+                    <td>是否为紧凑型组件，默认<code>false</code>。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>DisableRipple</code>
+                    </td>
+                    <td>
+                        <code>bool</code>
+                    </td>
+                    <td>是否禁用涟漪动画，默认<code>false</code>。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>Indent</code>
+                    </td>
+                    <td>
+                        <code>string</code>
+                    </td>
+                    <td>组件项缩进量，样式<code>padding-left</code>值。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>SelectedValue</code>
+                    </td>
+                    <td>
+                        <code>TValue?</code>
+                    </td>
+                    <td>单选树形组件绑定的值。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>SelectedValueChanged</code>
+                    </td>
+                    <td>
+                        <code>EventCallback&lt;TValue?&gt;</code>
+                    </td>
+                    <td>单选树形组件绑定值的回调函数，一般用于双向绑定。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>SelectedValues</code>
+                    </td>
+                    <td>
+                        <code>IEnumerable&lt;TValue?&gt;</code>
+                    </td>
+                    <td>多选树形组件绑定的值。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>SelectedValuesChanged</code>
+                    </td>
+                    <td>
+                        <code>EventCallback&lt;IEnumerable&lt;TValue?&gt;&gt;</code>
+                    </td>
+                    <td>多选树形组件绑定值的回调函数，一般用于双向绑定。</td>
+                </tr>
+                <tr>
+                    <td rowspan="4"><code>MduiTreeViewItem</code></td>
+                    <td>
+                        <code>Title</code>
+                    </td>
+                    <td>
+                        <code>string?</code>
+                    </td>
+                    <td>树形组件项的显示文本。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>TitleContent</code>
+                    </td>
+                    <td>
+                        <code>RenderFragment?</code>
+                    </td>
+                    <td>树形组件项显示部分的渲染片段。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>Value</code>
+                    </td>
+                    <td>
+                        <code>TValue?</code>
+                    </td>
+                    <td>树形组件项的值。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>OnClick</code>
+                    </td>
+                    <td>
+                        <code>EventCallback&lt;MouseEventArgs&gt;</code>
+                    </td>
+                    <td>树形组件项点击事件的回调函数。</td>
+                </tr>
+            </tbody>
+        </MduiSimpleTable>
+    </MduiTableContainer>
+</div>

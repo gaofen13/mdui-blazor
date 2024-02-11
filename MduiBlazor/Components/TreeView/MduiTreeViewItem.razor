@@ -1,0 +1,59 @@
+@namespace MduiBlazor
+@inherits MduiComponentBase
+@typeparam TValue
+
+@if (HasChildren)
+{
+    <MduiCollapse Open="@_opened" DisableRipple="@TreeRoot.DisableRipple">
+        <HeaderContent>
+            <div class="mdui-treeview-item mdui-collapse-item-header">
+                <MduiIconButton Class="mdui-collapse-item-arrow" Icon="keyboard_arrow_down" OnClick="@OnOpenChanged"
+                    DisableRipple="@TreeRoot.DisableRipple" />
+                <div class="@TitleClassname" @onclick="@OnClickItemAsync" @onclick:stopPropagation="@true">
+                    @if (TreeRoot.MultiSelection)
+                    {
+                        <div class="mdui-checkbox">
+                            <i class="mdui-checkbox-icon"></i>
+                        </div>
+                    }
+                    @if (TitleContent is not null)
+                    {
+                        @TitleContent
+                    }
+                    else
+                    {
+                        @Title
+                    }
+                </div>
+            </div>
+        </HeaderContent>
+        <ChildContent>
+            <CascadingValue Value="@this" IsFixed>
+                <ul class="mdui-treeview" style="padding-left:@TreeRoot.Indent">
+                    @ChildContent
+                </ul>
+            </CascadingValue>
+        </ChildContent>
+    </MduiCollapse>
+}
+else
+{
+    <li class="mdui-treeview-item">
+        <div class="@TitleClassname" @onclick="@OnClickItemAsync" @onclick:stopPropagation="@true">
+            @if (TreeRoot.MultiSelection)
+            {
+                <div class="mdui-checkbox">
+                    <i class="mdui-checkbox-icon"></i>
+                </div>
+            }
+            @if (TitleContent is not null)
+            {
+                @TitleContent
+            }
+            else
+            {
+                @Title
+            }
+        </div>
+    </li>
+}

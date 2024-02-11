@@ -1,0 +1,33 @@
+<div>
+    <MduiCheckbox Switch Label="DisableRipple:" @bind-Value="@disableRipple" />
+    <MduiCheckbox Switch Label="Dense:" @bind-Value="@dense" />
+</div>
+
+<MduiTreeView DisableRipple="@disableRipple" Dense="@dense" TValue="string">
+    <MduiTreeViewItem Value="@("1")" Title="Level 1">
+        <MduiTreeViewItem Value="@("1.1")" Title="Level 1.1">
+            <MduiTreeViewItem Value="@("1.1.1")" Title="Level 1.1.1"></MduiTreeViewItem>
+            <MduiTreeViewItem Value="@("1.1.2")" Title="Level 1.1.2"></MduiTreeViewItem>
+        </MduiTreeViewItem>
+        <MduiTreeViewItem Value="@("1.2")" Title="Level 1.2"></MduiTreeViewItem>
+    </MduiTreeViewItem>
+    <MduiTreeViewItem Value="@("2")" Title="Level 2"></MduiTreeViewItem>
+    <MduiTreeViewItem Value="@("3")" Title="Level 3"></MduiTreeViewItem>
+</MduiTreeView>
+
+<MduiTreeView MultiSelection DisableRipple="@disableRipple" Dense="@dense" TValue="string">
+    <MduiTreeViewItem Value="@("1")" Title="Level 1">
+        <MduiTreeViewItem Value="@("1.1")" Title="Level 1.1">
+            <MduiTreeViewItem Value="@("1.1.1")" Title="Level 1.1.1"></MduiTreeViewItem>
+            <MduiTreeViewItem Value="@("1.1.2")" Title="Level 1.1.2"></MduiTreeViewItem>
+        </MduiTreeViewItem>
+        <MduiTreeViewItem Value="@("1.2")" Title="Level 1.2"></MduiTreeViewItem>
+    </MduiTreeViewItem>
+    <MduiTreeViewItem Value="@("2")" Title="Level 2"></MduiTreeViewItem>
+    <MduiTreeViewItem Value="@("3")" Title="Level 3"></MduiTreeViewItem>
+</MduiTreeView>
+
+@code{
+    bool disableRipple;
+    bool dense;
+}

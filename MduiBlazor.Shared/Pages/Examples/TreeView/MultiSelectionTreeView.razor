@@ -1,0 +1,17 @@
+<div>选择的值：@string.Join(',', selectedValues)</div>
+
+<MduiTreeView MultiSelection @bind-SelectedValues="@selectedValues">
+    <MduiTreeViewItem Value="@("1")" Title="Level 1">
+        <MduiTreeViewItem Value="@("1.1")" Title="Level 1.1">
+            <MduiTreeViewItem Value="@("1.1.1")" Title="Level 1.1.1"></MduiTreeViewItem>
+            <MduiTreeViewItem Value="@("1.1.2")" Title="Level 1.1.2"></MduiTreeViewItem>
+        </MduiTreeViewItem>
+        <MduiTreeViewItem Value="@("1.2")" Title="Level 1.2"></MduiTreeViewItem>
+    </MduiTreeViewItem>
+    <MduiTreeViewItem Value="@("2")" Title="Level 2"></MduiTreeViewItem>
+    <MduiTreeViewItem Value="@("3")" Title="Level 3"></MduiTreeViewItem>
+</MduiTreeView>
+
+@code {
+    IEnumerable<string> selectedValues = ["1.1.2", "2"];
+}

@@ -5,7 +5,7 @@ namespace MduiBlazor
 {
     public partial class MduiPanel : MduiComponentBase
     {
-        private readonly List<MduiPanelItem> _items = new();
+        private readonly List<MduiPanelItem> _items = [];
 
         protected string Classname =>
             new ClassBuilder("mdui-panel")
@@ -33,10 +33,7 @@ namespace MduiBlazor
 
         internal void RemoveItem(MduiPanelItem item)
         {
-            if (_items.Contains(item))
-            {
-                _items.Remove(item);
-            }
+            _items.Remove(item);
         }
 
         internal void CloseAllItems()
