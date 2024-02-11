@@ -394,6 +394,9 @@ body *::-webkit-scrollbar {
 body *::-webkit-scrollbar-thumb {
   background: rgba(0, 0, 0, 0.2);
 }
+span {
+  vertical-align: middle;
+}
 /* 遮罩层 */
 .mdui-overlay {
   position: fixed;
@@ -13689,6 +13692,16 @@ select.mdui-select[multiple] option:last-child {
  * ************   Collapse 折叠插件   ************
  * =============================================================================
  */
+.mdui-collapse-item-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
 .mdui-collapse-item-header .mdui-collapse-item-arrow,
 .mdui-collapse-item-header.mdui-collapse-item-arrow {
   -webkit-transform: rotate(0);
@@ -13925,6 +13938,223 @@ select.mdui-select[multiple] option:last-child {
   .mdui-theme-layout-auto .mdui-badge .mdui-badge-content {
     background-color: #4c4c4c;
   }
+}
+/**
+ * =============================================================================
+ * ************   树形组件   ************
+ * =============================================================================
+ */
+.mdui-treeview {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: auto;
+  list-style: none;
+  background-color: transparent;
+}
+/* 组件项 */
+.mdui-treeview-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin-left: 44px;
+  text-decoration: none;
+  cursor: pointer;
+  -webkit-transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  /* 组件项图标 */
+}
+.mdui-treeview-item.mdui-collapse-item-header {
+  margin-left: 8px;
+}
+.mdui-treeview-item .mdui-icon {
+  width: 24px;
+  min-width: 24px;
+  height: 24px;
+  color: rgba(0, 0, 0, 0.54);
+}
+.mdui-treeview-item .mdui-checkbox {
+  margin: 0;
+}
+.mdui-treeview-item .mdui-checkbox .mdui-checkbox-icon {
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+}
+/* 组件项文本内容 */
+.mdui-treeview-item-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 4px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 36px;
+}
+.mdui-treeview-item-content:hover {
+  background-color: rgba(0, 0, 0, 0.08);
+}
+/* 激活状态的组件项 */
+.mdui-treeview-item-active {
+  font-weight: 700;
+  background-color: rgba(0, 0, 0, 0.08);
+}
+.mdui-treeview-item-active .mdui-treeview-item-content {
+  font-weight: 700;
+}
+/* 组件项内的元素间添加间距 */
+.mdui-treeview-item-content ~ .mdui-icon {
+  margin-left: 4px;
+}
+.mdui-treeview-item-content ~ .mdui-checkbox {
+  margin-left: 0;
+}
+.mdui-treeview-item-checked .mdui-checkbox-icon::after {
+  background-color: #FF4081;
+  border-color: #FF4081;
+}
+.mdui-treeview-item-checked .mdui-checkbox-icon::before {
+  -webkit-transform: rotateZ(37deg) scale(1);
+          transform: rotateZ(37deg) scale(1);
+  opacity: 1;
+}
+/* 密集型组件 */
+.mdui-treeview-dense {
+  padding: 4px 0;
+  font-size: 13px;
+}
+.mdui-treeview-dense .mdui-icon {
+  width: 20px !important;
+  height: 20px !important;
+  font-size: 20px !important;
+}
+.mdui-treeview-dense .mdui-treeview-item-content {
+  padding-top: 0;
+  padding-bottom: 0;
+  font-size: 13px;
+  line-height: 32px;
+}
+/**
+ * =============================================================================
+ * ************   Checkbox 强调色   ************
+ * =============================================================================
+ */
+.mdui-theme-accent-amber .mdui-treeview-item-checked .mdui-checkbox-icon::after {
+  background-color: #FFD740;
+  border-color: #FFD740;
+}
+.mdui-theme-accent-blue .mdui-treeview-item-checked .mdui-checkbox-icon::after {
+  background-color: #448AFF;
+  border-color: #448AFF;
+}
+.mdui-theme-accent-cyan .mdui-treeview-item-checked .mdui-checkbox-icon::after {
+  background-color: #18FFFF;
+  border-color: #18FFFF;
+}
+.mdui-theme-accent-deep-orange .mdui-treeview-item-checked .mdui-checkbox-icon::after {
+  background-color: #FF6E40;
+  border-color: #FF6E40;
+}
+.mdui-theme-accent-deep-purple .mdui-treeview-item-checked .mdui-checkbox-icon::after {
+  background-color: #7C4DFF;
+  border-color: #7C4DFF;
+}
+.mdui-theme-accent-green .mdui-treeview-item-checked .mdui-checkbox-icon::after {
+  background-color: #69F0AE;
+  border-color: #69F0AE;
+}
+.mdui-theme-accent-indigo .mdui-treeview-item-checked .mdui-checkbox-icon::after {
+  background-color: #536DFE;
+  border-color: #536DFE;
+}
+.mdui-theme-accent-light-blue .mdui-treeview-item-checked .mdui-checkbox-icon::after {
+  background-color: #40C4FF;
+  border-color: #40C4FF;
+}
+.mdui-theme-accent-light-green .mdui-treeview-item-checked .mdui-checkbox-icon::after {
+  background-color: #B2FF59;
+  border-color: #B2FF59;
+}
+.mdui-theme-accent-lime .mdui-treeview-item-checked .mdui-checkbox-icon::after {
+  background-color: #EEFF41;
+  border-color: #EEFF41;
+}
+.mdui-theme-accent-orange .mdui-treeview-item-checked .mdui-checkbox-icon::after {
+  background-color: #FFAB40;
+  border-color: #FFAB40;
+}
+.mdui-theme-accent-pink .mdui-treeview-item-checked .mdui-checkbox-icon::after {
+  background-color: #FF4081;
+  border-color: #FF4081;
+}
+.mdui-theme-accent-purple .mdui-treeview-item-checked .mdui-checkbox-icon::after {
+  background-color: #E040FB;
+  border-color: #E040FB;
+}
+.mdui-theme-accent-red .mdui-treeview-item-checked .mdui-checkbox-icon::after {
+  background-color: #FF5252;
+  border-color: #FF5252;
+}
+.mdui-theme-accent-teal .mdui-treeview-item-checked .mdui-checkbox-icon::after {
+  background-color: #64FFDA;
+  border-color: #64FFDA;
+}
+.mdui-theme-accent-yellow .mdui-treeview-item-checked .mdui-checkbox-icon::after {
+  background-color: #FFFF00;
+  border-color: #FFFF00;
+}
+/**
+ * =============================================================================
+ * ************   List dark   ************
+ * =============================================================================
+ */
+.mdui-theme-layout-dark .mdui-treeview-item {
+  color: #ffffff;
+}
+.mdui-theme-layout-dark .mdui-treeview-item-content:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+.mdui-theme-layout-dark .mdui-icon {
+  color: #ffffff;
+}
+.mdui-theme-layout-dark .mdui-treeview-item-active {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+@media (prefers-color-scheme: dark) {
+  .mdui-theme-layout-auto .mdui-treeview-item {
+    color: #ffffff;
+  }
+  .mdui-theme-layout-auto .mdui-treeview-item-content:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+  }
+  .mdui-theme-layout-auto .mdui-icon {
+    color: #ffffff;
+  }
+  .mdui-theme-layout-auto .mdui-treeview-item-active {
+    background-color: rgba(255, 255, 255, 0.08);
+  }
+}
+/**
+ * ==============================================================================
+ * ************   List inner theme   ************
+ * ==============================================================================
+ */
+[class*="mdui-color-"] .mdui-treeview-item {
+  color: inherit;
 }
 
 /*# sourceMappingURL=mdui.css.map */
