@@ -6,7 +6,7 @@ namespace MduiBlazor
     public partial class MduiTable<TItem> : MduiComponentBase, ITable<TItem>
     {
         private IEnumerable<TItem> _items = Enumerable.Empty<TItem>();
-        private List<TItem> _selectedItems = new();
+        private List<TItem> _selectedItems = [];
 
         protected string Classname =>
             new ClassBuilder("mdui-table")
@@ -49,7 +49,7 @@ namespace MduiBlazor
                     {
                         _items = value;
                     }
-                    if (_selectedItems.Any())
+                    if (_selectedItems.Count > 0)
                     {
                         _selectedItems.Clear();
                         SelectedItemsChanged.InvokeAsync(_selectedItems);
@@ -68,7 +68,7 @@ namespace MduiBlazor
             {
                 if (!EqualityComparer<IEnumerable<TItem>>.Default.Equals(value, _selectedItems))
                 {
-                    _selectedItems = value?.ToList() ?? new List<TItem>();
+                    _selectedItems = value?.ToList() ?? [];
                     _ = SelectedItemsChanged.InvokeAsync(_selectedItems);
                 }
             }
@@ -87,7 +87,7 @@ namespace MduiBlazor
         public RenderFragment<TItem>? Columns { get; set; }
 
         [Parameter]
-        public RenderFragment? HeadContent { get; set; }
+        public RenderFragment? HeaderContent { get; set; }
 
         public void AddSelectedItem(TItem item)
         {
@@ -100,11 +100,12 @@ namespace MduiBlazor
 
         public void RemoveSelectedItem(TItem item)
         {
-            if (_selectedItems.Contains(item))
+            if (!_selectedItems.Contains(item))
             {
-                _selectedItems.Remove(item);
-                _ = SelectedItemsChanged.InvokeAsync(_selectedItems);
+                return;
             }
+            _selectedItems.Remove(item);
+            _ = SelectedItemsChanged.InvokeAsync(_selectedItems);
         }
 
         public void SelectAllItems()

@@ -7,9 +7,9 @@
     <CascadingValue Value="@this" IsFixed>
         <thead>
             <MduiHeadTr MultiSelection="@MultiSelection" Items="@_items" SelectedItems="@SelectedItems">
-                @if (HeadContent is not null)
+                @if (HeaderContent is not null)
                 {
-                    @HeadContent
+                    @HeaderContent
                 }
                 else if (Columns is not null)
                 {

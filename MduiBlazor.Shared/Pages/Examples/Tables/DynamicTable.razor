@@ -3,12 +3,12 @@
 
 <MduiTableContainer>
     <MduiTable Items="@forecasts">
-        <HeadContent>
+        <HeaderContent>
             <MduiTh>Date</MduiTh>
             <MduiTh>TemperatureC</MduiTh>
             <MduiTh>TemperatureF</MduiTh>
             <MduiTh>Summary</MduiTh>
-        </HeadContent>
+        </HeaderContent>
         <Columns>
             <MduiColumn>@context.Date.ToString("yyyy-MM-dd")</MduiColumn>
             <MduiColumn>@context.TemperatureC</MduiColumn>
