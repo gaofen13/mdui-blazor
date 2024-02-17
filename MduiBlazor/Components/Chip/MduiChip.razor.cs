@@ -16,6 +16,9 @@ namespace MduiBlazor
             .AddClass($"mdui-color-{IconColor}", !string.IsNullOrWhiteSpace(IconColor))
             .Build();
 
+        [Parameter]
+        public object? Value { get; set; }
+
         [Parameter, EditorRequired]
         public string? Title { get; set; }
 
@@ -38,6 +41,14 @@ namespace MduiBlazor
         public bool DeleteButton { get; set; }
 
         [Parameter]
-        public EventCallback<MouseEventArgs> OnDeleteButtonClicked { get; set; }
+        public EventCallback<MduiChip> OnDeleteButtonClicked { get; set; }
+
+        private void OnClickedDeleteButton()
+        {
+            if (OnDeleteButtonClicked.HasDelegate)
+            {
+                OnDeleteButtonClicked.InvokeAsync(this);
+            }
+        }
     }
 }
