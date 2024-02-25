@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "MduiBlazor.Client",
   "resources": {
-    "hash": "sha256-810gqudQ9v2Y2q3EWSL1IrxT1X9flq89LLDfgVCiPyo=",
+    "hash": "sha256-/5TZSkAjhoGPx/e5AY8S+7CN8N7YcK+hyzjVuFtTiF0=",
     "jsModuleNative": {
       "dotnet.native.8.0.2.abpwb6ymk5.js": "sha256-kDbhV7dGkQYrabadlG8XvoUuKgaxJCrPPTX2zqeamg8="
     },
@@ -17,9 +17,9 @@
       "icudt_no_CJK.dat": "sha256-L7sV7NEYP37/Qr2FPCePo5cJqRgTXRwGHuwF5Q+0Nfs="
     },
     "assembly": {
-      "MduiBlazor.Client.wasm": "sha256-MHyJqdTkQVvjhhisaLV2QeGSMKzCEJ3aIyv12gDkgJ4=",
-      "MduiBlazor.Shared.wasm": "sha256-XjOAwtDUCeMGACYUhOxcvYL2D+p6Xpo4nrIs26bZnHE=",
-      "MduiBlazor.wasm": "sha256-zEC1AbDUQaJb1e9BiW1x3j/tHi0II6MAy1FlnptjWu8=",
+      "MduiBlazor.Client.wasm": "sha256-U93e1eyasUXnjhuCMt7KbnnDOv4lXAA+EDvvztoeRZs=",
+      "MduiBlazor.Shared.wasm": "sha256-jWQ3OY1NkeBTQ5uRB3dZAZbbStjHg167bHDKyudDFE4=",
+      "MduiBlazor.wasm": "sha256-dZM8TAckjBYaaEDItGiTcIUO1D2ECT6PtEu1sSAuxC0=",
       "Microsoft.AspNetCore.Components.Forms.wasm": "sha256-2ec/spo0kVhxgGt6Y3cjxqJdYsmVJRKCUQ/mzf/S+Uc=",
       "Microsoft.AspNetCore.Components.wasm": "sha256-tFqkhXud+5zULNlokKbuJPOKxlwlc5qY8z3/u5nI3Xw=",
       "Microsoft.AspNetCore.Components.Web.wasm": "sha256-gG593EZrPEQPcDh2X7UHhJStWGV8FXMHtTxoWCcxlUc=",
@@ -38,7 +38,7 @@
       "System.Collections.Concurrent.wasm": "sha256-cK2+tSObsoafqQj2oQRnxeKzRiDuduOEl16EEPaICDg=",
       "System.Collections.NonGeneric.wasm": "sha256-XOhq/3Jk+y5dnsWDEK0wHrpxzxjSPfceEIyFJNdXxHA=",
       "System.Collections.Specialized.wasm": "sha256-N4qhRnkPkfUa7FcIGhHsLeYMXLvjP5/TzkitIROUntQ=",
-      "System.Collections.wasm": "sha256-ppyqZGLyq/PpeVr6h3ASC2IN4bN/L9Nzk+FyosbQfTU=",
+      "System.Collections.wasm": "sha256-hrfgmI+UgRQRuTiFsV3NYEbCr1U+qNTrBTvI+QhVPh4=",
       "System.ComponentModel.Annotations.wasm": "sha256-MTVgD/rkqiCqYqs/MS6pKFwzMMmFzyoiadh9GwJxe+Q=",
       "System.ComponentModel.Primitives.wasm": "sha256-DacwxrcT5sX7csBaj48rBynNnjCoXlxPinBM1Hu9EWo=",
       "System.ComponentModel.TypeConverter.wasm": "sha256-48gdCxkeNTtFroyseZgqFTcYE2+JGg/DUyF4Q1y8e9Q=",
