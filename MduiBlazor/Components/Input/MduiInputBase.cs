@@ -227,6 +227,7 @@ namespace MduiBlazor
         {
             base.OnParametersSet();
             Field?.SetDisabled(Disabled);
+            Field?.SetRequired(Required);
         }
 
         /// <summary>

@@ -52,6 +52,9 @@ namespace MduiBlazor
         public Expression<Func<TValue>>? ValueExpression { get; set; }
 
         [Parameter]
+        public string? Placeholder { get; set; }
+
+        [Parameter]
         public string? MaxHeight { get; set; }
 
         [Parameter]

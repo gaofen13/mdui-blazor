@@ -7,6 +7,7 @@ namespace MduiBlazor
     {
         private string? _errorText;
         private bool _disabled;
+        private bool _required;
         private bool _notEmpty;
         private bool _isFocus;
         private bool _invalid;
@@ -16,7 +17,7 @@ namespace MduiBlazor
             .AddClass("mdui-field-has-bottom", _invalid || !string.IsNullOrWhiteSpace(HelperText))
             .AddClass("mdui-field-not-empty", _notEmpty)
             .AddClass("mdui-field-disabled", _disabled)
-            .AddClass("mdui-field-required", Required)
+            .AddClass("mdui-field-required", _required)
             .AddClass("mdui-field-invalid", _invalid)
             .AddClass("mdui-field-focus", _isFocus)
             .AddClass("mdui-typo", UseMduiTypo)
@@ -25,9 +26,6 @@ namespace MduiBlazor
 
         [Parameter]
         public string? Label { get; set; }
-
-        [Parameter]
-        public bool Required { get; set; }
 
         [Parameter]
         public string? Icon { get; set; }
@@ -112,6 +110,15 @@ namespace MduiBlazor
             if (_disabled != disabled)
             {
                 _disabled = disabled;
+                StateHasChanged();
+            }
+        }
+
+        internal void SetRequired(bool required)
+        {
+            if (_required != required)
+            {
+                _required = required;
                 StateHasChanged();
             }
         }

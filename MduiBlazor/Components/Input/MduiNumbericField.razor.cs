@@ -33,9 +33,6 @@ namespace MduiBlazor
         public string? Label { get; set; }
 
         [Parameter]
-        public bool LabelRequired { get; set; }
-
-        [Parameter]
         public string? Icon { get; set; }
 
         [Parameter]
