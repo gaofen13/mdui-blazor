@@ -7,7 +7,7 @@
         pattern="@Pattern" maxlength="@MaxLength" placeholder="@Placeholder" disabled="@Disabled" readonly="@Readonly"
         autofocus="@AutoFocus" @attributes="@AdditionalAttributes" value="@BindConverter.FormatValue(CurrentValueAsString)"
     @onchange="@(EventCallback.Factory.CreateBinder<string?>(this, __value => CurrentValueAsString = __value, CurrentValueAsString))"
-    @onfocus="@OnFocus" @onblur="@OnBlur" @oninput="@OnTextInput" />
+    @onfocus="@OnInputFocus" @onblur="@OnInputBlur" @oninput="@OnTextInput" />
 }
 else
 {
@@ -15,11 +15,11 @@ else
         pattern="@Pattern" maxlength="@MaxLength" placeholder="@Placeholder" disabled="@Disabled" readonly="@Readonly"
         autofocus="@AutoFocus" @attributes="@AdditionalAttributes" value="@BindConverter.FormatValue(CurrentValueAsString)"
     @onchange="@(EventCallback.Factory.CreateBinder<string?>(this, __value => CurrentValueAsString = __value, CurrentValueAsString))"
-    @onfocus="@OnFocus" @onblur="@OnBlur" @oninput="@OnTextInput" />
+    @onfocus="@OnInputFocus" @onblur="@OnInputBlur" @oninput="@OnTextInput" />
 }
 @if (MaxLength > 0 && MaxLength <= int.MaxValue)
 {
-    <div class="mdui-textfield-counter">
-        <span class="mdui-textfield-counter-inputed">@_wordNumber</span> / @MaxLength
+    <div class="mdui-field-counter">
+        <span class="mdui-field-counter-inputed">@_wordNumber</span> / @MaxLength
     </div>
 }

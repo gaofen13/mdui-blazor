@@ -1,0 +1,172 @@
+@page "/picker"
+@inherits BasePage
+@using MduiBlazor.Shared.Pages.Examples.Pickers
+
+<PageTitle>通用选择器</PageTitle>
+<div class="mdui-m-y-5">
+    <MduiText Typo="@Typo.display1" TextColor="@Colors.Theme.Primary">通用选择器</MduiText>
+    <p>可用于类型不可转换为string或需要在选项自定义显示内容的选择器。</p>
+</div>
+
+<PageContent>
+    <PageContentItem Title="示例" OnClick="@(_=>ScrollToElementById("examples"))">
+        <PageContentItem Title="图标选择器" OnClick="@(_=>ScrollToElementById("iconpicker"))" />
+    </PageContentItem>
+    <PageContentItem Title="组件参数" OnClick="@(_=>ScrollToElementById("attr"))" />
+</PageContent>
+
+<MduiDivider Class="mdui-m-y-5" />
+
+<div>
+    <h2 id="examples">
+        <MduiText Typo="@Typo.headline" TextColor="@Colors.Theme.Primary">示例</MduiText>
+    </h2>
+
+    <MduiText id="iconpicker" Typo="@Typo.subheading"><b>图标选择器</b></MduiText>
+    <p class="mdui-typo">以下为基于通用选择器<code>MduiPicker</code>和<code>mdui</code>图标构建的图标选择器。</p>
+    <ExampleSection Component="@typeof(IconPicker)" />
+</div>
+
+<MduiDivider Class="mdui-m-y-5" />
+
+<div>
+    <h2 id="attr">
+        <MduiText Typo="@Typo.headline" TextColor="@Colors.Theme.Primary">组件参数</MduiText>
+    </h2>
+
+    <MduiTableContainer UseMduiTypo Class="mdui-m-y-1">
+        <MduiSimpleTable>
+            <thead>
+                <th>组件</th>
+                <th>参数名称</th>
+                <th>类型/返回类型</th>
+                <th>说明</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <th rowspan="10">
+                        <code>MduiPicker</code>
+                    </th>
+                    <td>
+                        <code>Name</code>
+                    </td>
+                    <td>
+                        <code>string?</code>
+                    </td>
+                    <td><code>input</code>标签的<code>name</code>属性。</td>
+                </tr>
+                 <tr>
+                     <td>
+                         <code>Searchable</code>
+                     </td>
+                     <td>
+                         <code>bool</code>
+                     </td>
+                     <td>是否允许搜索下拉项，默认<code>false</code>。</td>
+                 </tr>
+                 <tr>
+                     <td>
+                         <code>Value</code>
+                     </td>
+                     <td>
+                         <code>TValue?</code>
+                     </td>
+                     <td>选择器的值。</td>
+                 </tr>
+                 <tr>
+                     <td>
+                         <code>ValueChanged</code>
+                     </td>
+                     <td>
+                         <code>EventCallback&lt;TValue&gt;</code>
+                     </td>
+                     <td>选择器值修改后的回调函数，一般用于双向绑定。</td>
+                 </tr>
+                 <tr>
+                     <td>
+                         <code>ValueExpression</code>
+                     </td>
+                     <td>
+                         <code>Expression&lt;Func&lt;TValue&gt;&gt;?</code>
+                     </td>
+                     <td>双向绑定下不用设置该参数。</td>
+                 </tr>
+                 <tr>
+                     <td>
+                         <code>Disabled</code>
+                     </td>
+                     <td>
+                         <code>bool</code>
+                     </td>
+                     <td>是否禁用，默认<code>false</code>。</td>
+                 </tr>
+                 <tr>
+                     <td>
+                         <code>Readonly</code>
+                     </td>
+                     <td>
+                         <code>bool</code>
+                     </td>
+                     <td>是否只读，默认<code>false</code>。</td>
+                 </tr>
+                 <tr>
+                     <td>
+                         <code>AutoFocus</code>
+                     </td>
+                     <td>
+                         <code>bool</code>
+                     </td>
+                     <td>是否自动获取焦点，默认<code>false</code>。</td>
+                 </tr>
+                 <tr>
+                     <td>
+                         <code>Required</code>
+                     </td>
+                     <td>
+                         <code>bool</code>
+                     </td>
+                     <td>是否必填项，默认<code>false</code>。</td>
+                 </tr>
+                 <tr>
+                     <td>
+                         <code>MaxHeight</code>
+                     </td>
+                     <td>
+                         <code>string?</code>
+                     </td>
+                     <td>下拉项的最大高度，该值为样式<code>max-height</code>的值，如<code>200px</code>、<code>20rem</code>等。</td>
+                 </tr>
+                <tr>
+                    <th rowspan="3">
+                        <code>MduiPickerItem</code>
+                    </th>
+                    <td>
+                        <code>Value</code>
+                    </td>
+                    <td>
+                        <code>TValue</code>
+                    </td>
+                    <td>下拉项的值，不可为空。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>Label</code>
+                    </td>
+                    <td>
+                        <code>string?</code>
+                    </td>
+                    <td>选择该项后，在<code>MduiPicker</code>文本框要显示的文本。（注：该值不会显示在下拉项上，如需显示请一并放在<code>ChildContent</code>中。）</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>Disabled</code>
+                    </td>
+                    <td>
+                        <code>bool</code>
+                    </td>
+                    <td>选择项是否为禁用状态。默认<code>false</code>。</td>
+                </tr>
+            </tbody>
+        </MduiSimpleTable>
+    </MduiTableContainer>
+</div>

@@ -4,7 +4,7 @@
 
 <label class="@Classname" style="@Style" @attributes="@AdditionalAttributes">
     <input type="radio" name="@(Name??RadioGroup?.RadioName)" readonly="@Readonly" disabled="@Disabled"
-        checked="@Checked" value="@Value" @onchange="@OnRadioChanged" @onfocus="@OnFocus" @onblur="@OnBlur" />
+        checked="@Checked" value="@Value" @onchange="@OnRadioChanged" @onfocus="@OnInputFocus" @onblur="@OnInputBlur" />
     <i class="mdui-radio-icon"></i>
     @if (ChildContent is not null)
     {

@@ -7,4 +7,4 @@
        readonly="@Readonly" autofocus="@AutoFocus" @attributes="@AdditionalAttributes"
        value="@BindConverter.FormatValue(CurrentValueAsString)"
 @onchange="@(EventCallback.Factory.CreateBinder<string?>(this, __value => CurrentValueAsString = __value, CurrentValueAsString))"
-@onfocus="@OnFocus" @onblur="@OnBlur" @oninput="@OnTextInput" />
+@onfocus="@OnInputFocus" @onblur="@OnInputBlur" @oninput="@OnTextInput" />

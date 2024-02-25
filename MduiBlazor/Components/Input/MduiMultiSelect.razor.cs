@@ -1,6 +1,7 @@
 ﻿using MduiBlazor.Extensions;
 using MduiBlazor.Utilities;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Web;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 
@@ -9,7 +10,7 @@ namespace MduiBlazor
     public partial class MduiMultiSelect<TValue> : MduiInputBase<TValue>
     {
         protected string Classname =>
-          new ClassBuilder("mdui-select")
+          new ClassBuilder("mdui-input mdui-select")
             .AddClass(Class)
             .Build();
 
@@ -26,14 +27,22 @@ namespace MduiBlazor
                 : default;
         }
 
-        private void OnFocus()
+        private void OnInputFocus(FocusEventArgs args)
         {
             Field?.SetFocus();
+            if (OnFocus.HasDelegate)
+            {
+                OnFocus.InvokeAsync(args);
+            }
         }
 
-        private void OnBlur()
+        private void OnInputBlur(FocusEventArgs args)
         {
             Field?.SetBlur();
+            if (OnBlur.HasDelegate)
+            {
+                OnBlur.InvokeAsync(args);
+            }
         }
     }
 }

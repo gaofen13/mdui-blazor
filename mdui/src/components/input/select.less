@@ -1,0 +1,154 @@
+/**
+ * =============================================================================
+ * ************   Select 下拉选择   ************
+ * =============================================================================
+ */
+
+.mdui-select {
+  // 箭头
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpath d='M-.003 2.5l5 5 5-5h-10z' opacity='.54'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right center;
+
+  option {
+    color: rgba(0, 0, 0, 0.87);
+  }
+
+  // 移除 IE 的下拉按钮
+  &::-ms-expand {
+    display: none;
+  }
+}
+
+/* 多选 select 组件 */
+.mdui-select[multiple] {
+  height: auto;
+  padding: 0;
+  overflow-y: auto;
+  font-size: 15px;
+  background-color: #FFF;
+  background-image: none;
+  border: 1px solid rgba(0, 0, 0, 0.42);
+  cursor: default;
+
+  &:not([disabled]):hover {
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, .87);
+  }
+
+  &:disabled{
+    border-style: dashed;
+  }
+
+  optgroup {
+    margin: 8px 0 0 0;
+    padding: 0 0 0 16px;
+    color: rgba(0, 0, 0, 0.38);
+
+    &:last-child {
+      margin-bottom: 8px;
+    }
+
+    &:not(:first-child) {
+      padding-top: 8px;
+      border-top: 1px solid rgba(0, 0, 0, 0.42);
+    }
+  }
+
+  option {
+    display: flex;
+    align-items: center;
+    height: 32px;
+    margin: 0 0 0 -16px;
+    padding: 0 16px;
+    color: rgba(0, 0, 0, 0.87);
+
+    &:first-child {
+      margin-top: 8px;
+    }
+
+    &:last-child {
+      margin-bottom: 8px;
+    }
+  }
+}
+
+/**
+ * =============================================================================
+ * ************   Select 强调色   ************
+ * =============================================================================
+ */
+
+& {
+  .loop-accent-theme(@counter-color) when (@counter-color > 0) {
+    .loop-accent-theme((@counter-color - 1));
+    @colorName: extract(@globalAccentColors, @counter-color);
+
+    .mdui-theme-accent-@{colorName} when not (@colorName =null) {
+
+      @colorA700: 'color-@{colorName}-a700';
+      @colorA200: 'color-@{colorName}-a200';
+
+      .mdui-select[multiple]:focus {
+        box-shadow: 0 0 0 1px @@colorA700;
+      }
+      
+      // 暗色主题
+      & {
+        .dark-mode() {
+
+          .mdui-select[multiple]:focus {
+            box-shadow: 0 0 0 1px @@colorA200 !important;
+          }
+        }
+
+        &.mdui-theme-layout-dark {
+          .dark-mode();
+        }
+
+        @media (prefers-color-scheme: dark) {
+          &.mdui-theme-layout-auto {
+            .dark-mode();
+          }
+        }
+      }
+    }
+  }
+
+  .loop-accent-theme(length(@globalAccentColors));
+}
+
+
+/**
+ * =============================================================================
+ * ************   Select dark   ************
+ * =============================================================================
+ */
+.layout-theme({
+  .mdui-select {
+    background-color: @layout-dark-color-3;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpath d='M-.003 2.5l5 5 5-5h-10z' fill='%23FFF'/%3E%3C/svg%3E");
+
+    option {
+      color: #FFF;
+      background-color: @layout-dark-color-3;
+    }
+  }
+
+  // 多选 select 组件
+  .mdui-select[multiple] {
+    border-color: rgba(255, 255, 255, .7);
+    background-image: none;
+
+    &:not([disabled]):hover {
+      box-shadow: 0 0 0 1px rgba(255, 255, 255, 1);
+    }
+
+    optgroup {
+      color: rgba(255, 255, 255, 0.5);
+
+      &:not(:first-child) {
+        border-top: 1px solid rgba(255, 255, 255, 0.7);
+      }
+    }
+  }
+});

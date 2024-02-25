@@ -1,5 +1,6 @@
 using MduiBlazor.Utilities;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Web;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 
@@ -8,7 +9,7 @@ namespace MduiBlazor
     public partial class MduiDateTime<TValue> : MduiInputBase<TValue>
     {
         protected string Classname =>
-        new ClassBuilder("mdui-textfield-input")
+        new ClassBuilder("mdui-input")
             .AddClass(Class)
             .Build();
 
@@ -57,14 +58,22 @@ namespace MduiBlazor
             };
         }
 
-        private void OnFocus()
+        private void OnInputFocus(FocusEventArgs args)
         {
             Field?.SetFocus();
+            if (OnFocus.HasDelegate)
+            {
+                OnFocus.InvokeAsync(args);
+            }
         }
 
-        private void OnBlur()
+        private void OnInputBlur(FocusEventArgs args)
         {
             Field?.SetBlur();
+            if (OnBlur.HasDelegate)
+            {
+                OnBlur.InvokeAsync(args);
+            }
         }
     }
 }

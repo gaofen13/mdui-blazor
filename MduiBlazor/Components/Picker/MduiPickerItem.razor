@@ -1,0 +1,12 @@
+@namespace MduiBlazor
+@typeparam TValue
+@inherits MduiComponentBase
+@implements IDisposable
+
+@if (Show)
+{
+    <li class="@Classname" style="@Style" disabled="@Disabled" @onclick="@OnClickedItem"
+        @attributes="@AdditionalAttributes">
+        @ChildContent
+    </li>
+}

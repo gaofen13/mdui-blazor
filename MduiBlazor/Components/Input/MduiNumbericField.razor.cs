@@ -10,7 +10,7 @@ namespace MduiBlazor
 
         private string Classname =>
             new ClassBuilder()
-            .AddClass("mdui-textfield-disabled", Disabled)
+            .AddClass("mdui-field-disabled", Disabled)
             .AddClass(Class)
             .Build();
 

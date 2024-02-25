@@ -6,7 +6,7 @@
         disabled="@Disabled" readonly="@Readonly" @attributes="@AdditionalAttributes"
         checked="@BindConverter.FormatValue(CurrentValue)"
         @onchange="@(EventCallback.Factory.CreateBinder<bool>(this,__value=>CurrentValue=__value,CurrentValue))"
-        @onfocus="@OnFocus" @onblur="@OnBlur" />
+        @onfocus="@OnInputFocus" @onblur="@OnInputBlur" />
     <i class="mdui-@TypeName-icon"></i>
     @if (ChildContent is not null)
     {

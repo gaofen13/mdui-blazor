@@ -1,0 +1,120 @@
+<MduiCheckbox Switch @bind-Value="@searchable" Label="开启搜索" />
+<MduiCheckbox Switch @bind-Value="@read_only" Label="只读" />
+<MduiCheckbox Switch @bind-Value="@disabled" Label="禁用" />
+
+<MduiPicker Searchable="@searchable" Readonly="@read_only" Disabled="@disabled" TValue="@string" MaxHeight="200px">
+    <MduiPickerItem Value="@("add")" Label="add">
+        <MduiIcon Icon="add" />
+    </MduiPickerItem>
+    <MduiPickerItem Value="@("add_alarm")" Label="add_alarm">
+        <MduiIcon Icon="add_alarm" />
+    </MduiPickerItem>
+    <MduiPickerItem Value="@("add_box")" Label="add_box">
+        <MduiIcon Icon="add_box" />
+    </MduiPickerItem>
+    <MduiPickerItem Value="@("add_location")" Label="add_location">
+        <MduiIcon Icon="add_location" />
+    </MduiPickerItem>
+    <MduiPickerItem Value="@("add_shopping_cart")" Label="add_shopping_cart">
+        <MduiIcon Icon="add_shopping_cart" />
+    </MduiPickerItem>
+    <MduiPickerItem Value="@("airplanemode_active")" Label="airplanemode_active">
+        <MduiIcon Icon="airplanemode_active" />
+    </MduiPickerItem>
+    <MduiPickerItem Value="@("airplanemode_inactive")" Label="airplanemode_inactive">
+        <MduiIcon Icon="airplanemode_inactive" />
+    </MduiPickerItem>
+    <MduiPickerItem Value="@("airplay")" Label="airplay">
+        <MduiIcon Icon="airplay" />
+    </MduiPickerItem>
+    <MduiPickerItem Value="@("alarm")" Label="alarm">
+        <MduiIcon Icon="alarm" />
+    </MduiPickerItem>
+    <MduiPickerItem Value="@("alarm_on")" Label="alarm_on">
+        <MduiIcon Icon="alarm_on" />
+    </MduiPickerItem>
+    <MduiPickerItem Value="@("alarm_off")" Label="alarm_off">
+        <MduiIcon Icon="alarm_off" />
+    </MduiPickerItem>
+    <MduiPickerItem Value="@("arrow_back")" Label="arrow_back">
+        <MduiIcon Icon="arrow_back" />
+    </MduiPickerItem>
+    <MduiPickerItem Value="@("arrow_downward")" Label="arrow_downward">
+        <MduiIcon Icon="arrow_downward" />
+    </MduiPickerItem>
+    <MduiPickerItem Value="@("arrow_forward")" Label="arrow_forward">
+        <MduiIcon Icon="arrow_forward" />
+    </MduiPickerItem>
+    <MduiPickerItem Value="@("arrow_upward")" Label="arrow_upward">
+        <MduiIcon Icon="arrow_upward" />
+    </MduiPickerItem>
+    <MduiPickerItem Value="@("arrow_drop_down")" Label="arrow_drop_down">
+        <MduiIcon Icon="arrow_drop_down" />
+    </MduiPickerItem>
+    <MduiPickerItem Value="@("arrow_drop_up")" Label="arrow_drop_up">
+        <MduiIcon Icon="arrow_drop_up" />
+    </MduiPickerItem>
+    <MduiPickerItem Value="@("battery_charging_full")" Label="battery_charging_full">
+        <MduiIcon Icon="battery_charging_full" />
+    </MduiPickerItem>
+    <MduiPickerItem Value="@("battery_full")" Label="battery_full">
+        <MduiIcon Icon="battery_full" />
+    </MduiPickerItem>
+    <MduiPickerItem Value="@("battery_unknown")" Label="battery_unknown">
+        <MduiIcon Icon="battery_unknown" />
+    </MduiPickerItem>
+    <MduiPickerItem Value="@("block")" Label="block">
+        <MduiIcon Icon="block" />
+    </MduiPickerItem>
+    <MduiPickerItem Value="@("bluetooth")" Label="bluetooth">
+        <MduiIcon Icon="bluetooth" />
+    </MduiPickerItem>
+    <MduiPickerItem Value="@("bluetooth_audio")" Label="bluetooth_audio">
+        <MduiIcon Icon="bluetooth_audio" />
+    </MduiPickerItem>
+    <MduiPickerItem Value="@("bluetooth_connected")" Label="bluetooth_connected">
+        <MduiIcon Icon="bluetooth_connected" />
+    </MduiPickerItem>
+    <MduiPickerItem Value="@("bluetooth_disabled")" Label="bluetooth_disabled">
+        <MduiIcon Icon="bluetooth_disabled" />
+    </MduiPickerItem>
+    <MduiPickerItem Value="@("book")" Label="book">
+        <MduiIcon Icon="book" />
+    </MduiPickerItem>
+    <MduiPickerItem Value="@("bookmark")" Label="bookmark">
+        <MduiIcon Icon="bookmark" />
+    </MduiPickerItem>
+    <MduiPickerItem Value="@("bookmark_border")" Label="bookmark_border">
+        <MduiIcon Icon="bookmark_border" />
+    </MduiPickerItem>
+    <MduiPickerItem Value="@("border_all")" Label="border_all">
+        <MduiIcon Icon="border_all" />
+    </MduiPickerItem>
+    <MduiPickerItem Value="@("border_bottom")" Label="border_bottom">
+        <MduiIcon Icon="border_bottom" />
+    </MduiPickerItem>
+    <MduiPickerItem Value="@("border_clear")" Label="border_clear">
+        <MduiIcon Icon="border_clear" />
+    </MduiPickerItem>
+    <MduiPickerItem Value="@("brightness_1")" Label="brightness_1">
+        <MduiIcon Icon="brightness_1" />
+    </MduiPickerItem>
+    <MduiPickerItem Value="@("brightness_2")" Label="brightness_2">
+        <MduiIcon Icon="brightness_2" />
+    </MduiPickerItem>
+    <MduiPickerItem Value="@("brightness_3")" Label="brightness_3">
+        <MduiIcon Icon="brightness_3" />
+    </MduiPickerItem>
+    <MduiPickerItem Value="@("brightness_4")" Label="brightness_4">
+        <MduiIcon Icon="brightness_4" />
+    </MduiPickerItem>
+    <MduiPickerItem Value="@("brightness_5")" Label="brightness_5">
+        <MduiIcon Icon="brightness_5" />
+    </MduiPickerItem>
+</MduiPicker>
+
+@code{
+    bool searchable;
+    bool read_only;
+    bool disabled;
+}

@@ -12,19 +12,19 @@
     }
     @if (Label is not null)
     {
-        <label class="mdui-textfield-label">@Label</label>
+        <label class="mdui-field-label">@Label</label>
     }
     <CascadingValue Name="Field" Value="@this" IsFixed>
         @ChildContent
     </CascadingValue>
     @if (_invalid)
     {
-        <div class="mdui-textfield-error">
+        <div class="mdui-field-error">
             @_errorText
         </div>
     }
     @if (!string.IsNullOrWhiteSpace(HelperText))
     {
-        <div class="mdui-textfield-helper">@HelperText</div>
+        <div class="mdui-field-helper">@HelperText</div>
     }
 </div>

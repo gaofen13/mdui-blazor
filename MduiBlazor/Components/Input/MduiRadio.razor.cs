@@ -1,5 +1,6 @@
 using MduiBlazor.Utilities;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Web;
 
 namespace MduiBlazor
 {
@@ -24,7 +25,7 @@ namespace MduiBlazor
 
         [Parameter]
         public TValue? Value { get; set; }
-        
+
         [Parameter]
         public bool Readonly { get; set; }
 
@@ -33,6 +34,12 @@ namespace MduiBlazor
 
         [Parameter]
         public string? Label { get; set; }
+
+        [Parameter]
+        public EventCallback<FocusEventArgs> OnBlur { get; set; }
+
+        [Parameter]
+        public EventCallback<FocusEventArgs> OnFocus { get; set; }
 
         protected override void OnParametersSet()
         {
@@ -43,19 +50,36 @@ namespace MduiBlazor
             }
         }
 
+        protected override void OnInitialized()
+        {
+            if (RadioGroup?.Disabled == true)
+            {
+                Disabled = true;
+            }
+            base.OnInitialized();
+        }
+
         private void OnRadioChanged(ChangeEventArgs args)
         {
             RadioGroup?.OnCheckedRadioChanged(this);
         }
 
-        private void OnFocus()
+        private void OnInputFocus(FocusEventArgs args)
         {
             Field?.SetFocus();
+            if (OnFocus.HasDelegate)
+            {
+                OnFocus.InvokeAsync(args);
+            }
         }
 
-        private void OnBlur()
+        private void OnInputBlur(FocusEventArgs args)
         {
             Field?.SetBlur();
+            if (OnBlur.HasDelegate)
+            {
+                OnBlur.InvokeAsync(args);
+            }
         }
     }
 }

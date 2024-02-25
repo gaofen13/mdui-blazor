@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
+using Microsoft.AspNetCore.Components.Web;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq.Expressions;
 
@@ -66,6 +67,12 @@ namespace MduiBlazor
         /// </summary>
         [Parameter]
         public string? DisplayName { get; set; }
+
+        [Parameter]
+        public EventCallback<FocusEventArgs> OnBlur { get; set; }
+
+        [Parameter]
+        public EventCallback<FocusEventArgs> OnFocus { get; set; }
 
         /// <summary>
         /// Gets the associated <see cref="AspNetCore.Components.Forms.EditContext"/>.
@@ -214,6 +221,12 @@ namespace MduiBlazor
 
             // For derived components, retain the usual lifecycle with OnInit/OnParametersSet/etc.
             return base.SetParametersAsync(ParameterView.Empty);
+        }
+
+        protected override void OnParametersSet()
+        {
+            base.OnParametersSet();
+            Field?.SetDisabled(Disabled);
         }
 
         /// <summary>

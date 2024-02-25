@@ -1,5 +1,6 @@
 ﻿using MduiBlazor.Utilities;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Web;
 using System.Diagnostics.CodeAnalysis;
 
 namespace MduiBlazor
@@ -10,9 +11,10 @@ namespace MduiBlazor
         private bool _isFocus;
 
         private string Classname =>
-            new ClassBuilder("mdui-textfield mdui-textfield-expandable")
-            .AddClass("mdui-textfield-expanded", _expanded)
-            .AddClass("mdui-textfield-focus", _isFocus)
+            new ClassBuilder("mdui-field mdui-field-expandable")
+            .AddClass("mdui-field-expanded", _expanded)
+            .AddClass("mdui-field-disabled", Disabled)
+            .AddClass("mdui-field-focus", _isFocus)
             .AddClass("mdui-typo", UseMduiTypo)
             .AddClass(Class)
             .Build();
@@ -50,16 +52,24 @@ namespace MduiBlazor
             }
             validationErrorMessage = null;
             return true;
-        }
 
-        private void OnFocus()
+        }
+        private void OnInputFocus(FocusEventArgs args)
         {
             _isFocus = true;
+            if (OnFocus.HasDelegate)
+            {
+                OnFocus.InvokeAsync(args);
+            }
         }
 
-        private void OnBlur()
+        private void OnInputBlur(FocusEventArgs args)
         {
             _isFocus = false;
+            if (OnBlur.HasDelegate)
+            {
+                OnBlur.InvokeAsync(args);
+            }
         }
 
         private async Task ToggleAsync()

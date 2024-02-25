@@ -6,6 +6,6 @@
     required="@Required" disabled="@Disabled" @attributes="@AdditionalAttributes"
     value="@BindConverter.FormatValue(CurrentValue)?.ToString()"
     @onchange="@(EventCallback.Factory.CreateBinder<string[]?>(this,SetCurrentValueAsStringArray,default))"
-    @onfocus="@OnFocus" @onblur="@OnBlur">
+    @onfocus="@OnInputFocus" @onblur="@OnInputBlur">
     @ChildContent
 </select>

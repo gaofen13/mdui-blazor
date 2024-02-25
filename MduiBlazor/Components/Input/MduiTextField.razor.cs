@@ -12,8 +12,8 @@ namespace MduiBlazor
 
         private string Classname =>
             new ClassBuilder()
-            .AddClass("mdui-textfield-has-bottom", MaxLength > 0)
-            .AddClass("mdui-textfield-floating-label", FloatingLabel)
+            .AddClass("mdui-field-has-bottom", MaxLength > 0)
+            .AddClass("mdui-field-floating-label", FloatingLabel)
             .AddClass(Class)
             .Build();
 

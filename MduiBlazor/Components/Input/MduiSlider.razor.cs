@@ -1,5 +1,6 @@
 using MduiBlazor.Utilities;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Web;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 
@@ -81,9 +82,13 @@ namespace MduiBlazor
             };
         }
 
-        private void OnBlur()
+        private void OnInputBlur(FocusEventArgs args)
         {
             Field?.SetBlur();
+            if (OnBlur.HasDelegate)
+            {
+                OnBlur.InvokeAsync(args);
+            }
         }
 
         private void OnMouseDown()

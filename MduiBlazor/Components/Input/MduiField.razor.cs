@@ -6,24 +6,22 @@ namespace MduiBlazor
     public partial class MduiField : MduiComponentBase
     {
         private string? _errorText;
+        private bool _disabled;
         private bool _notEmpty;
         private bool _isFocus;
         private bool _invalid;
 
         protected string Classname =>
-          new ClassBuilder("mdui-textfield")
-            .AddClass("mdui-textfield-has-bottom", _invalid || !string.IsNullOrWhiteSpace(HelperText))
-            .AddClass("mdui-textfield-not-empty", _notEmpty)
-            .AddClass("mdui-textfield-disabled", Disabled)
-            .AddClass("mdui-textfield-required", Required)
-            .AddClass("mdui-textfield-invalid", _invalid)
-            .AddClass("mdui-textfield-focus", _isFocus)
+          new ClassBuilder("mdui-field")
+            .AddClass("mdui-field-has-bottom", _invalid || !string.IsNullOrWhiteSpace(HelperText))
+            .AddClass("mdui-field-not-empty", _notEmpty)
+            .AddClass("mdui-field-disabled", _disabled)
+            .AddClass("mdui-field-required", Required)
+            .AddClass("mdui-field-invalid", _invalid)
+            .AddClass("mdui-field-focus", _isFocus)
             .AddClass("mdui-typo", UseMduiTypo)
             .AddClass(Class)
             .Build();
-
-        [Parameter]
-        public bool Disabled { get; set; }
 
         [Parameter]
         public string? Label { get; set; }
@@ -51,7 +49,7 @@ namespace MduiBlazor
             }
         }
 
-        public void SetNotEmpty()
+        internal void SetNotEmpty()
         {
             if (!_notEmpty)
             {
@@ -59,7 +57,7 @@ namespace MduiBlazor
             }
         }
 
-        public void RemoveNotEmpty()
+        internal void RemoveNotEmpty()
         {
             if (_notEmpty)
             {
@@ -67,7 +65,7 @@ namespace MduiBlazor
             }
         }
 
-        public void SetInvalid(string? error)
+        internal void SetInvalid(string? error)
         {
             if (string.IsNullOrWhiteSpace(ErrorText))
             {
@@ -79,7 +77,7 @@ namespace MduiBlazor
             }
         }
 
-        public void RemoveInvalid()
+        internal void RemoveInvalid()
         {
             if (_invalid)
             {
@@ -91,7 +89,7 @@ namespace MduiBlazor
             }
         }
 
-        public void SetFocus()
+        internal void SetFocus()
         {
             if (!_isFocus)
             {
@@ -100,11 +98,20 @@ namespace MduiBlazor
             }
         }
 
-        public void SetBlur()
+        internal void SetBlur()
         {
             if (_isFocus)
             {
                 _isFocus = false;
+                StateHasChanged();
+            }
+        }
+
+        internal void SetDisabled(bool disabled)
+        {
+            if (_disabled != disabled)
+            {
+                _disabled = disabled;
                 StateHasChanged();
             }
         }

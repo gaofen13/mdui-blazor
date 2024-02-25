@@ -1,0 +1,152 @@
+/**
+ * =============================================================================
+ * ************   Picker 选择器   ************
+ * =============================================================================
+ */
+
+.mdui-picker {
+  position: relative;
+  display: block;
+  overflow: visible;
+  background-color: inherit;
+
+  &>.mdui-input {
+    // 箭头
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpath d='M-.003 2.5l5 5 5-5h-10z' opacity='.54'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right center;
+  }
+
+  /* 下拉内容 */
+  .mdui-picker-content {
+    position: absolute;
+    z-index: 99999;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0;
+    padding: 8px 0;
+
+    // 高度超出窗口高度时，使边框和窗口保持一定距离，出现滚动条
+    overflow-y: auto;
+    color: @color-black-text;
+    font-size: 16px;
+    list-style: none;
+    background-color: #fff;
+    border-radius: 2px;
+    transform: scale(0);
+    visibility: hidden;
+    opacity: 0;
+    transition-timing-function: @animation-curve-linear-out-slow-in;
+    transition-duration: .3s;
+    transition-property: transform, opacity, visibility;
+    will-change: transform, opacity, visibility;
+    -webkit-overflow-scrolling: touch;
+    .mdui-shadow(8);
+  }
+}
+
+.mdui-picker-top {
+  .mdui-picker-content {
+    right: auto;
+    bottom: 100%;
+    left: 0;
+    transform-origin: left bottom;
+  }
+}
+
+.mdui-picker-bottom {
+  .mdui-picker-content {
+    top: 100%;
+    right: auto;
+    left: 0;
+    margin-top: 2px;
+    transform-origin: left top;
+  }
+}
+
+/* 打开状态的菜单 */
+.mdui-picker-open {
+  .mdui-picker-content {
+    transform: scale(1);
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+/* 内容项 */
+.mdui-picker-item {
+  position: relative;
+  display: block;
+  height: 48px;
+  margin: 4px;
+  padding: 0 16px;
+  color: inherit;
+  line-height: 48px;
+  text-decoration: none;
+  cursor: pointer;
+  user-select: none;
+  .mdui-text-truncate();
+
+  &:hover {
+    background-color: @color-grey-200;
+  }
+
+  // 禁用的条目
+  &[disabled] {
+    color: @color-black-disabled !important;
+    cursor: default;
+
+    &:hover {
+      background-color: inherit !important;
+    }
+
+    .mdui-icon {
+      color: @color-black-icon-disabled;
+    }
+  }
+}
+
+/* 激活状态的项 */
+.mdui-picker-item-active {
+  background-color: @color-grey-200;
+}
+
+
+/**
+ * =============================================================================
+ * ************   Picker dark   ************
+ * =============================================================================
+ */
+.layout-theme({
+  .mdui-picker {
+    &>.mdui-input {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpath d='M-.003 2.5l5 5 5-5h-10z' fill='%23FFF'/%3E%3C/svg%3E");
+    }
+  }
+
+  .mdui-picker-content {
+    color: #fff;
+    background-color: @layout-dark-color-4;
+  }
+
+  .mdui-picker-item {
+    &:hover {
+      background-color: @color-grey-700;
+    }
+
+    &[disabled] {
+      color: @color-white-disabled !important;
+
+      .mdui-icon {
+        color: @color-white-icon-disabled;
+      }
+    }
+  }
+
+  .mdui-picker-item-active {
+    background-color: @color-grey-700;
+  }
+});
