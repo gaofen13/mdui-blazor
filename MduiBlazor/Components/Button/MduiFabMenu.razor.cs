@@ -15,7 +15,6 @@ namespace MduiBlazor
             .AddClass($"mdui-color-{Color}", !string.IsNullOrWhiteSpace(Color))
             .AddClass($"mdui-text-color-{TextColor}", !string.IsNullOrWhiteSpace(TextColor))
             .AddClass("mdui-fab-mini", Mini)
-            .AddClass("mdui-fab-hide", Hide)
             .Build();
 
         private string DialClassname =>
@@ -25,6 +24,7 @@ namespace MduiBlazor
 
         protected string Classname =>
             new ClassBuilder("mdui-fab-wrapper")
+            .AddClass("mdui-fab-hide", Hide)
             .AddClass("mdui-typo", UseMduiTypo)
             .AddClass(Class)
             .Build();
