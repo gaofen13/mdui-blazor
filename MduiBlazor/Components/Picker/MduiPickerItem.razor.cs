@@ -19,7 +19,7 @@ namespace MduiBlazor
         {
             get
             {
-                if (Picker.Readonly || !Picker.Searchable)
+                if (!Picker.Searchable)
                 {
                     return true;
                 }
