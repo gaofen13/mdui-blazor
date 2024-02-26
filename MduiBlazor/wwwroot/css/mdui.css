@@ -7313,7 +7313,7 @@ th.mdui-table-cell-checkbox .mdui-checkbox {
 /* 透明的圆形，用于生成圆形阴影 */
 .mdui-checkbox-icon {
   position: absolute;
-  top: 9px;
+  top: 50%;
   left: 0;
   display: inline-block;
   width: 18px;
@@ -7322,6 +7322,8 @@ th.mdui-table-cell-checkbox .mdui-checkbox {
   background-color: transparent;
   border: none;
   border-radius: 18px;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
   -webkit-transition: -webkit-box-shadow 0.14s cubic-bezier(0.4, 0, 0.2, 1);
   transition: -webkit-box-shadow 0.14s cubic-bezier(0.4, 0, 0.2, 1);
   transition: box-shadow 0.14s cubic-bezier(0.4, 0, 0.2, 1);
@@ -8703,7 +8705,7 @@ th.mdui-table-cell-checkbox .mdui-checkbox {
 /* 图标外圈 */
 .mdui-radio-icon {
   position: absolute;
-  top: 9px;
+  top: 50%;
   left: 0;
   display: inline-block;
   -webkit-box-sizing: border-box;
@@ -8713,6 +8715,8 @@ th.mdui-table-cell-checkbox .mdui-checkbox {
   vertical-align: middle;
   border: 2px solid rgba(0, 0, 0, 0.54);
   border-radius: 18px;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
   -webkit-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1), -webkit-box-shadow 0.14s cubic-bezier(0.4, 0, 0.2, 1);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1), -webkit-box-shadow 0.14s cubic-bezier(0.4, 0, 0.2, 1);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.14s cubic-bezier(0.4, 0, 0.2, 1);
@@ -9800,7 +9804,7 @@ input[type="range"]:not(:disabled):hover ~ .mdui-slider-thumb::before {
 /* 图标轨道 */
 .mdui-switch-icon {
   position: absolute;
-  top: 9px;
+  top: 50%;
   left: 0;
   display: inline-block;
   width: 36px;
@@ -9808,6 +9812,8 @@ input[type="range"]:not(:disabled):hover ~ .mdui-slider-thumb::before {
   vertical-align: middle;
   background-color: rgba(0, 0, 0, 0.38);
   border-radius: 14px;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
   -webkit-transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }

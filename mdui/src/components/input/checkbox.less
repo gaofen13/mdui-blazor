@@ -27,7 +27,7 @@
 /* 透明的圆形，用于生成圆形阴影 */
 .mdui-checkbox-icon {
   position: absolute;
-  top: 9px;
+  top: 50%;
   left: 0;
   display: inline-block;
   width: 18px;
@@ -36,6 +36,7 @@
   background-color: transparent;
   border: none;
   border-radius: 18px;
+  transform: translateY(-50%);
   transition: box-shadow .14s @animation-curve-default;
 
   // 图标的边框和背景
