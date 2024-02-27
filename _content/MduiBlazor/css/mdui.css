@@ -8521,6 +8521,7 @@ th.mdui-table-cell-checkbox .mdui-checkbox {
 }
 .mdui-picker .mdui-picker-content {
   position: absolute;
+  z-index: calc(880 + 1);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -8556,9 +8557,6 @@ th.mdui-table-cell-checkbox .mdui-checkbox {
   -webkit-overflow-scrolling: touch;
   -webkit-box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
           box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
-}
-.mdui-picker .mdui-picker-content.mdui-overlay-parent {
-  z-index: calc(880 + 1);
 }
 .mdui-picker-top .mdui-picker-content {
   right: auto;
@@ -13403,6 +13401,7 @@ input.mdui-btn[type="submit"] {
 }
 .mdui-menu .mdui-menu-content {
   position: absolute;
+  z-index: calc(880 + 1);
   display: block;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -13435,9 +13434,6 @@ input.mdui-btn[type="submit"] {
 .mdui-menu .mdui-menu-content .mdui-divider {
   margin-top: 8px;
   margin-bottom: 8px;
-}
-.mdui-menu .mdui-menu-content.mdui-overlay-parent {
-  z-index: calc(880 + 1);
 }
 .mdui-menu * {
   cursor: pointer;
