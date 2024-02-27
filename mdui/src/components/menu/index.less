@@ -19,6 +19,7 @@
   /* 菜单 */
   .mdui-menu-content {
     position: absolute;
+    z-index: calc(@z-index-overlay + 1);
     display: block;
     box-sizing: border-box;
     width: @menu-simple-x * 3;
@@ -46,10 +47,6 @@
     .mdui-divider {
       margin-top: 8px;
       margin-bottom: 8px;
-    }
-
-    &.mdui-overlay-parent {
-      z-index: calc(@z-index-overlay + 1);
     }
   }
 
