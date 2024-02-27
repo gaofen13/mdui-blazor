@@ -404,7 +404,7 @@ span {
   right: -5000px;
   bottom: -5000px;
   left: -5000px;
-  z-index: 8000;
+  z-index: 880;
   background: rgba(0, 0, 0, 0.4);
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
@@ -8521,7 +8521,6 @@ th.mdui-table-cell-checkbox .mdui-checkbox {
 }
 .mdui-picker .mdui-picker-content {
   position: absolute;
-  z-index: 99999;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -8557,6 +8556,9 @@ th.mdui-table-cell-checkbox .mdui-checkbox {
   -webkit-overflow-scrolling: touch;
   -webkit-box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
           box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+.mdui-picker .mdui-picker-content.mdui-overlay-parent {
+  z-index: calc(880 + 1);
 }
 .mdui-picker-top .mdui-picker-content {
   right: auto;
@@ -10661,16 +10663,14 @@ input.mdui-btn[type="submit"] {
   margin-left: 8px;
 }
 /* 固定到右下角的 FAB 按钮 */
-.mdui-fab-fixed,
-.mdui-fab-wrapper {
+.mdui-fab-fixed {
   position: fixed !important;
   /* 手机平板上距离屏幕右下角 16px */
   right: 16px;
   bottom: 16px;
 }
 @media (min-width: 1024px) {
-  .mdui-fab-fixed,
-  .mdui-fab-wrapper {
+  .mdui-fab-fixed {
     /* 电脑上距离屏幕右下角 24px */
     right: 24px;
     bottom: 24px;
@@ -10679,7 +10679,6 @@ input.mdui-btn[type="submit"] {
 /* 含菜单的浮动操作按钮 */
 .mdui-fab-wrapper {
   position: relative;
-  z-index: 4000;
   width: 56px;
   height: 56px;
   padding-top: 8px;
@@ -10864,7 +10863,6 @@ input.mdui-btn[type="submit"] {
 }
 .mdui-tooltip::before {
   position: absolute;
-  z-index: 6000;
   display: inline-block;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -10945,7 +10943,7 @@ input.mdui-btn[type="submit"] {
   top: 0;
   right: 0;
   left: 0;
-  z-index: 1000;
+  z-index: 600;
   -webkit-transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
           transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
   -webkit-transition-duration: 0.3s;
@@ -11936,7 +11934,7 @@ input.mdui-btn[type="submit"] {
   top: 0;
   bottom: 0;
   left: 0;
-  z-index: 5000;
+  z-index: 660;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   /* stylelint-disable-next-line */
@@ -11986,7 +11984,7 @@ input.mdui-btn[type="submit"] {
           box-shadow: 0 8px 10px -5px rgba(0, 0, 0, 0.2), 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12);
 }
 .mdui-drawer + .mdui-overlay {
-  z-index: calc(5000 - 1);
+  z-index: calc(660 - 1);
 }
 /* PC 上默认有上边距 */
 .mdui-appbar-with-tab > .mdui-drawer.mdui-drawer-inset {
@@ -12056,7 +12054,6 @@ input.mdui-btn[type="submit"] {
   top: 50%;
   right: 0;
   left: 0;
-  z-index: 9000;
   display: none;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -12262,7 +12259,7 @@ input.mdui-btn[type="submit"] {
  */
 .mdui-snackbar {
   position: fixed;
-  z-index: 7000;
+  z-index: 800;
   width: 100%;
 }
 @media (min-width: 600px) {
@@ -13406,7 +13403,6 @@ input.mdui-btn[type="submit"] {
 }
 .mdui-menu .mdui-menu-content {
   position: absolute;
-  z-index: 99999;
   display: block;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -13439,6 +13435,9 @@ input.mdui-btn[type="submit"] {
 .mdui-menu .mdui-menu-content .mdui-divider {
   margin-top: 8px;
   margin-bottom: 8px;
+}
+.mdui-menu .mdui-menu-content.mdui-overlay-parent {
+  z-index: calc(880 + 1);
 }
 .mdui-menu * {
   cursor: pointer;
