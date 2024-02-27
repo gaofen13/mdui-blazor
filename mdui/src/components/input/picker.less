@@ -20,7 +20,6 @@
   /* 下拉内容 */
   .mdui-picker-content {
     position: absolute;
-    z-index: 99999;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -45,6 +44,10 @@
     will-change: transform, opacity, visibility;
     -webkit-overflow-scrolling: touch;
     .mdui-shadow(8);
+
+    &.mdui-overlay-parent {
+      z-index: calc(@z-index-overlay + 1);
+    }
   }
 }
 

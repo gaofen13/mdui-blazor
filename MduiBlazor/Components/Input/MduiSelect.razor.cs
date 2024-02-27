@@ -1,6 +1,5 @@
 ﻿using MduiBlazor.Extensions;
 using MduiBlazor.Utilities;
-using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using System.Diagnostics.CodeAnalysis;
 

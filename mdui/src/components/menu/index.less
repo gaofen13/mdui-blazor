@@ -19,7 +19,6 @@
   /* 菜单 */
   .mdui-menu-content {
     position: absolute;
-    z-index: 99999;
     display: block;
     box-sizing: border-box;
     width: @menu-simple-x * 3;
@@ -47,6 +46,10 @@
     .mdui-divider {
       margin-top: 8px;
       margin-bottom: 8px;
+    }
+
+    &.mdui-overlay-parent {
+      z-index: calc(@z-index-overlay + 1);
     }
   }
 
@@ -192,8 +195,6 @@
   width: 24px;
   height: 24px;
   margin: 4px 0;
-  //background-image: data-uri('image/svg+xml', './components/menu/svg/arrow_right_dark.svg');
-  // https://www.zhangxinxu.com/sp/svgo/ CSS 转义
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M9.5 17.5l5-5-5-5z' opacity='.54'/%3E%3C/svg%3E");
 }
 

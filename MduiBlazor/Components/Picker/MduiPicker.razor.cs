@@ -19,8 +19,9 @@ namespace MduiBlazor
             .AddClass(Class)
             .Build();
 
-        private static string ContentClassname =>
+        private string ContentClassname =>
             new ClassBuilder("mdui-picker-content")
+            .AddClass("mdui-overlay-parent", Overlay is not null)
             .Build();
 
         private string ContentStylelist =>
@@ -29,6 +30,9 @@ namespace MduiBlazor
             .Build();
 
         internal string? DisplayValue { get; set; }
+
+        [CascadingParameter]
+        private MduiOverlay? Overlay { get; set; }
 
         [Parameter]
         public string? Name { get; set; }

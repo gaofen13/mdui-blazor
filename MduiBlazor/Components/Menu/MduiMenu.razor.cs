@@ -18,9 +18,13 @@ namespace MduiBlazor
             .AddClass(Class)
             .Build();
 
-        private string MenuListClass =>
+        private string MenuContentClassname =>
             new ClassBuilder("mdui-menu-content")
+            .AddClass("mdui-overlay-parent", Overlay is not null)
             .Build();
+
+        [CascadingParameter]
+        private MduiOverlay? Overlay { get; set; }
 
         [Parameter]
         public string? Title { get; set; }
