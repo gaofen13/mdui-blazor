@@ -6733,6 +6733,10 @@ span {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   width: 100%;
+  /* 面板嵌套间距 */
+}
+.mdui-panel .mdui-panel {
+  padding: 12px 0;
 }
 /* 面板项 */
 .mdui-panel-item {
@@ -6822,38 +6826,25 @@ span {
 }
 /* 面板项内容 */
 .mdui-panel-item-body {
-  max-height: 0;
+  display: grid;
+  grid-template-rows: 0fr;
   padding: 0 24px;
   overflow: hidden;
-  -webkit-transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  will-change: max-height;
-}
-.mdui-panel-item-body::before,
-.mdui-panel-item-body::after {
-  display: table;
-  content: ' ';
-}
-.mdui-panel-item-body::after {
-  clear: both;
-}
-.mdui-panel-item-body::before,
-.mdui-panel-item-body::after {
-  display: table;
-  content: ' ';
-}
-.mdui-panel-item-body::after {
-  clear: both;
+  -webkit-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .mdui-panel-item-body::after {
   height: 16px;
+}
+.mdui-panel-item-body > .mdui-panel-item-content {
+  min-height: 0;
 }
 /* 面板项操作栏 */
 .mdui-panel-item-actions {
   display: block;
   width: 100%;
   margin: 16px -24px 0 -24px;
-  padding: 16px 24px 0 24px;
+  padding: 16px 24px;
   text-align: right;
   border-top: 1px solid rgba(0, 0, 0, 0.12);
 }
@@ -6868,6 +6859,9 @@ span {
   margin-top: 16px;
   margin-bottom: 16px;
 }
+.mdui-panel-item-open > .mdui-panel-item-body {
+  grid-template-rows: 1fr;
+}
 .mdui-panel-item-open > .mdui-panel-item-header {
   height: 64px;
 }
@@ -6875,10 +6869,6 @@ span {
   top: 20px;
   -webkit-transform: rotate(180deg);
           transform: rotate(180deg);
-}
-.mdui-panel-item-open > .mdui-panel-item-body {
-  max-height: 65vh;
-  overflow: auto;
 }
 /* 使打开项上下没有边距 */
 .mdui-panel-gapless {
@@ -11712,6 +11702,7 @@ input.mdui-btn[type="submit"] {
           box-sizing: border-box;
   min-height: 48px;
   padding: 0 16px;
+  line-height: 20px;
   text-decoration: none;
   cursor: pointer;
   -webkit-transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -11734,9 +11725,6 @@ input.mdui-btn[type="submit"] {
           flex-grow: 1;
   padding-top: 14px;
   padding-bottom: 14px;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 20px;
 }
 /* 列表项内容的副内容 */
 .mdui-list-item-title ~ .mdui-list-item-text {
@@ -13628,18 +13616,7 @@ input.mdui-btn[type="submit"] {
  * ************   Collapse 折叠插件   ************
  * =============================================================================
  */
-.mdui-collapse-item-header {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: nowrap;
-      flex-wrap: nowrap;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-.mdui-collapse-item-header .mdui-collapse-item-arrow,
-.mdui-collapse-item-header.mdui-collapse-item-arrow {
+.mdui-collapse-header .mdui-collapse-arrow {
   -webkit-transform: rotate(0);
           transform: rotate(0);
   -webkit-transition: -webkit-transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -13648,22 +13625,23 @@ input.mdui-btn[type="submit"] {
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   will-change: transform;
 }
-.mdui-collapse-item-body {
-  max-height: 0;
+.mdui-collapse-body {
+  display: grid;
+  grid-template-rows: 0fr;
   margin-top: 0;
   margin-bottom: 0;
-  padding-top: 0;
-  padding-bottom: 0;
+  padding: 0;
   overflow: hidden;
   -webkit-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  will-change: max-height;
 }
-.mdui-collapse-item-body .mdui-list-item {
-  padding-left: 72px;
+.mdui-collapse-body > .mdui-collapse-content {
+  min-height: 0;
 }
-.mdui-collapse-item-open > .mdui-collapse-item-header .mdui-collapse-item-arrow,
-.mdui-collapse-item-open > .mdui-collapse-item-header.mdui-collapse-item-arrow {
+.mdui-collapse-open > .mdui-collapse-body {
+  grid-template-rows: 1fr;
+}
+.mdui-collapse-open > .mdui-collapse-header .mdui-collapse-arrow {
   -webkit-transform: rotate(180deg);
           transform: rotate(180deg);
 }
@@ -13880,10 +13858,8 @@ input.mdui-btn[type="submit"] {
  * =============================================================================
  */
 .mdui-treeview {
-  width: 100%;
   margin: 0;
   padding: 0;
-  overflow: auto;
   list-style: none;
   background-color: transparent;
 }
@@ -13892,19 +13868,21 @@ input.mdui-btn[type="submit"] {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  margin-left: 44px;
+  margin-left: 36px;
   text-decoration: none;
   cursor: pointer;
   -webkit-transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   /* 组件项图标 */
 }
-.mdui-treeview-item.mdui-collapse-item-header {
+.mdui-collapse-header.mdui-treeview-item {
   margin-left: 8px;
 }
 .mdui-treeview-item .mdui-icon {
@@ -13919,6 +13897,9 @@ input.mdui-btn[type="submit"] {
 .mdui-treeview-item .mdui-checkbox .mdui-checkbox-icon {
   -webkit-box-shadow: none !important;
           box-shadow: none !important;
+}
+.mdui-treeview-item:has(.mdui-collapse-arrow) {
+  margin-left: 0;
 }
 /* 组件项文本内容 */
 .mdui-treeview-item-content {
