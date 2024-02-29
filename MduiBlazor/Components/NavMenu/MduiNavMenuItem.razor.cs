@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Components.Routing;
 
 namespace MduiBlazor
 {
-    public partial class MduiNavMenuItem : MduiComponentBase, IDisposable
+    public partial class MduiNavMenuItem : MduiComponentBase
     {
         protected string Classname =>
             new ClassBuilder("mdui-list-item")
@@ -13,8 +13,20 @@ namespace MduiBlazor
             .AddClass(Class)
             .Build();
 
+        private string Stylelist =>
+            new StyleBuilder()
+            .AddStyle("padding-left", $"{Level * 36}px", Parent is not null)
+            .AddStyle(Style)
+            .Build();
+
+        internal int Level { get; set; }
+
+        private bool HasIcon => Icon is not null || IconContent is not null;
+
+        private int PaddingLeft => HasIcon ? Level * 36 : (Level + 1) * 36;
+
         [CascadingParameter]
-        private MduiNavMenuCollapse? Collapse { get; set; }
+        private MduiNavMenuCollapse? Parent { get; set; }
 
         [Parameter]
         public string? Title { get; set; }
@@ -36,14 +48,11 @@ namespace MduiBlazor
 
         protected override void OnInitialized()
         {
-            Collapse?.AddItem();
             base.OnInitialized();
-        }
-
-        void IDisposable.Dispose()
-        {
-            Collapse?.RemoveItem();
-            GC.SuppressFinalize(this);
+            if (Parent is not null)
+            {
+                Level = Parent.Level + 1;
+            }
         }
     }
 }

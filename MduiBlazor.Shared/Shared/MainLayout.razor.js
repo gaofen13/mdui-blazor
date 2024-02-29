@@ -34,7 +34,7 @@ export function GetWindowWidth() {
 }
 
 export function GetScrollTop() {
-    return window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+    return document.documentElement.scrollTop || document.body.scrollTop || 0;
 }
 
 export function ScrollToElementById(elementId) {

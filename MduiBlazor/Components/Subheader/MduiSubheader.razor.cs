@@ -11,6 +11,9 @@ namespace MduiBlazor
             .Build();
 
         [Parameter]
+        public string HtmlTag { get; set; } = "li";
+
+        [Parameter]
         public bool Inset { get; set; }
     }
 }

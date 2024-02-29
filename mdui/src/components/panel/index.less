@@ -8,6 +8,11 @@
 .mdui-panel {
   box-sizing: border-box;
   width: 100%;
+
+  /* 面板嵌套间距 */
+  .mdui-panel {
+    padding: 12px 0;
+  }
 }
 
 /* 面板项 */
@@ -83,15 +88,18 @@
 
 /* 面板项内容 */
 .mdui-panel-item-body {
-  max-height: 0;
+  display: grid;
+  grid-template-rows: 0fr;
   padding: 0 24px;
   overflow: hidden;
-  transition: max-height .3s cubic-bezier(.4, 0, .2, 1);
-  will-change: max-height;
-  .mdui-clearfix();
+  transition: all .3s cubic-bezier(.4, 0, .2, 1);
 
   &::after {
     height: 16px;
+  }
+
+  >.mdui-panel-item-content {
+    min-height: 0;
   }
 }
 
@@ -100,7 +108,7 @@
   display: block;
   width: 100%;
   margin: 16px -24px 0 -24px;
-  padding: 16px 24px 0 24px;
+  padding: 16px 24px;
   text-align: right;
   .mdui-divider-top-dark();
 
@@ -118,6 +126,10 @@
   margin-top: 16px;
   margin-bottom: 16px;
 
+  &>.mdui-panel-item-body {
+    grid-template-rows: 1fr;
+  }
+
   // 打开状态的面板头部更高
   &>.mdui-panel-item-header {
     height: 64px;
@@ -126,11 +138,6 @@
       top: 20px;
       transform: rotate(180deg);
     }
-  }
-
-  &>.mdui-panel-item-body {
-    max-height: 65vh;
-    overflow: auto;
   }
 }
 

@@ -18,7 +18,8 @@ namespace MduiBlazor
         [Parameter]
         public ElementReference? Ref { get; set; }
 
-        [Parameter] public EventCallback<ElementReference> RefChanged { get; set; }
+        [Parameter] 
+        public EventCallback<ElementReference> RefChanged { get; set; }
 
         /// <summary>
         /// Calling StateHasChanged to refresh the component's state

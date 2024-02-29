@@ -4,10 +4,10 @@
 
 @if (HasChildren)
 {
-    <MduiCollapse Open="@_opened" DisableRipple="@TreeRoot.DisableRipple">
+    <MduiCollapse Open="@_opened">
         <HeaderContent>
-            <div class="mdui-treeview-item mdui-collapse-item-header">
-                <MduiIconButton Class="mdui-collapse-item-arrow" Icon="keyboard_arrow_down" OnClick="@OnOpenChanged"
+            <div class="mdui-treeview-item">
+                <MduiIconButton Class="mdui-collapse-arrow" Icon="keyboard_arrow_down" OnClick="@OnOpenChanged"
                     DisableRipple="@TreeRoot.DisableRipple" />
                 <div class="@TitleClassname" @onclick="@OnClickItemAsync" @onclick:stopPropagation="@true">
                     @if (TreeRoot.MultiSelection)

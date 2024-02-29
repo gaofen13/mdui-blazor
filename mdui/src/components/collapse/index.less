@@ -4,41 +4,39 @@
  * =============================================================================
  */
 
-.mdui-collapse-item-header {
-    display: flex;
-    flex-wrap: nowrap;
-    align-items: center;
+.mdui-collapse-header {
 
     // 图标，打开时翻转 180 度
-    .mdui-collapse-item-arrow,
-    &.mdui-collapse-item-arrow {
+    .mdui-collapse-arrow {
         transform: rotate(0);
         transition: transform .3s @animation-curve-default;
         will-change: transform;
     }
 }
 
-.mdui-collapse-item-body {
-    max-height: 0;
+.mdui-collapse-body {
+    display: grid;
+    grid-template-rows: 0fr;
     margin-top: 0;
     margin-bottom: 0;
-    padding-top: 0;
-    padding-bottom: 0;
+    padding: 0;
     overflow: hidden;
     transition: all .3s @animation-curve-default;
-    will-change: max-height;
 
-    // 使子列表缩进
-    .mdui-list-item {
-        padding-left: 72px;
+    >.mdui-collapse-content {
+        min-height: 0;
     }
 }
 
-.mdui-collapse-item-open {
-    &>.mdui-collapse-item-header {
+.mdui-collapse-open {
 
-        .mdui-collapse-item-arrow,
-        &.mdui-collapse-item-arrow {
+    &>.mdui-collapse-body {
+        grid-template-rows: 1fr;
+    }
+
+    &>.mdui-collapse-header {
+
+        .mdui-collapse-arrow {
             transform: rotate(180deg);
         }
     }

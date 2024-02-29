@@ -1,11 +1,22 @@
 <MduiList Accordion Style="max-width:480px">
-    <MduiListItem Title="Home" Icon="home" />
-    <MduiListItem Title="dashboard" Icon="dashboard" />
+    <MduiListItem>
+        <MduiIcon Icon="home" />
+        <MduiListItemContent>Home</MduiListItemContent>
+    </MduiListItem>
+    <MduiListItem>
+        <MduiIcon Icon="dashboard" />
+        <MduiListItemContent>Dashboard</MduiListItemContent>
+    </MduiListItem>
     <MduiListCollapse Dense Title="Audience" Icon="people">
         <MduiListItem>Overview</MduiListItem>
         <MduiListItem>Language</MduiListItem>
         <MduiListItem>Location</MduiListItem>
-        <MduiListItem>New vs Returning</MduiListItem>
+        <MduiListCollapse Dense Title="New vs Returning" Icon="fiber_new">
+            <MduiListItem>Overview</MduiListItem>
+            <MduiListItem>All Traffic</MduiListItem>
+            <MduiListItem>Direct Traffic</MduiListItem>
+            <MduiListItem>Search Overview</MduiListItem>
+        </MduiListCollapse>
     </MduiListCollapse>
     <MduiListCollapse Dense Title="Acquisition" Icon="device_hub">
         <MduiListItem>Overview</MduiListItem>
@@ -19,5 +30,8 @@
         <MduiListItem>Landing Pages</MduiListItem>
         <MduiListItem>Exit Pages</MduiListItem>
     </MduiListCollapse>
-    <MduiListItem Title="Ecommerce" Icon="shopping_cart" />
+    <MduiListItem>
+        <MduiIcon Icon="shopping_cart" />
+        <MduiListItemContent>Ecommerce</MduiListItemContent>
+    </MduiListItem>
 </MduiList>

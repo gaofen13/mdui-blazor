@@ -7,10 +7,8 @@
 @import '../input/checkbox';
 
 .mdui-treeview {
-  width: 100%;
   margin: 0;
   padding: 0;
-  overflow: auto;
   list-style: none;
   background-color: transparent;
 }
@@ -18,14 +16,15 @@
 /* 组件项 */
 .mdui-treeview-item {
   display: flex;
+  flex-wrap: nowrap;
   align-items: center;
   box-sizing: border-box;
-  margin-left: 44px;
+  margin-left: 36px;
   text-decoration: none;
   cursor: pointer;
   transition: background-color .3s @animation-curve-default;
 
-  &.mdui-collapse-item-header {
+  .mdui-collapse-header& {
     margin-left: 8px;
   }
 
@@ -43,6 +42,10 @@
     .mdui-checkbox-icon {
       box-shadow: none !important;
     }
+  }
+
+  &:has(.mdui-collapse-arrow) {
+    margin-left: 0;
   }
 }
 

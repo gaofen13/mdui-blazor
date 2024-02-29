@@ -5,33 +5,33 @@ namespace MduiBlazor
 {
     public partial class MduiNavMenuCollapse : MduiComponentBase, IDisposable
     {
-        protected string Classname =>
-            new ClassBuilder("mdui-collapse-item")
-            .AddClass("mdui-collapse-item-open", Open)
-            .AddClass("mdui-typo", UseMduiTypo)
-            .AddClass(Class)
-            .Build();
+        private readonly List<MduiNavMenuCollapse> _subItems = [];
 
         private string HeaderClassname =>
-            new ClassBuilder("mdui-collapse-item-header mdui-list-item")
+            new ClassBuilder("mdui-list-item")
             .AddClass("mdui-ripple", !DisableRipple)
             .AddClass("mdui-typo", UseMduiTypo)
             .Build();
 
+        private string HeaderStylelist =>
+            new StyleBuilder()
+            .AddStyle("padding-left", $"{Level * 36}px", Parent is not null)
+            .Build();
+
         private string BodyClassname =>
-            new ClassBuilder("mdui-collapse-item-body mdui-list")
+            new ClassBuilder("mdui-list")
             .AddClass("mdui-list-dense", Dense)
             .Build();
 
-        private string BodyStylelist =>
-            new StyleBuilder()
-            .AddStyle("max-height", $"{ChildItemCount * (Dense ? 40 : 48)}px", Open)
-            .Build();
+        internal int Level { get; set; }
 
-        private int ChildItemCount { get; set; }
+        private bool HasParent => Parent is not null;
 
         [CascadingParameter]
         private MduiNavMenu? NavMenu { get; set; }
+
+        [CascadingParameter]
+        private MduiNavMenuCollapse? Parent { get; set; }
 
         [Parameter]
         public bool Open { get; set; }
@@ -53,7 +53,15 @@ namespace MduiBlazor
 
         protected override void OnInitialized()
         {
-            NavMenu?.AddSubitem(this);
+            if (HasParent)
+            {
+                Parent?.AddSubitem(this);
+                Level = Parent!.Level + 1;
+            }
+            else
+            {
+                NavMenu?.AddSubitem(this);
+            }
             base.OnInitialized();
         }
 
@@ -61,7 +69,14 @@ namespace MduiBlazor
         {
             if (!Open && NavMenu?.Accordion == true)
             {
-                NavMenu.CloseAllSubitems();
+                if (HasParent)
+                {
+                    Parent?.CloseAllSubitems();
+                }
+                else
+                {
+                    NavMenu.CloseAllSubitems();
+                }
             }
             Open = !Open;
         }
@@ -71,19 +86,42 @@ namespace MduiBlazor
             Open = false;
         }
 
-        public void AddItem()
+        public void AddSubitem(MduiNavMenuCollapse item)
         {
-            ChildItemCount++;
+            if (!_subItems.Contains(item))
+            {
+                _subItems.Add(item);
+            }
         }
 
-        public void RemoveItem()
+        public void RemoveSubitem(MduiNavMenuCollapse item)
         {
-            ChildItemCount--;
+            _subItems.Remove(item);
+        }
+
+        public void CloseAllSubitems()
+        {
+            var openedItems = _subItems.Where(i => i.Open);
+            if (openedItems.Any())
+            {
+                foreach (var item in openedItems)
+                {
+                    item.Close();
+                }
+                StateHasChanged();
+            }
         }
 
         void IDisposable.Dispose()
         {
-            NavMenu?.RemoveSubitem(this);
+            if (HasParent)
+            {
+                Parent?.RemoveSubitem(this);
+            }
+            else
+            {
+                NavMenu?.RemoveSubitem(this);
+            }
             GC.SuppressFinalize(this);
         }
     }

@@ -13,19 +13,30 @@ namespace MduiBlazor
             .AddClass(Class)
             .Build();
 
+        private string Stylelist =>
+            new StyleBuilder()
+            .AddStyle("padding-left", $"{Level * 36}px", Parent is not null)
+            .AddStyle(Style)
+            .Build();
+
+        internal int Level { get; set; }
+
+        [CascadingParameter]
+        private MduiListCollapse? Parent { get; set; }
+
         [Parameter]
         public bool DisableRipple { get; set; }
 
         [Parameter]
         public bool Active { get; set; }
 
-        [Parameter]
-        public string? Title { get; set; }
-
-        [Parameter]
-        public string? Icon { get; set; }
-
-        [Parameter]
-        public RenderFragment? IconContent { get; set; }
+        protected override void OnInitialized()
+        {
+            base.OnInitialized();
+            if (Parent is not null)
+            {
+                Level = Parent.Level + 1;
+            }
+        }
     }
 }

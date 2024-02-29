@@ -1,0 +1,13 @@
+@namespace MduiBlazor
+@inherits MduiComponentBase
+
+<MduiElement HtmlTag="@HtmlTag" Class="@Classname" Style="@Style" @attributes="@AdditionalAttributes">
+    <div class="@HeaderClassname">
+        @HeaderContent
+    </div>
+    <MduiElement HtmlTag="@BodyHtmlTag" Class="@BodyClassname">
+        <div class="mdui-collapse-content">
+            @ChildContent
+        </div>
+    </MduiElement>
+</MduiElement>

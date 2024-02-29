@@ -2,22 +2,26 @@
 @inherits MduiComponentBase
 @implements IDisposable
 
-<div class="@Classname" style="@Style" @attributes="@AdditionalAttributes">
-    <div class="@HeaderClassname" @onclick="@OnTitleClicked">
-        @if (IconContent is not null)
-        {
-            @IconContent
-        }
-        else if (Icon is not null)
-        {
-            <MduiIcon Icon="@Icon" />
-        }
-        <div class="mdui-list-item-content">@Title</div>
-        <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
-    </div>
-    <div class="@BodyClassname" style="@BodyStylelist">
-        <CascadingValue Value="@this" IsFixed>
-            @ChildContent
-        </CascadingValue>
-    </div>
-</div>
+<MduiCollapse HtmlTag="div" Open="@Open" Class="@Class" Style="@Style" UseMduiTypo="@UseMduiTypo" @attributes="@AdditionalAttributes">
+    <HeaderContent>
+        <div class="@HeaderClassname" style="@HeaderStylelist" @onclick="@OnTitleClicked" @onclick:stopPropagation="@true">
+            @if (IconContent is not null)
+            {
+                @IconContent
+            }
+            else if (Icon is not null)
+            {
+                <MduiIcon Icon="@Icon" />
+            }
+            <div class="mdui-list-item-content">@Title</div>
+            <MduiIcon Class="mdui-collapse-arrow" Icon="keyboard_arrow_down" />
+        </div>
+    </HeaderContent>
+    <ChildContent>
+        <div class="@BodyClassname">
+            <CascadingValue Value="@this" IsFixed>
+                @ChildContent
+            </CascadingValue>
+        </div>
+    </ChildContent>
+</MduiCollapse>

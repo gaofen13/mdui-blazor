@@ -14,12 +14,14 @@
         <MduiIcon Class="mdui-panel-item-arrow" Icon="@ArrowIcon" />
     </div>
     <div class="mdui-panel-item-body">
-        @ChildContent
-        @if (ActionsContent is not null)
-        {
-            <div class="mdui-panel-item-actions">
-                @ActionsContent
-            </div>
-        }
+        <div class="mdui-panel-item-content">
+            @ChildContent
+            @if (ActionsContent is not null)
+            {
+                <div class="mdui-panel-item-actions">
+                    @ActionsContent
+                </div>
+            }
+        </div>
     </div>
 </div>

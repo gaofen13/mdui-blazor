@@ -19,11 +19,6 @@ namespace MduiBlazor
             .AddClass("mdui-treeview-item-active", _actived)
             .Build();
 
-        private string ArrowIconClassname =>
-            new ClassBuilder("mdui-collapse-item-arrow mdui-icon material-icons")
-            .AddClass("mdui-ripple", !TreeRoot.DisableRipple)
-            .Build();
-
         public bool Actived => _actived;
 
         public bool Checked => _checked;
