@@ -8,7 +8,7 @@ namespace MduiBlazor
     {
         private bool _isOpen;
         private bool _readonly;
-
+        private MduiPickerItem<TValue>? _currentItem;
         private readonly HashSet<MduiPickerItem<TValue>> _items = [];
 
         private string Classname =>
@@ -31,12 +31,6 @@ namespace MduiBlazor
         internal string? DisplayValue { get; set; }
 
         [Parameter]
-        public string? Name { get; set; }
-
-        [Parameter]
-        public string? DisplayName { get; set; }
-
-        [Parameter]
         public bool Searchable { get; set; }
 
         [Parameter]
@@ -47,9 +41,6 @@ namespace MduiBlazor
 
         [Parameter]
         public EventCallback<TValue> ValueChanged { get; set; }
-
-        [Parameter]
-        public Expression<Func<TValue>>? ValueExpression { get; set; }
 
         [Parameter]
         public string? Placeholder { get; set; }
@@ -92,6 +83,7 @@ namespace MduiBlazor
         {
             if (item.Value?.Equals(Value) != true)
             {
+                _currentItem = item;
                 Value = item.Value;
                 ValueChanged.InvokeAsync(item.Value);
                 DisplayValue = item.Label;
@@ -105,6 +97,7 @@ namespace MduiBlazor
             _items.Add(item);
             if (Value?.Equals(item.Value) == true)
             {
+                _currentItem = item;
                 DisplayValue = item.Label;
                 StateHasChanged();
             }
@@ -115,13 +108,14 @@ namespace MduiBlazor
             _items.Remove(item);
         }
 
-        private void OnInput(string input)
+        private void OnInput(ChangeEventArgs args)
         {
             if (Searchable)
             {
-                if (!input.Equals(DisplayValue))
+                var inputValue = args.Value?.ToString();
+                if (inputValue?.Equals(DisplayValue) != true)
                 {
-                    DisplayValue = input;
+                    DisplayValue = inputValue;
                 }
             }
         }
@@ -137,6 +131,13 @@ namespace MduiBlazor
         private void OnClickBackground()
         {
             _isOpen = false;
+            if (Searchable)
+            {
+                if (DisplayValue != _currentItem?.Label)
+                {
+                    DisplayValue = _currentItem?.Label;
+                }
+            }
         }
     }
 }

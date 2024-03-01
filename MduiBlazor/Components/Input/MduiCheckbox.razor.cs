@@ -1,3 +1,4 @@
+using MduiBlazor.Utilities;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using System.Diagnostics.CodeAnalysis;
@@ -6,6 +7,11 @@ namespace MduiBlazor
 {
     public partial class MduiCheckbox : MduiInputBase<bool>
     {
+        protected string Classname =>
+            new ClassBuilder($"mdui-{TypeName}")
+            .AddClass(Class)
+            .Build();
+
         private string TypeName => Switch ? "switch" : "checkbox";
 
         [Parameter]
