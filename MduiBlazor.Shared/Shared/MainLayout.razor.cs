@@ -121,5 +121,13 @@ namespace MduiBlazor.Shared.Shared
             _accentColor = AccentColor.Pink;
             _themeMode = DarkThemeMode.Auto;
         }
+
+        private void OnSwipe(SwipeDirection direction)
+        {
+            if (direction == SwipeDirection.RightToLeft)
+            {
+                _open = false;
+            }
+        }
     }
 }

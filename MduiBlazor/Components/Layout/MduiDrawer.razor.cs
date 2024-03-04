@@ -82,26 +82,5 @@ namespace MduiBlazor
                 Layout?.ConfigLeftDarwer(Persistent && drawerOpened);
             }
         }
-
-        private void OnSwipe(SwipeDirection direction)
-        {
-            if (_opened)
-            {
-                if (RightSide)
-                {
-                    if (direction == SwipeDirection.LeftToRight)
-                    {
-                        Opened = false;
-                    }
-                }
-                else
-                {
-                    if (direction == SwipeDirection.RightToLeft)
-                    {
-                        Opened = false;
-                    }
-                }
-            }
-        }
     }
 }

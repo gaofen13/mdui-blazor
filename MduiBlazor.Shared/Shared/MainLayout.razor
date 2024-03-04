@@ -47,7 +47,9 @@
 
     <MduiDrawer Class="mdui-shadow-1" UseMduiTypo @bind-Opened="@_open" Fixed Inset="@Persistent"
         Persistent="@Persistent">
-        <NavMenu />
+        <MduiSwipeArea OnSwipe="@OnSwipe">
+            <NavMenu />
+        </MduiSwipeArea>
     </MduiDrawer>
 
     <MduiLayoutContent>
@@ -72,7 +74,8 @@
                     <MduiText Typo="@Typo.title">主题色</MduiText>
                 </p>
                 <MduiRadioGroup @bind-Value="@_themeMode">
-                    <MduiRow BreakpointXs="@Breakpoint.Xs.xs1" BreakpointSm="@Breakpoint.Sm.sm2" BreakpointMd="@Breakpoint.Md.md3">
+                    <MduiRow BreakpointXs="@Breakpoint.Xs.xs1" BreakpointSm="@Breakpoint.Sm.sm2"
+                        BreakpointMd="@Breakpoint.Md.md3">
                         <MduiCol Class="mdui-m-b-1">
                             <MduiRadio Value="@DarkThemeMode.Auto">Auto</MduiRadio>
                         </MduiCol>
