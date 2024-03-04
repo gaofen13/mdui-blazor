@@ -5136,7 +5136,6 @@ span {
   font-size: 24px;
   /* Preferred icon size */
   font-style: normal;
-  line-height: 1;
   direction: ltr;
   letter-spacing: normal;
   white-space: nowrap;
@@ -5152,6 +5151,7 @@ span {
   display: block !important;
   width: 24px;
   height: 24px;
+  line-height: 24px;
 }
 /**
  * =============================================================================
