@@ -9,10 +9,10 @@ namespace MduiBlazor
         private double? _yDown;
 
         /// <summary>
-        /// 识别精度，单位像素点，默认30px
+        /// 识别精度，单位像素点，默认50px
         /// </summary>
         [Parameter]
-        public int Accuracy { get; set; } = 30;
+        public int Accuracy { get; set; } = 50;
 
         [Parameter]
         public EventCallback<SwipeDirection> OnSwipe { get; set; }
