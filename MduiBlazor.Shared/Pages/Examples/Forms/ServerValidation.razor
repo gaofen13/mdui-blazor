@@ -4,6 +4,7 @@
 <EditForm Model="@model">
     <DataAnnotationsValidator />
     <MduiTextField Label="文本框" FloatingLabel Placeholder="请输入文本" @bind-Value="@model.Text" />
+    <MduiTextField Label="文本框2" FloatingLabel Placeholder="请输入文本" MaxLength="100" @bind-Value="@model.Text" />
     <MduiNumbericField Label="数字框" HelperText="1~100" Placeholder="请输入或选择数字" @bind-Value="@model.Number" />
     <MduiField Label="滑块" ErrorText="请注意滑动的范围" HelperText="1~100">
         <MduiSlider @bind-Value="@model.Number" Min="0" Max="100" />

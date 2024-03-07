@@ -3,7 +3,7 @@
 
 <EditForm Model="@model">
     <DataAnnotationsValidator />
-    <MduiTextField Label="文本框" Required @bind-Value="@model.Text" />
+    <MduiTextField Label="文本框" FloatingLabel Required @bind-Value="@model.Text" />
     <MduiNumbericField Label="数字框" Required @bind-Value="@model.Number" />
     <MduiField Label="单项选择">
         <MduiSelect Required @bind-Value="@model.Select">
@@ -22,7 +22,7 @@
 
     class ModelInfo
     {
-        public string? Text { get; set; }
+        public string? Text { get; set; } = "test";
 
         public int Number { get; set; }
 

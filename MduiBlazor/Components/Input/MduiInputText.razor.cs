@@ -38,12 +38,34 @@ namespace MduiBlazor
         [Parameter]
         public EventCallback<string> OnInput { get; set; }
 
-        public override async Task SetParametersAsync(ParameterView parameters)
+        protected override void OnInitialized()
         {
-            await base.SetParametersAsync(parameters);
+            if (Value?.Length > 0)
+            {
+                Field?.SetNotEmpty();
+                Field?.ChangedState();
+            }
             if (MaxLength > 0)
             {
                 _wordNumber = Value?.Length ?? 0;
+            }
+            base.OnInitialized();
+        }
+
+        protected override void OnAfterRender(bool firstRender)
+        {
+            base.OnAfterRender(firstRender);
+            if (!firstRender)
+            {
+                if (MaxLength > 0)
+                {
+                    if (_wordNumber == Value?.Length)
+                    {
+                        return;
+                    }
+                    _wordNumber = Value?.Length ?? 0;
+                    StateHasChanged();
+                }
             }
         }
 

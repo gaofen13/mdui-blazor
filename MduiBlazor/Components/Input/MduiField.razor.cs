@@ -47,6 +47,11 @@ namespace MduiBlazor
             }
         }
 
+        internal void ChangedState()
+        {
+            StateHasChanged();
+        }
+
         internal void SetNotEmpty()
         {
             if (!_notEmpty)
