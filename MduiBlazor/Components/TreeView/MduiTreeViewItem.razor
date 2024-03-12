@@ -7,14 +7,12 @@
     <MduiCollapse Open="@_opened">
         <HeaderContent>
             <div class="mdui-treeview-item">
-                <MduiIconButton Class="mdui-collapse-arrow" Icon="keyboard_arrow_down" OnClick="@OnOpenChanged"
-                    DisableRipple="@TreeRoot.DisableRipple" />
-                <div class="@TitleClassname" @onclick="@OnClickItemAsync" @onclick:stopPropagation="@true">
-                    @if (TreeRoot.MultiSelection)
+                <MduiIconButton Class="mdui-collapse-arrow" Icon="keyboard_arrow_down" OnClick="@(_=>_opened=!_opened)"
+                    DisableRipple="@Root.DisableRipple" />
+                <label class="@TitleClassname" @onclick="@OnClickItemAsync" @onclick:stopPropagation="@true">
+                    @if (Root.MultiSelection)
                     {
-                        <div class="mdui-checkbox">
-                            <i class="mdui-checkbox-icon"></i>
-                        </div>
+                        <MduiCheckbox Value="@Checked" ValueChanged="@OnCheckedChanged" />
                     }
                     @if (TitleContent is not null)
                     {
@@ -24,12 +22,12 @@
                     {
                         @Title
                     }
-                </div>
+                </label>
             </div>
         </HeaderContent>
         <ChildContent>
             <CascadingValue Value="@this" IsFixed>
-                <ul class="mdui-treeview" style="padding-left:@TreeRoot.Indent">
+                <ul class="mdui-treeview" style="padding-left:@Root.Indent">
                     @ChildContent
                 </ul>
             </CascadingValue>
@@ -39,12 +37,10 @@
 else
 {
     <li class="mdui-treeview-item">
-        <div class="@TitleClassname" @onclick="@OnClickItemAsync" @onclick:stopPropagation="@true">
-            @if (TreeRoot.MultiSelection)
+        <label class="@TitleClassname" @onclick="@OnClickItemAsync" @onclick:stopPropagation="@true">
+            @if (Root.MultiSelection)
             {
-                <div class="mdui-checkbox">
-                    <i class="mdui-checkbox-icon"></i>
-                </div>
+                <MduiCheckbox Value="@Checked" ValueChanged="@OnCheckedChanged" />
             }
             @if (TitleContent is not null)
             {
@@ -54,6 +50,6 @@ else
             {
                 @Title
             }
-        </div>
+        </label>
     </li>
 }

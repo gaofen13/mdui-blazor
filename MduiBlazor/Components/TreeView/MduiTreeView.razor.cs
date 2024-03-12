@@ -38,39 +38,38 @@ namespace MduiBlazor
         [Parameter]
         public EventCallback<IEnumerable<TValue?>> SelectedValuesChanged { get; set; }
 
-        internal async Task OnActivedItemChangedAsync(MduiTreeViewItem<TValue> item)
+        internal async Task OnCheckedItemsChangedAsync(MduiTreeViewItem<TValue> item)
         {
-            if (MultiSelection)
+            var selectedValues = SelectedValues.ToList();
+            if (item.Checked)
             {
-                var selectedValues = SelectedValues.ToList();
-                if (item.Checked)
+                if (selectedValues.Contains(item.Value))
                 {
-                    if (selectedValues.Contains(item.Value))
-                    {
-                        return;
-                    }
-                    selectedValues.Add(item.Value);
+                    return;
                 }
-                else
-                {
-                    selectedValues.Remove(item.Value);
-                }
-                SelectedValues = selectedValues;
-                await SelectedValuesChanged.InvokeAsync(SelectedValues);
+                selectedValues.Add(item.Value);
             }
             else
             {
-                _activedItem?.SetActive(false);
-                _activedItem = item.Actived ? item : null;
-                SelectedValue = item.Actived ? item.Value : default;
-                await SelectedValueChanged.InvokeAsync(SelectedValue);
+                selectedValues.Remove(item.Value);
             }
+            SelectedValues = selectedValues;
+            await SelectedValuesChanged.InvokeAsync(SelectedValues);
         }
 
-        internal void SetActivedItem(MduiTreeViewItem<TValue> item)
+        internal async Task SetActivedItemAsync(MduiTreeViewItem<TValue> item)
         {
-            _activedItem = item;
-            StateHasChanged();
+            if (item.Actived)
+            {
+                _activedItem?.SetActive(false);
+                _activedItem = item;
+            }
+            else
+            {
+                _activedItem = null;
+            }
+            SelectedValue = _activedItem is null ? default : _activedItem.Value;
+            await SelectedValueChanged.InvokeAsync(SelectedValue);
         }
     }
 }

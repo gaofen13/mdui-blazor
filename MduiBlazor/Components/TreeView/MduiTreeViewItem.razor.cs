@@ -14,7 +14,7 @@ namespace MduiBlazor
 
         private string TitleClassname =>
             new ClassBuilder("mdui-treeview-item-content")
-            .AddClass("mdui-ripple", !TreeRoot.DisableRipple)
+            .AddClass("mdui-ripple", !Root.DisableRipple)
             .AddClass("mdui-treeview-item-checked", _checked)
             .AddClass("mdui-treeview-item-active", _actived)
             .Build();
@@ -26,7 +26,7 @@ namespace MduiBlazor
         private bool HasChildren => ChildContent is not null;
 
         [CascadingParameter]
-        private MduiTreeView<TValue> TreeRoot { get; set; } = default!;
+        private MduiTreeView<TValue> Root { get; set; } = default!;
 
         [CascadingParameter]
         private MduiTreeViewItem<TValue>? Parent { get; set; }
@@ -45,9 +45,9 @@ namespace MduiBlazor
 
         protected override async Task OnInitializedAsync()
         {
-            if (TreeRoot.MultiSelection)
+            if (Root.MultiSelection)
             {
-                if (TreeRoot.SelectedValues.Contains(Value))
+                if (Root.SelectedValues.Contains(Value))
                 {
                     _checked = true;
                     if (Parent is not null)
@@ -58,10 +58,10 @@ namespace MduiBlazor
             }
             else
             {
-                if (Value?.Equals(TreeRoot.SelectedValue) == true)
+                if (Value?.Equals(Root.SelectedValue) == true)
                 {
                     _actived = true;
-                    TreeRoot.SetActivedItem(this);
+                    await Root.SetActivedItemAsync(this);
                     if (Parent is not null)
                     {
                         await Parent.OpenAsync();
@@ -70,29 +70,19 @@ namespace MduiBlazor
             }
         }
 
-        private void OnOpenChanged(MouseEventArgs args)
+        private async void OnCheckedChanged(bool @checked)
         {
-            if (HasChildren)
-            {
-                _opened = !_opened;
-            }
+            _checked = !_checked;
+            await Root.OnCheckedItemsChangedAsync(this);
         }
 
         private async Task OnClickItemAsync(MouseEventArgs args)
         {
-            if (OnClick.HasDelegate)
-            {
-                await OnClick.InvokeAsync(args);
-            }
-            if (TreeRoot.MultiSelection)
-            {
-                _checked = !_checked;
-            }
-            else
+            if (!Root.MultiSelection)
             {
                 SetActive(!_actived);
+                await Root.SetActivedItemAsync(this);
             }
-            await TreeRoot.OnActivedItemChangedAsync(this);
         }
 
         internal void SetActive(bool actived)
