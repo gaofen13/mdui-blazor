@@ -38,6 +38,15 @@ namespace MduiBlazor
         [Parameter]
         public EventCallback<string> OnInput { get; set; }
 
+        protected override void OnParametersSet()
+        {
+            base.OnParametersSet();
+            if (MaxLength > 0)
+            {
+                _wordNumber = Value?.Length??0;
+            }
+        }
+
         protected override void OnInitialized()
         {
             if (Value?.Length > 0)
@@ -50,23 +59,6 @@ namespace MduiBlazor
                 _wordNumber = Value?.Length ?? 0;
             }
             base.OnInitialized();
-        }
-
-        protected override void OnAfterRender(bool firstRender)
-        {
-            base.OnAfterRender(firstRender);
-            if (!firstRender)
-            {
-                if (MaxLength > 0)
-                {
-                    if (_wordNumber == Value?.Length)
-                    {
-                        return;
-                    }
-                    _wordNumber = Value?.Length ?? 0;
-                    StateHasChanged();
-                }
-            }
         }
 
         protected override bool TryParseValueFromString(string? value, out string? result, [NotNullWhen(false)] out string? validationErrorMessage)
