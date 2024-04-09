@@ -3,7 +3,7 @@
 @typeparam TItem
 
 <tr class="@TrClass" style="@Style" @attributes="@AdditionalAttributes">
-    @if (MultiSelection)
+    @if (Table?.MultiSelection == true)
     {
         <td class="mdui-table-cell-checkbox">
             <MduiCheckbox Value="@Checked" ValueChanged="@OnCheckedChanged" />

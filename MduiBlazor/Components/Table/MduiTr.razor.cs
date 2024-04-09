@@ -1,6 +1,5 @@
 ﻿using MduiBlazor.Utilities;
 using Microsoft.AspNetCore.Components;
-using System.Diagnostics.CodeAnalysis;
 
 namespace MduiBlazor
 {
@@ -12,16 +11,10 @@ namespace MduiBlazor
             .AddClass(Class)
             .Build();
 
-        private bool Checked => SelectedItems?.Contains(Item) == true;
+        private bool Checked => Table?.SelectedItems?.Contains(Item) == true;
 
         [CascadingParameter]
         public ITable<TItem>? Table { get; set; }
-
-        [Parameter]
-        public bool MultiSelection { get; set; }
-
-        [Parameter]
-        public IEnumerable<TItem>? SelectedItems { get; set; }
 
         [Parameter, EditorRequired]
         public TItem Item { get; set; } = default!;

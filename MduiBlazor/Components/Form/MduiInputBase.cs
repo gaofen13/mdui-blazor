@@ -152,7 +152,7 @@ namespace MduiBlazor
             }
         }
 
-        protected IEnumerable<string> InvalidMessageList { get; set; } = Enumerable.Empty<string>();
+        protected IEnumerable<string> InvalidMessageList { get; set; } = [];
 
         /// <summary>
         /// Constructs an instance of <see cref="InputBase{TValue}"/>.

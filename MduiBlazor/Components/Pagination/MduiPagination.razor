@@ -35,11 +35,11 @@
             <MduiButton OnClick="_=>OnClickPager(5)" Actived="@(PageIndex==5)">
                 5
             </MduiButton>
-            <MduiButton Disabled>…</MduiButton>
+            <MduiButton Disabled>•••</MduiButton>
         }
         else if (PageIndex > Total - 4)
         {
-            <MduiButton Disabled>…</MduiButton>
+            <MduiButton Disabled>•••</MduiButton>
             @for (int i = Total - 4; i < Total; i++)
             {
                 var buttonIndex = i;
@@ -50,7 +50,7 @@
         }
         else
         {
-            <MduiButton Disabled>…</MduiButton>
+            <MduiButton Disabled>•••</MduiButton>
             @for (int i = PageIndex - 1; i < PageIndex + 2; i++)
             {
                 var buttonIndex = i;
@@ -58,7 +58,7 @@
                     @buttonIndex
                 </MduiButton>
             }
-            <MduiButton Disabled>…</MduiButton>
+            <MduiButton Disabled>•••</MduiButton>
         }
 
     }

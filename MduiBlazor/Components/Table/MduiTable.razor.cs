@@ -5,7 +5,7 @@ namespace MduiBlazor
 {
     public partial class MduiTable<TItem> : MduiComponentBase, ITable<TItem>
     {
-        private IEnumerable<TItem> _items = Enumerable.Empty<TItem>();
+        private IEnumerable<TItem> _items = [];
         private List<TItem> _selectedItems = [];
 
         protected string Classname =>
@@ -41,14 +41,8 @@ namespace MduiBlazor
             {
                 if (!EqualityComparer<IEnumerable<TItem>>.Default.Equals(value, _items))
                 {
-                    if (value == null)
-                    {
-                        _items = Enumerable.Empty<TItem>();
-                    }
-                    else
-                    {
-                        _items = value;
-                    }
+
+                    _items = value ?? [];
                     if (_selectedItems.Count > 0)
                     {
                         _selectedItems.Clear();

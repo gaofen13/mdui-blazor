@@ -6,7 +6,7 @@
 <table class="@Classname" style="@Style" @attributes="@AdditionalAttributes">
     <CascadingValue Value="@this" IsFixed>
         <thead>
-            <MduiHeadTr MultiSelection="@MultiSelection" Items="@_items" SelectedItems="@SelectedItems">
+            <MduiHeadTr TItem="@TItem">
                 @if (HeaderContent is not null)
                 {
                     @HeaderContent
@@ -25,7 +25,7 @@
                 <CascadingValue Name="RenderMode" Value="@MduiColumn.RenderMode.Body" IsFixed>
                     @foreach (var item in _items)
                     {
-                        <MduiTr MultiSelection="@MultiSelection" Item="@item" SelectedItems="@SelectedItems">
+                        <MduiTr Item="@item">
                             @Columns(item)
                         </MduiTr>
                     }
