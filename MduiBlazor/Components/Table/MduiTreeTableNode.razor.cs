@@ -5,14 +5,14 @@ namespace MduiBlazor
 {
     public partial class MduiTreeTableNode<TItem> : MduiComponentBase, ITreeTableNode
     {
-        private IEnumerable<TItem>? _children;
-
         private string Stylelist =>
             new StyleBuilder()
             .AddStyle("display", "none", Parent is not null && IsHideState(Parent))
             .Build();
 
-        public bool HasChildren => _children?.Any() == true;
+        public bool HasChildren => Children?.Any() == true;
+
+        public IEnumerable<TItem>? Children => Table?.TreeChildren?.Invoke(Item);
 
         public bool IsExpanded { get; set; }
 
@@ -28,12 +28,6 @@ namespace MduiBlazor
         [Parameter]
         public int Level { get; set; }
 
-        protected override void OnInitialized()
-        {
-            _children = Table?.TreeChildren?.Invoke(Item);
-            base.OnInitialized();
-        }
-
         public void OnExpandedChanged(bool isExpanded)
         {
             if (IsExpanded != isExpanded)
@@ -45,7 +39,7 @@ namespace MduiBlazor
 
         private static bool IsHideState(ITreeTableNode parent)
         {
-            if(!parent.IsExpanded)
+            if (!parent.IsExpanded)
             {
                 return true;
             }

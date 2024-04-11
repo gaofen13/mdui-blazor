@@ -9,7 +9,7 @@
     </CascadingValue>
 </MduiTr>
 <CascadingValue Value="@this" IsFixed>
-    @foreach (var item in _children ?? [])
+    @foreach (var item in Children ?? [])
     {
         <MduiTreeTableNode Item="@item" Level="@(Level+1)" />
     }

@@ -4,7 +4,7 @@ namespace MduiBlazor
 {
     public partial class MduiHeadTr<TItem>
     {
-        private bool Checked => Table?.Rows.Count > 0 && Table.Rows.Count == Table.SelectedRows.Count;
+        private bool Checked => Table?.Rows.Count == Table?.SelectedRows.Count;
 
         [CascadingParameter]
         public ITable<TItem>? Table { get; set; }

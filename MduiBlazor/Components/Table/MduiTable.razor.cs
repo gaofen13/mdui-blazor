@@ -36,8 +36,6 @@ namespace MduiBlazor
 
         public bool HasTreeData => TreeChildren is not null;
 
-        public List<TItem> AllItems { get; set; } = [];
-
         [Parameter]
         public IEnumerable<TItem>? Items { get; set; }
 
@@ -85,7 +83,11 @@ namespace MduiBlazor
 
         public void AddRow(MduiTr<TItem> row)
         {
-            Rows.TryAdd(row.Key, row);
+            var shouldReRenderHeader = SelectedRows.Count == Rows.Count;
+            if (Rows.TryAdd(row.Key, row) && shouldReRenderHeader)
+            {
+                _header?.ReRender();
+            }
         }
 
         public void RemoveRow(MduiTr<TItem> row)
