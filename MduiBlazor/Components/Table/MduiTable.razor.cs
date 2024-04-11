@@ -1,12 +1,15 @@
-﻿using MduiBlazor.Utilities;
+using MduiBlazor.Utilities;
 using Microsoft.AspNetCore.Components;
 
 namespace MduiBlazor
 {
-    public partial class MduiTable<TItem> : MduiComponentBase, ITable<TItem>
+    public partial class MduiTable<TItem> : MduiComponentBase, ITable<TItem>, ITreeTable
     {
-        private IEnumerable<TItem> _items = [];
-        private List<TItem> _selectedItems = [];
+        private MduiHeadTr<TItem>? _header;
+
+        public Dictionary<Guid, MduiTr<TItem>> Rows { get; } = [];
+
+        public Dictionary<Guid, MduiTr<TItem>> SelectedRows { get; set; } = [];
 
         protected string Classname =>
             new ClassBuilder("mdui-table")
@@ -15,7 +18,7 @@ namespace MduiBlazor
             .AddClass(Class)
             .Build();
 
-        private static TItem DefaultValue
+        internal static TItem DefaultValue
         {
             get
             {
@@ -31,39 +34,27 @@ namespace MduiBlazor
             }
         }
 
-        [Parameter]
-#pragma warning disable BL0007 // Component parameters should be auto properties
-        public IEnumerable<TItem>? Items
-#pragma warning restore BL0007 // Component parameters should be auto properties
-        {
-            get => _items;
-            set
-            {
-                if (!EqualityComparer<IEnumerable<TItem>>.Default.Equals(value, _items))
-                {
+        public bool HasTreeData => TreeChildren is not null;
 
-                    _items = value ?? [];
-                    if (_selectedItems.Count > 0)
-                    {
-                        _selectedItems.Clear();
-                        SelectedItemsChanged.InvokeAsync(_selectedItems);
-                    }
-                }
-            }
-        }
+        public List<TItem> AllItems { get; set; } = [];
+
+        [Parameter]
+        public IEnumerable<TItem>? Items { get; set; }
 
         [Parameter]
 #pragma warning disable BL0007 // Component parameters should be auto properties
         public IEnumerable<TItem> SelectedItems
 #pragma warning restore BL0007 // Component parameters should be auto properties
         {
-            get => _selectedItems;
+            get => SelectedRows.Values.Select(r => r.Item);
             set
             {
-                if (!EqualityComparer<IEnumerable<TItem>>.Default.Equals(value, _selectedItems))
+                if ((value?.Count() ?? 0) != SelectedRows.Values.Count)
                 {
-                    _selectedItems = value?.ToList() ?? [];
-                    _ = SelectedItemsChanged.InvokeAsync(_selectedItems);
+                    foreach (var row in Rows)
+                    {
+                        row.Value.CheckRow();
+                    }
                 }
             }
         }
@@ -77,40 +68,78 @@ namespace MduiBlazor
         [Parameter]
         public bool Hoverable { get; set; }
 
-        [Parameter]
-        public RenderFragment<TItem>? Columns { get; set; }
+        [Parameter, EditorRequired]
+        public RenderFragment<TItem> Columns { get; set; } = default!;
 
         [Parameter]
         public RenderFragment? HeaderContent { get; set; }
 
-        public void AddSelectedItem(TItem item)
+        /// <summary>
+        /// 缩进量，默认16px
+        /// </summary>
+        [Parameter]
+        public int IndentSize { get; set; } = 16;
+
+        [Parameter]
+        public Func<TItem, IEnumerable<TItem>>? TreeChildren { get; set; }
+
+        public void AddRow(MduiTr<TItem> row)
         {
-            if (!_selectedItems.Contains(item))
+            Rows.TryAdd(row.Key, row);
+        }
+
+        public void RemoveRow(MduiTr<TItem> row)
+        {
+            if (Rows.Remove(row.Key))
             {
-                _selectedItems.Add(item);
-                _ = SelectedItemsChanged.InvokeAsync(_selectedItems);
+                SelectedRows.Remove(row.Key);
             }
         }
 
-        public void RemoveSelectedItem(TItem item)
+        public void AddSelectedRow(MduiTr<TItem> row)
         {
-            if (!_selectedItems.Contains(item))
+            var shouldReRenderHeader = SelectedRows.Count == Rows.Count - 1;
+            if (SelectedRows.TryAdd(row.Key, row))
             {
-                return;
+                _ = SelectedItemsChanged.InvokeAsync(SelectedItems);
+                if (shouldReRenderHeader)
+                {
+                    _header?.ReRender();
+                }
             }
-            _selectedItems.Remove(item);
-            _ = SelectedItemsChanged.InvokeAsync(_selectedItems);
         }
 
-        public void SelectAllItems()
+        public void RemoveSelectedRow(MduiTr<TItem> row)
         {
-            SelectedItems = _items;
+            var shouldReRenderHeader = SelectedRows.Count == Rows.Count;
+            if (SelectedRows.Remove(row.Key))
+            {
+                _ = SelectedItemsChanged.InvokeAsync(SelectedItems);
+                if (shouldReRenderHeader)
+                {
+                    _header?.ReRender();
+                }
+            }
         }
 
-        public void ClearSelectedItems()
+        public void SelectAllRows()
         {
-            _selectedItems.Clear();
-            _ = SelectedItemsChanged.InvokeAsync(_selectedItems);
+            if (Rows.Count > 0)
+            {
+                SelectedRows = Rows.ToDictionary(); //深度复制
+                _ = SelectedItemsChanged.InvokeAsync(SelectedItems);
+                StateHasChanged();
+            }
+        }
+
+        public void ClearSelectedRows()
+        {
+            if (Rows.Count > 0)
+            {
+                SelectedRows.Clear();
+                _ = SelectedItemsChanged.InvokeAsync(SelectedItems);
+                StateHasChanged();
+            }
         }
     }
 }

@@ -1,0 +1,16 @@
+@namespace MduiBlazor
+@inherits MduiComponentBase
+@implements ITreeTableNode
+@typeparam TItem
+
+<MduiTr Class="@Class" Style="@Stylelist" Item="@Item">
+    <CascadingValue Name="TreeTableNode" Value="@this" IsFixed>
+        @Table.Columns(Item)
+    </CascadingValue>
+</MduiTr>
+<CascadingValue Value="@this" IsFixed>
+    @foreach (var item in _children ?? [])
+    {
+        <MduiTreeTableNode Item="@item" Level="@(Level+1)" />
+    }
+</CascadingValue>

@@ -1,19 +1,31 @@
-﻿namespace MduiBlazor
+﻿using Microsoft.AspNetCore.Components;
+
+namespace MduiBlazor
 {
     public interface ITable<TItem>
     {
         bool MultiSelection { get; set; }
-        
-        IEnumerable<TItem>? Items { get; set; }
+
+        Dictionary<Guid, MduiTr<TItem>> Rows { get; }
+
+        Dictionary<Guid, MduiTr<TItem>> SelectedRows { get; set; }
 
         IEnumerable<TItem> SelectedItems { get; set; }
 
-        void AddSelectedItem(TItem item);
+        Func<TItem, IEnumerable<TItem>>? TreeChildren { get; set; }
 
-        void RemoveSelectedItem(TItem item);
+        RenderFragment<TItem> Columns { get; set; }
 
-        void SelectAllItems();
+        void AddRow(MduiTr<TItem> item);
 
-        void ClearSelectedItems();
+        void RemoveRow(MduiTr<TItem> item);
+
+        void AddSelectedRow(MduiTr<TItem> item);
+
+        void RemoveSelectedRow(MduiTr<TItem> item);
+
+        void SelectAllRows();
+
+        void ClearSelectedRows();
     }
 }

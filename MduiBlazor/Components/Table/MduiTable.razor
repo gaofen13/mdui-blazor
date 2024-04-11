@@ -1,12 +1,13 @@
-﻿@namespace MduiBlazor
+@namespace MduiBlazor
 @inherits MduiComponentBase
 @typeparam TItem
 @implements ITable<TItem>
+@implements ITreeTable
 
 <table class="@Classname" style="@Style" @attributes="@AdditionalAttributes">
     <CascadingValue Value="@this" IsFixed>
         <thead>
-            <MduiHeadTr TItem="@TItem">
+            <MduiHeadTr @ref="@_header" TItem="@TItem">
                 @if (HeaderContent is not null)
                 {
                     @HeaderContent
@@ -20,14 +21,23 @@
             </MduiHeadTr>
         </thead>
         <tbody>
-            @if (_items.Any() && Columns != null)
+            @if (Items?.Any() == true && Columns != null)
             {
                 <CascadingValue Name="RenderMode" Value="@MduiColumn.RenderMode.Body" IsFixed>
-                    @foreach (var item in _items)
+                    @foreach (var item in Items)
                     {
-                        <MduiTr Item="@item">
-                            @Columns(item)
-                        </MduiTr>
+                        if (HasTreeData)
+                        {
+                            <MduiTreeTableNode Item="@item">
+                                @Columns(item)
+                            </MduiTreeTableNode>
+                        }
+                        else
+                        {
+                            <MduiTr Item="@item">
+                                @Columns(item)
+                            </MduiTr>
+                        }
                     }
                 </CascadingValue>
             }

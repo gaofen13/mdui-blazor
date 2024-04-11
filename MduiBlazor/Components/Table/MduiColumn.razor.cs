@@ -11,6 +11,9 @@ namespace MduiBlazor
             .AddClass(Class)
             .Build();
 
+        [CascadingParameter]
+        private ITreeTable? Table { get; set; }
+
         [CascadingParameter(Name = "RenderMode")]
         public RenderMode Mode { get; set; }
 
@@ -25,6 +28,9 @@ namespace MduiBlazor
 
         [Parameter]
         public RenderFragment? TitleContent { get; set; }
+
+        [Parameter]
+        public bool TreeField { get; set; }
 
         public enum RenderMode
         {

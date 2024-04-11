@@ -1,0 +1,16 @@
+@namespace MduiBlazor
+@inherits MduiComponentBase
+
+<td class="@Classname">
+    @{
+        var hasChildren = Node?.HasChildren == true;
+        var indentSize = hasChildren ? IndentSize * Level : IndentSize * Level + 36;
+    }
+    <span class="mdui-collapse-header" style="@($"margin-left:{indentSize}px;width:auto;")">
+        @if(hasChildren)
+        {
+            <MduiIconButton Class="mdui-collapse-arrow" Icon="keyboard_arrow_down" OnClick="@OnArrowClicked" />
+        }
+        @ChildContent
+    </span>
+</td>

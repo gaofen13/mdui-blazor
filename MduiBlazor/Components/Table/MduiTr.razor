@@ -1,8 +1,9 @@
 ﻿@namespace MduiBlazor
 @inherits MduiComponentBase
+@implements IDisposable
 @typeparam TItem
 
-<tr class="@TrClass" style="@Style" @attributes="@AdditionalAttributes">
+<tr @key="@Key" class="@Classname" style="@Style" @attributes="@AdditionalAttributes">
     @if (Table?.MultiSelection == true)
     {
         <td class="mdui-table-cell-checkbox">

@@ -1,16 +1,10 @@
-﻿using MduiBlazor.Utilities;
-using Microsoft.AspNetCore.Components;
+﻿using Microsoft.AspNetCore.Components;
 
 namespace MduiBlazor
 {
     public partial class MduiHeadTr<TItem>
     {
-        private string TrClass =>
-            new ClassBuilder()
-            .AddClass(Class)
-            .Build();
-
-        private bool Checked => Table?.SelectedItems?.Count() == Table?.Items?.Count();
+        private bool Checked => Table?.Rows.Count > 0 && Table.Rows.Count == Table.SelectedRows.Count;
 
         [CascadingParameter]
         public ITable<TItem>? Table { get; set; }
@@ -19,12 +13,17 @@ namespace MduiBlazor
         {
             if (@checked)
             {
-                Table?.SelectAllItems();
+                Table?.SelectAllRows();
             }
             else
             {
-                Table?.ClearSelectedItems();
+                Table?.ClearSelectedRows();
             }
+        }
+
+        internal void ReRender()
+        {
+            StateHasChanged();
         }
     }
 }

@@ -15,6 +15,7 @@
         <PageContentItem Title="可选表格" OnClick="@(_=>ScrollToElementById("selectable"))" />
         <PageContentItem Title="鼠标悬浮" OnClick="@(_=>ScrollToElementById("hoverable"))" />
         <PageContentItem Title="列对齐方式" OnClick="@(_=>ScrollToElementById("alignRight"))" />
+        <PageContentItem Title="树形数据展示" OnClick="@(_=>ScrollToElementById("treeTable"))" />
     </PageContentItem>
     <PageContentItem Title="组件参数" OnClick="@(_=>ScrollToElementById("attr"))" />
 </PageContent>
@@ -27,7 +28,9 @@
     </h2>
 
     <MduiText id="container" Typo="@Typo.subheading"><b>响应式容器</b></MduiText>
-    <p class="mdui-typo">如果表格宽度过大，可能会导致页面出现横向滚动条。将<code>MduiSimpleTable</code>或<code>MduiTable</code>组件包裹在<code>MduiTableContainer</code>组件内，即可在表格宽度超出页面宽度时，使表格支持水平滚动。</p>
+    <p class="mdui-typo">
+        如果表格宽度过大，可能会导致页面出现横向滚动条。将<code>MduiSimpleTable</code>或<code>MduiTable</code>组件包裹在<code>MduiTableContainer</code>组件内，即可在表格宽度超出页面宽度时，使表格支持水平滚动。
+    </p>
     <ExampleSection Component="@typeof(TableContainer)" />
 
     <MduiText id="simple" Typo="@Typo.subheading"><b>简单表格</b></MduiText>
@@ -37,16 +40,26 @@
     <ExampleSection Component="@typeof(DynamicTable)" />
 
     <MduiText id="selectable" Typo="@Typo.subheading"><b>可选表格</b></MduiText>
-    <p class="mdui-typo">设置<code>MduiTable</code>组件参数<code>MultiSelection="true"</code>，即可在每一行的前面添加一个复选框，选择项可以与参数<code>SelectedItems</code>双向绑定。</p>
+    <p class="mdui-typo">
+        设置<code>MduiTable</code>组件参数<code>MultiSelection="true"</code>，即可在每一行的前面添加一个复选框，选择项可以与参数<code>SelectedItems</code>双向绑定。
+    </p>
     <ExampleSection Component="@typeof(SelectableTable)" />
 
     <MduiText id="hoverable" Typo="@Typo.subheading"><b>鼠标悬浮</b></MduiText>
-    <p class="mdui-typo">设置<code>MduiSimpleTable</code>或<code>MduiTable</code>组件参数<code>Hoverable="true"</code>可以让表格中的每一行对鼠标悬浮状态作出响应。</p>
+    <p class="mdui-typo">
+        设置<code>MduiSimpleTable</code>或<code>MduiTable</code>组件参数<code>Hoverable="true"</code>可以让表格中的每一行对鼠标悬浮状态作出响应。</p>
     <ExampleSection Component="@typeof(HoverableTable)" />
 
     <MduiText id="alignRight" Typo="@Typo.subheading"><b>列对齐方式</b></MduiText>
     <p class="mdui-typo">设置<code>MduiTh</code>或<code>MduiColumn</code>组件参数<code>AlignRight="true"</code>可以把表格中的列右对齐。</p>
     <ExampleSection Component="@typeof(AlignRightTable)" />
+
+
+    <MduiText id="treeTable" Typo="@Typo.subheading"><b>树形数据展示</b></MduiText>
+    <p class="mdui-typo">
+        设置<code>MduiTable</code>组件参数<code>TreeChildren</code>，并设置展开列<code>MduiColumn</code>参数<code>TreeField</code>参数为<code>true</code>，可以使树形数据展现到表格。
+    </p>
+    <ExampleSection Component="@typeof(TreeTable)" />
 </div>
 
 <MduiDivider Class="mdui-m-y-5" />
@@ -59,10 +72,10 @@
     <MduiTableContainer UseMduiTypo Class="mdui-m-y-1">
         <MduiSimpleTable>
             <thead>
-            <th>组件</th>
-            <th>参数名称</th>
-            <th>类型/返回类型</th>
-            <th>说明</th>
+                <th>组件</th>
+                <th>参数名称</th>
+                <th>类型/返回类型</th>
+                <th>说明</th>
             </thead>
             <tbody>
                 <tr>
@@ -123,7 +136,8 @@
                     <td>
                         <code>bool</code>
                     </td>
-                    <td>是否可选择，设置为<code>true</code>即可在每一行的前面添加一个复选框，选择项可以与参数<code>SelectedItems</code>双向绑定。默认<code>false</code>。</td>
+                    <td>是否可选择，设置为<code>true</code>即可在每一行的前面添加一个复选框，选择项可以与参数<code>SelectedItems</code>双向绑定。默认<code>false</code>。
+                    </td>
                 </tr>
                 <tr>
                     <td>

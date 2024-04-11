@@ -5,7 +5,14 @@
 {
     if (Mode == RenderMode.Body)
     {
-        <td class="@Classname">@ChildContent</td>
+        @if (TreeField && Table?.HasTreeData == true)
+        {
+            <MduiTreeTd Class="@Class">@ChildContent</MduiTreeTd>
+        }
+        else
+        {
+            <td class="@Classname">@ChildContent</td>
+        }
     }
     else if (Mode == RenderMode.Head)
     {
