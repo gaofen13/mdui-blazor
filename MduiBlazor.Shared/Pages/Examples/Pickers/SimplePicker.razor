@@ -3,6 +3,7 @@
 <MduiCheckbox Switch @bind-Value="@disabled" Label="禁用" />
 
 <MduiPicker @bind-Value="@value" Searchable="@searchable" Readonly="@read_only" Disabled="@disabled" TValue="@string" MaxHeight="200px">
+    <MduiOption Label="" TValue="@string" Value="@null">请选择</MduiOption>
     <MduiOption Label="option1" Value="@("option1")">option1</MduiOption>
     <MduiOption Label="option2" Value="@("option2")">option2</MduiOption>
     <MduiOption Label="option3" Value="@("option3")">option3</MduiOption>
@@ -12,7 +13,7 @@
 </MduiPicker>
 
 @code {
-    string? value = "option2";
+    string? value;
     bool searchable;
     bool read_only;
     bool disabled;

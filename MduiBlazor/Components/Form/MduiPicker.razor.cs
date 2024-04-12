@@ -10,7 +10,7 @@ namespace MduiBlazor
         private bool _readonly;
         private ElementReference _input = default!;
         private MduiOption<TValue>? _currentItem;
-        private List<TValue> _selectedValues = [];
+        private List<TValue?> _selectedValues = [];
         private readonly HashSet<MduiOption<TValue>> _items = [];
 
         private string Classname =>
@@ -39,7 +39,7 @@ namespace MduiBlazor
 
         [Parameter]
 #pragma warning disable BL0007 // Component parameters should be auto properties
-        public IEnumerable<TValue>? SelectedValues
+        public IEnumerable<TValue?>? SelectedValues
 #pragma warning restore BL0007 // Component parameters should be auto properties
         {
             get => _selectedValues;
@@ -54,7 +54,7 @@ namespace MduiBlazor
         }
 
         [Parameter]
-        public EventCallback<IEnumerable<TValue>?> SelectedValuesChanged { get; set; }
+        public EventCallback<IEnumerable<TValue?>?> SelectedValuesChanged { get; set; }
 
         [Parameter]
         public bool Searchable { get; set; }
@@ -151,7 +151,7 @@ namespace MduiBlazor
             RemoveSelectedValue(item.Value);
         }
 
-        internal void AddSelectedValue(TValue value)
+        internal void AddSelectedValue(TValue? value)
         {
             if (!_selectedValues.Contains(value))
             {
@@ -169,7 +169,7 @@ namespace MduiBlazor
             }
         }
 
-        internal void RemoveSelectedValue(TValue value)
+        internal void RemoveSelectedValue(TValue? value)
         {
             if (_selectedValues.Contains(value))
             {

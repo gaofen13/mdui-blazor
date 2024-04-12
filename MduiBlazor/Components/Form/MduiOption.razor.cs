@@ -13,7 +13,7 @@ namespace MduiBlazor
             .AddClass(Class)
             .Build();
 
-        private bool Actived => Picker is not null && Value!.Equals(Picker.Value);
+        private bool Actived => Picker is not null && ((Value == null && Picker.Value == null) || Value?.Equals(Picker.Value) == true);
 
         private bool Checked => Picker?.SelectedValues?.Contains(Value) == true;
 
@@ -37,7 +37,7 @@ namespace MduiBlazor
         private MduiPicker<TValue>? Picker { get; set; }
 
         [Parameter, EditorRequired]
-        public TValue Value { get; set; } = default!;
+        public TValue? Value { get; set; }
 
         [Parameter, EditorRequired]
         public string? Label { get; set; }
