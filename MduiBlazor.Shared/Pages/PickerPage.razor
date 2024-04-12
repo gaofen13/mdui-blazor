@@ -10,6 +10,8 @@
 
 <PageContent>
     <PageContentItem Title="示例" OnClick="@(_=>ScrollToElementById("examples"))">
+        <PageContentItem Title="单选" OnClick="@(_=>ScrollToElementById("simplepicker"))" />
+        <PageContentItem Title="多选" OnClick="@(_=>ScrollToElementById("multipicker"))" />
         <PageContentItem Title="图标选择器" OnClick="@(_=>ScrollToElementById("iconpicker"))" />
     </PageContentItem>
     <PageContentItem Title="组件参数" OnClick="@(_=>ScrollToElementById("attr"))" />
@@ -21,6 +23,12 @@
     <h2 id="examples">
         <MduiText Typo="@Typo.headline" TextColor="@Colors.Theme.Primary">示例</MduiText>
     </h2>
+
+    <MduiText id="simplepicker" Typo="@Typo.subheading"><b>单选</b></MduiText>
+    <ExampleSection Component="@typeof(SimplePicker)" />
+
+    <MduiText id="multipicker" Typo="@Typo.subheading"><b>多选</b></MduiText>
+    <ExampleSection Component="@typeof(MultiPicker)" />
 
     <MduiText id="iconpicker" Typo="@Typo.subheading"><b>图标选择器</b></MduiText>
     <p class="mdui-typo">以下为基于通用选择器<code>MduiPicker</code>和<code>mdui</code>图标构建的图标选择器。</p>

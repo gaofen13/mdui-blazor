@@ -8512,11 +8512,6 @@ th.mdui-table-cell-checkbox .mdui-checkbox {
 .mdui-picker .mdui-picker-content {
   position: absolute;
   z-index: calc(880 + 1);
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -8573,7 +8568,12 @@ th.mdui-table-cell-checkbox .mdui-checkbox {
 /* 内容项 */
 .mdui-picker-item {
   position: relative;
-  display: block;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   height: 48px;
   margin: 4px;
   padding: 0 16px;

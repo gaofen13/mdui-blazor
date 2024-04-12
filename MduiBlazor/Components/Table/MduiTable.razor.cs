@@ -6,10 +6,9 @@ namespace MduiBlazor
     public partial class MduiTable<TItem> : MduiComponentBase, ITable<TItem>, ITreeTable
     {
         private MduiHeadTr<TItem>? _header;
+        private List<TItem> _selectedItems = [];
 
         public Dictionary<Guid, MduiTr<TItem>> Rows { get; } = [];
-
-        public Dictionary<Guid, MduiTr<TItem>> SelectedRows { get; set; } = [];
 
         protected string Classname =>
             new ClassBuilder("mdui-table")
@@ -44,15 +43,12 @@ namespace MduiBlazor
         public IEnumerable<TItem> SelectedItems
 #pragma warning restore BL0007 // Component parameters should be auto properties
         {
-            get => SelectedRows.Values.Select(r => r.Item);
+            get => _selectedItems;
             set
             {
-                if ((value?.Count() ?? 0) != SelectedRows.Values.Count)
+                if (_selectedItems.Count != value?.Count())
                 {
-                    foreach (var row in Rows)
-                    {
-                        row.Value.CheckRow();
-                    }
+                    _selectedItems = value?.ToList() ?? [];
                 }
             }
         }
@@ -83,7 +79,7 @@ namespace MduiBlazor
 
         public void AddRow(MduiTr<TItem> row)
         {
-            var shouldReRenderHeader = SelectedRows.Count == Rows.Count;
+            var shouldReRenderHeader = _selectedItems.Count == Rows.Count;
             if (Rows.TryAdd(row.Key, row) && shouldReRenderHeader)
             {
                 _header?.ReRender();
@@ -94,30 +90,32 @@ namespace MduiBlazor
         {
             if (Rows.Remove(row.Key))
             {
-                SelectedRows.Remove(row.Key);
+                RemoveSelectedItem(row.Item);
             }
         }
 
-        public void AddSelectedRow(MduiTr<TItem> row)
+        public void AddSelectedItem(TItem item)
         {
-            var shouldReRenderHeader = SelectedRows.Count == Rows.Count - 1;
-            if (SelectedRows.TryAdd(row.Key, row))
+            if (!_selectedItems.Contains(item))
             {
-                _ = SelectedItemsChanged.InvokeAsync(SelectedItems);
-                if (shouldReRenderHeader)
+                _selectedItems.Add(item);
+                _ = SelectedItemsChanged.InvokeAsync(_selectedItems);
+
+                if (_selectedItems.Count == Rows.Count)
                 {
                     _header?.ReRender();
                 }
             }
         }
 
-        public void RemoveSelectedRow(MduiTr<TItem> row)
+        public void RemoveSelectedItem(TItem item)
         {
-            var shouldReRenderHeader = SelectedRows.Count == Rows.Count;
-            if (SelectedRows.Remove(row.Key))
+            if (_selectedItems.Contains(item))
             {
-                _ = SelectedItemsChanged.InvokeAsync(SelectedItems);
-                if (shouldReRenderHeader)
+                _selectedItems.Remove(item);
+                _ = SelectedItemsChanged.InvokeAsync(_selectedItems);
+
+                if (_selectedItems.Count + 1 == Rows.Count)
                 {
                     _header?.ReRender();
                 }
@@ -128,8 +126,8 @@ namespace MduiBlazor
         {
             if (Rows.Count > 0)
             {
-                SelectedRows = Rows.ToDictionary(); //深度复制
-                _ = SelectedItemsChanged.InvokeAsync(SelectedItems);
+                _selectedItems = Rows.Values.Select(r => r.Item).ToList(); //深度复制
+                _ = SelectedItemsChanged.InvokeAsync(_selectedItems);
                 StateHasChanged();
             }
         }
@@ -138,8 +136,8 @@ namespace MduiBlazor
         {
             if (Rows.Count > 0)
             {
-                SelectedRows.Clear();
-                _ = SelectedItemsChanged.InvokeAsync(SelectedItems);
+                _selectedItems.Clear();
+                _ = SelectedItemsChanged.InvokeAsync(_selectedItems);
                 StateHasChanged();
             }
         }

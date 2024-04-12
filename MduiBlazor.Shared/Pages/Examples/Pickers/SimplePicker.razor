@@ -1,0 +1,19 @@
+<MduiCheckbox Switch @bind-Value="@searchable" Label="开启搜索" />
+<MduiCheckbox Switch @bind-Value="@read_only" Label="只读" />
+<MduiCheckbox Switch @bind-Value="@disabled" Label="禁用" />
+
+<MduiPicker @bind-Value="@value" Searchable="@searchable" Readonly="@read_only" Disabled="@disabled" TValue="@string" MaxHeight="200px">
+    <MduiOption Label="option1" Value="@("option1")">option1</MduiOption>
+    <MduiOption Label="option2" Value="@("option2")">option2</MduiOption>
+    <MduiOption Label="option3" Value="@("option3")">option3</MduiOption>
+    <MduiOption Label="option4" Value="@("option4")">option4</MduiOption>
+    <MduiOption Label="option5" Value="@("option5")">option5</MduiOption>
+    <MduiOption Label="option6" Value="@("option6")">option6</MduiOption>
+</MduiPicker>
+
+@code {
+    string? value = "option2";
+    bool searchable;
+    bool read_only;
+    bool disabled;
+}

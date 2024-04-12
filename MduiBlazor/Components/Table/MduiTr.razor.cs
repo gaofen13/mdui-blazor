@@ -11,7 +11,7 @@ namespace MduiBlazor
             .AddClass(Class)
             .Build();
 
-        private bool Checked => Table?.SelectedRows?.ContainsKey(Key) == true;
+        private bool Checked => Table?.SelectedItems?.Contains(Item) == true;
 
         internal Guid Key { get; } = Guid.NewGuid();
 
@@ -35,7 +35,7 @@ namespace MduiBlazor
         {
             if (Table?.SelectedItems.Contains(Item) == true)
             {
-                Table.AddSelectedRow(this);
+                Table.AddSelectedItem(Item);
             }
         }
 
@@ -43,11 +43,11 @@ namespace MduiBlazor
         {
             if (@checked)
             {
-                Table?.AddSelectedRow(this);
+                Table?.AddSelectedItem(Item);
             }
             else
             {
-                Table?.RemoveSelectedRow(this);
+                Table?.RemoveSelectedItem(Item);
             }
         }
 

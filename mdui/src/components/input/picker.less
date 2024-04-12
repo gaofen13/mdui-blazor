@@ -21,9 +21,6 @@
   .mdui-picker-content {
     position: absolute;
     z-index: calc(@z-index-overlay + 1);
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
     box-sizing: border-box;
     width: 100%;
     margin: 0;
@@ -79,7 +76,8 @@
 /* 内容项 */
 .mdui-picker-item {
   position: relative;
-  display: block;
+  display: flex;
+  align-items: center;
   height: 48px;
   margin: 4px;
   padding: 0 16px;

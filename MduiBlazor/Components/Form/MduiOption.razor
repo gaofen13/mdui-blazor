@@ -7,6 +7,10 @@
 {
     <li class="@Classname" style="@Style" disabled="@Disabled" @onclick="@OnClickedItem"
         @attributes="@AdditionalAttributes">
+        @if (Picker?.MultiSelection == true)
+        {
+            <MduiCheckbox Value="@Checked" ValueChanged="@OnCheckedChanged" />
+        }
         @ChildContent
     </li>
 }

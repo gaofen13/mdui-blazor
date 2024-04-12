@@ -1,9 +1,9 @@
 @namespace MduiBlazor
 @typeparam TValue
-@inherits MduiComponentBase
+@inherits MduiInputBase<TValue>
 
 <div class="@Classname" style="@Style" @attributes="@AdditionalAttributes">
-    <input class="mdui-input" value="@DisplayValue" readonly="@_readonly" disabled="@Disabled"
+    <input @ref="@_input" class="mdui-input" value="@DisplayValue" readonly="@_readonly" disabled="@Disabled"
         placeholder="@Placeholder" autofocus="@AutoFocus" required="@Required" @oninput="@OnInput"
         @onfocus="@OnPickerFocus" />
     <ul class="@ContentClassname" style="@ContentStylelist">

@@ -8,8 +8,6 @@ namespace MduiBlazor
 
         Dictionary<Guid, MduiTr<TItem>> Rows { get; }
 
-        Dictionary<Guid, MduiTr<TItem>> SelectedRows { get; set; }
-
         IEnumerable<TItem> SelectedItems { get; set; }
 
         Func<TItem, IEnumerable<TItem>>? TreeChildren { get; set; }
@@ -20,9 +18,9 @@ namespace MduiBlazor
 
         void RemoveRow(MduiTr<TItem> item);
 
-        void AddSelectedRow(MduiTr<TItem> item);
+        void AddSelectedItem(TItem item);
 
-        void RemoveSelectedRow(MduiTr<TItem> item);
+        void RemoveSelectedItem(TItem item);
 
         void SelectAllRows();
 
