@@ -9,7 +9,8 @@
         @attributes="@AdditionalAttributes">
         @if (Picker?.MultiSelection == true)
         {
-            <MduiCheckbox Value="@Checked" ValueChanged="@OnCheckedChanged" @onclick:stopPropagation="@true" />
+            <MduiCheckbox Disabled="@Disabled" Value="@Checked" ValueChanged="@OnCheckedChanged"
+                @onclick:stopPropagation="@true" />
         }
         @ChildContent
     </li>

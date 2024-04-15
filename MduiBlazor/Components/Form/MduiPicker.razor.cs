@@ -8,7 +8,6 @@ namespace MduiBlazor
     {
         private bool _isOpen;
         private bool _readonly;
-        private ElementReference _input = default!;
         private MduiOption<TValue>? _currentItem;
         private List<TValue?> _selectedValues = [];
         private readonly HashSet<MduiOption<TValue>> _items = [];
@@ -19,6 +18,11 @@ namespace MduiBlazor
             .AddClass($"mdui-picker-{(DirectionTop ? "top" : "bottom")}")
             .AddClass("mdui-typo", UseMduiTypo)
             .AddClass(Class)
+            .Build();
+
+        private string InputClassname =>
+            new ClassBuilder("mdui-input")
+            .AddClass("mdui-input-searchable", _isOpen && MultiSelection && Searchable)
             .Build();
 
         private string ContentClassname =>
@@ -163,10 +167,6 @@ namespace MduiBlazor
                 DisplayValue = string.Join(", ", _items.Where(i => _selectedValues.Contains(i.Value)).Select(i => i.Label));
                 StateHasChanged();
             }
-            else
-            {
-                _ = _input.FocusAsync();
-            }
         }
 
         internal void RemoveSelectedValue(TValue? value)
@@ -180,10 +180,6 @@ namespace MduiBlazor
             {
                 DisplayValue = string.Join(", ", _items.Where(i => _selectedValues.Contains(i.Value)).Select(i => i.Label));
                 StateHasChanged();
-            }
-            else
-            {
-                _ = _input.FocusAsync();
             }
         }
 
