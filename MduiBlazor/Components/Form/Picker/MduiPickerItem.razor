@@ -1,0 +1,21 @@
+@namespace MduiBlazor
+@typeparam TValue
+@inherits MduiComponentBase
+@implements IDisposable
+
+<li class="@Classname" style="@Stylelist" disabled="@Disabled" @onclick="@OnClickedItem"
+    @attributes="@AdditionalAttributes">
+    @if (Picker?.MultiSelection == true)
+    {
+        <MduiCheckbox Disabled="@Disabled" Value="@Checked" ValueChanged="@OnCheckedChanged"
+            @onclick:stopPropagation="@true" />
+    }
+    @if (ChildContent is not null)
+    {
+        @ChildContent
+    }
+    else
+    {
+        @DisplayString
+    }
+</li>

@@ -1,0 +1,56 @@
+@namespace MduiBlazor
+@inherits MduiComponentBase
+@implements IDisposable
+@typeparam TValue
+
+@if (ChildContent is not null)
+{
+    <MduiCollapse Open="@_isExpanded" HeaderClass="mdui-tree-picker-header">
+        <HeaderContent>
+            <MduiIconButton Class="mdui-collapse-arrow" Icon="keyboard_arrow_down"
+                OnClick="@(_=>_isExpanded=!_isExpanded)" />
+            <label class="@Classname" style="@Style" disabled="@Disabled" @onclick="@OnClickedItem"
+                @attributes="@AdditionalAttributes">
+                @if (Picker?.MultiSelection == true)
+                {
+                    <MduiCheckbox Disabled="@Disabled" Value="@Checked" ValueChanged="@OnCheckedChanged"
+                        @onclick:stopPropagation="@true" />
+                }
+                @if (OptionContent is not null)
+                {
+                    @OptionContent
+                }
+                else
+                {
+                    @DisplayString
+                }
+            </label>
+        </HeaderContent>
+        <ChildContent>
+            <CascadingValue Value="@this" IsFixed>
+                <ul class="mdui-treeview" style="padding-left:@Picker.Indent">
+                    @ChildContent
+                </ul>
+            </CascadingValue>
+        </ChildContent>
+    </MduiCollapse>
+}
+else
+{
+    <li class="@Classname" style="@Style" disabled="@Disabled" @onclick="@OnClickedItem"
+        @attributes="@AdditionalAttributes">
+        @if (Picker?.MultiSelection == true)
+        {
+            <MduiCheckbox Disabled="@Disabled" Value="@Checked" ValueChanged="@OnCheckedChanged"
+                @onclick:stopPropagation="@true" />
+        }
+        @if (OptionContent is not null)
+        {
+            @OptionContent
+        }
+        else
+        {
+            @DisplayString
+        }
+    </li>
+}

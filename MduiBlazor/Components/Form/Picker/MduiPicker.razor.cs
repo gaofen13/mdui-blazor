@@ -8,12 +8,13 @@ namespace MduiBlazor
     {
         private bool _isOpen;
         private bool _readonly;
-        private MduiOption<TValue>? _currentItem;
+        private MduiPickerItem<TValue>? _currentItem;
         private List<TValue?> _selectedValues = [];
-        private readonly HashSet<MduiOption<TValue>> _items = [];
+        private readonly HashSet<MduiPickerItem<TValue>> _items = [];
 
         private string Classname =>
             new ClassBuilder("mdui-picker")
+            .AddClass("mdui-picker-dense", Dense)
             .AddClass("mdui-picker-open", _isOpen)
             .AddClass($"mdui-picker-{(DirectionTop ? "top" : "bottom")}")
             .AddClass("mdui-typo", UseMduiTypo)
@@ -22,7 +23,7 @@ namespace MduiBlazor
 
         private string InputClassname =>
             new ClassBuilder("mdui-input")
-            .AddClass("mdui-input-searchable", _isOpen && MultiSelection && Searchable)
+            .AddClass("mdui-input-searchable", _isOpen && Searchable)
             .Build();
 
         private string ContentClassname =>
@@ -36,7 +37,7 @@ namespace MduiBlazor
             .AddStyle(ContentStyle)
             .Build();
 
-        internal string? DisplayValue { get; set; }
+        public string? DisplayValue { get; set; }
 
         [Parameter]
         public bool MultiSelection { get; set; }
@@ -64,9 +65,6 @@ namespace MduiBlazor
         public bool Searchable { get; set; }
 
         [Parameter]
-        public string? Label { get; set; }
-
-        [Parameter]
         public string? Placeholder { get; set; }
 
         [Parameter]
@@ -86,6 +84,9 @@ namespace MduiBlazor
 
         [Parameter]
         public string? ContentStyle { get; set; }
+
+        [Parameter]
+        public bool Dense { get; set; }
 
         protected override bool TryParseValueFromString(string? value, out TValue? result, [NotNullWhen(false)] out string? validationErrorMessage)
         {
@@ -115,27 +116,28 @@ namespace MduiBlazor
             }
         }
 
-        internal void SetValue(MduiOption<TValue> item)
+        public void SetValue(MduiPickerItem<TValue> item)
         {
             if (item.Value?.Equals(Value) != true)
             {
                 _currentItem = item;
                 Value = item.Value;
                 ValueChanged.InvokeAsync(item.Value);
-                DisplayValue = item.Label;
+                DisplayValue = item.DisplayString;
             }
             _isOpen = false;
             StateHasChanged();
         }
 
-        internal void AddItem(MduiOption<TValue> item)
+        public void AddItem(MduiPickerItem<TValue> item)
         {
             _items.Add(item);
             if (MultiSelection)
             {
                 if (SelectedValues?.Contains(item.Value) == true)
                 {
-                    AddSelectedValue(item.Value);
+                    DisplayValue = string.Join(", ", _items.Where(i => _selectedValues.Contains(i.Value)).Select(i => i.DisplayString));
+                    StateHasChanged();
                 }
             }
             else
@@ -143,19 +145,19 @@ namespace MduiBlazor
                 if (Value?.Equals(item.Value) == true)
                 {
                     _currentItem = item;
-                    DisplayValue = item.Label;
+                    DisplayValue = item.DisplayString;
                     StateHasChanged();
                 }
             }
         }
 
-        internal void RemoveItem(MduiOption<TValue> item)
+        public void RemoveItem(MduiPickerItem<TValue> item)
         {
             _items.Remove(item);
             RemoveSelectedValue(item.Value);
         }
 
-        internal void AddSelectedValue(TValue? value)
+        public void AddSelectedValue(TValue? value)
         {
             if (!_selectedValues.Contains(value))
             {
@@ -164,12 +166,12 @@ namespace MduiBlazor
             }
             if (!Searchable)
             {
-                DisplayValue = string.Join(", ", _items.Where(i => _selectedValues.Contains(i.Value)).Select(i => i.Label));
+                DisplayValue = string.Join(", ", _items.Where(i => _selectedValues.Contains(i.Value)).Select(i => i.DisplayString));
                 StateHasChanged();
             }
         }
 
-        internal void RemoveSelectedValue(TValue? value)
+        public void RemoveSelectedValue(TValue? value)
         {
             if (_selectedValues.Contains(value))
             {
@@ -178,7 +180,7 @@ namespace MduiBlazor
             }
             if (!Searchable)
             {
-                DisplayValue = string.Join(", ", _items.Where(i => _selectedValues.Contains(i.Value)).Select(i => i.Label));
+                DisplayValue = string.Join(", ", _items.Where(i => _selectedValues.Contains(i.Value)).Select(i => i.DisplayString));
                 StateHasChanged();
             }
         }
@@ -210,11 +212,11 @@ namespace MduiBlazor
             {
                 if (MultiSelection)
                 {
-                    DisplayValue = string.Join(", ", _items.Where(i => _selectedValues.Contains(i.Value)).Select(i => i.Label));
+                    DisplayValue = string.Join(", ", _items.Where(i => _selectedValues.Contains(i.Value)).Select(i => i.DisplayString));
                 }
                 else
                 {
-                    DisplayValue = _currentItem?.Label;
+                    DisplayValue = _currentItem?.DisplayString;
                 }
             }
         }

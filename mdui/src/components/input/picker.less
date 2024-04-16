@@ -16,7 +16,7 @@
     background-repeat: no-repeat;
     background-position: right center;
 
-    &.mdui-input-searchable{
+    &.mdui-input-searchable {
       position: relative;
       z-index: calc(@z-index-overlay + 1);
     }
@@ -47,6 +47,32 @@
     will-change: transform, opacity, visibility;
     -webkit-overflow-scrolling: touch;
     .mdui-shadow(8);
+  }
+}
+
+/* 密集型组件 */
+.mdui-picker-dense {
+
+  // 图标
+  .mdui-icon {
+    width: 20px !important;
+    height: 20px !important;
+    font-size: 20px !important;
+  }
+
+  // 组件项内容
+  .mdui-picker-content {
+    padding-top: 0;
+    padding-bottom: 0;
+    font-size: 13px;
+    line-height: 32px;
+  }
+
+  .mdui-picker-item {
+    height: 36px;
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: 36px;
   }
 }
 
@@ -82,6 +108,7 @@
 .mdui-picker-item {
   position: relative;
   display: flex;
+  flex-grow: 1;
   align-items: center;
   height: 48px;
   margin: 4px;
@@ -109,6 +136,30 @@
     .mdui-icon {
       color: @color-black-icon-disabled;
     }
+  }
+
+  .mdui-checkbox {
+    margin: 0;
+
+    .mdui-checkbox-icon {
+      box-shadow: none !important;
+    }
+  }
+}
+
+.mdui-tree-picker {
+  .mdui-picker-item {
+    margin-left: 36px;
+    padding: 0 4px;
+  }
+}
+
+.mdui-tree-picker-header {
+  display: flex;
+  align-items: center;
+
+  .mdui-collapse-arrow~.mdui-picker-item {
+    margin-left: 0;
   }
 }
 

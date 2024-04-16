@@ -1,0 +1,16 @@
+@namespace MduiBlazor
+@typeparam TValue
+@inherits MduiInputBase<TValue>
+
+<div class="@Classname" style="@Style" @attributes="@AdditionalAttributes">
+    <input class="@InputClassname" value="@DisplayValue" readonly="@_readonly" disabled="@Disabled"
+        placeholder="@Placeholder" autofocus="@AutoFocus" required="@Required" @oninput="@OnInput"
+        @onfocus="@OnPickerFocus" />
+    <ul class="@ContentClassname" style="@ContentStylelist">
+        <CascadingValue Value="@this">
+            @ChildContent
+        </CascadingValue>
+    </ul>
+</div>
+
+<MduiOverlay Transparent Visible="@_isOpen" OnBackgroundClick="@OnClickBackground" />

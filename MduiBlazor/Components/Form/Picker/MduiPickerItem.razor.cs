@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Components;
 
 namespace MduiBlazor
 {
-    public partial class MduiOption<TValue> : MduiComponentBase, IDisposable
+    public partial class MduiPickerItem<TValue> : MduiComponentBase, IDisposable
     {
         protected string Classname =>
             new ClassBuilder("mdui-picker-item")
@@ -13,9 +13,15 @@ namespace MduiBlazor
             .AddClass(Class)
             .Build();
 
+        private string Stylelist =>
+            new StyleBuilder()
+            .AddStyle("display", "none", !Show)
+            .AddStyle(Style)
+            .Build();
+
         private bool Actived => Picker is not null && ((Value == null && Picker.Value == null) || Value?.Equals(Picker.Value) == true);
 
-        private bool Checked => Picker?.SelectedValues?.Contains(Value) == true;
+        private bool Checked => Picker?.MultiSelection == true && Picker.SelectedValues?.Contains(Value) == true;
 
         private bool Show
         {
@@ -25,7 +31,7 @@ namespace MduiBlazor
                 {
                     return true;
                 }
-                if (string.IsNullOrEmpty(Picker?.DisplayValue) || Label?.Contains(Picker.DisplayValue) == true)
+                if (string.IsNullOrEmpty(Picker?.DisplayValue) || DisplayString?.Contains(Picker.DisplayValue) == true)
                 {
                     return true;
                 }
@@ -40,7 +46,7 @@ namespace MduiBlazor
         public TValue? Value { get; set; }
 
         [Parameter, EditorRequired]
-        public string? Label { get; set; }
+        public string? DisplayString { get; set; }
 
         [Parameter]
         public bool Disabled { get; set; }
@@ -48,11 +54,6 @@ namespace MduiBlazor
         protected override void OnInitialized()
         {
             base.OnInitialized();
-            Picker?.AddItem(this);
-        }
-
-        internal void ReRender()
-        {
             Picker?.AddItem(this);
         }
 

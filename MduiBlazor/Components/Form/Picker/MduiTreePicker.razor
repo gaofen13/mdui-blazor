@@ -3,9 +3,8 @@
 @inherits MduiInputBase<TValue>
 
 <div class="@Classname" style="@Style" @attributes="@AdditionalAttributes">
-    <input class="@InputClassname" value="@DisplayValue" readonly="@_readonly" disabled="@Disabled"
-        placeholder="@Placeholder" autofocus="@AutoFocus" required="@Required" @oninput="@OnInput"
-        @onfocus="@OnPickerFocus" />
+    <input class="mdui-input" value="@DisplayValue" readonly="@Readonly" disabled="@Disabled" placeholder="@Placeholder"
+        autofocus="@AutoFocus" required="@Required" @onfocus="@OnPickerFocus" />
     <ul class="@ContentClassname" style="@ContentStylelist">
         <CascadingValue Value="@this" IsFixed>
             @ChildContent

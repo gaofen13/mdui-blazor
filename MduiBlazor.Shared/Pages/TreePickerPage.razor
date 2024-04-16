@@ -1,18 +1,16 @@
-@page "/picker"
+@page "/tree-picker"
 @inherits BasePage
-@using MduiBlazor.Shared.Pages.Examples.Pickers
+@using MduiBlazor.Shared.Pages.Examples.TreePicker
 
-<PageTitle>通用选择器</PageTitle>
+<PageTitle>树形数据选择器</PageTitle>
 <div class="mdui-m-y-5">
-    <MduiText Typo="@Typo.display1" TextColor="@Colors.Theme.Primary">通用选择器</MduiText>
-    <p>可用于类型不可转换为string或需要在选项自定义显示内容的选择器。</p>
+    <MduiText Typo="@Typo.display1" TextColor="@Colors.Theme.Primary">树形数据选择器</MduiText>
 </div>
 
 <PageContent>
     <PageContentItem Title="示例" OnClick="@(_=>ScrollToElementById("examples"))">
         <PageContentItem Title="单选" OnClick="@(_=>ScrollToElementById("simplepicker"))" />
         <PageContentItem Title="多选" OnClick="@(_=>ScrollToElementById("multipicker"))" />
-        <PageContentItem Title="图标选择器" OnClick="@(_=>ScrollToElementById("iconpicker"))" />
     </PageContentItem>
     <PageContentItem Title="组件参数" OnClick="@(_=>ScrollToElementById("attr"))" />
 </PageContent>
@@ -25,14 +23,10 @@
     </h2>
 
     <MduiText id="simplepicker" Typo="@Typo.subheading"><b>单选</b></MduiText>
-    <ExampleSection Component="@typeof(SimplePicker)" />
+    <ExampleSection Component="@typeof(SimpleTreePicker)" />
 
     <MduiText id="multipicker" Typo="@Typo.subheading"><b>多选</b></MduiText>
-    <ExampleSection Component="@typeof(MultiPicker)" />
-
-    <MduiText id="iconpicker" Typo="@Typo.subheading"><b>图标选择器</b></MduiText>
-    <p class="mdui-typo">以下为基于通用选择器<code>MduiPicker</code>和<code>mdui</code>图标构建的图标选择器。</p>
-    <ExampleSection Component="@typeof(IconPicker)" />
+    <ExampleSection Component="@typeof(MultiTreePicker)" />
 </div>
 
 <MduiDivider Class="mdui-m-y-5" />
@@ -53,15 +47,15 @@
             <tbody>
                 <tr>
                     <th rowspan="12">
-                        <code>MduiPicker</code>
+                        <code>MduiTreePicker</code>
                     </th>
                     <td>
-                        <code>Searchable</code>
+                        <code>Indent</code>
                     </td>
                     <td>
-                        <code>bool</code>
+                        <code>string</code>
                     </td>
-                    <td>是否允许搜索下拉项，默认<code>false</code>。</td>
+                    <td>每级下拉项的缩进量，默认<code>16px</code>。</td>
                 </tr>
                 <tr>
                     <td>
@@ -163,8 +157,8 @@
                     <td>下拉项是否向上展开，默认<code>false</code>。</td>
                 </tr>
                 <tr>
-                    <th rowspan="3">
-                        <code>MduiPickerItem</code>
+                    <th rowspan="4">
+                        <code>MduiTreePickerItem</code>
                     </th>
                     <td>
                         <code>Value</code>
@@ -182,6 +176,15 @@
                         <code>string?</code>
                     </td>
                     <td>选择该项后，在<code>MduiPicker</code>文本框要显示的文本。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>OptionContent</code>
+                    </td>
+                    <td>
+                        <code>RenderFragment?</code>
+                    </td>
+                    <td>下拉项渲染的片段。</td>
                 </tr>
                 <tr>
                     <td>

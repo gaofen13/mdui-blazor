@@ -1,0 +1,31 @@
+<div>选择的值：@selectedValue</div>
+
+<MduiCheckbox Switch @bind-Value="@read_only" Label="只读" />
+<MduiCheckbox Switch @bind-Value="@disabled" Label="禁用" />
+<MduiCheckbox Switch @bind-Value="@dense" Label="紧凑型" />
+
+<MduiTreePicker @bind-Value="@selectedValue" Readonly="@read_only" Disabled="@disabled" Dense="@dense" TValue="@string"
+    MaxHeight="200px">
+    <MduiTreePickerItem Value="@("1")" DisplayString="@("1")">
+        <MduiTreePickerItem Value="@("1.1")" DisplayString="@("1.1")">
+            <MduiTreePickerItem Value="@("1.1.1")" DisplayString="@("1.1.1")" />
+            <MduiTreePickerItem Value="@("1.1.2")" DisplayString="@("1.1.2")" />
+        </MduiTreePickerItem>
+        <MduiTreePickerItem Value="@("1.2")" DisplayString="@("1.2")" />
+    </MduiTreePickerItem>
+    <MduiTreePickerItem Value="@("2")" DisplayString="@("2")">
+        <MduiTreePickerItem Value="@("2.1")" DisplayString="@("2.1")">
+            <MduiTreePickerItem Value="@("2.1.1")" DisplayString="@("2.1.1")" />
+            <MduiTreePickerItem Value="@("2.1.2")" DisplayString="@("2.1.2")" />
+        </MduiTreePickerItem>
+        <MduiTreePickerItem Value="@("2.2")" DisplayString="@("2.2")" />
+    </MduiTreePickerItem>
+    <MduiTreePickerItem Value="@("3")" DisplayString="@("3")" />
+</MduiTreePicker>
+
+@code {
+    string selectedValue = "1.1.2";
+    bool read_only;
+    bool disabled;
+    bool dense;
+}
