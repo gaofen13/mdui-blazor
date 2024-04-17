@@ -6,7 +6,7 @@
     <input class="mdui-input" value="@DisplayValue" readonly="@true" disabled="@Disabled" placeholder="@Placeholder"
         autofocus="@AutoFocus" required="@Required" @onfocus="@OnPickerFocus" />
     <ul class="@ContentClassname" style="@ContentStylelist">
-        <CascadingValue Value="@this" IsFixed>
+        <CascadingValue Value="@this">
             @ChildContent
         </CascadingValue>
     </ul>

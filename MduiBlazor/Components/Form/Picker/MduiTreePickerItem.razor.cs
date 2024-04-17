@@ -62,7 +62,6 @@ namespace MduiBlazor
 
         protected override void OnInitialized()
         {
-            base.OnInitialized();
             Picker?.AddItem(this);
         }
 
