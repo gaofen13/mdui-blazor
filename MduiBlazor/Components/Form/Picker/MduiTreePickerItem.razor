@@ -9,7 +9,7 @@
         <HeaderContent>
             <MduiIconButton Class="mdui-collapse-arrow" Icon="keyboard_arrow_down"
                 OnClick="@(_=>_isExpanded=!_isExpanded)" />
-            <label class="@Classname" style="@Style" disabled="@Disabled" @onclick="@OnClickedItem"
+            <div class="@Classname" style="@Style" disabled="@Disabled" @onclick="@OnClickedItem"
                 @attributes="@AdditionalAttributes">
                 @if (Picker?.MultiSelection == true)
                 {
@@ -24,7 +24,7 @@
                 {
                     @DisplayString
                 }
-            </label>
+            </div>
         </HeaderContent>
         <ChildContent>
             <CascadingValue Value="@this" IsFixed>

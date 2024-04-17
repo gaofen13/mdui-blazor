@@ -28,6 +28,23 @@
             "requireExactSource": false
         },
         {
+            "name": ".NET Core Launch (wasm)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build wasm",
+            "program": "${workspaceFolder}/MduiBlazor.Client/bin/Debug/net8.0/MduiBlazor.Client.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/MduiBlazor.Client",
+            "stopAtEntry": false,
+            "serverReadyAction": {
+                "action": "openExternally",
+                "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+            },
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            }
+        },
+        {
             "name": ".NET Core Attach",
             "type": "coreclr",
             "request": "attach"
