@@ -8558,8 +8558,6 @@ th.mdui-table-cell-checkbox .mdui-checkbox {
 }
 .mdui-picker-dense .mdui-picker-item {
   height: 36px;
-  margin-top: 0;
-  margin-bottom: 0;
   line-height: 36px;
 }
 .mdui-picker-top .mdui-picker-content {
@@ -8587,17 +8585,11 @@ th.mdui-table-cell-checkbox .mdui-checkbox {
 /* 内容项 */
 .mdui-picker-item {
   position: relative;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   height: 48px;
-  margin: 4px;
+  margin: 2px;
   padding: 0 16px;
   color: inherit;
   line-height: 48px;
@@ -8630,6 +8622,9 @@ th.mdui-table-cell-checkbox .mdui-checkbox {
 .mdui-picker-item .mdui-checkbox .mdui-checkbox-icon {
   -webkit-box-shadow: none !important;
           box-shadow: none !important;
+}
+.mdui-picker-item + .mdui-picker-item {
+  margin-top: 4px;
 }
 .mdui-tree-picker .mdui-picker-item {
   margin-left: 36px;
@@ -11780,6 +11775,7 @@ input.mdui-btn[type="submit"] {
 .mdui-list-item-active {
   font-weight: 700;
   background-color: rgba(0, 0, 0, 0.08);
+  border-left: 2px solid;
 }
 .mdui-list-item-active .mdui-list-item-content {
   font-weight: 700;
@@ -11887,6 +11883,59 @@ input.mdui-btn[type="submit"] {
 }
 .mdui-list-dense .mdui-list-item-three-line {
   height: 54px;
+}
+/**
+ * =============================================================================
+ * ************   List 强调色   ************
+ * =============================================================================
+ */
+.mdui-theme-accent-amber .mdui-list-item-active {
+  border-color: #FFD740;
+}
+.mdui-theme-accent-blue .mdui-list-item-active {
+  border-color: #448AFF;
+}
+.mdui-theme-accent-cyan .mdui-list-item-active {
+  border-color: #18FFFF;
+}
+.mdui-theme-accent-deep-orange .mdui-list-item-active {
+  border-color: #FF6E40;
+}
+.mdui-theme-accent-deep-purple .mdui-list-item-active {
+  border-color: #7C4DFF;
+}
+.mdui-theme-accent-green .mdui-list-item-active {
+  border-color: #69F0AE;
+}
+.mdui-theme-accent-indigo .mdui-list-item-active {
+  border-color: #536DFE;
+}
+.mdui-theme-accent-light-blue .mdui-list-item-active {
+  border-color: #40C4FF;
+}
+.mdui-theme-accent-light-green .mdui-list-item-active {
+  border-color: #B2FF59;
+}
+.mdui-theme-accent-lime .mdui-list-item-active {
+  border-color: #EEFF41;
+}
+.mdui-theme-accent-orange .mdui-list-item-active {
+  border-color: #FFAB40;
+}
+.mdui-theme-accent-pink .mdui-list-item-active {
+  border-color: #FF4081;
+}
+.mdui-theme-accent-purple .mdui-list-item-active {
+  border-color: #E040FB;
+}
+.mdui-theme-accent-red .mdui-list-item-active {
+  border-color: #FF5252;
+}
+.mdui-theme-accent-teal .mdui-list-item-active {
+  border-color: #64FFDA;
+}
+.mdui-theme-accent-yellow .mdui-list-item-active {
+  border-color: #FFFF00;
 }
 /**
  * =============================================================================
@@ -13919,6 +13968,8 @@ input.mdui-btn[type="submit"] {
           align-items: center;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  margin-top: 2px;
+  margin-bottom: 2px;
   margin-left: 36px;
   text-decoration: none;
   cursor: pointer;
@@ -13944,6 +13995,9 @@ input.mdui-btn[type="submit"] {
 }
 .mdui-treeview-item:has(.mdui-collapse-arrow) {
   margin-left: 0;
+}
+.mdui-treeview-item + .mdui-treeview-item {
+  margin-top: 4px;
 }
 /* 组件项文本内容 */
 .mdui-treeview-item-content {
