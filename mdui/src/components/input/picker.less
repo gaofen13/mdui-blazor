@@ -70,8 +70,6 @@
 
   .mdui-picker-item {
     height: 36px;
-    margin-top: 0;
-    margin-bottom: 0;
     line-height: 36px;
   }
 }
@@ -107,11 +105,9 @@
 /* 内容项 */
 .mdui-picker-item {
   position: relative;
-  display: flex;
   flex-grow: 1;
-  align-items: center;
   height: 48px;
-  margin: 4px;
+  margin: 2px;
   padding: 0 16px;
   color: inherit;
   line-height: 48px;
@@ -144,6 +140,11 @@
     .mdui-checkbox-icon {
       box-shadow: none !important;
     }
+  }
+
+  &+.mdui-picker-item {
+    // 处理边距折叠
+    margin-top: 4px;
   }
 }
 

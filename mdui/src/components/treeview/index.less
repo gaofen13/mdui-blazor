@@ -19,6 +19,8 @@
   flex-wrap: nowrap;
   align-items: center;
   box-sizing: border-box;
+  margin-top: 2px;
+  margin-bottom: 2px;
   margin-left: 36px;
   text-decoration: none;
   cursor: pointer;
@@ -46,6 +48,10 @@
 
   &:has(.mdui-collapse-arrow) {
     margin-left: 0;
+  }
+
+  &+.mdui-treeview-item {
+    margin-top: 4px;
   }
 }
 

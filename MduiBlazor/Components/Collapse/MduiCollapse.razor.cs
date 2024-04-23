@@ -22,8 +22,6 @@ namespace MduiBlazor
             .AddClass(BodyClass, !string.IsNullOrWhiteSpace(BodyClass))
             .Build();
 
-        private string BodyHtmlTag => HtmlTag == "li" ? "ul" : "div";
-
         [Parameter]
         public string HtmlTag { get; set; } = "li";
 
