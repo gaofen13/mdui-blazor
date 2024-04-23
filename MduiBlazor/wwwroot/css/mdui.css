@@ -11775,6 +11775,7 @@ input.mdui-btn[type="submit"] {
 .mdui-list-item-active {
   font-weight: 700;
   background-color: rgba(0, 0, 0, 0.08);
+  border-left: 2px solid;
 }
 .mdui-list-item-active .mdui-list-item-content {
   font-weight: 700;
@@ -11882,6 +11883,59 @@ input.mdui-btn[type="submit"] {
 }
 .mdui-list-dense .mdui-list-item-three-line {
   height: 54px;
+}
+/**
+ * =============================================================================
+ * ************   List 强调色   ************
+ * =============================================================================
+ */
+.mdui-theme-accent-amber .mdui-list-item-active {
+  border-color: #FFD740;
+}
+.mdui-theme-accent-blue .mdui-list-item-active {
+  border-color: #448AFF;
+}
+.mdui-theme-accent-cyan .mdui-list-item-active {
+  border-color: #18FFFF;
+}
+.mdui-theme-accent-deep-orange .mdui-list-item-active {
+  border-color: #FF6E40;
+}
+.mdui-theme-accent-deep-purple .mdui-list-item-active {
+  border-color: #7C4DFF;
+}
+.mdui-theme-accent-green .mdui-list-item-active {
+  border-color: #69F0AE;
+}
+.mdui-theme-accent-indigo .mdui-list-item-active {
+  border-color: #536DFE;
+}
+.mdui-theme-accent-light-blue .mdui-list-item-active {
+  border-color: #40C4FF;
+}
+.mdui-theme-accent-light-green .mdui-list-item-active {
+  border-color: #B2FF59;
+}
+.mdui-theme-accent-lime .mdui-list-item-active {
+  border-color: #EEFF41;
+}
+.mdui-theme-accent-orange .mdui-list-item-active {
+  border-color: #FFAB40;
+}
+.mdui-theme-accent-pink .mdui-list-item-active {
+  border-color: #FF4081;
+}
+.mdui-theme-accent-purple .mdui-list-item-active {
+  border-color: #E040FB;
+}
+.mdui-theme-accent-red .mdui-list-item-active {
+  border-color: #FF5252;
+}
+.mdui-theme-accent-teal .mdui-list-item-active {
+  border-color: #64FFDA;
+}
+.mdui-theme-accent-yellow .mdui-list-item-active {
+  border-color: #FFFF00;
 }
 /**
  * =============================================================================

@@ -5,7 +5,7 @@ namespace MduiBlazor
 {
     public partial class MduiNavMenu : MduiComponentBase
     {
-        private readonly List<MduiNavMenuCollapse> _subItems = new();
+        private readonly List<MduiNavMenuCollapse> _subItems = [];
 
         protected string Classname =>
             new ClassBuilder("mdui-list")
@@ -30,10 +30,7 @@ namespace MduiBlazor
 
         public void RemoveSubitem(MduiNavMenuCollapse item)
         {
-            if (_subItems.Contains(item))
-            {
-                _subItems.Remove(item);
-            }
+            _subItems.Remove(item);
         }
 
         public void CloseAllSubitems()
