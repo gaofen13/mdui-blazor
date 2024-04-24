@@ -1,0 +1,40 @@
+@namespace MduiBlazor
+@typeparam TValue
+@typeparam TItem
+
+@if (Picker is not null && Picker.ValueFunc is not null && Picker.DisplayStringFunc is not null)
+{
+    var hasChildren = false;
+    var optionContent = Picker.OptionContent is null ? null : Picker.OptionContent(Item);
+    @if (Picker.ChildrenFunc is not null)
+    {
+        var children = Picker.ChildrenFunc(Item);
+        @if (children?.Any() == true)
+        {
+            hasChildren = true;
+            <MduiTreePickerItem Value="@Picker.ValueFunc(Item)" DisplayString="@Picker.DisplayStringFunc(Item)"
+                OptionContent="@optionContent">
+                <ChildContent>
+                    @foreach (var item in children)
+                    {
+                        <MduiTreePickerNode TValue="@TValue" TItem="@TItem" Item="@item" />
+                    }
+                </ChildContent>
+            </MduiTreePickerItem>
+        }
+    }
+
+    @if (!hasChildren)
+    {
+        <MduiTreePickerItem Value="@Picker.ValueFunc(Item)" DisplayString="@Picker.DisplayStringFunc(Item)"
+            OptionContent="@optionContent" />
+    }
+}
+
+@code {
+    [CascadingParameter]
+    private MduiTreePicker<TValue, TItem>? Picker { get; set; }
+
+    [Parameter, EditorRequired]
+    public TItem Item { get; set; } = default!;
+}

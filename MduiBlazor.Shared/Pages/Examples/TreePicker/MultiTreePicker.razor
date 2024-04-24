@@ -5,27 +5,40 @@
 <MduiCheckbox Switch @bind-Value="@dense" Label="紧凑型" />
 
 <MduiTreePicker MultiSelection @bind-SelectedValues="@selectedValues" Readonly="@read_only" Disabled="@disabled"
-    Dense="@dense" TValue="@string" MaxHeight="200px">
-    <MduiTreePickerItem Value="@("1")" DisplayString="@("1")">
-        <MduiTreePickerItem Value="@("1.1")" DisplayString="@("1.1")">
-            <MduiTreePickerItem Value="@("1.1.1")" DisplayString="@("1.1.1")" />
-            <MduiTreePickerItem Value="@("1.1.2")" DisplayString="@("1.1.2")" />
-        </MduiTreePickerItem>
-        <MduiTreePickerItem Value="@("1.2")" DisplayString="@("1.2")" />
-    </MduiTreePickerItem>
-    <MduiTreePickerItem Value="@("2")" DisplayString="@("2")">
-        <MduiTreePickerItem Value="@("2.1")" DisplayString="@("2.1")">
-            <MduiTreePickerItem Value="@("2.1.1")" DisplayString="@("2.1.1")" />
-            <MduiTreePickerItem Value="@("2.1.2")" DisplayString="@("2.1.2")" />
-        </MduiTreePickerItem>
-        <MduiTreePickerItem Value="@("2.2")" DisplayString="@("2.2")" />
-    </MduiTreePickerItem>
-    <MduiTreePickerItem Value="@("3")" DisplayString="@("3")" />
+    Dense="@dense" Items="@items" ValueFunc="i=>i.Title" DisplayStringFunc="i=>i.Title" ChildrenFunc="i=>i.Children"
+    MaxHeight="200px">
+    <OptionContent>
+        <span class="mdui-text-color-deep-purple">@context.Title</span>
+    </OptionContent>
 </MduiTreePicker>
 
 @code {
+    IEnumerable<TreeItem> items = 
+    [
+        new TreeItem("1")
+        {
+            Children = 
+            [
+                new TreeItem("1.1")
+                {
+                    Children = [new TreeItem("1.1.1"), new TreeItem("1.1.2")]
+                },
+                new TreeItem("1.2")]
+        },
+        new TreeItem("2")
+        {
+            Children = [new TreeItem("2.1"), new TreeItem("2.2")]
+        },
+        new TreeItem("3")
+    ];
     IEnumerable<string> selectedValues = ["1.1.2", "2"];
     bool read_only;
     bool disabled;
     bool dense;
+
+    class TreeItem(string title)
+    {
+        public string Title { get; set; } = title;
+        public IEnumerable<TreeItem>? Children { get; set; }
+    }
 }

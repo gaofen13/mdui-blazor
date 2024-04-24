@@ -6,16 +6,10 @@
 <MduiCheckbox Switch @bind-Value="@dense" Label="紧凑型" />
 
 <MduiPicker Searchable="@searchable" Readonly="@read_only" Disabled="@disabled" Dense="@dense" MultiSelection
-    @bind-SelectedValues="@selectedValues" MaxHeight="200px">
-    <MduiPickerItem DisplayString="option1" Value="@("option1")" />
-    <MduiPickerItem DisplayString="option2" Value="@("option2")" />
-    <MduiPickerItem DisplayString="option3" Value="@("option3")" />
-    <MduiPickerItem DisplayString="option4" Value="@("option4")" />
-    <MduiPickerItem DisplayString="option5" Value="@("option5")" />
-    <MduiPickerItem DisplayString="option6" Value="@("option6")" />
-</MduiPicker>
+    @bind-SelectedValues="@selectedValues" Items="@items" ValueFunc="i=>i" DisplayStringFunc="i=>i" MaxHeight="200px" />
 
 @code {
+    IEnumerable<string> items = ["option1", "option2", "option3", "option4", "option5", "option6"];
     IEnumerable<string> selectedValues = ["option2", "option3"];
     bool searchable;
     bool read_only;

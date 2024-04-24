@@ -3,119 +3,15 @@
 <MduiCheckbox Switch @bind-Value="@disabled" Label="禁用" />
 
 <MduiPicker ContentStyle="display:flex;flex-wrap:wrap;" Searchable="@searchable" Readonly="@read_only"
-    Disabled="@disabled" TValue="@string" MaxHeight="200px">
-    <MduiPickerItem Style="width:auto;" Value="@("add")" DisplayString="add">
-        <MduiIcon Icon="add" />
-    </MduiPickerItem>
-    <MduiPickerItem Style="width:auto;" Value="@("add_alarm")" DisplayString="add_alarm">
-        <MduiIcon Icon="add_alarm" />
-    </MduiPickerItem>
-    <MduiPickerItem Style="width:auto;" Value="@("add_box")" DisplayString="add_box">
-        <MduiIcon Icon="add_box" />
-    </MduiPickerItem>
-    <MduiPickerItem Style="width:auto;" Value="@("add_location")" DisplayString="add_location">
-        <MduiIcon Icon="add_location" />
-    </MduiPickerItem>
-    <MduiPickerItem Style="width:auto;" Value="@("add_shopping_cart")" DisplayString="add_shopping_cart">
-        <MduiIcon Icon="add_shopping_cart" />
-    </MduiPickerItem>
-    <MduiPickerItem Style="width:auto;" Value="@("airplanemode_active")" DisplayString="airplanemode_active">
-        <MduiIcon Icon="airplanemode_active" />
-    </MduiPickerItem>
-    <MduiPickerItem Style="width:auto;" Value="@("airplanemode_inactive")" DisplayString="airplanemode_inactive">
-        <MduiIcon Icon="airplanemode_inactive" />
-    </MduiPickerItem>
-    <MduiPickerItem Style="width:auto;" Value="@("airplay")" DisplayString="airplay">
-        <MduiIcon Icon="airplay" />
-    </MduiPickerItem>
-    <MduiPickerItem Style="width:auto;" Value="@("alarm")" DisplayString="alarm">
-        <MduiIcon Icon="alarm" />
-    </MduiPickerItem>
-    <MduiPickerItem Style="width:auto;" Value="@("alarm_on")" DisplayString="alarm_on">
-        <MduiIcon Icon="alarm_on" />
-    </MduiPickerItem>
-    <MduiPickerItem Style="width:auto;" Value="@("alarm_off")" DisplayString="alarm_off">
-        <MduiIcon Icon="alarm_off" />
-    </MduiPickerItem>
-    <MduiPickerItem Style="width:auto;" Value="@("arrow_back")" DisplayString="arrow_back">
-        <MduiIcon Icon="arrow_back" />
-    </MduiPickerItem>
-    <MduiPickerItem Style="width:auto;" Value="@("arrow_downward")" DisplayString="arrow_downward">
-        <MduiIcon Icon="arrow_downward" />
-    </MduiPickerItem>
-    <MduiPickerItem Style="width:auto;" Value="@("arrow_forward")" DisplayString="arrow_forward">
-        <MduiIcon Icon="arrow_forward" />
-    </MduiPickerItem>
-    <MduiPickerItem Style="width:auto;" Value="@("arrow_upward")" DisplayString="arrow_upward">
-        <MduiIcon Icon="arrow_upward" />
-    </MduiPickerItem>
-    <MduiPickerItem Style="width:auto;" Value="@("arrow_drop_down")" DisplayString="arrow_drop_down">
-        <MduiIcon Icon="arrow_drop_down" />
-    </MduiPickerItem>
-    <MduiPickerItem Style="width:auto;" Value="@("arrow_drop_up")" DisplayString="arrow_drop_up">
-        <MduiIcon Icon="arrow_drop_up" />
-    </MduiPickerItem>
-    <MduiPickerItem Style="width:auto;" Value="@("battery_charging_full")" DisplayString="battery_charging_full">
-        <MduiIcon Icon="battery_charging_full" />
-    </MduiPickerItem>
-    <MduiPickerItem Style="width:auto;" Value="@("battery_full")" DisplayString="battery_full">
-        <MduiIcon Icon="battery_full" />
-    </MduiPickerItem>
-    <MduiPickerItem Style="width:auto;" Value="@("battery_unknown")" DisplayString="battery_unknown">
-        <MduiIcon Icon="battery_unknown" />
-    </MduiPickerItem>
-    <MduiPickerItem Style="width:auto;" Value="@("block")" DisplayString="block">
-        <MduiIcon Icon="block" />
-    </MduiPickerItem>
-    <MduiPickerItem Style="width:auto;" Value="@("bluetooth")" DisplayString="bluetooth">
-        <MduiIcon Icon="bluetooth" />
-    </MduiPickerItem>
-    <MduiPickerItem Style="width:auto;" Value="@("bluetooth_audio")" DisplayString="bluetooth_audio">
-        <MduiIcon Icon="bluetooth_audio" />
-    </MduiPickerItem>
-    <MduiPickerItem Style="width:auto;" Value="@("bluetooth_connected")" DisplayString="bluetooth_connected">
-        <MduiIcon Icon="bluetooth_connected" />
-    </MduiPickerItem>
-    <MduiPickerItem Style="width:auto;" Value="@("bluetooth_disabled")" DisplayString="bluetooth_disabled">
-        <MduiIcon Icon="bluetooth_disabled" />
-    </MduiPickerItem>
-    <MduiPickerItem Style="width:auto;" Value="@("book")" DisplayString="book">
-        <MduiIcon Icon="book" />
-    </MduiPickerItem>
-    <MduiPickerItem Style="width:auto;" Value="@("bookmark")" DisplayString="bookmark">
-        <MduiIcon Icon="bookmark" />
-    </MduiPickerItem>
-    <MduiPickerItem Style="width:auto;" Value="@("bookmark_border")" DisplayString="bookmark_border">
-        <MduiIcon Icon="bookmark_border" />
-    </MduiPickerItem>
-    <MduiPickerItem Style="width:auto;" Value="@("border_all")" DisplayString="border_all">
-        <MduiIcon Icon="border_all" />
-    </MduiPickerItem>
-    <MduiPickerItem Style="width:auto;" Value="@("border_bottom")" DisplayString="border_bottom">
-        <MduiIcon Icon="border_bottom" />
-    </MduiPickerItem>
-    <MduiPickerItem Style="width:auto;" Value="@("border_clear")" DisplayString="border_clear">
-        <MduiIcon Icon="border_clear" />
-    </MduiPickerItem>
-    <MduiPickerItem Style="width:auto;" Value="@("brightness_1")" DisplayString="brightness_1">
-        <MduiIcon Icon="brightness_1" />
-    </MduiPickerItem>
-    <MduiPickerItem Style="width:auto;" Value="@("brightness_2")" DisplayString="brightness_2">
-        <MduiIcon Icon="brightness_2" />
-    </MduiPickerItem>
-    <MduiPickerItem Style="width:auto;" Value="@("brightness_3")" DisplayString="brightness_3">
-        <MduiIcon Icon="brightness_3" />
-    </MduiPickerItem>
-    <MduiPickerItem Style="width:auto;" Value="@("brightness_4")" DisplayString="brightness_4">
-        <MduiIcon Icon="brightness_4" />
-    </MduiPickerItem>
-    <MduiPickerItem Style="width:auto;" Value="@("brightness_5")" DisplayString="brightness_5">
-        <MduiIcon Icon="brightness_5" />
-    </MduiPickerItem>
+    Disabled="@disabled" Items="@icons" ValueFunc="i=>i" DisplayStringFunc="i=>i" MaxHeight="200px">
+    <OptionContent>
+        <MduiIcon Icon="@context" />
+    </OptionContent>
 </MduiPicker>
 
 @code {
     bool searchable;
     bool read_only;
     bool disabled;
+    IEnumerable<string> icons = ["add", "add_alarm", "add_box", "add_location", "add_shopping_cart"];
 }

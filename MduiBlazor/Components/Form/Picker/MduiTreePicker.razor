@@ -1,13 +1,28 @@
 @namespace MduiBlazor
 @typeparam TValue
+@typeparam TItem
 @inherits MduiInputBase<TValue>
+@implements ITreePicker<TValue>
 
 <div class="@Classname" style="@Style" @attributes="@AdditionalAttributes">
     <input class="mdui-input" value="@DisplayValue" readonly="@true" disabled="@Disabled" placeholder="@Placeholder"
         autofocus="@AutoFocus" required="@Required" @onfocus="@OnPickerFocus" />
     <ul class="@ContentClassname" style="@ContentStylelist">
         <CascadingValue Value="@this">
-            @ChildContent
+            @if (ChildContent is not null)
+            {
+                @ChildContent
+            }
+            else
+            {
+                if (Items?.Any() == true && ValueFunc is not null && DisplayStringFunc is not null)
+                {
+                    foreach (var item in Items)
+                    {
+                        <MduiTreePickerNode TValue="@TValue" TItem="@TItem" Item="@item" />
+                    }
+                }
+            }
         </CascadingValue>
     </ul>
 </div>

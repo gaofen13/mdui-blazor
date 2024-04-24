@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Components;
 
 namespace MduiBlazor
 {
-    public partial class MduiPicker<TValue> : MduiInputBase<TValue?>
+    public partial class MduiPicker<TValue, TItem> : MduiInputBase<TValue?>, IPicker<TValue>
     {
         private bool _isOpen;
         private bool _readonly;
@@ -87,6 +87,18 @@ namespace MduiBlazor
 
         [Parameter]
         public bool Dense { get; set; }
+
+        [Parameter]
+        public IEnumerable<TItem>? Items { get; set; }
+
+        [Parameter]
+        public Func<TItem, TValue>? ValueFunc { get; set; }
+
+        [Parameter]
+        public Func<TItem, string>? DisplayStringFunc { get; set; }
+
+        [Parameter]
+        public RenderFragment<TItem>? OptionContent { get; set; }
 
         protected override bool TryParseValueFromString(string? value, out TValue? result, [NotNullWhen(false)] out string? validationErrorMessage)
         {

@@ -19,7 +19,7 @@ namespace MduiBlazor
         private bool Checked => Picker?.MultiSelection == true && Picker.SelectedValues?.Contains(Value) == true;
 
         [CascadingParameter]
-        private MduiTreePicker<TValue> Picker { get; set; } = default!;
+        private ITreePicker<TValue> Picker { get; set; } = default!;
 
         [CascadingParameter]
         private MduiTreePickerItem<TValue>? Parent { get; set; }

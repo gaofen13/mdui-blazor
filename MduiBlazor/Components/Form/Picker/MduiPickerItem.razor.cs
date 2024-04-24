@@ -40,7 +40,7 @@ namespace MduiBlazor
         }
 
         [CascadingParameter]
-        private MduiPicker<TValue>? Picker { get; set; }
+        private IPicker<TValue>? Picker { get; set; }
 
         [Parameter, EditorRequired]
         public TValue? Value { get; set; }

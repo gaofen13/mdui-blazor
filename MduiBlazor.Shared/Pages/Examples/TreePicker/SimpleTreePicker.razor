@@ -5,7 +5,7 @@
 <MduiCheckbox Switch @bind-Value="@dense" Label="紧凑型" />
 
 <MduiTreePicker @bind-Value="@selectedValue" Readonly="@read_only" Disabled="@disabled" Dense="@dense" TValue="@string"
-    MaxHeight="200px">
+    TItem="@string" MaxHeight="200px">
     <MduiTreePickerItem Value="@("1")" DisplayString="@("1")">
         <MduiTreePickerItem Value="@("1.1")" DisplayString="@("1.1")">
             <MduiTreePickerItem Value="@("1.1.1")" DisplayString="@("1.1.1")" />
