@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "MduiBlazor.Client",
   "resources": {
-    "hash": "sha256-adInutDvwKzhdD5jD+usZFqEya/d07m31zOkTGKl0Fk=",
+    "hash": "sha256-vKsJNM6KtOi6fD50GzLIIEK9tuOohvOLYMmQGvKpSi4=",
     "jsModuleNative": {
       "dotnet.native.8.0.4.abpwb6ymk5.js": "sha256-DxBEVOFC7kyx9RCvb2meWFSjO/QzSDqPvUGfd3lrCF4="
     },
@@ -17,9 +17,9 @@
       "icudt_no_CJK.dat": "sha256-L7sV7NEYP37/Qr2FPCePo5cJqRgTXRwGHuwF5Q+0Nfs="
     },
     "assembly": {
-      "MduiBlazor.Client.wasm": "sha256-GFKzIu+MEFaA7Pewis+xNKQJHpl0o11xUu5wE3oKtNk=",
-      "MduiBlazor.Shared.wasm": "sha256-n8ERHYSgwteulIx2l9IVNODnvswn+eItFMpZEW/RZ/0=",
-      "MduiBlazor.wasm": "sha256-6UZs9zt6tgJf4RbXvKOMQZrTpDWOCG5e1RKy61Kh0f0=",
+      "MduiBlazor.Client.wasm": "sha256-PmascsFIcFuUgjZytZXpiYHFX1htzfv3RaV0n2UjcM8=",
+      "MduiBlazor.Shared.wasm": "sha256-gwY+SwdwIhic7wnAp0usNYqBrfbIaeYUie0TaJ9wiMc=",
+      "MduiBlazor.wasm": "sha256-z4HkPtK0s3qzYMoy+GjPA5ls/H2r29xfieG19LBqTw0=",
       "Microsoft.AspNetCore.Components.Forms.wasm": "sha256-rVE51RH+UwyCcZWzF86jPeBZEx3YJlzrNJPX7kUzf9E=",
       "Microsoft.AspNetCore.Components.wasm": "sha256-lbA5iphQvKCzpEkQ7iEm5GjsVDAUEggBGNEOTAwAfi0=",
       "Microsoft.AspNetCore.Components.Web.wasm": "sha256-TzfZXGXsTolXXEQ33OBrGUmRBHA7dAZHiQGSDhPVjL8=",
