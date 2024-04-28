@@ -22,7 +22,7 @@ namespace MduiBlazor
             .AddClass($"mdui-color-{Color}", !string.IsNullOrWhiteSpace(Color))
             .Build();
 
-        [CascadingParameter]
+        [CascadingParameter(Name = "SnackbarProvider")]
         private MduiSnackbarProvider? SnackbarProvider { get; set; }
 
         [Parameter]

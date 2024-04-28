@@ -28,6 +28,10 @@ namespace MduiBlazor
 
         private string ContentClassname =>
             new ClassBuilder("mdui-picker-content")
+            .AddClass("mdui-picker-appbar", Appbar is not null)
+            .AddClass("mdui-picker-drawer", Drawer is not null)
+            .AddClass("mdui-picker-snackbar", SnackbarProvider is not null)
+            .AddClass("mdui-picker-overlay", Overlay is not null)
             .AddClass(ContentClass)
             .Build();
 
@@ -38,6 +42,18 @@ namespace MduiBlazor
             .Build();
 
         public string? DisplayValue { get; set; }
+
+        [CascadingParameter(Name = "Appbar")]
+        private MduiAppbar? Appbar { get; set; }
+
+        [CascadingParameter(Name = "Drawer")]
+        private MduiDrawer? Drawer { get; set; }
+
+        [CascadingParameter(Name = "Overlay")]
+        private MduiOverlay? Overlay { get; set; }
+
+        [CascadingParameter(Name = "SnackbarProvider")]
+        private MduiSnackbarProvider? SnackbarProvider { get; set; }
 
         [Parameter]
         public bool MultiSelection { get; set; }

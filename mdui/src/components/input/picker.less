@@ -25,7 +25,7 @@
   /* 下拉内容 */
   .mdui-picker-content {
     position: absolute;
-    z-index: calc(@z-index-overlay + 1);
+    z-index: 1;
     box-sizing: border-box;
     width: 100%;
     margin: 0;
@@ -47,6 +47,22 @@
     will-change: transform, opacity, visibility;
     -webkit-overflow-scrolling: touch;
     .mdui-shadow(8);
+  }
+
+  &.mdui-picker-appbar {
+    z-index: calc(@z-index-appbar + 1);
+  }
+
+  &.mdui-picker-drawer {
+    z-index: calc(@z-index-drawer + 1);
+  }
+
+  &.mdui-picker-overlay {
+    z-index: calc(@z-index-overlay + 1);
+  }
+
+  &.mdui-picker-snackbar {
+    z-index: calc(@z-index-snackbar + 1);
   }
 }
 

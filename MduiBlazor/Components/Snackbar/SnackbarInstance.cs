@@ -2,21 +2,15 @@
 
 namespace MduiBlazor.Components.Snackbar
 {
-    internal class SnackbarInstance
+    internal class SnackbarInstance(SnackbarOptions settings, string? color = null)
     {
-        public SnackbarInstance(SnackbarOptions settings, string? color = null)
-        {
-            Options = settings;
-            Color = color;
-        }
-
         public Guid Id { get; set; } = Guid.NewGuid();
 
-        public string? Color { get; set; }
+        public string? Color { get; set; } = color;
 
         public DateTime TimeStamp { get; set; } = DateTime.Now;
 
-        public SnackbarOptions? Options { get; set; }
+        public SnackbarOptions? Options { get; set; } = settings;
 
         public RenderFragment? MessageContent { get; set; }
     }

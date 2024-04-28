@@ -2,7 +2,9 @@
 @inherits MduiComponentBase
 
 <div class="@Classname" style="@Style" @attributes="@AdditionalAttributes">
-    @ChildContent
+    <CascadingValue Value="@this" Name="Drawer" IsFixed>
+        @ChildContent
+    </CascadingValue>
 </div>
 @if (!Persistent)
 {

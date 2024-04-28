@@ -1,8 +1,13 @@
 ﻿namespace MduiBlazor.Utilities
 {
-    public struct StyleBuilder
+    /// <summary>
+    /// Creates a StyleBuilder used to define conditional in-line style used in a component. Call Build() to return the completed style as a string.
+    /// </summary>
+    /// <param name="prop"></param>
+    /// <param name="value"></param>
+    public struct StyleBuilder(string prop, string value)
     {
-        private string stringBuffer;
+        private string stringBuffer = $"{prop}:{value};";
 
         /// <summary>
         /// Creates a StyleBuilder used to define conditional in-line style used in a component. Call Build() to return the completed style as a string.
@@ -21,13 +26,6 @@
         /// Creates a StyleBuilder used to define conditional in-line style used in a component. Call Build() to return the completed style as a string.
         /// </summary>
         public static StyleBuilder Empty() => new();
-
-        /// <summary>
-        /// Creates a StyleBuilder used to define conditional in-line style used in a component. Call Build() to return the completed style as a string.
-        /// </summary>
-        /// <param name="prop"></param>
-        /// <param name="value"></param>
-        public StyleBuilder(string prop, string value) => stringBuffer = $"{prop}:{value};";
 
         /// <summary>
         /// Adds a conditional in-line style to the builder with space separator and closing semicolon.
