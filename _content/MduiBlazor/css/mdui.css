@@ -417,6 +417,7 @@ span {
   will-change: opacity;
 }
 .mdui-overlay.mdui-overlay-transparent {
+  z-index: inherit;
   background: rgba(0, 0, 0, 0);
 }
 /* 显示遮罩层 */
@@ -8515,7 +8516,7 @@ th.mdui-table-cell-checkbox .mdui-checkbox {
 }
 .mdui-picker .mdui-picker-content {
   position: absolute;
-  z-index: calc(880 + 1);
+  z-index: 1;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   width: 100%;
@@ -8543,6 +8544,18 @@ th.mdui-table-cell-checkbox .mdui-checkbox {
   -webkit-overflow-scrolling: touch;
   -webkit-box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
           box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+.mdui-picker.mdui-picker-appbar {
+  z-index: calc(600 + 1);
+}
+.mdui-picker.mdui-picker-drawer {
+  z-index: calc(660 + 1);
+}
+.mdui-picker.mdui-picker-overlay {
+  z-index: calc(880 + 1);
+}
+.mdui-picker.mdui-picker-snackbar {
+  z-index: calc(800 + 1);
 }
 /* 密集型组件 */
 .mdui-picker-dense .mdui-icon {
