@@ -11,6 +11,7 @@ namespace MduiBlazor
         protected string Classname =>
           new ClassBuilder("mdui-dialog")
             .AddClass("mdui-dialog-open", DialogInstance != null || Open)
+            .AddClass("mdui-dialog-scrollable", _options.Scrollable)
             .AddClass(Class)
             .Build();
 

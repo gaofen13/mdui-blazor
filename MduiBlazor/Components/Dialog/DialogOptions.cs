@@ -8,6 +8,7 @@ namespace MduiBlazor
         public bool ShowConfirmButton { get; set; }
         public string ConfirmText { get; set; } = "确认";
         public bool ActionsStack { get; set; }
+        public bool Scrollable { get; set; }
         public string? MaxWidth { get; set; }
     }
 }

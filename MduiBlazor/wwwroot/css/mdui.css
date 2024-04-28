@@ -400,11 +400,12 @@ span {
 /* 遮罩层 */
 .mdui-overlay {
   position: fixed;
-  top: -5000px;
-  right: -5000px;
-  bottom: -5000px;
-  left: -5000px;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   z-index: 880;
+  overflow: auto;
   background: rgba(0, 0, 0, 0.4);
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
@@ -8545,16 +8546,16 @@ th.mdui-table-cell-checkbox .mdui-checkbox {
   -webkit-box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
           box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
 }
-.mdui-picker.mdui-picker-appbar {
+.mdui-picker .mdui-picker-content.mdui-picker-appbar {
   z-index: calc(600 + 1);
 }
-.mdui-picker.mdui-picker-drawer {
+.mdui-picker .mdui-picker-content.mdui-picker-drawer {
   z-index: calc(660 + 1);
 }
-.mdui-picker.mdui-picker-overlay {
+.mdui-picker .mdui-picker-content.mdui-picker-overlay {
   z-index: calc(880 + 1);
 }
-.mdui-picker.mdui-picker-snackbar {
+.mdui-picker .mdui-picker-content.mdui-picker-snackbar {
   z-index: calc(800 + 1);
 }
 /* 密集型组件 */
@@ -12148,7 +12149,7 @@ input.mdui-btn[type="submit"] {
  * =============================================================================
  */
 .mdui-dialog {
-  position: fixed;
+  position: relative;
   top: 50%;
   right: 0;
   left: 0;
@@ -12158,9 +12159,7 @@ input.mdui-btn[type="submit"] {
   width: 92%;
   min-width: 180px;
   max-width: 728px;
-  max-height: 90%;
   margin: auto;
-  overflow: hidden;
   color: #000;
   background-color: #fff;
   border-radius: 2px;
@@ -12172,13 +12171,11 @@ input.mdui-btn[type="submit"] {
 @media (min-width: 600px) {
   .mdui-dialog {
     width: 85%;
-    max-height: 85%;
   }
 }
 @media (min-width: 1024px) {
   .mdui-dialog {
     width: 80%;
-    max-height: 80%;
   }
 }
 .mdui-dialog.mdui-dialog-open {
@@ -12201,12 +12198,14 @@ input.mdui-btn[type="submit"] {
 .mdui-dialog-content {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  max-height: calc(80vh - 120px);
   padding: 24px;
-  overflow-y: auto;
   color: rgba(0, 0, 0, 0.7);
   font-size: 15px;
   line-height: 1.5;
+}
+.mdui-dialog-scrollable .mdui-dialog-content {
+  max-height: 80vh;
+  overflow: auto;
   -webkit-overflow-scrolling: touch;
 }
 /* 标题随内容滚动 */
