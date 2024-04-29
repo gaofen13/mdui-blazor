@@ -14,8 +14,17 @@ namespace MduiBlazor
             .AddClass(Class)
             .Build();
 
+        private string Stylelist =>
+            new StyleBuilder()
+            .AddStyle("max-height", MaxHeight!, !string.IsNullOrWhiteSpace(MaxHeight))
+            .AddStyle(Style)
+            .Build();
+
         [Parameter]
         public bool Dense { get; set; }
+
+        [Parameter]
+        public string? MaxHeight { get; set; }
 
         [Parameter]
         public bool DisableRipple { get; set; }
