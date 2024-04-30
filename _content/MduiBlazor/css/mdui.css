@@ -400,10 +400,10 @@ span {
 /* 遮罩层 */
 .mdui-overlay {
   position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  top: -5000px;
+  right: -5000px;
+  bottom: -5000px;
+  left: -5000px;
   z-index: 880;
   overflow: auto;
   background: rgba(0, 0, 0, 0.4);
@@ -12149,7 +12149,7 @@ input.mdui-btn[type="submit"] {
  * =============================================================================
  */
 .mdui-dialog {
-  position: relative;
+  position: fixed;
   top: 50%;
   right: 0;
   left: 0;
@@ -12159,7 +12159,7 @@ input.mdui-btn[type="submit"] {
   width: 92%;
   min-width: 180px;
   max-width: 728px;
-  margin: auto;
+  margin: 0 auto;
   color: #000;
   background-color: #fff;
   border-radius: 2px;
@@ -13971,6 +13971,7 @@ input.mdui-btn[type="submit"] {
 .mdui-treeview {
   margin: 0;
   padding: 0;
+  overflow: auto;
   list-style: none;
   background-color: transparent;
 }
