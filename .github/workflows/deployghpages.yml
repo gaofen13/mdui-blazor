@@ -47,3 +47,11 @@ jobs:
       GITEE_PRIVATE_KEY: ${{ secrets.GITEE_PRIVATE_KEY }}
       GITEE_TOKEN: ${{ secrets.GITEE_TOKEN }}
       GITEE_PASSWORD: ${{ secrets.GITEE_PASSWORD }}
+
+  call-sync-to-atomgit:
+    needs: build
+    uses: ./.github/workflows/syncatomgit.yml
+    secrets:
+      GITEE_PRIVATE_KEY: ${{ secrets.AtomGit_PRIVATE_KEY }}
+      GITEE_TOKEN: ${{ secrets.GITEE_TOKEN }}
+      GITEE_PASSWORD: ${{ secrets.GITEE_PASSWORD }}

@@ -1,4 +1,4 @@
-name: syncgitee
+name: Sync to Gitee
 
 on:
   workflow_call:
