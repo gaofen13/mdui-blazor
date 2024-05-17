@@ -5,7 +5,7 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace MduiBlazor
 {
-    public partial class MduiInputText : MduiInputBase<string?>
+    public partial class MduiInputText : MduiInputBase<string>
     {
         private int _wordNumber;
 
@@ -43,7 +43,7 @@ namespace MduiBlazor
             base.OnParametersSet();
             if (MaxLength > 0)
             {
-                _wordNumber = Value?.Length??0;
+                _wordNumber = Value?.Length ?? 0;
             }
         }
 
@@ -61,15 +61,15 @@ namespace MduiBlazor
             base.OnInitialized();
         }
 
-        protected override bool TryParseValueFromString(string? value, out string? result, [NotNullWhen(false)] out string? validationErrorMessage)
+        protected override bool TryParseValueFromString(string? value, out string result, [NotNullWhen(false)] out string? validationErrorMessage)
         {
             if (Trim)
             {
-                result = value?.Trim();
+                result = value?.Trim() ?? "";
             }
             else
             {
-                result = value;
+                result = value ?? "";
             }
             validationErrorMessage = null;
             return true;

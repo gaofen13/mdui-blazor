@@ -5,7 +5,7 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace MduiBlazor
 {
-    public partial class MduiExpandableTextField : MduiInputBase<string?>
+    public partial class MduiExpandableTextField : MduiInputBase<string>
     {
         private bool _expanded;
         private bool _isFocus;
@@ -40,15 +40,15 @@ namespace MduiBlazor
         [Parameter]
         public bool Trim { get; set; }
 
-        protected override bool TryParseValueFromString(string? value, out string? result, [NotNullWhen(false)] out string? validationErrorMessage)
+        protected override bool TryParseValueFromString(string? value, out string result, [NotNullWhen(false)] out string? validationErrorMessage)
         {
             if (Trim)
             {
-                result = value?.Trim();
+                result = value?.Trim() ?? "";
             }
             else
             {
-                result = value;
+                result = value ?? "";
             }
             validationErrorMessage = null;
             return true;
