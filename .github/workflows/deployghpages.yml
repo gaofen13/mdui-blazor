@@ -1,4 +1,4 @@
-name: deploywasmghpages
+name: Deploy Pages
 
 on:
   push:
@@ -42,4 +42,7 @@ jobs:
 
     - name: Call Sync to Gitee
       uses: ./.github/actions/gitee/action.yml@main
-      secrets: inherit
+      secrets:
+        GITEE_PRIVATE_KEY: ${{ secrets.GITEE_PRIVATE_KEY }}
+        GITEE_TOKEN: ${{ secrets.GITEE_TOKEN }}
+        GITEE_PASSWORD: ${{ secrets.GITEE_PASSWORD }}
