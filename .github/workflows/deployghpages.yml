@@ -42,4 +42,5 @@ jobs:
 
     - name: Call Sync to Gitee
       uses: ./.github/actions/gitee
+      with:
       secrets: inherit
