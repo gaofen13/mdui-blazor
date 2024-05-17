@@ -41,4 +41,4 @@ jobs:
         CLEAN: true
 
     - name: Call Sync to Gitee
-      uses: ./.github/workflows/synctogitee&buildpages.yml@main
+      uses: ./.github/actions/gitee

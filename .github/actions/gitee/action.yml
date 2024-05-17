@@ -1,0 +1,30 @@
+name: syncgitee
+
+on:
+  workflow_call:
+
+jobs:
+  sync-to=gitee:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Sync to Gitee
+      uses: Yikun/hub-mirror-action@v1.4
+      with:
+          src: 'github/gaofen13'    						
+          dst: 'gitee/gaofen13'     						
+          dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}  
+          dst_token:  ${{ secrets.GITEE_TOKEN }}    
+          force_update: true
+          static_list: "mdui-blazor"   					
+          debug: true
+
+    - name: Build Gitee Pages
+      uses: yanglbme/gitee-pages-action@v1.4.1
+      with:
+          gitee-username: gaofen13
+          gitee-password: ${{ secrets.GITEE_PASSWORD }}
+          gitee-repo: gaofen13/mdui-blazor
+          branch: gh-pages
