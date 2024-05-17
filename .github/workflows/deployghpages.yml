@@ -43,6 +43,4 @@ jobs:
     - name: Call Sync to Gitee
       uses: ./.github/actions/gitee
       with:
-        gitee-private-key: ${{ secrets.GITEE_PRIVATE_KEY }}
-        gitee-token: ${{ secrets.GITEE_TOKEN }}
-        gitee-password: ${{ secrets.GITEE_PASSWORD}}
+        secrets: inherit

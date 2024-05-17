@@ -2,16 +2,13 @@ name: syncgitee
 
 on:
   workflow_call:
-    inputs:
-      gitee-private-key:
+    secrets:
+      GITEE_PRIVATE-KEY:
         require: true
-        type: string
-      gitee-token:
+      GITEE_TOKEN:
         require: true
-        type: string
-      gitee-password:
+      GITEE_PASSWORD:
         require: true
-        type: string
 
 jobs:
   sync-to=gitee:
@@ -25,8 +22,8 @@ jobs:
       with:
           src: 'github/gaofen13'    						
           dst: 'gitee/gaofen13'     						
-          dst_key: ${{ inputs.gitee-private-key }}  
-          dst_token:  ${{ inputs.gitee-token }}    
+          dst_key: ${{ secrets.GITEE_PRIVATE-KEY }}  
+          dst_token:  ${{ secrets.GITEE_TOKEN }}    
           force_update: true
           static_list: "mdui-blazor"   					
           debug: true
@@ -35,6 +32,6 @@ jobs:
       uses: yanglbme/gitee-pages-action@v1.4.1
       with:
           gitee-username: gaofen13
-          gitee-password: ${{ inputs.gitee-password }}
+          gitee-password: ${{ secrets.GITEE_PASSWORD }}
           gitee-repo: gaofen13/mdui-blazor
           branch: gh-pages
