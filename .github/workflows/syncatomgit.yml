@@ -1,4 +1,4 @@
-name: Sync to AtomGit
+name: Mirrir to AtomGit
 
 on: 
   workflow_call:

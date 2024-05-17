@@ -1,4 +1,4 @@
-name: Sync to Gitee
+name: Mirror to Gitee
 
 on:
   workflow_call:
