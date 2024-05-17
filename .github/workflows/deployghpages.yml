@@ -41,6 +41,5 @@ jobs:
         CLEAN: true
 
     - name: Call Sync to Gitee
-      uses: ./.github/actions/gitee
-      with:
+      uses: ./.github/actions/gitee/action.yml@main
       secrets: inherit
