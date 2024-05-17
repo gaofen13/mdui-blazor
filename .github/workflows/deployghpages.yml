@@ -41,7 +41,7 @@ jobs:
         CLEAN: true
 
   call-sync-to-gitee:
-    uses: ./.github/workflows/syncgitee.yml@main
+    uses: ./.github/workflows/syncgitee.yml
     secrets:
       GITEE_PRIVATE_KEY: ${{ secrets.GITEE_PRIVATE_KEY }}
       GITEE_TOKEN: ${{ secrets.GITEE_TOKEN }}
