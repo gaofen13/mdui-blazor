@@ -40,7 +40,7 @@ jobs:
         FOLDER: deploy/wwwroot
         CLEAN: true
 
-  call-sync-to-gitee
+  call-sync-to-gitee:
     uses: ./.github/actions/gitee/action.yml@main
     secrets:
       GITEE_PRIVATE_KEY: ${{ secrets.GITEE_PRIVATE_KEY }}
