@@ -4,11 +4,11 @@ on:
   workflow_call:
     secrets:
       GITEE_PRIVATE_KEY:
-        require: true
+        required: true
       GITEE_TOKEN:
-        require: true
+        required: true
       GITEE_PASSWORD:
-        require: true
+        required: true
 
 jobs:
   sync-to-gitee:
