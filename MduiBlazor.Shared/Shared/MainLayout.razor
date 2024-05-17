@@ -67,7 +67,7 @@
         </ErrorBoundary>
     </MduiLayoutContent>
 
-    <MduiDialog @bind-Open="@_showThemeDialog" Title="设置文档主题" Options="@(new DialogOptions{ Modal = true})">
+    <MduiDialog @bind-Open="@_showThemeDialog" Title="设置主题" Options="@(new DialogOptions{ Modal = true, Scrollable = true})">
         <ChildContent>
             <MduiContainer>
                 <p>
