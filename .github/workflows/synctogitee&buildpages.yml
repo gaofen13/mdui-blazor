@@ -2,7 +2,6 @@ name: syncgitee
 
 on:
   workflow_call:
-    workflows: [ "Sync to Gitee" ]
 
 jobs:
   sync-to=gitee:
@@ -10,7 +9,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    
+
     - name: Sync to Gitee
       uses: Yikun/hub-mirror-action@v1.4
       with:
