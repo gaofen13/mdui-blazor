@@ -1,4 +1,6 @@
 name: Deploy Pages
+env:
+  PUBLISH_DIR: MduiBlazor.WebAssembly/bin/Release/net10.0/publish/wwwroot
 
 on:
   push:
@@ -16,7 +18,7 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: 8.0.x 
+        dotnet-version: 10.0.x 
       
     - run: dotnet workload install wasm-tools
 
@@ -30,14 +32,28 @@ jobs:
       run: dotnet test --no-build --verbosity normal
 
     - name: Publish wasm
-      run: dotnet publish -c Release -o deploy MduiBlazor.Client
-      
+      run: dotnet publish -c Release MduiBlazor.Client
+
+    - name: Rewrite base href
+      uses: SteveSandersonMS/ghaction-rewrite-base-href@5b54862a8831e012d4f1a8b2660894415fdde8ec # v1.1.0
+      with:
+        html_path: ${{ env.PUBLISH_DIR }}/index.html
+        base_href: /mdui-blazor/
+
+    - name: Setup Pages
+      uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5.0.0
+
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b # v4.0.0
+      with:
+        path: ${{ env.PUBLISH_DIR }}
+
     - name: Deploy to GitHub Pages
       uses: JamesIves/github-pages-deploy-action@v4
       with:
-        GITHUB_TOKEN: ${{ secrets.GH_PUSH_TOKEN }}
+        TOKEN: ${{ secrets.GH_PUSH_TOKEN }}
         BRANCH: gh-pages
-        FOLDER: deploy/wwwroot
+        FOLDER: ${{ env.PUBLISH_DIR }}
         CLEAN: true
 
   call-sync-to-gitee:

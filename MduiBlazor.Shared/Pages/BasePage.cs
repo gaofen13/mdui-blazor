@@ -19,7 +19,7 @@ namespace MduiBlazor.Shared.Pages
             if (firstRender)
             {
                 _jsModule = await JSRuntime.InvokeAsync<IJSObjectReference>("import",
-                     "./_content/MduiBlazor.Shared/Shared/MainLayout.razor.js");
+                     "./_content/MduiBlazor.Shared/Layout/MainLayout.razor.js");
             }
         }
 

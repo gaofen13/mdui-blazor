@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Components.Routing;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.JSInterop;
 
-namespace MduiBlazor.Shared.Shared
+namespace MduiBlazor.Shared.Layout
 {
     public partial class MainLayout
     {
@@ -37,7 +37,7 @@ namespace MduiBlazor.Shared.Shared
             {
                 _objectReference = DotNetObjectReference.Create(this);
                 _jsModule = await JSRuntime.InvokeAsync<IJSObjectReference>("import",
-                     "./_content/MduiBlazor.Shared/Shared/MainLayout.razor.js");
+                     "./_content/MduiBlazor.Shared/Layout/MainLayout.razor.js");
                 await _jsModule!.InvokeVoidAsync("AddWindowWidthListener", _objectReference);
                 await _jsModule!.InvokeVoidAsync("AddScrollListener", _objectReference, "body");
                 var width = await _jsModule!.InvokeAsync<int>("GetWindowWidth");

@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MduiBlazor", "MduiBlazor\Md
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MduiBlazor.Shared", "MduiBlazor.Shared\MduiBlazor.Shared.csproj", "{9A785883-930D-49A1-AB2A-43E6FB877690}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MduiBlazor.Server", "MduiBlazor.Server\MduiBlazor.Server.csproj", "{C2FD43EB-D651-43EE-97F1-07BA974305DB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MduiBlazor.WebApp", "MduiBlazor.WebApp\MduiBlazor.WebApp.csproj", "{C2FD43EB-D651-43EE-97F1-07BA974305DB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MduiBlazor.WebAssembly", "MduiBlazor.WebAssembly\MduiBlazor.WebAssembly.csproj", "{EDFE55A1-263A-4264-8571-32B1E76D4EA8}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MduiBlazor.Client", "MduiBlazor.Client\MduiBlazor.Client.csproj", "{EDFE55A1-263A-4264-8571-32B1E76D4EA8}"
 EndProject

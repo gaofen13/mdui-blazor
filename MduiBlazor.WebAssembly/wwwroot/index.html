@@ -3,17 +3,19 @@
 
 <head>
     <meta charset="utf-8" />
-    <meta name="referrer" content="no-referrer" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MduiBlazor</title>
-    <base href="/mdui-blazor/" />
+    <base href="/" />
+    <link rel="preload" id="webassembly" />
     <link rel="icon" type="image/png" href="favicon.png" />
     <link rel="stylesheet" href="css/app.css" />
+    <link rel="stylesheet" href="MduiBlazor.WebAssembly.styles.css" />
     <link rel="stylesheet" href="_content/MduiBlazor/css/mdui.min.css" />
     <link rel="stylesheet" href="_content/MduiBlazor.Shared/css/site.css" />
-    <link rel="stylesheet" href="_content/MduiBlazor.Shared/MduiBlazor.Shared.bundle.scp.css" />
+    <link href="manifest.webmanifest" rel="manifest" />
     <link rel="apple-touch-icon" sizes="512x512" href="icon-512.png" />
     <link rel="apple-touch-icon" sizes="192x192" href="icon-192.png" />
+    <script type="importmap"></script>
 
     <!-- highlight -->
     <link rel="stylesheet" href="_content/MduiBlazor.Shared/highlight/css/vs.min.css">
@@ -67,7 +69,8 @@
         <a href="" class="reload">Reload</a>
         <a class="dismiss">🗙</a>
     </div>
-    <script src="_framework/blazor.webassembly.js"></script>
+    <script src="_framework/blazor.webassembly#[.{fingerprint}].js"></script>
+    <script>navigator.serviceWorker.register('service-worker.js', { updateViaCache: 'none' });</script>
 
     <!-- highlight -->
     <script type="text/javascript"

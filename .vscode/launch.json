@@ -10,9 +10,9 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/MduiBlazor.Server/bin/Debug/net8.0/MduiBlazor.Server.dll",
+            "program": "${workspaceFolder}/MduiBlazor.WebApp/bin/Debug/net10.0/MduiBlazor.WebApp.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/MduiBlazor.Server",
+            "cwd": "${workspaceFolder}/MduiBlazor.WebApp",
             "stopAtEntry": false,
             // Enable launching a web browser when ASP.NET Core starts. For more information: https://aka.ms/VSCode-CS-LaunchJson-WebBrowser
             "serverReadyAction": {
@@ -32,8 +32,8 @@
             "type": "blazorwasm",
             "request": "launch",
             "preLaunchTask": "build wasm",
-            "program": "${workspaceFolder}/MduiBlazor.Client/bin/Debug/net8.0/MduiBlazor.Client.dll",
-            "cwd": "${workspaceFolder}/MduiBlazor.Client",
+            "program": "${workspaceFolder}/MduiBlazor.WebAssembly/bin/Debug/net10.0/MduiBlazor.WebAssembly.dll",
+            "cwd": "${workspaceFolder}/MduiBlazor.WebAssembly",
             "serverReadyAction": {
                 "action": "openExternally",
                 "pattern": "\\bNow listening on:\\s+(https?://\\S+)"

@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <base href="/" />
+    <ResourcePreloader />
+    <link rel="stylesheet" href="@Assets["MduiBlazor.WebApp.styles.css"]" />
+    <link rel="stylesheet" href="_content/MduiBlazor/css/mdui.css" />
+    <link rel="stylesheet" href="_content/MduiBlazor.Shared/css/site.css" />
+    <!-- highlight -->
+    <link rel="stylesheet" href="_content/MduiBlazor.Shared/highlight/css/vs.min.css">
+    <link rel="stylesheet" href="_content/MduiBlazor.Shared/highlight/css/highlightjs-copy.min.css">
+    <ImportMap />
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <HeadOutlet @rendermode="InteractiveAuto" />
+</head>
+
+<body>
+    <Routes @rendermode="InteractiveAuto" />
+    <ReconnectModal />
+    <script src="@Assets["_framework/blazor.web.js"]"></script>
+
+    <!-- highlight -->
+    <script type="text/javascript" src="_content/MduiBlazor.Shared/highlight/js/highlight.min.js"></script>
+    <script type="text/javascript" src="_content/MduiBlazor.Shared/highlight/js/cshtml-razor.min.js"></script>
+    <script type="text/javascript" src="_content/MduiBlazor.Shared/highlight/js/highlightjs-copy.min.js"></script>
+    <script>
+        if (hljs != null) {
+            hljs.addPlugin(new CopyButtonPlugin());
+        }
+    </script>
+</body>
+
+</html>

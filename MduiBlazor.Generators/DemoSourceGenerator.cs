@@ -1,6 +1,6 @@
 ﻿using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.Text;
-using System.Diagnostics;
+using System.Collections.Immutable;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -8,13 +8,22 @@ using System.Text;
 namespace MduiBlazor.Generators
 {
     [Generator]
-    public class DemoSourceGenerator : ISourceGenerator
+    public class DemoSourceGenerator : IIncrementalGenerator
     {
-        public void Execute(GeneratorExecutionContext context)
+        public void Initialize(IncrementalGeneratorInitializationContext initContext)
         {
-            Debug.WriteLine("Execute code generator");
+            // define the execution pipeline here via a series of transformations:
 
-            StringBuilder sb = new();
+            // find all additional files that end with .razor
+            IncrementalValueProvider<ImmutableArray<AdditionalText>> files = initContext.AdditionalTextsProvider.Where(file => file.Path.EndsWith(".razor")).Collect();
+
+            // generate a class that contains their values as const strings
+            initContext.RegisterSourceOutput(files, GenerateSource);
+        }
+
+        public void GenerateSource(SourceProductionContext context, ImmutableArray<AdditionalText> files)
+        {
+            var sb = new StringBuilder();
 
             sb.AppendLine($"#pragma warning disable CS1591");
             sb.AppendLine("using System;");
@@ -27,13 +36,12 @@ namespace MduiBlazor.Generators
             sb.AppendLine("\tpublic static string GetRazor(string name)");
             sb.AppendLine("\t{");
 
-            var files = context.AdditionalFiles;
-            var dictionary = files.Where(y => y.Path.EndsWith(".razor")).ToDictionary(x => Path.GetFileName(x.Path), x => x.GetText()?.ToString().Replace(@"""", @""""""));
             sb.AppendLine("\t\tvar exampleData = new Dictionary<string,string>() {");
-            foreach (var pair in dictionary)
+            foreach (AdditionalText file in files)
             {
                 sb.Append("\t\t");
-                sb.AppendLine($@"{{ @""{pair.Key}"", @""{pair.Value}"" }},");
+                SourceText f = file.GetText(context.CancellationToken);
+                sb.AppendLine($@"{{ @""{Path.GetFileName(file.Path)}"", @""{f.ToString().Replace(@"""", @"""""")}"" }},");
             }
             sb.AppendLine("\t\t};");
             sb.Append("\t\t");
@@ -41,18 +49,7 @@ namespace MduiBlazor.Generators
             sb.AppendLine("\t\treturn foundPair.Value;");
             sb.AppendLine("\t\t}");
             sb.AppendLine("}");
-
             context.AddSource("DemoSnippets.g.cs", SourceText.From(sb.ToString(), Encoding.UTF8));
-        }
-
-        public void Initialize(GeneratorInitializationContext context)
-        {
-#if DEBUG
-            //if (!Debugger.IsAttached)
-            //{
-            //    Debugger.Launch();
-            //}
-#endif
         }
     }
 }
