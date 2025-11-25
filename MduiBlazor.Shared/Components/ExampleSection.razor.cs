@@ -14,8 +14,10 @@ namespace MduiBlazor.Shared.Components
             .AddClass("example-show", !HideExample)
             .Build();
 
-        [Parameter]
-        public string Label { get; set; } = "Example";
+        private string CodeClassname =>
+            new ClassBuilder("mdui-collapse")
+            .AddClass("mdui-collapse-open", _showCode || FixCode || HideExample)
+            .Build();
 
         [Parameter, EditorRequired]
         public Type Component { get; set; } = default!;

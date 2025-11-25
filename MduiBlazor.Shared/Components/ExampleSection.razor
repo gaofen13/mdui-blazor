@@ -1,18 +1,36 @@
 ﻿<div class="@Classname">
     @if (!HideExample)
     {
-        <div class="example-tools">
-            <a href="javascript:;" @onclick="_=>_showCode=!_showCode" class="viewsource">
-                <i class="mdui-icon material-icons">code</i>
-            </a>
-        </div>
-        <div class="example-demo-label">@Label</div>
         <div class="example-demo">
             <DynamicComponent Type="@Component" Parameters="@ComponentParameters" />
         </div>
     }
-    @if (_showCode || FixCode || HideExample)
+    <div class="@CodeClassname">
+        <div class="mdui-collapse-body">
+            <CodeSnippet Language="@Language" Class="example-code">@CodeContents</CodeSnippet>
+        </div>
+    </div>
+    @* @if (_showCode || FixCode || HideExample)
     {
         <CodeSnippet Language="@Language" Class="example-code">@CodeContents</CodeSnippet>
+    } *@
+    @if (!FixCode && !HideExample)
+    {
+        <div class="example-tools">
+            <a href="javascript:;" @onclick="_ => _showCode = !_showCode" class="viewsource">
+                @if (_showCode)
+                {
+                    <MduiTooltip Message="hide code">
+                        <i class="mdui-icon material-icons">arrow_drop_up</i>
+                    </MduiTooltip>
+                }
+                else
+                {
+                    <MduiTooltip Message="show code">
+                        <i class="mdui-icon material-icons">arrow_drop_down</i>
+                    </MduiTooltip>
+                }
+            </a>
+        </div>
     }
 </div>
