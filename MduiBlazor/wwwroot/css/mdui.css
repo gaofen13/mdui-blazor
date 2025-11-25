@@ -1,6 +1,6 @@
 /*!
  * mdui 1.0.2 (https://gaofen13.github.io/mdui-blazor)
- * Copyright 2022-2024 gaofen13
+ * Copyright 2022-2025 gaofen13
  * Licensed under MIT
  *//*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 
@@ -11771,7 +11771,7 @@ input.mdui-btn[type="submit"] {
 .mdui-list-item:hover {
   background-color: rgba(0, 0, 0, 0.08);
 }
-.mdui-list-item .mdui-icon {
+.mdui-list-item > .mdui-icon {
   width: 24px;
   min-width: 24px;
   height: 24px;
@@ -12531,7 +12531,6 @@ input.mdui-btn[type="submit"] {
 }
 .mdui-chip-icon .mdui-icon {
   position: absolute;
-  top: 4px;
   left: 4px;
   color: #fff;
 }
