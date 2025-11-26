@@ -12204,7 +12204,7 @@ input.mdui-btn[type="submit"] {
   line-height: 1.5;
 }
 .mdui-dialog-scrollable .mdui-dialog-content {
-  max-height: 80vh;
+  max-height: 75vh;
   overflow: auto;
   -webkit-overflow-scrolling: touch;
 }
