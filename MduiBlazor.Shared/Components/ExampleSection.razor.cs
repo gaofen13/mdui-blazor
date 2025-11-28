@@ -6,8 +6,6 @@ namespace MduiBlazor.Shared.Components
 {
     public partial class ExampleSection
     {
-        private bool _showCode;
-
         private string Classname =>
             new ClassBuilder("example")
             .AddClass("example-hide-example", HideExample)
@@ -16,7 +14,7 @@ namespace MduiBlazor.Shared.Components
 
         private string CodeClassname =>
             new ClassBuilder("mdui-collapse")
-            .AddClass("mdui-collapse-open", _showCode || FixCode || HideExample)
+            .AddClass("mdui-collapse-open", ShowCode || FixCode || HideExample)
             .Build();
 
         [Parameter, EditorRequired]
@@ -27,6 +25,9 @@ namespace MduiBlazor.Shared.Components
 
         [Parameter]
         public bool FixCode { get; set; }
+
+        [Parameter]
+        public bool ShowCode { get; set; }
 
         [Parameter]
         public bool HideExample { get; set; }

@@ -45,7 +45,7 @@
      <p class="mdui-typo"><code>MduiRow</code>组件必须包含在<code>MduiContainer</code>中，以便为其赋予合适的排列（aligment）和内补（padding）。
          在 <code>MduiRow</code>组件中包含若干个 <code>MduiCol</code>组件，其中
          <code>BreakpointXs</code>枚举中值的数字表示该元素占据多少列。一般一行包含12列，如果一行中包含的列大于 12，则多余的列将另起一行排列。</p>
-     <ExampleSection FixCode Component="@typeof(SimpleGrid)" />
+     <ExampleSection ShowCode Component="@typeof(SimpleGrid)" />
 
      <MduiText id="response" Typo="@Typo.subheading"><b>响应式网格</b></MduiText>
      <ul class="mdui-typo">
@@ -114,34 +114,34 @@
              </tbody>
          </MduiSimpleTable>
      </MduiTableContainer>
-     <ExampleSection FixCode Component="@typeof(ResponseGrid)" />
+     <ExampleSection ShowCode Component="@typeof(ResponseGrid)" />
 
      <MduiText id="colgapless" Typo="@Typo.subheading"><b>列间距</b></MduiText>
      <p class="mdui-typo">默认在列之间会有 16px 的间距，只需在<code>MduiRow</code>组件上设置参数<code>Gapless</code>为<code>true</code>即可消除列间距。
      </p>
-     <ExampleSection FixCode Component="@typeof(ColGapless)" />
+     <ExampleSection ShowCode Component="@typeof(ColGapless)" />
 
      <MduiText id="coloffset" Typo="@Typo.subheading"><b>列偏移</b></MduiText>
      <p class="mdui-typo">
          使用<code>OffsetBreakpointXs</code>、<code>OffsetBreakpointSm</code>、<code>OffsetBreakpointMd</code>、<code>OffsetBreakpointLg</code>和<code>OffsetBreakpointXl</code>参数可以将列向右偏移，参数值中的数字表示向右偏移多少列。
      </p>
-     <ExampleSection FixCode Component="@typeof(ColOffset)" />
+     <ExampleSection ShowCode Component="@typeof(ColOffset)" />
 
      <MduiText id="nest" Typo="@Typo.subheading"><b>嵌套列</b></MduiText>
      <p class="mdui-typo">通过在已有的列中再添加新的<code>MduiRow</code>和<code>MduiCol</code>组件实现列的嵌套。被嵌套的行所包含的列不能超过 12 个。
      </p>
-     <ExampleSection FixCode Component="@typeof(NestGrid)" />
+     <ExampleSection ShowCode Component="@typeof(NestGrid)" />
 
      <MduiText id="average" Typo="@Typo.subheading"><b>等分列</b></MduiText>
      <p class="mdui-typo">
          在<code>MduiRow</code>组件中设置<code>Breakpoint[Xs|Sm|Md|Lg|Xl]</code>参数，并包含若干个<code>MduiCol</code>，这些组件会被等分。例如：设置<code>BreakpointXs="@@Breakpoint.Xs.xs5"</code>，<code>MduiRow</code>中的每一个
          <code>MduiCol</code>组件均占据 20% 的宽度。
      </p>
-     <ExampleSection FixCode Component="@typeof(AverageCol)" />
+     <ExampleSection ShowCode Component="@typeof(AverageCol)" />
      <p class="mdui-typo">
          混用参数<code>BreakpointXs</code>、<code>BreakpointSm</code>、<code>BreakpointMd</code>、<code>BreakpointLg</code>和<code>BreakpointXl</code>可以实现响应式布局。
      </p>
-     <ExampleSection FixCode Component="@typeof(ResponseAverageCol)" />
+     <ExampleSection ShowCode Component="@typeof(ResponseAverageCol)" />
  </div>
 
  <MduiDivider Class="mdui-m-y-5" />

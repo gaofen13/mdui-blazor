@@ -10,15 +10,11 @@
             <CodeSnippet Language="@Language" Class="example-code">@CodeContents</CodeSnippet>
         </div>
     </div>
-    @* @if (_showCode || FixCode || HideExample)
-    {
-        <CodeSnippet Language="@Language" Class="example-code">@CodeContents</CodeSnippet>
-    } *@
     @if (!FixCode && !HideExample)
     {
         <div class="example-tools">
-            <a href="javascript:;" @onclick="_ => _showCode = !_showCode" class="viewsource">
-                @if (_showCode)
+            <a href="javascript:;" @onclick="_ => ShowCode = !ShowCode" class="viewsource">
+                @if (ShowCode)
                 {
                     <MduiTooltip Message="hide code">
                         <i class="mdui-icon material-icons">arrow_drop_up</i>

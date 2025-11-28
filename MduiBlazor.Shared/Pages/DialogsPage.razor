@@ -14,6 +14,7 @@
         <PageContentItem Title="标准对话框" OnClick="@(_=>ScrollToElementById("simple"))" />
         <PageContentItem Title="不含标题栏" OnClick="@(_=>ScrollToElementById("notitle"))" />
         <PageContentItem Title="竖排按钮" OnClick="@(_=>ScrollToElementById("actionsStack"))" />
+        <PageContentItem Title="固定标题和按钮" OnClick="@(_=>ScrollToElementById("fixTitle"))" />
         <PageContentItem Title="自定义对话框" OnClick="@(_=>ScrollToElementById("custom"))" />
         <PageContentItem Title="Inline对话框" OnClick="@(_=>ScrollToElementById("inline"))" />
     </PageContentItem>
@@ -68,7 +69,7 @@
         <p class="mdui-typo">对话框底部的按钮默认水平排列。只需设置参数<code>DialogOptions</code>属性<code>ActionsStack = true</code> 即可将按钮设置为竖直排列。</p>
         <ExampleSection Component="@typeof(ActionsStackDialog)" />
 
-        <MduiText id="actionsStack" Typo="@Typo.subheading"><b>固定标题和按钮</b></MduiText>
+        <MduiText id="fixTitle" Typo="@Typo.subheading"><b>固定标题和按钮</b></MduiText>
         <p>当内容超过一定高度会自动出现滚动条。</p>
         <ExampleSection Component="@typeof(FixedTitleAndActionsDialog)" />
 
