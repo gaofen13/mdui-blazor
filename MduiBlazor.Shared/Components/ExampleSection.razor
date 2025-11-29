@@ -1,5 +1,5 @@
 ﻿<div class="@Classname">
-    @if (!HideExample)
+    @if (!HideExample && Component is not null)
     {
         <div class="example-demo">
             <DynamicComponent Type="@Component" Parameters="@ComponentParameters" />
@@ -10,7 +10,7 @@
             <CodeSnippet Language="@Language" Class="example-code">@CodeContents</CodeSnippet>
         </div>
     </div>
-    @if (!FixCode && !HideExample)
+    @if (!FixCode && !HideExample && Component is not null)
     {
         <div class="example-tools">
             <a href="javascript:;" @onclick="_ => ShowCode = !ShowCode" class="viewsource">

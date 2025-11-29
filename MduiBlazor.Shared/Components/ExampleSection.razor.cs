@@ -8,17 +8,17 @@ namespace MduiBlazor.Shared.Components
     {
         private string Classname =>
             new ClassBuilder("example")
-            .AddClass("example-hide-example", HideExample)
+            .AddClass("example-hide-example", HideExample || Component is null)
             .AddClass("example-code-fix", FixCode)
             .Build();
 
         private string CodeClassname =>
             new ClassBuilder("mdui-collapse")
-            .AddClass("mdui-collapse-open", ShowCode || FixCode || HideExample)
+            .AddClass("mdui-collapse-open", ShowCode || FixCode || HideExample || Component is null)
             .Build();
 
-        [Parameter, EditorRequired]
-        public Type Component { get; set; } = default!;
+        [Parameter]
+        public Type? Component { get; set; }
 
         [Parameter]
         public IDictionary<string, object>? ComponentParameters { get; set; }
@@ -33,21 +33,25 @@ namespace MduiBlazor.Shared.Components
         public bool HideExample { get; set; }
 
         [Parameter]
-        public string Language { get; set; } = "language-cshtml-razor";
+        public string? CodeContents { get; set; }
 
-        private string? CodeContents { get; set; }
+        [Parameter]
+        public string Language { get; set; } = "language-cshtml-razor";
 
         protected override void OnInitialized()
         {
-            SetCodeContents();
-            base.OnInitialized();
+            if (string.IsNullOrWhiteSpace(CodeContents))
+            {
+                SetCodeContents();
+                base.OnInitialized();
+            }
         }
 
         protected void SetCodeContents()
         {
             try
             {
-                CodeContents = DemoSnippets.GetRazor(Component.Name);
+                CodeContents = DemoSnippets.GetRazor(Component!.Name);
             }
             catch
             {
