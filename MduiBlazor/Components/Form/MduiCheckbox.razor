@@ -1,7 +1,7 @@
 @namespace MduiBlazor
 @inherits MduiInputBase<bool>
 
-<label class="@Classname" style="@Style" @attributes="@AdditionalAttributes">
+<label class="@Classname" style="@Style" @attributes="@AdditionalAttributes" stop-bubble="true">
     <input @ref="@Element" type="checkbox" required="@Required" disabled="@Disabled" readonly="@Readonly"
         checked="@BindConverter.FormatValue(CurrentValue)"
         @onchange="@(EventCallback.Factory.CreateBinder<bool>(this,__value=>CurrentValue=__value,CurrentValue))"

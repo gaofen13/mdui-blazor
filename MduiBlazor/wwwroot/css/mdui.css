@@ -7180,7 +7180,7 @@ th.mdui-table-cell-checkbox .mdui-checkbox {
   content: "";
   pointer-events: none;
 }
-.mdui-ripple:active::after {
+.mdui-ripple:active:not(:has(*[stop-bubble="true"]:active))::after {
   -webkit-transform: scale(0, 0);
           transform: scale(0, 0);
   opacity: 0.1;

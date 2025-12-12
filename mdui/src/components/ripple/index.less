@@ -28,7 +28,7 @@
     pointer-events: none;
   }
 
-  &:active::after {
+  &:active:not(:has(*[stop-bubble="true"]:active))::after {
     transform: scale(0, 0);
     opacity: 0.1;
     transition: 0s;
