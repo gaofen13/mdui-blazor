@@ -1,5 +1,5 @@
 self.assetsManifest = {
-  "version": "GpPFS3pp",
+  "version": "NznIr8YQ",
   "assets": [
     {
       "hash": "sha256-8ZRc1sGeVrPBx4lD717BgRaQekyh78QKV9SKsdt638U=",
@@ -210,16 +210,16 @@ self.assetsManifest = {
       "url": "_content/MduiBlazor/icons/material-icons/MaterialIcons-Regular.woff2"
     },
     {
-      "hash": "sha256-fU8M6BXrFDURPtu9jvBK35XlI7yugMBGr3jTigeNv/w=",
-      "url": "_framework/MduiBlazor.Shared.t80p6rfqds.wasm"
+      "hash": "sha256-JaZ0KTaD8WSr6TzWmFhhIFGTfVOGytpwCVooiMNOrWw=",
+      "url": "_framework/MduiBlazor.3i1pms46ao.wasm"
     },
     {
-      "hash": "sha256-NJLRFKtciZtX38rg082/dvgYjjViG1ed7WVWubSkLUE=",
-      "url": "_framework/MduiBlazor.WebAssembly.g9apiwc0xa.wasm"
+      "hash": "sha256-HmoMp6e1xUB5xLQiiunzsVpRZRKTiL4yrdtOACYE1KY=",
+      "url": "_framework/MduiBlazor.Shared.y7wcwzf7xp.wasm"
     },
     {
-      "hash": "sha256-nODSQ0WxA9Lc4Z/r2HhZTEO3FfOfC/locpdnSC5pstc=",
-      "url": "_framework/MduiBlazor.c2pm7cmq4y.wasm"
+      "hash": "sha256-Oh+eJRLPK1KmO2LU4MEuAAsT2Ez3CnbvqJKlkeXCObc=",
+      "url": "_framework/MduiBlazor.WebAssembly.emujfgx8il.wasm"
     },
     {
       "hash": "sha256-QgHVmq/vZWxUYlLWvoCxcs75H6KSqyictAIaFen3ifk=",
@@ -406,6 +406,10 @@ self.assetsManifest = {
       "url": "_framework/blazor.webassembly.66stpp682q.js"
     },
     {
+      "hash": "sha256-sxVN7gWPV6h0uWRgm4BucAEjpYnfQfW95FLwyd2yuaA=",
+      "url": "_framework/dotnet.n7mpltxgbz.js"
+    },
+    {
       "hash": "sha256-vi+eK4iP3umDwAUZYucO3pPzauDNm3C4+dS90Qp7xqI=",
       "url": "_framework/dotnet.native.6bzi1flbeh.wasm"
     },
@@ -416,10 +420,6 @@ self.assetsManifest = {
     {
       "hash": "sha256-jCsbbdXoVd1zzGc0fQT2sz4mKuv0ANdurPVGo5Sc2jg=",
       "url": "_framework/dotnet.runtime.0j6ezsi0n0.js"
-    },
-    {
-      "hash": "sha256-Tkn99x9KjG1pTMGMwJDiJ6wpuJkTS8MQDAmbY6F7tDc=",
-      "url": "_framework/dotnet.u0zc99ii6y.js"
     },
     {
       "hash": "sha256-SZLtQnRc0JkwqHab0VUVP7T3uBPSeYzxzDnpxPpUnHk=",
@@ -454,7 +454,7 @@ self.assetsManifest = {
       "url": "icon-512.png"
     },
     {
-      "hash": "sha256-8VI7dZQ5NS0VyUnHU5TvYNOaUlGlo7SVdjG2bl3DJwY=",
+      "hash": "sha256-3zKW4GXh+liAi7jRxui6SzWqe3mYCOciEzfcN/oI5MA=",
       "url": "index.html"
     },
     {
