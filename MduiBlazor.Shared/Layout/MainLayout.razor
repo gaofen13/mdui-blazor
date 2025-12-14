@@ -8,12 +8,15 @@
             <MduiButton DisableRaised Href="">
                 <MduiText Typo="@Typo.title">MduiBlazor</MduiText>
             </MduiButton>
-            <MduiButton DisableRaised Href="https://www.mdui.org/" target="_blank">
+            <MduiButton DisableRaised Href="https://www.mdui.org/" Target="_blank">
                 <MduiText Typo="@Typo.title">MDUI</MduiText>
             </MduiButton>
             <MduiToolbarSpace />
             @if (Persistent)
             {
+                <MduiTooltip Position="@Position.Bottom" Message="Nuget包地址">
+                    <MduiButton DisableRaised Href="https://www.nuget.org/packages/MduiBlazor" Target="_blank">版本号：@_version</MduiButton>
+                </MduiTooltip>
                 <MduiTooltip Position="@Position.Bottom" Message="设置主题">
                     <MduiIconButton Icon="color_lens" OnClick="@ToggleThemeDialog" />
                 </MduiTooltip>

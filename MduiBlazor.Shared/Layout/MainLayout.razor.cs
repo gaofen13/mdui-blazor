@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using System.Reflection;
+using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Routing;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.JSInterop;
@@ -17,6 +18,7 @@ namespace MduiBlazor.Shared.Layout
         private IJSObjectReference? _jsModule;
         private DotNetObjectReference<MainLayout>? _objectReference;
         ErrorBoundary? errorBoundary;
+        private string? _version;
 
         private bool Persistent => _windowWidth >= 992;
 
@@ -28,6 +30,7 @@ namespace MduiBlazor.Shared.Layout
 
         protected override void OnInitialized()
         {
+            _version = GetVersion()?.ToString(3);
             Navigation!.LocationChanged += OnLoactionChanged;
         }
 
@@ -128,6 +131,12 @@ namespace MduiBlazor.Shared.Layout
             {
                 _open = false;
             }
+        }
+
+        private static Version? GetVersion()
+        {
+            var assembly = Assembly.GetAssembly(typeof(MduiComponentBase));
+            return assembly?.GetName()?.Version;
         }
     }
 }
