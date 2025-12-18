@@ -35,10 +35,12 @@
     <ExampleSection HideExample Component="@typeof(SnackbarLayoutDependant)" />
 
     <MduiText Typo="@Typo.subheading"><b>2. 注入服务</b></MduiText>
-    <ExampleSection CodeContents="@("@inject SnackbarService SnackbarService\r\r[Inject]\rprivate SnackbarService SnackbarService { get; set; }")" />
+    <ExampleSection CodeContents="@("@inject SnackbarService SnackbarService")" />
+    <ExampleSection Language="CSharp" CodeContents="@("[Inject]\rprivate SnackbarService SnackbarService { get; set; }")" />
 
     <MduiText Typo="@Typo.subheading"><b>3. 调用实例</b></MduiText>
-    <ExampleSection CodeContents="@("SnackbarService.ShowSnackbar(\"Title\", options);\r\rSnackbarService.ShowSnackbar<TComponent>(parameters, options);")" />
+    <ExampleSection Language="CSharp" CodeContents="@("SnackbarService.ShowSnackbar(\"Title\", options);")" />
+    <ExampleSection Language="CSharp" CodeContents="@("SnackbarService.ShowSnackbar<TComponent>(parameters, options);")" />
 </div>
 
 <MduiDivider Class="mdui-m-y-5" />

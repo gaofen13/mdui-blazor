@@ -40,10 +40,14 @@
     <ExampleSection HideExample Component="@typeof(DialogLayoutDependant)" />
 
     <MduiText Typo="@Typo.subheading"><b>2. 注入服务</b></MduiText>
-    <ExampleSection CodeContents="@("@inject DialogService DialogService\r\r[Inject]\rprivate DialogService DialogService { get; set; }")" />
+    <ExampleSection CodeContents="@("@inject DialogService DialogService")" />
+    <ExampleSection Language="CSharp" CodeContents="@("[Inject]\rprivate DialogService DialogService { get; set; }")" />
 
     <MduiText Typo="@Typo.subheading"><b>3. 调用实例</b></MduiText>
-    <ExampleSection CodeContents="@("DialogService.Show(message, title, options);\r\rDialogService.Alert(message, title);\r\rDialogService.Confirm(message, title);\r\rDialogService.Show<TComponent>(parameters);")" />
+    <ExampleSection Language="CSharp" CodeContents="@("DialogService.Show(message, title, options);")" />
+    <ExampleSection Language="CSharp" CodeContents="@("DialogService.Alert(message, title);")" />
+    <ExampleSection Language="CSharp" CodeContents="@("DialogService.Confirm(message, title);")" />
+    <ExampleSection Language="CSharp" CodeContents="@("DialogService.Show<TComponent>(parameters);")" />
     </div>
 
     <MduiDivider Class="mdui-m-y-5" />
