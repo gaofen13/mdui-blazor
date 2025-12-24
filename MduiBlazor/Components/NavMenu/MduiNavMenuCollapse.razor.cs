@@ -81,6 +81,15 @@ namespace MduiBlazor
             Open = !Open;
         }
 
+        public void SetOpen()
+        {
+            if (!Open)
+            {
+                Open = true;
+                InvokeAsync(StateHasChanged);
+            }
+        }
+
         public void Close()
         {
             Open = false;
