@@ -12227,22 +12227,16 @@ input.mdui-btn[type="submit"] {
   margin-left: 8px;
   color: #E91E63;
 }
-.mdui-dialog-actions .mdui-btn:first-child {
-  margin-left: 0;
-}
 /* 底部按钮滚随内容动 */
 .mdui-dialog-content > .mdui-dialog-actions {
   margin: 0 -24px -24px -24px;
   padding-top: 32px;
 }
 /* 使提示框底部按钮竖排 */
-.mdui-dialog-actions-stacked {
-  padding: 8px 0 8px 0;
-}
 .mdui-dialog-actions-stacked .mdui-btn {
-  width: 100%;
+  display: block;
   height: 48px;
-  margin: 0;
+  margin-left: auto;
   line-height: 48px !important;
   text-align: right;
   border-radius: 0;

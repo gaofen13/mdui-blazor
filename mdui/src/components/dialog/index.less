@@ -85,10 +85,6 @@
     min-width: 64px;
     margin-left: 8px;
     .mdui-text-color(@color-accent-default-name);
-
-    &:first-child {
-      margin-left: 0;
-    }
   }
 }
 
@@ -100,12 +96,11 @@
 
 /* 使提示框底部按钮竖排 */
 .mdui-dialog-actions-stacked {
-  padding: 8px 0 8px 0;
 
   .mdui-btn {
-    width: 100%;
+    display: block;
     height: 48px;
-    margin: 0;
+    margin-left: auto;
     line-height: 48px !important;
     text-align: right;
     border-radius: 0;
