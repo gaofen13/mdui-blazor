@@ -9,7 +9,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MduiBlazor.Client\MduiBlazor.Client.csproj" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="10.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="10.0.2" />
   </ItemGroup>
 
 </Project>
